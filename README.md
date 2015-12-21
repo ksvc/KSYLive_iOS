@@ -34,7 +34,8 @@ KSY Live iOS SDK是金山云推出的 iOS 平台上使用的软件开发工具�
 ## SDK 下载   
 本SDK 提供如下两种获取方式:   
 
-* 使用金山云账户邮件向 taochuntang@kingsoft.com索取
+* 使用金山云账户邮件向 taochuntang@kingsoft.com索取;
+* 从github下载：https://github.com/ksvc/KSYLive_iOS.git
 * 使用Cocoapods进行安装，将如下语句加入你的Podfile：
 
 ```
