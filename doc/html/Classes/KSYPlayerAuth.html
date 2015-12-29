@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>KSYPlayerAuth Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">KSYPlayer </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">VideoCloud</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/accessKey">accessKey</option>
+		
+		<option value="//api/name/appId">appId</option>
+		
+		<option value="//api/name/mCode">mCode</option>
+		
+		<option value="//api/name/sam">sam</option>
+		
+		<option value="//api/name/secretKey">secretKey</option>
+		
+		<option value="//api/name/timeSeconds">timeSeconds</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/sharedInstance">+ sharedInstance</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/setAuthInfo:accessKey:secretKeySign:timeSeconds:">- setAuthInfo:accessKey:secretKeySign:timeSeconds:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">KSYPlayerAuth Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>KSYPlayerAuth.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>金山云播放内核需要提供鉴权信息，鉴权信息未完成，将导致如下效果：</p>
+
+<ul>
+<li>播放画面出现金山云logo</li>
+<li>播放一定时间后停止播放</li>
+<li>以及其他异常现象发生</li>
+</ul>
+
+
+<h2>联系我们</h2>
+
+<p>当本文档无法帮助您解决在开发中遇到的具体问题，请通过以下方式联系我们，金山云工程师会在第一时间回复您。</p>
+
+<p><strong>E-mail</strong>:  zengfanping@kingsoft.com</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/appId" title="appId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/appId">&nbsp;&nbsp;appId</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>开发者设置的开发者标识</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *appId</code></div>
+
+		    
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in <a href="../Classes/KSYMoviePlayerController.html">KSYMoviePlayerController</a> 1.0 and later.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>该信息由haomingfei@kingsoft.com提供。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYPlayerAuth.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/accessKey" title="accessKey"></a>
+	<h3 class="method-title"><code><a href="#//api/name/accessKey">&nbsp;&nbsp;accessKey</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>开发者设置的应用接入信息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *accessKey</code></div>
+
+		    
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in <a href="../Classes/KSYMoviePlayerController.html">KSYMoviePlayerController</a> 1.0 and later.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>该信息由haomingfei@kingsoft.com提供。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYPlayerAuth.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/secretKey" title="secretKey"></a>
+	<h3 class="method-title"><code><a href="#//api/name/secretKey">&nbsp;&nbsp;secretKey</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>开发者设置的密钥</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *secretKey</code></div>
+
+		    
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in <a href="../Classes/KSYMoviePlayerController.html">KSYMoviePlayerController</a> 1.0 and later.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>加密算法请见setAuthInfo</p>
+
+<p>可以使用以下方法获取secretKey，其中"iamskey"为用户密钥，需要从金山云服务器获取。sksign则为secretKey：</p>
+
+<pre><code>
+//需要import CommonCrypto/CommonDigest.h
+
+- (NSString *)MD5:(NSString*)raw {
+    const char * pointer = [raw UTF8String];
+    unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
+
+    CC_MD5(pointer, (CC_LONG)strlen(pointer), md5Buffer);
+
+    NSMutableString *string = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [string appendFormat:@"%02x",md5Buffer[i]];
+
+    return string;
+}
+
+- (void)initKSYAuth
+{
+    NSString* timeSeconds = [NSString stringWithFormat:@"%d",(int)[[NSDate date]timeIntervalSince1970]];
+    NSString* sk = [NSString stringWithFormat:@"iamskey%@", time];
+    NSString* sksign = [self MD5:sk];
+</pre>
+
+
+<p></code></p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYPlayerAuth.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/timeSeconds" title="timeSeconds"></a>
+	<h3 class="method-title"><code><a href="#//api/name/timeSeconds">&nbsp;&nbsp;timeSeconds</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>开发者设置的1970年至今经过的秒数。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *timeSeconds</code></div>
+
+		    
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in <a href="../Classes/KSYMoviePlayerController.html">KSYMoviePlayerController</a> 1.0 and later.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>参与加密计算，设置由setAuthInfo传入。</p>
+
+<p>可以使用以下方法获取timeSeconds：</p>
+
+<pre><code>
+NSString* timeSeconds = [NSString stringWithFormat:@"%d",(int)[[NSDate date]timeIntervalSince1970]];
+</pre>
+
+
+<p></code></p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYPlayerAuth.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/mCode" title="mCode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/mCode">&nbsp;&nbsp;mCode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设备id</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *mCode</code></div>
+
+		    
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in <a href="../Classes/KSYMoviePlayerController.html">KSYMoviePlayerController</a> 1.0 and later.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYPlayerAuth.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sam" title="sam"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sam">&nbsp;&nbsp;sam</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设备版本信息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *sam</code></div>
+
+		    
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in <a href="../Classes/KSYMoviePlayerController.html">KSYMoviePlayerController</a> 1.0 and later.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYPlayerAuth.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sharedInstance" title="sharedInstance"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sharedInstance">+&nbsp;sharedInstance</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取认证单例</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (KSYPlayerAuth *)sharedInstance</code></div>
+
+		    
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in <a href="../Classes/KSYMoviePlayerController.html">KSYMoviePlayerController</a> 1.0 and later.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYPlayerAuth.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setAuthInfo:accessKey:secretKeySign:timeSeconds:" title="setAuthInfo:accessKey:secretKeySign:timeSeconds:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setAuthInfo:accessKey:secretKeySign:timeSeconds:">&ndash;&nbsp;setAuthInfo:accessKey:secretKeySign:timeSeconds:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置认证信息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setAuthInfo:(NSString *)<em>appId</em> accessKey:(NSString *)<em>ak</em> secretKeySign:(NSString *)<em>skSign</em> timeSeconds:(NSString *)<em>seconds</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appId</code></th>
+						<td><p>开发者标识，由haomingfei@kingsoft.com分配</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>ak</code></th>
+						<td><p>应用接入信息，与SecretKey对应，由开放平台针对appid分配</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>skSign</code></th>
+						<td><p>设置加密后的SecretKey，加密方式为SecretKeySign=md5( SecretKey + TimeSec )，其中“+”号表示字符串连接</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>seconds</code></th>
+						<td><p>1970年至今经过的秒数。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>timeSeconds获取方法：</p>
+
+<pre><code>
+NSString* timeSeconds = [NSString stringWithFormat:@"%d",(int)[[NSDate date]timeIntervalSince1970]];
+</pre>
+
+
+<p></code></p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYPlayerAuth.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2015 VideoCloud. All rights reserved. Updated: 2015-12-29</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

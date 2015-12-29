@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KSYPlayerAuth.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYPlayerAuth</TokenIdentifier>
+			<Abstract type="html">金山云播放内核需要提供鉴权信息，鉴权信息未完成，将导致如下效果：</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+            
+			
+			<NodeRef refid="3"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setAppId:</TokenIdentifier>
+			<Abstract type="html">开发者设置的开发者标识</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *appId</Declaration>
+			
+			
+			<Anchor>//api/name/appId</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/appId</TokenIdentifier>
+			<Abstract type="html">开发者设置的开发者标识</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *appId</Declaration>
+			
+			
+			<Anchor>//api/name/appId</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYPlayerAuth/appId</TokenIdentifier>
+			<Abstract type="html">开发者设置的开发者标识</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *appId</Declaration>
+			
+			
+			<Anchor>//api/name/appId</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setAccessKey:</TokenIdentifier>
+			<Abstract type="html">开发者设置的应用接入信息</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *accessKey</Declaration>
+			
+			
+			<Anchor>//api/name/accessKey</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/accessKey</TokenIdentifier>
+			<Abstract type="html">开发者设置的应用接入信息</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *accessKey</Declaration>
+			
+			
+			<Anchor>//api/name/accessKey</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYPlayerAuth/accessKey</TokenIdentifier>
+			<Abstract type="html">开发者设置的应用接入信息</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *accessKey</Declaration>
+			
+			
+			<Anchor>//api/name/accessKey</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setSecretKey:</TokenIdentifier>
+			<Abstract type="html">开发者设置的密钥</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *secretKey</Declaration>
+			
+			
+			<Anchor>//api/name/secretKey</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/secretKey</TokenIdentifier>
+			<Abstract type="html">开发者设置的密钥</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *secretKey</Declaration>
+			
+			
+			<Anchor>//api/name/secretKey</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYPlayerAuth/secretKey</TokenIdentifier>
+			<Abstract type="html">开发者设置的密钥</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *secretKey</Declaration>
+			
+			
+			<Anchor>//api/name/secretKey</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setTimeSeconds:</TokenIdentifier>
+			<Abstract type="html">开发者设置的1970年至今经过的秒数。</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *timeSeconds</Declaration>
+			
+			
+			<Anchor>//api/name/timeSeconds</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/timeSeconds</TokenIdentifier>
+			<Abstract type="html">开发者设置的1970年至今经过的秒数。</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *timeSeconds</Declaration>
+			
+			
+			<Anchor>//api/name/timeSeconds</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYPlayerAuth/timeSeconds</TokenIdentifier>
+			<Abstract type="html">开发者设置的1970年至今经过的秒数。</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *timeSeconds</Declaration>
+			
+			
+			<Anchor>//api/name/timeSeconds</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setMCode:</TokenIdentifier>
+			<Abstract type="html">设备id</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *mCode</Declaration>
+			
+			
+			<Anchor>//api/name/mCode</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/mCode</TokenIdentifier>
+			<Abstract type="html">设备id</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *mCode</Declaration>
+			
+			
+			<Anchor>//api/name/mCode</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYPlayerAuth/mCode</TokenIdentifier>
+			<Abstract type="html">设备id</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *mCode</Declaration>
+			
+			
+			<Anchor>//api/name/mCode</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setSam:</TokenIdentifier>
+			<Abstract type="html">设备版本信息</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *sam</Declaration>
+			
+			
+			<Anchor>//api/name/sam</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/sam</TokenIdentifier>
+			<Abstract type="html">设备版本信息</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *sam</Declaration>
+			
+			
+			<Anchor>//api/name/sam</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYPlayerAuth/sam</TokenIdentifier>
+			<Abstract type="html">设备版本信息</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *sam</Declaration>
+			
+			
+			<Anchor>//api/name/sam</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KSYPlayerAuth/sharedInstance</TokenIdentifier>
+			<Abstract type="html">获取认证单例</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>+ (KSYPlayerAuth *)sharedInstance</Declaration>
+			
+			
+			<Anchor>//api/name/sharedInstance</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setAuthInfo:accessKey:secretKeySign:timeSeconds:</TokenIdentifier>
+			<Abstract type="html">设置认证信息</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>- (void)setAuthInfo:(NSString *)appId accessKey:(NSString *)ak secretKeySign:(NSString *)skSign timeSeconds:(NSString *)seconds</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>appId</Name>
+					<Abstract type="html">开发者标识，由haomingfei@kingsoft.com分配</Abstract>
+				</Parameter><Parameter>
+					<Name>ak</Name>
+					<Abstract type="html">应用接入信息，与SecretKey对应，由开放平台针对appid分配</Abstract>
+				</Parameter><Parameter>
+					<Name>skSign</Name>
+					<Abstract type="html">设置加密后的SecretKey，加密方式为SecretKeySign=md5( SecretKey + TimeSec )，其中“+”号表示字符串连接</Abstract>
+				</Parameter><Parameter>
+					<Name>seconds</Name>
+					<Abstract type="html">1970年至今经过的秒数。</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setAuthInfo:accessKey:secretKeySign:timeSeconds:</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>
