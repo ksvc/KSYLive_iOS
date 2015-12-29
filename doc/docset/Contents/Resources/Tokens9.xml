@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/KSYStreamErrorCode.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYStreamErrorCode</TokenIdentifier>
+			<Abstract type="html">推流错误码，用于指示推流失败的原因</Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+			
+			<NodeRef refid="9"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_NONE</TokenIdentifier>
+            <Abstract type="html">正常无错误</Abstract>
+            <Declaration>KSYStreamErrorCode_NONE</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="9"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_KSYAUTHFAILED</TokenIdentifier>
+            <Abstract type="html">QYAuthFailed, SDK 鉴权失败</Abstract>
+            <Declaration>KSYStreamErrorCode_KSYAUTHFAILED</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="9"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_ENCODE_FRAMES_FAILED</TokenIdentifier>
+            <Abstract type="html">当前帧编码失败</Abstract>
+            <Declaration>KSYStreamErrorCode_ENCODE_FRAMES_FAILED</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="9"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_CODEC_OPEN_FAILED</TokenIdentifier>
+            <Abstract type="html">无法打开配置指示的CODEC</Abstract>
+            <Declaration>KSYStreamErrorCode_CODEC_OPEN_FAILED</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="9"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_CONNECT_FAILED</TokenIdentifier>
+            <Abstract type="html">连接出错，检查地址</Abstract>
+            <Declaration>KSYStreamErrorCode_CONNECT_FAILED</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="9"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_CONNECT_BREAK</TokenIdentifier>
+            <Abstract type="html">网络连接中断</Abstract>
+            <Declaration>KSYStreamErrorCode_CONNECT_BREAK</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="9"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

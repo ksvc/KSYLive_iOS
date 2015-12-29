@@ -1,10 +1,10 @@
-# KSY Live iOS SDK使用手册
+﻿# KSY Live iOS SDK使用手册
 
 ## 阅读对象
 本文档面向所有使用该SDK的开发人员, 测试人员等, 要求读者具有一定的iOS编程开发经验.
 
 ## KSY Live iOS SDK 概述
-KSY Live iOS SDK是金山云推出的 iOS 平台上使用的软件开发工具包(SDK), 其实Stremer负责采集和推流。MediaPlayer负责视频播放。
+KSY Live iOS SDK是金山云推出的 iOS 平台上使用的软件开发工具包(SDK), 其中Stremer负责采集和推流。MediaPlayer负责视频播放。
 
 ## 主要功能点
 
@@ -17,7 +17,7 @@ KSY Live iOS SDK是金山云推出的 iOS 平台上使用的软件开发工具�
 * iOS摄像头：前, 后置摄像头（可动态切换）
 * 音视频目标码率：可设
 * 根据网络带宽自适应调整视频的码率
-* 闪关灯：开/关
+* 闪光灯：开/关
 * Apple Doc 文档支持
 * 可使用系统原生接口对当前采集设备进行操作
 
@@ -32,14 +32,14 @@ KSY Live iOS SDK是金山云推出的 iOS 平台上使用的软件开发工具�
 * 小于2M大小的超轻量级直播sdk；
 
 ## SDK 下载   
-本SDK 提供如下两种获取方式:   
+本SDK 提供如下三种获取方式:
 
 * 使用金山云账户邮件向 taochuntang@kingsoft.com索取;
 * 从github下载：https://github.com/ksvc/KSYLive_iOS.git
 * 使用Cocoapods进行安装，将如下语句加入你的Podfile：
 
 ```
-pod "KSYLive", "~>1.0"
+pod 'KSYLive', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 ```
 
 执行 pod install 或者  pod update后，将SDK加入工程。
@@ -76,22 +76,6 @@ pod "KSYLive", "~>1.0"
 在Podfile中本SDK的条目，并执行了 pod install 之后， 本SDK就已经加入工程中，打开工程的workspace即可
 
 ## Streamer使用示例
-* 使用流程
-
-```flow
-st=>start: Start
-setupAuth=>operation: SDK 鉴权设置
-createStreamer=>operation: 创建推流实例并初始化配置
-setupStreamer=>operation: 设置采集和推流参数
-startPreview=>operation: 开始预览
-startStream=>operation: 开始推流
-stopStream=>operation: 停止推流
-stopPreview=>operation: 停止预览
-e=>end
-
-st->setupAuth->createStreamer->setupStreamer->startPreview->startStream->stopStream->stopPreview->e
-```
-
 * 在需要进行推流预览的VC类的实现文件中引入头文件
 ```
 #import <libksylive/libksylive.h>

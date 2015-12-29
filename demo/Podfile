@@ -1,0 +1,4 @@
+
+#pod 'KSYLive', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
+pod 'KSYLive_iOS', :path => '../'
+

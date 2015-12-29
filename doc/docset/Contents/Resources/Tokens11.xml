@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/KSYVideoCodec.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYVideoCodec</TokenIdentifier>
+			<Abstract type="html">视频编码器类型</Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+			
+			<NodeRef refid="11"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoCodec_X264</TokenIdentifier>
+            <Abstract type="html">视频编码器 - h264 软件编码器</Abstract>
+            <Declaration>KSYVideoCodec_X264</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="11"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoCodec_QY265</TokenIdentifier>
+            <Abstract type="html">视频编码器 - 仟壹265 软件编码器</Abstract>
+            <Declaration>KSYVideoCodec_QY265</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="11"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>
