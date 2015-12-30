@@ -97,6 +97,7 @@ _streamer.videoDimension = KSYVideoDimension_16_9__640x360;
 ```
 
 * 设置消息通知的接收函数
+
 | 通知名称 | 通知说明 |  相关属性 |
 | --------| ------|  --- |
 | KSYCaptureStateDidChangeNotification | 采集设备状态变化通知  | captureState |
