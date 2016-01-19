@@ -48,9 +48,10 @@ pod 'KSYLive', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 1. SDK压缩包
 如果获取到的为zip格式的压缩包，解压后的目录结构如下所示:
 
-* demo    : demo工程为KSYLive ，演示本SDK的主要接口的使用
-* doc     : appleDoc风格的接口文档，主要描述接口函数，参数和类型定义
-* framework : 本SDK的静态库framework，集成时需要将该framework加入到项目中
+* demo        : demo工程为KSYLive ，演示本SDK的主要接口的使用
+* doc/docset  : appleDoc风格的接口文档，主要描述接口函数，参数和类型定义
+* doc/html    : appleDoc风格的[接口文档](/KSYLive_iOS/html/index.html)
+* framework   : 本SDK的静态库framework，集成时需要将该framework加入到项目中
 
 1. SDK Cocoapods
 通过Cocoapods 能将本SDK的静态库framework下载到本地
@@ -82,7 +83,7 @@ pod 'KSYLive', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 ```
 * SDK 鉴权设置
 使用SDK前, 需要联系金山云获取合法的ak/sk 在开始推流前，需要使用KSYAuthInfo类的setAuthInfo将ak和加密后的sk传入SDK内部, 具体代码见demo中的initKSYAuth方法
-* SDK的核心类为KSYStreamer, 可以在VC中增加 KSYStreamer 的属性, 后续与推流相关的操作大部分都要通过KSYStreamer 来进行
+* SDK的核心类为[KSYStreamer](/KSYLive_iOS/html/Classes/KSYStreamer.html), 可以在VC中增加 KSYStreamer 的属性, 后续与推流相关的操作大部分都要通过KSYStreamer 来进行
 ```
 @property KSYStreamer * streamer;
 ```
@@ -105,7 +106,7 @@ _streamer.videoDimension = KSYVideoDimension_16_9__640x360;
 | KSYNetStateEventNotification         | 网络事件发生通知| netStateCode |
 
 比如 当采集设备的状态发生变化时，对应的接收回调函数会被调用，通过_streamer.captureState属性,可查询到新的状态
-其中如果推流状态变为 KSYStreamStateError,需要通过streamErrorCode 具体查询其错误原因
+其中如果推流状态变为 [KSYStreamStateError](/KSYLive_iOS/html/Constants/KSYStreamState.html),需要通过[streamErrorCode](/KSYLive_iOS/html/Constants/KSYStreamErrorCode.html) 具体查询其错误原因
 
 * 开始/停止预览
 通过如下接口启动和停止预览，当启动预览时，需要将显示预览的view传入到SDK中
