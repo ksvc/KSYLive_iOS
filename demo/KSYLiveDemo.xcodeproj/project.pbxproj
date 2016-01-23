@@ -41,7 +41,6 @@
 		06B2B1B91BE8F0D900E0CC85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		06D8CA791C1ED13E0068F7A4 /* KSYStreamerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYStreamerVC.m; sourceTree = "<group>"; };
 		06D8CA7A1C1ED13E0068F7A4 /* KSYStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYStreamerVC.h; sourceTree = "<group>"; };
-		06D8CA821C1ED4BC0068F7A4 /* libqylive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libqylive.framework; path = ../build/libqylive.framework; sourceTree = "<group>"; };
 		74ED32431C22D643005D2CA9 /* libksylive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libksylive.framework; path = ../build/libksylive.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,7 +64,6 @@
 			isa = PBXGroup;
 			children = (
 				74ED32431C22D643005D2CA9 /* libksylive.framework */,
-				06D8CA821C1ED4BC0068F7A4 /* libqylive.framework */,
 				0671DC5D1C0D5439000EE969 /* libbz2.dylib */,
 				060277DF1BE9FF7F00DD6A2D /* VideoToolbox.framework */,
 				060277CC1BE995E500DD6A2D /* libz.dylib */,

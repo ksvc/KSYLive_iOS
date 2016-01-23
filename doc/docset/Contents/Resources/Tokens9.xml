@@ -73,6 +73,106 @@
             <NodeRef refid="9"/>
         </Token>
         
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_NonExistDomain</TokenIdentifier>
+            <Abstract type="html">rtmp 推流域名不存在 (KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_NonExistDomain</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="9"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_NonExistApplication</TokenIdentifier>
+            <Abstract type="html">rtmp 应用名不存在(KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_NonExistApplication</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="9"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_AlreadyExistStreamName</TokenIdentifier>
+            <Abstract type="html">rtmp 流名已存在(KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_AlreadyExistStreamName</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="9"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_ForbiddenByBlacklist</TokenIdentifier>
+            <Abstract type="html">rtmp 被黑名单拒绝(KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_ForbiddenByBlacklist</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="9"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_InternalError</TokenIdentifier>
+            <Abstract type="html">rtmp 内部错误(KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_InternalError</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="9"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_URLExpired</TokenIdentifier>
+            <Abstract type="html">rtmp URL 地址已过期(KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_URLExpired</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="9"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_SignatureDoesNotMatch</TokenIdentifier>
+            <Abstract type="html">rtmp URL 地址签名错误(KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_SignatureDoesNotMatch</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="9"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_InvalidAccessKeyId</TokenIdentifier>
+            <Abstract type="html">rtmp URL 中AccessKeyId非法(KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_InvalidAccessKeyId</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="9"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_BadParams</TokenIdentifier>
+            <Abstract type="html">rtmp URL 中参数错误(KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_BadParams</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="9"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_ForbiddenByRegion</TokenIdentifier>
+            <Abstract type="html">rtmp URL 中的推流不在发布点内（KSY 自定义）</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_ForbiddenByRegion</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="9"/>
+        </Token>
+        
         
 	</File>
 </Tokens>

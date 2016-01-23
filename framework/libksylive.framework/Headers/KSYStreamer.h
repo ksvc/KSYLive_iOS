@@ -45,8 +45,11 @@
 
 /**
  @abstract   用户定义的视频分辨率
- @discussion 内部始终将较大的值作为宽度 (若需要竖屏，请设置 videoOrientation）
  @discussion 当videoDimension 设置为 KSYVideoDimension_UserDefine_* 时有效
+ @discussion 内部始终将较大的值作为宽度 (若需要竖屏，请设置 videoOrientation）
+ @discussion 宽高都会向上取整为4的整数倍
+ @discussion 宽度有效范围[160, 1280]
+ @discussion 高度有效范围[ 90,  720], 超出范围会提示参数错误
  @see KSYVideoDimension, videoOrientation
  */
 @property (nonatomic, assign) CGSize        videoDimensionUserDefine;
@@ -62,12 +65,13 @@
  @discussion (1~4):down up right left (home button)
  @discussion down,up: width < height
  @discussion right,left: width > height
+ @discussion 需要与UI方向一致
  */
 @property (nonatomic, assign) AVCaptureVideoOrientation videoOrientation;
 
 /**
  @abstract   视频帧率
- @discussion video frame per seconds 建议在[1~30]内
+ @discussion video frame per seconds 有效范围[1~30], 超出会提示参数错误
  */
 @property (nonatomic, assign) int                       videoFPS;
 
@@ -243,12 +247,13 @@ KSY_EXTERN NSString *const KSYNetStateEventNotification NS_DEPRECATED_IOS(3_2, 9
 
 /**
  @abstract   切换摄像头
+ @return     TRUE: 成功切换摄像头， FALSE：当前参数，下一个摄像头不支持，切换失败
  @discussion 在前后摄像头间切换，从当前的摄像头切换到另一个，切换成功则修改cameraPosition的值
  @discussion 开始预览后开始有效，推流过程中也响应切换请求
 
  @see cameraPosition
  */
-- (void) switchCamera;
+- (BOOL) switchCamera;
 
 /**
  @abstract   当前采集设备是否支持闪光灯

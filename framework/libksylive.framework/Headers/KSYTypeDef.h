@@ -40,7 +40,7 @@ typedef NS_ENUM(NSUInteger, KSYVideoDimension) {
     
     /// 缩放自定义分辨率 从设备支持的最近分辨率缩放获得, 若设备没有对应宽高比的分辨率，则裁剪后进行缩放
     KSYVideoDimension_UserDefine_Scale,
-    /// 缩放自定义分辨率 从设备支持的最近分辨率裁剪获得
+    /// 裁剪自定义分辨率 从设备支持的最近分辨率裁剪获得
     KSYVideoDimension_UserDefine_Crop,
     /// 注意： 选择缩放自定义分辨率时可能会有额外CPU代价
     
@@ -122,6 +122,26 @@ typedef NS_ENUM(NSUInteger, KSYStreamErrorCode) {
     KSYStreamErrorCode_CONNECT_FAILED,
     /// 网络连接中断
     KSYStreamErrorCode_CONNECT_BREAK,
+    /// rtmp 推流域名不存在 (KSY 自定义)
+    KSYStreamErrorCode_RTMP_NonExistDomain,
+    /// rtmp 应用名不存在(KSY 自定义)
+    KSYStreamErrorCode_RTMP_NonExistApplication,
+    /// rtmp 流名已存在(KSY 自定义)
+    KSYStreamErrorCode_RTMP_AlreadyExistStreamName,
+    /// rtmp 被黑名单拒绝(KSY 自定义)
+    KSYStreamErrorCode_RTMP_ForbiddenByBlacklist,
+    /// rtmp 内部错误(KSY 自定义)
+    KSYStreamErrorCode_RTMP_InternalError,
+    /// rtmp URL 地址已过期(KSY 自定义)
+    KSYStreamErrorCode_RTMP_URLExpired,
+    /// rtmp URL 地址签名错误(KSY 自定义)
+    KSYStreamErrorCode_RTMP_SignatureDoesNotMatch,
+    /// rtmp URL 中AccessKeyId非法(KSY 自定义)
+    KSYStreamErrorCode_RTMP_InvalidAccessKeyId,
+    /// rtmp URL 中参数错误(KSY 自定义)
+    KSYStreamErrorCode_RTMP_BadParams,
+    /// rtmp URL 中的推流不在发布点内（KSY 自定义）
+    KSYStreamErrorCode_RTMP_ForbiddenByRegion,
 };
 
 /*!

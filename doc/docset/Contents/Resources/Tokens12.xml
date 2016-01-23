@@ -75,7 +75,7 @@
         
         <Token>
             <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_UserDefine_Crop</TokenIdentifier>
-            <Abstract type="html">缩放自定义分辨率 从设备支持的最近分辨率裁剪获得</Abstract>
+            <Abstract type="html">裁剪自定义分辨率 从设备支持的最近分辨率裁剪获得</Abstract>
             <Declaration>KSYVideoDimension_UserDefine_Crop</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>

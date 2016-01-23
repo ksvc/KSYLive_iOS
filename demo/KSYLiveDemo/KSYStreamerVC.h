@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface KSYStreamerVC : UIViewController
+@property NSURL * hostURL;
 
 
 @end
