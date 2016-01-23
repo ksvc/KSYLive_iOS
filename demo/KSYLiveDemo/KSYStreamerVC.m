@@ -13,7 +13,6 @@
 @interface KSYStreamerVC ()
 
 @property KSYStreamer * pubSession;
-@property NSURL * hostURL;
 
 @property UIButton *btnPreview;
 @property UIButton *btnTStream;
@@ -29,7 +28,9 @@
 @property UILabel  *lblHighRes;
 
 @property UILabel *stat;
-@property NSTimer* timer;
+@property NSTimer *timer;
+
+@property UIView* preview;
 
 @property BOOL bMirrored;
 
@@ -82,7 +83,7 @@
                                              selector:@selector(updateStat:)
                                              userInfo:nil
                                               repeats:YES];
-    //QYPublisher state changes
+    //KSYStreamer state changes
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(onCaptureStateChange:)
                                                  name:KSYCaptureStateDidChangeNotification
@@ -111,9 +112,10 @@
     [button addTarget:self action:@selector(onStream:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
     _btnTStream = button;
+    [_btnTStream setEnabled:NO];
     
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle:@"flashlight" forState: UIControlStateNormal];
+    [button setTitle:@"闪光灯" forState: UIControlStateNormal];
     button.backgroundColor = [UIColor lightGrayColor];
     [button addTarget:self action:@selector(onFlash:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
@@ -121,12 +123,11 @@
     [ _btnFlash setEnabled:NO];
     
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle:@"switchCamera" forState: UIControlStateNormal];
+    [button setTitle:@"切到前置" forState: UIControlStateNormal];
     button.backgroundColor = [UIColor lightGrayColor];
     [button addTarget:self action:@selector(onCamera:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
     _btnCamera = button;
-    [ _btnCamera setEnabled:NO];
     
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button setTitle:@"quit" forState: UIControlStateNormal];
@@ -134,7 +135,7 @@
     [button addTarget:self action:@selector(onQuit:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
     _btnQuit = button;
-    
+   
     _lblAutoBW = [[UILabel alloc] init];
     _lblAutoBW.text = @"自动调码率";
     [self.view addSubview:_lblAutoBW];
@@ -172,7 +173,6 @@
     _netEventRaiseDrop = @"";
 
     [self layoutUI];
-
 }
 
 - (void) layoutUI {
@@ -269,32 +269,27 @@
     else {
         _pubSession.videoDimension = KSYVideoDimension_16_9__640x360;
     }
-
-    //_pubSession.videoDimension = KSYVideoDimension_4_3__640x480;
-    _pubSession.videoFPS = 18;
-    _pubSession.cameraPosition = AVCaptureDevicePositionFront;
-    [self.view autoresizesSubviews];
-    [_btnTStream setEnabled:NO];
+    _pubSession.videoFPS = 12;
     
     // stream settings
-    //_pubSession.videoCodec = KSYVideoCodec_QY265;
     _pubSession.videoCodec = KSYVideoCodec_X264;
-    _pubSession.videokBPS = 1000; // k bit ps
+    _pubSession.videokBPS = 600; // k bit ps
     _pubSession.audiokBPS = 48; // k bit ps
     _pubSession.enAutoApplyEstimateBW = _btnAutoBw.on;
     
     // rtmp server info
-    NSString *devCode  = [ [KSYAuthInfo sharedInstance].mCode substringToIndex:6];
     NSString *codecSuf = _pubSession.videoCodec == KSYVideoCodec_X264 ? @"264" : @"265";
-    NSString *url      = [  NSString stringWithFormat:@"rtmp://test.uplive.ksyun.com/live/%@.%@", devCode, codecSuf ];
-    _hostURL = [ [NSURL alloc] initWithString:url];
+    NSString *rtmpSrv  = @"rtmp://test.uplive.ksyun.com/live";
+    NSString *url      = [NSString stringWithFormat:@"%@/ksytest.%@",rtmpSrv, codecSuf ];
+    NSLog(@"stream to : %@", url);
+    _hostURL = [ [NSURL alloc] initWithString: url];
     [self setVideoOrientation];
+    [self.view autoresizesSubviews];
 }
 
 - (IBAction)onQuit:(id)sender {
     [_pubSession stopStream];
     [_pubSession stopPreview];
-    //[self.navigationController popToRootViewControllerAnimated:FALSE];
     [self dismissViewControllerAnimated:FALSE completion:nil];
 }
 
@@ -336,7 +331,14 @@
 - (IBAction)onCamera:(id)sender {
     [_pubSession switchCamera ];
     BOOL backCam = (_pubSession.cameraPosition == AVCaptureDevicePositionBack);
-    [_btnFlash  setEnabled:backCam];
+    if ( backCam ) {
+        [_btnCamera setTitle:@"切到前摄像" forState: UIControlStateNormal];
+    }
+    else {
+        [_btnCamera setTitle:@"切到后摄像" forState: UIControlStateNormal];
+    }
+    backCam = backCam && (_pubSession.captureState == KSYCaptureStateCapturing);
+    [_btnFlash  setEnabled:backCam ];
 }
 
 - (void) initStatData {
@@ -431,7 +433,6 @@
         [_btnPreview setEnabled:YES];
         [_btnTStream setEnabled:NO];
         [_btnPreview setTitle:@"StartPreview" forState:UIControlStateNormal];
-        [_btnCamera setEnabled:NO];
         [_btnFlash  setEnabled:NO];
         [_btnAutoBw setEnabled:YES];
         [_btnHighRes setEnabled:YES];
@@ -441,7 +442,6 @@
         [_btnPreview setEnabled:YES];
         [_btnTStream setEnabled:YES];
         [_btnPreview setTitle:@"StopPreview" forState:UIControlStateNormal];
-        [_btnCamera  setEnabled:YES];
         BOOL backCam = (_pubSession.cameraPosition == AVCaptureDevicePositionBack);
         [_btnFlash   setEnabled:backCam];
         [_btnAutoBw  setEnabled:NO];
@@ -475,10 +475,7 @@
     [_btnTStream setEnabled:TRUE];
     [_btnTStream setTitle:@"StartStream" forState:UIControlStateNormal];
     [self toast:@"stream err"];
-    if ( KSYStreamErrorCode_KSYAUTHFAILED == err ) {
-        _stat.text = @"SDK auth failed, \npls check ak/sk";
-    }
-    else if ( KSYStreamErrorCode_CODEC_OPEN_FAILED == err) {
+    if ( KSYStreamErrorCode_CODEC_OPEN_FAILED == err) {
         _stat.text = @"Selected Codec not supported \n in this version";
     }
     else if ( KSYStreamErrorCode_CONNECT_FAILED == err) {
@@ -560,9 +557,7 @@
                                           cancelButtonTitle:nil
                                           otherButtonTitles:nil, nil];
     [toast show];
-    
     double duration = 0.3; // duration in seconds
-    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [toast dismissWithClickedButtonIndex:0 animated:YES];
     });
@@ -585,15 +580,15 @@
  * sk: sff25dc4a428479ff1e20ebf225d113
  * sksign: md5(sk+tmsec)
  
- 以上信息为示例ak/sk，请联系haomingfei@kingsoft.com获取正确认证信息。
+ 以上信息为错误ak/sk，请联系haomingfei@kingsoft.com获取正确认证信息。
  
  @warning 请将appid/ak/sk信息更新至开发者自己信息，再进行编译测试
  */
 - (void)initKSYAuth {
     NSString* time = [NSString stringWithFormat:@"%d",(int)[[NSDate date]timeIntervalSince1970]];
-    NSString* sk = [NSString stringWithFormat:@"sff25dc4a428479ff1e20ebf225d113%@", time];
+    NSString* sk = [NSString stringWithFormat:@"s77d5c0eef4aaeff62e43d89f1b12a25%@", time];
     NSString* sksign = [KSYAuthInfo KSYMD5:sk];
-    [[KSYAuthInfo sharedInstance]setAuthInfo:@"QYA0EEF0FDDD38C79913" accessKey:@"abc73bb5ab2328517415f8f52cd5ad37" secretKeySign:sksign timeSeconds:time];
+    [[KSYAuthInfo sharedInstance]setAuthInfo:@"QYA0E0639AC997A8D128" accessKey:@"a5644305efa79b56b8dac55378b83e35" secretKeySign:sksign timeSeconds:time];
 }
 
 @end

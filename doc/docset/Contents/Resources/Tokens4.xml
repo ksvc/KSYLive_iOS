@@ -753,9 +753,9 @@
 		
 	</RelatedTokens>
 	
-			<Declaration>- (void)switchCamera</Declaration>
+			<Declaration>- (BOOL)switchCamera</Declaration>
 			
-			
+			<ReturnValue><Abstract type="html">TRUE: 成功切换摄像头， FALSE：当前参数，下一个摄像头不支持，切换失败</Abstract></ReturnValue>
 			<Anchor>//api/name/switchCamera</Anchor>
             <NodeRef refid="4"/>
 		</Token>
