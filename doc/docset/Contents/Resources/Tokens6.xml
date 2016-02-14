@@ -63,6 +63,16 @@
             <NodeRef refid="6"/>
         </Token>
         
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYCaptureStateDevBusy</TokenIdentifier>
+            <Abstract type="html">设备正忙，请稍后尝试 ( 该状态在发出通知0.5秒后被清除 ）</Abstract>
+            <Declaration>KSYCaptureStateDevBusy</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="6"/>
+        </Token>
+        
         
 	</File>
 </Tokens>

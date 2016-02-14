@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <libksylive/libksylive.h>
+@class KSYStreamer;
 
 @interface KSYStreamerVC : UIViewController
-@property NSURL * hostURL;
 
+@property NSURL * hostURL;
+@property UILabel *stat;
+
+- (KSYStreamer *) getStreamer;
+- (void) setStreamerCfg;
 
 @end
 

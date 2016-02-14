@@ -25,7 +25,7 @@
         
         <Token>
             <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_KSYAUTHFAILED</TokenIdentifier>
-            <Abstract type="html">QYAuthFailed, SDK 鉴权失败</Abstract>
+            <Abstract type="html">SDK 鉴权失败 (暂时正常推流5~8分钟后终止推流)</Abstract>
             <Declaration>KSYStreamErrorCode_KSYAUTHFAILED</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
@@ -167,6 +167,26 @@
             <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_ForbiddenByRegion</TokenIdentifier>
             <Abstract type="html">rtmp URL 中的推流不在发布点内（KSY 自定义）</Abstract>
             <Declaration>KSYStreamErrorCode_RTMP_ForbiddenByRegion</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="9"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_FRAMES_THRESHOLD</TokenIdentifier>
+            <Abstract type="html">SDK 因为鉴权失败停止推流</Abstract>
+            <Declaration>KSYStreamErrorCode_FRAMES_THRESHOLD</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="9"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_NO_INPUT_SAMPLE</TokenIdentifier>
+            <Abstract type="html">没有输入的数据，无法开始推流</Abstract>
+            <Declaration>KSYStreamErrorCode_NO_INPUT_SAMPLE</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
