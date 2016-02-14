@@ -88,6 +88,8 @@ typedef NS_ENUM(NSUInteger, KSYCaptureState) {
     KSYCaptureStateClosingCapture,
     /// 参数错误，无法打开（比如设置的分辨率，码率当前设备不支持）
     KSYCaptureStateParameterError,
+    /// 设备正忙，请稍后尝试 ( 该状态在发出通知0.5秒后被清除 ）
+    KSYCaptureStateDevBusy,
 };
 
 /*!
@@ -112,7 +114,7 @@ typedef NS_ENUM(NSUInteger, KSYStreamState) {
 typedef NS_ENUM(NSUInteger, KSYStreamErrorCode) {
     /// 正常无错误
     KSYStreamErrorCode_NONE = 0,
-    /// QYAuthFailed, SDK 鉴权失败
+    /// SDK 鉴权失败 (暂时正常推流5~8分钟后终止推流)
     KSYStreamErrorCode_KSYAUTHFAILED,
     /// 当前帧编码失败
     KSYStreamErrorCode_ENCODE_FRAMES_FAILED,
@@ -142,6 +144,10 @@ typedef NS_ENUM(NSUInteger, KSYStreamErrorCode) {
     KSYStreamErrorCode_RTMP_BadParams,
     /// rtmp URL 中的推流不在发布点内（KSY 自定义）
     KSYStreamErrorCode_RTMP_ForbiddenByRegion,
+    /// SDK 因为鉴权失败停止推流
+    KSYStreamErrorCode_FRAMES_THRESHOLD,
+    /// 没有输入的数据，无法开始推流
+    KSYStreamErrorCode_NO_INPUT_SAMPLE,
 };
 
 /*!

@@ -83,10 +83,24 @@
  */
 @property (nonatomic, assign) KSYVideoCodec videoCodec;
 /**
- @abstract   视频编码码率
- @discussion 视频目标编码码率, 单位为kbps
+ @abstract   视频编码起始码率（单位:kbps）
+ @discussion 开始推流时的视频码率，开始推流后，根据网络情况在 [Min, Max]范围内调节
+ @discussion 视频码率上调则画面更清晰，下调则画面更模糊
+ @see videoMaxBitrate, videoMinBitrate
  */
-@property (nonatomic, assign) int          videokBPS;   // kbit/s of video
+@property (nonatomic, assign) int          videoInitBitrate;   // kbit/s of video
+/**
+ @abstract   视频编码最高码率（单位:kbps）
+ @discussion 视频码率自适应调整的上限
+ @see videoInitBitrate, videoMinBitrate
+ */
+@property (nonatomic, assign) int          videoMaxBitrate;   // kbit/s of video
+/**
+ @abstract   视频编码最低码率（单位:kbps）
+ @discussion 视频码率自适应调整的下限
+ @see videoInitBitrate, videoMaxBitrate
+ */
+@property (nonatomic, assign) int          videoMinBitrate;   // kbit/s of video
 /**
  @abstract   音频编码器
  @discussion 音频目标编码码率, 单位为kbps
@@ -141,11 +155,11 @@
 @property (nonatomic, readonly) KSYNetStateCode netStateCode;
 
 // Posted when capture state changes
-KSY_EXTERN NSString *const KSYCaptureStateDidChangeNotification NS_DEPRECATED_IOS(3_2, 9_0);
+FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILABLE_IOS(7_0);
 // Posted when stream state changes
-KSY_EXTERN NSString *const KSYStreamStateDidChangeNotification NS_DEPRECATED_IOS(3_2, 9_0);
+FOUNDATION_EXPORT NSString *const KSYStreamStateDidChangeNotification NS_AVAILABLE_IOS(7_0);
 // Posted when there is an net state event
-KSY_EXTERN NSString *const KSYNetStateEventNotification NS_DEPRECATED_IOS(3_2, 9_0);
+FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(7_0);
 
 // methods
 /**
@@ -157,7 +171,7 @@ KSY_EXTERN NSString *const KSYNetStateEventNotification NS_DEPRECATED_IOS(3_2, 9
  * _videoOrientation = AVCaptureVideoOrientationPortrait;
  * _videoFPS         = 15;
  * _videoCodec       = KSYVideoCodec_QY265;
- * _videokBPS        = 600;
+ * _videoInitBitrate = 600;
  * _audiokBPS        = 48;
 
  @warning KSYStreamer只支持单实例推流，构造多个实例会出现异常
@@ -212,7 +226,7 @@ KSY_EXTERN NSString *const KSYNetStateEventNotification NS_DEPRECATED_IOS(3_2, 9
  @abstract   获取当前推流的平均码率大小
  @discussion 该码率为实际推流发出的总码率大小，包括音频和视频，单位为kbps
  
- @see videokBPS, audiokBPS
+ @see videoMaxBitrate, videoMinBitrate, audiokBPS
  */
 - (double) streamKbps;
 

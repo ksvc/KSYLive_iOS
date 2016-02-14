@@ -179,6 +179,28 @@
 // The duration of the movie, or 0.0 if not known.
 @property (nonatomic, readonly) NSTimeInterval duration;
 
+/**
+ @abstract 当前视频可播放长度
+ @discussion 视频可播放时长，单位是秒。
+ 
+ * currentPlaybackTime 标记的是播放器当前已播放的时长。
+ * playableDuration 标记的是播放器缓冲的时间，会稍大于currentPlaybackTime，与currentPlaybackTime的差值则是缓冲长度。
+ * duration 是视频总时长。
+ @since Available in KSYMoviePlayerController 1.0 and later.
+ */
+// The currently playable duration of the movie, for progressively downloaded network content.
+@property (nonatomic, readonly) NSTimeInterval playableDuration;
+
+
+/**
+ @abstract 当前视频宽高
+ @discussion 获取信息
+ * 监听MPMovieNaturalSizeAvailableNotification
+ * 播放过程中，宽高信息可能会产生更改
+ @since Available in KSYMoviePlayerController 1.0 and later.
+ */
+@property (nonatomic, readonly) CGSize naturalSize;
+
 // Posted when the playback state changes, either programatically or by the user.
 MP_EXTERN NSString * const MPMoviePlayerPlaybackStateDidChangeNotification;
 
@@ -193,6 +215,15 @@ MP_EXTERN NSString * const MPMoviePlayerLoadStateDidChangeNotification;
 MP_EXTERN NSString * const MPMovieNaturalSizeAvailableNotification;
 
 #pragma mark KSYMoviePlayerController New Feature
+/**
+ @abstract bufferTimeMax指定直播流播放时的最大缓冲时长，单位为秒。
+ @warning 该方法由金山云引入，不是原生系统接口
+ @discussion 当buffer为负数时，关闭直播追赶。
+ * 该属性仅对直播流有效；
+ * 默认值为2秒。
+ @since Available in KSYMoviePlayerController 1.0 and later.
+ */
+@property NSTimeInterval bufferTimeMax;
 /**
  @abstract 当前播放器是否在播放
  @warning 该方法由金山云引入，不是原生系统接口
@@ -257,5 +288,19 @@ MP_EXTERN NSString * const MPMovieNaturalSizeAvailableNotification;
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 - (UIImage *)thumbnailImageAtCurrentTime;
-
+/**
+ @abstract 视频本地保持路径
+ @warning 该方法由金山云引入，不是原生系统接口
+ @discussion 设置m3u8文件保存路径
+ @since Available in KSYMoviePlayerController 1.0 and later.
+ */
+- (void)saveVideoLocalPath:(NSString *)localpath;
+/**
+ @abstract 是否开启视频后处理
+ @warning 该方法由金山云引入，不是原生系统接口
+ @discussion 默认是开启
+ * 只在[prepareToPlay]([KSYMediaPlayback prepareToPlay]) 调用前设置生效；
+ @since Available in KSYMoviePlayerController 1.0 and later.
+ */
+@property(nonatomic)  BOOL  shouldEnableVideoPostProcessing;
 @end

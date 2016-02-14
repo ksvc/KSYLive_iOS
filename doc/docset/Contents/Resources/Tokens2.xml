@@ -336,6 +336,114 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setPlayableDuration:</TokenIdentifier>
+			<Abstract type="html">当前视频可播放长度</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSTimeInterval playableDuration</Declaration>
+			
+			
+			<Anchor>//api/name/playableDuration</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/playableDuration</TokenIdentifier>
+			<Abstract type="html">当前视频可播放长度</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSTimeInterval playableDuration</Declaration>
+			
+			
+			<Anchor>//api/name/playableDuration</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/playableDuration</TokenIdentifier>
+			<Abstract type="html">当前视频可播放长度</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSTimeInterval playableDuration</Declaration>
+			
+			
+			<Anchor>//api/name/playableDuration</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setNaturalSize:</TokenIdentifier>
+			<Abstract type="html">当前视频宽高</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) CGSize naturalSize</Declaration>
+			
+			
+			<Anchor>//api/name/naturalSize</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/naturalSize</TokenIdentifier>
+			<Abstract type="html">当前视频宽高</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) CGSize naturalSize</Declaration>
+			
+			
+			<Anchor>//api/name/naturalSize</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/naturalSize</TokenIdentifier>
+			<Abstract type="html">当前视频宽高</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) CGSize naturalSize</Declaration>
+			
+			
+			<Anchor>//api/name/naturalSize</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setBufferTimeMax:</TokenIdentifier>
+			<Abstract type="html">bufferTimeMax指定直播流播放时的最大缓冲时长，单位为秒。</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property NSTimeInterval bufferTimeMax</Declaration>
+			
+			
+			<Anchor>//api/name/bufferTimeMax</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/bufferTimeMax</TokenIdentifier>
+			<Abstract type="html">bufferTimeMax指定直播流播放时的最大缓冲时长，单位为秒。</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property NSTimeInterval bufferTimeMax</Declaration>
+			
+			
+			<Anchor>//api/name/bufferTimeMax</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/bufferTimeMax</TokenIdentifier>
+			<Abstract type="html">bufferTimeMax指定直播流播放时的最大缓冲时长，单位为秒。</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property NSTimeInterval bufferTimeMax</Declaration>
+			
+			
+			<Anchor>//api/name/bufferTimeMax</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/isPlaying</TokenIdentifier>
 			<Abstract type="html">当前播放器是否在播放</Abstract>
 			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
@@ -505,6 +613,54 @@
 			
 			<ReturnValue><Abstract type="html">当前时刻的视频UIImage 图像</Abstract></ReturnValue>
 			<Anchor>//api/name/thumbnailImageAtCurrentTime</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/saveVideoLocalPath:</TokenIdentifier>
+			<Abstract type="html">视频本地保持路径</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>- (void)saveVideoLocalPath:(NSString *)localpath</Declaration>
+			
+			
+			<Anchor>//api/name/saveVideoLocalPath:</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setShouldEnableVideoPostProcessing:</TokenIdentifier>
+			<Abstract type="html">是否开启视频后处理</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL shouldEnableVideoPostProcessing</Declaration>
+			
+			
+			<Anchor>//api/name/shouldEnableVideoPostProcessing</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/shouldEnableVideoPostProcessing</TokenIdentifier>
+			<Abstract type="html">是否开启视频后处理</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL shouldEnableVideoPostProcessing</Declaration>
+			
+			
+			<Anchor>//api/name/shouldEnableVideoPostProcessing</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/shouldEnableVideoPostProcessing</TokenIdentifier>
+			<Abstract type="html">是否开启视频后处理</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL shouldEnableVideoPostProcessing</Declaration>
+			
+			
+			<Anchor>//api/name/shouldEnableVideoPostProcessing</Anchor>
             <NodeRef refid="2"/>
 		</Token>
 		

@@ -310,38 +310,155 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setVideokBPS:</TokenIdentifier>
-			<Abstract type="html">视频编码码率</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setVideoInitBitrate:</TokenIdentifier>
+			<Abstract type="html">视频编码起始码率（单位:kbps）</Abstract>
 			<DeclaredIn>KSYStreamer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int videokBPS</Declaration>
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoMinBitrate</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, assign) int videoInitBitrate</Declaration>
 			
 			
-			<Anchor>//api/name/videokBPS</Anchor>
+			<Anchor>//api/name/videoInitBitrate</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/videokBPS</TokenIdentifier>
-			<Abstract type="html">视频编码码率</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/videoInitBitrate</TokenIdentifier>
+			<Abstract type="html">视频编码起始码率（单位:kbps）</Abstract>
 			<DeclaredIn>KSYStreamer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int videokBPS</Declaration>
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoMinBitrate</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, assign) int videoInitBitrate</Declaration>
 			
 			
-			<Anchor>//api/name/videokBPS</Anchor>
+			<Anchor>//api/name/videoInitBitrate</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videokBPS</TokenIdentifier>
-			<Abstract type="html">视频编码码率</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoInitBitrate</TokenIdentifier>
+			<Abstract type="html">视频编码起始码率（单位:kbps）</Abstract>
 			<DeclaredIn>KSYStreamer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int videokBPS</Declaration>
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoMinBitrate</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, assign) int videoInitBitrate</Declaration>
 			
 			
-			<Anchor>//api/name/videokBPS</Anchor>
+			<Anchor>//api/name/videoInitBitrate</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setVideoMaxBitrate:</TokenIdentifier>
+			<Abstract type="html">视频编码最高码率（单位:kbps）</Abstract>
+			<DeclaredIn>KSYStreamer.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoMinBitrate</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, assign) int videoMaxBitrate</Declaration>
+			
+			
+			<Anchor>//api/name/videoMaxBitrate</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/videoMaxBitrate</TokenIdentifier>
+			<Abstract type="html">视频编码最高码率（单位:kbps）</Abstract>
+			<DeclaredIn>KSYStreamer.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoMinBitrate</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, assign) int videoMaxBitrate</Declaration>
+			
+			
+			<Anchor>//api/name/videoMaxBitrate</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoMaxBitrate</TokenIdentifier>
+			<Abstract type="html">视频编码最高码率（单位:kbps）</Abstract>
+			<DeclaredIn>KSYStreamer.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoMinBitrate</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, assign) int videoMaxBitrate</Declaration>
+			
+			
+			<Anchor>//api/name/videoMaxBitrate</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setVideoMinBitrate:</TokenIdentifier>
+			<Abstract type="html">视频编码最低码率（单位:kbps）</Abstract>
+			<DeclaredIn>KSYStreamer.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoMaxBitrate</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, assign) int videoMinBitrate</Declaration>
+			
+			
+			<Anchor>//api/name/videoMinBitrate</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/videoMinBitrate</TokenIdentifier>
+			<Abstract type="html">视频编码最低码率（单位:kbps）</Abstract>
+			<DeclaredIn>KSYStreamer.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoMaxBitrate</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, assign) int videoMinBitrate</Declaration>
+			
+			
+			<Anchor>//api/name/videoMinBitrate</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoMinBitrate</TokenIdentifier>
+			<Abstract type="html">视频编码最低码率（单位:kbps）</Abstract>
+			<DeclaredIn>KSYStreamer.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoMaxBitrate</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, assign) int videoMinBitrate</Declaration>
+			
+			
+			<Anchor>//api/name/videoMinBitrate</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		

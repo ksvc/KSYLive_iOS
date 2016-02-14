@@ -6,7 +6,6 @@
 //
 
 #import "KSYPlayerVC.h"
-#import <libksylive/KSYMediaPlayer.h>
 #import <CommonCrypto/CommonDigest.h>
 
 @interface KSYPlayerVC ()
@@ -25,19 +24,17 @@
     UIButton *btnPause;
     UIButton *btnStop;
     UIButton *btnQuit;
+    UILabel  *lableVPP;
+    UISwitch *switchVPP;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
     _url = [NSURL URLWithString:@"rtmp://live.hkstv.hk.lxdns.com/live/hks"];
-//    _url = [NSURL URLWithString:@"rtmp://test.rtmplive.ks-cdn.com/live/yun264"];
-//    _url = [NSURL URLWithString:@"http://121.42.58.232:8980/hls_test/1.m3u8"];
-    _url = [NSURL URLWithString:@"http://121.40.205.48:8091/demo/h265.flv"];
-//    _url = [NSURL URLWithString:@"http://121.40.49.231/player/vod/mtv_x264_1920x1080_30_1000K.mp4"];
-    
+    _url = [NSURL URLWithString:@"rtmp://test.rtmplive.ks-cdn.com/live/fpzeng"];
+    //_url = [NSURL URLWithString:@"http://121.40.205.48:8091/demo/h265.flv"];
     [self setupObservers];
-    //NSLog(@"QY framework version: %f - %s", QYMediaPlayerVersionNumber, QYMediaPlayerVersionString);
     [self initKSYAuth];
 }
 - (void) initUI {
@@ -45,7 +42,7 @@
     videoView = [[UIView alloc] init];
     videoView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:videoView];
-
+    
     //add play button
     btnPlay = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [btnPlay setTitle:@"play" forState: UIControlStateNormal];
@@ -74,10 +71,18 @@
     stat = [[UILabel alloc] init];
     stat.backgroundColor = [UIColor clearColor];
     stat.textColor = [UIColor redColor];
-    stat.numberOfLines = 6;
+    stat.numberOfLines = -1;
     stat.textAlignment = NSTextAlignmentLeft;
     [self.view addSubview:stat];
+    
+    lableVPP = [[UILabel alloc] init];
+    lableVPP.text = @"视频后处理";
+    [self.view addSubview:lableVPP];
 
+    switchVPP = [[UISwitch alloc] init];
+    [self.view addSubview:switchVPP];
+    switchVPP.on = YES;
+    
     [self layoutUI];
 }
 - (void) layoutUI {
@@ -86,10 +91,18 @@
     CGFloat gap = 10;
     CGFloat btnWdt = ( (wdt-gap) / 4) - gap;
     CGFloat btnHgt = 30;
-    CGFloat xPos = gap;
-    CGFloat yPos = hgt - btnHgt - gap;
+    CGFloat xPos = 0;
+    CGFloat yPos = 0;
+
+    yPos = gap;
+    xPos = gap;
+    lableVPP.frame =CGRectMake(xPos, yPos, btnWdt * 2, btnHgt);
+    xPos += gap + lableVPP.frame.size.width;
+    switchVPP.frame = CGRectMake(xPos, gap, btnWdt, btnHgt);
     
     videoView.frame = CGRectMake(0, 0, wdt, hgt);
+    xPos = gap;
+    yPos = hgt - btnHgt - gap;
     btnPlay.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     xPos += gap + btnWdt;
     btnPause.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
@@ -97,8 +110,14 @@
     btnStop.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     xPos += gap + btnWdt;
     btnQuit.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    stat.frame = CGRectMake(gap, hgt/4, wdt, hgt/2);
+    stat.frame = CGRectMake(gap, 0, wdt, hgt/2);
+    // top row 3 left
+    yPos += (gap + btnHgt);
+    xPos = gap;
+
+    
 }
+
 - (BOOL)shouldAutorotate {
     [self layoutUI];
     return YES;
@@ -127,7 +146,7 @@
  * sk: sff25dc4a428479ff1e20ebf225d113
  * sksign: md5(sk+tmsec)
  
- 以上信息为示例ak/sk，请联系haomingfei@kingsoft.com获取正确认证信息。
+ 以上信息随时可能失效，请找金山云提供。
  
  @warning 请将appid/ak/sk信息更新至开发者自己信息，再进行编译测试
  */
@@ -135,7 +154,7 @@
 - (void)initKSYAuth
 {
     NSString* time = [NSString stringWithFormat:@"%d",(int)[[NSDate date]timeIntervalSince1970]];
-    NSString* sk = [NSString stringWithFormat:@"sff25dc4a428479ff1e20ebf225d113%@", time];
+    NSString* sk = [NSString stringWithFormat:@"sff25dc4a428479ff1e20ebf225d1139%@", time];
     NSString* sksign = [self MD5:sk];
     [[KSYPlayerAuth sharedInstance]setAuthInfo:@"QYA0EEF0FDDD38C79913" accessKey:@"abc73bb5ab2328517415f8f52cd5ad37" secretKeySign:sksign timeSeconds:time];
 }
@@ -150,12 +169,11 @@
         return;
     }
     if (MPMediaPlaybackIsPreparedToPlayDidChangeNotification ==  notify.name) {
-        [self updateStat:nil];
         stat.text = [NSString stringWithFormat:@"player prepared"];
         // using autoPlay to start live stream
         //        [_player play];
         serverIp = [_player serverAddress];
-        NSLog(@"%@ -- %@", _url, serverIp);
+        NSLog(@"%@ -- ip:%@", _url, serverIp);
         [self StartTimer];
     }
     if (MPMoviePlayerPlaybackStateDidChangeNotification ==  notify.name) {
@@ -176,7 +194,6 @@
                                      (int)_player.bufferEmptyCount,
                                      _player.bufferEmptyDuration];
                 [self toast:message];
-                [self updateStat:nil];
             }
     }
     if (MPMoviePlayerPlaybackDidFinishNotification ==  notify.name) {
@@ -187,6 +204,9 @@
               _player.bufferEmptyDuration);
         stat.text = [NSString stringWithFormat:@"player finish"];
         [self StopTimer];
+    }
+    if (MPMovieNaturalSizeAvailableNotification ==  notify.name) {
+        NSLog(@"video size %.0f-%.0f", _player.naturalSize.width, _player.naturalSize.height);
     }
 }
 - (void) toast:(NSString*)message{
@@ -202,23 +222,6 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [toast dismissWithClickedButtonIndex:0 animated:YES];
     });
-}
-- (void) observeValueForKeyPath:(NSString *)keyPath
-                       ofObject:(id)object
-                         change:(NSDictionary *)change
-                        context:(void *)context
-{
-    if ([keyPath isEqualToString:@"playbackState"])
-    {
-        NSLog(@"playback state from %@ to %@", [change objectForKey:@"old"], [change objectForKey:@"new"]);
-    }
-    else
-    {
-        [super observeValueForKeyPath:keyPath
-                             ofObject:object
-                               change:change
-                              context:context];
-    }
 }
 
 - (void)setupObservers
@@ -239,6 +242,10 @@
                                             selector:@selector(handlePlayerNotify:)
                                                 name:(MPMoviePlayerLoadStateDidChangeNotification)
                                               object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(handlePlayerNotify:)
+                                                name:(MPMovieNaturalSizeAvailableNotification)
+                                              object:nil];
 }
 
 - (void)releaseObservers
@@ -255,18 +262,18 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self
                                                    name:MPMoviePlayerLoadStateDidChangeNotification
                                                  object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self
+                                                   name:MPMovieNaturalSizeAvailableNotification
+                                                 object:nil];
 }
 - (IBAction)onPlayVideo:(id)sender {
     if (_player) {
         [_player play];
+        [self StartTimer];
         return;
     }
     _player =    [[KSYMoviePlayerController alloc] initWithContentURL: _url];
     stat.text = [NSString stringWithFormat:@"url %@", _url];
-    [_player addObserver:self
-              forKeyPath:@"playbackState"
-                 options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-    
     _player.controlStyle = MPMovieControlStyleNone;
     [_player.view setFrame: videoView.bounds];  // player's frame must match parent's
     [videoView addSubview: _player.view];
@@ -274,8 +281,9 @@
     videoView.autoresizesSubviews = TRUE;
     _player.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     _player.shouldAutoplay = TRUE;
+    _player.bufferTimeMax = 5;
+    _player.shouldEnableVideoPostProcessing = switchVPP.on;
     _player.scalingMode = MPMovieScalingModeAspectFit;
-    NSLog(@"going to prepare, server ip: %@", [_player serverAddress]);
     [_player prepareToPlay];
 }
 
@@ -293,7 +301,6 @@
         
         [_player stop];
         [_player.view removeFromSuperview];
-        [_player removeObserver:self forKeyPath:@"playbackState"];
         _player = nil;
         stat.text = [NSString stringWithFormat:@"url: %@\nstopped", _url];
         [self StopTimer];
@@ -301,13 +308,13 @@
 }
 
 - (NSTimeInterval) getCurrentTime{
-    //    NSLog(@"current time: %f", [self currentPlaybackTime]);
     return [[NSDate date] timeIntervalSince1970];
 }
 
 - (void)StartTimer
 {
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateStat:) userInfo:nil repeats:YES];
+    switchVPP.enabled = NO;
 }
 - (void)StopTimer
 {
@@ -316,6 +323,7 @@
     }
     [timer invalidate];
     timer = nil;
+    switchVPP.enabled = YES;
 }
 - (void)updateStat:(NSTimer *)t
 {
@@ -328,12 +336,12 @@
     }
     double flowSize = [_player readSize];
     
-    stat.text = [NSString stringWithFormat:@"%@\nip:%@\nplay time:%.1fs - %.1fs\ncache time:%.1fs\nspeed: %0.1f kbps",
-                 _url, serverIp,
-                 _player.currentPlaybackTime, _player.duration,
-                 _player.bufferEmptyDuration,
+    stat.text = [NSString stringWithFormat:@"%@\nip:%@ (w-h: %.0f-%.0f)\nplay time:%.1fs - %.1fs - %.1fs\ncached time:%.1fs/%ld - %.1fs\nspeed: %0.1f kbps",
+                 _url,
+                 serverIp, _player.naturalSize.width, _player.naturalSize.height,
+                 _player.currentPlaybackTime, _player.playableDuration, _player.duration,
+                 _player.bufferEmptyDuration, _player.bufferEmptyCount, _player.bufferTimeMax,
                  8*1024.0*(flowSize - lastSize)/([self getCurrentTime] - lastCheckTime)];
-    
     lastCheckTime = [self getCurrentTime];
     lastSize = flowSize;
 }

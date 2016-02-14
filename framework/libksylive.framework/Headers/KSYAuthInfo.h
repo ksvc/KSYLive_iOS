@@ -16,13 +16,6 @@
  * 以及其他异常现象发生
   
  */
-#ifndef KSY_EXTERN
-#ifdef __cplusplus
-#define KSY_EXTERN extern "C" __attribute__((visibility ("default")))
-#else
-#define KSY_EXTERN     extern __attribute__((visibility ("default")))
-#endif
-#endif
 
 @interface KSYAuthInfo: NSObject
 

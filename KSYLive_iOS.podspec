@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'KSYLive_iOS'
-  spec.version      = '1.0.6'
+  spec.version      = '1.1.0'
   spec.license      = {
 :type => 'Proprietary',
 :text => <<-LICENSE
@@ -18,7 +18,7 @@ Pod::Spec.new do |spec|
   spec.requires_arc = true
   spec.frameworks   = 'VideoToolbox'
   spec.ios.library = 'z', 'iconv', 'stdc++.6'
-  spec.source = { :git => 'https://github.com/ksvc/KSYLive_iOS.git', :tag => 'v1.0.6'}
+  spec.source = { :git => 'https://github.com/ksvc/KSYLive_iOS.git', :tag => 'v1.1.0'}
   spec.preserve_paths      = 'framework/libksylive.framework'
   spec.public_header_files = 'framework/libksylive.framework/Headers'
   spec.vendored_frameworks = 'framework/libksylive.framework'

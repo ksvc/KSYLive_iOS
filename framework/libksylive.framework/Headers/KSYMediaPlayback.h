@@ -69,6 +69,16 @@
  * 重新回到播放状态，需要调用[play]([KSYMediaPlayback play])方法。
  * 如果调用pause方法后视频暂停播放，此时播放器状态处于CBPMoviePlaybackStatePaused。
  * 播放器内部监听了UIApplicationWillEnterForegroundNotification通知，该通知发生时如果视频仍然在播放，将自动调用pause暂停当前视频播放。
+ 
+ 
+ 
+ @discussion 后台播放逻辑：
+ 
+ * 需要APP有后台执行权限，在工程Info.plist中添加后台运行模式，设置为audio。具体是添加UIBackgroundModes项，值为audio。
+ * 当用户点击home按钮后，播放器进入后台继续读取数据并播放音频。
+ * 当APP回到前台后，音频继续播放。图像渲染内容保持和音频同步。
+ * 如果在开启后台运行模式后，需要切换后台暂停，需要监听相关事件并主动调用pause操作。
+ 
  @since Available in KSYMediaPlayback 1.0 and later.
  */
 // Pauses playback if playing.

@@ -14,11 +14,11 @@
 		<div class="container" class="hide-in-xcode">
 			
 			<h1 id="library-title">
-				<a href="../index.html">KSYLive_iOS </a>
+				<a href="../index.html">KSYPlayer </a>
 			</h1>
 
 			<p id="developer-home">
-				<a href="../index.html">KSYUN</a>
+				<a href="../index.html">VideoCloud</a>
 			</p>
 			
 		</div>
@@ -80,9 +80,13 @@
 		
 		<option value="//api/name/videoFPS">videoFPS</option>
 		
-		<option value="//api/name/videoOrientation">videoOrientation</option>
+		<option value="//api/name/videoInitBitrate">videoInitBitrate</option>
 		
-		<option value="//api/name/videokBPS">videokBPS</option>
+		<option value="//api/name/videoMaxBitrate">videoMaxBitrate</option>
+		
+		<option value="//api/name/videoMinBitrate">videoMinBitrate</option>
+		
+		<option value="//api/name/videoOrientation">videoOrientation</option>
 		
 	</optgroup>
 	
@@ -545,8 +549,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/videokBPS" title="videokBPS"></a>
-	<h3 class="method-title"><code><a href="#//api/name/videokBPS">&nbsp;&nbsp;videokBPS</a></code>
+	<a name="//api/name/videoInitBitrate" title="videoInitBitrate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoInitBitrate">&nbsp;&nbsp;videoInitBitrate</a></code>
 </h3>
 
 	<div class="method-info">
@@ -556,12 +560,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>视频编码码率</p>
+				<p>视频编码起始码率（单位:kbps）</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int videokBPS</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int videoInitBitrate</code></div>
 
 		    
 			
@@ -573,12 +577,131 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>视频目标编码码率, 单位为kbps</p>
+				<p>开始推流时的视频码率，开始推流后，根据网络情况在 [Min, Max]范围内调节</p><p>视频码率上调则画面更清晰，下调则画面更模糊</p>
 			</div>
 			
 
 			
 
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/videoMaxBitrate">@property videoMaxBitrate</a>, <a href="#//api/name/videoMinBitrate">@property videoMinBitrate</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoMaxBitrate" title="videoMaxBitrate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoMaxBitrate">&nbsp;&nbsp;videoMaxBitrate</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视频编码最高码率（单位:kbps）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int videoMaxBitrate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>视频码率自适应调整的上限</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/videoInitBitrate">@property videoInitBitrate</a>, <a href="#//api/name/videoMinBitrate">@property videoMinBitrate</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoMinBitrate" title="videoMinBitrate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoMinBitrate">&nbsp;&nbsp;videoMinBitrate</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视频编码最低码率（单位:kbps）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int videoMinBitrate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>视频码率自适应调整的下限</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/videoInitBitrate">@property videoInitBitrate</a>, <a href="#//api/name/videoMaxBitrate">@property videoMaxBitrate</a></p></code></li>
+					
+				</ul>
+			</div>
 			
 
 			
@@ -918,7 +1041,7 @@
 <li>_<a href="#//api/name/videoOrientation">videoOrientation</a> = AVCaptureVideoOrientationPortrait;</li>
 <li>_<a href="#//api/name/videoFPS">videoFPS</a>         = 15;</li>
 <li><em><a href="#//api/name/videoCodec">videoCodec</a>       = <a href="../Constants/KSYVideoCodec.html">KSYVideoCodec</a></em>QY265;</li>
-<li>_<a href="#//api/name/videokBPS">videokBPS</a>        = 600;</li>
+<li>_<a href="#//api/name/videoInitBitrate">videoInitBitrate</a> = 600;</li>
 <li>_<a href="#//api/name/audiokBPS">audiokBPS</a>        = 48;</li>
 </ul>
 <div class="warning"><p><strong>Warning:</strong> KSYStreamer只支持单实例推流，构造多个实例会出现异常</p></div>
@@ -1059,7 +1182,7 @@
 				<h4 class="method-subtitle">See Also</h4>
 				<ul>
 					
-					<li><code><p><a href="#//api/name/hostURL">@property hostURL</a>, <a href="#//api/name/videoCodec">@property videoCodec</a>,<a href="#//api/name/videokBPS">@property videokBPS</a>,<a href="#//api/name/audiokBPS">@property audiokBPS</a></p></code></li>
+					<li><code><p><a href="#//api/name/hostURL">@property hostURL</a>, <a href="#//api/name/videoCodec">@property videoCodec</a>,videokBPS,<a href="#//api/name/audiokBPS">@property audiokBPS</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -1270,7 +1393,7 @@
 				<h4 class="method-subtitle">See Also</h4>
 				<ul>
 					
-					<li><code><p><a href="#//api/name/videokBPS">@property videokBPS</a>, <a href="#//api/name/audiokBPS">@property audiokBPS</a></p></code></li>
+					<li><code><p><a href="#//api/name/videoMaxBitrate">@property videoMaxBitrate</a>, <a href="#//api/name/videoMinBitrate">@property videoMinBitrate</a>, <a href="#//api/name/audiokBPS">@property audiokBPS</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -1872,7 +1995,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 KSYUN. All rights reserved. Updated: 2016-01-23</p>
+						<p class="copyright">Copyright &copy; 2016 VideoCloud. All rights reserved. Updated: 2016-02-14</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

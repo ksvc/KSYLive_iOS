@@ -7,7 +7,10 @@
 //
 
 #import "KSYStreamerVC.h"
-#import <libksylive/libksylive.h>
+#ifdef KSYSTREAMER_DEMO
+#import <KSYStreamer/KSYStreamer.h>
+#import <KSYStreamer/KSYAuthInfo.h>
+#endif
 
 
 @interface KSYStreamerVC ()
@@ -27,7 +30,6 @@
 @property UISwitch *btnHighRes;
 @property UILabel  *lblHighRes;
 
-@property UILabel *stat;
 @property NSTimer *timer;
 
 @property UIView* preview;
@@ -51,29 +53,15 @@
 
 @implementation KSYStreamerVC
 
-- (void) setVideoOrientation {
-    UIDeviceOrientation orien = [ [UIDevice  currentDevice]  orientation];
-    switch (orien) {
-        case UIDeviceOrientationPortraitUpsideDown:
-            _pubSession.videoOrientation = AVCaptureVideoOrientationPortraitUpsideDown;
-            break;
-        case UIDeviceOrientationLandscapeLeft:
-            _pubSession.videoOrientation = AVCaptureVideoOrientationLandscapeRight;
-            break;
-        case UIDeviceOrientationLandscapeRight:
-            _pubSession.videoOrientation = AVCaptureVideoOrientationLandscapeLeft;
-            break;
-        default:
-            _pubSession.videoOrientation = AVCaptureVideoOrientationPortrait;
-            break;
-    }
+
+-(KSYStreamer *)getStreamer {
+    return _pubSession;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI ];
     [self initKSYAuth];
-    // Do any additional setup after loading the view, typically from a nib.
     _pubSession = [[KSYStreamer alloc] initWithDefaultCfg];
     [self setStreamerCfg];
     
@@ -97,44 +85,36 @@
                                                  name:KSYNetStateEventNotification
                                                object:nil];
 }
-- (void) initUI {
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:KSYCaptureStateDidChangeNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:KSYStreamStateDidChangeNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:KSYNetStateEventNotification
+                                                  object:nil];
+}
+
+- (UIButton *)addButton:(NSString*)title
+                 action:(SEL)action {
     UIButton * button;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle:@"StartPreview" forState: UIControlStateNormal];
+    [button setTitle: title forState: UIControlStateNormal];
     button.backgroundColor = [UIColor lightGrayColor];
-    [button addTarget:self action:@selector(onPreview:) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
-    _btnPreview = button;
-    
-    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle:@"startStream" forState: UIControlStateNormal];
-    button.backgroundColor = [UIColor lightGrayColor];
-    [button addTarget:self action:@selector(onStream:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
-    _btnTStream = button;
-    [_btnTStream setEnabled:NO];
-    
-    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle:@"闪光灯" forState: UIControlStateNormal];
-    button.backgroundColor = [UIColor lightGrayColor];
-    [button addTarget:self action:@selector(onFlash:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
-    _btnFlash = button;
-    [ _btnFlash setEnabled:NO];
-    
-    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle:@"切到前置" forState: UIControlStateNormal];
-    button.backgroundColor = [UIColor lightGrayColor];
-    [button addTarget:self action:@selector(onCamera:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
-    _btnCamera = button;
-    
-    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle:@"quit" forState: UIControlStateNormal];
-    button.backgroundColor = [UIColor lightGrayColor];
-    [button addTarget:self action:@selector(onQuit:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
-    _btnQuit = button;
+    return button;
+}
+
+- (void) initUI {
+    _btnPreview = [self addButton:@"开始预览" action:@selector(onPreview:)];
+    _btnTStream = [self addButton:@"开始推流" action:@selector(onStream:)];
+    _btnFlash = [self addButton:@"闪光灯" action:@selector(onFlash:)];
+    _btnCamera = [self addButton:@"前后摄像头" action:@selector(onCamera:)];
+    _btnQuit = [self addButton:@"退出" action:@selector(onQuit:)];
    
     _lblAutoBW = [[UILabel alloc] init];
     _lblAutoBW.text = @"自动调码率";
@@ -143,7 +123,6 @@
     _btnAutoBw = [[UISwitch alloc] init];
     [self.view addSubview:_btnAutoBw];
     _btnAutoBw.on = YES;
-
     
     _lblAutoReconnect = [[UILabel alloc] init];
     _lblAutoReconnect.text = @"自动重连";
@@ -178,7 +157,7 @@
 - (void) layoutUI {
 	CGFloat wdt = self.view.bounds.size.width;
     CGFloat hgt = self.view.bounds.size.height;
-    CGFloat gap = 10;
+    CGFloat gap = 4;
     CGFloat btnWdt = 100;
     CGFloat btnHgt = 40;
     CGFloat xPos = gap;
@@ -193,7 +172,7 @@
     
     // top left
     xPos = gap;
-    yPos = gap*3;
+    yPos = 20+gap*3;
     _btnFlash.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     
     // top middle
@@ -209,45 +188,38 @@
     xPos = gap;
     _lblAutoBW.frame =CGRectMake(xPos, yPos, btnWdt, btnHgt);
     
+    // top row 2 middle
+    xPos = (wdt - btnWdt*3 - gap*2) /2 + gap + btnWdt;
+    _lblHighRes.frame =CGRectMake(xPos, yPos, btnWdt, btnHgt);
+    
     // top row 2 right
     xPos = wdt - btnWdt - gap ;
     _lblAutoReconnect.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     
     // top row 3 left
-    yPos += (gap + btnHgt);
+    yPos += (btnHgt);
     xPos = gap;
     _btnAutoBw.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
+    
+    // top row 3 middle
+    xPos = (wdt - btnWdt*3 - gap*2) /2 + gap + btnWdt;
+    _btnHighRes.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     
     // top row 3 right
     xPos = wdt - btnWdt - gap ;
     _btnAutoReconnect.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-
-    // top row 4 left
-    yPos += (gap + btnHgt);
-    xPos = gap;
-    _lblHighRes.frame =CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    // top row 5 left
-    yPos += (gap + btnHgt);
-    xPos = gap;
-    _btnHighRes.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     
-    // top row 6
-    yPos += (gap + btnHgt);
+    // top row 4
+    yPos += ( btnHgt);
     btnWdt = self.view.bounds.size.width - gap*2;
-    btnHgt = hgt - yPos;
+    btnHgt = hgt - yPos - btnHgt;
     _stat.frame = CGRectMake(gap, yPos , btnWdt, btnHgt);
 }
 
-- (void)dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:KSYCaptureStateDidChangeNotification
-                                                  object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:KSYStreamStateDidChangeNotification
-                                                  object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:KSYNetStateEventNotification
-                                                  object:nil];
+- (void)viewDidAppear:(BOOL)animated {
+    if ( _btnAutoBw != nil ) {
+        [self layoutUI];
+    }
 }
 
 - (BOOL)shouldAutorotate {
@@ -261,6 +233,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+const char * getDocPath () ;
+
 - (void) setStreamerCfg {
     // capture settings
     if (_btnHighRes.on ) {
@@ -268,23 +242,29 @@
     }
     else {
         _pubSession.videoDimension = KSYVideoDimension_16_9__640x360;
+
     }
-    _pubSession.videoFPS = 12;
+    _pubSession.videoCodec = KSYVideoCodec_X264;
+    _pubSession.videoFPS = 15;
+    [self.view autoresizesSubviews];
     
     // stream settings
-    _pubSession.videoCodec = KSYVideoCodec_X264;
-    _pubSession.videokBPS = 600; // k bit ps
+
+    _pubSession.videoInitBitrate = 1000; // k bit ps
+    _pubSession.videoMaxBitrate = 1000; // k bit ps
+    _pubSession.videoMinBitrate = 100; // k bit ps
     _pubSession.audiokBPS = 48; // k bit ps
     _pubSession.enAutoApplyEstimateBW = _btnAutoBw.on;
     
     // rtmp server info
-    NSString *codecSuf = _pubSession.videoCodec == KSYVideoCodec_X264 ? @"264" : @"265";
     NSString *rtmpSrv  = @"rtmp://test.uplive.ksyun.com/live";
-    NSString *url      = [NSString stringWithFormat:@"%@/ksytest.%@",rtmpSrv, codecSuf ];
-    NSLog(@"stream to : %@", url);
-    _hostURL = [ [NSURL alloc] initWithString: url];
+    // stream name = 随机数 + codec名称
+    NSString *devCode  = [ [KSYAuthInfo sharedInstance].mCode substringToIndex:6];
+    NSString *codecSuf = _pubSession.videoCodec == KSYVideoCodec_X264 ? @"264" : @"265";
+    NSString *url      = [  NSString stringWithFormat:@"%@/%@.%@", rtmpSrv, devCode, codecSuf ];
+    //url      = [  NSString stringWithFormat:@"%s/out.flv",getDocPath() ];
+    _hostURL = [[NSURL alloc] initWithString:url];
     [self setVideoOrientation];
-    [self.view autoresizesSubviews];
 }
 
 - (IBAction)onQuit:(id)sender {
@@ -386,7 +366,7 @@
         NSString* statefps  = [NSString stringWithFormat:@"%2.1f fps | %@  | %@ \n", fps, uploadDateSize, [self timeFormatted: (int)(curTime-_startTime) ] ];
         NSString* statedrop = [NSString stringWithFormat:@"dropFrame %4d | %3.1f | %2.1f%% \n", droppedF, dropRate, droppedF * 100.0 / curFrames ];
 
-        NSString* netEvent = [NSString stringWithFormat:@"netEvent %d slowSend | %d raise | %d drop", _netEventCnt, _raiseCnt, _dropCnt];
+        NSString* netEvent = [NSString stringWithFormat:@"netEvent %d notGood | %d raise | %d drop", _netEventCnt, _raiseCnt, _dropCnt];
         
         _stat.text = [ stateurl    stringByAppendingString:statekbps ];
         _stat.text = [ _stat.text  stringByAppendingString:statefps  ];
@@ -427,15 +407,15 @@
 }
 
 - (void) onCaptureStateChange:(NSNotification *)notification {
-    NSLog(@"newCapState: %lu", (unsigned long)_pubSession.captureState);
+    // init stat
+    [_btnTStream setEnabled:NO];
+    [_btnAutoBw  setEnabled:YES];
+    [_btnHighRes setEnabled:YES];
+    [_btnFlash   setEnabled:NO];
     if ( _pubSession.captureState == KSYCaptureStateIdle){
         _stat.text = @"idle";
         [_btnPreview setEnabled:YES];
-        [_btnTStream setEnabled:NO];
         [_btnPreview setTitle:@"StartPreview" forState:UIControlStateNormal];
-        [_btnFlash  setEnabled:NO];
-        [_btnAutoBw setEnabled:YES];
-        [_btnHighRes setEnabled:YES];
     }
     else if (_pubSession.captureState == KSYCaptureStateCapturing ) {
         _stat.text = @"capturing";
@@ -450,41 +430,76 @@
     else if (_pubSession.captureState == KSYCaptureStateClosingCapture ) {
         _stat.text = @"closing capture";
         [_btnPreview setEnabled:NO];
-        [_btnTStream setEnabled:NO];
-        [_btnAutoBw  setEnabled:NO];
     }
     else if (_pubSession.captureState == KSYCaptureStateDevAuthDenied ) {
         _stat.text = @"camera/mic Authorization Denied";
-        [_btnPreview setEnabled:TRUE];
-        [_btnTStream setEnabled:NO];
-        [_btnAutoBw setEnabled:YES];
+        [_btnPreview setEnabled:YES];
     }
     else if (_pubSession.captureState == KSYCaptureStateParameterError ) {
         _stat.text = @"capture devices ParameterError";
-        [_btnPreview setEnabled:TRUE];
-        [_btnTStream setEnabled:NO];
-        [_btnAutoBw setEnabled:YES];
-        [_btnHighRes setEnabled:YES];
+        [_btnPreview setEnabled:YES];
     }
+    else if (_pubSession.captureState == KSYCaptureStateDevBusy ) {
+        _stat.text = @"device busy, try later";
+        [self toast:_stat.text];
+    }
+    NSLog(@"newCapState: %lu [%@]", (unsigned long)_pubSession.captureState, _stat.text);
 }
 
 - (void) onStreamError {
     KSYStreamErrorCode err = _pubSession.streamErrorCode;
-    NSLog(@"onErr: %lu", (unsigned long) err);
     [_btnPreview setEnabled:TRUE];
     [_btnTStream setEnabled:TRUE];
     [_btnTStream setTitle:@"StartStream" forState:UIControlStateNormal];
     [self toast:@"stream err"];
-    if ( KSYStreamErrorCode_CODEC_OPEN_FAILED == err) {
+    if ( KSYStreamErrorCode_KSYAUTHFAILED == err ) {
+        _stat.text = @"SDK auth failed, \npls check ak/sk";
+    }
+    else if ( KSYStreamErrorCode_CODEC_OPEN_FAILED == err) {
         _stat.text = @"Selected Codec not supported \n in this version";
     }
     else if ( KSYStreamErrorCode_CONNECT_FAILED == err) {
         _stat.text = @"Connecting error, pls check host url \nor network";
     }
+    else if ( KSYStreamErrorCode_CONNECT_BREAK == err) {
+        _stat.text = @"Connection break";
+    }
+    else if (  KSYStreamErrorCode_RTMP_NonExistDomain   == err) {
+        _stat.text = @"error: NonExistDomain";
+    }
+    else if (  KSYStreamErrorCode_RTMP_NonExistApplication   == err) {
+        _stat.text = @"error: NonExistApplication";
+    }
+    else if (  KSYStreamErrorCode_RTMP_AlreadyExistStreamName   == err) {
+        _stat.text = @"error: AlreadyExistStreamName";
+    }
+    else if (  KSYStreamErrorCode_RTMP_ForbiddenByBlacklist   == err) {
+        _stat.text = @"error: ForbiddenByBlacklist";
+    }
+    else if (  KSYStreamErrorCode_RTMP_InternalError   == err) {
+        _stat.text = @"error: InternalError";
+    }
+    else if (  KSYStreamErrorCode_RTMP_URLExpired   == err) {
+        _stat.text = @"error: URLExpired";
+    }
+    else if (  KSYStreamErrorCode_RTMP_SignatureDoesNotMatch   == err) {
+        _stat.text = @"error: SignatureDoesNotMatch";
+    }
+    else if (  KSYStreamErrorCode_RTMP_InvalidAccessKeyId   == err) {
+        _stat.text = @"error: InvalidAccessKeyId";
+    }
+    else if (  KSYStreamErrorCode_RTMP_BadParams   == err) {
+        _stat.text = @"error: BadParams";
+    }
+    else if (  KSYStreamErrorCode_RTMP_ForbiddenByRegion   == err) {
+        _stat.text = @"error: ForbiddenByRegion";
+    }
     else {
         _stat.text = [[NSString alloc] initWithFormat:@"error: %lu",  (unsigned long)err];
     }
-    if ( _btnAutoReconnect.isOn ) {
+    NSLog(@"onErr: %lu [%@]", (unsigned long) err, _stat.text);
+    // 断网重连
+    if ( KSYStreamErrorCode_CONNECT_BREAK == err && _btnAutoReconnect.isOn ) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [_pubSession stopStream];
             [_pubSession startStream:_hostURL];
@@ -518,7 +533,8 @@
 }
 
 - (void) onStreamStateChange:(NSNotification *)notification {
-    NSLog(@"newState: %lu", (unsigned long)_pubSession.streamState);
+    [_btnPreview setEnabled:NO];
+    [_btnTStream setEnabled:NO];
     if ( _pubSession.streamState == KSYStreamStateIdle) {
         _stat.text = @"idle";
         [_btnPreview setEnabled:TRUE];
@@ -526,29 +542,39 @@
         [_btnTStream setTitle:@"StartStream" forState:UIControlStateNormal];
     }
     else if ( _pubSession.streamState == KSYStreamStateConnected){
-        [_btnPreview setEnabled:NO];
+        _stat.text = @"connected";
         [_btnTStream setEnabled:TRUE];
         [_btnTStream setTitle:@"StopStream" forState:UIControlStateNormal];
     }
     else if (_pubSession.streamState == KSYStreamStateConnecting ) {
         _stat.text = @"connecting";
-        [_btnPreview setEnabled:NO];
-        [_btnTStream setEnabled:NO];
     }
     else if (_pubSession.streamState == KSYStreamStateDisconnecting ) {
         _stat.text = @"disconnecting";
-        [_btnPreview setEnabled:NO];
-        [_btnTStream setEnabled:NO];
     }
     else if (_pubSession.streamState == KSYStreamStateError ) {
         [self onStreamError];
     }
-    [_btnPreview setNeedsDisplay];
-    [_btnTStream setNeedsDisplay];
-    [_stat setNeedsDisplay];
+    NSLog(@"newState: %lu [%@]", (unsigned long)_pubSession.streamState, _stat.text);
 }
 
-
+- (void) setVideoOrientation {
+    UIDeviceOrientation orien = [ [UIDevice  currentDevice]  orientation];
+    switch (orien) {
+        case UIDeviceOrientationPortraitUpsideDown:
+            _pubSession.videoOrientation = AVCaptureVideoOrientationPortraitUpsideDown;
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            _pubSession.videoOrientation = AVCaptureVideoOrientationLandscapeRight;
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            _pubSession.videoOrientation = AVCaptureVideoOrientationLandscapeLeft;
+            break;
+        default:
+            _pubSession.videoOrientation = AVCaptureVideoOrientationPortrait;
+            break;
+    }
+}
 
 - (void) toast:(NSString*)message{
     UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil

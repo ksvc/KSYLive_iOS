@@ -14,11 +14,11 @@
 		<div class="container" class="hide-in-xcode">
 			
 			<h1 id="library-title">
-				<a href="../index.html">KSYLive_iOS </a>
+				<a href="../index.html">KSYPlayer </a>
 			</h1>
 
 			<p id="developer-home">
-				<a href="../index.html">KSYUN</a>
+				<a href="../index.html">VideoCloud</a>
 			</p>
 			
 		</div>
@@ -60,6 +60,8 @@
 		
 		<option value="//api/name/bufferEmptyDuration">bufferEmptyDuration</option>
 		
+		<option value="//api/name/bufferTimeMax">bufferTimeMax</option>
+		
 		<option value="//api/name/contentURL">contentURL</option>
 		
 		<option value="//api/name/controlStyle">controlStyle</option>
@@ -67,6 +69,10 @@
 		<option value="//api/name/duration">duration</option>
 		
 		<option value="//api/name/loadState">loadState</option>
+		
+		<option value="//api/name/naturalSize">naturalSize</option>
+		
+		<option value="//api/name/playableDuration">playableDuration</option>
 		
 		<option value="//api/name/playbackState">playbackState</option>
 		
@@ -77,6 +83,8 @@
 		<option value="//api/name/serverAddress">serverAddress</option>
 		
 		<option value="//api/name/shouldAutoplay">shouldAutoplay</option>
+		
+		<option value="//api/name/shouldEnableVideoPostProcessing">shouldEnableVideoPostProcessing</option>
 		
 		<option value="//api/name/view">view</option>
 		
@@ -91,6 +99,8 @@
 		<option value="//api/name/initWithContentURL:">- initWithContentURL:</option>
 		
 		<option value="//api/name/isPlaying">- isPlaying</option>
+		
+		<option value="//api/name/saveVideoLocalPath:">- saveVideoLocalPath:</option>
 		
 		<option value="//api/name/thumbnailImageAtCurrentTime">- thumbnailImageAtCurrentTime</option>
 		
@@ -723,6 +733,170 @@ typedef NS_ENUM(NSInteger, MPMovieScalingMode) {
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/playableDuration" title="playableDuration"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playableDuration">&nbsp;&nbsp;playableDuration</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>当前视频可播放长度</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSTimeInterval playableDuration</code></div>
+
+		    
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in KSYMoviePlayerController 1.0 and later.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>视频可播放时长，单位是秒。</p>
+
+<ul>
+<li>currentPlaybackTime 标记的是播放器当前已播放的时长。</li>
+<li>playableDuration 标记的是播放器缓冲的时间，会稍大于currentPlaybackTime，与currentPlaybackTime的差值则是缓冲长度。</li>
+<li><a href="#//api/name/duration">duration</a> 是视频总时长。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/naturalSize" title="naturalSize"></a>
+	<h3 class="method-title"><code><a href="#//api/name/naturalSize">&nbsp;&nbsp;naturalSize</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>当前视频宽高</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) CGSize naturalSize</code></div>
+
+		    
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in KSYMoviePlayerController 1.0 and later.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>获取信息
+* 监听MPMovieNaturalSizeAvailableNotification
+* 播放过程中，宽高信息可能会产生更改</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bufferTimeMax" title="bufferTimeMax"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bufferTimeMax">&nbsp;&nbsp;bufferTimeMax</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>bufferTimeMax指定直播流播放时的最大缓冲时长，单位为秒。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSTimeInterval bufferTimeMax</code></div>
+
+		    
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in KSYMoviePlayerController 1.0 and later.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div><p>当buffer为负数时，关闭直播追赶。
+* 该属性仅对直播流有效；
+* 默认值为2秒。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/isPlaying" title="isPlaying"></a>
 	<h3 class="method-title"><code><a href="#//api/name/isPlaying">&ndash;&nbsp;isPlaying</a></code>
 </h3>
@@ -1066,6 +1240,109 @@ typedef NS_ENUM(NSInteger, MPMovieScalingMode) {
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/saveVideoLocalPath:" title="saveVideoLocalPath:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/saveVideoLocalPath:">&ndash;&nbsp;saveVideoLocalPath:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视频本地保持路径</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)saveVideoLocalPath:(NSString *)<em>localpath</em></code></div>
+
+		    
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in KSYMoviePlayerController 1.0 and later.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div><p>设置m3u8文件保存路径</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/shouldEnableVideoPostProcessing" title="shouldEnableVideoPostProcessing"></a>
+	<h3 class="method-title"><code><a href="#//api/name/shouldEnableVideoPostProcessing">&nbsp;&nbsp;shouldEnableVideoPostProcessing</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>是否开启视频后处理</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL shouldEnableVideoPostProcessing</code></div>
+
+		    
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in KSYMoviePlayerController 1.0 and later.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div><p>默认是开启
+* 只在<a href="../Protocols/KSYMediaPlayback.html#//api/name/prepareToPlay">prepareToPlay</a> 调用前设置生效；</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -1081,7 +1358,7 @@ typedef NS_ENUM(NSInteger, MPMovieScalingMode) {
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 KSYUN. All rights reserved. Updated: 2016-01-23</p>
+						<p class="copyright">Copyright &copy; 2016 VideoCloud. All rights reserved. Updated: 2016-02-14</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
