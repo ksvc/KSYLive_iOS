@@ -1,0 +1,6 @@
+framework module libksylive {
+  umbrella header "libksylive.h"
+
+  export *
+  module * { export * }
+}
