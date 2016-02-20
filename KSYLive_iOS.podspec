@@ -19,8 +19,8 @@ Pod::Spec.new do |spec|
   spec.frameworks   = 'VideoToolbox'
   spec.ios.library = 'z', 'iconv', 'stdc++.6'
   spec.source = { :git => 'https://github.com/ksvc/KSYLive_iOS.git', :tag => 'v1.1.0'}
-  spec.preserve_paths      = 'framework/libksylive.framework'
-  spec.public_header_files = 'framework/libksylive.framework/Headers'
-  spec.vendored_frameworks = 'framework/libksylive.framework'
+  spec.preserve_paths      = 'framework/live264/libksylive.framework'
+  spec.public_header_files = 'framework/live264/libksylive.framework/Headers'
+  spec.vendored_frameworks = 'framework/live264/libksylive.framework'
 end
 
