@@ -40,7 +40,7 @@ KSY Live iOS SDK是金山云推出的 iOS 平台上使用的软件开发工具�
 * 使用Cocoapods进行安装，将如下语句加入你的Podfile：
 
 ```
-pod 'KSYLive', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
+pod 'KSYLive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 ```
 
 执行 pod install 或者  pod update后，将SDK加入工程。
