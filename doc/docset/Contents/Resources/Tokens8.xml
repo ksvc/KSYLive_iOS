@@ -53,6 +53,16 @@
             <NodeRef refid="8"/>
         </Token>
         
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_KSYAUTHFAILED</TokenIdentifier>
+            <Abstract type="html">SDK 鉴权失败 (暂时正常推流5~8分钟后终止推流)</Abstract>
+            <Declaration>KSYNetStateCode_KSYAUTHFAILED</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="8"/>
+        </Token>
+        
         
 	</File>
 </Tokens>
