@@ -213,6 +213,16 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
  @see stopStream
  */
 - (void) stopPreview;
+
+/**
+ @abstract   当前推流的事件ID
+ @discussion md5(hostURL+timestamp) 对本次推流活动的标识
+ @discussion timestamp 为建立连接时的事件戳
+ 
+ @see hostURL
+ */
+@property (nonatomic, readonly) NSString *streamID;
+
 /**
  @abstract   获取当前编码的平均视频帧率
  @discussion 采集设备的输出帧率为videoFPS，约等于编码的目标帧率
