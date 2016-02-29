@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYStreamer.html">
+	<File path="Classes/KSYMoviePlayerController.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYStreamer</TokenIdentifier>
-			<Abstract type="html">金山云直播推流SDK iOS版提供了iOS移动设备上的实时采集推流功能。</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYMoviePlayerController</TokenIdentifier>
+			<Abstract type="html">金山云播放内核提供了跨终端平台的播放器SDK，支持Android/iOS/Flash平台的视频播放需求。金山云播放内核集成有业界一流的高性能H.265/HEVC解码器，提供流畅、低功耗的播放体验。同时SDK提供和系统播放器一致的音视频播放、控制接口，极大地降低了开发门槛。</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
             
 			
 			<NodeRef refid="4"/>
@@ -13,954 +13,654 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setHostURL:</TokenIdentifier>
-			<Abstract type="html">rtmp主机地址</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSURL *hostURL</Declaration>
-			
-			
-			<Anchor>//api/name/hostURL</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/hostURL</TokenIdentifier>
-			<Abstract type="html">rtmp主机地址</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSURL *hostURL</Declaration>
-			
-			
-			<Anchor>//api/name/hostURL</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/hostURL</TokenIdentifier>
-			<Abstract type="html">rtmp主机地址</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSURL *hostURL</Declaration>
-			
-			
-			<Anchor>//api/name/hostURL</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setVideoDimension:</TokenIdentifier>
-			<Abstract type="html">视频分辨率</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoOrientation</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) KSYVideoDimension videoDimension</Declaration>
-			
-			
-			<Anchor>//api/name/videoDimension</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/videoDimension</TokenIdentifier>
-			<Abstract type="html">视频分辨率</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoOrientation</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) KSYVideoDimension videoDimension</Declaration>
-			
-			
-			<Anchor>//api/name/videoDimension</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoDimension</TokenIdentifier>
-			<Abstract type="html">视频分辨率</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoOrientation</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) KSYVideoDimension videoDimension</Declaration>
-			
-			
-			<Anchor>//api/name/videoDimension</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setVideoDimensionUserDefine:</TokenIdentifier>
-			<Abstract type="html">用户定义的视频分辨率</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoOrientation</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) CGSize videoDimensionUserDefine</Declaration>
-			
-			
-			<Anchor>//api/name/videoDimensionUserDefine</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/videoDimensionUserDefine</TokenIdentifier>
-			<Abstract type="html">用户定义的视频分辨率</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoOrientation</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) CGSize videoDimensionUserDefine</Declaration>
-			
-			
-			<Anchor>//api/name/videoDimensionUserDefine</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoDimensionUserDefine</TokenIdentifier>
-			<Abstract type="html">用户定义的视频分辨率</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoOrientation</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) CGSize videoDimensionUserDefine</Declaration>
-			
-			
-			<Anchor>//api/name/videoDimensionUserDefine</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setCameraPosition:</TokenIdentifier>
-			<Abstract type="html">摄像头位置</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) AVCaptureDevicePosition cameraPosition</Declaration>
-			
-			
-			<Anchor>//api/name/cameraPosition</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/cameraPosition</TokenIdentifier>
-			<Abstract type="html">摄像头位置</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) AVCaptureDevicePosition cameraPosition</Declaration>
-			
-			
-			<Anchor>//api/name/cameraPosition</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/cameraPosition</TokenIdentifier>
-			<Abstract type="html">摄像头位置</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) AVCaptureDevicePosition cameraPosition</Declaration>
-			
-			
-			<Anchor>//api/name/cameraPosition</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setVideoOrientation:</TokenIdentifier>
-			<Abstract type="html">摄像头朝向</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) AVCaptureVideoOrientation videoOrientation</Declaration>
-			
-			
-			<Anchor>//api/name/videoOrientation</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/videoOrientation</TokenIdentifier>
-			<Abstract type="html">摄像头朝向</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) AVCaptureVideoOrientation videoOrientation</Declaration>
-			
-			
-			<Anchor>//api/name/videoOrientation</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoOrientation</TokenIdentifier>
-			<Abstract type="html">摄像头朝向</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) AVCaptureVideoOrientation videoOrientation</Declaration>
-			
-			
-			<Anchor>//api/name/videoOrientation</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setVideoFPS:</TokenIdentifier>
-			<Abstract type="html">视频帧率</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int videoFPS</Declaration>
-			
-			
-			<Anchor>//api/name/videoFPS</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/videoFPS</TokenIdentifier>
-			<Abstract type="html">视频帧率</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int videoFPS</Declaration>
-			
-			
-			<Anchor>//api/name/videoFPS</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoFPS</TokenIdentifier>
-			<Abstract type="html">视频帧率</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int videoFPS</Declaration>
-			
-			
-			<Anchor>//api/name/videoFPS</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setVideoCodec:</TokenIdentifier>
-			<Abstract type="html">视频编码器</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/c/tdef/KSYVideoCodec</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) KSYVideoCodec videoCodec</Declaration>
-			
-			
-			<Anchor>//api/name/videoCodec</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/videoCodec</TokenIdentifier>
-			<Abstract type="html">视频编码器</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/c/tdef/KSYVideoCodec</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) KSYVideoCodec videoCodec</Declaration>
-			
-			
-			<Anchor>//api/name/videoCodec</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoCodec</TokenIdentifier>
-			<Abstract type="html">视频编码器</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/c/tdef/KSYVideoCodec</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) KSYVideoCodec videoCodec</Declaration>
-			
-			
-			<Anchor>//api/name/videoCodec</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setVideoInitBitrate:</TokenIdentifier>
-			<Abstract type="html">视频编码起始码率（单位:kbps）</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoMinBitrate</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) int videoInitBitrate</Declaration>
-			
-			
-			<Anchor>//api/name/videoInitBitrate</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/videoInitBitrate</TokenIdentifier>
-			<Abstract type="html">视频编码起始码率（单位:kbps）</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoMinBitrate</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) int videoInitBitrate</Declaration>
-			
-			
-			<Anchor>//api/name/videoInitBitrate</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoInitBitrate</TokenIdentifier>
-			<Abstract type="html">视频编码起始码率（单位:kbps）</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoMinBitrate</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) int videoInitBitrate</Declaration>
-			
-			
-			<Anchor>//api/name/videoInitBitrate</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setVideoMaxBitrate:</TokenIdentifier>
-			<Abstract type="html">视频编码最高码率（单位:kbps）</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoMinBitrate</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) int videoMaxBitrate</Declaration>
-			
-			
-			<Anchor>//api/name/videoMaxBitrate</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/videoMaxBitrate</TokenIdentifier>
-			<Abstract type="html">视频编码最高码率（单位:kbps）</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoMinBitrate</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) int videoMaxBitrate</Declaration>
-			
-			
-			<Anchor>//api/name/videoMaxBitrate</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoMaxBitrate</TokenIdentifier>
-			<Abstract type="html">视频编码最高码率（单位:kbps）</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoMinBitrate</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) int videoMaxBitrate</Declaration>
-			
-			
-			<Anchor>//api/name/videoMaxBitrate</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setVideoMinBitrate:</TokenIdentifier>
-			<Abstract type="html">视频编码最低码率（单位:kbps）</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoMaxBitrate</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) int videoMinBitrate</Declaration>
-			
-			
-			<Anchor>//api/name/videoMinBitrate</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/videoMinBitrate</TokenIdentifier>
-			<Abstract type="html">视频编码最低码率（单位:kbps）</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoMaxBitrate</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) int videoMinBitrate</Declaration>
-			
-			
-			<Anchor>//api/name/videoMinBitrate</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoMinBitrate</TokenIdentifier>
-			<Abstract type="html">视频编码最低码率（单位:kbps）</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoMaxBitrate</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) int videoMinBitrate</Declaration>
-			
-			
-			<Anchor>//api/name/videoMinBitrate</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setAudiokBPS:</TokenIdentifier>
-			<Abstract type="html">音频编码器</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int audiokBPS</Declaration>
-			
-			
-			<Anchor>//api/name/audiokBPS</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/audiokBPS</TokenIdentifier>
-			<Abstract type="html">音频编码器</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int audiokBPS</Declaration>
-			
-			
-			<Anchor>//api/name/audiokBPS</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/audiokBPS</TokenIdentifier>
-			<Abstract type="html">音频编码器</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int audiokBPS</Declaration>
-			
-			
-			<Anchor>//api/name/audiokBPS</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setEnAutoApplyEstimateBW:</TokenIdentifier>
-			<Abstract type="html">启用自动调整码率</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL enAutoApplyEstimateBW</Declaration>
-			
-			
-			<Anchor>//api/name/enAutoApplyEstimateBW</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/enAutoApplyEstimateBW</TokenIdentifier>
-			<Abstract type="html">启用自动调整码率</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL enAutoApplyEstimateBW</Declaration>
-			
-			
-			<Anchor>//api/name/enAutoApplyEstimateBW</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/enAutoApplyEstimateBW</TokenIdentifier>
-			<Abstract type="html">启用自动调整码率</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL enAutoApplyEstimateBW</Declaration>
-			
-			
-			<Anchor>//api/name/enAutoApplyEstimateBW</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setCaptureState:</TokenIdentifier>
-			<Abstract type="html">当前采集设备状况</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYCaptureState captureState</Declaration>
-			
-			
-			<Anchor>//api/name/captureState</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/captureState</TokenIdentifier>
-			<Abstract type="html">当前采集设备状况</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYCaptureState captureState</Declaration>
-			
-			
-			<Anchor>//api/name/captureState</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/captureState</TokenIdentifier>
-			<Abstract type="html">当前采集设备状况</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYCaptureState captureState</Declaration>
-			
-			
-			<Anchor>//api/name/captureState</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setStreamState:</TokenIdentifier>
-			<Abstract type="html">当前推流状况</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYStreamState streamState</Declaration>
-			
-			
-			<Anchor>//api/name/streamState</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/streamState</TokenIdentifier>
-			<Abstract type="html">当前推流状况</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYStreamState streamState</Declaration>
-			
-			
-			<Anchor>//api/name/streamState</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/streamState</TokenIdentifier>
-			<Abstract type="html">当前推流状况</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYStreamState streamState</Declaration>
-			
-			
-			<Anchor>//api/name/streamState</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setStreamErrorCode:</TokenIdentifier>
-			<Abstract type="html">当前推流的错误码</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/streamState</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, readonly) KSYStreamErrorCode streamErrorCode</Declaration>
-			
-			
-			<Anchor>//api/name/streamErrorCode</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/streamErrorCode</TokenIdentifier>
-			<Abstract type="html">当前推流的错误码</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/streamState</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, readonly) KSYStreamErrorCode streamErrorCode</Declaration>
-			
-			
-			<Anchor>//api/name/streamErrorCode</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/streamErrorCode</TokenIdentifier>
-			<Abstract type="html">当前推流的错误码</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/streamState</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, readonly) KSYStreamErrorCode streamErrorCode</Declaration>
-			
-			
-			<Anchor>//api/name/streamErrorCode</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setNetStateCode:</TokenIdentifier>
-			<Abstract type="html">当前推流的网络事件</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYNetStateCode netStateCode</Declaration>
-			
-			
-			<Anchor>//api/name/netStateCode</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/netStateCode</TokenIdentifier>
-			<Abstract type="html">当前推流的网络事件</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYNetStateCode netStateCode</Declaration>
-			
-			
-			<Anchor>//api/name/netStateCode</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/netStateCode</TokenIdentifier>
-			<Abstract type="html">当前推流的网络事件</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYNetStateCode netStateCode</Declaration>
-			
-			
-			<Anchor>//api/name/netStateCode</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/initWithDefaultCfg</TokenIdentifier>
-			<Abstract type="html">初始化方法 （step1）</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>- (instancetype)initWithDefaultCfg</Declaration>
-			
-			
-			<Anchor>//api/name/initWithDefaultCfg</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/startPreview:</TokenIdentifier>
-			<Abstract type="html">启动预览 （step2）</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoFPS</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>- (void)startPreview:(UIView *)view</Declaration>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/initWithContentURL:</TokenIdentifier>
+			<Abstract type="html">初始化播放器并设置播放地址</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)initWithContentURL:(NSURL *)url</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>view</Name>
-					<Abstract type="html">预览画面作为subview，插入到 view 的最底层</Abstract>
+					<Name>url</Name>
+					<Abstract type="html">视频播放地址，该地址可以是本地地址或者服务器地址.</Abstract>
 				</Parameter>
 			</Parameters>
-			
-			<Anchor>//api/name/startPreview:</Anchor>
+			<ReturnValue><Abstract type="html">返回KSYMoviePlayerController对象，该对象的视频播放地址ContentURL已经初始化。此时播放器状态为MPMoviePlaybackStateStopped.返回KSYMoviePlayerController 实例</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithContentURL:</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/startStream:</TokenIdentifier>
-			<Abstract type="html">启动推流 （step3）</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setContentURL:</TokenIdentifier>
+			<Abstract type="html">视频文件的URL地址，该地址可以是本地地址或者服务器地址。</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSURL *contentURL</Declaration>
+			
+			
+			<Anchor>//api/name/contentURL</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/contentURL</TokenIdentifier>
+			<Abstract type="html">视频文件的URL地址，该地址可以是本地地址或者服务器地址。</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSURL *contentURL</Declaration>
+			
+			
+			<Anchor>//api/name/contentURL</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/contentURL</TokenIdentifier>
+			<Abstract type="html">视频文件的URL地址，该地址可以是本地地址或者服务器地址。</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSURL *contentURL</Declaration>
+			
+			
+			<Anchor>//api/name/contentURL</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setView:</TokenIdentifier>
+			<Abstract type="html">包含视频播放内容的VIEW（只读）。</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
 			
 	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/audiokBPS</TokenIdentifier>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/scalingMode</TokenIdentifier>
 		
 	</RelatedTokens>
 	
-			<Declaration>- (void)startStream:(NSURL *)hostURL</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>hostURL</Name>
-					<Abstract type="html">rtmp 服务器地址 “rtmp://xxx.xxx.xxx.xxx/appname/streamKey&quot;</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, readonly) UIView *view</Declaration>
 			
-			<Anchor>//api/name/startStream:</Anchor>
+			
+			<Anchor>//api/name/view</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/stopStream</TokenIdentifier>
-			<Abstract type="html">停止推流 （step4）</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
-			
-			<Declaration>- (void)stopStream</Declaration>
-			
-			
-			<Anchor>//api/name/stopStream</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/stopPreview</TokenIdentifier>
-			<Abstract type="html">停止预览，停止采集设备，并清理会话（step5）</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/view</TokenIdentifier>
+			<Abstract type="html">包含视频播放内容的VIEW（只读）。</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
 			
 	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/stopStream</TokenIdentifier>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/scalingMode</TokenIdentifier>
 		
 	</RelatedTokens>
 	
-			<Declaration>- (void)stopPreview</Declaration>
+			<Declaration>@property (nonatomic, readonly) UIView *view</Declaration>
 			
 			
-			<Anchor>//api/name/stopPreview</Anchor>
+			<Anchor>//api/name/view</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/encodingFPS</TokenIdentifier>
-			<Abstract type="html">获取当前编码的平均视频帧率</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/view</TokenIdentifier>
+			<Abstract type="html">包含视频播放内容的VIEW（只读）。</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
 			
 	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/videoFPS</TokenIdentifier>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/scalingMode</TokenIdentifier>
 		
 	</RelatedTokens>
 	
-			<Declaration>- (double)encodingFPS</Declaration>
+			<Declaration>@property (nonatomic, readonly) UIView *view</Declaration>
 			
 			
-			<Anchor>//api/name/encodingFPS</Anchor>
+			<Anchor>//api/name/view</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/streamKbps</TokenIdentifier>
-			<Abstract type="html">获取当前推流的平均码率大小</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setControlStyle:</TokenIdentifier>
+			<Abstract type="html">该属性当前不支持</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) MPMovieControlStyle controlStyle</Declaration>
+			
+			
+			<Anchor>//api/name/controlStyle</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/controlStyle</TokenIdentifier>
+			<Abstract type="html">该属性当前不支持</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) MPMovieControlStyle controlStyle</Declaration>
+			
+			
+			<Anchor>//api/name/controlStyle</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/controlStyle</TokenIdentifier>
+			<Abstract type="html">该属性当前不支持</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) MPMovieControlStyle controlStyle</Declaration>
+			
+			
+			<Anchor>//api/name/controlStyle</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setPlaybackState:</TokenIdentifier>
+			<Abstract type="html">当前播放器的播放状态（只读）。</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) MPMoviePlaybackState playbackState</Declaration>
+			
+			
+			<Anchor>//api/name/playbackState</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/playbackState</TokenIdentifier>
+			<Abstract type="html">当前播放器的播放状态（只读）。</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) MPMoviePlaybackState playbackState</Declaration>
+			
+			
+			<Anchor>//api/name/playbackState</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/playbackState</TokenIdentifier>
+			<Abstract type="html">当前播放器的播放状态（只读）。</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) MPMoviePlaybackState playbackState</Declaration>
+			
+			
+			<Anchor>//api/name/playbackState</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setLoadState:</TokenIdentifier>
+			<Abstract type="html">当前网络加载情况</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) MPMovieLoadState loadState</Declaration>
+			
+			
+			<Anchor>//api/name/loadState</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/loadState</TokenIdentifier>
+			<Abstract type="html">当前网络加载情况</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) MPMovieLoadState loadState</Declaration>
+			
+			
+			<Anchor>//api/name/loadState</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/loadState</TokenIdentifier>
+			<Abstract type="html">当前网络加载情况</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) MPMovieLoadState loadState</Declaration>
+			
+			
+			<Anchor>//api/name/loadState</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setShouldAutoplay:</TokenIdentifier>
+			<Abstract type="html">播放视频时是否需要自动播放，默认值为YES。
+</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL shouldAutoplay</Declaration>
+			
+			
+			<Anchor>//api/name/shouldAutoplay</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/shouldAutoplay</TokenIdentifier>
+			<Abstract type="html">播放视频时是否需要自动播放，默认值为YES。
+</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL shouldAutoplay</Declaration>
+			
+			
+			<Anchor>//api/name/shouldAutoplay</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/shouldAutoplay</TokenIdentifier>
+			<Abstract type="html">播放视频时是否需要自动播放，默认值为YES。
+</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL shouldAutoplay</Declaration>
+			
+			
+			<Anchor>//api/name/shouldAutoplay</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setScalingMode:</TokenIdentifier>
+			<Abstract type="html">当前缩放显示模式。</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) MPMovieScalingMode scalingMode</Declaration>
+			
+			
+			<Anchor>//api/name/scalingMode</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/scalingMode</TokenIdentifier>
+			<Abstract type="html">当前缩放显示模式。</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) MPMovieScalingMode scalingMode</Declaration>
+			
+			
+			<Anchor>//api/name/scalingMode</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/scalingMode</TokenIdentifier>
+			<Abstract type="html">当前缩放显示模式。</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) MPMovieScalingMode scalingMode</Declaration>
+			
+			
+			<Anchor>//api/name/scalingMode</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setDuration:</TokenIdentifier>
+			<Abstract type="html">当前视频总时长</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSTimeInterval duration</Declaration>
+			
+			
+			<Anchor>//api/name/duration</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/duration</TokenIdentifier>
+			<Abstract type="html">当前视频总时长</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSTimeInterval duration</Declaration>
+			
+			
+			<Anchor>//api/name/duration</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/duration</TokenIdentifier>
+			<Abstract type="html">当前视频总时长</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSTimeInterval duration</Declaration>
+			
+			
+			<Anchor>//api/name/duration</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setPlayableDuration:</TokenIdentifier>
+			<Abstract type="html">当前视频可播放长度</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSTimeInterval playableDuration</Declaration>
+			
+			
+			<Anchor>//api/name/playableDuration</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/playableDuration</TokenIdentifier>
+			<Abstract type="html">当前视频可播放长度</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSTimeInterval playableDuration</Declaration>
+			
+			
+			<Anchor>//api/name/playableDuration</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/playableDuration</TokenIdentifier>
+			<Abstract type="html">当前视频可播放长度</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSTimeInterval playableDuration</Declaration>
+			
+			
+			<Anchor>//api/name/playableDuration</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setNaturalSize:</TokenIdentifier>
+			<Abstract type="html">当前视频宽高</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) CGSize naturalSize</Declaration>
+			
+			
+			<Anchor>//api/name/naturalSize</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/naturalSize</TokenIdentifier>
+			<Abstract type="html">当前视频宽高</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) CGSize naturalSize</Declaration>
+			
+			
+			<Anchor>//api/name/naturalSize</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/naturalSize</TokenIdentifier>
+			<Abstract type="html">当前视频宽高</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) CGSize naturalSize</Declaration>
+			
+			
+			<Anchor>//api/name/naturalSize</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setBufferTimeMax:</TokenIdentifier>
+			<Abstract type="html">bufferTimeMax指定直播流播放时的最大缓冲时长，单位为秒。</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property NSTimeInterval bufferTimeMax</Declaration>
+			
+			
+			<Anchor>//api/name/bufferTimeMax</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/bufferTimeMax</TokenIdentifier>
+			<Abstract type="html">bufferTimeMax指定直播流播放时的最大缓冲时长，单位为秒。</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property NSTimeInterval bufferTimeMax</Declaration>
+			
+			
+			<Anchor>//api/name/bufferTimeMax</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/bufferTimeMax</TokenIdentifier>
+			<Abstract type="html">bufferTimeMax指定直播流播放时的最大缓冲时长，单位为秒。</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property NSTimeInterval bufferTimeMax</Declaration>
+			
+			
+			<Anchor>//api/name/bufferTimeMax</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/isPlaying</TokenIdentifier>
+			<Abstract type="html">当前播放器是否在播放</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
 			
 	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/audiokBPS</TokenIdentifier>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/playbackState</TokenIdentifier>
 		
 	</RelatedTokens>
 	
-			<Declaration>- (double)streamKbps</Declaration>
+			<Declaration>- (BOOL)isPlaying</Declaration>
 			
-			
-			<Anchor>//api/name/streamKbps</Anchor>
+			<ReturnValue><Abstract type="html">获取playbackState信息，如果当前状态为MPMoviePlaybackStatePlaying，则返回TRUE。其他情况返回FASLE。</Abstract></ReturnValue>
+			<Anchor>//api/name/isPlaying</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/uploadedKByte</TokenIdentifier>
-			<Abstract type="html">获取本次推流发送的流量大小</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setReadSize:</TokenIdentifier>
+			<Abstract type="html">已经加载的数据大小</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
 			
-			<Declaration>- (int)uploadedKByte</Declaration>
+			<Declaration>@property (nonatomic, readonly) double readSize</Declaration>
 			
 			
-			<Anchor>//api/name/uploadedKByte</Anchor>
+			<Anchor>//api/name/readSize</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/encodedFrames</TokenIdentifier>
-			<Abstract type="html">获取本次推流编码的视频总帧数</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/readSize</TokenIdentifier>
+			<Abstract type="html">已经加载的数据大小</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
 			
-			<Declaration>- (int)encodedFrames</Declaration>
+			<Declaration>@property (nonatomic, readonly) double readSize</Declaration>
 			
 			
-			<Anchor>//api/name/encodedFrames</Anchor>
+			<Anchor>//api/name/readSize</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/droppedVideoFrames</TokenIdentifier>
-			<Abstract type="html">获取本次推流发送的丢帧数量</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/readSize</TokenIdentifier>
+			<Abstract type="html">已经加载的数据大小</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
 			
-			<Declaration>- (int)droppedVideoFrames</Declaration>
+			<Declaration>@property (nonatomic, readonly) double readSize</Declaration>
 			
 			
-			<Anchor>//api/name/droppedVideoFrames</Anchor>
+			<Anchor>//api/name/readSize</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/rtmpHostIP</TokenIdentifier>
-			<Abstract type="html">当前推流的rtmp服务器的主机IP</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setBufferEmptyDuration:</TokenIdentifier>
+			<Abstract type="html">buffer为空时，拉取数据所耗的时长</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
 			
-			<Declaration>- (NSString *)rtmpHostIP</Declaration>
+			<Declaration>@property (nonatomic, readonly) NSTimeInterval bufferEmptyDuration</Declaration>
 			
 			
-			<Anchor>//api/name/rtmpHostIP</Anchor>
+			<Anchor>//api/name/bufferEmptyDuration</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/switchCamera</TokenIdentifier>
-			<Abstract type="html">切换摄像头</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/bufferEmptyDuration</TokenIdentifier>
+			<Abstract type="html">buffer为空时，拉取数据所耗的时长</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
 			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamer/cameraPosition</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>- (BOOL)switchCamera</Declaration>
+			<Declaration>@property (nonatomic, readonly) NSTimeInterval bufferEmptyDuration</Declaration>
 			
-			<ReturnValue><Abstract type="html">TRUE: 成功切换摄像头， FALSE：当前参数，下一个摄像头不支持，切换失败</Abstract></ReturnValue>
-			<Anchor>//api/name/switchCamera</Anchor>
+			
+			<Anchor>//api/name/bufferEmptyDuration</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/isTorchSupported</TokenIdentifier>
-			<Abstract type="html">当前采集设备是否支持闪光灯</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/bufferEmptyDuration</TokenIdentifier>
+			<Abstract type="html">buffer为空时，拉取数据所耗的时长</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)isTorchSupported</Declaration>
+			<Declaration>@property (nonatomic, readonly) NSTimeInterval bufferEmptyDuration</Declaration>
 			
-			<ReturnValue><Abstract type="html">YES / NO</Abstract></ReturnValue>
-			<Anchor>//api/name/isTorchSupported</Anchor>
+			
+			<Anchor>//api/name/bufferEmptyDuration</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/toggleTorch</TokenIdentifier>
-			<Abstract type="html">开关闪光灯</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setBufferEmptyCount:</TokenIdentifier>
+			<Abstract type="html">发起cache的次数</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
 			
-			<Declaration>- (void)toggleTorch</Declaration>
+			<Declaration>@property (nonatomic, readonly) NSInteger bufferEmptyCount</Declaration>
 			
 			
-			<Anchor>//api/name/toggleTorch</Anchor>
+			<Anchor>//api/name/bufferEmptyCount</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setTorchMode:</TokenIdentifier>
-			<Abstract type="html">设置闪光灯</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/bufferEmptyCount</TokenIdentifier>
+			<Abstract type="html">发起cache的次数</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
 			
-			<Declaration>- (void)setTorchMode:(AVCaptureTorchMode)mode</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>mode</Name>
-					<Abstract type="html">AVCaptureTorchModeOn/Off</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, readonly) NSInteger bufferEmptyCount</Declaration>
 			
-			<Anchor>//api/name/setTorchMode:</Anchor>
+			
+			<Anchor>//api/name/bufferEmptyCount</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setPreviewMirrored:</TokenIdentifier>
-			<Abstract type="html">设置预览画面镜像</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/bufferEmptyCount</TokenIdentifier>
+			<Abstract type="html">发起cache的次数</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
 			
-			<Declaration>- (void)setPreviewMirrored:(BOOL)bMirror</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>bMirror</Name>
-					<Abstract type="html">是否绕竖直轴镜像预览画面</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, readonly) NSInteger bufferEmptyCount</Declaration>
 			
-			<Anchor>//api/name/setPreviewMirrored:</Anchor>
+			
+			<Anchor>//api/name/bufferEmptyCount</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/setVideoMirrored:</TokenIdentifier>
-			<Abstract type="html">设置采集视频画面镜像</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setServerAddress:</TokenIdentifier>
+			<Abstract type="html">视频流server ip</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
 			
-			<Declaration>- (void)setVideoMirrored:(BOOL)bMirror</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>bMirror</Name>
-					<Abstract type="html">是否绕竖直轴镜像采集到的画面</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, readonly) NSString *serverAddress</Declaration>
 			
-			<Anchor>//api/name/setVideoMirrored:</Anchor>
+			
+			<Anchor>//api/name/serverAddress</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamer/getCurrentCameraDevices</TokenIdentifier>
-			<Abstract type="html">获取当前采集设备的指针</Abstract>
-			<DeclaredIn>KSYStreamer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/serverAddress</TokenIdentifier>
+			<Abstract type="html">视频流server ip</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
 			
-			<Declaration>- (AVCaptureDevice *)getCurrentCameraDevices</Declaration>
+			<Declaration>@property (nonatomic, readonly) NSString *serverAddress</Declaration>
 			
-			<ReturnValue><Abstract type="html">AVCaptureDevice* 预览开始前调用返回为nil，开始预览后，返回当前正在使用的摄像头</Abstract></ReturnValue>
-			<Anchor>//api/name/getCurrentCameraDevices</Anchor>
+			
+			<Anchor>//api/name/serverAddress</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/serverAddress</TokenIdentifier>
+			<Abstract type="html">视频流server ip</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *serverAddress</Declaration>
+			
+			
+			<Anchor>//api/name/serverAddress</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/thumbnailImageAtCurrentTime</TokenIdentifier>
+			<Abstract type="html">截图</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>- (UIImage *)thumbnailImageAtCurrentTime</Declaration>
+			
+			<ReturnValue><Abstract type="html">当前时刻的视频UIImage 图像</Abstract></ReturnValue>
+			<Anchor>//api/name/thumbnailImageAtCurrentTime</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/saveVideoLocalPath:</TokenIdentifier>
+			<Abstract type="html">视频本地保持路径</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>- (void)saveVideoLocalPath:(NSString *)localpath</Declaration>
+			
+			
+			<Anchor>//api/name/saveVideoLocalPath:</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setShouldEnableVideoPostProcessing:</TokenIdentifier>
+			<Abstract type="html">是否开启视频后处理</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL shouldEnableVideoPostProcessing</Declaration>
+			
+			
+			<Anchor>//api/name/shouldEnableVideoPostProcessing</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/shouldEnableVideoPostProcessing</TokenIdentifier>
+			<Abstract type="html">是否开启视频后处理</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL shouldEnableVideoPostProcessing</Declaration>
+			
+			
+			<Anchor>//api/name/shouldEnableVideoPostProcessing</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/shouldEnableVideoPostProcessing</TokenIdentifier>
+			<Abstract type="html">是否开启视频后处理</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL shouldEnableVideoPostProcessing</Declaration>
+			
+			
+			<Anchor>//api/name/shouldEnableVideoPostProcessing</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		

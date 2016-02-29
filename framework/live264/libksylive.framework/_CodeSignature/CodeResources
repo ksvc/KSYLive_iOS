@@ -28,6 +28,10 @@
 		<data>
 		eW/TwM+URS9pxI6c+Avd0fcZCY4=
 		</data>
+		<key>Headers/KSYStreamerBase.h</key>
+		<data>
+		sqWyRGXK9rk6Lwc3OBUDcgoigvg=
+		</data>
 		<key>Headers/KSYTypeDef.h</key>
 		<data>
 		PgaOYA1pgIoas3OC2jZCXjjmxHU=
@@ -38,7 +42,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		JM7EvaoRCaoSwxT6VlgYYwZIhfk=
+		xo1KzrmJdDvqqdVbmp/nx+R/qgI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -70,6 +74,10 @@
 		<key>Headers/KSYStreamer.h</key>
 		<data>
 		eW/TwM+URS9pxI6c+Avd0fcZCY4=
+		</data>
+		<key>Headers/KSYStreamerBase.h</key>
+		<data>
+		sqWyRGXK9rk6Lwc3OBUDcgoigvg=
 		</data>
 		<key>Headers/KSYTypeDef.h</key>
 		<data>

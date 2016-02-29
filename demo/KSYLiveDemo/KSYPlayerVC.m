@@ -32,8 +32,8 @@
     [super viewDidLoad];
     [self initUI];
     _url = [NSURL URLWithString:@"rtmp://live.hkstv.hk.lxdns.com/live/hks"];
-    _url = [NSURL URLWithString:@"rtmp://test.rtmplive.ks-cdn.com/live/fpzeng"];
-    //_url = [NSURL URLWithString:@"http://121.40.205.48:8091/demo/h265.flv"];
+//    _url = [NSURL URLWithString:@"rtmp://test.rtmplive.ks-cdn.com/live/fpzeng"];
+//    _url = [NSURL URLWithString:@"http://121.40.205.48:8091/demo/h265.flv"];
     [self setupObservers];
     [self initKSYAuth];
 }
@@ -154,7 +154,7 @@
 - (void)initKSYAuth
 {
     NSString* time = [NSString stringWithFormat:@"%d",(int)[[NSDate date]timeIntervalSince1970]];
-    NSString* sk = [NSString stringWithFormat:@"sff25dc4a428479ff1e20ebf225d1139%@", time];
+    NSString* sk = [NSString stringWithFormat:@"sff25dc4a428479ff1e20ebf225d113%@", time];
     NSString* sksign = [self MD5:sk];
     [[KSYPlayerAuth sharedInstance]setAuthInfo:@"QYA0EEF0FDDD38C79913" accessKey:@"abc73bb5ab2328517415f8f52cd5ad37" secretKeySign:sksign timeSeconds:time];
 }

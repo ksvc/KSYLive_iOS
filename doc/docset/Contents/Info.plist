@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.ksyun.KSYPlayer</string>
+	<string>com.ksyun.libksygpulive</string>
 	<key>CFBundleName</key>
-	<string>KSYPlayer Documentation</string>
+	<string>libksygpulive Documentation</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -17,7 +17,7 @@
 	
 	
 	<key>DocSetFeedName</key>
-	<string>KSYPlayer Documentation</string>
+	<string>libksygpulive Documentation</string>
 	
 	<key>DocSetMinimumXcodeVersion</key>
 	<string>3.0</string>
@@ -27,8 +27,8 @@
 	<key>DocSetPublisherIdentifier</key>
 	<string>com.ksyun.documentation</string>
 	<key>DocSetPublisherName</key>
-	<string>VideoCloud</string>
+	<string>Kingsoft</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2016 VideoCloud. All rights reserved.</string>
+	<string>Copyright © 2016 Kingsoft. All rights reserved.</string>
 </dict>
 </plist>

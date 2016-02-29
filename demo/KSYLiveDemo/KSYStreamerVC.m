@@ -10,6 +10,9 @@
 #ifdef KSYSTREAMER_DEMO
 #import <KSYStreamer/KSYStreamer.h>
 #import <KSYStreamer/KSYAuthInfo.h>
+#else
+#import <libksygpulive/KSYStreamer.h>
+#import <libksygpulive/KSYAuthInfo.h>
 #endif
 
 
@@ -64,7 +67,10 @@
     [self initKSYAuth];
     _pubSession = [[KSYStreamer alloc] initWithDefaultCfg];
     [self setStreamerCfg];
-    
+    _bAutoStart = NO;
+}
+
+- (void) addObservers {
     // statistics update every seconds
     _timer =  [NSTimer scheduledTimerWithTimeInterval:1.2
                                                target:self
@@ -85,8 +91,11 @@
                                                  name:KSYNetStateEventNotification
                                                object:nil];
 }
-
-- (void)dealloc{
+- (void) rmObservers {
+    if (_timer) {
+        [_timer invalidate];
+        _timer = nil;
+    }
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:KSYCaptureStateDidChangeNotification
                                                   object:nil];
@@ -109,53 +118,48 @@
     return button;
 }
 
+- (UILabel *)addLable:(NSString*)title{
+    UILabel *  lbl = [[UILabel alloc] init];
+    lbl.text = title;
+    [self.view addSubview:lbl];
+    return lbl;
+}
+- (UISwitch *)addSwitch:(BOOL) on{
+    UISwitch *sw = [[UISwitch alloc] init];
+    [self.view addSubview:sw];
+    sw.on = on;
+    return sw;
+}
+
 - (void) initUI {
     _btnPreview = [self addButton:@"开始预览" action:@selector(onPreview:)];
     _btnTStream = [self addButton:@"开始推流" action:@selector(onStream:)];
-    _btnFlash = [self addButton:@"闪光灯" action:@selector(onFlash:)];
-    _btnCamera = [self addButton:@"前后摄像头" action:@selector(onCamera:)];
-    _btnQuit = [self addButton:@"退出" action:@selector(onQuit:)];
-   
-    _lblAutoBW = [[UILabel alloc] init];
-    _lblAutoBW.text = @"自动调码率";
-    [self.view addSubview:_lblAutoBW];
-    
-    _btnAutoBw = [[UISwitch alloc] init];
-    [self.view addSubview:_btnAutoBw];
-    _btnAutoBw.on = YES;
-    
-    _lblAutoReconnect = [[UILabel alloc] init];
-    _lblAutoReconnect.text = @"自动重连";
-    [self.view addSubview:_lblAutoReconnect];
-    
-    _btnAutoReconnect = [[UISwitch alloc] init];
-    [self.view addSubview:_btnAutoReconnect];
-    _btnAutoReconnect.on = FALSE;
-    
-    
-    _lblHighRes = [[UILabel alloc] init];
-    _lblHighRes.text = @"高分辨率";
-    [self.view addSubview:_lblHighRes];
-    
-    _btnHighRes = [[UISwitch alloc] init];
-    [self.view addSubview:_btnHighRes];
-    _btnHighRes.on = YES;
+    _btnFlash   = [self addButton:@"闪光灯" action:@selector(onFlash:)];
+    _btnCamera  = [self addButton:@"前后摄像头" action:@selector(onCamera:)];
+    _btnQuit    = [self addButton:@"退出"      action:@selector(onQuit:)];
 
-    _stat = [[UILabel alloc] init];
+    _lblAutoBW = [self addLable:@"自动调码率"];
+    _btnAutoBw = [self addSwitch:YES];
+
+    _lblAutoReconnect = [self addLable:@"自动重连"];
+    _btnAutoReconnect = [self addSwitch:NO];
+
+    _lblHighRes =[self addLable:@"高分辨率"];
+    _btnHighRes =[self addSwitch:NO];
+
+    _stat = [self addLable:@""];
     _stat.backgroundColor = [UIColor clearColor];
     _stat.textColor = [UIColor redColor];
-
-    [self.view addSubview:_stat];
     _stat.numberOfLines = 6;
     _stat.textAlignment = NSTextAlignmentLeft;
+
     self.view.backgroundColor = [UIColor whiteColor];
     _netEventRaiseDrop = @"";
-
     [self layoutUI];
 }
 
 - (void) layoutUI {
-	CGFloat wdt = self.view.bounds.size.width;
+    CGFloat wdt = self.view.bounds.size.width;
     CGFloat hgt = self.view.bounds.size.height;
     CGFloat gap = 4;
     CGFloat btnWdt = 100;
@@ -220,6 +224,17 @@
     if ( _btnAutoBw != nil ) {
         [self layoutUI];
     }
+    [self addObservers ];
+    if (_bAutoStart) {
+        [self onPreview:nil];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self onStream:nil];
+        });
+    }
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [self rmObservers ];
 }
 
 - (BOOL)shouldAutorotate {
@@ -249,20 +264,21 @@ const char * getDocPath () ;
     [self.view autoresizesSubviews];
     
     // stream settings
-
     _pubSession.videoInitBitrate = 1000; // k bit ps
-    _pubSession.videoMaxBitrate = 1000; // k bit ps
-    _pubSession.videoMinBitrate = 100; // k bit ps
-    _pubSession.audiokBPS = 48; // k bit ps
+    _pubSession.videoMaxBitrate  = 1000; // k bit ps
+    _pubSession.videoMinBitrate  = 100; // k bit ps
+    _pubSession.audiokBPS        = 48; // k bit ps
     _pubSession.enAutoApplyEstimateBW = _btnAutoBw.on;
     
     // rtmp server info
-    NSString *rtmpSrv  = @"rtmp://test.uplive.ksyun.com/live";
-    // stream name = 随机数 + codec名称
-    NSString *devCode  = [ [KSYAuthInfo sharedInstance].mCode substringToIndex:6];
+    // stream name = 随机数 + codec名称 （构造流名，避免多个demo推向同一个流）
+    NSString *devCode  = [ [KSYAuthInfo sharedInstance].mCode substringToIndex:3];
     NSString *codecSuf = _pubSession.videoCodec == KSYVideoCodec_X264 ? @"264" : @"265";
-    NSString *url      = [  NSString stringWithFormat:@"%@/%@.%@", rtmpSrv, devCode, codecSuf ];
-    //url      = [  NSString stringWithFormat:@"%s/out.flv",getDocPath() ];
+    NSString *streamName = [NSString stringWithFormat:@"%@.%@", devCode, codecSuf ];
+    
+    // hostURL = rtmpSrv + streamName
+    NSString *rtmpSrv  = @"rtmp://test.uplive.ksyun.com/live";
+    NSString *url      = [  NSString stringWithFormat:@"%@/%@", rtmpSrv, streamName];
     _hostURL = [[NSURL alloc] initWithString:url];
     [self setVideoOrientation];
 }
@@ -309,7 +325,9 @@ const char * getDocPath () ;
 }
 
 - (IBAction)onCamera:(id)sender {
-    [_pubSession switchCamera ];
+    if ( [_pubSession switchCamera ] == NO) {
+        NSLog(@"切换失败 当前采集参数 目标设备无法支持");
+    }
     BOOL backCam = (_pubSession.cameraPosition == AVCaptureDevicePositionBack);
     if ( backCam ) {
         [_btnCamera setTitle:@"切到前摄像" forState: UIControlStateNormal];
