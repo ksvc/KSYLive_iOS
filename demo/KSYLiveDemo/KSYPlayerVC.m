@@ -6,6 +6,7 @@
 //
 
 #import "KSYPlayerVC.h"
+#import <libksygpulive/libksygpulive.h>
 #import <CommonCrypto/CommonDigest.h>
 
 @interface KSYPlayerVC ()

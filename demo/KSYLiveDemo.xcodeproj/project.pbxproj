@@ -162,7 +162,7 @@
 				TargetAttributes = {
 					06B2B1A21BE8F0D900E0CC85 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = ZGJ54Q7R45;
+						DevelopmentTeam = PL4ALT6BMK;
 					};
 				};
 			};
@@ -335,6 +335,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					../build,
+					../framework/livegpu,
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = KSYLiveDemo/Info.plist;
@@ -356,6 +357,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					../build,
+					../framework/livegpu,
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = KSYLiveDemo/Info.plist;
