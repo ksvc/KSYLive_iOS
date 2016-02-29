@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <libksylive/libksylive.h>
 
 @interface KSYPlayerVC : UIViewController
 

@@ -290,7 +290,7 @@
         return;
     }
     _capDev.outputImageOrientation = orien;
-    _filter = [[GPUImageColorInvertFilter alloc] init];
+    _filter = [[KSYGPUBeautifyFilter alloc] init];
     //[_capDev addTarget:(GPUImageView *)filterView];
     _capDev.bStreamVideo = useGPUFilter ? NO:YES;
     _capDev.bStreamAudio = true;
