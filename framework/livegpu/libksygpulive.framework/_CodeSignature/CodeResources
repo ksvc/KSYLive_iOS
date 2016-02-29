@@ -8,13 +8,21 @@
 		<data>
 		RUzEMHLu6E4D2cYoev6Hv6sakas=
 		</data>
+		<key>Headers/KSYCamera.h</key>
+		<data>
+		e0S8/jOzYfzZ7x/77nLYBlDqLu4=
+		</data>
+		<key>Headers/KSYGPUBeautifyFilter.h</key>
+		<data>
+		HdmUdTNBi0Rz2QNavX6FyLgZWoI=
+		</data>
 		<key>Headers/KSYGPUCamera.h</key>
 		<data>
 		nj9H8phAzoK8XB2P0kB9EwQTNqo=
 		</data>
 		<key>Headers/KSYGPUStreamer.h</key>
 		<data>
-		pKe00rRbh5UxxhU3cUvpcxfvL0o=
+		wWodNppTe+x3eZ0e9a1efPbgVgA=
 		</data>
 		<key>Headers/KSYMediaPlayback.h</key>
 		<data>
@@ -44,13 +52,17 @@
 		<data>
 		PgaOYA1pgIoas3OC2jZCXjjmxHU=
 		</data>
-		<key>Headers/libksylive.h</key>
+		<key>Headers/libksygpulive.h</key>
 		<data>
-		ZCW7HKVtSgE+HZvo3TYmonMMF4Q=
+		9AM99cs+Nof14LDSJwoADBQIszE=
 		</data>
 		<key>Info.plist</key>
 		<data>
 		I/w/oPnVPOPMbChtj9wmcXRjaUs=
+		</data>
+		<key>Modules/module.modulemap</key>
+		<data>
+		tNTGUaghlYivLL+hZHRELBPGv9M=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -59,13 +71,21 @@
 		<data>
 		RUzEMHLu6E4D2cYoev6Hv6sakas=
 		</data>
+		<key>Headers/KSYCamera.h</key>
+		<data>
+		e0S8/jOzYfzZ7x/77nLYBlDqLu4=
+		</data>
+		<key>Headers/KSYGPUBeautifyFilter.h</key>
+		<data>
+		HdmUdTNBi0Rz2QNavX6FyLgZWoI=
+		</data>
 		<key>Headers/KSYGPUCamera.h</key>
 		<data>
 		nj9H8phAzoK8XB2P0kB9EwQTNqo=
 		</data>
 		<key>Headers/KSYGPUStreamer.h</key>
 		<data>
-		pKe00rRbh5UxxhU3cUvpcxfvL0o=
+		wWodNppTe+x3eZ0e9a1efPbgVgA=
 		</data>
 		<key>Headers/KSYMediaPlayback.h</key>
 		<data>
@@ -95,9 +115,13 @@
 		<data>
 		PgaOYA1pgIoas3OC2jZCXjjmxHU=
 		</data>
-		<key>Headers/libksylive.h</key>
+		<key>Headers/libksygpulive.h</key>
 		<data>
-		ZCW7HKVtSgE+HZvo3TYmonMMF4Q=
+		9AM99cs+Nof14LDSJwoADBQIszE=
+		</data>
+		<key>Modules/module.modulemap</key>
+		<data>
+		tNTGUaghlYivLL+hZHRELBPGv9M=
 		</data>
 	</dict>
 	<key>rules</key>

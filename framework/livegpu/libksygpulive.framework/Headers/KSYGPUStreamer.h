@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
-
+#import "KSYStreamerBase.h"
 
 @protocol GPUImageInput;
 @class KSYStreamerBase;

@@ -1,0 +1,6 @@
+framework module libksygpulive {
+  umbrella header "libksygpulive.h"
+
+  export *
+  module * { export * }
+}
