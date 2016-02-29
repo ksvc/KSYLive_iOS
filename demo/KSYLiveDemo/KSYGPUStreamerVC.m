@@ -6,19 +6,21 @@
 //  Copyright (c) 2015 ksyun. All rights reserved.
 //
 
-#import "KSYStreamerVC.h"
-#ifdef KSYSTREAMER_DEMO
-#import <KSYStreamer/KSYStreamer.h>
-#import <KSYStreamer/KSYAuthInfo.h>
-#else
-#import <libksygpulive/KSYStreamer.h>
+#import "KSYGPUStreamerVC.h"
+#import <GPUImage/GPUImage.h>
+#import <libksygpulive/KSYStreamerBase.h>
+#import <libksygpulive/KSYGPUCamera.h>
+#import <libksygpulive/KSYGPUStreamer.h>
 #import <libksygpulive/KSYAuthInfo.h>
-#endif
 
-
-@interface KSYStreamerVC ()
-
-@property KSYStreamer * pubSession;
+@interface KSYGPUStreamerVC ()
+@property KSYGPUStreamer * gpuStreamer;
+@property KSYStreamerBase * streamer;
+@property KSYGPUCamera * capDev;
+@property GPUImageFilter     * filter;
+@property GPUImageCropFilter * cropfilter;
+@property GPUImageFilter * scalefilter;
+@property GPUImageView   * preview;
 
 @property UIButton *btnPreview;
 @property UIButton *btnTStream;
@@ -34,8 +36,6 @@
 @property UILabel  *lblHighRes;
 
 @property NSTimer *timer;
-
-@property UIView* preview;
 
 @property BOOL bMirrored;
 
@@ -54,22 +54,18 @@
 @property double  startTime;
 @end
 
-@implementation KSYStreamerVC
+@implementation KSYGPUStreamerVC
 
-
--(KSYStreamer *)getStreamer {
-    return _pubSession;
+-(KSYStreamerBase *)getStreamer {
+    return _streamer;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI ];
     [self initKSYAuth];
-    _pubSession = [[KSYStreamer alloc] initWithDefaultCfg];
     [self setStreamerCfg];
-    _bAutoStart = NO;
 }
-
 - (void) addObservers {
     // statistics update every seconds
     _timer =  [NSTimer scheduledTimerWithTimeInterval:1.2
@@ -79,10 +75,6 @@
                                               repeats:YES];
     //KSYStreamer state changes
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(onCaptureStateChange:)
-                                                 name:KSYCaptureStateDidChangeNotification
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(onStreamStateChange:)
                                                  name:KSYStreamStateDidChangeNotification
                                                object:nil];
@@ -91,14 +83,10 @@
                                                  name:KSYNetStateEventNotification
                                                object:nil];
 }
+
 - (void) rmObservers {
-    if (_timer) {
-        [_timer invalidate];
-        _timer = nil;
-    }
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:KSYCaptureStateDidChangeNotification
-                                                  object:nil];
+    [_timer invalidate];
+    _timer = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:KSYStreamStateDidChangeNotification
                                                   object:nil];
@@ -132,9 +120,13 @@
 }
 
 - (void) initUI {
-    _btnPreview = [self addButton:@"开始预览" action:@selector(onPreview:)];
-    _btnTStream = [self addButton:@"开始推流" action:@selector(onStream:)];
-    _btnFlash   = [self addButton:@"闪光灯" action:@selector(onFlash:)];
+    // add prevew at bottom
+    _preview    = [[GPUImageView alloc] init];
+    [self.view addSubview:_preview];
+    
+    _btnPreview = [self addButton:@"开始预览"  action:@selector(onPreview:)];
+    _btnTStream = [self addButton:@"开始推流"  action:@selector(onStream:)];
+    _btnFlash   = [self addButton:@"闪光灯"    action:@selector(onFlash:)];
     _btnCamera  = [self addButton:@"前后摄像头" action:@selector(onCamera:)];
     _btnQuit    = [self addButton:@"退出"      action:@selector(onQuit:)];
 
@@ -145,7 +137,7 @@
     _btnAutoReconnect = [self addSwitch:NO];
 
     _lblHighRes =[self addLable:@"高分辨率"];
-    _btnHighRes =[self addSwitch:NO];
+    _btnHighRes =[self addSwitch:YES];
 
     _stat = [self addLable:@""];
     _stat.backgroundColor = [UIColor clearColor];
@@ -166,6 +158,9 @@
     CGFloat btnHgt = 40;
     CGFloat xPos = gap;
     CGFloat yPos = hgt - btnHgt - gap;
+    
+    // full screen
+    _preview.frame = self.view.bounds;
     
     // bottom left
     _btnPreview.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
@@ -238,9 +233,8 @@
 }
 
 - (BOOL)shouldAutorotate {
-    BOOL  bShould = _pubSession.captureState != KSYCaptureStateCapturing;
     [self layoutUI];
-    return bShould;
+    return !(_capDev && _capDev.isRunning);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -248,95 +242,167 @@
     // Dispose of any resources that can be recreated.
 }
 
-const char * getDocPath () ;
-
 - (void) setStreamerCfg {
-    // capture settings
-    if (_btnHighRes.on ) {
-        _pubSession.videoDimension = KSYVideoDimension_16_9__960x540;
+    UIInterfaceOrientation orien = [[UIApplication sharedApplication] statusBarOrientation];
+    
+    CGRect rect ;
+    double srcWdt = 540.0;
+    double srcHgt = 960.0;
+    
+    double dstWdt = 320.0;
+    double dstHgt = 640.0;
+    
+    double x = (srcWdt-dstWdt)/2/srcWdt;
+    double y = (srcHgt-dstHgt)/2/srcHgt;
+    double wdt = dstWdt/srcWdt;
+    double hgt = dstHgt/srcHgt;
+    
+    if (orien == UIInterfaceOrientationPortrait ||
+        orien == UIInterfaceOrientationPortraitUpsideDown) {
+        rect = CGRectMake(x, y, wdt, hgt);
     }
     else {
-        _pubSession.videoDimension = KSYVideoDimension_16_9__640x360;
+        rect = CGRectMake(y, x, hgt, wdt);
+    }
+    
+    // capture settings
+    NSString *preset = @"";
+    if (_btnHighRes.on ) {
+        preset = AVCaptureSessionPresetiFrame960x540;
+    }
+    else {
+        preset = AVCaptureSessionPresetiFrame960x540;
+        _cropfilter = [[GPUImageCropFilter alloc] initWithCropRegion:rect];
 
     }
-    _pubSession.videoCodec = KSYVideoCodec_X264;
-    _pubSession.videoFPS = 15;
-    [self.view autoresizesSubviews];
-    
+    BOOL useGPUFilter = YES;
+    if (useGPUFilter) {
+        _gpuStreamer = [[KSYGPUStreamer alloc] initWithDefaultCfg];
+        _streamer = [_gpuStreamer getStreamer];
+    }
+    else {
+        _gpuStreamer = nil;
+        _streamer = [[KSYStreamerBase alloc] initWithDefaultCfg];
+    }
+    _capDev = [[KSYGPUCamera alloc] initWithSessionPreset:preset
+                                           cameraPosition:AVCaptureDevicePositionBack];
+    if (_capDev == nil) {
+        NSLog(@"camera open failed!");
+        return;
+    }
+    _capDev.outputImageOrientation = orien;
+    _filter = [[GPUImageColorInvertFilter alloc] init];
+    //[_capDev addTarget:(GPUImageView *)filterView];
+    _capDev.bStreamVideo = useGPUFilter ? NO:YES;
+    _capDev.bStreamAudio = true;
+    if (useGPUFilter) {
+        [_capDev setAudioEncTarget:_gpuStreamer];
+    }
+    else {
+        [_capDev setBaseAudioEncTarget:_streamer];
+    }
+
+    _capDev.horizontallyMirrorFrontFacingCamera = NO;
+    _capDev.horizontallyMirrorRearFacingCamera  = NO;
+    _capDev.frameRate = 15;
+    [_capDev addAudioInputsAndOutputs];
+
     // stream settings
-    _pubSession.videoInitBitrate = 1000; // k bit ps
-    _pubSession.videoMaxBitrate  = 1000; // k bit ps
-    _pubSession.videoMinBitrate  = 100; // k bit ps
-    _pubSession.audiokBPS        = 48; // k bit ps
-    _pubSession.enAutoApplyEstimateBW = _btnAutoBw.on;
-    
+    _streamer.videoCodec = KSYVideoCodec_X264;
+    //_streamer.videoCodec = KSYVideoCodec_VT264;
+    _streamer.videoFPS   = _capDev.frameRate;
+    _streamer.audiokBPS  = 48;   // k bit ps
+    _streamer.enAutoApplyEstimateBW = _btnAutoBw.on;
+    if (_streamer.enAutoApplyEstimateBW) {
+        _streamer.videoInitBitrate  = 500;  // k bit ps
+        _streamer.videoMaxBitrate   = 1000; // k bit ps
+        _streamer.videoMinBitrate   = 200;  // k bit ps
+    }
+    else {
+        _streamer.videoInitBitrate  = 1000; // k bit ps
+        _streamer.videoMaxBitrate   = 1000; // k bit ps
+        _streamer.videoMinBitrate   = 200;  // k bit ps
+    }
+    // connect blocks
+    if (_btnHighRes.on) {
+        [_capDev addTarget:_filter];
+        [_filter addTarget:_preview];
+        [_filter addTarget:_gpuStreamer];
+    }
+    else {
+        [_capDev addTarget:_filter];
+        [_filter addTarget:_cropfilter];
+        [_cropfilter addTarget:_preview];
+        [_cropfilter addTarget:_gpuStreamer];
+    }
+
     // rtmp server info
     // stream name = 随机数 + codec名称 （构造流名，避免多个demo推向同一个流）
     NSString *devCode  = [ [KSYAuthInfo sharedInstance].mCode substringToIndex:3];
-    NSString *codecSuf = _pubSession.videoCodec == KSYVideoCodec_X264 ? @"264" : @"265";
+    NSString *codecSuf = _streamer.videoCodec == KSYVideoCodec_QY265 ? @"265" : @"264";
     NSString *streamName = [NSString stringWithFormat:@"%@.%@", devCode, codecSuf ];
     
     // hostURL = rtmpSrv + streamName
     NSString *rtmpSrv  = @"rtmp://test.uplive.ksyun.com/live";
     NSString *url      = [  NSString stringWithFormat:@"%@/%@", rtmpSrv, streamName];
     _hostURL = [[NSURL alloc] initWithString:url];
-    [self setVideoOrientation];
 }
 
 - (IBAction)onQuit:(id)sender {
-    [_pubSession stopStream];
-    [_pubSession stopPreview];
+    [_streamer stopStream];
+    [_capDev stopCameraCapture];
     [self dismissViewControllerAnimated:FALSE completion:nil];
+    
 }
 
 - (IBAction)onPreview:(id)sender {
     if ( NO == _btnPreview.isEnabled) {
         return;
     }
-    if ( _pubSession.captureState != KSYCaptureStateCapturing ) {
+
+    if ( ! _capDev.isRunning ) {
         [self setStreamerCfg];
-        [_pubSession startPreview: self.view];
-        [UIApplication sharedApplication].idleTimerDisabled=YES;
+        [_capDev startCameraCapture];
+        [_btnPreview setTitle:@"停止预览" forState:UIControlStateNormal];
     }
     else {
-        [_pubSession stopPreview];
-        [UIApplication sharedApplication].idleTimerDisabled=NO;
+        [_capDev stopCameraCapture];
+        [_btnPreview setTitle:@"开始预览" forState:UIControlStateNormal];
     }
+    [UIApplication sharedApplication].idleTimerDisabled=_capDev.isRunning;
 }
 
 - (IBAction)onStream:(id)sender {
-    if (_pubSession.captureState != KSYCaptureStateCapturing ||
+    if (NO == _capDev.isRunning  ||
         NO == _btnTStream.isEnabled ) {
         return;
     }
-    if (_pubSession.streamState != KSYStreamStateConnected) {
-        [_pubSession startStream: _hostURL];
+    if (_streamer.streamState != KSYStreamStateConnected) {
+        [_streamer startStream: _hostURL];
         [self initStatData];
     }
     else {
-        [_pubSession stopStream];
+        [_streamer stopStream];
     }
+    return;
 }
 
 - (IBAction)onFlash:(id)sender {
-    [_pubSession toggleTorch ];
-    //[_pubSession setPreviewMirrored:_bMirrored];
-    //_bMirrored= !_bMirrored;
+    if ([_capDev isTorchSupported]) {
+        [_capDev toggleTorch ];
+    }
 }
 
 - (IBAction)onCamera:(id)sender {
-    if ( [_pubSession switchCamera ] == NO) {
-        NSLog(@"切换失败 当前采集参数 目标设备无法支持");
-    }
-    BOOL backCam = (_pubSession.cameraPosition == AVCaptureDevicePositionBack);
+    [_capDev rotateCamera];
+    BOOL backCam = (_capDev.cameraPosition == AVCaptureDevicePositionBack);
     if ( backCam ) {
         [_btnCamera setTitle:@"切到前摄像" forState: UIControlStateNormal];
     }
     else {
         [_btnCamera setTitle:@"切到后摄像" forState: UIControlStateNormal];
     }
-    backCam = backCam && (_pubSession.captureState == KSYCaptureStateCapturing);
-    [_btnFlash  setEnabled:backCam ];
+    [_btnFlash  setEnabled:(_capDev.isRunning && [_capDev isTorchSupported]) ];
 }
 
 - (void) initStatData {
@@ -360,10 +426,10 @@ const char * getDocPath () ;
 }
 
 - (void)updateStat:(NSTimer *)theTimer{
-    if (_pubSession.streamState == KSYStreamStateConnected ) {
-        int    KB          = [_pubSession uploadedKByte];
-        int    curFrames   = [_pubSession encodedFrames];
-        int    droppedF    = [_pubSession droppedVideoFrames];
+    if (_streamer.streamState == KSYStreamStateConnected ) {
+        int    KB          = _streamer.uploadedKByte;
+        int    curFrames   = _streamer.encodedFrames;
+        int    droppedF    = _streamer.droppedVideoFrames;
 
         int deltaKbyte = KB - _lastByte;
         double curTime = [[NSDate date]timeIntervalSince1970];
@@ -411,7 +477,7 @@ const char * getDocPath () ;
 
 - (BOOL)focusAtPoint:(CGPoint )point error:(NSError *__autoreleasing* )error
 {
-    AVCaptureDevice *dev = [_pubSession getCurrentCameraDevices];
+    AVCaptureDevice *dev = _capDev.inputCamera;
     if ([dev isFocusPointOfInterestSupported] && [dev isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
         if ([dev lockForConfiguration:error]) {
             [dev setFocusPointOfInterest:point];
@@ -424,53 +490,13 @@ const char * getDocPath () ;
     return NO;
 }
 
-- (void) onCaptureStateChange:(NSNotification *)notification {
-    // init stat
-    [_btnTStream setEnabled:NO];
-    [_btnAutoBw  setEnabled:YES];
-    [_btnHighRes setEnabled:YES];
-    [_btnFlash   setEnabled:NO];
-    if ( _pubSession.captureState == KSYCaptureStateIdle){
-        _stat.text = @"idle";
-        [_btnPreview setEnabled:YES];
-        [_btnPreview setTitle:@"StartPreview" forState:UIControlStateNormal];
-    }
-    else if (_pubSession.captureState == KSYCaptureStateCapturing ) {
-        _stat.text = @"capturing";
-        [_btnPreview setEnabled:YES];
-        [_btnTStream setEnabled:YES];
-        [_btnPreview setTitle:@"StopPreview" forState:UIControlStateNormal];
-        BOOL backCam = (_pubSession.cameraPosition == AVCaptureDevicePositionBack);
-        [_btnFlash   setEnabled:backCam];
-        [_btnAutoBw  setEnabled:NO];
-        [_btnHighRes setEnabled:NO];
-    }
-    else if (_pubSession.captureState == KSYCaptureStateClosingCapture ) {
-        _stat.text = @"closing capture";
-        [_btnPreview setEnabled:NO];
-    }
-    else if (_pubSession.captureState == KSYCaptureStateDevAuthDenied ) {
-        _stat.text = @"camera/mic Authorization Denied";
-        [_btnPreview setEnabled:YES];
-    }
-    else if (_pubSession.captureState == KSYCaptureStateParameterError ) {
-        _stat.text = @"capture devices ParameterError";
-        [_btnPreview setEnabled:YES];
-    }
-    else if (_pubSession.captureState == KSYCaptureStateDevBusy ) {
-        _stat.text = @"device busy, try later";
-        [self toast:_stat.text];
-    }
-    NSLog(@"newCapState: %lu [%@]", (unsigned long)_pubSession.captureState, _stat.text);
-}
-
 - (void) onStreamError {
-    KSYStreamErrorCode err = _pubSession.streamErrorCode;
+    KSYStreamErrorCode err = _streamer.streamErrorCode;
     [_btnPreview setEnabled:TRUE];
     [_btnTStream setEnabled:TRUE];
-    [_btnTStream setTitle:@"StartStream" forState:UIControlStateNormal];
+    [_btnTStream setTitle:@"开始推流" forState:UIControlStateNormal];
     [self toast:@"stream err"];
-    if ( KSYStreamErrorCode_KSYAUTHFAILED == err ) {
+    if ( KSYStreamErrorCode_FRAMES_THRESHOLD == err ) {
         _stat.text = @"SDK auth failed, \npls check ak/sk";
     }
     else if ( KSYStreamErrorCode_CODEC_OPEN_FAILED == err) {
@@ -512,6 +538,9 @@ const char * getDocPath () ;
     else if (  KSYStreamErrorCode_RTMP_ForbiddenByRegion   == err) {
         _stat.text = @"error: ForbiddenByRegion";
     }
+    else if ( KSYStreamErrorCode_NO_INPUT_SAMPLE   == err) {
+        _stat.text = @"error: No input sample";
+    }
     else {
         _stat.text = [[NSString alloc] initWithFormat:@"error: %lu",  (unsigned long)err];
     }
@@ -519,15 +548,15 @@ const char * getDocPath () ;
     // 断网重连
     if ( KSYStreamErrorCode_CONNECT_BREAK == err && _btnAutoReconnect.isOn ) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [_pubSession stopStream];
-            [_pubSession startStream:_hostURL];
+            [_streamer stopStream];
+            [_streamer startStream:_hostURL];
             [self initStatData];
         });
     }
 }
 
 - (void) onNetStateEvent:(NSNotification *)notification {
-    KSYNetStateCode netEvent = _pubSession.netStateCode;
+    KSYNetStateCode netEvent = _streamer.netStateCode;
     //NSLog(@"net event : %ld", (unsigned long)netEvent );
     if ( netEvent == KSYNetStateCode_SEND_PACKET_SLOW ) {
         _netEventCnt++;
@@ -548,50 +577,41 @@ const char * getDocPath () ;
         _netTimeOut = 5;
         NSLog(@"bitrate dropping" );
     }
+    else if ( netEvent == KSYNetStateCode_KSYAUTHFAILED ) {
+        _netEventRaiseDrop = @"auth failed";
+        NSLog(@"SDK auth failed, SDK will stop stream in a few minius" );
+    }
 }
 
 - (void) onStreamStateChange:(NSNotification *)notification {
     [_btnPreview setEnabled:NO];
     [_btnTStream setEnabled:NO];
-    if ( _pubSession.streamState == KSYStreamStateIdle) {
+    if ( _streamer.streamState == KSYStreamStateIdle) {
         _stat.text = @"idle";
         [_btnPreview setEnabled:TRUE];
         [_btnTStream setEnabled:TRUE];
-        [_btnTStream setTitle:@"StartStream" forState:UIControlStateNormal];
+        [_btnTStream setTitle:@"开始推流" forState:UIControlStateNormal];
     }
-    else if ( _pubSession.streamState == KSYStreamStateConnected){
+    else if ( _streamer.streamState == KSYStreamStateConnected){
         _stat.text = @"connected";
         [_btnTStream setEnabled:TRUE];
-        [_btnTStream setTitle:@"StopStream" forState:UIControlStateNormal];
+        [_btnTStream setTitle:@"停止推流" forState:UIControlStateNormal];
+        if (_streamer.streamErrorCode == KSYStreamErrorCode_KSYAUTHFAILED ) {
+            NSLog(@"Auth failed, stream would stop in 5~8 minute");
+            _stat.text = @"connected(auth failed";
+        }
     }
-    else if (_pubSession.streamState == KSYStreamStateConnecting ) {
+    else if (_streamer.streamState == KSYStreamStateConnecting ) {
         _stat.text = @"connecting";
     }
-    else if (_pubSession.streamState == KSYStreamStateDisconnecting ) {
+    else if (_streamer.streamState == KSYStreamStateDisconnecting ) {
         _stat.text = @"disconnecting";
     }
-    else if (_pubSession.streamState == KSYStreamStateError ) {
+    else if (_streamer.streamState == KSYStreamStateError ) {
         [self onStreamError];
+        return;
     }
-    NSLog(@"newState: %lu [%@]", (unsigned long)_pubSession.streamState, _stat.text);
-}
-
-- (void) setVideoOrientation {
-    UIDeviceOrientation orien = [ [UIDevice  currentDevice]  orientation];
-    switch (orien) {
-        case UIDeviceOrientationPortraitUpsideDown:
-            _pubSession.videoOrientation = AVCaptureVideoOrientationPortraitUpsideDown;
-            break;
-        case UIDeviceOrientationLandscapeLeft:
-            _pubSession.videoOrientation = AVCaptureVideoOrientationLandscapeRight;
-            break;
-        case UIDeviceOrientationLandscapeRight:
-            _pubSession.videoOrientation = AVCaptureVideoOrientationLandscapeLeft;
-            break;
-        default:
-            _pubSession.videoOrientation = AVCaptureVideoOrientationPortrait;
-            break;
-    }
+    NSLog(@"newState: %lu [%@]", (unsigned long)_streamer.streamState, _stat.text);
 }
 
 - (void) toast:(NSString*)message{
@@ -629,10 +649,14 @@ const char * getDocPath () ;
  @warning 请将appid/ak/sk信息更新至开发者自己信息，再进行编译测试
  */
 - (void)initKSYAuth {
-    NSString* time = [NSString stringWithFormat:@"%d",(int)[[NSDate date]timeIntervalSince1970]];
-    NSString* sk = [NSString stringWithFormat:@"s77d5c0eef4aaeff62e43d89f1b12a25%@", time];
-    NSString* sksign = [KSYAuthInfo KSYMD5:sk];
-    [[KSYAuthInfo sharedInstance]setAuthInfo:@"QYA0E0639AC997A8D128" accessKey:@"a5644305efa79b56b8dac55378b83e35" secretKeySign:sksign timeSeconds:time];
+#warning "please replace ak/sk with your own"
+    NSString* time   = [NSString stringWithFormat:@"%d",(int)[[NSDate date]timeIntervalSince1970]];
+    NSString* skTime = [NSString stringWithFormat:@"s77d5c0eef4aaeff62e43d89f1b12a25%@", time];
+    NSString* sksign = [KSYAuthInfo KSYMD5:skTime];
+    [[KSYAuthInfo sharedInstance]setAuthInfo:@"QYA0E0639AC997A8D128"
+                                   accessKey:@"a5644305efa79b56b8dac55378b83e35"
+                               secretKeySign:sksign
+                                 timeSeconds:time];
 }
 
 @end

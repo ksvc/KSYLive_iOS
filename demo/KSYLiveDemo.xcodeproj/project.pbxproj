@@ -10,6 +10,22 @@
 		060277C91BE995E100DD6A2D /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 060277C81BE995E100DD6A2D /* libstdc++.6.dylib */; };
 		060277CD1BE995E500DD6A2D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 060277CC1BE995E500DD6A2D /* libz.dylib */; };
 		060277E01BE9FF7F00DD6A2D /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 060277DF1BE9FF7F00DD6A2D /* VideoToolbox.framework */; };
+		06338F641C835734004B4C69 /* libksygpulive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06338F631C835734004B4C69 /* libksygpulive.framework */; };
+		064928691C83287500F0C09B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B2B1AB1BE8F0D900E0CC85 /* AppDelegate.m */; };
+		0649286A1C83287500F0C09B /* KSYStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D8CA791C1ED13E0068F7A4 /* KSYStreamerVC.m */; };
+		0649286B1C83287500F0C09B /* KSYLiveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 069E42881C10357D00392B5E /* KSYLiveVC.m */; };
+		0649286C1C83287500F0C09B /* KSYPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B2B1AE1BE8F0D900E0CC85 /* KSYPlayerVC.m */; };
+		0649286D1C83287500F0C09B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B2B1A81BE8F0D900E0CC85 /* main.m */; };
+		064928701C83287500F0C09B /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0671DC5D1C0D5439000EE969 /* libbz2.dylib */; };
+		064928711C83287500F0C09B /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 060277DF1BE9FF7F00DD6A2D /* VideoToolbox.framework */; };
+		064928721C83287500F0C09B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 060277CC1BE995E500DD6A2D /* libz.dylib */; };
+		064928731C83287500F0C09B /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 060277C81BE995E100DD6A2D /* libstdc++.6.dylib */; };
+		064928751C83287500F0C09B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06B2B1B31BE8F0D900E0CC85 /* Main.storyboard */; };
+		064928761C83287500F0C09B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B2B1B81BE8F0D900E0CC85 /* LaunchScreen.xib */; };
+		064928771C83287500F0C09B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06B2B1B61BE8F0D900E0CC85 /* Images.xcassets */; };
+		0649287D1C83292500F0C09B /* libksylive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74ED32431C22D643005D2CA9 /* libksylive.framework */; };
+		064928821C83298000F0C09B /* KSYGPUStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 064928801C83296C00F0C09B /* KSYGPUStreamerVC.m */; };
+		0663AF501C832E16006F515F /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663AF4F1C832E16006F515F /* GPUImage.framework */; };
 		0671DC5E1C0D5439000EE969 /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0671DC5D1C0D5439000EE969 /* libbz2.dylib */; };
 		069E428A1C10357D00392B5E /* KSYLiveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 069E42881C10357D00392B5E /* KSYLiveVC.m */; };
 		06B2B1A91BE8F0D900E0CC85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B2B1A81BE8F0D900E0CC85 /* main.m */; };
@@ -19,14 +35,20 @@
 		06B2B1B71BE8F0D900E0CC85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06B2B1B61BE8F0D900E0CC85 /* Images.xcassets */; };
 		06B2B1BA1BE8F0D900E0CC85 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B2B1B81BE8F0D900E0CC85 /* LaunchScreen.xib */; };
 		06D8CA7B1C1ED13E0068F7A4 /* KSYStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D8CA791C1ED13E0068F7A4 /* KSYStreamerVC.m */; };
-		74ED32441C22D643005D2CA9 /* libksylive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74ED32431C22D643005D2CA9 /* libksylive.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		060277C81BE995E100DD6A2D /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		060277CC1BE995E500DD6A2D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		060277DF1BE9FF7F00DD6A2D /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		06338F631C835734004B4C69 /* libksygpulive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libksygpulive.framework; path = ../frameworks/libksygpulive.framework; sourceTree = "<group>"; };
+		0649287B1C83287500F0C09B /* KSYGPULiveDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSYGPULiveDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0649287C1C83287500F0C09B /* KSYGPULiveDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "KSYGPULiveDemo-Info.plist"; path = "/Users/qianyi/Documents/proj/libksylive/KSYLive/KSYGPULiveDemo-Info.plist"; sourceTree = "<absolute>"; };
+		0649287F1C83296C00F0C09B /* KSYGPUStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYGPUStreamerVC.h; sourceTree = "<group>"; };
+		064928801C83296C00F0C09B /* KSYGPUStreamerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYGPUStreamerVC.m; sourceTree = "<group>"; };
+		0663AF4F1C832E16006F515F /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GPUImage.framework; path = ../extra/GPUImage/build/GPUImage.framework; sourceTree = "<group>"; };
 		0671DC5D1C0D5439000EE969 /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = usr/lib/libbz2.dylib; sourceTree = SDKROOT; };
+		06901BA51C832AED00DFA502 /* libksygpustreamer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libksygpustreamer.framework; path = ../build/libksygpustreamer.framework; sourceTree = "<group>"; };
 		069E42881C10357D00392B5E /* KSYLiveVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYLiveVC.m; sourceTree = "<group>"; };
 		069E42891C10357D00392B5E /* KSYLiveVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYLiveVC.h; sourceTree = "<group>"; };
 		06B2B1A31BE8F0D900E0CC85 /* KSYLiveDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSYLiveDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,11 +67,24 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0649286E1C83287500F0C09B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06338F641C835734004B4C69 /* libksygpulive.framework in Frameworks */,
+				0663AF501C832E16006F515F /* GPUImage.framework in Frameworks */,
+				064928701C83287500F0C09B /* libbz2.dylib in Frameworks */,
+				064928711C83287500F0C09B /* VideoToolbox.framework in Frameworks */,
+				064928721C83287500F0C09B /* libz.dylib in Frameworks */,
+				064928731C83287500F0C09B /* libstdc++.6.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		06B2B1A01BE8F0D900E0CC85 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74ED32441C22D643005D2CA9 /* libksylive.framework in Frameworks */,
+				0649287D1C83292500F0C09B /* libksylive.framework in Frameworks */,
 				0671DC5E1C0D5439000EE969 /* libbz2.dylib in Frameworks */,
 				060277E01BE9FF7F00DD6A2D /* VideoToolbox.framework in Frameworks */,
 				060277CD1BE995E500DD6A2D /* libz.dylib in Frameworks */,
@@ -60,15 +95,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0649287E1C83295400F0C09B /* KSYGPULiveDemo */ = {
+			isa = PBXGroup;
+			children = (
+				0649287F1C83296C00F0C09B /* KSYGPUStreamerVC.h */,
+				064928801C83296C00F0C09B /* KSYGPUStreamerVC.m */,
+				0649287C1C83287500F0C09B /* KSYGPULiveDemo-Info.plist */,
+			);
+			name = KSYGPULiveDemo;
+			path = KSYLiveDemo;
+			sourceTree = "<group>";
+		};
 		06B2B19A1BE8F0D900E0CC85 = {
 			isa = PBXGroup;
 			children = (
+				06338F631C835734004B4C69 /* libksygpulive.framework */,
+				0663AF4F1C832E16006F515F /* GPUImage.framework */,
+				06901BA51C832AED00DFA502 /* libksygpustreamer.framework */,
 				74ED32431C22D643005D2CA9 /* libksylive.framework */,
 				0671DC5D1C0D5439000EE969 /* libbz2.dylib */,
 				060277DF1BE9FF7F00DD6A2D /* VideoToolbox.framework */,
 				060277CC1BE995E500DD6A2D /* libz.dylib */,
 				060277C81BE995E100DD6A2D /* libstdc++.6.dylib */,
 				06B2B1A51BE8F0D900E0CC85 /* KSYLiveDemo */,
+				0649287E1C83295400F0C09B /* KSYGPULiveDemo */,
 				06B2B1A41BE8F0D900E0CC85 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				06B2B1A31BE8F0D900E0CC85 /* KSYLiveDemo.app */,
+				0649287B1C83287500F0C09B /* KSYGPULiveDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,6 +163,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		064928671C83287500F0C09B /* KSYGPULiveDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 064928781C83287500F0C09B /* Build configuration list for PBXNativeTarget "KSYGPULiveDemo" */;
+			buildPhases = (
+				064928681C83287500F0C09B /* Sources */,
+				0649286E1C83287500F0C09B /* Frameworks */,
+				064928741C83287500F0C09B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KSYGPULiveDemo;
+			productName = KSYLiveDemo;
+			productReference = 0649287B1C83287500F0C09B /* KSYGPULiveDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
 		06B2B1A21BE8F0D900E0CC85 /* KSYLiveDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 06B2B1C91BE8F0D900E0CC85 /* Build configuration list for PBXNativeTarget "KSYLiveDemo" */;
@@ -138,9 +206,12 @@
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = qyvideo;
 				TargetAttributes = {
+					064928671C83287500F0C09B = {
+						DevelopmentTeam = ZGJ54Q7R45;
+					};
 					06B2B1A21BE8F0D900E0CC85 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = PL4ALT6BMK;
+						DevelopmentTeam = ZGJ54Q7R45;
 					};
 				};
 			};
@@ -158,11 +229,22 @@
 			projectRoot = "";
 			targets = (
 				06B2B1A21BE8F0D900E0CC85 /* KSYLiveDemo */,
+				064928671C83287500F0C09B /* KSYGPULiveDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		064928741C83287500F0C09B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				064928751C83287500F0C09B /* Main.storyboard in Resources */,
+				064928761C83287500F0C09B /* LaunchScreen.xib in Resources */,
+				064928771C83287500F0C09B /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		06B2B1A11BE8F0D900E0CC85 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -176,6 +258,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		064928681C83287500F0C09B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				064928821C83298000F0C09B /* KSYGPUStreamerVC.m in Sources */,
+				064928691C83287500F0C09B /* AppDelegate.m in Sources */,
+				0649286A1C83287500F0C09B /* KSYStreamerVC.m in Sources */,
+				0649286B1C83287500F0C09B /* KSYLiveVC.m in Sources */,
+				0649286C1C83287500F0C09B /* KSYPlayerVC.m in Sources */,
+				0649286D1C83287500F0C09B /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		06B2B19F1BE8F0D900E0CC85 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -210,6 +305,56 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		064928791C83287500F0C09B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					../build,
+					../frameworks,
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					KSYGPULIVE_DEMO,
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "KSYGPULiveDemo-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ksyun.ios.KSYLiveDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		0649287A1C83287500F0C09B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					../build,
+					../frameworks,
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = KSYGPULIVE_DEMO;
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "KSYGPULiveDemo-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ksyun.ios.KSYLiveDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
 		06B2B1C71BE8F0D900E0CC85 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -311,7 +456,8 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					../framework/live264,
+					../build,
+					../frameworks,
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = KSYLiveDemo/Info.plist;
@@ -332,7 +478,8 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					../framework/live264,
+					../build,
+					../frameworks,
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = KSYLiveDemo/Info.plist;
@@ -347,6 +494,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		064928781C83287500F0C09B /* Build configuration list for PBXNativeTarget "KSYGPULiveDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				064928791C83287500F0C09B /* Debug */,
+				0649287A1C83287500F0C09B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		06B2B19E1BE8F0D900E0CC85 /* Build configuration list for PBXProject "KSYLiveDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

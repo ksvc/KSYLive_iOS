@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>KSYStreamerBase Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">libksygpulive </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Kingsoft</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/audiokBPS">audiokBPS</option>
+		
+		<option value="//api/name/droppedVideoFrames">droppedVideoFrames</option>
+		
+		<option value="//api/name/enAutoApplyEstimateBW">enAutoApplyEstimateBW</option>
+		
+		<option value="//api/name/encodeAKbps">encodeAKbps</option>
+		
+		<option value="//api/name/encodeVKbps">encodeVKbps</option>
+		
+		<option value="//api/name/encodedFrames">encodedFrames</option>
+		
+		<option value="//api/name/encodingFPS">encodingFPS</option>
+		
+		<option value="//api/name/hostURL">hostURL</option>
+		
+		<option value="//api/name/netStateCode">netStateCode</option>
+		
+		<option value="//api/name/rtmpHostIP">rtmpHostIP</option>
+		
+		<option value="//api/name/streamErrorCode">streamErrorCode</option>
+		
+		<option value="//api/name/streamID">streamID</option>
+		
+		<option value="//api/name/streamState">streamState</option>
+		
+		<option value="//api/name/uploadedKByte">uploadedKByte</option>
+		
+		<option value="//api/name/videoCodec">videoCodec</option>
+		
+		<option value="//api/name/videoFPS">videoFPS</option>
+		
+		<option value="//api/name/videoInitBitrate">videoInitBitrate</option>
+		
+		<option value="//api/name/videoMaxBitrate">videoMaxBitrate</option>
+		
+		<option value="//api/name/videoMinBitrate">videoMinBitrate</option>
+		
+	</optgroup>
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/initWithDefaultCfg">- initWithDefaultCfg</option>
+		
+		<option value="//api/name/processAudioSampleBuffer:">- processAudioSampleBuffer:</option>
+		
+		<option value="//api/name/processVideoPixelBuffer:timeInfo:">- processVideoPixelBuffer:timeInfo:</option>
+		
+		<option value="//api/name/processVideoSampleBuffer:">- processVideoSampleBuffer:</option>
+		
+		<option value="//api/name/startStream:">- startStream:</option>
+		
+		<option value="//api/name/stopStream">- stopStream</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">KSYStreamerBase Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>KSYStreamerBase.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>金山云直播推流SDK iOS版提供了iOS移动设备上的推流功能</p>
+
+<ul>
+<li>音频编码采用AAC编码，码率可配置;</li>
+<li>视频频编码采用H.264编码，码率可配置;</li>
+<li>支持 RTMP 协议直播推流;</li>
+</ul>
+
+
+<h2>版本信息</h2>
+
+<p><strong>Version</strong>: 1.0</p>
+
+<p><strong>Found</strong>: 2015-10-15</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/hostURL" title="hostURL"></a>
+	<h3 class="method-title"><code><a href="#//api/name/hostURL">&nbsp;&nbsp;hostURL</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>rtmp主机地址</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSURL *hostURL</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>将音视频流推向该主机</p>
+
+<pre><code>eg: rtmp://xxx.xxx.xxx.xxx/appname/streamKey
+</code></pre>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoFPS" title="videoFPS"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoFPS">&nbsp;&nbsp;videoFPS</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视频帧率</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int videoFPS</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>请保持调用 processVideoSampleBuffer 或 processVideoPixelBuffer 的频率与此设置的帧率一致</p><p>video frame per seconds 有效范围[1~30], 超出会提示参数错误</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoCodec" title="videoCodec"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoCodec">&nbsp;&nbsp;videoCodec</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视频编码器</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) KSYVideoCodec videoCodec</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>video codec used for encode</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Constants/KSYVideoCodec.html">KSYVideoCodec</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoInitBitrate" title="videoInitBitrate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoInitBitrate">&nbsp;&nbsp;videoInitBitrate</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视频编码起始码率（单位:kbps）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int videoInitBitrate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>开始推流时的视频码率，开始推流后，根据网络情况在 [Min, Max]范围内调节</p><p>视频码率上调则画面更清晰，下调则画面更模糊</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/videoMaxBitrate">@property videoMaxBitrate</a>, <a href="#//api/name/videoMinBitrate">@property videoMinBitrate</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoMaxBitrate" title="videoMaxBitrate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoMaxBitrate">&nbsp;&nbsp;videoMaxBitrate</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视频编码最高码率（单位:kbps）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int videoMaxBitrate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>视频码率自适应调整的上限, 为目标码率</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/videoInitBitrate">@property videoInitBitrate</a>, <a href="#//api/name/videoMinBitrate">@property videoMinBitrate</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoMinBitrate" title="videoMinBitrate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoMinBitrate">&nbsp;&nbsp;videoMinBitrate</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视频编码最低码率（单位:kbps）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int videoMinBitrate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>视频码率自适应调整的下限</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/videoInitBitrate">@property videoInitBitrate</a>, <a href="#//api/name/videoMaxBitrate">@property videoMaxBitrate</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/audiokBPS" title="audiokBPS"></a>
+	<h3 class="method-title"><code><a href="#//api/name/audiokBPS">&nbsp;&nbsp;audiokBPS</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>音频编码码率（单位:kbps）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int audiokBPS</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>音频目标编码码率 (比如48,96,128等)</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/enAutoApplyEstimateBW" title="enAutoApplyEstimateBW"></a>
+	<h3 class="method-title"><code><a href="#//api/name/enAutoApplyEstimateBW">&nbsp;&nbsp;enAutoApplyEstimateBW</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>启用自动调整码率</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL enAutoApplyEstimateBW</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>默认为关闭自动调整码率,开始预览前设置有效</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/streamState" title="streamState"></a>
+	<h3 class="method-title"><code><a href="#//api/name/streamState">&nbsp;&nbsp;streamState</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>当前推流状况</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) KSYStreamState streamState</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>可以通过该属性获取推流会话的工作状况</p><p>通知：
+* KSYStreamStateDidChangeNotification 当推流工作状态发生变化时提供通知
+* 收到通知后，通过本属性查询新的状态，并作出相应的动作</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/streamErrorCode" title="streamErrorCode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/streamErrorCode">&nbsp;&nbsp;streamErrorCode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>当前推流的错误码</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) KSYStreamErrorCode streamErrorCode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>可以通过该属性获取推流失败的原因</p><p>当<a href="#//api/name/streamState">streamState</a> 为KSYStreamStateError时可查询</p><p>KSYStreamErrorCode_KSYAUTHFAILED 除外</p><p>在<a href="#//api/name/streamState">streamState</a> 为KSYStreamStateConnected 时查询到</p><p>状态变化后清0</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/streamState">@property streamState</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/netStateCode" title="netStateCode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/netStateCode">&nbsp;&nbsp;netStateCode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>当前推流的网络事件</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) KSYNetStateCode netStateCode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>可以通过该属性查询网络状况</p><p>通知：
+* KSYNetStateEventNotification 当检测到网络发生特定事件时SDK发出通知
+* 收到通知后，通过本属性查询具体事件类型</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithDefaultCfg" title="initWithDefaultCfg"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithDefaultCfg">&ndash;&nbsp;initWithDefaultCfg</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>初始化方法 （step1）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithDefaultCfg</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>初始化，将下列属性设置为默认值</p>
+
+<ul>
+<li>_videoDimension   = KSYVideoDimension_Default;</li>
+<li>_<a href="#//api/name/videoFPS">videoFPS</a>         = 15;</li>
+<li><em><a href="#//api/name/videoCodec">videoCodec</a>       = <a href="../Constants/KSYVideoCodec.html">KSYVideoCodec</a></em>X264;</li>
+<li>_<a href="#//api/name/audiokBPS">audiokBPS</a>        = 48;</li>
+<li>_<a href="#//api/name/videoInitBitrate">videoInitBitrate</a> = 600;</li>
+<li>_<a href="#//api/name/videoMaxBitrate">videoMaxBitrate</a>  = 800;</li>
+<li>_<a href="#//api/name/videoMinBitrate">videoMinBitrate</a>  = 200;</li>
+</ul>
+<div class="warning"><p><strong>Warning:</strong> KSYStreamer只支持单实例推流，构造多个实例会出现异常</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/startStream:" title="startStream:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/startStream:">&ndash;&nbsp;startStream:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>启动推流 （step2）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)startStream:(NSURL *)<em>hostURL</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>hostURL</code></th>
+						<td><p>rtmp 服务器地址 “rtmp://xxx.xxx.xxx.xxx/appname/streamKey"</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置完成推流参数之后，将媒体流推送到 publishURL 对应的地址</p><p>推流参数主要是视频编码器，音视频码率的设置</p><div class="warning"><p><strong>Warning:</strong> 开始推流前，需要保证按照采集的频率，持续通过 processVideoSampleBuffer 和 processAudioSampleBuffer 送入音视频数据，否则推流失败</p></div>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/hostURL">@property hostURL</a>, <a href="#//api/name/videoCodec">@property videoCodec</a>,videokBPS,<a href="#//api/name/audiokBPS">@property audiokBPS</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/stopStream" title="stopStream"></a>
+	<h3 class="method-title"><code><a href="#//api/name/stopStream">&ndash;&nbsp;stopStream</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>停止推流 （step3）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)stopStream</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>断开网络连接，停止视频编码</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/processVideoSampleBuffer:" title="processVideoSampleBuffer:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/processVideoSampleBuffer:">&ndash;&nbsp;processVideoSampleBuffer:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>处理一个视频帧</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)processVideoSampleBuffer:(CMSampleBufferRef)<em>sampleBuffer</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>sampleBuffer</code></th>
+						<td><p>Buffer to process</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>应当在开始推流前定期调用此接口，比如按照采集帧率调用</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/processAudioSampleBuffer:" title="processAudioSampleBuffer:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/processAudioSampleBuffer:">&ndash;&nbsp;processAudioSampleBuffer:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>处理一段音频数据</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)processAudioSampleBuffer:(CMSampleBufferRef)<em>sampleBuffer</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>sampleBuffer</code></th>
+						<td><p>Buffer to process</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>应当在开始推流前定期调用此接口，与processVideoSampleBuffer 交错进行</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/processVideoPixelBuffer:timeInfo:" title="processVideoPixelBuffer:timeInfo:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/processVideoPixelBuffer:timeInfo:">&ndash;&nbsp;processVideoPixelBuffer:timeInfo:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>处理一个视频帧</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)processVideoPixelBuffer:(CVPixelBufferRef)<em>pixelBuffer</em> timeInfo:(CMTime)<em>timeStamp</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>pixelBuffer</code></th>
+						<td><p>待编码的像素数据</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>timeStamp</code></th>
+						<td><p>待编码的时间戳</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>应当在开始推流前定期调用此接口，比如按照采集帧率调用</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/streamID" title="streamID"></a>
+	<h3 class="method-title"><code><a href="#//api/name/streamID">&nbsp;&nbsp;streamID</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>当前推流的事件ID</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *streamID</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>md5(hostURL+timestamp) 对本次推流活动的标识</p><p>timestamp 为建立连接时的事件戳</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/hostURL">@property hostURL</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/encodeVKbps" title="encodeVKbps"></a>
+	<h3 class="method-title"><code><a href="#//api/name/encodeVKbps">&nbsp;&nbsp;encodeVKbps</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>当前编码的视频码率大小（每秒更新）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) double encodeVKbps</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>该码率为编码器产生的视频码率大小，单位为kbps</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/videoMaxBitrate">@property videoMaxBitrate</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/encodeAKbps" title="encodeAKbps"></a>
+	<h3 class="method-title"><code><a href="#//api/name/encodeAKbps">&nbsp;&nbsp;encodeAKbps</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>当前编码的音频码率大小（每秒更新）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) double encodeAKbps</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>该码率为编码器产生的音频码率大小，单位为kbps</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/audiokBPS">@property audiokBPS</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/uploadedKByte" title="uploadedKByte"></a>
+	<h3 class="method-title"><code><a href="#//api/name/uploadedKByte">&nbsp;&nbsp;uploadedKByte</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取本次推流发送的流量大小</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) int uploadedKByte</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>从开始推流到现在，发送出去的数据字节数，单位为KByte</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/encodingFPS" title="encodingFPS"></a>
+	<h3 class="method-title"><code><a href="#//api/name/encodingFPS">&nbsp;&nbsp;encodingFPS</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取当前编码的平均视频帧率</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) double encodingFPS</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>采集设备的输出帧率为videoFPS，约等于编码的目标帧率</p><p>编码的视频帧率不会高于采集帧率，但是当CPU资源不足时，编码帧率会低于采集帧率</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/videoFPS">@property videoFPS</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/encodedFrames" title="encodedFrames"></a>
+	<h3 class="method-title"><code><a href="#//api/name/encodedFrames">&nbsp;&nbsp;encodedFrames</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取本次推流编码的视频总帧数</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) int encodedFrames</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>从开始推流到现在，编码过的视频总帧数</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/droppedVideoFrames" title="droppedVideoFrames"></a>
+	<h3 class="method-title"><code><a href="#//api/name/droppedVideoFrames">&nbsp;&nbsp;droppedVideoFrames</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取本次推流发送的丢帧数量</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) int droppedVideoFrames</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>这里是指编码后，由于网络发送阻塞导致丢弃的帧数</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtmpHostIP" title="rtmpHostIP"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtmpHostIP">&nbsp;&nbsp;rtmpHostIP</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>当前推流的rtmp服务器的主机IP</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (atomic, readonly) NSString *rtmpHostIP</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>开始推流之后获取才为有效IP, 之前为空字符串</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-02-29</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

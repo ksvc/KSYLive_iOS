@@ -1,6 +1,6 @@
 //
 //  ViewController.h
-//  KSYStreamerVC
+//  KSYGPUStreamerVC
 //
 //  Created by yiqian on 10/15/15.
 //  Copyright (c) 2015 qyvideo. All rights reserved.
@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class KSYStreamer;
+@class KSYGPUStreamer;
 
-@interface KSYStreamerVC : UIViewController
+@interface KSYGPUStreamerVC : UIViewController
 
 // 切到当前VC后， 界面自动开启推流
 @property BOOL  bAutoStart;
@@ -18,7 +18,7 @@
 // 推流地址 完整的URL
 @property NSURL * hostURL;
 
-- (KSYStreamer *) getStreamer;
+- (KSYGPUStreamer *) getStreamer;
 
 // 采集和推流的参数设置
 - (void) setStreamerCfg;
@@ -28,8 +28,8 @@
 
 // 在UI上显示的调试信息
 @property UILabel *stat;
-
-// 定时更新调试信息
+// 定时更新调试信息stat
 - (void)updateStat:(NSTimer *)theTimer ;
 
 @end
+

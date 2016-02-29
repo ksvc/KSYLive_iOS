@@ -1,4 +1,4 @@
 Documentation set was installed to Xcode!
 
-Path: /Users/zengfanping/Library/Developer/Shared/Documentation/DocSets/com.ksyun.KSYPlayer.docset
-Time: 2016-02-22 14:54:09 +0000
+Path: /Users/qianyi/Library/Developer/Shared/Documentation/DocSets/com.ksyun.libksygpulive.docset
+Time: 2016-02-29 02:36:13 +0000
