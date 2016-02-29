@@ -7,13 +7,8 @@
 //
 
 #import "KSYStreamerVC.h"
-#ifdef KSYSTREAMER_DEMO
-#import <KSYStreamer/KSYStreamer.h>
-#import <KSYStreamer/KSYAuthInfo.h>
-#else
-#import <libksygpulive/KSYStreamer.h>
-#import <libksygpulive/KSYAuthInfo.h>
-#endif
+
+#import <libksygpulive/libksygpulive.h>
 
 
 @interface KSYStreamerVC ()
@@ -67,7 +62,6 @@
     [self initKSYAuth];
     _pubSession = [[KSYStreamer alloc] initWithDefaultCfg];
     [self setStreamerCfg];
-    _bAutoStart = NO;
 }
 
 - (void) addObservers {

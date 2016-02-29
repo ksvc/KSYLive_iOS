@@ -8,10 +8,9 @@
 
 #import "KSYGPUStreamerVC.h"
 #import <GPUImage/GPUImage.h>
-#import <libksygpulive/KSYStreamerBase.h>
+#import <libksygpulive/libksygpulive.h>
 #import <libksygpulive/KSYGPUCamera.h>
-#import <libksygpulive/KSYGPUStreamer.h>
-#import <libksygpulive/KSYAuthInfo.h>
+#import <libksygpulive/KSYGPUBeautifyFilter.h>
 
 @interface KSYGPUStreamerVC ()
 @property KSYGPUStreamer * gpuStreamer;

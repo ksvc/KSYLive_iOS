@@ -9,13 +9,13 @@
 #import "KSYLiveVC.h"
 #import "KSYStreamerVC.h"
 #import "KSYPlayerVC.h"
-#ifdef KSYGPULIVE_DEMO
 #import "KSYGPUStreamerVC.h"
-#endif
+
 
 @interface KSYLiveVC ()
 
 @property KSYPlayerVC    * playerVC;
+@property KSYStreamerVC  * streamerVC;
 
 @end
 
@@ -52,8 +52,6 @@
     [button addTarget:self action:@selector(onStreamer:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
     
-    _playerVC   = [[KSYPlayerVC alloc] init];
-#ifdef KSYGPULIVE_DEMO
     yPos += btnHgt*2;
     frame2 = CGRectMake( xPos, yPos, btnWdt, btnHgt);
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -62,7 +60,10 @@
     button.backgroundColor = [UIColor lightGrayColor];
     [button addTarget:self action:@selector(onGPUStreamer:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
-#endif
+    
+    _playerVC   = [[KSYPlayerVC alloc] init];
+    _streamerVC = [[KSYStreamerVC alloc] init];
+
 }
 
 - (IBAction)onPlayer:(id)sender {
@@ -71,15 +72,13 @@
 
 
 - (IBAction)onStreamer:(id)sender {
-    KSYStreamerVC  * streamerVC = [[KSYStreamerVC alloc] init];
-    [self presentViewController:streamerVC animated:true completion:nil];
+    [self presentViewController:_streamerVC animated:true completion:nil];
 }
-#ifdef KSYGPULIVE_DEMO
+
 - (IBAction)onGPUStreamer:(id)sender {
     KSYGPUStreamerVC    * vc = [[KSYGPUStreamerVC alloc] init];
     [self presentViewController:vc animated:true completion:nil];
 }
-#endif
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

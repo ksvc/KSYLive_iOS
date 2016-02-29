@@ -32,8 +32,8 @@
     [super viewDidLoad];
     [self initUI];
     _url = [NSURL URLWithString:@"rtmp://live.hkstv.hk.lxdns.com/live/hks"];
-//    _url = [NSURL URLWithString:@"rtmp://test.rtmplive.ks-cdn.com/live/fpzeng"];
-//    _url = [NSURL URLWithString:@"http://121.40.205.48:8091/demo/h265.flv"];
+    _url = [NSURL URLWithString:@"rtmp://test.rtmplive.ks-cdn.com/live/fpzeng"];
+    //_url = [NSURL URLWithString:@"http://121.40.205.48:8091/demo/h265.flv"];
     [self setupObservers];
     [self initKSYAuth];
 }
