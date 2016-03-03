@@ -19,7 +19,8 @@ Pod::Spec.new do |spec|
   DESC
   spec.platform     = :ios, '7.0'
   spec.requires_arc = true
-  spec.frameworks   = 'VideoToolbox', 'GPUImage'
+  spec.frameworks   = 'VideoToolbox'
+  spec.dependency 'GPUImage'
   spec.ios.library = 'z', 'iconv', 'stdc++.6'
   spec.source = { :git => 'https://github.com/ksvc/KSYLive_iOS.git', :tag => 'v1.2.0'}
   spec.preserve_paths      = 'framework/livegpu/libksygpulive.framework'
