@@ -15,6 +15,8 @@
     
 };
 
+-(void)setBeautylevel:(int)level;
+
 @property (readwrite, nonatomic) CGPoint singleStepOffset;
 @property (readwrite, nonatomic) GPUVector4 params;
 
