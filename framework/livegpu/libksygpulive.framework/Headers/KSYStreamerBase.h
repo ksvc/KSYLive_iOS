@@ -238,4 +238,49 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 @property (atomic, readonly) NSString* rtmpHostIP;
 
 
+#pragma mark - audio mixer
+
+/**
+ @abstract   开始播放背景音乐
+ @param      path 本地音乐的路径
+ @param      loop 是否循环播放此音乐
+ @return     是否能够开始播放
+ @discussion 应当在开始推流前定期调用此接口，比如按照采集帧率调用
+ @discussion 暂时只支持 441000Hz的音频文件
+ */
+- (void) startMixMusic:(NSString*) path
+                isLoop:(BOOL) loop;
+
+
+/**
+ @abstract   停止播放背景音乐
+ */
+- (void) stopMixMusic;
+
+/**
+ @abstract   暂停播放背景音乐
+ */
+- (void) pauseMixMusic;
+
+/**
+ @abstract   恢复播放背景音乐
+ */
+- (void) resumeMixMusic;
+
+/**
+ @abstract   设置背景音乐的音量
+ */
+- (void) setBackgroundVolume:(float) volume;
+
+/**
+ @abstract   启用混音
+ */
+- (void) enableMicMixMusic:(BOOL) enableMixing;
+
+/**
+ @abstract  静音推流
+ @param     bMute YES / ON
+ */
+- (void) muteStreame:(BOOL) bMute;
+
 @end

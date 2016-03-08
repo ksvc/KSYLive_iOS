@@ -16,9 +16,17 @@
 		<data>
 		dqme10Xt8tnAzNQH98mPwgAf9ZE=
 		</data>
+		<key>Headers/KSYGPUBeautifyPlusFilter.h</key>
+		<data>
+		jlasuksa4+Yuktm5dvRh6i+5DQk=
+		</data>
 		<key>Headers/KSYGPUCamera.h</key>
 		<data>
 		nj9H8phAzoK8XB2P0kB9EwQTNqo=
+		</data>
+		<key>Headers/KSYGPUDnoiseFilter.h</key>
+		<data>
+		Y1UGJpWUotvgtaYyanl36wiG6iU=
 		</data>
 		<key>Headers/KSYGPUStreamer.h</key>
 		<data>
@@ -34,11 +42,11 @@
 		</data>
 		<key>Headers/KSYMoviePlayerController.h</key>
 		<data>
-		M2HARc6AEy4RrGwtLqi0B2ndUWI=
+		PV/0A1dltX5BKl1TfjG9S8t8OgM=
 		</data>
 		<key>Headers/KSYPlayerAuth.h</key>
 		<data>
-		5gxE7S7g0phJ/FaXXBkmmhzo6uk=
+		JM5yh6ys+RSrgBXgtBcIqXhaqXs=
 		</data>
 		<key>Headers/KSYStreamer.h</key>
 		<data>
@@ -46,7 +54,7 @@
 		</data>
 		<key>Headers/KSYStreamerBase.h</key>
 		<data>
-		/KYBgAL19bGVkjE0uiRYKZVnVZI=
+		qf/rz97kcg2Db6Qb1vmBBKjIhGQ=
 		</data>
 		<key>Headers/KSYTypeDef.h</key>
 		<data>
@@ -58,7 +66,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		WKv7oLb3Qxmwf1XvHBGUcVk6Hc0=
+		9HcCP36OCGo8CGPrsllRG6wTThQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -79,9 +87,17 @@
 		<data>
 		dqme10Xt8tnAzNQH98mPwgAf9ZE=
 		</data>
+		<key>Headers/KSYGPUBeautifyPlusFilter.h</key>
+		<data>
+		jlasuksa4+Yuktm5dvRh6i+5DQk=
+		</data>
 		<key>Headers/KSYGPUCamera.h</key>
 		<data>
 		nj9H8phAzoK8XB2P0kB9EwQTNqo=
+		</data>
+		<key>Headers/KSYGPUDnoiseFilter.h</key>
+		<data>
+		Y1UGJpWUotvgtaYyanl36wiG6iU=
 		</data>
 		<key>Headers/KSYGPUStreamer.h</key>
 		<data>
@@ -97,11 +113,11 @@
 		</data>
 		<key>Headers/KSYMoviePlayerController.h</key>
 		<data>
-		M2HARc6AEy4RrGwtLqi0B2ndUWI=
+		PV/0A1dltX5BKl1TfjG9S8t8OgM=
 		</data>
 		<key>Headers/KSYPlayerAuth.h</key>
 		<data>
-		5gxE7S7g0phJ/FaXXBkmmhzo6uk=
+		JM5yh6ys+RSrgBXgtBcIqXhaqXs=
 		</data>
 		<key>Headers/KSYStreamer.h</key>
 		<data>
@@ -109,7 +125,7 @@
 		</data>
 		<key>Headers/KSYStreamerBase.h</key>
 		<data>
-		/KYBgAL19bGVkjE0uiRYKZVnVZI=
+		qf/rz97kcg2Db6Qb1vmBBKjIhGQ=
 		</data>
 		<key>Headers/KSYTypeDef.h</key>
 		<data>
