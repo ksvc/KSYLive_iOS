@@ -32,4 +32,7 @@
 // 定时更新调试信息
 - (void)updateStat:(NSTimer *)theTimer ;
 
+
+- (void) addObservers;
+- (void) rmObservers;
 @end

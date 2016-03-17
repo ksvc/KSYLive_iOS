@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <libksygpulive/libksygpulive.h>
 
 @interface KSYPlayerVC : UIViewController
 

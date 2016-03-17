@@ -9,10 +9,21 @@
 #import "KSYGPUStreamerVC.h"
 #import <GPUImage/GPUImage.h>
 #import <libksygpulive/libksygpulive.h>
-#import <libksygpulive/KSYGPUCamera.h>
-#import <libksygpulive/KSYGPUBeautifyFilter.h>
+#import <libksygpulive/libksygpuimage.h>
 
-@interface KSYGPUStreamerVC ()
+
+@interface KSYGPUStreamerVC () {
+    UIButton *_btnMusicPlay;
+    UIButton *_btnMusicPause;
+    UIButton *_btnMusicMix;
+    UIButton *_btnMute;
+
+    UISlider *_bgmVolS;
+    UISlider *_micVolS;
+    // chose filters
+    UIButton *_btnFilters[4];
+    
+}
 @property KSYGPUStreamer * gpuStreamer;
 @property KSYStreamerBase * streamer;
 @property KSYGPUCamera * capDev;
@@ -30,6 +41,7 @@
 @property UIButton *btnQuit;
 @property UISwitch *btnAutoReconnect;
 @property UILabel  *lblAutoReconnect;
+
 
 @property UISwitch *btnHighRes;
 @property UILabel  *lblHighRes;
@@ -64,6 +76,7 @@
     [self initUI ];
     [self initKSYAuth];
     [self setStreamerCfg];
+    [self addObservers ];
 }
 - (void) addObservers {
     // statistics update every seconds
@@ -118,9 +131,21 @@
     return sw;
 }
 
+- (UISlider *)addSliderFrom: (float) minV
+                         To: (float) maxV{
+    UISlider *sl = [[UISlider alloc] init];
+    [self.view addSubview:sl];
+    sl.minimumValue = minV;
+    sl.maximumValue = maxV;
+    sl.value = 0.5;
+    [ sl addTarget:self action:@selector(onVolChanged:) forControlEvents:UIControlEventValueChanged ];
+    return sl;
+}
+
 - (void) initUI {
     // add prevew at bottom
     _preview    = [[GPUImageView alloc] init];
+    [_preview setFillMode:kGPUImageFillModePreserveAspectRatioAndFill];
     [self.view addSubview:_preview];
     
     _btnPreview = [self addButton:@"开始预览"  action:@selector(onPreview:)];
@@ -128,6 +153,21 @@
     _btnFlash   = [self addButton:@"闪光灯"    action:@selector(onFlash:)];
     _btnCamera  = [self addButton:@"前后摄像头" action:@selector(onCamera:)];
     _btnQuit    = [self addButton:@"退出"      action:@selector(onQuit:)];
+    _btnFilters[0] = [self addButton:@"原始美白" action:@selector(OnChoseFilter:)];
+    _btnFilters[1] = [self addButton:@"美颜" action:@selector(OnChoseFilter:)];
+    _btnFilters[2] = [self addButton:@"白皙" action:@selector(OnChoseFilter:)];
+    _btnFilters[3] = [self addButton:@"美白x+" action:@selector(OnChoseFilter:)];
+    
+
+    _btnMusicPlay  = [self addButton:@"播放"  action:@selector(onMusicPlay:)];
+    _btnMusicPause = [self addButton:@"暂停"  action:@selector(onMusicPause:)];
+    _btnMusicMix   = [self addButton:@"混音"  action:@selector(onMusicMix:)];
+    
+    _bgmVolS     = [self addSliderFrom:0.0 To:1.0];
+    _micVolS     = [self addSliderFrom:0.0 To:1.0];
+    _micVolS.value = 1.0;
+    _btnMute    = [self addButton:@"静音"   action:@selector(onStreamMute:)];
+    
 
     _lblAutoBW = [self addLable:@"自动调码率"];
     _btnAutoBw = [self addSwitch:YES];
@@ -155,59 +195,57 @@
     CGFloat gap = 4;
     CGFloat btnWdt = 100;
     CGFloat btnHgt = 40;
-    CGFloat xPos = gap;
     CGFloat yPos = hgt - btnHgt - gap;
-    
+    CGFloat xLeft   = gap;
+    CGFloat xMiddle = (wdt - btnWdt*3 - gap*2) /2 + gap + btnWdt;
+    CGFloat xRight  = wdt - btnWdt - gap;
     // full screen
     _preview.frame = self.view.bounds;
     
     // bottom left
-    _btnPreview.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-
-    // bottom right
-    xPos = wdt - btnWdt - gap;
-    _btnTStream.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
+    _btnPreview.frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
+    _btnTStream.frame = CGRectMake(xRight, yPos, btnWdt, btnHgt);
     
     // top left
-    xPos = gap;
     yPos = 20+gap*3;
-    _btnFlash.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    
-    // top middle
-    xPos = (wdt - btnWdt*3 - gap*2) /2 + gap + btnWdt;
-    _btnCamera.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    
-    // top right
-    xPos = wdt - btnWdt - gap;
-    _btnQuit.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
+    _btnFlash.frame  = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
+    _btnCamera.frame = CGRectMake(xMiddle, yPos, btnWdt, btnHgt);
+    _btnQuit.frame   = CGRectMake(xRight,  yPos, btnWdt, btnHgt);
 
     // top row 2 left
     yPos += (gap + btnHgt);
-    xPos = gap;
-    _lblAutoBW.frame =CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    
-    // top row 2 middle
-    xPos = (wdt - btnWdt*3 - gap*2) /2 + gap + btnWdt;
-    _lblHighRes.frame =CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    
-    // top row 2 right
-    xPos = wdt - btnWdt - gap ;
-    _lblAutoReconnect.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
+    _lblAutoBW.frame        = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
+    _lblHighRes.frame       = CGRectMake(xMiddle, yPos, btnWdt, btnHgt);
+    _lblAutoReconnect.frame = CGRectMake(xRight,  yPos, btnWdt, btnHgt);
     
     // top row 3 left
     yPos += (btnHgt);
-    xPos = gap;
-    _btnAutoBw.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
+    _btnAutoBw.frame        = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
+    _btnHighRes.frame       = CGRectMake(xMiddle, yPos, btnWdt, btnHgt);
+    _btnAutoReconnect.frame = CGRectMake(xRight,  yPos, btnWdt, btnHgt);
     
-    // top row 3 middle
-    xPos = (wdt - btnWdt*3 - gap*2) /2 + gap + btnWdt;
-    _btnHighRes.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
+    // top row 4 left
+    yPos += (btnHgt);
+    _btnMusicPlay.frame   = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
+    _btnMusicPause.frame  = CGRectMake(xMiddle, yPos, btnWdt, btnHgt);
+    _btnMusicMix.frame    = CGRectMake(xRight,  yPos, btnWdt, btnHgt);
     
-    // top row 3 right
-    xPos = wdt - btnWdt - gap ;
-    _btnAutoReconnect.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    
-    // top row 4
+    // top row 5 left
+    yPos += (btnHgt+2);
+    _bgmVolS.frame    = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
+    _micVolS.frame    = CGRectMake(xMiddle, yPos, btnWdt, btnHgt);
+    _btnMute.frame    = CGRectMake(xRight,  yPos, btnWdt, btnHgt);
+
+     yPos += (btnHgt+20);
+    _btnFilters[0].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
+
+    yPos += (btnHgt+5);
+    _btnFilters[1].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
+    yPos += (btnHgt+5);
+    _btnFilters[2].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
+    yPos += (btnHgt+5);
+    _btnFilters[3].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
+    // top row 5
     yPos += ( btnHgt);
     btnWdt = self.view.bounds.size.width - gap*2;
     btnHgt = hgt - yPos - btnHgt;
@@ -218,17 +256,12 @@
     if ( _btnAutoBw != nil ) {
         [self layoutUI];
     }
-    [self addObservers ];
     if (_bAutoStart) {
         [self onPreview:nil];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self onStream:nil];
         });
     }
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [self rmObservers ];
 }
 
 - (BOOL)shouldAutorotate {
@@ -248,7 +281,7 @@
     double srcWdt = 540.0;
     double srcHgt = 960.0;
     
-    double dstWdt = 320.0;
+    double dstWdt = 480.0;
     double dstHgt = 640.0;
     
     double x = (srcWdt-dstWdt)/2/srcWdt;
@@ -267,21 +300,34 @@
     // capture settings
     NSString *preset = @"";
     if (_btnHighRes.on ) {
-        preset = AVCaptureSessionPresetiFrame960x540;
+        preset = AVCaptureSessionPreset640x480;
+        //_cropfilter = [[GPUImageCropFilter alloc] initWithCropRegion:rect];
     }
     else {
         preset = AVCaptureSessionPresetiFrame960x540;
         _cropfilter = [[GPUImageCropFilter alloc] initWithCropRegion:rect];
-
     }
     BOOL useGPUFilter = YES;
+    
+    __weak typeof(self) weakself = self;
+    _streamer.sendInfoBlock = ^(NSString *string){
+        [weakself showMessage:string];
+    };
     if (useGPUFilter) {
         _gpuStreamer = [[KSYGPUStreamer alloc] initWithDefaultCfg];
+        _gpuStreamer.sendBlock = ^(NSString *string){
+            [weakself showMessage:string];
+        };
+        
         _streamer = [_gpuStreamer getStreamer];
+
     }
     else {
         _gpuStreamer = nil;
         _streamer = [[KSYStreamerBase alloc] initWithDefaultCfg];
+        _streamer.sendInfoBlock = ^(NSString *string){
+            [weakself showMessage:string];
+        };
     }
     _capDev = [[KSYGPUCamera alloc] initWithSessionPreset:preset
                                            cameraPosition:AVCaptureDevicePositionBack];
@@ -291,6 +337,7 @@
     }
     _capDev.outputImageOrientation = orien;
     _filter = [[KSYGPUBeautifyFilter alloc] init];
+    
     //[_capDev addTarget:(GPUImageView *)filterView];
     _capDev.bStreamVideo = useGPUFilter ? NO:YES;
     _capDev.bStreamAudio = true;
@@ -342,10 +389,14 @@
     NSString *streamName = [NSString stringWithFormat:@"%@.%@", devCode, codecSuf ];
     
     // hostURL = rtmpSrv + streamName
-    NSString *rtmpSrv  = @"rtmp://test.uplive.ksyun.com/live";
+    NSString *rtmpSrv  = @"rtmp://120.132.75.127/live";
     NSString *url      = [  NSString stringWithFormat:@"%@/%@", rtmpSrv, streamName];
     _hostURL = [[NSURL alloc] initWithString:url];
 }
+- (void)showMessage:(NSString *)str{
+    NSLog(@"---------%@----------",str);
+}
+#pragma mark - UI responde
 
 - (IBAction)onQuit:(id)sender {
     [_streamer stopStream];
@@ -354,11 +405,42 @@
     
 }
 
+-(IBAction)OnChoseFilter:(id)sender {
+    for (int b = 0; b < 4; ++b) {
+        if (sender == _btnFilters[b]) {
+            _btnFilters[b].enabled = NO;
+        }
+        else {
+            _btnFilters[b].enabled = YES;
+        }
+    }
+    if( sender == _btnFilters[0]) {
+        _filter = [[KSYGPUBeautifyExtFilter alloc] init];
+    }
+    else if( sender == _btnFilters[1]) {
+        _filter = [[KSYGPUBeautifyFilter alloc] init];
+    }
+    else if( sender == _btnFilters[2]) {
+        _filter = [[KSYGPUDnoiseFilter alloc] init];
+    }
+    else if( sender == _btnFilters[3])    {
+        _filter = [[KSYGPUBeautifyPlusFilter alloc] init];
+    }
+
+    [_capDev removeAllTargets];
+    [_filter removeAllTargets];
+    
+    [_capDev addTarget:_filter];
+    [_filter addTarget:_preview];
+    [_filter addTarget:_gpuStreamer];
+}
+
+
+
 - (IBAction)onPreview:(id)sender {
     if ( NO == _btnPreview.isEnabled) {
         return;
     }
-
     if ( ! _capDev.isRunning ) {
         [self setStreamerCfg];
         [_capDev startCameraCapture];
@@ -378,6 +460,10 @@
     }
     if (_streamer.streamState != KSYStreamStateConnected) {
         [_streamer startStream: _hostURL];
+        
+        [_streamer setMicVolume:_micVolS.value];
+        [_streamer setBgmVolume:_bgmVolS.value];
+
         [self initStatData];
     }
     else {
@@ -402,6 +488,59 @@
         [_btnCamera setTitle:@"切到后摄像" forState: UIControlStateNormal];
     }
     [_btnFlash  setEnabled:(_capDev.isRunning && [_capDev isTorchSupported]) ];
+}
+- (IBAction)onMusicPlay:(id)sender {
+    NSString *testMp3 = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/test.mp3"];
+    static int i = 0;
+    i = !i;
+    if (i) {
+        NSLog(@"bgm start %@", testMp3);
+        _streamer.bgmFinishBlock = ^{
+            NSLog(@"bgm over %@", testMp3);
+        };
+        [_streamer startMixMusic:testMp3 isLoop:NO];
+    }
+    else {
+        [_streamer stopMixMusic];
+    }
+}
+
+- (IBAction)onMusicPause:(id)sender {
+    static int i = 0;
+    i = !i;
+    if (i) {
+        [_streamer pauseMixMusic];
+    }
+    else {
+        [_streamer resumeMixMusic];
+    }
+}
+
+- (IBAction)onMusicMix:(id)sender {
+    static BOOL i = NO;
+    i = !i;
+    [_streamer enableMicMixMusic:i];
+}
+
+    
+    
+
+
+- (IBAction)onVolChanged:(id)sender {
+    if (sender == _bgmVolS) {
+        [_streamer setBgmVolume:_bgmVolS.value];
+    }
+    else if (sender == _micVolS) {
+        [_streamer setMicVolume:_micVolS.value];
+    }
+}
+
+- (IBAction)onStreamMute:(id)sender {
+    static BOOL i = NO;
+    i = !i;
+    if (_streamer){
+        [_streamer muteStreame:i];
+    }
 }
 
 - (void) initStatData {
@@ -445,7 +584,7 @@
         _lastDroppedF = droppedF;
         NSString *uploadDateSize = [ self sizeFormatted:KB ];
         NSString* stateurl  = [NSString stringWithFormat:@"%@\n", [_hostURL absoluteString]] ;
-        NSString* statekbps = [NSString stringWithFormat:@"realtime:%4.1fkbps %@\n", realKbps, _netEventRaiseDrop];
+        NSString* statekbps = [NSString stringWithFormat:@"realtime:%4.1fkbps %.2f%@\n", realKbps, _bgmVolS.value, _netEventRaiseDrop];
         NSString* statefps  = [NSString stringWithFormat:@"%2.1f fps | %@  | %@ \n", fps, uploadDateSize, [self timeFormatted: (int)(curTime-_startTime) ] ];
         NSString* statedrop = [NSString stringWithFormat:@"dropFrame %4d | %3.1f | %2.1f%% \n", droppedF, dropRate, droppedF * 100.0 / curFrames ];
 
@@ -488,7 +627,7 @@
     }
     return NO;
 }
-
+#pragma mark - state handle
 - (void) onStreamError {
     KSYStreamErrorCode err = _streamer.streamErrorCode;
     [_btnPreview setEnabled:TRUE];
@@ -650,7 +789,7 @@
 - (void)initKSYAuth {
 #warning "please replace ak/sk with your own"
     NSString* time   = [NSString stringWithFormat:@"%d",(int)[[NSDate date]timeIntervalSince1970]];
-    NSString* skTime = [NSString stringWithFormat:@"s77d5c0eef4aaeff62e43d89f1b12a25%@", time];
+    NSString* skTime = [NSString stringWithFormat:@"skxxxxxxxxxxxxxxxxxxxx@", time];
     NSString* sksign = [KSYAuthInfo KSYMD5:skTime];
     [[KSYAuthInfo sharedInstance]setAuthInfo:@"QYA0E0639AC997A8D128"
                                    accessKey:@"a5644305efa79b56b8dac55378b83e35"
