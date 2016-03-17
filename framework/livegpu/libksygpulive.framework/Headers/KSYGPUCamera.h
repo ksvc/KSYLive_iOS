@@ -37,6 +37,15 @@
 
 #pragma mark - KSYStreamer config
 /**
+ @abstract 是否打断其他后台的音乐播放
+ @discussion 也可以理解为是否允许在其他后台音乐播放的同时进行采集
+ @discussion YES:开始采集时，会打断其他的后台播放音乐，也会被其他音乐打断（采集过程中，启动其他音乐播放，采集被中止）
+ @discussion NO: 可以与其他后台播放共存，相互之间不会被打断
+ @discussion 默认为YES
+ */
+@property BOOL  bInterruptOtherAudio;
+
+/**
  @abstract   是否将视频数据送入streamer
 
  @see streamer
@@ -92,5 +101,7 @@
  @see AVCaptureTorchMode
  */
 - (void) setTorchMode: (AVCaptureTorchMode)mode;
+
+
 
 @end

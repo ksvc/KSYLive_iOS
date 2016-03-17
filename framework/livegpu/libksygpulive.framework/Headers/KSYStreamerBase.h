@@ -25,6 +25,11 @@
 @interface KSYStreamerBase : NSObject
 
 #pragma mark - configures
+/**
+ @abstract
+ @discussio
+ */
+@property (nonatomic, copy) void (^sendInfoBlock)(NSString *string);
  /**
  @abstract   rtmp主机地址
  @discussion 将音视频流推向该主机
@@ -238,19 +243,22 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 @property (atomic, readonly) NSString* rtmpHostIP;
 
 
-#pragma mark - audio mixer
+#pragma mark - bgm audio mixer
 
 /**
  @abstract   开始播放背景音乐
  @param      path 本地音乐的路径
  @param      loop 是否循环播放此音乐
  @return     是否能够开始播放
- @discussion 应当在开始推流前定期调用此接口，比如按照采集帧率调用
- @discussion 暂时只支持 441000Hz的音频文件
  */
 - (void) startMixMusic:(NSString*) path
                 isLoop:(BOOL) loop;
 
+/**
+ @abstract   当背景音乐播放完成时，调用此回调函数
+ @discussion 只有设置 loop为NO时才有效, 在开始播放前设置有效
+ */
+@property(nonatomic, copy) void(^bgmFinishBlock)(void);
 
 /**
  @abstract   停止播放背景音乐
@@ -270,7 +278,12 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 /**
  @abstract   设置背景音乐的音量
  */
-- (void) setBackgroundVolume:(float) volume;
+- (void) setBgmVolume:(float) volume;
+
+/**
+ @abstract   设置micphone采集的音量
+ */
+- (void) setMicVolume:(float) volume;
 
 /**
  @abstract   启用混音
@@ -282,5 +295,12 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
  @param     bMute YES / ON
  */
 - (void) muteStreame:(BOOL) bMute;
+
+/*
+*/
+
+/*
+ */
+ 
 
 @end

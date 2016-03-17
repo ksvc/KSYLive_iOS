@@ -31,5 +31,9 @@
 // 定时更新调试信息stat
 - (void)updateStat:(NSTimer *)theTimer ;
 
+// 注册通知
+- (void) addObservers;
+// 注销通知
+- (void) rmObservers;
 @end
 

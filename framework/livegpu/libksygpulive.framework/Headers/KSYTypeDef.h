@@ -166,6 +166,8 @@ typedef NS_ENUM(NSUInteger, KSYNetStateCode) {
     KSYNetStateCode_EST_BW_DROP,
     /// SDK 鉴权失败 (暂时正常推流5~8分钟后终止推流)
     KSYNetStateCode_KSYAUTHFAILED,
+    /// 输入音频不连续
+    KSYNetStateCode_IN_AUDIO_DISCONTINUOUS,
 };
 
 #pragma mark - KSY_EXTERN

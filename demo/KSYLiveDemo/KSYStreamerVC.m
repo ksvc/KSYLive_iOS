@@ -7,8 +7,8 @@
 //
 
 #import "KSYStreamerVC.h"
-
 #import <libksygpulive/libksygpulive.h>
+#import <libksygpulive/libksygpuimage.h>
 
 
 @interface KSYStreamerVC ()
@@ -62,6 +62,7 @@
     [self initKSYAuth];
     _pubSession = [[KSYStreamer alloc] initWithDefaultCfg];
     [self setStreamerCfg];
+    [self addObservers ];
 }
 
 - (void) addObservers {
@@ -218,17 +219,12 @@
     if ( _btnAutoBw != nil ) {
         [self layoutUI];
     }
-    [self addObservers ];
     if (_bAutoStart) {
         [self onPreview:nil];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self onStream:nil];
         });
     }
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [self rmObservers ];
 }
 
 - (BOOL)shouldAutorotate {
@@ -271,7 +267,7 @@ const char * getDocPath () ;
     NSString *streamName = [NSString stringWithFormat:@"%@.%@", devCode, codecSuf ];
     
     // hostURL = rtmpSrv + streamName
-    NSString *rtmpSrv  = @"rtmp://test.uplive.ksyun.com/live";
+    NSString *rtmpSrv  = @"rtmp://120.132.75.127/live";
     NSString *url      = [  NSString stringWithFormat:@"%@/%@", rtmpSrv, streamName];
     _hostURL = [[NSURL alloc] initWithString:url];
     [self setVideoOrientation];
@@ -624,7 +620,7 @@ const char * getDocPath () ;
  */
 - (void)initKSYAuth {
     NSString* time = [NSString stringWithFormat:@"%d",(int)[[NSDate date]timeIntervalSince1970]];
-    NSString* sk = [NSString stringWithFormat:@"s77d5c0eef4aaeff62e43d89f1b12a25%@", time];
+    NSString* sk = [NSString stringWithFormat:@"skxxxxxxxxxxxxxxxxxxxx@", time];
     NSString* sksign = [KSYAuthInfo KSYMD5:sk];
     [[KSYAuthInfo sharedInstance]setAuthInfo:@"QYA0E0639AC997A8D128" accessKey:@"a5644305efa79b56b8dac55378b83e35" secretKeySign:sksign timeSeconds:time];
 }

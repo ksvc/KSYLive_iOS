@@ -8,18 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-//! Project version number for libqylive.
+//! Project version number for libksylive.
 FOUNDATION_EXPORT double libqyliveVersionNumber;
 
-//! Project version string for libqylive.
+//! Project version string for libksylive.
 FOUNDATION_EXPORT const unsigned char libqyliveVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <libqylive/PublicHeader.h>
-
-// to use this framework
-//#import <libksygpulive/libksygpulive.h>
-//#import <libksygpulive/KSYGPUCamera.h>
-//#import <libksygpulive/KSYGPUBeautifyFilter.h>
 
 // streamer
 #import "KSYTypeDef.h"

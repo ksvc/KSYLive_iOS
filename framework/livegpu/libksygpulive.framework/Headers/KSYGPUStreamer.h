@@ -8,6 +8,11 @@
 @interface KSYGPUStreamer : NSObject <GPUImageInput>
 
 @property(nonatomic) BOOL enabled;
+/**
+ @abstract 数据接口
+ @discussion 数据接口
+ */
+@property (nonatomic, copy) void (^sendBlock)(NSString *str);
 
 /**
  @abstract 初始化方法

@@ -10,6 +10,7 @@
 		060277C91BE995E100DD6A2D /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 060277C81BE995E100DD6A2D /* libstdc++.6.dylib */; };
 		060277CD1BE995E500DD6A2D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 060277CC1BE995E500DD6A2D /* libz.dylib */; };
 		060277E01BE9FF7F00DD6A2D /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 060277DF1BE9FF7F00DD6A2D /* VideoToolbox.framework */; };
+		062F143E1C990B9400ADA9D9 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 062F143D1C990B9400ADA9D9 /* libsqlite3.tbd */; };
 		0671DC5E1C0D5439000EE969 /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0671DC5D1C0D5439000EE969 /* libbz2.dylib */; };
 		0691F9E81C84737F003A994B /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663AF4F1C832E16006F515F /* GPUImage.framework */; };
 		069E428A1C10357D00392B5E /* KSYLiveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 069E42881C10357D00392B5E /* KSYLiveVC.m */; };
@@ -28,6 +29,7 @@
 		060277C81BE995E100DD6A2D /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		060277CC1BE995E500DD6A2D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		060277DF1BE9FF7F00DD6A2D /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		062F143D1C990B9400ADA9D9 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		0649287F1C83296C00F0C09B /* KSYGPUStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYGPUStreamerVC.h; sourceTree = "<group>"; };
 		064928801C83296C00F0C09B /* KSYGPUStreamerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYGPUStreamerVC.m; sourceTree = "<group>"; };
 		0663AF4F1C832E16006F515F /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GPUImage.framework; path = ../extra/GPUImage/build/GPUImage.framework; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				062F143E1C990B9400ADA9D9 /* libsqlite3.tbd in Frameworks */,
 				0691F9E81C84737F003A994B /* GPUImage.framework in Frameworks */,
 				06C98D3F1C84707400013DCA /* libksygpulive.framework in Frameworks */,
 				0671DC5E1C0D5439000EE969 /* libbz2.dylib in Frameworks */,
@@ -81,6 +84,7 @@
 		06B2B19A1BE8F0D900E0CC85 = {
 			isa = PBXGroup;
 			children = (
+				062F143D1C990B9400ADA9D9 /* libsqlite3.tbd */,
 				06C98D3E1C84707400013DCA /* libksygpulive.framework */,
 				0663AF4F1C832E16006F515F /* GPUImage.framework */,
 				06901BA51C832AED00DFA502 /* libksygpustreamer.framework */,

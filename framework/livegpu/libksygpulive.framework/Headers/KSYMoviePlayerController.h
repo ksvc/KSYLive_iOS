@@ -314,4 +314,26 @@ MP_EXTERN NSString * const MPMovieNaturalSizeAvailableNotification;
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 @property(nonatomic)  BOOL  shouldEnableVideoPostProcessing;
+
+/**
+ @abstract 是否开启硬件解码
+ @discussion 默认是开启
+ * 只在[prepareToPlay]([KSYMediaPlayback prepareToPlay]) 调用前设置生效；
+ @since Available in KSYMoviePlayerController 1.3.0 and later.
+ */
+@property(nonatomic) BOOL shouldUseHWCodec;
+
+/**
+ @abstract 重新启动拉流
+ @warning 该方法由金山云引入，不是原生系统接口
+ @param url 视频播放地址，该地址可以是本地地址或者服务器地址.如果为nil，则使用前一次播放地址。
+ @discussion 调用场景如下：
+ 1. 当播放器调用方发现卡顿时，可以主动调用。
+ 2. 当估计出更优质的拉流ip时，可以主动调用。
+ 3. 当发生WiFi/3G网络切换时，可以主动调用。
+ 4. 当播放器回调体现播放完全时，可以主动调用。
+ 5. 播放器SDK不会自动调用reload功能。
+ @since Available in KSYMoviePlayerController 1.0 and later.
+ */
+- (void)reload:(NSURL *)aUrl;
 @end
