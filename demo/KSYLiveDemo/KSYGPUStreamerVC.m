@@ -106,7 +106,7 @@
                                                     name:KSYNetStateEventNotification
                                                   object:nil];
 }
-
+#pragma mark - UI
 - (UIButton *)addButton:(NSString*)title
                  action:(SEL)action {
     UIButton * button;
@@ -274,21 +274,18 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) setStreamerCfg {
+#pragma mark - Streamer config
+- (CGRect) calcRect {
     UIInterfaceOrientation orien = [[UIApplication sharedApplication] statusBarOrientation];
-    
     CGRect rect ;
-    double srcWdt = 540.0;
-    double srcHgt = 960.0;
-    
-    double dstWdt = 480.0;
+    double srcWdt = 480.0;
+    double srcHgt = 640.0;
+    double dstWdt = 320.0;
     double dstHgt = 640.0;
-    
     double x = (srcWdt-dstWdt)/2/srcWdt;
     double y = (srcHgt-dstHgt)/2/srcHgt;
     double wdt = dstWdt/srcWdt;
     double hgt = dstHgt/srcHgt;
-    
     if (orien == UIInterfaceOrientationPortrait ||
         orien == UIInterfaceOrientationPortraitUpsideDown) {
         rect = CGRectMake(x, y, wdt, hgt);
@@ -296,39 +293,35 @@
     else {
         rect = CGRectMake(y, x, hgt, wdt);
     }
-    
+    return rect;
+}
+
+- (void) setStreamerCfg {
+    UIInterfaceOrientation orien = [[UIApplication sharedApplication] statusBarOrientation];
     // capture settings
     NSString *preset = @"";
     if (_btnHighRes.on ) {
-        preset = AVCaptureSessionPreset640x480;
-        //_cropfilter = [[GPUImageCropFilter alloc] initWithCropRegion:rect];
+        preset = AVCaptureSessionPreset1280x720;
+        _cropfilter = nil;
     }
     else {
-        preset = AVCaptureSessionPresetiFrame960x540;
+        preset = AVCaptureSessionPreset640x480;
+        CGRect rect = [self calcRect];
         _cropfilter = [[GPUImageCropFilter alloc] initWithCropRegion:rect];
     }
     BOOL useGPUFilter = YES;
-    
-    __weak typeof(self) weakself = self;
-    _streamer.sendInfoBlock = ^(NSString *string){
-        [weakself showMessage:string];
-    };
     if (useGPUFilter) {
         _gpuStreamer = [[KSYGPUStreamer alloc] initWithDefaultCfg];
-        _gpuStreamer.sendBlock = ^(NSString *string){
-            [weakself showMessage:string];
-        };
-        
         _streamer = [_gpuStreamer getStreamer];
-
     }
     else {
         _gpuStreamer = nil;
         _streamer = [[KSYStreamerBase alloc] initWithDefaultCfg];
-        _streamer.sendInfoBlock = ^(NSString *string){
-            [weakself showMessage:string];
-        };
     }
+    _streamer.shouldEnableKSYStatModule = NO;
+    _streamer.logBlock = ^(NSString *string){
+        NSLog(@"logBlock: %@", string);
+    };
     _capDev = [[KSYGPUCamera alloc] initWithSessionPreset:preset
                                            cameraPosition:AVCaptureDevicePositionBack];
     if (_capDev == nil) {
@@ -389,20 +382,17 @@
     NSString *streamName = [NSString stringWithFormat:@"%@.%@", devCode, codecSuf ];
     
     // hostURL = rtmpSrv + streamName
-    NSString *rtmpSrv  = @"rtmp://120.132.75.127/live";
+    NSString *rtmpSrv  = @"rtmp://test.uplive.ksyun.com/live";
     NSString *url      = [  NSString stringWithFormat:@"%@/%@", rtmpSrv, streamName];
     _hostURL = [[NSURL alloc] initWithString:url];
-}
-- (void)showMessage:(NSString *)str{
-    NSLog(@"---------%@----------",str);
 }
 #pragma mark - UI responde
 
 - (IBAction)onQuit:(id)sender {
+    [_streamer stopMixMusic];
     [_streamer stopStream];
     [_capDev stopCameraCapture];
     [self dismissViewControllerAnimated:FALSE completion:nil];
-    
 }
 
 -(IBAction)OnChoseFilter:(id)sender {
@@ -430,12 +420,19 @@
     [_capDev removeAllTargets];
     [_filter removeAllTargets];
     
-    [_capDev addTarget:_filter];
-    [_filter addTarget:_preview];
-    [_filter addTarget:_gpuStreamer];
+    if (_btnHighRes.on) {
+        [_capDev addTarget:_filter];
+        [_filter addTarget:_preview];
+        [_filter addTarget:_gpuStreamer];
+    }
+    else {
+        [_cropfilter removeAllTargets];
+        [_capDev addTarget:_filter];
+        [_filter addTarget:_cropfilter];
+        [_cropfilter addTarget:_preview];
+        [_cropfilter addTarget:_gpuStreamer];
+    }
 }
-
-
 
 - (IBAction)onPreview:(id)sender {
     if ( NO == _btnPreview.isEnabled) {

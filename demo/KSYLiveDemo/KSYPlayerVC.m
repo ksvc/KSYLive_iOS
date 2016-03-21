@@ -32,8 +32,6 @@
     [super viewDidLoad];
     [self initUI];
     _url = [NSURL URLWithString:@"rtmp://live.hkstv.hk.lxdns.com/live/hks"];
-//    _url = [NSURL URLWithString:@"rtmp://test.rtmplive.ks-cdn.com/live/fpzeng"];
-    //_url = [NSURL URLWithString:@"http://121.40.205.48:8091/demo/h265.flv"];
     [self setupObservers];
     [self initKSYAuth];
 }
@@ -281,7 +279,6 @@
     videoView.autoresizesSubviews = TRUE;
     _player.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     _player.shouldAutoplay = TRUE;
-    _player.shouldEnableKSYStatModule = TRUE;
     _player.bufferTimeMax = 5;
     _player.shouldEnableVideoPostProcessing = switchVPP.on;
     _player.scalingMode = MPMovieScalingModeAspectFit;
