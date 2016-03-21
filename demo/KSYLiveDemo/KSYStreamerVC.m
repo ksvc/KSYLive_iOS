@@ -267,7 +267,7 @@ const char * getDocPath () ;
     NSString *streamName = [NSString stringWithFormat:@"%@.%@", devCode, codecSuf ];
     
     // hostURL = rtmpSrv + streamName
-    NSString *rtmpSrv  = @"rtmp://120.132.75.127/live";
+    NSString *rtmpSrv  = @"rtmp://test.uplive.ksyun.com/live";
     NSString *url      = [  NSString stringWithFormat:@"%@/%@", rtmpSrv, streamName];
     _hostURL = [[NSURL alloc] initWithString:url];
     [self setVideoOrientation];

@@ -25,11 +25,6 @@
 @interface KSYStreamerBase : NSObject
 
 #pragma mark - configures
-/**
- @abstract
- @discussio
- */
-@property (nonatomic, copy) void (^sendInfoBlock)(NSString *string);
  /**
  @abstract   rtmp主机地址
  @discussion 将音视频流推向该主机
@@ -71,6 +66,11 @@
  @see videoInitBitrate, videoMaxBitrate
  */
 @property (nonatomic, assign) int          videoMinBitrate;   // kbit/s of video
+/**
+ @abstract   最大关键帧间隔（单位:秒, 默认:2）
+ @discussion 即GOP长度 画面静止时,隔n秒插入一个关键帧
+ */
+@property (nonatomic, assign) int          maxKeyInterval;   // seconds
 /**
  @abstract   音频编码码率（单位:kbps）
  @discussion 音频目标编码码率 (比如48,96,128等)
@@ -301,6 +301,19 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 
 /*
  */
- 
+
+#pragma mark - logblock
+
+/**
+ @abstract 收集日志的状态，默认开启
+ @discussion 可开关
+ */
+@property (nonatomic, assign) BOOL shouldEnableKSYStatModule;
+
+/**
+ @abstract 获取播放器日志
+ @discussion 相关字段说明请联系金山云技术支持
+ */
+@property (nonatomic, copy)void (^logBlock)(NSString *logJson);
 
 @end
