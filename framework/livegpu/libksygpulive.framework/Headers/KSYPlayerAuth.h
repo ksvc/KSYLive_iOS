@@ -95,7 +95,11 @@
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 @property (nonatomic, readonly) NSString *sam;
-
+/**
+ @abstract 开发者在控制台申请服务时由系统分配
+ @since Available in KSYMoviePlayerController 1.0 and later.
+ */
+@property (nonatomic, readonly) NSString *uniqname;
 /**
  @abstract 获取认证单例
  @since Available in KSYMoviePlayerController 1.0 and later.
@@ -108,7 +112,8 @@
  @param ak 应用接入信息，与SecretKey对应，由开放平台针对appid分配
  @param skSign 设置加密后的SecretKey，加密方式为SecretKeySign=md5( SecretKey + TimeSec )，其中“+”号表示字符串连接
  @param seconds 1970年至今经过的秒数。
- 
+ @param uniqname 开发者在控制台申请服务时由系统分配。
+
  @discussion timeSeconds获取方法：
  <pre><code>
  NSString* timeSeconds = [NSString stringWithFormat:@"%d",(int)[[NSDate date]timeIntervalSince1970]];

@@ -191,6 +191,12 @@
 // The currently playable duration of the movie, for progressively downloaded network content.
 @property (nonatomic, readonly) NSTimeInterval playableDuration;
 
+/**
+ @abstract 收集日志的状态，默认开启
+ @discussion 可开关
+  @since Available in KSYMoviePlayerController 1.0 and later.
+ */
+@property (nonatomic, assign) BOOL shouldEnableKSYStatModule;
 
 /**
  @abstract 当前视频宽高
@@ -200,6 +206,12 @@
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 @property (nonatomic, readonly) CGSize naturalSize;
+/**
+ @abstract 获取播放器日志
+ @discussion 相关字段说明请联系金山云技术支持
+ @since Available in KSYMoviePlayerController 1.0 and later.
+ */
+@property (nonatomic, copy)void (^logBlock)(NSString *logJson);
 
 // Posted when the playback state changes, either programatically or by the user.
 MP_EXTERN NSString * const MPMoviePlayerPlaybackStateDidChangeNotification;
@@ -304,6 +316,21 @@ MP_EXTERN NSString * const MPMovieNaturalSizeAvailableNotification;
  */
 @property(nonatomic)  BOOL  shouldEnableVideoPostProcessing;
 
+/**
+ @abstract timeout指定拉流超时时间,单位是秒。
+ @warning 该方法由金山云引入，不是原生系统接口
+ * 默认值为5秒。
+ @since Available in KSYMoviePlayerController 1.3.0 and later.
+ */
+- (void)setTimeout:(int)timeout;
+
+/**
+ @abstract 是否开启硬件解码
+ @discussion 默认是开启
+ * 只在[prepareToPlay]([KSYMediaPlayback prepareToPlay]) 调用前设置生效；
+ @since Available in KSYMoviePlayerController 1.3.0 and later.
+ */
+@property(nonatomic) BOOL shouldUseHWCodec;
 
 /**
  @abstract 重新启动拉流
@@ -318,5 +345,4 @@ MP_EXTERN NSString * const MPMovieNaturalSizeAvailableNotification;
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 - (void)reload:(NSURL *)aUrl;
-
 @end
