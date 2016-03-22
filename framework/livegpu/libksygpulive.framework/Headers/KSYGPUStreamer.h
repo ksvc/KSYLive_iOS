@@ -20,4 +20,10 @@
  @discussion
  */
 - (KSYStreamerBase* ) getStreamer;
+
+/**
+ @abstract   GPUImageInput - (BOOL)enabled;
+ */
+@property(nonatomic) BOOL enabled;
+
 @end
