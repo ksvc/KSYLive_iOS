@@ -15,6 +15,10 @@
     
 };
 
+/*
+ @abstract 美颜的等级
+ @discussion  1 ~ 5，逐级增强, 默认为3
+ */
 -(void)setBeautylevel:(int)level;
 
 @property (readwrite, nonatomic) CGPoint singleStepOffset;

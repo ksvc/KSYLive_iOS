@@ -14,7 +14,7 @@
 		</data>
 		<key>Headers/KSYGPUBeautifyExtFilter.h</key>
 		<data>
-		CTZIeua0TLKb2IDiTtJ+ChEzXuQ=
+		k86o7w8VdSuaA2sufQ0yoQRdEbU=
 		</data>
 		<key>Headers/KSYGPUBeautifyFilter.h</key>
 		<data>
@@ -44,6 +44,10 @@
 		<data>
 		lQmBiNGaCkVX57BAddxuDW/2n34=
 		</data>
+		<key>Headers/KSYGPUStreamerKit.h</key>
+		<data>
+		29dLo9QIGz040uJZya0NyNLfkr4=
+		</data>
 		<key>Headers/KSYMediaPlayback.h</key>
 		<data>
 		SE0jttjHQBC2/BoMJiOE9sHHSk8=
@@ -59,6 +63,10 @@
 		<key>Headers/KSYPlayerAuth.h</key>
 		<data>
 		JM5yh6ys+RSrgBXgtBcIqXhaqXs=
+		</data>
+		<key>Headers/KSYQosInfo.h</key>
+		<data>
+		4R8xOKdhadVApriBeN2JcGbBwlU=
 		</data>
 		<key>Headers/KSYStreamer.h</key>
 		<data>
@@ -78,7 +86,7 @@
 		</data>
 		<key>Headers/libksygpulive.h</key>
 		<data>
-		4xgeZSc9ZnvnUOax9ULcqe5kNzI=
+		dMS2qILeGshm/6HWX2RoJyrm9gw=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -101,7 +109,7 @@
 		</data>
 		<key>Headers/KSYGPUBeautifyExtFilter.h</key>
 		<data>
-		CTZIeua0TLKb2IDiTtJ+ChEzXuQ=
+		k86o7w8VdSuaA2sufQ0yoQRdEbU=
 		</data>
 		<key>Headers/KSYGPUBeautifyFilter.h</key>
 		<data>
@@ -131,6 +139,10 @@
 		<data>
 		lQmBiNGaCkVX57BAddxuDW/2n34=
 		</data>
+		<key>Headers/KSYGPUStreamerKit.h</key>
+		<data>
+		29dLo9QIGz040uJZya0NyNLfkr4=
+		</data>
 		<key>Headers/KSYMediaPlayback.h</key>
 		<data>
 		SE0jttjHQBC2/BoMJiOE9sHHSk8=
@@ -146,6 +158,10 @@
 		<key>Headers/KSYPlayerAuth.h</key>
 		<data>
 		JM5yh6ys+RSrgBXgtBcIqXhaqXs=
+		</data>
+		<key>Headers/KSYQosInfo.h</key>
+		<data>
+		4R8xOKdhadVApriBeN2JcGbBwlU=
 		</data>
 		<key>Headers/KSYStreamer.h</key>
 		<data>
@@ -165,7 +181,7 @@
 		</data>
 		<key>Headers/libksygpulive.h</key>
 		<data>
-		4xgeZSc9ZnvnUOax9ULcqe5kNzI=
+		dMS2qILeGshm/6HWX2RoJyrm9gw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
