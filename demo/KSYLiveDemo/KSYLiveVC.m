@@ -8,6 +8,7 @@
 
 #import "KSYLiveVC.h"
 #import "KSYStreamerVC.h"
+#import "KSYStreamerKitVC.h"
 #import "KSYPlayerVC.h"
 #import "KSYGPUStreamerVC.h"
 
@@ -15,7 +16,7 @@
 @interface KSYLiveVC ()
 
 @property KSYPlayerVC    * playerVC;
-@property KSYStreamerVC  * streamerVC;
+@property KSYStreamerKitVC  * streamerKitVC;
 
 @end
 
@@ -62,7 +63,7 @@
     [self.view addSubview:button];
     
     _playerVC   = [[KSYPlayerVC alloc] init];
-    _streamerVC = [[KSYStreamerVC alloc] init];
+    _streamerKitVC = [[KSYStreamerKitVC alloc] init];
 
 }
 
@@ -72,7 +73,7 @@
 
 
 - (IBAction)onStreamer:(id)sender {
-    [self presentViewController:_streamerVC animated:true completion:nil];
+    [self presentViewController:_streamerKitVC animated:true completion:nil];
 }
 
 - (IBAction)onGPUStreamer:(id)sender {

@@ -7,6 +7,7 @@
 //
 
 #import "KSYMediaPlayback.h"
+#import "KSYQosInfo.h"
 #import <MediaPlayer/MediaPlayer.h>
 /**
  金山云播放内核提供了跨终端平台的播放器SDK，支持Android/iOS/Flash平台的视频播放需求。金山云播放内核集成有业界一流的高性能H.265/HEVC解码器，提供流畅、低功耗的播放体验。同时SDK提供和系统播放器一致的音视频播放、控制接口，极大地降低了开发门槛。
@@ -294,6 +295,13 @@ MP_EXTERN NSString * const MPMovieNaturalSizeAvailableNotification;
  */
 @property (nonatomic, readonly) NSString* serverAddress;
 /**
+ @abstract 视频流qos信息
+ @warning 该方法由金山云引入，不是原生系统接口
+ @discussion 在播放过程中，即可以查询当前连接的视频流qos信息.
+ @since Available in KSYMoviePlayerController 1.0 and later.
+ */
+@property (nonatomic, strong) KSYQosInfo *qosInfo;
+/**
  @abstract 截图
  @warning 该方法由金山云引入，不是原生系统接口
  @return 当前时刻的视频UIImage 图像
@@ -319,14 +327,14 @@ MP_EXTERN NSString * const MPMovieNaturalSizeAvailableNotification;
 /**
  @abstract timeout指定拉流超时时间,单位是秒。
  @warning 该方法由金山云引入，不是原生系统接口
- * 默认值为5秒。
+ * 默认值为30秒。
  @since Available in KSYMoviePlayerController 1.3.0 and later.
  */
 - (void)setTimeout:(int)timeout;
 
 /**
  @abstract 是否开启硬件解码
- @discussion 默认是开启
+ @discussion 默认是关闭
  * 只在[prepareToPlay]([KSYMediaPlayback prepareToPlay]) 调用前设置生效；
  @since Available in KSYMoviePlayerController 1.3.0 and later.
  */
