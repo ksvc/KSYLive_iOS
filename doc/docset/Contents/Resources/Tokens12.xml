@@ -1,197 +1,310 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYStreamErrorCode.html">
+	<File path="Classes/KSYPlayerAuth.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYStreamErrorCode</TokenIdentifier>
-			<Abstract type="html">推流错误码，用于指示推流失败的原因</Abstract>
-			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYPlayerAuth</TokenIdentifier>
+			<Abstract type="html">金山云播放内核需要提供鉴权信息，鉴权信息未完成，将导致如下效果：</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
             
 			
 			<NodeRef refid="12"/>
 		</Token>
 		
 		
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_NONE</TokenIdentifier>
-            <Abstract type="html">正常无错误</Abstract>
-            <Declaration>KSYStreamErrorCode_NONE</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setAppId:</TokenIdentifier>
+			<Abstract type="html">开发者设置的开发者标识</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *appId</Declaration>
+			
+			
+			<Anchor>//api/name/appId</Anchor>
             <NodeRef refid="12"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_KSYAUTHFAILED</TokenIdentifier>
-            <Abstract type="html">SDK 鉴权失败 (暂时正常推流5~8分钟后终止推流)</Abstract>
-            <Declaration>KSYStreamErrorCode_KSYAUTHFAILED</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/appId</TokenIdentifier>
+			<Abstract type="html">开发者设置的开发者标识</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *appId</Declaration>
+			
+			
+			<Anchor>//api/name/appId</Anchor>
             <NodeRef refid="12"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_ENCODE_FRAMES_FAILED</TokenIdentifier>
-            <Abstract type="html">当前帧编码失败</Abstract>
-            <Declaration>KSYStreamErrorCode_ENCODE_FRAMES_FAILED</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYPlayerAuth/appId</TokenIdentifier>
+			<Abstract type="html">开发者设置的开发者标识</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *appId</Declaration>
+			
+			
+			<Anchor>//api/name/appId</Anchor>
             <NodeRef refid="12"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_CODEC_OPEN_FAILED</TokenIdentifier>
-            <Abstract type="html">无法打开配置指示的CODEC</Abstract>
-            <Declaration>KSYStreamErrorCode_CODEC_OPEN_FAILED</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setAccessKey:</TokenIdentifier>
+			<Abstract type="html">开发者设置的应用接入信息</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *accessKey</Declaration>
+			
+			
+			<Anchor>//api/name/accessKey</Anchor>
             <NodeRef refid="12"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_CONNECT_FAILED</TokenIdentifier>
-            <Abstract type="html">连接出错，检查地址</Abstract>
-            <Declaration>KSYStreamErrorCode_CONNECT_FAILED</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/accessKey</TokenIdentifier>
+			<Abstract type="html">开发者设置的应用接入信息</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *accessKey</Declaration>
+			
+			
+			<Anchor>//api/name/accessKey</Anchor>
             <NodeRef refid="12"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_CONNECT_BREAK</TokenIdentifier>
-            <Abstract type="html">网络连接中断</Abstract>
-            <Declaration>KSYStreamErrorCode_CONNECT_BREAK</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYPlayerAuth/accessKey</TokenIdentifier>
+			<Abstract type="html">开发者设置的应用接入信息</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *accessKey</Declaration>
+			
+			
+			<Anchor>//api/name/accessKey</Anchor>
             <NodeRef refid="12"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_NonExistDomain</TokenIdentifier>
-            <Abstract type="html">rtmp 推流域名不存在 (KSY 自定义)</Abstract>
-            <Declaration>KSYStreamErrorCode_RTMP_NonExistDomain</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setSecretKey:</TokenIdentifier>
+			<Abstract type="html">开发者设置的密钥</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *secretKey</Declaration>
+			
+			
+			<Anchor>//api/name/secretKey</Anchor>
             <NodeRef refid="12"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_NonExistApplication</TokenIdentifier>
-            <Abstract type="html">rtmp 应用名不存在(KSY 自定义)</Abstract>
-            <Declaration>KSYStreamErrorCode_RTMP_NonExistApplication</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/secretKey</TokenIdentifier>
+			<Abstract type="html">开发者设置的密钥</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *secretKey</Declaration>
+			
+			
+			<Anchor>//api/name/secretKey</Anchor>
             <NodeRef refid="12"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_AlreadyExistStreamName</TokenIdentifier>
-            <Abstract type="html">rtmp 流名已存在(KSY 自定义)</Abstract>
-            <Declaration>KSYStreamErrorCode_RTMP_AlreadyExistStreamName</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYPlayerAuth/secretKey</TokenIdentifier>
+			<Abstract type="html">开发者设置的密钥</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *secretKey</Declaration>
+			
+			
+			<Anchor>//api/name/secretKey</Anchor>
             <NodeRef refid="12"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_ForbiddenByBlacklist</TokenIdentifier>
-            <Abstract type="html">rtmp 被黑名单拒绝(KSY 自定义)</Abstract>
-            <Declaration>KSYStreamErrorCode_RTMP_ForbiddenByBlacklist</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setTimeSeconds:</TokenIdentifier>
+			<Abstract type="html">开发者设置的1970年至今经过的秒数。</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *timeSeconds</Declaration>
+			
+			
+			<Anchor>//api/name/timeSeconds</Anchor>
             <NodeRef refid="12"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_InternalError</TokenIdentifier>
-            <Abstract type="html">rtmp 内部错误(KSY 自定义)</Abstract>
-            <Declaration>KSYStreamErrorCode_RTMP_InternalError</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/timeSeconds</TokenIdentifier>
+			<Abstract type="html">开发者设置的1970年至今经过的秒数。</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *timeSeconds</Declaration>
+			
+			
+			<Anchor>//api/name/timeSeconds</Anchor>
             <NodeRef refid="12"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_URLExpired</TokenIdentifier>
-            <Abstract type="html">rtmp URL 地址已过期(KSY 自定义)</Abstract>
-            <Declaration>KSYStreamErrorCode_RTMP_URLExpired</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYPlayerAuth/timeSeconds</TokenIdentifier>
+			<Abstract type="html">开发者设置的1970年至今经过的秒数。</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *timeSeconds</Declaration>
+			
+			
+			<Anchor>//api/name/timeSeconds</Anchor>
             <NodeRef refid="12"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_SignatureDoesNotMatch</TokenIdentifier>
-            <Abstract type="html">rtmp URL 地址签名错误(KSY 自定义)</Abstract>
-            <Declaration>KSYStreamErrorCode_RTMP_SignatureDoesNotMatch</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setMCode:</TokenIdentifier>
+			<Abstract type="html">设备id</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *mCode</Declaration>
+			
+			
+			<Anchor>//api/name/mCode</Anchor>
             <NodeRef refid="12"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_InvalidAccessKeyId</TokenIdentifier>
-            <Abstract type="html">rtmp URL 中AccessKeyId非法(KSY 自定义)</Abstract>
-            <Declaration>KSYStreamErrorCode_RTMP_InvalidAccessKeyId</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/mCode</TokenIdentifier>
+			<Abstract type="html">设备id</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *mCode</Declaration>
+			
+			
+			<Anchor>//api/name/mCode</Anchor>
             <NodeRef refid="12"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_BadParams</TokenIdentifier>
-            <Abstract type="html">rtmp URL 中参数错误(KSY 自定义)</Abstract>
-            <Declaration>KSYStreamErrorCode_RTMP_BadParams</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYPlayerAuth/mCode</TokenIdentifier>
+			<Abstract type="html">设备id</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *mCode</Declaration>
+			
+			
+			<Anchor>//api/name/mCode</Anchor>
             <NodeRef refid="12"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_ForbiddenByRegion</TokenIdentifier>
-            <Abstract type="html">rtmp URL 中的推流不在发布点内（KSY 自定义）</Abstract>
-            <Declaration>KSYStreamErrorCode_RTMP_ForbiddenByRegion</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setSam:</TokenIdentifier>
+			<Abstract type="html">设备版本信息</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *sam</Declaration>
+			
+			
+			<Anchor>//api/name/sam</Anchor>
             <NodeRef refid="12"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_FRAMES_THRESHOLD</TokenIdentifier>
-            <Abstract type="html">SDK 因为鉴权失败停止推流</Abstract>
-            <Declaration>KSYStreamErrorCode_FRAMES_THRESHOLD</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/sam</TokenIdentifier>
+			<Abstract type="html">设备版本信息</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *sam</Declaration>
+			
+			
+			<Anchor>//api/name/sam</Anchor>
             <NodeRef refid="12"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_NO_INPUT_SAMPLE</TokenIdentifier>
-            <Abstract type="html">没有输入的数据，无法开始推流</Abstract>
-            <Declaration>KSYStreamErrorCode_NO_INPUT_SAMPLE</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYPlayerAuth/sam</TokenIdentifier>
+			<Abstract type="html">设备版本信息</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *sam</Declaration>
+			
+			
+			<Anchor>//api/name/sam</Anchor>
             <NodeRef refid="12"/>
-        </Token>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setUniqname:</TokenIdentifier>
+			<Abstract type="html">开发者在控制台申请服务时由系统分配</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *uniqname</Declaration>
+			
+			
+			<Anchor>//api/name/uniqname</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/uniqname</TokenIdentifier>
+			<Abstract type="html">开发者在控制台申请服务时由系统分配</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *uniqname</Declaration>
+			
+			
+			<Anchor>//api/name/uniqname</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYPlayerAuth/uniqname</TokenIdentifier>
+			<Abstract type="html">开发者在控制台申请服务时由系统分配</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *uniqname</Declaration>
+			
+			
+			<Anchor>//api/name/uniqname</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KSYPlayerAuth/sharedInstance</TokenIdentifier>
+			<Abstract type="html">获取认证单例</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>+ (KSYPlayerAuth *)sharedInstance</Declaration>
+			
+			
+			<Anchor>//api/name/sharedInstance</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setAuthInfo:accessKey:secretKeySign:timeSeconds:</TokenIdentifier>
+			<Abstract type="html">设置认证信息</Abstract>
+			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			
+			<Declaration>- (void)setAuthInfo:(NSString *)appId accessKey:(NSString *)ak secretKeySign:(NSString *)skSign timeSeconds:(NSString *)seconds</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>appId</Name>
+					<Abstract type="html">开发者标识，由haomingfei@kingsoft.com分配</Abstract>
+				</Parameter><Parameter>
+					<Name>ak</Name>
+					<Abstract type="html">应用接入信息，与SecretKey对应，由开放平台针对appid分配</Abstract>
+				</Parameter><Parameter>
+					<Name>skSign</Name>
+					<Abstract type="html">设置加密后的SecretKey，加密方式为SecretKeySign=md5( SecretKey + TimeSec )，其中“+”号表示字符串连接</Abstract>
+				</Parameter><Parameter>
+					<Name>seconds</Name>
+					<Abstract type="html">1970年至今经过的秒数。</Abstract>
+				</Parameter><Parameter>
+					<Name>uniqname</Name>
+					<Abstract type="html">开发者在控制台申请服务时由系统分配。</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setAuthInfo:accessKey:secretKeySign:timeSeconds:</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
         
         
 	</File>

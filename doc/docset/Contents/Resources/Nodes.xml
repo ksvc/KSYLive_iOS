@@ -2,7 +2,7 @@
 <DocSetNodes version="1.0">
     <TOC>
         <Node type="folder">
-            <Name>libksygpulive</Name>
+            <Name>KSYLive_iOS</Name>
             <Path>index.html</Path>
 			<Subnodes>
                 
@@ -18,6 +18,15 @@
 						<NodeRef refid="5"/>
 						<NodeRef refid="6"/>
 						<NodeRef refid="7"/>
+						<NodeRef refid="8"/>
+						<NodeRef refid="9"/>
+						<NodeRef refid="10"/>
+						<NodeRef refid="11"/>
+						<NodeRef refid="12"/>
+						<NodeRef refid="13"/>
+						<NodeRef refid="14"/>
+						<NodeRef refid="15"/>
+						<NodeRef refid="16"/>
 						
 					</Subnodes>
 				</Node>
@@ -28,7 +37,7 @@
 					<Name>Protocols</Name>
 					<Path>index.html</Path>
 					<Subnodes>
-						<NodeRef refid="8"/>
+						<NodeRef refid="17"/>
 						
 					</Subnodes>
 				</Node>
@@ -38,14 +47,14 @@
 					<Name>Constants</Name>
 					<Path>index.html</Path>
 					<Subnodes>
-						<NodeRef refid="9"/>
-						<NodeRef refid="10"/>
-						<NodeRef refid="11"/>
-						<NodeRef refid="12"/>
-						<NodeRef refid="13"/>
-						<NodeRef refid="14"/>
-						<NodeRef refid="15"/>
-						<NodeRef refid="16"/>
+						<NodeRef refid="18"/>
+						<NodeRef refid="19"/>
+						<NodeRef refid="20"/>
+						<NodeRef refid="21"/>
+						<NodeRef refid="22"/>
+						<NodeRef refid="23"/>
+						<NodeRef refid="24"/>
+						<NodeRef refid="25"/>
 						
 					</Subnodes>
 				</Node>
@@ -96,6 +105,159 @@
             
         </Node>
 		<Node id="2" type="file" documentType="reference">
+            <Name>KSYCamera</Name>
+            <Path>Classes/KSYCamera.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/KSYCamera.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/KSYCamera.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/KSYCamera.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/KSYCamera.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="3" type="file" documentType="reference">
+            <Name>KSYGPUBeautifyExtFilter</Name>
+            <Path>Classes/KSYGPUBeautifyExtFilter.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/KSYGPUBeautifyExtFilter.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/KSYGPUBeautifyExtFilter.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/KSYGPUBeautifyExtFilter.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/KSYGPUBeautifyExtFilter.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="4" type="file" documentType="reference">
+            <Name>KSYGPUBeautifyFilter</Name>
+            <Path>Classes/KSYGPUBeautifyFilter.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/KSYGPUBeautifyFilter.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/KSYGPUBeautifyFilter.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/KSYGPUBeautifyFilter.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/KSYGPUBeautifyFilter.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="5" type="file" documentType="reference">
+            <Name>KSYGPUBeautifyPlusFilter</Name>
+            <Path>Classes/KSYGPUBeautifyPlusFilter.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/KSYGPUBeautifyPlusFilter.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/KSYGPUBeautifyPlusFilter.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/KSYGPUBeautifyPlusFilter.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="6" type="file" documentType="reference">
+            <Name>KSYGPUBeautifyPlusFilter_t</Name>
+            <Path>Classes/KSYGPUBeautifyPlusFilter_t.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/KSYGPUBeautifyPlusFilter_t.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/KSYGPUBeautifyPlusFilter_t.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/KSYGPUBeautifyPlusFilter_t.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="7" type="file" documentType="reference">
             <Name>KSYGPUCamera</Name>
             <Path>Classes/KSYGPUCamera.html</Path>
             
@@ -128,7 +290,12 @@
             </Subnodes>
             
         </Node>
-		<Node id="3" type="file" documentType="reference">
+		<Node id="8" type="file" documentType="reference">
+            <Name>KSYGPUDnoiseFilter</Name>
+            <Path>Classes/KSYGPUDnoiseFilter.html</Path>
+            
+        </Node>
+		<Node id="9" type="file" documentType="reference">
             <Name>KSYGPUStreamer</Name>
             <Path>Classes/KSYGPUStreamer.html</Path>
             
@@ -161,7 +328,46 @@
             </Subnodes>
             
         </Node>
-		<Node id="4" type="file" documentType="reference">
+		<Node id="10" type="file" documentType="reference">
+            <Name>KSYGPUStreamerKit</Name>
+            <Path>Classes/KSYGPUStreamerKit.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/KSYGPUStreamerKit.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/KSYGPUStreamerKit.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/KSYGPUStreamerKit.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                <Node type="section">
+                    <Path>Classes/KSYGPUStreamerKit.html</Path>
+                    <Name>Class Methods</Name>
+                    <Anchor>class_methods</Anchor>
+                </Node>
+                
+                
+                <Node type="section">
+                    <Path>Classes/KSYGPUStreamerKit.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="11" type="file" documentType="reference">
             <Name>KSYMoviePlayerController</Name>
             <Path>Classes/KSYMoviePlayerController.html</Path>
             
@@ -194,7 +400,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="5" type="file" documentType="reference">
+		<Node id="12" type="file" documentType="reference">
             <Name>KSYPlayerAuth</Name>
             <Path>Classes/KSYPlayerAuth.html</Path>
             
@@ -233,7 +439,61 @@
             </Subnodes>
             
         </Node>
-		<Node id="6" type="file" documentType="reference">
+		<Node id="13" type="file" documentType="reference">
+            <Name>KSYQosInfo</Name>
+            <Path>Classes/KSYQosInfo.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/KSYQosInfo.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/KSYQosInfo.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/KSYQosInfo.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="14" type="file" documentType="reference">
+            <Name>KSYSkinWhiteFilter</Name>
+            <Path>Classes/KSYSkinWhiteFilter.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/KSYSkinWhiteFilter.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/KSYSkinWhiteFilter.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/KSYSkinWhiteFilter.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="15" type="file" documentType="reference">
             <Name>KSYStreamer</Name>
             <Path>Classes/KSYStreamer.html</Path>
             
@@ -266,7 +526,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="7" type="file" documentType="reference">
+		<Node id="16" type="file" documentType="reference">
             <Name>KSYStreamerBase</Name>
             <Path>Classes/KSYStreamerBase.html</Path>
             
@@ -301,7 +561,7 @@
         </Node>
 		
 		
-        <Node id="8" type="file" documentType="reference">
+        <Node id="17" type="file" documentType="reference">
             <Name>KSYMediaPlayback</Name>
             <Path>Protocols/KSYMediaPlayback.html</Path>
             
@@ -335,42 +595,42 @@
             
         </Node>
 		
-        <Node id="9" type="file" documentType="reference">
+        <Node id="18" type="file" documentType="reference">
             <Name>KSYCaptureState</Name>
             <Path>Constants/KSYCaptureState.html</Path>
             
         </Node>
-		<Node id="10" type="file" documentType="reference">
+		<Node id="19" type="file" documentType="reference">
             <Name>KSYDevAuthStatus</Name>
             <Path>Constants/KSYDevAuthStatus.html</Path>
             
         </Node>
-		<Node id="11" type="file" documentType="reference">
+		<Node id="20" type="file" documentType="reference">
             <Name>KSYNetStateCode</Name>
             <Path>Constants/KSYNetStateCode.html</Path>
             
         </Node>
-		<Node id="12" type="file" documentType="reference">
+		<Node id="21" type="file" documentType="reference">
             <Name>KSYStreamErrorCode</Name>
             <Path>Constants/KSYStreamErrorCode.html</Path>
             
         </Node>
-		<Node id="13" type="file" documentType="reference">
+		<Node id="22" type="file" documentType="reference">
             <Name>KSYStreamState</Name>
             <Path>Constants/KSYStreamState.html</Path>
             
         </Node>
-		<Node id="14" type="file" documentType="reference">
+		<Node id="23" type="file" documentType="reference">
             <Name>KSYVideoCodec</Name>
             <Path>Constants/KSYVideoCodec.html</Path>
             
         </Node>
-		<Node id="15" type="file" documentType="reference">
+		<Node id="24" type="file" documentType="reference">
             <Name>KSYVideoDimension</Name>
             <Path>Constants/KSYVideoDimension.html</Path>
             
         </Node>
-		<Node id="16" type="file" documentType="reference">
+		<Node id="25" type="file" documentType="reference">
             <Name>KSYVideoGravity</Name>
             <Path>Constants/KSYVideoGravity.html</Path>
             

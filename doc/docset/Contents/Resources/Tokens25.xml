@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/KSYVideoGravity.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYVideoGravity</TokenIdentifier>
+			<Abstract type="html">预览视频的填充方式</Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+			
+			<NodeRef refid="25"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoGravity_ResizeAspect</TokenIdentifier>
+            <Abstract type="html">保持宽高比，留白边 Preserve aspect ratio; fit within layer bounds.</Abstract>
+            <Declaration>KSYVideoGravity_ResizeAspect</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="25"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoGravity_ResizeAspectFill</TokenIdentifier>
+            <Abstract type="html">保持宽高比并填充，裁剪边缘 Preserve aspect ratio; fill layer bounds.</Abstract>
+            <Declaration>KSYVideoGravity_ResizeAspectFill</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="25"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoGravity_Resize</TokenIdentifier>
+            <Abstract type="html">拉伸 Stretch to fill layer bounds.</Abstract>
+            <Declaration>KSYVideoGravity_Resize</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="25"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>
