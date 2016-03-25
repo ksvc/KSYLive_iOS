@@ -14,7 +14,7 @@
 		<div class="container" class="hide-in-xcode">
 			
 			<h1 id="library-title">
-				<a href="../index.html">libksygpulive </a>
+				<a href="../index.html">KSYLive_iOS </a>
 			</h1>
 
 			<p id="developer-home">
@@ -58,6 +58,8 @@
 		
 		<option value="//api/name/audiokBPS">audiokBPS</option>
 		
+		<option value="//api/name/bgmFinishBlock">bgmFinishBlock</option>
+		
 		<option value="//api/name/droppedVideoFrames">droppedVideoFrames</option>
 		
 		<option value="//api/name/enAutoApplyEstimateBW">enAutoApplyEstimateBW</option>
@@ -72,9 +74,15 @@
 		
 		<option value="//api/name/hostURL">hostURL</option>
 		
+		<option value="//api/name/logBlock">logBlock</option>
+		
+		<option value="//api/name/maxKeyInterval">maxKeyInterval</option>
+		
 		<option value="//api/name/netStateCode">netStateCode</option>
 		
 		<option value="//api/name/rtmpHostIP">rtmpHostIP</option>
+		
+		<option value="//api/name/shouldEnableKSYStatModule">shouldEnableKSYStatModule</option>
 		
 		<option value="//api/name/streamErrorCode">streamErrorCode</option>
 		
@@ -102,7 +110,13 @@
 	
 	<optgroup label="Instance Methods">
 		
+		<option value="//api/name/enableMicMixMusic:">- enableMicMixMusic:</option>
+		
 		<option value="//api/name/initWithDefaultCfg">- initWithDefaultCfg</option>
+		
+		<option value="//api/name/muteStreame:">- muteStreame:</option>
+		
+		<option value="//api/name/pauseMixMusic">- pauseMixMusic</option>
 		
 		<option value="//api/name/processAudioSampleBuffer:">- processAudioSampleBuffer:</option>
 		
@@ -110,7 +124,17 @@
 		
 		<option value="//api/name/processVideoSampleBuffer:">- processVideoSampleBuffer:</option>
 		
+		<option value="//api/name/resumeMixMusic">- resumeMixMusic</option>
+		
+		<option value="//api/name/setBgmVolume:">- setBgmVolume:</option>
+		
+		<option value="//api/name/setMicVolume:">- setMicVolume:</option>
+		
+		<option value="//api/name/startMixMusic:isLoop:">- startMixMusic:isLoop:</option>
+		
 		<option value="//api/name/startStream:">- startStream:</option>
+		
+		<option value="//api/name/stopMixMusic">- stopMixMusic</option>
 		
 		<option value="//api/name/stopStream">- stopStream</option>
 		
@@ -480,6 +504,52 @@
 					
 				</ul>
 			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/maxKeyInterval" title="maxKeyInterval"></a>
+	<h3 class="method-title"><code><a href="#//api/name/maxKeyInterval">&nbsp;&nbsp;maxKeyInterval</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>最大关键帧间隔（单位:秒, 默认:2）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int maxKeyInterval</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>即GOP长度 画面静止时,隔n秒插入一个关键帧</p>
+			</div>
+			
+
+			
+
 			
 
 			
@@ -1487,6 +1557,506 @@
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/startMixMusic:isLoop:" title="startMixMusic:isLoop:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/startMixMusic:isLoop:">&ndash;&nbsp;startMixMusic:isLoop:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>开始播放背景音乐</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)startMixMusic:(NSString *)<em>path</em> isLoop:(BOOL)<em>loop</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>path</code></th>
+						<td><p>本地音乐的路径</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>loop</code></th>
+						<td><p>是否循环播放此音乐</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>是否能够开始播放</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bgmFinishBlock" title="bgmFinishBlock"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bgmFinishBlock">&nbsp;&nbsp;bgmFinishBlock</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>当背景音乐播放完成时，调用此回调函数</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) void ( ^ ) ( void ) bgmFinishBlock</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>只有设置 loop为NO时才有效, 在开始播放前设置有效</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/stopMixMusic" title="stopMixMusic"></a>
+	<h3 class="method-title"><code><a href="#//api/name/stopMixMusic">&ndash;&nbsp;stopMixMusic</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>停止播放背景音乐</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)stopMixMusic</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/pauseMixMusic" title="pauseMixMusic"></a>
+	<h3 class="method-title"><code><a href="#//api/name/pauseMixMusic">&ndash;&nbsp;pauseMixMusic</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>暂停播放背景音乐</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)pauseMixMusic</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/resumeMixMusic" title="resumeMixMusic"></a>
+	<h3 class="method-title"><code><a href="#//api/name/resumeMixMusic">&ndash;&nbsp;resumeMixMusic</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>恢复播放背景音乐</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)resumeMixMusic</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setBgmVolume:" title="setBgmVolume:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setBgmVolume:">&ndash;&nbsp;setBgmVolume:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置背景音乐的音量</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setBgmVolume:(float)<em>volume</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setMicVolume:" title="setMicVolume:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setMicVolume:">&ndash;&nbsp;setMicVolume:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置micphone采集的音量</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setMicVolume:(float)<em>volume</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/enableMicMixMusic:" title="enableMicMixMusic:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/enableMicMixMusic:">&ndash;&nbsp;enableMicMixMusic:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>启用混音</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)enableMicMixMusic:(BOOL)<em>enableMixing</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/muteStreame:" title="muteStreame:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/muteStreame:">&ndash;&nbsp;muteStreame:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>静音推流</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)muteStreame:(BOOL)<em>bMute</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>bMute</code></th>
+						<td><p>YES / ON</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/shouldEnableKSYStatModule" title="shouldEnableKSYStatModule"></a>
+	<h3 class="method-title"><code><a href="#//api/name/shouldEnableKSYStatModule">&nbsp;&nbsp;shouldEnableKSYStatModule</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>收集日志的状态，默认开启</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL shouldEnableKSYStatModule</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>可开关</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/logBlock" title="logBlock"></a>
+	<h3 class="method-title"><code><a href="#//api/name/logBlock">&nbsp;&nbsp;logBlock</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取播放器日志</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) void ( ^ ) ( NSString *logJson ) logBlock</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>相关字段说明请联系金山云技术支持</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -1500,7 +2070,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-02-29</p>
+						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-03-25</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>

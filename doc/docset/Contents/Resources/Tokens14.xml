@@ -1,47 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYVideoCodec.html">
+	<File path="Classes/KSYSkinWhiteFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYVideoCodec</TokenIdentifier>
-			<Abstract type="html">视频编码器类型</Abstract>
-			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYSkinWhiteFilter</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPUSkinWhiteFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="14"/>
 		</Token>
 		
 		
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoCodec_X264</TokenIdentifier>
-            <Abstract type="html">视频编码器 - h264 软件编码器</Abstract>
-            <Declaration>KSYVideoCodec_X264</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYSkinWhiteFilter/updateToneCurveTexture</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPUSkinWhiteFilter.h</DeclaredIn>
+			
+			<Declaration>- (void)updateToneCurveTexture</Declaration>
+			
+			
+			<Anchor>//api/name/updateToneCurveTexture</Anchor>
             <NodeRef refid="14"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoCodec_QY265</TokenIdentifier>
-            <Abstract type="html">视频编码器 - 仟壹265 软件编码器</Abstract>
-            <Declaration>KSYVideoCodec_QY265</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="14"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoCodec_VT264</TokenIdentifier>
-            <Abstract type="html">视频编码器 - iOS VT264硬件编码器 (iOS 8.0以上支持)</Abstract>
-            <Declaration>KSYVideoCodec_VT264</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="14"/>
-        </Token>
+		</Token>
+		
         
         
 	</File>

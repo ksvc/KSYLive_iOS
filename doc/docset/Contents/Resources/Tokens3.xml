@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUStreamer.html">
+	<File path="Classes/KSYGPUBeautifyExtFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUStreamer</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUBeautifyExtFilter</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUStreamer.h</DeclaredIn>
+			<DeclaredIn>KSYGPUBeautifyExtFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="3"/>
@@ -13,63 +13,98 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamer/setEnabled:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyExtFilter/setBeautylevel:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUStreamer.h</DeclaredIn>
+			<DeclaredIn>KSYGPUBeautifyExtFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) BOOL enabled</Declaration>
+			<Declaration>- (void)setBeautylevel:(int)level</Declaration>
 			
 			
-			<Anchor>//api/name/enabled</Anchor>
+			<Anchor>//api/name/setBeautylevel:</Anchor>
             <NodeRef refid="3"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamer/enabled</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyExtFilter/setSingleStepOffset:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUStreamer.h</DeclaredIn>
+			<DeclaredIn>KSYGPUBeautifyExtFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) BOOL enabled</Declaration>
+			<Declaration>@property (readwrite, nonatomic) CGPoint singleStepOffset</Declaration>
 			
 			
-			<Anchor>//api/name/enabled</Anchor>
+			<Anchor>//api/name/singleStepOffset</Anchor>
             <NodeRef refid="3"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamer/enabled</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyExtFilter/singleStepOffset</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUStreamer.h</DeclaredIn>
+			<DeclaredIn>KSYGPUBeautifyExtFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) BOOL enabled</Declaration>
+			<Declaration>@property (readwrite, nonatomic) CGPoint singleStepOffset</Declaration>
 			
 			
-			<Anchor>//api/name/enabled</Anchor>
+			<Anchor>//api/name/singleStepOffset</Anchor>
             <NodeRef refid="3"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamer/initWithDefaultCfg</TokenIdentifier>
-			<Abstract type="html">初始化方法</Abstract>
-			<DeclaredIn>KSYGPUStreamer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUBeautifyExtFilter/singleStepOffset</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPUBeautifyExtFilter.h</DeclaredIn>
 			
-			<Declaration>- (instancetype)initWithDefaultCfg</Declaration>
+			<Declaration>@property (readwrite, nonatomic) CGPoint singleStepOffset</Declaration>
 			
 			
-			<Anchor>//api/name/initWithDefaultCfg</Anchor>
+			<Anchor>//api/name/singleStepOffset</Anchor>
             <NodeRef refid="3"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamer/getStreamer</TokenIdentifier>
-			<Abstract type="html">获取底层推流实例
-</Abstract>
-			<DeclaredIn>KSYGPUStreamer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyExtFilter/setParams:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPUBeautifyExtFilter.h</DeclaredIn>
 			
-			<Declaration>- (KSYStreamerBase *)getStreamer</Declaration>
+			<Declaration>@property (readwrite, nonatomic) GPUVector4 params</Declaration>
 			
 			
-			<Anchor>//api/name/getStreamer</Anchor>
+			<Anchor>//api/name/params</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyExtFilter/params</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPUBeautifyExtFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) GPUVector4 params</Declaration>
+			
+			
+			<Anchor>//api/name/params</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUBeautifyExtFilter/params</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPUBeautifyExtFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) GPUVector4 params</Declaration>
+			
+			
+			<Anchor>//api/name/params</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyExtFilter/setTexelSize:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPUBeautifyExtFilter.h</DeclaredIn>
+			
+			<Declaration>- (void)setTexelSize:(CGPoint)size</Declaration>
+			
+			
+			<Anchor>//api/name/setTexelSize:</Anchor>
             <NodeRef refid="3"/>
 		</Token>
 		
