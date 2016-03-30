@@ -59,12 +59,12 @@
 
 2. 使用Cocoapods进行安装，将如下语句加入你的Podfile：
 
-（不带滤镜版本）
+（libksylive）
 
 ```
 pod 'KSYLive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 ```
-（带滤镜版本）
+（libksygpulive）
 
 ```
 pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
@@ -76,15 +76,14 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 
 1. SDK压缩包
 如果获取到的为zip格式的压缩包，解压后的目录结构如下所示:
-
-- demo        : demo工程为KSYLive ，演示本SDK的主要接口的使用
-- doc/docset  : appleDoc风格的接口文档
-- doc/html    : appleDoc风格的[接口文档](http://ksvc.github.io/KSYLive_iOS/html/index.html)
-- framework   : 本SDK的静态库framework，集成时需要将该framework加入到项目中
-  - framework/live264/libksylive.framework    
-  不依赖GPUImage的推流SDK
-  - framework/livegpu/libksygpulive.framework     
-  依赖GPUImage，支持美颜功能，并包含了libksylive全部功能的推流SDK
+  - demo        : demo工程为KSYLive ，演示本SDK的主要接口的使用
+  - doc/docset  : appleDoc风格的接口文档
+  - doc/html    : appleDoc风格的[接口文档](http://ksvc.github.io/KSYLive_iOS/html/index.html)
+  - framework   : 本SDK的静态库framework，集成时需要将该framework加入到项目中
+    - framework/live264/libksylive.framework    
+    不依赖GPUImage的推流SDK
+    - framework/livegpu/libksygpulive.framework     
+    依赖GPUImage，支持美颜功能，并包含了libksylive全部功能的推流SDK
 
 2. SDK Cocoapods
 通过Cocoapods 能将本SDK的静态库framework下载到本地
