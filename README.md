@@ -184,52 +184,58 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
         ```
 
 ###推流编码参数设置
-－使用KSYGPUStreamerKit/KSYStreamer
-* 选择视频编码器，（264软编码，264硬编码，265软编码等）
-```
- _kit.streamerBase.videoCodec = KSYVideoCodec_VT264;
-```
-* 设置视频自适应码率范围
-```
-    _kit.streamerBase.enAutoApplyEstimateBW = _btnAutoBw.on;
-    _kit.streamerBase.videoInitBitrate = 1000; // k bit ps
-    _kit.streamerBase.videoMaxBitrate  = 1000; // k bit ps
-    _kit.streamerBase.videoMinBitrate  = 100; // k bit ps
-```
+* 使用KSYGPUStreamerKit/KSYStreamer
+    - 选择视频编码器，（264软编码，264硬编码，265软编码等）
+    
+        ```
+         _kit.streamerBase.videoCodec = KSYVideoCodec_VT264;
+        ```
+    - 设置视频自适应码率范围
+    
+        ```
+            _kit.streamerBase.enAutoApplyEstimateBW = _btnAutoBw.on;
+            _kit.streamerBase.videoInitBitrate = 1000; // k bit ps
+            _kit.streamerBase.videoMaxBitrate  = 1000; // k bit ps
+            _kit.streamerBase.videoMinBitrate  = 100; // k bit ps
+        ```
+          - videoMaxBitrate为平均码率上调的上限，即当网络足够好时的目标码率，对应画质最好的情况
+          - videoMinBitrate为平均码率下调的下限，即当网络太差时，如果再往下调整，画面质量会无法接受
+          - videoInitBitrate为开始推流时的码率，开始推流后才能根据实际网络情况自动上调或下调
+
+    - 设置音频码率
+    
+        ```
+            _kit.streamerBase.audiokBPS        = 48; // k bit ps
+        ```
+* 使用KSYGPUSteamer
+    - 选择视频编码器，（264软编码，264硬编码，265软编码等
+    
+        ```
+         _streamer.videoCodec = KSYVideoCodec_X264;
+        ```
+    - 设置视频自适应码率范围
+    
+        ```
+            _streamer.enAutoApplyEstimateBW = _btnAutoBw.on;
+            _streamer.videoInitBitrate  = 500;  // k bit ps
+            _streamer.videoMaxBitrate   = 1000; // k bit ps
+            _streamer.videoMinBitrate   = 200;  // k bit ps
+        ```
   - videoMaxBitrate为平均码率上调的上限，即当网络足够好时的目标码率，对应画质最好的情况
   - videoMinBitrate为平均码率下调的下限，即当网络太差时，如果再往下调整，画面质量会无法接受
   - videoInitBitrate为开始推流时的码率，开始推流后才能根据实际网络情况自动上调或下调
 
-* 设置音频码率
-```
-    _kit.streamerBase.audiokBPS        = 48; // k bit ps
-```
-
-- 使用KSYGPUSteamer
-* 选择视频编码器，（264软编码，264硬编码，265软编码等）
-```
- _streamer.videoCodec = KSYVideoCodec_X264;
-```
-* 设置视频自适应码率范围
-```
-    _streamer.enAutoApplyEstimateBW = _btnAutoBw.on;
-    _streamer.videoInitBitrate  = 500;  // k bit ps
-    _streamer.videoMaxBitrate   = 1000; // k bit ps
-    _streamer.videoMinBitrate   = 200;  // k bit ps
-```
-  - videoMaxBitrate为平均码率上调的上限，即当网络足够好时的目标码率，对应画质最好的情况
-  - videoMinBitrate为平均码率下调的下限，即当网络太差时，如果再往下调整，画面质量会无法接受
-  - videoInitBitrate为开始推流时的码率，开始推流后才能根据实际网络情况自动上调或下调
-
-* 设置音频码率
-```
-   _streamer.audiokBPS  = 48;   // k bit ps
-```
-* 设置采集帧率
-通过设置 videoFPS 就设定了推流的帧率，一般设置成和采集的一样。
-```
-  _streamer.videoFPS   = _capDev.frameRate;
-```
+    - 设置音频码率
+    
+        ```
+           _streamer.audiokBPS  = 48;   // k bit ps
+        ```
+    - 设置采集帧率
+    
+        通过设置 videoFPS 就设定了推流的帧率，一般设置成和采集的一样。
+        ```
+          _streamer.videoFPS   = _capDev.frameRate;
+        ```
 ###服务器地址
 * 服务器url(需要向相关人员申请，测试地址并不稳定！)：
 ```
