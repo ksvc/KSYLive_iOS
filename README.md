@@ -203,11 +203,12 @@ _hostURL      = [[NSURL alloc] initWithString:url];
 ```
 
 ###采集推流状态
-由于对摄像头的操作和启停推流都与设备交互，可能会出现比较耗时的情况，相关API设计为异步接口，比如调用启动推流接口API后，并不是API返回后就能知道是否连接成功，而是需要通过状态变化回调，来查询执行的结果。本SDK提供如下表列出的通知，通过NSNotificationCenter注册接收相应的通知：
+由于对摄像头的操作和启停推流都与设备交互，可能会出现比较耗时的情况，相关API设计为异步接口，比如调用启动推流接口API后，并不是API返回后就能知道是否连接成功，而是需要通过状态变化回调，来查询执行的结果。本SDK提供如下表列出的通知，通过NSNotificationCenter注册接收相应的通知：    
+
 | 通知名称 | 通知说明 |  相关属性 | 相关类  |
-| --------| ------|  --- |  -- |
-| KSYCaptureStateDidChangeNotification | 采集设备状态变化通知  | captureState | KSYStreamer, KSYGPUStreamerKit|
-| KSYStreamStateDidChangeNotification  | 推流状态变化通知| streamState, streamErrorCode | KSYStreamer, KSYStreamerBase|
+| --------| ------|  --- |  --- |
+| KSYCaptureStateDidChangeNotification | 采集设备状态变化通知  | captureState | KSYStreamer, KSYGPUStreamerKit |
+| KSYStreamStateDidChangeNotification  | 推流状态变化通知| streamState, streamErrorCode | KSYStreamer, KSYStreamerBase |
 | KSYNetStateEventNotification         | 网络事件发生通知| netStateCode | KSYStreamer, KSYStreamerBase |
 
 当采集设备的状态发生变化时，对应的接收回调函数会被调用，通过_streamer.captureState属性,可查询到新的状态。
