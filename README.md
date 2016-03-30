@@ -135,10 +135,8 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 使用SDK前, 需要联系金山云获取合法的ak/sk 在开始推流前，需要使用KSYAuthInfo类的setAuthInfo将ak和加密后的sk传入SDK内部, 具体代码见demo中的initKSYAuth方法
 
 ###采集参数设置
+－使用KSYGPUStreamerKit/KSYStreamer
 * 设置分辨率
-- 如果使用KSYGPUCamera,则只支持iOS系统定义的AVCaptureSessionPreset*   
-  需要自定义分辨率的话，可以通过添加裁剪和缩放的滤镜来实现分辨率的改变
-- 如果使用KSYStreamer 或者 KSYGPUStreamerKit，则可以用KSYVideoDimension中列举的分辨率,比如
 ```
 /// 16 : 9 宽高比，1280 x 720 分辨率
     KSYVideoDimension_16_9__1280x720 = 0,
@@ -154,36 +152,44 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 其中KSYVideoDimension_UserDefine_Scale/Crop为可以自定义的分辨率，自定义范围为
   - 宽度有效范围[160, 1280]
   - 高度有效范围[ 90,  720], 超出范围会提示参数错误
+* 设置视频采集帧率
+通过设置 videoFPS 就设定了采集和推流的帧率
+```
+ _kit.videoFPS = 15;
+```
+* 设置视频朝向
+推流和采集的朝向必须保持一致，建议直接将设备UI的朝向设置为视频的朝向，比如
+```
+    UIInterfaceOrientation orien = [[UIApplication sharedApplication] statusBarOrientation];
+     [_kit setVideoOrientationBy:orien];
+```
 
-* 设置视频采集帧率：
-  - KSYStreamer 或者 KSYGPUStreamerKit 通过设置 videoFPS 就设定了采集和推流的帧率
-```
-_streamer.videoFPS = 15;
-```
-  - KSYGPUCamera 只设置摄像头的帧率 需要将同一个值在推流参数中再设置一次
+- 使用KSYGPUSteamer
+* 设置分辨率
+只支持iOS系统定义的AVCaptureSessionPreset*,需要自定义分辨率的话，可以通过添加裁剪和缩放的滤镜来实现分辨率的改变
+* 设置视频采集帧率
+只设置摄像头的帧率 需要将同一个值在推流参数中再设置一次
 ```
     _capDev.frameRate = 15;
 ```
-
-* 设置视频朝向，推流和采集的朝向必须保持一致，建议直接将设备UI的朝向设置为视频的朝向，比如
+* 设置视频朝向
 ```
     UIInterfaceOrientation orien = [[UIApplication sharedApplication] statusBarOrientation];
     _capDev.outputImageOrientation = orien;
 ```
 
 ###推流编码参数设置
-
+－使用KSYGPUStreamerKit/KSYStreamer
 * 选择视频编码器，（264软编码，264硬编码，265软编码等）
 ```
-_streamer.videoCodec = KSYVideoCodec_VT264;
+ _kit.streamerBase.videoCodec = KSYVideoCodec_VT264;
 ```
-
 * 设置视频自适应码率范围
 ```
-_streamer.enAutoApplyEstimateBW = YES;
-_streamer.videoInitBitrate = 700; // k bit ps
-_streamer.videoMaxBitrate  = 1000; // k bit ps
-_streamer.videoMinBitrate  = 300; // k bit ps
+    _kit.streamerBase.enAutoApplyEstimateBW = _btnAutoBw.on;
+    _kit.streamerBase.videoInitBitrate = 1000; // k bit ps
+    _kit.streamerBase.videoMaxBitrate  = 1000; // k bit ps
+    _kit.streamerBase.videoMinBitrate  = 100; // k bit ps
 ```
   - videoMaxBitrate为平均码率上调的上限，即当网络足够好时的目标码率，对应画质最好的情况
   - videoMinBitrate为平均码率下调的下限，即当网络太差时，如果再往下调整，画面质量会无法接受
@@ -191,9 +197,34 @@ _streamer.videoMinBitrate  = 300; // k bit ps
 
 * 设置音频码率
 ```
-_streamer.audiokBPS        = 48; // k bit ps
+    _kit.streamerBase.audiokBPS        = 48; // k bit ps
 ```
 
+- 使用KSYGPUSteamer
+* 选择视频编码器，（264软编码，264硬编码，265软编码等）
+```
+ _streamer.videoCodec = KSYVideoCodec_X264;
+```
+* 设置视频自适应码率范围
+```
+    _streamer.enAutoApplyEstimateBW = _btnAutoBw.on;
+    _streamer.videoInitBitrate  = 500;  // k bit ps
+    _streamer.videoMaxBitrate   = 1000; // k bit ps
+    _streamer.videoMinBitrate   = 200;  // k bit ps
+```
+  - videoMaxBitrate为平均码率上调的上限，即当网络足够好时的目标码率，对应画质最好的情况
+  - videoMinBitrate为平均码率下调的下限，即当网络太差时，如果再往下调整，画面质量会无法接受
+  - videoInitBitrate为开始推流时的码率，开始推流后才能根据实际网络情况自动上调或下调
+
+* 设置音频码率
+```
+   _streamer.audiokBPS  = 48;   // k bit ps
+```
+* 设置采集帧率
+通过设置 videoFPS 就设定了推流的帧率，一般设置成和采集的一样。
+```
+  _streamer.videoFPS   = _capDev.frameRate;
+```
 ###服务器地址
 * 服务器url(需要向相关人员申请，测试地址并不稳定！)：
 ```
