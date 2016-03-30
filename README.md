@@ -168,13 +168,16 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 
 * 使用KSYGPUSteamer
     - 设置分辨率
+    
         只支持iOS系统定义的AVCaptureSessionPreset*,需要自定义分辨率的话，可以通过添加裁剪和缩放的滤镜来实现分辨率的改变
     - 设置视频采集帧率
+    
         只设置摄像头的帧率 需要将同一个值在推流参数中再设置一次
         ```
             _capDev.frameRate = 15;
         ```
     - 设置视频朝向
+    
         ```
             UIInterfaceOrientation orien = [[UIApplication sharedApplication] statusBarOrientation];
             _capDev.outputImageOrientation = orien;
