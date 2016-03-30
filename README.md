@@ -118,7 +118,7 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 
 ### 入口类
 本SDK提供的入口类如下
-[](http://ksvc.github.io/KSYLive_iOS/html/img/sdkClass.png)
+![sdk classes](http://ksvc.github.io/KSYLive_iOS/html/img/sdkClass.png)
 
 * libksylive的入口类为[KSYStreamer](http://ksvc.github.io/KSYLive_iOS/html/Classes/KSYStreamer.html), 包含了采集和推流的功能，可以在VC中增加 KSYStreamer 的属性, 后续与推流相关的操作大部分都要通过KSYStreamer 来进行
 
