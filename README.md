@@ -36,7 +36,7 @@
     - [工程目录](###工程目录)
     - [添加工程](###添加工程)   
 - [推流使用示例](##推流使用示例)
-    - [核心类](###核心类)
+    - [入口类](###入口类)
     - [SDK鉴权](###SDK鉴权)
     - [编码参数](###编码参数)
     - [服务器地址](###服务器地址)
@@ -55,9 +55,9 @@
 ### 下载工程
 本SDK 提供如下两种获取方式:
 
-1:从github下载：https://github.com/ksvc/KSYLive_iOS.git
+1. 从github下载：https://github.com/ksvc/KSYLive_iOS.git
 
-2:使用Cocoapods进行安装，将如下语句加入你的Podfile：
+2. 使用Cocoapods进行安装，将如下语句加入你的Podfile：
 
 （不带滤镜版本）
 
@@ -74,17 +74,19 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 
 ### 工程目录
 
-1:SDK压缩包
+1. SDK压缩包
 如果获取到的为zip格式的压缩包，解压后的目录结构如下所示:
 
 - demo        : demo工程为KSYLive ，演示本SDK的主要接口的使用
 - doc/docset  : appleDoc风格的接口文档
 - doc/html    : appleDoc风格的[接口文档](http://ksvc.github.io/KSYLive_iOS/html/index.html)
 - framework   : 本SDK的静态库framework，集成时需要将该framework加入到项目中
-- framework/live264/libksylive.framework    不依赖GPUImage的推流SDK
-- framework/livegpu/libksygpulive.framework 依赖GPUImage，带美颜功能的推流SDK
+  - framework/live264/libksylive.framework    
+  不依赖GPUImage的推流SDK
+  - framework/livegpu/libksygpulive.framework     
+  依赖GPUImage，支持美颜功能，并包含了libksylive全部功能的推流SDK
 
-2:SDK Cocoapods
+2. SDK Cocoapods
 通过Cocoapods 能将本SDK的静态库framework下载到本地
 
 ### 添加工程
@@ -106,11 +108,11 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 - KSYStreamerKitVC KSYGPUStreamerKit的使用示例，与KSYStreamer用法一致，仅仅添加了设置美颜接口
 - KSYGPUStreamerVC KSYGPUStreamer使用示例，可以自由组合采集，滤镜和推流，实现高度定制化的需求
 
-* 在需要进行推流预览的ViewController类的实现文件中引入头文件
+* 在使用本SDK前，引入头文件
 ```
 #import <libksylive/libksylive.h>
 ```
-或者
+或者使用支持滤镜的framework
 ```
 #import <libksygpulive/libksygpulive.h>
 #import <libksygpulive/libksygpuimage.h>
@@ -120,22 +122,13 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 本SDK提供的入口类如下
 ![sdk classes](http://ksvc.github.io/KSYLive_iOS/html/img/sdkClass.png)
 
-* libksylive的入口类为[KSYStreamer](http://ksvc.github.io/KSYLive_iOS/html/Classes/KSYStreamer.html), 包含了采集和推流的功能，可以在VC中增加 KSYStreamer 的属性, 后续与推流相关的操作大部分都要通过KSYStreamer 来进行
-
-```
-@property KSYStreamer * streamer;
-```
-** 创建KSYStreamer 的实例,并初始化, 注意本SDK不支持多实例, 同一时间只能有一个推流类的实例，否则会出现不可预期的问题
-
-```
-_streamer = [[KSYStreamer alloc] initWithDefaultCfg];
-```
+* libksylive的入口类为[KSYStreamer](http://ksvc.github.io/KSYLive_iOS/html/Classes/KSYStreamer.html), 包含了采集和推流的功能，后续与推流相关的操作大部分都要通过KSYStreamer 来进行，比如设置采集和推流的属性，启停预览，启停推流等
 
 * libksygpulive的入口类有4个
-** KSYStreamerBase   基础推流类，接受CMSampleBufferRef的音视频数据进行编码推流
-** KSYGPUCamera      对GPUImageVideoCamera的封装，负责采集部分的功能
-** KSYGPUStreamer    对KSYStreamerBase的封装，对接GPUImage的滤镜输出
-** KSYGPUStreamerKit 对KSYGPUCamera和KSYGPUStreamer的封装，对采集，滤镜和推流组装
+  * KSYStreamerBase   基础推流类，接受CMSampleBufferRef的音视频数据进行编码推流
+  * KSYGPUCamera      对GPUImageVideoCamera的封装，负责采集部分的功能
+  * KSYGPUStreamer    对KSYStreamerBase的封装，对接GPUImage的滤镜输出
+  * KSYGPUStreamerKit 对KSYGPUCamera和KSYGPUStreamer的封装，对采集，滤镜和推流组装
 
 ###SDK鉴权
 使用SDK前, 需要联系金山云获取合法的ak/sk 在开始推流前，需要使用KSYAuthInfo类的setAuthInfo将ak和加密后的sk传入SDK内部, 具体代码见demo中的initKSYAuth方法
