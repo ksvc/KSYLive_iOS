@@ -135,37 +135,40 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 使用SDK前, 需要联系金山云获取合法的ak/sk 在开始推流前，需要使用KSYAuthInfo类的setAuthInfo将ak和加密后的sk传入SDK内部, 具体代码见demo中的initKSYAuth方法
 
 ###采集参数设置
-－使用KSYGPUStreamerKit/KSYStreamer
-* 设置分辨率
-```
-/// 16 : 9 宽高比，1280 x 720 分辨率
-    KSYVideoDimension_16_9__1280x720 = 0,
-    /// 16 : 9 宽高比，960 x 540 分辨率
-    KSYVideoDimension_16_9__960x540,
-    
-    /// 缩放自定义分辨率 从设备支持的最近分辨率缩放获得, 若设备没有对应宽高比的分辨率，则裁剪后进行缩放
-    KSYVideoDimension_UserDefine_Scale,
-    /// 裁剪自定义分辨率 从设备支持的最近分辨率裁剪获得
-    KSYVideoDimension_UserDefine_Crop,
-    /// 注意： 选择缩放自定义分辨率时可能会有额外CPU代价
-```
-其中KSYVideoDimension_UserDefine_Scale/Crop为可以自定义的分辨率，自定义范围为
-  - 宽度有效范围[160, 1280]
-  - 高度有效范围[ 90,  720], 超出范围会提示参数错误
-* 设置视频采集帧率
-通过设置 videoFPS 就设定了采集和推流的帧率
-```
- _kit.videoFPS = 15;
-```
-* 设置视频朝向
-推流和采集的朝向必须保持一致，建议直接将设备UI的朝向设置为视频的朝向，比如
-```
-    UIInterfaceOrientation orien = [[UIApplication sharedApplication] statusBarOrientation];
-     [_kit setVideoOrientationBy:orien];
-```
+* 使用KSYGPUStreamerKit/KSYStreamer
+    - 设置分辨率
+    ```
+    /// 16 : 9 宽高比，1280 x 720 分辨率
+        KSYVideoDimension_16_9__1280x720 = 0,
+        /// 16 : 9 宽高比，960 x 540 分辨率
+        KSYVideoDimension_16_9__960x540,
+        
+        /// 缩放自定义分辨率 从设备支持的最近分辨率缩放获得, 若设备没有对应宽高比的分辨率，则裁剪后进行缩放
+        KSYVideoDimension_UserDefine_Scale,
+        /// 裁剪自定义分辨率 从设备支持的最近分辨率裁剪获得
+        KSYVideoDimension_UserDefine_Crop,
+        /// 注意： 选择缩放自定义分辨率时可能会有额外CPU代价
+    ```
+    其中KSYVideoDimension_UserDefine_Scale/Crop为可以自定义的分辨率，自定义范围为
+        - 宽度有效范围[160, 1280]
+        - 高度有效范围[ 90,  720], 超出范围会提示参数错误
+  
+    - 设置视频采集帧率
+        ```
+         _kit.videoFPS = 15;
+        ```
+        通过设置 videoFPS 就设定了采集和推流的帧率
+    - 设置视频朝向
+        ```
+            UIInterfaceOrientation orien = [[UIApplication sharedApplication] statusBarOrientation];
+             [_kit setVideoOrientationBy:orien];
+        ```
+        推流和采集的朝向必须保持一致，建议直接将设备UI的朝向设置为视频的朝向
 
-- 使用KSYGPUSteamer
-* 设置分辨率
+* 使用KSYGPUSteamer
+
+- 设置分辨率
+
 只支持iOS系统定义的AVCaptureSessionPreset*,需要自定义分辨率的话，可以通过添加裁剪和缩放的滤镜来实现分辨率的改变
 * 设置视频采集帧率
 只设置摄像头的帧率 需要将同一个值在推流参数中再设置一次
@@ -173,6 +176,7 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
     _capDev.frameRate = 15;
 ```
 * 设置视频朝向
+
 ```
     UIInterfaceOrientation orien = [[UIApplication sharedApplication] statusBarOrientation];
     _capDev.outputImageOrientation = orien;
