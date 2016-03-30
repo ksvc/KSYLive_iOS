@@ -102,6 +102,9 @@
  */
 - (void) setTorchMode: (AVCaptureTorchMode)mode;
 
-
+/**
+ @abstract  判断是否运行
+  */
+@property(readonly, nonatomic) BOOL isRunning;
 
 @end

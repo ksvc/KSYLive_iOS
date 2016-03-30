@@ -328,7 +328,7 @@ MP_EXTERN NSString * const MPMovieNaturalSizeAvailableNotification;
  @abstract timeout指定拉流超时时间,单位是秒。
  @warning 该方法由金山云引入，不是原生系统接口
  * 默认值为30秒。
- @since Available in KSYMoviePlayerController 1.3.0 and later.
+ @since Available in KSYMoviePlayerController 1.3.1 and later.
  */
 - (void)setTimeout:(int)timeout;
 
@@ -336,7 +336,7 @@ MP_EXTERN NSString * const MPMovieNaturalSizeAvailableNotification;
  @abstract 是否开启硬件解码
  @discussion 默认是关闭
  * 只在[prepareToPlay]([KSYMediaPlayback prepareToPlay]) 调用前设置生效；
- @since Available in KSYMoviePlayerController 1.3.0 and later.
+ @since Available in KSYMoviePlayerController 1.3.1 and later.
  */
 @property(nonatomic) BOOL shouldUseHWCodec;
 

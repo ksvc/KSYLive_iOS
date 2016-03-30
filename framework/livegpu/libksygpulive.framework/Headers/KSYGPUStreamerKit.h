@@ -135,6 +135,8 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  @discussion 需要与UI方向一致
  */
 @property (nonatomic, assign) AVCaptureVideoOrientation videoOrientation;
+- (void) setVideoOrientationBy: (UIInterfaceOrientation)uiOrien;
+
 
 /**
  @abstract   AVCaptureVideoOrientation / UIInterfaceOrientation
@@ -206,4 +208,14 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  */
 - (AVCaptureDevice*) getCurrentCameraDevices;
 
+
+/**
+ @abstract   获取错误码对应的字符串
+ */
+- (NSString*) getKSYStreamErrorCodeName:(KSYStreamErrorCode)code;
+
+/**
+ @abstract   获取SDK版本号
+ */
+- (NSString*) getKSYVersion;
 @end
