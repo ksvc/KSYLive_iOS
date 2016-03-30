@@ -297,10 +297,15 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 - (void) muteStreame:(BOOL) bMute;
 
 /*
+  @abstract 启动混响 Reverberation
+  @param  Reverberation level
 */
+- (void) enableReverb:(int) level;
 
 /*
+ @abstract 停止混响 Reverberation
  */
+- (void) unableReverb;
 
 #pragma mark - logblock
 

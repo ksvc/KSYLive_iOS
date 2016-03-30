@@ -67,6 +67,11 @@
  */
 @property (nonatomic, assign) int          videoMinBitrate;   // kbit/s of video
 /**
+ @abstract   最大关键帧间隔（单位:秒, 默认:2）
+ @discussion 即GOP长度 画面静止时,隔n秒插入一个关键帧
+ */
+@property (nonatomic, assign) int          maxKeyInterval;   // seconds
+/**
  @abstract   音频编码码率（单位:kbps）
  @discussion 音频目标编码码率 (比如48,96,128等)
  */
@@ -236,5 +241,84 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
  
  */
 @property (atomic, readonly) NSString* rtmpHostIP;
+
+
+#pragma mark - bgm audio mixer
+
+/**
+ @abstract   开始播放背景音乐
+ @param      path 本地音乐的路径
+ @param      loop 是否循环播放此音乐
+ @return     是否能够开始播放
+ */
+- (void) startMixMusic:(NSString*) path
+                isLoop:(BOOL) loop;
+
+/**
+ @abstract   当背景音乐播放完成时，调用此回调函数
+ @discussion 只有设置 loop为NO时才有效, 在开始播放前设置有效
+ */
+@property(nonatomic, copy) void(^bgmFinishBlock)(void);
+
+/**
+ @abstract   停止播放背景音乐
+ */
+- (void) stopMixMusic;
+
+/**
+ @abstract   暂停播放背景音乐
+ */
+- (void) pauseMixMusic;
+
+/**
+ @abstract   恢复播放背景音乐
+ */
+- (void) resumeMixMusic;
+
+/**
+ @abstract   设置背景音乐的音量
+ */
+- (void) setBgmVolume:(float) volume;
+
+/**
+ @abstract   设置micphone采集的音量
+ */
+- (void) setMicVolume:(float) volume;
+
+/**
+ @abstract   启用混音
+ */
+- (void) enableMicMixMusic:(BOOL) enableMixing;
+
+/**
+ @abstract  静音推流
+ @param     bMute YES / ON
+ */
+- (void) muteStreame:(BOOL) bMute;
+
+/*
+  @abstract 启动混响 Reverberation
+  @param  Reverberation level
+*/
+- (void) enableReverb:(int) level;
+
+/*
+ @abstract 停止混响 Reverberation
+ */
+- (void) unableReverb;
+
+#pragma mark - logblock
+
+/**
+ @abstract 收集日志的状态，默认开启
+ @discussion 可开关
+ */
+@property (nonatomic, assign) BOOL shouldEnableKSYStatModule;
+
+/**
+ @abstract 获取播放器日志
+ @discussion 相关字段说明请联系金山云技术支持
+ */
+@property (nonatomic, copy)void (^logBlock)(NSString *logJson);
 
 @end

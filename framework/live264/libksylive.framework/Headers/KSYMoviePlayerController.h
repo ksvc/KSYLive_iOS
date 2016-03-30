@@ -7,6 +7,7 @@
 //
 
 #import "KSYMediaPlayback.h"
+#import "KSYQosInfo.h"
 #import <MediaPlayer/MediaPlayer.h>
 /**
  金山云播放内核提供了跨终端平台的播放器SDK，支持Android/iOS/Flash平台的视频播放需求。金山云播放内核集成有业界一流的高性能H.265/HEVC解码器，提供流畅、低功耗的播放体验。同时SDK提供和系统播放器一致的音视频播放、控制接口，极大地降低了开发门槛。
@@ -191,6 +192,12 @@
 // The currently playable duration of the movie, for progressively downloaded network content.
 @property (nonatomic, readonly) NSTimeInterval playableDuration;
 
+/**
+ @abstract 收集日志的状态，默认开启
+ @discussion 可开关
+  @since Available in KSYMoviePlayerController 1.0 and later.
+ */
+@property (nonatomic, assign) BOOL shouldEnableKSYStatModule;
 
 /**
  @abstract 当前视频宽高
@@ -200,6 +207,12 @@
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 @property (nonatomic, readonly) CGSize naturalSize;
+/**
+ @abstract 获取播放器日志
+ @discussion 相关字段说明请联系金山云技术支持
+ @since Available in KSYMoviePlayerController 1.0 and later.
+ */
+@property (nonatomic, copy)void (^logBlock)(NSString *logJson);
 
 // Posted when the playback state changes, either programatically or by the user.
 MP_EXTERN NSString * const MPMoviePlayerPlaybackStateDidChangeNotification;
@@ -282,6 +295,13 @@ MP_EXTERN NSString * const MPMovieNaturalSizeAvailableNotification;
  */
 @property (nonatomic, readonly) NSString* serverAddress;
 /**
+ @abstract 视频流qos信息
+ @warning 该方法由金山云引入，不是原生系统接口
+ @discussion 在播放过程中，即可以查询当前连接的视频流qos信息.
+ @since Available in KSYMoviePlayerController 1.0 and later.
+ */
+@property (nonatomic, strong) KSYQosInfo *qosInfo;
+/**
  @abstract 截图
  @warning 该方法由金山云引入，不是原生系统接口
  @return 当前时刻的视频UIImage 图像
@@ -303,4 +323,34 @@ MP_EXTERN NSString * const MPMovieNaturalSizeAvailableNotification;
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 @property(nonatomic)  BOOL  shouldEnableVideoPostProcessing;
+
+/**
+ @abstract timeout指定拉流超时时间,单位是秒。
+ @warning 该方法由金山云引入，不是原生系统接口
+ * 默认值为30秒。
+ @since Available in KSYMoviePlayerController 1.3.1 and later.
+ */
+- (void)setTimeout:(int)timeout;
+
+/**
+ @abstract 是否开启硬件解码
+ @discussion 默认是关闭
+ * 只在[prepareToPlay]([KSYMediaPlayback prepareToPlay]) 调用前设置生效；
+ @since Available in KSYMoviePlayerController 1.3.1 and later.
+ */
+@property(nonatomic) BOOL shouldUseHWCodec;
+
+/**
+ @abstract 重新启动拉流
+ @warning 该方法由金山云引入，不是原生系统接口
+ @param url 视频播放地址，该地址可以是本地地址或者服务器地址.如果为nil，则使用前一次播放地址。
+ @discussion 调用场景如下：
+ 1. 当播放器调用方发现卡顿时，可以主动调用。
+ 2. 当估计出更优质的拉流ip时，可以主动调用。
+ 3. 当发生WiFi/3G网络切换时，可以主动调用。
+ 4. 当播放器回调体现播放完全时，可以主动调用。
+ 5. 播放器SDK不会自动调用reload功能。
+ @since Available in KSYMoviePlayerController 1.0 and later.
+ */
+- (void)reload:(NSURL *)aUrl;
 @end

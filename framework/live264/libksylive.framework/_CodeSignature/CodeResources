@@ -8,6 +8,10 @@
 		<data>
 		RUzEMHLu6E4D2cYoev6Hv6sakas=
 		</data>
+		<key>Headers/KSYCamera.h</key>
+		<data>
+		e0S8/jOzYfzZ7x/77nLYBlDqLu4=
+		</data>
 		<key>Headers/KSYMediaPlayback.h</key>
 		<data>
 		SE0jttjHQBC2/BoMJiOE9sHHSk8=
@@ -18,11 +22,11 @@
 		</data>
 		<key>Headers/KSYMoviePlayerController.h</key>
 		<data>
-		M2HARc6AEy4RrGwtLqi0B2ndUWI=
+		Y7V08jDrbmLQFR4yi1l1gyDHw6s=
 		</data>
 		<key>Headers/KSYPlayerAuth.h</key>
 		<data>
-		5gxE7S7g0phJ/FaXXBkmmhzo6uk=
+		JM5yh6ys+RSrgBXgtBcIqXhaqXs=
 		</data>
 		<key>Headers/KSYStreamer.h</key>
 		<data>
@@ -30,15 +34,15 @@
 		</data>
 		<key>Headers/KSYStreamerBase.h</key>
 		<data>
-		sqWyRGXK9rk6Lwc3OBUDcgoigvg=
+		nF8/1+QMLNwo1k1fOqF1Nqt52tc=
 		</data>
 		<key>Headers/KSYTypeDef.h</key>
 		<data>
-		PgaOYA1pgIoas3OC2jZCXjjmxHU=
+		i7BLaNbbWlTCa/t3wKG8O+w1RKM=
 		</data>
 		<key>Headers/libksylive.h</key>
 		<data>
-		ZCW7HKVtSgE+HZvo3TYmonMMF4Q=
+		KrEMn2KznIGkUZgyxq1XVLrp7Uc=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -55,6 +59,10 @@
 		<data>
 		RUzEMHLu6E4D2cYoev6Hv6sakas=
 		</data>
+		<key>Headers/KSYCamera.h</key>
+		<data>
+		e0S8/jOzYfzZ7x/77nLYBlDqLu4=
+		</data>
 		<key>Headers/KSYMediaPlayback.h</key>
 		<data>
 		SE0jttjHQBC2/BoMJiOE9sHHSk8=
@@ -65,11 +73,11 @@
 		</data>
 		<key>Headers/KSYMoviePlayerController.h</key>
 		<data>
-		M2HARc6AEy4RrGwtLqi0B2ndUWI=
+		Y7V08jDrbmLQFR4yi1l1gyDHw6s=
 		</data>
 		<key>Headers/KSYPlayerAuth.h</key>
 		<data>
-		5gxE7S7g0phJ/FaXXBkmmhzo6uk=
+		JM5yh6ys+RSrgBXgtBcIqXhaqXs=
 		</data>
 		<key>Headers/KSYStreamer.h</key>
 		<data>
@@ -77,15 +85,15 @@
 		</data>
 		<key>Headers/KSYStreamerBase.h</key>
 		<data>
-		sqWyRGXK9rk6Lwc3OBUDcgoigvg=
+		nF8/1+QMLNwo1k1fOqF1Nqt52tc=
 		</data>
 		<key>Headers/KSYTypeDef.h</key>
 		<data>
-		PgaOYA1pgIoas3OC2jZCXjjmxHU=
+		i7BLaNbbWlTCa/t3wKG8O+w1RKM=
 		</data>
 		<key>Headers/libksylive.h</key>
 		<data>
-		ZCW7HKVtSgE+HZvo3TYmonMMF4Q=
+		KrEMn2KznIGkUZgyxq1XVLrp7Uc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
