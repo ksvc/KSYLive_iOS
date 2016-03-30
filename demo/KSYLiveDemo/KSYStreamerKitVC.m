@@ -23,55 +23,52 @@
     // choose filters
     UIButton *_btnFilters[4];
     
+
+    // UI
+    UIButton *_btnPreview;
+    UIButton *_btnTStream;
+    UIButton *_btnCamera;
+    UIButton *_btnFlash;
+    UISwitch *_btnAutoBw;
+    UILabel  *_lblAutoBW;
+    UIButton *_btnQuit;
+    UISwitch *_btnAutoReconnect;
+    UILabel  *_lblAutoReconnect;
+
+
+    UISwitch *_btnHighRes;
+    UILabel  *_lblHighRes;
+    
+    // status monitor
+    double    _lastSecond;
+    int       _lastByte;
+    int       _lastFrames;
+    int       _lastDroppedF;
+    int       _netEventCnt;
+    
+    NSString *_netEventRaiseDrop;
+    int       _netTimeOut;
+    int       _raiseCnt;
+    int       _dropCnt;
+    double    _startTime;
 }
 
+// kit =  KSYGPUCamera + KSYGPUStreamer
 @property KSYGPUStreamerKit * kit;
-
-
-
-@property UIButton *btnPreview;
-@property UIButton *btnTStream;
-@property UIButton *btnCamera;
-@property UIButton *btnFlash;
-@property UISwitch *btnAutoBw;
-@property UILabel  *lblAutoBW;
-@property UIButton *btnQuit;
-@property UISwitch *btnAutoReconnect;
-@property UILabel  *lblAutoReconnect;
+// set this filter to kit
 @property GPUImageFilter     * filter;
 
-
-@property UISwitch *btnHighRes;
-@property UILabel  *lblHighRes;
-
+// status monitor
 @property NSTimer *timer;
-
-@property UIView* preview;
-
-@property BOOL bMirrored;
-
-@property double  lastSecond;
-@property int  lastByte;
-@property int  lastFrames;
-@property int  lastDroppedF;
-@property int  netEventCnt;
-
-@property NSString  *netEventRaiseDrop;
-@property int  netTimeOut;
-
-@property int raiseCnt;
-@property int dropCnt;
-
-@property double  startTime;
 @end
 
 @implementation KSYStreamerKitVC
-
 
 -(KSYGPUStreamerKit *)getStreamer {
     return _kit;
 }
 
+#pragma mark - UIViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI ];
@@ -79,11 +76,12 @@
     _kit = [[KSYGPUStreamerKit alloc] initWithDefaultCfg];
     [self setStreamerCfg];
     [self addObservers ];
+    NSLog(@"version: %@", [_kit getKSYVersion]);
 }
 
 - (void) addObservers {
     // statistics update every seconds
-    _timer =  [NSTimer scheduledTimerWithTimeInterval:1.2
+    _timer =  [NSTimer scheduledTimerWithTimeInterval:1.0
                                                target:self
                                              selector:@selector(updateStat:)
                                              userInfo:nil
@@ -118,6 +116,32 @@
                                                   object:nil];
 }
 
+
+- (void)viewDidAppear:(BOOL)animated {
+    if ( _btnAutoBw != nil ) {
+        [self layoutUI];
+    }
+    if (_bAutoStart) {
+        [self onPreview:nil];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self onStream:nil];
+        });
+    }
+}
+
+- (BOOL)shouldAutorotate {
+    BOOL  bShould = _kit.captureState != KSYCaptureStateCapturing;
+    [self layoutUI];
+    return bShould;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark - add UIs to view
 - (UIButton *)addButton:(NSString*)title
                  action:(SEL)action {
     UIButton * button;
@@ -142,6 +166,16 @@
     return sw;
 }
 
+- (UISlider *)addSliderFrom: (float) minV
+                         To: (float) maxV{
+    UISlider *sl = [[UISlider alloc] init];
+    [self.view addSubview:sl];
+    sl.minimumValue = minV;
+    sl.maximumValue = maxV;
+    sl.value = 0.5;
+    [ sl addTarget:self action:@selector(onVolChanged:) forControlEvents:UIControlEventValueChanged ];
+    return sl;
+}
 - (void) initUI {
     _btnPreview = [self addButton:@"开始预览" action:@selector(onPreview:)];
     _btnTStream = [self addButton:@"开始推流" action:@selector(onStream:)];
@@ -171,7 +205,7 @@
     _lblAutoReconnect = [self addLable:@"自动重连"];
     _btnAutoReconnect = [self addSwitch:NO];
 
-    _lblHighRes =[self addLable:@"高分辨率"];
+    _lblHighRes =[self addLable:@"360p/540p"];
     _btnHighRes =[self addSwitch:NO];
 
     _stat = [self addLable:@""];
@@ -195,8 +229,6 @@
     CGFloat xLeft   = gap;
     CGFloat xMiddle = (wdt - btnWdt*3 - gap*2) /2 + gap + btnWdt;
     CGFloat xRight  = wdt - btnWdt - gap;
-    // full screen
-    _preview.frame = self.view.bounds;
     
     // bottom left
     _btnPreview.frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
@@ -248,32 +280,8 @@
     _stat.frame = CGRectMake(gap, yPos , btnWdt, btnHgt);
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    if ( _btnAutoBw != nil ) {
-        [self layoutUI];
-    }
-    if (_bAutoStart) {
-        [self onPreview:nil];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self onStream:nil];
-        });
-    }
-}
-
-- (BOOL)shouldAutorotate {
-    BOOL  bShould = _kit.captureState != KSYCaptureStateCapturing;
-    [self layoutUI];
-    return bShould;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-const char * getDocPath () ;
-
-- (void) setStreamerCfg {
+#pragma mark - stream setup (采集推流参数设置)
+- (void) setCaptureCfg {
     // capture settings
     if (_btnHighRes.on ) {
         _kit.videoDimension = KSYVideoDimension_16_9__960x540;
@@ -283,9 +291,12 @@ const char * getDocPath () ;
     }
     _kit.videoFPS = 15;
     _kit.bInterruptOtherAudio = NO;
-    
+    [self setVideoOrientation];
+}
+- (void) setStreamerCfg {
     // stream settings
-    _kit.streamerBase.videoCodec = KSYVideoCodec_X264;
+    //_kit.streamerBase.videoCodec = KSYVideoCodec_X264;
+    _kit.streamerBase.videoCodec = KSYVideoCodec_VT264;
     _kit.streamerBase.videoInitBitrate = 1000; // k bit ps
     _kit.streamerBase.videoMaxBitrate  = 1000; // k bit ps
     _kit.streamerBase.videoMinBitrate  = 100; // k bit ps
@@ -295,28 +306,37 @@ const char * getDocPath () ;
     // rtmp server info
     // stream name = 随机数 + codec名称 （构造流名，避免多个demo推向同一个流）
     NSString *devCode  = [ [KSYAuthInfo sharedInstance].mCode substringToIndex:3];
-    NSString *codecSuf = _kit.streamerBase.videoCodec == KSYVideoCodec_X264 ? @"264" : @"265";
+    NSString *codecSuf = _kit.streamerBase.videoCodec == KSYVideoCodec_QY265 ? @"265" : @"264";
     NSString *streamName = [NSString stringWithFormat:@"%@.%@", devCode, codecSuf ];
     
     // hostURL = rtmpSrv + streamName
     NSString *rtmpSrv  = @"rtmp://test.uplive.ksyun.com/live";
     NSString *url      = [  NSString stringWithFormat:@"%@/%@", rtmpSrv, streamName];
     _hostURL = [[NSURL alloc] initWithString:url];
+
     [self setVideoOrientation];
 }
 
-- (IBAction)onQuit:(id)sender {
-    [_kit.streamerBase stopStream];
-    [_kit stopPreview];
-    [self dismissViewControllerAnimated:FALSE completion:nil];
+- (void) setVideoOrientation {
+    UIInterfaceOrientation orien = [[UIApplication sharedApplication] statusBarOrientation];
+    [_kit setVideoOrientationBy:orien];
 }
 
+#pragma mark - UI responds
+- (IBAction)onQuit:(id)sender {
+    [_kit.streamerBase stopMixMusic];
+    [_kit.streamerBase stopStream];
+    [_kit stopPreview];
+    [self rmObservers];  // need remove observers to dealloc
+    [self dismissViewControllerAnimated:FALSE completion:nil];
+}
+// 启停预览
 - (IBAction)onPreview:(id)sender {
     if ( NO == _btnPreview.isEnabled) {
         return;
     }
     if ( _kit.captureState != KSYCaptureStateCapturing ) {
-        [self setStreamerCfg];
+        [self setCaptureCfg]; // update capture settings
         [_kit startPreview: self.view];
         [UIApplication sharedApplication].idleTimerDisabled=YES;
     }
@@ -325,13 +345,14 @@ const char * getDocPath () ;
         [UIApplication sharedApplication].idleTimerDisabled=NO;
     }
 }
-
+// 启停推流
 - (IBAction)onStream:(id)sender {
     if (_kit.captureState != KSYCaptureStateCapturing ||
         NO == _btnTStream.isEnabled ) {
         return;
     }
     if (_kit.streamerBase.streamState != KSYStreamStateConnected) {
+        [self setStreamerCfg]; // update stream settings
         [_kit.streamerBase startStream: _hostURL];
         [self initStatData];
     }
@@ -342,8 +363,6 @@ const char * getDocPath () ;
 
 - (IBAction)onFlash:(id)sender {
     [_kit toggleTorch ];
-    //[_kit setPreviewMirrored:_bMirrored];
-    //_bMirrored= !_bMirrored;
 }
 
 - (IBAction)onCamera:(id)sender {
@@ -359,67 +378,6 @@ const char * getDocPath () ;
     }
     backCam = backCam && (_kit.captureState == KSYCaptureStateCapturing);
     [_btnFlash  setEnabled:backCam ];
-}
-
-- (void) initStatData {
-    _lastByte    = 0;
-    _lastSecond  = [[NSDate date]timeIntervalSince1970];
-    _lastFrames  = 0;
-    _netEventCnt = 0;
-    _raiseCnt    = 0;
-    _dropCnt     = 0;
-    _startTime   =  [[NSDate date]timeIntervalSince1970];
-}
-
-- (NSString*) sizeFormatted : (int )KB {
-    if ( KB > 1000 ) {
-        double MB   =  KB / 1000.0;
-        return [NSString stringWithFormat:@" %4.2f MB", MB];
-    }
-    else {
-        return [NSString stringWithFormat:@" %d KB", KB];
-    }
-}
-
-- (void)updateStat:(NSTimer *)theTimer{
-    if (_kit.streamerBase.streamState == KSYStreamStateConnected ) {
-        int    KB          = [_kit.streamerBase uploadedKByte];
-        int    curFrames   = [_kit.streamerBase encodedFrames];
-        int    droppedF    = [_kit.streamerBase droppedVideoFrames];
-
-        int deltaKbyte = KB - _lastByte;
-        double curTime = [[NSDate date]timeIntervalSince1970];
-        double deltaTime = curTime - _lastSecond;
-        double realKbps = deltaKbyte*8 / deltaTime;   // deltaByte / deltaSecond
-        
-        double deltaFrames =(curFrames - _lastFrames);
-        double fps = deltaFrames / deltaTime;
-        
-        double dropRate = (droppedF - _lastDroppedF ) / deltaTime;
-        _lastByte     = KB;
-        _lastSecond   = curTime;
-        _lastFrames   = curFrames;
-        _lastDroppedF = droppedF;
-        NSString *uploadDateSize = [ self sizeFormatted:KB ];
-        NSString* stateurl  = [NSString stringWithFormat:@"%@\n", [_hostURL absoluteString]] ;
-        NSString* statekbps = [NSString stringWithFormat:@"realtime:%4.1fkbps %@\n", realKbps, _netEventRaiseDrop];
-        NSString* statefps  = [NSString stringWithFormat:@"%2.1f fps | %@  | %@ \n", fps, uploadDateSize, [self timeFormatted: (int)(curTime-_startTime) ] ];
-        NSString* statedrop = [NSString stringWithFormat:@"dropFrame %4d | %3.1f | %2.1f%% \n", droppedF, dropRate, droppedF * 100.0 / curFrames ];
-
-        NSString* netEvent = [NSString stringWithFormat:@"netEvent %d notGood | %d raise | %d drop", _netEventCnt, _raiseCnt, _dropCnt];
-        
-        _stat.text = [ stateurl    stringByAppendingString:statekbps ];
-        _stat.text = [ _stat.text  stringByAppendingString:statefps  ];
-        _stat.text = [ _stat.text  stringByAppendingString:statedrop ];
-        _stat.text = [ _stat.text  stringByAppendingString:netEvent  ];
-
-        if (_netTimeOut == 0) {
-            _netEventRaiseDrop = @" ";
-        }
-        else {
-            _netTimeOut--;
-        }
-    }
 }
 
 - (IBAction)onTap:(id)sender {
@@ -445,198 +403,6 @@ const char * getDocPath () ;
     }
     return NO;
 }
-
-- (void) onCaptureStateChange:(NSNotification *)notification {
-    // init stat
-    [_btnTStream setEnabled:NO];
-    [_btnAutoBw  setEnabled:YES];
-    [_btnHighRes setEnabled:YES];
-    [_btnFlash   setEnabled:NO];
-    if ( _kit.captureState == KSYCaptureStateIdle){
-        _stat.text = @"idle";
-        [_btnPreview setEnabled:YES];
-        [_btnPreview setTitle:@"StartPreview" forState:UIControlStateNormal];
-    }
-    else if (_kit.captureState == KSYCaptureStateCapturing ) {
-        _stat.text = @"capturing";
-        [_btnPreview setEnabled:YES];
-        [_btnTStream setEnabled:YES];
-        [_btnPreview setTitle:@"StopPreview" forState:UIControlStateNormal];
-        BOOL backCam = (_kit.cameraPosition == AVCaptureDevicePositionBack);
-        [_btnFlash   setEnabled:backCam];
-        [_btnAutoBw  setEnabled:NO];
-        [_btnHighRes setEnabled:NO];
-    }
-    else if (_kit.captureState == KSYCaptureStateClosingCapture ) {
-        _stat.text = @"closing capture";
-        [_btnPreview setEnabled:NO];
-    }
-    else if (_kit.captureState == KSYCaptureStateDevAuthDenied ) {
-        _stat.text = @"camera/mic Authorization Denied";
-        [_btnPreview setEnabled:YES];
-    }
-    else if (_kit.captureState == KSYCaptureStateParameterError ) {
-        _stat.text = @"capture devices ParameterError";
-        [_btnPreview setEnabled:YES];
-    }
-    else if (_kit.captureState == KSYCaptureStateDevBusy ) {
-        _stat.text = @"device busy, try later";
-        [self toast:_stat.text];
-    }
-    NSLog(@"newCapState: %lu [%@]", (unsigned long)_kit.captureState, _stat.text);
-}
-
-- (void) onStreamError {
-    KSYStreamErrorCode err = _kit.streamerBase.streamErrorCode;
-    [_btnPreview setEnabled:TRUE];
-    [_btnTStream setEnabled:TRUE];
-    [_btnTStream setTitle:@"StartStream" forState:UIControlStateNormal];
-    [self toast:@"stream err"];
-    if ( KSYStreamErrorCode_KSYAUTHFAILED == err ) {
-        _stat.text = @"SDK auth failed, \npls check ak/sk";
-    }
-    else if ( KSYStreamErrorCode_CODEC_OPEN_FAILED == err) {
-        _stat.text = @"Selected Codec not supported \n in this version";
-    }
-    else if ( KSYStreamErrorCode_CONNECT_FAILED == err) {
-        _stat.text = @"Connecting error, pls check host url \nor network";
-    }
-    else if ( KSYStreamErrorCode_CONNECT_BREAK == err) {
-        _stat.text = @"Connection break";
-    }
-    else if (  KSYStreamErrorCode_RTMP_NonExistDomain   == err) {
-        _stat.text = @"error: NonExistDomain";
-    }
-    else if (  KSYStreamErrorCode_RTMP_NonExistApplication   == err) {
-        _stat.text = @"error: NonExistApplication";
-    }
-    else if (  KSYStreamErrorCode_RTMP_AlreadyExistStreamName   == err) {
-        _stat.text = @"error: AlreadyExistStreamName";
-    }
-    else if (  KSYStreamErrorCode_RTMP_ForbiddenByBlacklist   == err) {
-        _stat.text = @"error: ForbiddenByBlacklist";
-    }
-    else if (  KSYStreamErrorCode_RTMP_InternalError   == err) {
-        _stat.text = @"error: InternalError";
-    }
-    else if (  KSYStreamErrorCode_RTMP_URLExpired   == err) {
-        _stat.text = @"error: URLExpired";
-    }
-    else if (  KSYStreamErrorCode_RTMP_SignatureDoesNotMatch   == err) {
-        _stat.text = @"error: SignatureDoesNotMatch";
-    }
-    else if (  KSYStreamErrorCode_RTMP_InvalidAccessKeyId   == err) {
-        _stat.text = @"error: InvalidAccessKeyId";
-    }
-    else if (  KSYStreamErrorCode_RTMP_BadParams   == err) {
-        _stat.text = @"error: BadParams";
-    }
-    else if (  KSYStreamErrorCode_RTMP_ForbiddenByRegion   == err) {
-        _stat.text = @"error: ForbiddenByRegion";
-    }
-    else {
-        _stat.text = [[NSString alloc] initWithFormat:@"error: %lu",  (unsigned long)err];
-    }
-    NSLog(@"onErr: %lu [%@]", (unsigned long) err, _stat.text);
-    // 断网重连
-    if ( KSYStreamErrorCode_CONNECT_BREAK == err && _btnAutoReconnect.isOn ) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [_kit.streamerBase stopStream];
-            [_kit.streamerBase startStream:_hostURL];
-            [self initStatData];
-        });
-    }
-}
-
-- (void) onNetStateEvent:(NSNotification *)notification {
-    KSYNetStateCode netEvent = _kit.streamerBase.netStateCode;
-    //NSLog(@"net event : %ld", (unsigned long)netEvent );
-    if ( netEvent == KSYNetStateCode_SEND_PACKET_SLOW ) {
-        _netEventCnt++;
-        if (_netEventCnt % 10 == 9) {
-            [self toast:@"bad network"];
-        }
-        NSLog(@"bad network" );
-    }
-    else if ( netEvent == KSYNetStateCode_EST_BW_RAISE ) {
-        _netEventRaiseDrop = @"raising";
-        _raiseCnt++;
-        _netTimeOut = 5;
-        NSLog(@"bitrate raising" );
-    }
-    else if ( netEvent == KSYNetStateCode_EST_BW_DROP ) {
-        _netEventRaiseDrop = @"dropping";
-        _dropCnt++;
-        _netTimeOut = 5;
-        NSLog(@"bitrate dropping" );
-    }
-}
-
-- (void) onStreamStateChange:(NSNotification *)notification {
-    [_btnPreview setEnabled:NO];
-    [_btnTStream setEnabled:NO];
-    if ( _kit.streamerBase.streamState == KSYStreamStateIdle) {
-        _stat.text = @"idle";
-        [_btnPreview setEnabled:TRUE];
-        [_btnTStream setEnabled:TRUE];
-        [_btnTStream setTitle:@"StartStream" forState:UIControlStateNormal];
-    }
-    else if ( _kit.streamerBase.streamState == KSYStreamStateConnected){
-        _stat.text = @"connected";
-        [_btnTStream setEnabled:TRUE];
-        [_btnTStream setTitle:@"StopStream" forState:UIControlStateNormal];
-    }
-    else if (_kit.streamerBase.streamState == KSYStreamStateConnecting ) {
-        _stat.text = @"kit connecting";
-    }
-    else if (_kit.streamerBase.streamState == KSYStreamStateDisconnecting ) {
-        _stat.text = @"disconnecting";
-    }
-    else if (_kit.streamerBase.streamState == KSYStreamStateError ) {
-        [self onStreamError];
-    }
-    NSLog(@"newState: %lu [%@]", (unsigned long)_kit.streamerBase.streamState, _stat.text);
-}
-
-- (void) setVideoOrientation {
-    UIDeviceOrientation orien = [ [UIDevice  currentDevice]  orientation];
-    switch (orien) {
-        case UIDeviceOrientationPortraitUpsideDown:
-            _kit.videoOrientation = AVCaptureVideoOrientationPortraitUpsideDown;
-            break;
-        case UIDeviceOrientationLandscapeLeft:
-            _kit.videoOrientation = AVCaptureVideoOrientationLandscapeRight;
-            break;
-        case UIDeviceOrientationLandscapeRight:
-            _kit.videoOrientation = AVCaptureVideoOrientationLandscapeLeft;
-            break;
-        default:
-            _kit.videoOrientation = AVCaptureVideoOrientationPortrait;
-            break;
-    }
-}
-
-- (void) toast:(NSString*)message{
-    UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
-                                                    message:message
-                                                   delegate:nil
-                                          cancelButtonTitle:nil
-                                          otherButtonTitles:nil, nil];
-    [toast show];
-    double duration = 0.3; // duration in seconds
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [toast dismissWithClickedButtonIndex:0 animated:YES];
-    });
-}
-
-- (NSString *)timeFormatted:(int)totalSeconds
-{
-    int seconds = totalSeconds % 60;
-    int minutes = (totalSeconds / 60) % 60;
-    int hours = totalSeconds / 3600;
-    return [NSString stringWithFormat:@"%02d:%02d:%02d",hours, minutes, seconds];
-}
-
 -(IBAction)OnChoseFilter:(id)sender {
     for (int b = 0; b < 4; ++b) {
         if (sender == _btnFilters[b]) {
@@ -701,17 +467,6 @@ const char * getDocPath () ;
 }
 
 
-- (UISlider *)addSliderFrom: (float) minV
-                         To: (float) maxV{
-    UISlider *sl = [[UISlider alloc] init];
-    [self.view addSubview:sl];
-    sl.minimumValue = minV;
-    sl.maximumValue = maxV;
-    sl.value = 0.5;
-    [ sl addTarget:self action:@selector(onVolChanged:) forControlEvents:UIControlEventValueChanged ];
-    return sl;
-}
-
 - (IBAction)onVolChanged:(id)sender {
     if (sender == _bgmVolS) {
         [_kit.streamerBase setBgmVolume:_bgmVolS.value];
@@ -730,6 +485,215 @@ const char * getDocPath () ;
     }
 }
 
+
+#pragma mark - status monitor
+- (void) initStatData {
+    _lastByte    = 0;
+    _lastSecond  = [[NSDate date]timeIntervalSince1970];
+    _lastFrames  = 0;
+    _netEventCnt = 0;
+    _raiseCnt    = 0;
+    _dropCnt     = 0;
+    _startTime   =  [[NSDate date]timeIntervalSince1970];
+}
+
+- (NSString*) sizeFormatted : (int )KB {
+    if ( KB > 1000 ) {
+        double MB   =  KB / 1000.0;
+        return [NSString stringWithFormat:@" %4.2f MB", MB];
+    }
+    else {
+        return [NSString stringWithFormat:@" %d KB", KB];
+    }
+}
+
+- (NSString *)timeFormatted:(int)totalSeconds
+{
+    int seconds = totalSeconds % 60;
+    int minutes = (totalSeconds / 60) % 60;
+    int hours = totalSeconds / 3600;
+    return [NSString stringWithFormat:@"%02d:%02d:%02d",hours, minutes, seconds];
+}
+
+- (void)updateStat:(NSTimer *)theTimer{
+    if (_kit.streamerBase.streamState == KSYStreamStateConnected ) {
+        int    KB          = [_kit.streamerBase uploadedKByte];
+        int    curFrames   = [_kit.streamerBase encodedFrames];
+        int    droppedF    = [_kit.streamerBase droppedVideoFrames];
+        
+        int deltaKbyte = KB - _lastByte;
+        double curTime = [[NSDate date]timeIntervalSince1970];
+        double deltaTime = curTime - _lastSecond;
+        double realKbps = deltaKbyte*8 / deltaTime;   // deltaByte / deltaSecond
+        
+        double deltaFrames =(curFrames - _lastFrames);
+        double fps = deltaFrames / deltaTime;
+        
+        double dropRate = (droppedF - _lastDroppedF ) / deltaTime;
+        _lastByte     = KB;
+        _lastSecond   = curTime;
+        _lastFrames   = curFrames;
+        _lastDroppedF = droppedF;
+        NSString *uploadDateSize = [ self sizeFormatted:KB ];
+        NSString* stateurl  = [NSString stringWithFormat:@"%@\n", [_hostURL absoluteString]] ;
+        NSString* statekbps = [NSString stringWithFormat:@"realtime:%4.1fkbps %@\n", realKbps, _netEventRaiseDrop];
+        NSString* statefps  = [NSString stringWithFormat:@"%2.1f fps | %@  | %@ \n", fps, uploadDateSize, [self timeFormatted: (int)(curTime-_startTime) ] ];
+        NSString* statedrop = [NSString stringWithFormat:@"dropFrame %4d | %3.1f | %2.1f%% \n", droppedF, dropRate, droppedF * 100.0 / curFrames ];
+        
+        NSString* netEvent = [NSString stringWithFormat:@"netEvent %d notGood | %d raise | %d drop", _netEventCnt, _raiseCnt, _dropCnt];
+        
+        _stat.text = [ stateurl    stringByAppendingString:statekbps ];
+        _stat.text = [ _stat.text  stringByAppendingString:statefps  ];
+        _stat.text = [ _stat.text  stringByAppendingString:statedrop ];
+        _stat.text = [ _stat.text  stringByAppendingString:netEvent  ];
+        
+        if (_netTimeOut == 0) {
+            _netEventRaiseDrop = @" ";
+        }
+        else {
+            _netTimeOut--;
+        }
+    }
+}
+
+#pragma mark - state machine (state transition)
+- (void) onCaptureStateChange:(NSNotification *)notification {
+    // init stat
+    [_btnTStream setEnabled:NO];
+    [_btnAutoBw  setEnabled:YES];
+    [_btnHighRes setEnabled:YES];
+    [_btnFlash   setEnabled:NO];
+    if ( _kit.captureState == KSYCaptureStateIdle){
+        _stat.text = @"idle";
+        [_btnPreview setEnabled:YES];
+        [_btnPreview setTitle:@"开始预览" forState:UIControlStateNormal];
+    }
+    else if (_kit.captureState == KSYCaptureStateCapturing ) {
+        _stat.text = @"capturing";
+        [_btnPreview setEnabled:YES];
+        [_btnTStream setEnabled:YES];
+        [_btnPreview setTitle:@"停止预览" forState:UIControlStateNormal];
+        BOOL backCam = (_kit.cameraPosition == AVCaptureDevicePositionBack);
+        [_btnFlash   setEnabled:backCam];
+        [_btnAutoBw  setEnabled:NO];
+        [_btnHighRes setEnabled:NO];
+    }
+    else if (_kit.captureState == KSYCaptureStateClosingCapture ) {
+        _stat.text = @"closing capture";
+        [_btnPreview setEnabled:NO];
+    }
+    else if (_kit.captureState == KSYCaptureStateDevAuthDenied ) {
+        _stat.text = @"camera/mic Authorization Denied";
+        [_btnPreview setEnabled:YES];
+    }
+    else if (_kit.captureState == KSYCaptureStateParameterError ) {
+        _stat.text = @"capture devices ParameterError";
+        [_btnPreview setEnabled:YES];
+    }
+    else if (_kit.captureState == KSYCaptureStateDevBusy ) {
+        _stat.text = @"device busy, try later";
+        [self toast:_stat.text];
+    }
+    NSLog(@"newCapState: %lu [%@]", (unsigned long)_kit.captureState, _stat.text);
+}
+
+- (void) onStreamError {
+    KSYStreamErrorCode err = _kit.streamerBase.streamErrorCode;
+    [_btnPreview setEnabled:TRUE];
+    [_btnTStream setEnabled:TRUE];
+    [_btnTStream setTitle:@"StartStream" forState:UIControlStateNormal];
+    [self toast:@"stream err"];
+    if ( KSYStreamErrorCode_KSYAUTHFAILED == err ) {
+        _stat.text = @"SDK auth failed, \npls check ak/sk";
+    }
+    else if ( KSYStreamErrorCode_CODEC_OPEN_FAILED == err) {
+        _stat.text = @"Selected Codec not supported \n in this version";
+    }
+    else if ( KSYStreamErrorCode_CONNECT_FAILED == err) {
+        _stat.text = @"Connecting error, pls check host url \nor network";
+    }
+    else if ( KSYStreamErrorCode_CONNECT_BREAK == err) {
+        _stat.text = @"Connection break";
+    }
+    else {
+        _stat.text = [_kit getKSYStreamErrorCodeName:err];
+    }
+    NSLog(@"onErr: %lu [%@]", (unsigned long) err, _stat.text);
+    // 断网重连
+    if ( KSYStreamErrorCode_CONNECT_BREAK == err && _btnAutoReconnect.isOn ) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [_kit.streamerBase stopStream];
+            [_kit.streamerBase startStream:_hostURL];
+            [self initStatData];
+        });
+    }
+}
+
+- (void) onNetStateEvent:(NSNotification *)notification {
+    KSYNetStateCode netEvent = _kit.streamerBase.netStateCode;
+    //NSLog(@"net event : %ld", (unsigned long)netEvent );
+    if ( netEvent == KSYNetStateCode_SEND_PACKET_SLOW ) {
+        _netEventCnt++;
+        if (_netEventCnt % 10 == 9) {
+            [self toast:@"bad network"];
+        }
+        NSLog(@"bad network" );
+    }
+    else if ( netEvent == KSYNetStateCode_EST_BW_RAISE ) {
+        _netEventRaiseDrop = @"raising";
+        _raiseCnt++;
+        _netTimeOut = 5;
+        NSLog(@"bitrate raising" );
+    }
+    else if ( netEvent == KSYNetStateCode_EST_BW_DROP ) {
+        _netEventRaiseDrop = @"dropping";
+        _dropCnt++;
+        _netTimeOut = 5;
+        NSLog(@"bitrate dropping" );
+    }
+}
+
+- (void) onStreamStateChange:(NSNotification *)notification {
+    [_btnPreview setEnabled:NO];
+    [_btnTStream setEnabled:NO];
+    if ( _kit.streamerBase.streamState == KSYStreamStateIdle) {
+        _stat.text = @"idle";
+        [_btnPreview setEnabled:TRUE];
+        [_btnTStream setEnabled:TRUE];
+        [_btnTStream setTitle:@"开始推流" forState:UIControlStateNormal];
+    }
+    else if ( _kit.streamerBase.streamState == KSYStreamStateConnected){
+        _stat.text = @"connected";
+        [_btnTStream setEnabled:TRUE];
+        [_btnTStream setTitle:@"停止推流" forState:UIControlStateNormal];
+    }
+    else if (_kit.streamerBase.streamState == KSYStreamStateConnecting ) {
+        _stat.text = @"kit connecting";
+    }
+    else if (_kit.streamerBase.streamState == KSYStreamStateDisconnecting ) {
+        _stat.text = @"disconnecting";
+    }
+    else if (_kit.streamerBase.streamState == KSYStreamStateError ) {
+        [self onStreamError];
+    }
+    NSLog(@"newState: %lu [%@]", (unsigned long)_kit.streamerBase.streamState, _stat.text);
+}
+
+
+- (void) toast:(NSString*)message{
+    UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
+                                                    message:message
+                                                   delegate:nil
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:nil, nil];
+    [toast show];
+    double duration = 0.3; // duration in seconds
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [toast dismissWithClickedButtonIndex:0 animated:YES];
+    });
+}
+
+
 /**
  @abstrace 初始化金山云认证信息
  @discussion 开发者帐号fpzeng，其他信息如下：
@@ -745,7 +709,7 @@ const char * getDocPath () ;
  */
 - (void)initKSYAuth {
     NSString* time = [NSString stringWithFormat:@"%d",(int)[[NSDate date]timeIntervalSince1970]];
-    NSString* sk = [NSString stringWithFormat:@"skxxxxxxxxxxxxxxxxxxxx@", time];
+    NSString* sk = [NSString stringWithFormat:@"s77xxxxxxxxxxxxxxxxxxxx@", time];
     NSString* sksign = [KSYAuthInfo KSYMD5:sk];
     [[KSYAuthInfo sharedInstance]setAuthInfo:@"QYA0E0639AC997A8D128" accessKey:@"a5644305efa79b56b8dac55378b83e35" secretKeySign:sksign timeSeconds:time];
 }

@@ -11,42 +11,39 @@
 #import <libksygpulive/libksygpuimage.h>
 
 
-@interface KSYStreamerVC ()
+@interface KSYStreamerVC () {
+    // UI
+    UIButton *_btnPreview;
+    UIButton *_btnTStream;
+    UIButton *_btnCamera;
+    UIButton *_btnFlash;
+    UISwitch *_btnAutoBw;
+    UILabel  *_lblAutoBW;
+    UIButton *_btnQuit;
+    UISwitch *_btnAutoReconnect;
+    UILabel  *_lblAutoReconnect;
+
+    UISwitch *_btnHighRes;
+    UILabel  *_lblHighRes;
+
+    // status monitor
+    double  _lastSecond;
+    int     _lastByte;
+    int     _lastFrames;
+    int     _lastDroppedF;
+    int     _netEventCnt;
+    NSString  *_netEventRaiseDrop;
+    int     _netTimeOut;
+    int     _raiseCnt;
+    int     _dropCnt;
+    double  _startTime;
+}
 
 @property KSYStreamer * pubSession;
 
-@property UIButton *btnPreview;
-@property UIButton *btnTStream;
-@property UIButton *btnCamera;
-@property UIButton *btnFlash;
-@property UISwitch *btnAutoBw;
-@property UILabel  *lblAutoBW;
-@property UIButton *btnQuit;
-@property UISwitch *btnAutoReconnect;
-@property UILabel  *lblAutoReconnect;
-
-@property UISwitch *btnHighRes;
-@property UILabel  *lblHighRes;
-
+// status monitor
 @property NSTimer *timer;
 
-@property UIView* preview;
-
-@property BOOL bMirrored;
-
-@property double  lastSecond;
-@property int  lastByte;
-@property int  lastFrames;
-@property int  lastDroppedF;
-@property int  netEventCnt;
-
-@property NSString  *netEventRaiseDrop;
-@property int  netTimeOut;
-
-@property int raiseCnt;
-@property int dropCnt;
-
-@property double  startTime;
 @end
 
 @implementation KSYStreamerVC
@@ -56,6 +53,7 @@
     return _pubSession;
 }
 
+#pragma mark - UIViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI ];
@@ -67,7 +65,7 @@
 
 - (void) addObservers {
     // statistics update every seconds
-    _timer =  [NSTimer scheduledTimerWithTimeInterval:1.2
+    _timer =  [NSTimer scheduledTimerWithTimeInterval:1.0
                                                target:self
                                              selector:@selector(updateStat:)
                                              userInfo:nil
@@ -102,6 +100,30 @@
                                                   object:nil];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    if ( _btnAutoBw != nil ) {
+        [self layoutUI];
+    }
+    if (_bAutoStart) {
+        [self onPreview:nil];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self onStream:nil];
+        });
+    }
+}
+
+- (BOOL)shouldAutorotate {
+    BOOL  bShould = _pubSession.captureState != KSYCaptureStateCapturing;
+    [self layoutUI];
+    return bShould;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - add UIs to view
 - (UIButton *)addButton:(NSString*)title
                  action:(SEL)action {
     UIButton * button;
@@ -139,7 +161,7 @@
     _lblAutoReconnect = [self addLable:@"自动重连"];
     _btnAutoReconnect = [self addSwitch:NO];
 
-    _lblHighRes =[self addLable:@"高分辨率"];
+    _lblHighRes =[self addLable:@"360p/540p"];
     _btnHighRes =[self addSwitch:NO];
 
     _stat = [self addLable:@""];
@@ -215,31 +237,6 @@
     _stat.frame = CGRectMake(gap, yPos , btnWdt, btnHgt);
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    if ( _btnAutoBw != nil ) {
-        [self layoutUI];
-    }
-    if (_bAutoStart) {
-        [self onPreview:nil];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self onStream:nil];
-        });
-    }
-}
-
-- (BOOL)shouldAutorotate {
-    BOOL  bShould = _pubSession.captureState != KSYCaptureStateCapturing;
-    [self layoutUI];
-    return bShould;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-const char * getDocPath () ;
-
 - (void) setStreamerCfg {
     // capture settings
     if (_btnHighRes.on ) {
@@ -247,7 +244,6 @@ const char * getDocPath () ;
     }
     else {
         _pubSession.videoDimension = KSYVideoDimension_16_9__640x360;
-
     }
     _pubSession.videoCodec = KSYVideoCodec_X264;
     _pubSession.videoFPS = 15;
@@ -272,7 +268,7 @@ const char * getDocPath () ;
     _hostURL = [[NSURL alloc] initWithString:url];
     [self setVideoOrientation];
 }
-
+#pragma mark - UI responds
 - (IBAction)onQuit:(id)sender {
     [_pubSession stopStream];
     [_pubSession stopPreview];
@@ -329,6 +325,32 @@ const char * getDocPath () ;
     [_btnFlash  setEnabled:backCam ];
 }
 
+- (IBAction)onTap:(id)sender {
+    CGPoint point = [sender locationInView:self.view];
+    CGPoint tap;
+    tap.x = (point.x/self.view.frame.size.width);
+    tap.y = (point.y/self.view.frame.size.height);
+    NSError __autoreleasing *error;
+    [self focusAtPoint:tap error:&error];
+}
+
+- (BOOL)focusAtPoint:(CGPoint )point error:(NSError *__autoreleasing* )error
+{
+    AVCaptureDevice *dev = [_pubSession getCurrentCameraDevices];
+    if ([dev isFocusPointOfInterestSupported] && [dev isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
+        if ([dev lockForConfiguration:error]) {
+            [dev setFocusPointOfInterest:point];
+            [dev setFocusMode:AVCaptureFocusModeAutoFocus];
+            NSLog(@"Focusing..");
+            [dev unlockForConfiguration];
+            return YES;
+        }
+    }
+    return NO;
+}
+
+
+#pragma mark - status monitor
 - (void) initStatData {
     _lastByte    = 0;
     _lastSecond  = [[NSDate date]timeIntervalSince1970];
@@ -347,6 +369,14 @@ const char * getDocPath () ;
     else {
         return [NSString stringWithFormat:@" %d KB", KB];
     }
+}
+
+- (NSString *)timeFormatted:(int)totalSeconds
+{
+    int seconds = totalSeconds % 60;
+    int minutes = (totalSeconds / 60) % 60;
+    int hours = totalSeconds / 3600;
+    return [NSString stringWithFormat:@"%02d:%02d:%02d",hours, minutes, seconds];
 }
 
 - (void)updateStat:(NSTimer *)theTimer{
@@ -389,31 +419,7 @@ const char * getDocPath () ;
         }
     }
 }
-
-- (IBAction)onTap:(id)sender {
-    CGPoint point = [sender locationInView:self.view];
-    CGPoint tap;
-    tap.x = (point.x/self.view.frame.size.width);
-    tap.y = (point.y/self.view.frame.size.height);
-    NSError __autoreleasing *error;
-    [self focusAtPoint:tap error:&error];
-}
-
-- (BOOL)focusAtPoint:(CGPoint )point error:(NSError *__autoreleasing* )error
-{
-    AVCaptureDevice *dev = [_pubSession getCurrentCameraDevices];
-    if ([dev isFocusPointOfInterestSupported] && [dev isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
-        if ([dev lockForConfiguration:error]) {
-            [dev setFocusPointOfInterest:point];
-            [dev setFocusMode:AVCaptureFocusModeAutoFocus];
-            NSLog(@"Focusing..");
-            [dev unlockForConfiguration];
-            return YES;
-        }
-    }
-    return NO;
-}
-
+#pragma mark - state machine (state transition)
 - (void) onCaptureStateChange:(NSNotification *)notification {
     // init stat
     [_btnTStream setEnabled:NO];
@@ -597,14 +603,6 @@ const char * getDocPath () ;
     });
 }
 
-- (NSString *)timeFormatted:(int)totalSeconds
-{
-    int seconds = totalSeconds % 60;
-    int minutes = (totalSeconds / 60) % 60;
-    int hours = totalSeconds / 3600;
-    return [NSString stringWithFormat:@"%02d:%02d:%02d",hours, minutes, seconds];
-}
-
 /**
  @abstrace 初始化金山云认证信息
  @discussion 开发者帐号fpzeng，其他信息如下：
@@ -620,7 +618,7 @@ const char * getDocPath () ;
  */
 - (void)initKSYAuth {
     NSString* time = [NSString stringWithFormat:@"%d",(int)[[NSDate date]timeIntervalSince1970]];
-    NSString* sk = [NSString stringWithFormat:@"skxxxxxxxxxxxxxxxxxxxx@", time];
+    NSString* sk = [NSString stringWithFormat:@"s77xxxxxxxxxxxxxxxxxxxx@", time];
     NSString* sksign = [KSYAuthInfo KSYMD5:sk];
     [[KSYAuthInfo sharedInstance]setAuthInfo:@"QYA0E0639AC997A8D128" accessKey:@"a5644305efa79b56b8dac55378b83e35" secretKeySign:sksign timeSeconds:time];
 }
