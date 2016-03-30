@@ -1,13 +1,13 @@
 # [KSY Live iOS SDK](http://ksvc.github.io/KSYLive_iOS/index.html)使用手册
 
 
-## SDK 概述
+##SDK 概述
 金山云推出的iOS平台上使用的软件开发工具包,可高度定制化和二次开发.
 
 
-## 功能特性
+##功能特性
 
-### 推流功能
+###推流功能
 - [x] AAC 音频编码
 - [x] H.264 视频编码
 - [x] 多分辨率编码支持
@@ -19,7 +19,7 @@
 - [x] [在线API 文档支持](http://ksvc.github.io/KSYLive_iOS/html/index.html)
 - [x] Apple Doc 文档支持
 
-### 播放特点
+###播放特点
 - [x] 与系统播放器MPMoviePlayerController接口一致，可以无缝快速切换至KSYMediaPlayer；
 - [x] 本地全媒体格式支持, 并对主流的媒体格式(mp4, avi, wmv, flv, mkv, mov, rmvb 等 )进行优化；
 - [x] 支持广泛的流式视频格式, HLS, RTMP, HTTP Rseudo-Streaming 等；
@@ -29,38 +29,38 @@
 - [x] 业内一流的H.265解码；
 - [x] 小于2M大小的超轻量级直播sdk；
 
-## 内容摘要
-- [工程环境](## 工程环境)
-    - [运行环境](### 运行环境)
-    - [下载工程](### 下载工程)
-    - [工程目录](### 工程目录)
-    - [添加工程](### 添加工程)
-- [SDK使用示例](## SDK使用示例)
-    - [入口类](### 入口类)
-    - [SDK鉴权](### SDK鉴权)
-    - [采集参数设置](### 采集参数设置)
-    - [推流编码参数设置](### 推流编码参数设置)
-    - [服务器地址](### 服务器地址)
-    - [采集推流状态](### 采集推流状态)
-    - [启停预览](### 启停预览)
-    - [启停推流](### 启停推流)
-    - [美颜滤镜](### 美颜滤镜)
-- [播放器使用示例](## 播放器使用示例)
+##内容摘要
+- [工程环境](##工程环境)
+    - [运行环境](###运行环境)
+    - [下载工程](###下载工程)
+    - [工程目录](###工程目录)
+    - [添加工程](###添加工程)
+- [SDK使用示例](##SDK使用示例)
+    - [入口类](###入口类)
+    - [SDK鉴权](###SDK鉴权)
+    - [采集参数设置](###采集参数设置)
+    - [推流编码参数设置](###推流编码参数设置)
+    - [服务器地址](###服务器地址)
+    - [采集推流状态](###采集推流状态)
+    - [启停预览](###启停预览)
+    - [启停推流](###启停推流)
+    - [美颜滤镜](###美颜滤镜)
+- [播放器使用示例](##播放器使用示例)
 
-## 工程环境
-### 运行环境
+##工程环境
+###运行环境
 
 * 最低支持iOS版本：iOS 7.0
 * 最低支持iPhone型号：iPhone 4
 * 支持CPU架构： armv7, armv7s,arm64
 * 含有i386和x86_64模拟器版本的库文件，推流功能无法在模拟器上工作，播放功能完全支持模拟器。
 
-### 下载工程
+###下载工程
 本SDK 提供如下两种获取方式:
 1. 从github下载：https://github.com/ksvc/KSYLive_iOS.git
 2. 使用Cocoapods进行安装，方法见下段。
 
-### 工程目录
+###工程目录
 
 1. SDK压缩包
 如果获取到的为zip格式的压缩包，解压后的目录结构如下所示:
@@ -86,7 +86,7 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 
 执行 pod install 或者 pod update后，将SDK加入工程。
 
-### 添加工程
+###添加工程
 * SDK压缩包
 将压缩包中framework下的libksylive.framework添加到XCode的工程，具体步骤为：
 1. 选中应用的Target，进入项目配置页面
@@ -98,7 +98,7 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 * SDK Cocoapods
 在Podfile中本SDK的条目，并执行了 pod install 之后， 本SDK就已经加入工程中，打开工程的workspace即可。
 
-## SDK使用示例
+##SDK使用示例
 
 具体可参见KSYLiveDemo工程中的KSYStreamerVC/KSYGPUStreamerVC/KSYStreamerKitVC.
 - KSYStreamerVC    
@@ -119,7 +119,7 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 #import <libksygpulive/libksygpuimage.h>
 ```
 
-### 入口类
+###入口类
 本SDK提供的入口类如下
 ![sdk classes](http://ksvc.github.io/KSYLive_iOS/html/img/sdkClass.png)
 
@@ -131,10 +131,10 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
   * KSYGPUStreamer    对KSYStreamerBase的封装，对接GPUImage的滤镜输出
   * KSYGPUStreamerKit 对KSYGPUCamera和KSYGPUStreamer的封装，对采集，滤镜和推流组装
 
-### SDK鉴权
+###SDK鉴权
 使用SDK前, 需要联系金山云获取合法的ak/sk 在开始推流前，需要使用KSYAuthInfo类的setAuthInfo将ak和加密后的sk传入SDK内部, 具体代码见demo中的initKSYAuth方法
 
-### 采集参数设置
+###采集参数设置
 * 设置分辨率
 - 如果使用KSYGPUCamera,则只支持iOS系统定义的AVCaptureSessionPreset*   
   需要自定义分辨率的话，可以通过添加裁剪和缩放的滤镜来实现分辨率的改变
@@ -171,7 +171,7 @@ _streamer.videoFPS = 15;
     _capDev.outputImageOrientation = orien;
 ```
 
-### 推流编码参数设置
+###推流编码参数设置
 
 * 选择视频编码器，（264软编码，264硬编码，265软编码等）
 ```
@@ -194,7 +194,7 @@ _streamer.videoMinBitrate  = 300; // k bit ps
 _streamer.audiokBPS        = 48; // k bit ps
 ```
 
-### 服务器地址
+###服务器地址
 * 服务器url(需要向相关人员申请，测试地址并不稳定！)：
 ```
 @property NSURL * hostURL;
@@ -202,7 +202,7 @@ NSString *url = @"rtmp://test.uplive.ksyun.com/live/{streamName}"
 _hostURL      = [[NSURL alloc] initWithString:url];
 ```
 
-### 采集推流状态
+###采集推流状态
 由于对摄像头的操作和启停推流都与设备交互，可能会出现比较耗时的情况，相关API设计为异步接口，比如调用启动推流接口API后，并不是API返回后就能知道是否连接成功，而是需要通过状态变化回调，来查询执行的结果。本SDK提供如下表列出的通知，通过NSNotificationCenter注册接收相应的通知：
 | 通知名称 | 通知说明 |  相关属性 | 相关类  |
 | --------| ------|  --- |  -- |
@@ -216,7 +216,7 @@ _hostURL      = [[NSURL alloc] initWithString:url];
 
 如果需要对推流状态进行监控，可以设置一个每秒刷新一次的timer，计算出网络发送速度（每秒发送的字节数）和视频编码速度（每秒编码的帧数）
 
-### 启停预览
+###启停预览
 * 通过如下接口启动和停止预览，当启动预览时，需要将显示预览的view传入到SDK中
 
 ```
@@ -226,7 +226,7 @@ _hostURL      = [[NSURL alloc] initWithString:url];
 ```
 注意：当采集设备的权限被用户禁用时，会进入KSYCaptureStateDevAuthDenied状态
 
-### 启停推流
+###启停推流
 * 开始/停止推流, 在这之前必须要先启动预览，开始推流时, 需要将推流的完整URL作为参数传入, 比如rtmp://xxx.xxx.xxx/appname/streamkey 
 
 ```
@@ -238,7 +238,7 @@ _hostURL      = [[NSURL alloc] initWithString:url];
 
 注意：所有的对应操作开始和结束时会有KSYCaptureStateDidChangeNotification的状态通知
 
-### 美颜滤镜
+###美颜滤镜
 本SDK中的美颜滤镜依赖第三方开源库GPUImage，可以方便简单的进行对接，也可以很方便的增加自定义的美颜滤镜。
 
 以下总结使用libksygpulive和使用libksylive中基本推流的几点修改：
@@ -287,5 +287,5 @@ _hostURL      = [[NSURL alloc] initWithString:url];
 ```
 
 
-## 播放器使用示例
+##播放器使用示例
 请见github库：https://github.com/ksvc/KSYMediaPlayer_iOS.git
