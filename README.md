@@ -130,6 +130,23 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
   * KSYGPUCamera      对GPUImageVideoCamera的封装，负责采集部分的功能
   * KSYGPUStreamer    对KSYStreamerBase的封装，对接GPUImage的滤镜输出
   * KSYGPUStreamerKit 对KSYGPUCamera和KSYGPUStreamer的封装，对采集，滤镜和推流组装
+ 
+* 两种使用方式： 
+  - 简单接口 KSYGPUStreamerKit 与 KSYStreamer类似，打包了采集和推流部分
+  - 进阶接口 KSYGPUCamera+KSYGPUStreamer，自由度比较大，采集和推流模块分离可以自由组合
+
+以下总结使用libksygpulive和使用libksylive中基本推流的几点修改：
+* 依赖的头文件不同，本SDK的头文件分为两个，并且需要在引入GPUImage 之后引入：
+```
+#import <GPUImage/GPUImage.h>
+#import <libksygpulive/libksygpulive.h>
+#import <libksygpulive/libksygpuimage.h>
+```
+* 使用KSYGPUStreamerKit时，和KSYStreamer的差别在于，对推流的配置和操作要通过streamerBase属性进行   
+```       
+    [_streamer startStream:_hostURL];  // 改为如下
+    [_kit.streamerBase startStream: _hostURL];
+```
 
 ###SDK鉴权
 使用SDK前, 需要联系金山云获取合法的ak/sk 在开始推流前，需要使用KSYAuthInfo类的setAuthInfo将ak和加密后的sk传入SDK内部, 具体代码见demo中的initKSYAuth方法
@@ -236,6 +253,7 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
         ```
           _streamer.videoFPS   = _capDev.frameRate;
         ```
+        
 ###服务器地址
 * 服务器url(需要向相关人员申请，测试地址并不稳定！)：
 ```
@@ -284,24 +302,6 @@ _hostURL      = [[NSURL alloc] initWithString:url];
 ###美颜滤镜
 本SDK中的美颜滤镜依赖第三方开源库GPUImage，可以方便简单的进行对接，也可以很方便的增加自定义的美颜滤镜。
 
-以下总结使用libksygpulive和使用libksylive中基本推流的几点修改：
-* 依赖的头文件不同，本SDK的头文件分为两个，并且需要在引入GPUImage 之后引入：
-
-```
-#import <GPUImage/GPUImage.h>
-#import <libksygpulive/libksygpulive.h>
-#import <libksygpulive/libksygpuimage.h>
-```
-
-* 提供了两种使用方式： 
-  - 简单接口 KSYGPUStreamerKit 与 KSYStreamer类似，打包了采集和推流部分
-  - 进阶接口 KSYGPUCamera+KSYGPUStreamer，自由度比较大，采集和推流模块分离可以自由组合
-
-* 使用KSYGPUStreamerKit时，和KSYStreamer的差别在于，对推流的配置和操作要通过streamerBase属性进行   
-```       
-    [_streamer startStream:_hostURL];  // 改为如下
-    [_kit.streamerBase startStream: _hostURL];
-```
 * KSYGPUStreamerKit增加了setupFilter的方法，创建出美颜滤镜后，通过该方法传入SDK，预览和推流的图像就是应用了该滤镜后的图像
 ```
     @property GPUImageFilter     * filter;
@@ -309,7 +309,7 @@ _hostURL      = [[NSURL alloc] initWithString:url];
     [_kit setupFilter:_filter];
 ```
 
-* 进阶接口需要开发者自行将 采集，滤镜，推流，预览等部分组装起来，自由度比较大
+* 使用KSYGPUStreamer，需要开发者自行将 采集，滤镜，推流，预览等部分组装起来，自由度比较大
    - 通过采集类KSYGPUCamera设置摄像头参数
    - 通过GPUImageFilter来实现GPU滤镜图像处理
    - 通过KSYGPUStreamer实现编码推流
