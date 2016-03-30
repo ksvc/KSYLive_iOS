@@ -221,9 +221,9 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
             _streamer.videoMaxBitrate   = 1000; // k bit ps
             _streamer.videoMinBitrate   = 200;  // k bit ps
         ```
-  - videoMaxBitrate为平均码率上调的上限，即当网络足够好时的目标码率，对应画质最好的情况
-  - videoMinBitrate为平均码率下调的下限，即当网络太差时，如果再往下调整，画面质量会无法接受
-  - videoInitBitrate为开始推流时的码率，开始推流后才能根据实际网络情况自动上调或下调
+        - videoMaxBitrate为平均码率上调的上限，即当网络足够好时的目标码率，对应画质最好的情况
+        - videoMinBitrate为平均码率下调的下限，即当网络太差时，如果再往下调整，画面质量会无法接受
+        - videoInitBitrate为开始推流时的码率，开始推流后才能根据实际网络情况自动上调或下调
 
     - 设置音频码率
     
