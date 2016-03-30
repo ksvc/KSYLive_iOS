@@ -1,11 +1,11 @@
 # [KSY Live iOS SDK](http://ksvc.github.io/KSYLive_iOS/index.html)使用手册
 
 
-##SDK 概述
+## SDK 概述
 金山云推出的iOS平台上使用的软件开发工具包,可高度定制化和二次开发.
 
 
-##功能特性
+## 功能特性
 
 ### 推流功能
 - [x] AAC 音频编码
@@ -31,12 +31,12 @@
 
 ## 内容摘要
 - [工程环境](##工程环境)
-	- [运行环境](###运行环境)
-	- [下载工程](###下载工程)
-	- [工程目录](###工程目录)
-	- [添加工程](###添加工程)	
+    - [运行环境](###运行环境)
+    - [下载工程](###下载工程)
+    - [工程目录](###工程目录)
+    - [添加工程](###添加工程)   
 - [推流使用示例](##推流使用示例)
-	- [核心类](###核心类)
+    - [核心类](###核心类)
     - [SDK鉴权](###SDK鉴权)
     - [编码参数](###编码参数)
     - [服务器地址](###服务器地址)
@@ -44,15 +44,15 @@
     - [启停推流](###启停推流)
     - [美颜滤镜](###美颜滤镜)
 - [播放器使用示例](##播放器使用示例)   
-##工程环境
-###运行环境
+## 工程环境
+### 运行环境
 
 * 最低支持iOS版本：iOS 7.0
 * 最低支持iPhone型号：iPhone 4
 * 支持CPU架构： armv7, armv7s,arm64
 * 含有i386和x86_64模拟器版本的库文件，推流功能无法在模拟器上工作，播放功能完全支持模拟器。
 
-###下载工程
+### 下载工程
 本SDK 提供如下两种获取方式:
 
 1:从github下载：https://github.com/ksvc/KSYLive_iOS.git
@@ -72,7 +72,7 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 
 执行 pod install 或者 pod update后，将SDK加入工程。
 
-###工程目录
+### 工程目录
 
 1:SDK压缩包
 如果获取到的为zip格式的压缩包，解压后的目录结构如下所示:
@@ -81,47 +81,66 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 - doc/docset  : appleDoc风格的接口文档
 - doc/html    : appleDoc风格的[接口文档](http://ksvc.github.io/KSYLive_iOS/html/index.html)
 - framework   : 本SDK的静态库framework，集成时需要将该framework加入到项目中
+- framework/live264/libksylive.framework    不依赖GPUImage的推流SDK
+- framework/livegpu/libksygpulive.framework 依赖GPUImage，带美颜功能的推流SDK
 
 2:SDK Cocoapods
 通过Cocoapods 能将本SDK的静态库framework下载到本地
 
-
-###添加工程
+### 添加工程
 * SDK压缩包
 将压缩包中framework下的libksylive.framework添加到XCode的工程，具体步骤为：
 1. 选中应用的Target，进入项目配置页面
 2. 切换到 Build Phases标签页
 3. 在Link Binary With Libraries的列表中添加上 libksylive.framework   
 (点击列表底部的加号，在弹出的向导中选择libksylive.framework)
+4. 如果需要使用GPU美颜滤镜，则用同样的方法加上libksygpulive.framework
 
 * SDK Cocoapods
 在Podfile中本SDK的条目，并执行了 pod install 之后， 本SDK就已经加入工程中，打开工程的workspace即可。
 
-##推流使用示例
+## SDK使用示例
 
-具体可参见KSYLiveDemo工程的KSYStreamerVC.
-###核心类
+具体可参见KSYLiveDemo工程的KSYStreamerVC/KSYGPUStreamerVC/KSYStreamerKitVC.
+- KSYStreamerVC    KSYStreamer的使用示例，不依赖GPUImage
+- KSYStreamerKitVC KSYGPUStreamerKit的使用示例，与KSYStreamer用法一致，仅仅添加了设置美颜接口
+- KSYGPUStreamerVC KSYGPUStreamer使用示例，可以自由组合采集，滤镜和推流，实现高度定制化的需求
 
-* 在需要进行推流预览的VC类的实现文件中引入头文件
-
+* 在需要进行推流预览的ViewController类的实现文件中引入头文件
+```
+#import <libksylive/libksylive.h>
+```
+或者
 ```
 #import <libksygpulive/libksygpulive.h>
+#import <libksygpulive/libksygpuimage.h>
 ```
-* SDK的核心类为[KSYStreamer](http://ksvc.github.io/KSYLive_iOS/html/Classes/KSYStreamer.html), 可以在VC中增加 KSYStreamer 的属性, 后续与推流相关的操作大部分都要通过KSYStreamer 来进行
+
+### 入口类
+本SDK提供的入口类如下
+[](http://ksvc.github.io/KSYLive_iOS/html/img/sdkClass.png)
+
+* libksylive的入口类为[KSYStreamer](http://ksvc.github.io/KSYLive_iOS/html/Classes/KSYStreamer.html), 包含了采集和推流的功能，可以在VC中增加 KSYStreamer 的属性, 后续与推流相关的操作大部分都要通过KSYStreamer 来进行
 
 ```
 @property KSYStreamer * streamer;
 ```
-* 创建KSYStreamer 的实例,并初始化, 注意本SDK不支持多实例, 同一时间只能有一个推流类的实例，否则会出现不可预期的问题
+** 创建KSYStreamer 的实例,并初始化, 注意本SDK不支持多实例, 同一时间只能有一个推流类的实例，否则会出现不可预期的问题
 
 ```
 _streamer = [[KSYStreamer alloc] initWithDefaultCfg];
 ```
 
+* libksygpulive的入口类有4个
+** KSYStreamerBase   基础推流类，接受CMSampleBufferRef的音视频数据进行编码推流
+** KSYGPUCamera      对GPUImageVideoCamera的封装，负责采集部分的功能
+** KSYGPUStreamer    对KSYStreamerBase的封装，对接GPUImage的滤镜输出
+** KSYGPUStreamerKit 对KSYGPUCamera和KSYGPUStreamer的封装，对采集，滤镜和推流组装
+
 ###SDK鉴权
 使用SDK前, 需要联系金山云获取合法的ak/sk 在开始推流前，需要使用KSYAuthInfo类的setAuthInfo将ak和加密后的sk传入SDK内部, 具体代码见demo中的initKSYAuth方法
 
-###编码参数
+###采集参数设置
 * 设置分辨率
 
 ```
@@ -146,8 +165,13 @@ _streamer = [[KSYStreamer alloc] initWithDefaultCfg];
     KSYVideoDimension_Default = KSYVideoDimension_4_3__640x480,
 
 ```
-* 设置音视频帧率：
+* 设置视频采集帧率：
 
+```
+_streamer.videoFPS = 15;
+```
+* 设置视频朝向：
+###推流编码参数设置
 ```
 _streamer.videoFPS = 15;
 _streamer.audiokBPS = 48; // k bit ps
@@ -216,8 +240,7 @@ _hostURL = [[NSURL alloc] initWithString:url];
 ```
 #import <GPUImage/GPUImage.h>
 #import <libksygpulive/libksygpulive.h>
-#import <libksygpulive/KSYGPUCamera.h>
-
+#import <libksygpulive/libksygpuimage.h>
 ```
 
 * 核心类修改为KSYGPUStreamer，可以通过getStreamer得到_streamer.
