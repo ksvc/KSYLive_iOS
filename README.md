@@ -140,6 +140,7 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 #import <GPUImage/GPUImage.h>
 #import <libksygpulive/libksygpulive.h>
 #import <libksygpulive/libksygpuimage.h>
+```
 
 ###采集参数设置
 * 设置分辨率
