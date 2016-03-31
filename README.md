@@ -37,7 +37,6 @@
     - [添加工程](###添加工程)
 - [SDK使用示例](##SDK使用示例)
     - [入口类](###入口类)
-    - [SDK鉴权](###SDK鉴权)
     - [采集参数设置](###采集参数设置)
     - [推流编码参数设置](###推流编码参数设置)
     - [服务器地址](###服务器地址)
@@ -141,9 +140,6 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 #import <GPUImage/GPUImage.h>
 #import <libksygpulive/libksygpulive.h>
 #import <libksygpulive/libksygpuimage.h>
-
-###SDK鉴权
-使用SDK前, 需要联系金山云获取合法的ak/sk 在开始推流前，需要使用KSYAuthInfo类的setAuthInfo将ak和加密后的sk传入SDK内部, 具体代码见demo中的initKSYAuth方法
 
 ###采集参数设置
 * 设置分辨率
