@@ -153,7 +153,8 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 
 ###采集参数设置
 * 设置分辨率
-    － 使用KSYGPUStreamerKit/KSYStreamer
+    - 使用KSYGPUStreamerKit/KSYStreamer
+
         ```
         /// 16 : 9 宽高比，1280 x 720 分辨率
             KSYVideoDimension_16_9__1280x720 = 0,
@@ -169,7 +170,7 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
         其中KSYVideoDimension_UserDefine_Scale/Crop为可以自定义的分辨率，自定义范围为
             - 宽度有效范围[160, 1280]
             - 高度有效范围[ 90,  720], 超出范围会提示参数错误
-    －  使用KSYGPUSteamer
+    - 使用KSYGPUSteamer
         只支持iOS系统定义的AVCaptureSessionPreset*,需要自定义分辨率的话，可以通过添加裁剪和缩放的滤镜来实现分辨率的改变
 * 设置视频采集帧率
     - 使用KSYGPUStreamerKit/KSYStreamer
