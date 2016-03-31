@@ -90,7 +90,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		I/w/oPnVPOPMbChtj9wmcXRjaUs=
+		BqGjNX6DhtsMKghSUh3qDaryn4c=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -100,93 +100,247 @@
 	<key>files2</key>
 	<dict>
 		<key>Headers/KSYAuthInfo.h</key>
-		<data>
-		RUzEMHLu6E4D2cYoev6Hv6sakas=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			RUzEMHLu6E4D2cYoev6Hv6sakas=
+			</data>
+			<key>hash2</key>
+			<data>
+			bVrIeWom96LGG5KqAIUV5vyx/5oZs7qorazOJMtnLXs=
+			</data>
+		</dict>
 		<key>Headers/KSYCamera.h</key>
-		<data>
-		e0S8/jOzYfzZ7x/77nLYBlDqLu4=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			e0S8/jOzYfzZ7x/77nLYBlDqLu4=
+			</data>
+			<key>hash2</key>
+			<data>
+			FRxEgGVX3VSSorzRjLEWFnIY+jJAei1fT9UJoElIdEM=
+			</data>
+		</dict>
 		<key>Headers/KSYGPUBeautifyExtFilter.h</key>
-		<data>
-		k86o7w8VdSuaA2sufQ0yoQRdEbU=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			k86o7w8VdSuaA2sufQ0yoQRdEbU=
+			</data>
+			<key>hash2</key>
+			<data>
+			DDCUnHw7iCplHa0V1KNDuE8i7Msk6kdjt0gOBSi/yW0=
+			</data>
+		</dict>
 		<key>Headers/KSYGPUBeautifyFilter.h</key>
-		<data>
-		dqme10Xt8tnAzNQH98mPwgAf9ZE=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			dqme10Xt8tnAzNQH98mPwgAf9ZE=
+			</data>
+			<key>hash2</key>
+			<data>
+			ZfbAvTkJ+7APU0BYpD1nfWFtrlfTnr5uzOMjsSHGllE=
+			</data>
+		</dict>
 		<key>Headers/KSYGPUBeautifyPlusFilter.h</key>
-		<data>
-		rzGZvAXT6vkLFe2jcIkyULrBl7w=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			rzGZvAXT6vkLFe2jcIkyULrBl7w=
+			</data>
+			<key>hash2</key>
+			<data>
+			KB+1m4783bMJHelirBsyNsWFKTCIYqZPHzBrLyyzTHo=
+			</data>
+		</dict>
 		<key>Headers/KSYGPUBeautifyPlusFilter_t.h</key>
-		<data>
-		TJDhRnm0RwufxP0cw3/do6k4djs=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			TJDhRnm0RwufxP0cw3/do6k4djs=
+			</data>
+			<key>hash2</key>
+			<data>
+			+FTSKnCLCCDoS+vSfNk3WHdhJP4PkwkA6r1fWFRH6Dg=
+			</data>
+		</dict>
 		<key>Headers/KSYGPUCamera.h</key>
-		<data>
-		KZA2RHXOSxk/Pik/HmAVyK5jF0k=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			KZA2RHXOSxk/Pik/HmAVyK5jF0k=
+			</data>
+			<key>hash2</key>
+			<data>
+			ilssS1lue+f0LVwtJhD1tsu+xhZQrCf4DoB1/raymoM=
+			</data>
+		</dict>
 		<key>Headers/KSYGPUDnoiseFilter.h</key>
-		<data>
-		Y1UGJpWUotvgtaYyanl36wiG6iU=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			Y1UGJpWUotvgtaYyanl36wiG6iU=
+			</data>
+			<key>hash2</key>
+			<data>
+			68NTEQ0GB2KnxAkyLa7YVpOo0NHu3hoTCWcQMq4ygrc=
+			</data>
+		</dict>
 		<key>Headers/KSYGPUSkinWhiteFilter.h</key>
-		<data>
-		c9RMtPnm1jWCPLu+8vuKULEfp9o=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			c9RMtPnm1jWCPLu+8vuKULEfp9o=
+			</data>
+			<key>hash2</key>
+			<data>
+			XLlMeE2SeG+T/lrceqXlo9G4mq51wlKc6w/bkpfNOlU=
+			</data>
+		</dict>
 		<key>Headers/KSYGPUStreamer.h</key>
-		<data>
-		lQmBiNGaCkVX57BAddxuDW/2n34=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			lQmBiNGaCkVX57BAddxuDW/2n34=
+			</data>
+			<key>hash2</key>
+			<data>
+			fUbQyG8Cnpmp4HNxr7hLQY9jMBOWQ5mBYk3nrOh5+ac=
+			</data>
+		</dict>
 		<key>Headers/KSYGPUStreamerKit.h</key>
-		<data>
-		DuH7Ok6qqZJC/HbJQF8h+PURlGE=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			DuH7Ok6qqZJC/HbJQF8h+PURlGE=
+			</data>
+			<key>hash2</key>
+			<data>
+			zHDY/pXca/2YGkiYthdk8RTCEdTWh+Izaqh4s9mFUW8=
+			</data>
+		</dict>
 		<key>Headers/KSYMediaPlayback.h</key>
-		<data>
-		SE0jttjHQBC2/BoMJiOE9sHHSk8=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			SE0jttjHQBC2/BoMJiOE9sHHSk8=
+			</data>
+			<key>hash2</key>
+			<data>
+			AD5pgPTte880nDgM3QklrcC2N1FOWSBjfbft+goIVZ8=
+			</data>
+		</dict>
 		<key>Headers/KSYMediaPlayer.h</key>
-		<data>
-		BzXxLyN1WAUTAAx2uDIWwQfj8jw=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			BzXxLyN1WAUTAAx2uDIWwQfj8jw=
+			</data>
+			<key>hash2</key>
+			<data>
+			FGTS3jAcLdCK1BLjpwxrRPmNjCSPkl54vzJS5KgiX3I=
+			</data>
+		</dict>
 		<key>Headers/KSYMoviePlayerController.h</key>
-		<data>
-		Y7V08jDrbmLQFR4yi1l1gyDHw6s=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			Y7V08jDrbmLQFR4yi1l1gyDHw6s=
+			</data>
+			<key>hash2</key>
+			<data>
+			WNNAjmqw3JNcfp03n6j6Jhs/KrHUVaHCQ81o0y0rxKI=
+			</data>
+		</dict>
 		<key>Headers/KSYPlayerAuth.h</key>
-		<data>
-		JM5yh6ys+RSrgBXgtBcIqXhaqXs=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			JM5yh6ys+RSrgBXgtBcIqXhaqXs=
+			</data>
+			<key>hash2</key>
+			<data>
+			Io4Y58pXymBc8Uu+kWjdBkVgKI6XxoVKzM67W682VCM=
+			</data>
+		</dict>
 		<key>Headers/KSYQosInfo.h</key>
-		<data>
-		4R8xOKdhadVApriBeN2JcGbBwlU=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			4R8xOKdhadVApriBeN2JcGbBwlU=
+			</data>
+			<key>hash2</key>
+			<data>
+			JM1p123ToRnPEyLf4mqhBB9VagLhJMhp8jELWAQvtig=
+			</data>
+		</dict>
 		<key>Headers/KSYStreamer.h</key>
-		<data>
-		eW/TwM+URS9pxI6c+Avd0fcZCY4=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			eW/TwM+URS9pxI6c+Avd0fcZCY4=
+			</data>
+			<key>hash2</key>
+			<data>
+			CKdZRNAoI/C6U3Svz1kbq55jtoGnrbAi9WuzmaZaK/0=
+			</data>
+		</dict>
 		<key>Headers/KSYStreamerBase.h</key>
-		<data>
-		nF8/1+QMLNwo1k1fOqF1Nqt52tc=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			nF8/1+QMLNwo1k1fOqF1Nqt52tc=
+			</data>
+			<key>hash2</key>
+			<data>
+			37D04puatWaGUNgNmJdTpx9AGosZfAQLeMSNFHlnQgU=
+			</data>
+		</dict>
 		<key>Headers/KSYTypeDef.h</key>
-		<data>
-		i7BLaNbbWlTCa/t3wKG8O+w1RKM=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			i7BLaNbbWlTCa/t3wKG8O+w1RKM=
+			</data>
+			<key>hash2</key>
+			<data>
+			lIxGvaM6mSRftpej0ntzafB0hM/+kotYIsfJQjaO8zo=
+			</data>
+		</dict>
 		<key>Headers/libksygpuimage.h</key>
-		<data>
-		D5e1wM96QVnSeST60UgsXpEQhrs=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			D5e1wM96QVnSeST60UgsXpEQhrs=
+			</data>
+			<key>hash2</key>
+			<data>
+			M5AFoJ/fGix3xmcY8ZViWldEFYTOZFItEo8qx7ERd8Y=
+			</data>
+		</dict>
 		<key>Headers/libksygpulive.h</key>
-		<data>
-		dMS2qILeGshm/6HWX2RoJyrm9gw=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			dMS2qILeGshm/6HWX2RoJyrm9gw=
+			</data>
+			<key>hash2</key>
+			<data>
+			t8VNNnqAWCHsKfIFJXaqoG8USr3iEnxVUD3B3VRwjqs=
+			</data>
+		</dict>
 		<key>Modules/module.modulemap</key>
-		<data>
-		tNTGUaghlYivLL+hZHRELBPGv9M=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			tNTGUaghlYivLL+hZHRELBPGv9M=
+			</data>
+			<key>hash2</key>
+			<data>
+			Q3b25cJbVpJl1iYh6+//AHeT412vFZmzeKUAs1vBrCA=
+			</data>
+		</dict>
 	</dict>
 	<key>rules</key>
 	<dict>
