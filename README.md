@@ -220,7 +220,7 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
     
         通过设置 videoFPS 就设定了推流的帧率，一般设置成和采集的一样。
         ```
-          _streamer.videoFPS   = _capDev.frameRate;
+        _gpuStreamer.streamerBase.videoFPS   = _capDev.frameRate;
         ```
         
 ###服务器地址
