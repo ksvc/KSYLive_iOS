@@ -231,7 +231,7 @@ _hostURL      = [[NSURL alloc] initWithString:url];
 | KSYStreamStateDidChangeNotification  | 推流状态变化通知| streamState, streamErrorCode | KSYStreamer, KSYStreamerBase |
 | KSYNetStateEventNotification         | 网络事件发生通知| netStateCode | KSYStreamer, KSYStreamerBase |
 
-当采集设备的状态发生变化时，对应的接收回调函数会被调用，通过.captureState属性,可查询到新的状态。
+当采集设备的状态发生变化时，对应的接收回调函数会被调用，通过_kit.captureState属性,可查询到新的状态。
 当推流状态发生变化，则在收到通知回调后，查询streamState查询新状态。其中如果streamState变为 [KSYStreamStateError](http://ksvc.github.io/KSYLive_iOS/html/Constants/KSYStreamState.html),需要通过[streamErrorCode](http://ksvc.github.io/KSYLive_iOS/html/Constants/KSYStreamErrorCode.html) 具体查询其错误原因
 使用KSYGPUCamera时，为了保持与GPUImage一致，没有采用异步接口，不提供captureState状态。
 
