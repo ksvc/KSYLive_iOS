@@ -171,8 +171,10 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
     /// 注意： 选择缩放自定义分辨率时可能会有额外CPU代价
     ```
     其中KSYVideoDimension_UserDefine_Scale/Crop为可以自定义的分辨率，自定义范围为
+    
         - 宽度有效范围[160, 1280]
         - 高度有效范围[ 90,  720], 超出范围会提示参数错误
+        
     如果使用KSYGPUSteamer,只支持iOS系统定义的AVCaptureSessionPreset*,需要自定义分辨率的话，可以通过添加裁剪和缩放的滤镜         来实现分辨率的改变.
 * 设置视频采集帧率
 
