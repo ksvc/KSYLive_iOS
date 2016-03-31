@@ -152,8 +152,8 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 使用SDK前, 需要联系金山云获取合法的ak/sk 在开始推流前，需要使用KSYAuthInfo类的setAuthInfo将ak和加密后的sk传入SDK内部, 具体代码见demo中的initKSYAuth方法
 
 ###采集参数设置
-* 使用KSYGPUStreamerKit/KSYStreamer
-    - 设置分辨率
+* 设置分辨率
+    － 使用KSYGPUStreamerKit/KSYStreamer
         ```
         /// 16 : 9 宽高比，1280 x 720 分辨率
             KSYVideoDimension_16_9__1280x720 = 0,
@@ -169,36 +169,28 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
         其中KSYVideoDimension_UserDefine_Scale/Crop为可以自定义的分辨率，自定义范围为
             - 宽度有效范围[160, 1280]
             - 高度有效范围[ 90,  720], 超出范围会提示参数错误
-    - 设置视频采集帧率
+    －  使用KSYGPUSteamer
+        只支持iOS系统定义的AVCaptureSessionPreset*,需要自定义分辨率的话，可以通过添加裁剪和缩放的滤镜来实现分辨率的改变
+* 设置视频采集帧率
+    - 使用KSYGPUStreamerKit/KSYStreamer
     
         ```
          _kit.videoFPS = 15;
         ```
         通过设置 videoFPS 就设定了采集和推流的帧率
-    - 设置视频朝向
-    
-        ```
-            UIInterfaceOrientation orien = [[UIApplication sharedApplication] statusBarOrientation];
-             [_kit setVideoOrientationBy:orien];
-        ```
-        推流和采集的朝向必须保持一致，建议直接将设备UI的朝向设置为视频的朝向
-
-* 使用KSYGPUSteamer
-    - 设置分辨率
-    
-        只支持iOS系统定义的AVCaptureSessionPreset*,需要自定义分辨率的话，可以通过添加裁剪和缩放的滤镜来实现分辨率的改变
-    - 设置视频采集帧率
+    - 使用KSYGPUSteamer
     
         只设置摄像头的帧率 需要将同一个值在推流参数中再设置一次
         ```
             _capDev.frameRate = 15;
         ```
-    - 设置视频朝向
-    
-        ```
-            UIInterfaceOrientation orien = [[UIApplication sharedApplication] statusBarOrientation];
-            _capDev.outputImageOrientation = orien;
-        ```
+* 设置视频朝向
+
+    ```
+        UIInterfaceOrientation orien = [[UIApplication sharedApplication] statusBarOrientation];
+        [_kit outputImageOrientation:orien];
+    ```
+    推流和采集的朝向必须保持一致，建议直接将设备UI的朝向设置为视频的朝向
 
 ###推流编码参数设置
 * 使用KSYGPUStreamerKit/KSYStreamer
