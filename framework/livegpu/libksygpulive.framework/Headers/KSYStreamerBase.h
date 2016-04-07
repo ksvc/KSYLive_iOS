@@ -23,6 +23,10 @@
  */
 
 @interface KSYStreamerBase : NSObject
+/**
+ @abstract   获取SDK版本号
+ */
+- (NSString*) getKSYVersion;
 
 #pragma mark - configures
  /**
@@ -297,15 +301,13 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 - (void) muteStreame:(BOOL) bMute;
 
 /*
-  @abstract 启动混响 Reverberation
-  @param  Reverberation level
+  @abstract 启/停混响 Reverberation
+  @param  Reverberation level: 取值范围为[0~5]
+  @discussion level取值为0表示关闭
+              [1~5]分别为不同效果
+              >5 当做5处理
 */
 - (void) enableReverb:(int) level;
-
-/*
- @abstract 停止混响 Reverberation
- */
-- (void) unableReverb;
 
 #pragma mark - logblock
 
@@ -320,5 +322,14 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
  @discussion 相关字段说明请联系金山云技术支持
  */
 @property (nonatomic, copy)void (^logBlock)(NSString *logJson);
+
+#pragma mark - snapshot
+/**
+ @abstract 截图功能，目前只支持jpg格式
+ @param    设置图像的压缩比例
+ @param    图片的文件名
+ */
+- (void) takePhotoWithQuality:(CGFloat)jpegCompressionQuality
+                     fileName:(NSString *)filename;
 
 @end

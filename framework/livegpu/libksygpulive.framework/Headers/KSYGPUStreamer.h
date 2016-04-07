@@ -15,6 +15,14 @@
 - (instancetype) initWithDefaultCfg;
 
 
+#pragma mark - get sub modules
+/**
+ @abstract   获取初始化时创建的底层推流工具
+ @discussion 1. 通过它来设置推流参数
+ @discussion 2. 通过它来启动，停止推流
+ */
+@property (nonatomic, readonly) KSYStreamerBase*   streamerBase;
+
 /**
  @abstract   获取底层推流实例
  @discussion
@@ -25,5 +33,4 @@
  @abstract   GPUImageInput - (BOOL)enabled;
  */
 @property(nonatomic) BOOL enabled;
-
 @end

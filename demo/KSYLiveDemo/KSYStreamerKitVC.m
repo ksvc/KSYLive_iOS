@@ -23,6 +23,7 @@
     // choose filters
     UIButton *_btnFilters[4];
     
+    int       _iReverb; // Reverb level
 
     // UI
     UIButton *_btnPreview;
@@ -34,7 +35,10 @@
     UIButton *_btnQuit;
     UISwitch *_btnAutoReconnect;
     UILabel  *_lblAutoReconnect;
+    UIButton *_btnSnapshot;
 
+    UIButton *_startReverb;
+    UIButton *_stopReverb;
 
     UISwitch *_btnHighRes;
     UILabel  *_lblHighRes;
@@ -61,6 +65,21 @@
 // status monitor
 @property NSTimer *timer;
 @end
+
+
+#pragma mark - image process
+void processVideo (CMSampleBufferRef sampleBuffer) {
+    CVPixelBufferRef imgBuf = CMSampleBufferGetImageBuffer(sampleBuffer);
+    CVPixelBufferLockBaseAddress(imgBuf, 0);
+    uint8_t * uSrc = CVPixelBufferGetBaseAddressOfPlane(imgBuf, 1);
+    int wdt = (int)CVPixelBufferGetBytesPerRowOfPlane(imgBuf, 1);
+    const int offset = 20*wdt;
+    for (int j = 0; j < 3; ++j){
+        uSrc += offset;
+        memset( uSrc, j*80, offset);
+    }
+    CVPixelBufferUnlockBaseAddress(imgBuf, 0);
+}
 
 @implementation KSYStreamerKitVC
 
@@ -182,6 +201,8 @@
     _btnFlash   = [self addButton:@"闪光灯" action:@selector(onFlash:)];
     _btnCamera  = [self addButton:@"前后摄像头" action:@selector(onCamera:)];
     _btnQuit    = [self addButton:@"退出"      action:@selector(onQuit:)];
+    _btnSnapshot = [self addButton:@"截图" action:@selector(onSnapshot:)];
+    
 
     _lblAutoBW = [self addLable:@"自动调码率"];
     _btnAutoBw = [self addSwitch:YES];
@@ -191,6 +212,11 @@
     _btnFilters[2] = [self addButton:@"白皙" action:@selector(OnChoseFilter:)];
     _btnFilters[3] = [self addButton:@"美白x+" action:@selector(OnChoseFilter:)];
     
+    _startReverb =[self addButton:@"开始混响" action:@selector(onReverbStart:)];
+    NSString * SReverb = [NSString stringWithFormat:@"开始混响%d",_iReverb];
+    [_startReverb setTitle:SReverb  forState: UIControlStateNormal];
+    _stopReverb = [self addButton:@"停止混响" action:@selector(onReverbStop:)];
+    _iReverb    = 1;
     
     _btnMusicPlay  = [self addButton:@"播放"  action:@selector(onMusicPlay:)];
     _btnMusicPause = [self addButton:@"暂停"  action:@selector(onMusicPause:)];
@@ -266,11 +292,14 @@
     
     yPos += (btnHgt+20);
     _btnFilters[0].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
+    _startReverb.frame = CGRectMake(xRight,   yPos, btnWdt, btnHgt);
     
     yPos += (btnHgt+5);
     _btnFilters[1].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
+    _stopReverb.frame = CGRectMake(xRight,   yPos, btnWdt, btnHgt);
     yPos += (btnHgt+5);
     _btnFilters[2].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
+    _btnSnapshot.frame =CGRectMake(xRight,   yPos, btnWdt, btnHgt);
     yPos += (btnHgt+5);
     _btnFilters[3].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
     // top row 5
@@ -291,6 +320,9 @@
     }
     _kit.videoFPS = 15;
     _kit.bInterruptOtherAudio = NO;
+    _kit.videoProcessingCallback = ^(CMSampleBufferRef sampleBuffer){
+//        processVideo(sampleBuffer);
+    };
     [self setVideoOrientation];
 }
 - (void) setStreamerCfg {
@@ -330,6 +362,11 @@
     [self rmObservers];  // need remove observers to dealloc
     [self dismissViewControllerAnimated:FALSE completion:nil];
 }
+
+- (IBAction)onSnapshot:(id)sender {
+    [_kit.streamerBase takePhotoWithQuality:1 fileName:@"3/4/c.jpg"];
+}
+
 // 启停预览
 - (IBAction)onPreview:(id)sender {
     if ( NO == _btnPreview.isEnabled) {
@@ -429,9 +466,23 @@
 }
 
 
+-(IBAction)onReverbStart:(id)sender {
+    [_kit.streamerBase enableReverb:_iReverb];
     
+    _startReverb.enabled = NO;
+    _stopReverb.enabled = YES;
     
+    _iReverb++;
+    _iReverb = _iReverb % 4;
+    NSString * SReverb = [NSString stringWithFormat:@"开始混响%d",_iReverb];
+    [sender setTitle:SReverb  forState: UIControlStateNormal];
+} // Reverb
 
+-(IBAction)onReverbStop:(id)sender{
+    [_kit.streamerBase enableReverb:0];
+    _startReverb.enabled = YES;
+    _stopReverb.enabled = NO;
+} //Reverb
 
 - (IBAction)onMusicPlay:(id)sender {
     NSString *testMp3 = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/test.mp3"];
@@ -694,6 +745,7 @@
 }
 
 
+
 /**
  @abstrace 初始化金山云认证信息
  @discussion 开发者帐号fpzeng，其他信息如下：
@@ -715,3 +767,4 @@
 }
 
 @end
+
