@@ -23,6 +23,7 @@
     // chose filters
     UIButton *_btnFilters[4];
     
+    int       _iReverb; // Reverb level
 
     UIButton *_btnPreview;
     UIButton *_btnTStream;
@@ -34,6 +35,8 @@
     UISwitch *_btnAutoReconnect;
     UILabel  *_lblAutoReconnect;
 
+    UIButton *_startReverb;
+    UIButton *_stopReverb;
 
     UISwitch *_btnHighRes;
     UILabel  *_lblHighRes;
@@ -50,7 +53,6 @@
     double    _startTime;
 }
 @property KSYGPUStreamer * gpuStreamer;
-@property KSYStreamerBase * streamer;
 @property KSYGPUCamera * capDev;
 @property GPUImageFilter     * filter;
 @property GPUImageCropFilter * cropfilter;
@@ -64,7 +66,7 @@
 @implementation KSYGPUStreamerVC
 
 -(KSYStreamerBase *)getStreamer {
-    return _streamer;
+    return _gpuStreamer.streamerBase;
 }
 
 #pragma mark - UIViewController
@@ -178,6 +180,11 @@
     _btnFilters[2] = [self addButton:@"白皙" action:@selector(OnChoseFilter:)];
     _btnFilters[3] = [self addButton:@"美白x+" action:@selector(OnChoseFilter:)];
     
+    _startReverb =[self addButton:@"开始混响" action:@selector(onReverbStart:)];
+    NSString * SReverb = [NSString stringWithFormat:@"开始混响%d",_iReverb];
+    [_startReverb setTitle:SReverb  forState: UIControlStateNormal];
+    _stopReverb = [self addButton:@"停止混响" action:@selector(onReverbStop:)];
+    _iReverb    = 1;
 
     _btnMusicPlay  = [self addButton:@"播放"  action:@selector(onMusicPlay:)];
     _btnMusicPause = [self addButton:@"暂停"  action:@selector(onMusicPause:)];
@@ -258,9 +265,11 @@
 
      yPos += (btnHgt+20);
     _btnFilters[0].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
+    _startReverb.frame = CGRectMake(xRight,   yPos, btnWdt, btnHgt);
 
     yPos += (btnHgt+5);
     _btnFilters[1].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
+    _stopReverb.frame = CGRectMake(xRight,   yPos, btnWdt, btnHgt);
     yPos += (btnHgt+5);
     _btnFilters[2].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
     yPos += (btnHgt+5);
@@ -275,19 +284,15 @@
 #pragma mark - stream setup (采集推流参数设置)
 - (void) setStreamerCfg {
     UIInterfaceOrientation orien = [[UIApplication sharedApplication] statusBarOrientation];
-    
     CGRect rect ;
     double srcWdt = 480.0;
     double srcHgt = 640.0;
-    
     double dstWdt = 320.0;
     double dstHgt = 640.0;
-    
     double x = (srcWdt-dstWdt)/2/srcWdt;
     double y = (srcHgt-dstHgt)/2/srcHgt;
     double wdt = dstWdt/srcWdt;
     double hgt = dstHgt/srcHgt;
-    
     if (orien == UIInterfaceOrientationPortrait ||
         orien == UIInterfaceOrientationPortraitUpsideDown) {
         rect = CGRectMake(x, y, wdt, hgt);
@@ -305,38 +310,24 @@
         preset = AVCaptureSessionPreset640x480;
         _cropfilter = [[GPUImageCropFilter alloc] initWithCropRegion:rect];
     }
-    BOOL useGPUFilter = YES;
-    if (useGPUFilter) {
-        _gpuStreamer = [[KSYGPUStreamer alloc] initWithDefaultCfg];
-        _streamer = [_gpuStreamer getStreamer];
-
-    }
-    else {
-        _gpuStreamer = nil;
-        _streamer = [[KSYStreamerBase alloc] initWithDefaultCfg];
-    }
-    _streamer.shouldEnableKSYStatModule = NO;
-    _streamer.logBlock = ^(NSString *string){
+    _gpuStreamer = [[KSYGPUStreamer alloc] initWithDefaultCfg];
+    
+    _gpuStreamer.streamerBase.shouldEnableKSYStatModule = NO;
+    _gpuStreamer.streamerBase.logBlock = ^(NSString *string){
         NSLog(@"logBlock: %@", string);
     };
     _capDev = [[KSYGPUCamera alloc] initWithSessionPreset:preset
                                            cameraPosition:AVCaptureDevicePositionBack];
     if (_capDev == nil) {
-        NSLog(@"camera open failed!");
+        [self toast:@"open camera failed"];
         return;
     }
     _capDev.outputImageOrientation = orien;
     _filter = [[KSYGPUBeautifyFilter alloc] init];
     
-    //[_capDev addTarget:(GPUImageView *)filterView];
-    _capDev.bStreamVideo = useGPUFilter ? NO:YES;
-    _capDev.bStreamAudio = true;
-    if (useGPUFilter) {
-        [_capDev setAudioEncTarget:_gpuStreamer];
-    }
-    else {
-        [_capDev setBaseAudioEncTarget:_streamer];
-    }
+    _capDev.bStreamVideo = NO;
+    _capDev.bStreamAudio = YES;
+    [_capDev setAudioEncTarget:_gpuStreamer];
 
     _capDev.horizontallyMirrorFrontFacingCamera = NO;
     _capDev.horizontallyMirrorRearFacingCamera  = NO;
@@ -344,21 +335,19 @@
     [_capDev addAudioInputsAndOutputs];
 
     // stream settings
-    _streamer.videoCodec = KSYVideoCodec_X264;
-    //_streamer.videoCodec = KSYVideoCodec_VT264;
-    _streamer.videoFPS   = _capDev.frameRate;
-    _streamer.audiokBPS  = 48;   // k bit ps
-    _streamer.enAutoApplyEstimateBW = _btnAutoBw.on;
-    if (_streamer.enAutoApplyEstimateBW) {
-        _streamer.videoInitBitrate  = 500;  // k bit ps
-        _streamer.videoMaxBitrate   = 1000; // k bit ps
-        _streamer.videoMinBitrate   = 200;  // k bit ps
+    _gpuStreamer.streamerBase.videoCodec = KSYVideoCodec_X264;
+    //_gpuStreamer.streamerBase.videoCodec = KSYVideoCodec_VT264;
+    _gpuStreamer.streamerBase.videoFPS   = _capDev.frameRate;
+    _gpuStreamer.streamerBase.audiokBPS  = 48;   // k bit ps
+    _gpuStreamer.streamerBase.enAutoApplyEstimateBW = _btnAutoBw.on;
+    if (_gpuStreamer.streamerBase.enAutoApplyEstimateBW) {
+        _gpuStreamer.streamerBase.videoInitBitrate  = 500;  // k bit ps
     }
     else {
-        _streamer.videoInitBitrate  = 1000; // k bit ps
-        _streamer.videoMaxBitrate   = 1000; // k bit ps
-        _streamer.videoMinBitrate   = 200;  // k bit ps
+        _gpuStreamer.streamerBase.videoInitBitrate  = 1000; // k bit ps
     }
+    _gpuStreamer.streamerBase.videoMaxBitrate   = 1000; // k bit ps
+    _gpuStreamer.streamerBase.videoMinBitrate   = 300;  // k bit ps
     // connect blocks
     if (_btnHighRes.on) {
         [_capDev addTarget:_filter];
@@ -375,7 +364,7 @@
     // rtmp server info
     // stream name = 随机数 + codec名称 （构造流名，避免多个demo推向同一个流）
     NSString *devCode  = [ [KSYAuthInfo sharedInstance].mCode substringToIndex:3];
-    NSString *codecSuf = _streamer.videoCodec == KSYVideoCodec_QY265 ? @"265" : @"264";
+    NSString *codecSuf = _gpuStreamer.streamerBase.videoCodec == KSYVideoCodec_QY265 ? @"265" : @"264";
     NSString *streamName = [NSString stringWithFormat:@"%@.%@", devCode, codecSuf ];
     
     // hostURL = rtmpSrv + streamName
@@ -387,8 +376,8 @@
 #pragma mark - UI responde
 
 - (IBAction)onQuit:(id)sender {
-    [_streamer stopMixMusic];
-    [_streamer stopStream];
+    [_gpuStreamer.streamerBase stopMixMusic];
+    [_gpuStreamer.streamerBase stopStream];
     [_capDev stopCameraCapture];
     [self dismissViewControllerAnimated:FALSE completion:nil];
 }
@@ -423,8 +412,6 @@
     [_filter addTarget:_gpuStreamer];
 }
 
-
-
 - (IBAction)onPreview:(id)sender {
     if ( NO == _btnPreview.isEnabled) {
         return;
@@ -446,16 +433,14 @@
         NO == _btnTStream.isEnabled ) {
         return;
     }
-    if (_streamer.streamState != KSYStreamStateConnected) {
-        [_streamer startStream: _hostURL];
-        
-        [_streamer setMicVolume:_micVolS.value];
-        [_streamer setBgmVolume:_bgmVolS.value];
-
+    if (_gpuStreamer.streamerBase.streamState != KSYStreamStateConnected) {
+        [_gpuStreamer.streamerBase startStream: _hostURL];
+        [_gpuStreamer.streamerBase setMicVolume:_micVolS.value];
+        [_gpuStreamer.streamerBase setBgmVolume:_bgmVolS.value];
         [self initStatData];
     }
     else {
-        [_streamer stopStream];
+        [_gpuStreamer.streamerBase stopStream];
     }
     return;
 }
@@ -483,13 +468,13 @@
     i = !i;
     if (i) {
         NSLog(@"bgm start %@", testMp3);
-        _streamer.bgmFinishBlock = ^{
+        _gpuStreamer.streamerBase.bgmFinishBlock = ^{
             NSLog(@"bgm over %@", testMp3);
         };
-        [_streamer startMixMusic:testMp3 isLoop:NO];
+        [_gpuStreamer.streamerBase startMixMusic:testMp3 isLoop:NO];
     }
     else {
-        [_streamer stopMixMusic];
+        [_gpuStreamer.streamerBase stopMixMusic];
     }
 }
 
@@ -497,37 +482,51 @@
     static int i = 0;
     i = !i;
     if (i) {
-        [_streamer pauseMixMusic];
+        [_gpuStreamer.streamerBase pauseMixMusic];
     }
     else {
-        [_streamer resumeMixMusic];
+        [_gpuStreamer.streamerBase resumeMixMusic];
     }
 }
 
 - (IBAction)onMusicMix:(id)sender {
     static BOOL i = NO;
     i = !i;
-    [_streamer enableMicMixMusic:i];
+    [_gpuStreamer.streamerBase enableMicMixMusic:i];
 }
 
+-(IBAction)onReverbStart:(id)sender {
+    [_gpuStreamer.streamerBase enableReverb:_iReverb];
     
+    _startReverb.enabled = NO;
+    _stopReverb.enabled = YES;
     
+    _iReverb++;
+    _iReverb = _iReverb % 4;
+    NSString * SReverb = [NSString stringWithFormat:@"开始混响%d",_iReverb];
+    [sender setTitle:SReverb  forState: UIControlStateNormal];
+} // Reverb
 
+-(IBAction)onReverbStop:(id)sender{
+    [_gpuStreamer.streamerBase enableReverb:0];
+    _startReverb.enabled = YES;
+    _stopReverb.enabled = NO;
+} //Reverb
 
 - (IBAction)onVolChanged:(id)sender {
     if (sender == _bgmVolS) {
-        [_streamer setBgmVolume:_bgmVolS.value];
+        [_gpuStreamer.streamerBase setBgmVolume:_bgmVolS.value];
     }
     else if (sender == _micVolS) {
-        [_streamer setMicVolume:_micVolS.value];
+        [_gpuStreamer.streamerBase setMicVolume:_micVolS.value];
     }
 }
 
 - (IBAction)onStreamMute:(id)sender {
     static BOOL i = NO;
     i = !i;
-    if (_streamer){
-        [_streamer muteStreame:i];
+    if (_gpuStreamer.streamerBase){
+        [_gpuStreamer.streamerBase muteStreame:i];
     }
 }
 
@@ -585,10 +584,10 @@
 }
 
 - (void)updateStat:(NSTimer *)theTimer{
-    if (_streamer.streamState == KSYStreamStateConnected ) {
-        int    KB          = _streamer.uploadedKByte;
-        int    curFrames   = _streamer.encodedFrames;
-        int    droppedF    = _streamer.droppedVideoFrames;
+    if (_gpuStreamer.streamerBase.streamState == KSYStreamStateConnected ) {
+        int    KB          = _gpuStreamer.streamerBase.uploadedKByte;
+        int    curFrames   = _gpuStreamer.streamerBase.encodedFrames;
+        int    droppedF    = _gpuStreamer.streamerBase.droppedVideoFrames;
 
         int deltaKbyte = KB - _lastByte;
         double curTime = [[NSDate date]timeIntervalSince1970];
@@ -627,7 +626,7 @@
 
 #pragma mark - state handle
 - (void) onStreamError {
-    KSYStreamErrorCode err = _streamer.streamErrorCode;
+    KSYStreamErrorCode err = _gpuStreamer.streamerBase.streamErrorCode;
     [_btnPreview setEnabled:TRUE];
     [_btnTStream setEnabled:TRUE];
     [_btnTStream setTitle:@"开始推流" forState:UIControlStateNormal];
@@ -684,15 +683,15 @@
     // 断网重连
     if ( KSYStreamErrorCode_CONNECT_BREAK == err && _btnAutoReconnect.isOn ) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [_streamer stopStream];
-            [_streamer startStream:_hostURL];
+            [_gpuStreamer.streamerBase stopStream];
+            [_gpuStreamer.streamerBase startStream:_hostURL];
             [self initStatData];
         });
     }
 }
 
 - (void) onNetStateEvent:(NSNotification *)notification {
-    KSYNetStateCode netEvent = _streamer.netStateCode;
+    KSYNetStateCode netEvent = _gpuStreamer.streamerBase.netStateCode;
     //NSLog(@"net event : %ld", (unsigned long)netEvent );
     if ( netEvent == KSYNetStateCode_SEND_PACKET_SLOW ) {
         _netEventCnt++;
@@ -722,32 +721,32 @@
 - (void) onStreamStateChange:(NSNotification *)notification {
     [_btnPreview setEnabled:NO];
     [_btnTStream setEnabled:NO];
-    if ( _streamer.streamState == KSYStreamStateIdle) {
+    if ( _gpuStreamer.streamerBase.streamState == KSYStreamStateIdle) {
         _stat.text = @"idle";
         [_btnPreview setEnabled:TRUE];
         [_btnTStream setEnabled:TRUE];
         [_btnTStream setTitle:@"开始推流" forState:UIControlStateNormal];
     }
-    else if ( _streamer.streamState == KSYStreamStateConnected){
+    else if ( _gpuStreamer.streamerBase.streamState == KSYStreamStateConnected){
         _stat.text = @"connected";
         [_btnTStream setEnabled:TRUE];
         [_btnTStream setTitle:@"停止推流" forState:UIControlStateNormal];
-        if (_streamer.streamErrorCode == KSYStreamErrorCode_KSYAUTHFAILED ) {
+        if (_gpuStreamer.streamerBase.streamErrorCode == KSYStreamErrorCode_KSYAUTHFAILED ) {
             NSLog(@"Auth failed, stream would stop in 5~8 minute");
             _stat.text = @"connected(auth failed";
         }
     }
-    else if (_streamer.streamState == KSYStreamStateConnecting ) {
+    else if (_gpuStreamer.streamerBase.streamState == KSYStreamStateConnecting ) {
         _stat.text = @"connecting";
     }
-    else if (_streamer.streamState == KSYStreamStateDisconnecting ) {
+    else if (_gpuStreamer.streamerBase.streamState == KSYStreamStateDisconnecting ) {
         _stat.text = @"disconnecting";
     }
-    else if (_streamer.streamState == KSYStreamStateError ) {
+    else if (_gpuStreamer.streamerBase.streamState == KSYStreamStateError ) {
         [self onStreamError];
         return;
     }
-    NSLog(@"newState: %lu [%@]", (unsigned long)_streamer.streamState, _stat.text);
+    NSLog(@"newState: %lu [%@]", (unsigned long)_gpuStreamer.streamerBase.streamState, _stat.text);
 }
 
 - (void) toast:(NSString*)message{
