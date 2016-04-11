@@ -13,6 +13,18 @@
 		
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/getKSYVersion</TokenIdentifier>
+			<Abstract type="html">获取SDK版本号</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)getKSYVersion</Declaration>
+			
+			
+			<Anchor>//api/name/getKSYVersion</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setHostURL:</TokenIdentifier>
 			<Abstract type="html">rtmp主机地址</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
@@ -1113,6 +1125,18 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/enableReverb:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>- (void)enableReverb:(int)level</Declaration>
+			
+			
+			<Anchor>//api/name/enableReverb:</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setShouldEnableKSYStatModule:</TokenIdentifier>
 			<Abstract type="html">收集日志的状态，默认开启</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
@@ -1181,6 +1205,20 @@
 			
 			
 			<Anchor>//api/name/logBlock</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/takePhotoWithQuality:fileName:</TokenIdentifier>
+			<Abstract type="html">截图功能，目前只支持jpg格式
+@param    设置图像的压缩比例
+@param    图片的文件名</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>- (void)takePhotoWithQuality:(CGFloat)jpegCompressionQuality fileName:(NSString *)filename</Declaration>
+			
+			
+			<Anchor>//api/name/takePhotoWithQuality:fileName:</Anchor>
             <NodeRef refid="16"/>
 		</Token>
 		
