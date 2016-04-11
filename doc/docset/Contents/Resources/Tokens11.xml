@@ -785,6 +785,18 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/getVersion</TokenIdentifier>
+			<Abstract type="html">获取sdk版本。</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)getVersion</Declaration>
+			
+			
+			<Anchor>//api/name/getVersion</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setShouldUseHWCodec:</TokenIdentifier>
 			<Abstract type="html">是否开启硬件解码</Abstract>
 			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>

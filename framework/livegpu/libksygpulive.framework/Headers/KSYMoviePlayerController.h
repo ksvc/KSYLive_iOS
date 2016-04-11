@@ -333,6 +333,13 @@ MP_EXTERN NSString * const MPMovieNaturalSizeAvailableNotification;
 - (void)setTimeout:(int)timeout;
 
 /**
+ @abstract 获取sdk版本。
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 1.3.1 and later.
+ */
+- (NSString *)getVersion;
+
+/**
  @abstract 是否开启硬件解码
  @discussion 默认是关闭
  * 只在[prepareToPlay]([KSYMediaPlayback prepareToPlay]) 调用前设置生效；
@@ -353,4 +360,5 @@ MP_EXTERN NSString * const MPMovieNaturalSizeAvailableNotification;
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 - (void)reload:(NSURL *)aUrl;
+
 @end

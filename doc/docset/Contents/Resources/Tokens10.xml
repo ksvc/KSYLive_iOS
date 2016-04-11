@@ -485,6 +485,18 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setVideoOrientationBy:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>- (void)setVideoOrientationBy:(UIInterfaceOrientation)uiOrien</Declaration>
+			
+			
+			<Anchor>//api/name/setVideoOrientationBy:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/clm/KSYGPUStreamerKit/getCapOrientation:</TokenIdentifier>
 			<Abstract type="html">AVCaptureVideoOrientation / UIInterfaceOrientation</Abstract>
 			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
@@ -599,6 +611,132 @@
 			
 			<ReturnValue><Abstract type="html">AVCaptureDevice* 预览开始前调用返回为nil，开始预览后，返回当前正在使用的摄像头</Abstract></ReturnValue>
 			<Anchor>//api/name/getCurrentCameraDevices</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setAudioProcessingCallback:</TokenIdentifier>
+			<Abstract type="html">音频处理回调接口</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sampleBuffer</Name>
+					<Abstract type="html">原始采集到的音频数据</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/audioProcessingCallback</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/audioProcessingCallback</TokenIdentifier>
+			<Abstract type="html">音频处理回调接口</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sampleBuffer</Name>
+					<Abstract type="html">原始采集到的音频数据</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/audioProcessingCallback</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/audioProcessingCallback</TokenIdentifier>
+			<Abstract type="html">音频处理回调接口</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sampleBuffer</Name>
+					<Abstract type="html">原始采集到的音频数据</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/audioProcessingCallback</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setVideoProcessingCallback:</TokenIdentifier>
+			<Abstract type="html">视频处理回调接口</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) videoProcessingCallback</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sampleBuffer</Name>
+					<Abstract type="html">原始采集到的视频数据</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/videoProcessingCallback</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/videoProcessingCallback</TokenIdentifier>
+			<Abstract type="html">视频处理回调接口</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) videoProcessingCallback</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sampleBuffer</Name>
+					<Abstract type="html">原始采集到的视频数据</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/videoProcessingCallback</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/videoProcessingCallback</TokenIdentifier>
+			<Abstract type="html">视频处理回调接口</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) videoProcessingCallback</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sampleBuffer</Name>
+					<Abstract type="html">原始采集到的视频数据</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/videoProcessingCallback</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/getKSYStreamErrorCodeName:</TokenIdentifier>
+			<Abstract type="html">获取错误码对应的字符串</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)getKSYStreamErrorCodeName:(KSYStreamErrorCode)code</Declaration>
+			
+			
+			<Anchor>//api/name/getKSYStreamErrorCodeName:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/getKSYVersion</TokenIdentifier>
+			<Abstract type="html">获取SDK版本号</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)getKSYVersion</Declaration>
+			
+			
+			<Anchor>//api/name/getKSYVersion</Anchor>
             <NodeRef refid="10"/>
 		</Token>
 		
