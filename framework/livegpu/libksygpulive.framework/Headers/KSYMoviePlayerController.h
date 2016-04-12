@@ -227,7 +227,20 @@ MP_EXTERN NSString * const MPMoviePlayerLoadStateDidChangeNotification;
 
 MP_EXTERN NSString * const MPMovieNaturalSizeAvailableNotification;
 
+MP_EXTERN NSString * const MPMoviePlayerFirstVideoFrameRenderedNotification;
+
+MP_EXTERN NSString * const MPMoviePlayerFirstAudioFrameRenderedNotification;
+
+MP_EXTERN const NSString *const kKSYPLYFormat;
+
+MP_EXTERN const NSString *const kKSYPLYHttpFirstDataTime;
+
+MP_EXTERN const NSString *const kKSYPLYHttpAnalyzeDns;
+
+MP_EXTERN const NSString *const kKSYPLYHttpConnectTime;
+
 #pragma mark KSYMoviePlayerController New Feature
+
 /**
  @abstract bufferTimeMax指定直播流播放时的最大缓冲时长，单位为秒。
  @warning 该方法由金山云引入，不是原生系统接口
@@ -285,8 +298,6 @@ MP_EXTERN NSString * const MPMovieNaturalSizeAvailableNotification;
  */
 @property (nonatomic, readonly) NSInteger bufferEmptyCount;
 
-
-
 /**
  @abstract 视频流server ip
  @warning 该方法由金山云引入，不是原生系统接口
@@ -339,6 +350,19 @@ MP_EXTERN NSString * const MPMovieNaturalSizeAvailableNotification;
  */
 - (NSString *)getVersion;
 
+/**
+ @abstract 获取播放流版本。
+ @warning 该方法由金山云引入，不是原生系统接口
+ @discussion 
+ *收到MPMediaPlaybackIsPreparedToPlayDidChangeNotification通知后才能获取到数据
+ *暂时支持的查询包括
+    kKSYPLYFormat
+    kKSYPLYHttpFirstDataTime
+    kKSYPLYHttpConnectTime
+    kKSYPLYHttpAnalyzeDns
+ @since Available in KSYMoviePlayerController 1.3.1 and later.
+ */
+- (NSDictionary *)getMetadata;
 /**
  @abstract 是否开启硬件解码
  @discussion 默认是关闭

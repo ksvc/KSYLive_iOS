@@ -302,10 +302,9 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 
 /*
   @abstract 启/停混响 Reverberation
-  @param  Reverberation level: 取值范围为[0~5]
+  @param  Reverberation level: 取值范围为[0~4]
   @discussion level取值为0表示关闭
-              [1~5]分别为不同效果
-              >5 当做5处理
+              [1~4]分别为不同效果
 */
 - (void) enableReverb:(int) level;
 
