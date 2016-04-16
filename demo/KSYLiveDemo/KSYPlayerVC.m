@@ -10,8 +10,10 @@
 
 @interface KSYPlayerVC ()
 @property (strong, nonatomic) NSURL *url;
+@property (strong, nonatomic) NSURL *reloadUrl;
 @property (strong, nonatomic) KSYMoviePlayerController *player;
 @end
+
 
 @implementation KSYPlayerVC{
     UILabel *stat;
@@ -22,21 +24,34 @@
     UIView *videoView;
     UIButton *btnPlay;
     UIButton *btnPause;
+    UIButton *btnReload;
     UIButton *btnStop;
     UIButton *btnQuit;
     UILabel  *lableVPP;
     UISwitch *switchVPP;
+    UISwitch *switchLog;
+    UIButton *getQosBtn;
+    UISwitch  *switchHwCodec;
+    long long int prepared_time;
+    int fvr_costtime;
+    int far_costtime;
+}
+
+- (instancetype)initWithURL:(NSURL *)url {
+    if((self = [super init])) {
+        self.url = url;
+        self.reloadUrl = url;
+    }
+    return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
-    _url = [NSURL URLWithString:@"rtmp://live.hkstv.hk.lxdns.com/live/hks"];
-    _url = [NSURL URLWithString:@"rtmp://test.rtmplive.ks-cdn.com/live/fpzeng"];
-    //_url = [NSURL URLWithString:@"http://121.40.205.48:8091/demo/h265.flv"];
     [self setupObservers];
     [self initKSYAuth];
 }
+
 - (void) initUI {
     //add UIView for player
     videoView = [[UIView alloc] init];
@@ -44,30 +59,23 @@
     [self.view addSubview:videoView];
     
     //add play button
-    btnPlay = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btnPlay setTitle:@"play" forState: UIControlStateNormal];
-    btnPlay.backgroundColor = [UIColor lightGrayColor];
-    [btnPlay addTarget:self action:@selector(onPlayVideo:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btnPlay];
+    btnPlay = [self addButtonWithTitle:@"play" action:@selector(onPlayVideo:)];
+
     //add pause button
-    btnPause = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btnPause setTitle:@"pause" forState: UIControlStateNormal];
-    btnPause.backgroundColor = [UIColor lightGrayColor];
-    [btnPause addTarget:self action:@selector(onPauseVideo:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btnPause];
-    //add stop button
-    btnStop = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btnStop setTitle:@"stop" forState: UIControlStateNormal];
-    btnStop.backgroundColor = [UIColor lightGrayColor];
-    [btnStop addTarget:self action:@selector(onStopVideo:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btnStop];
-    //add quit button
-    btnQuit = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btnQuit setTitle:@"quit" forState: UIControlStateNormal];
-    btnQuit.backgroundColor = [UIColor lightGrayColor];
-    [btnQuit addTarget:self action:@selector(onQuit:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btnQuit];
+    btnPause = [self addButtonWithTitle:@"pause" action:@selector(onPauseVideo:)];
+
+    //add pause button
+    btnReload = [self addButtonWithTitle:@"reload" action:@selector(onReloadVideo:)];
     
+    //add stop button
+    btnStop = [self addButtonWithTitle:@"stop" action:@selector(onStopVideo:)];
+
+    //add quit button
+    btnQuit = [self addButtonWithTitle:@"quit" action:@selector(onQuit:)];
+    
+    //add getQosBtn
+    getQosBtn = [self addButtonWithTitle:@"QosInfo" action:@selector(getQosBtnEvent)];
+
     stat = [[UILabel alloc] init];
     stat.backgroundColor = [UIColor clearColor];
     stat.textColor = [UIColor redColor];
@@ -76,20 +84,42 @@
     [self.view addSubview:stat];
     
     lableVPP = [[UILabel alloc] init];
-    lableVPP.text = @"视频后处理";
+    lableVPP.text = @"开启硬件解码";
+    lableVPP.textColor = [UIColor lightGrayColor];
     [self.view addSubview:lableVPP];
 
-    switchVPP = [[UISwitch alloc] init];
-    [self.view addSubview:switchVPP];
-    switchVPP.on = YES;
+//    switchVPP = [[UISwitch alloc] init];
+//    [self.view addSubview:switchVPP];
+//    switchVPP.on = YES;
+    
+//    switchLog = [[UISwitch alloc] init];
+//    [switchLog addTarget:self action:@selector(switchControlEvent:) forControlEvents:UIControlEventValueChanged];
+//    [self.view addSubview:switchLog];
+//    switchLog.on = YES;
+    
+    switchHwCodec = [[UISwitch alloc] init];
+    [self.view  addSubview:switchHwCodec];
+    switchHwCodec.on = YES;
     
     [self layoutUI];
+}
+- (UIButton *)addButtonWithTitle:(NSString *)title action:(SEL)action{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button setTitle:title forState: UIControlStateNormal];
+    button.backgroundColor = [UIColor lightGrayColor];
+    [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+    button.layer.masksToBounds  = YES;
+    button.layer.cornerRadius   = 5;
+    button.layer.borderColor    = [UIColor blackColor].CGColor;
+    button.layer.borderWidth    = 1;
+    [self.view addSubview:button];
+    return button;
 }
 - (void) layoutUI {
     CGFloat wdt = self.view.bounds.size.width;
     CGFloat hgt = self.view.bounds.size.height;
-    CGFloat gap = 10;
-    CGFloat btnWdt = ( (wdt-gap) / 4) - gap;
+    CGFloat gap = 20;
+    CGFloat btnWdt = ( (wdt-gap) / 5) - gap;
     CGFloat btnHgt = 30;
     CGFloat xPos = 0;
     CGFloat yPos = 0;
@@ -97,15 +127,19 @@
     yPos = gap;
     xPos = gap;
     lableVPP.frame =CGRectMake(xPos, yPos, btnWdt * 2, btnHgt);
-    xPos += gap + lableVPP.frame.size.width;
+    xPos = wdt/2 - btnWdt/2;
     switchVPP.frame = CGRectMake(xPos, gap, btnWdt, btnHgt);
-    
+    switchLog.frame = CGRectMake(xPos + btnWdt + 50, gap, btnWdt, btnHgt);
+    switchHwCodec.frame = CGRectMake(xPos, gap, btnWdt, btnHgt);
+
     videoView.frame = CGRectMake(0, 0, wdt, hgt);
     xPos = gap;
     yPos = hgt - btnHgt - gap;
     btnPlay.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     xPos += gap + btnWdt;
     btnPause.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
+    xPos += gap + btnWdt;
+    btnReload.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     xPos += gap + btnWdt;
     btnStop.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     xPos += gap + btnWdt;
@@ -114,6 +148,7 @@
     // top row 3 left
     yPos += (gap + btnHgt);
     xPos = gap;
+    getQosBtn.frame = CGRectMake(xPos, btnStop.frame.origin.y - 40, btnWdt, btnHgt);
 
     
 }
@@ -123,7 +158,13 @@
     return YES;
 }
 
+- (void)switchControlEvent:(UISwitch *)switchControl
+{
+    if (_player) {
+        _player.shouldEnableKSYStatModule = switchControl.isOn;
 
+    }
+}
 - (NSString *)MD5:(NSString*)raw {
     
     const char * pointer = [raw UTF8String];
@@ -137,6 +178,11 @@
     
     return string;
 }
+
+- (NSTimeInterval) getCurrentTime{
+    return [[NSDate date] timeIntervalSince1970];
+}
+
 /**
  @abstrace 初始化金山云认证信息
  @discussion 开发者帐号fpzeng，其他信息如下：
@@ -177,7 +223,9 @@
         [self StartTimer];
     }
     if (MPMoviePlayerPlaybackStateDidChangeNotification ==  notify.name) {
+        NSLog(@"------------------------");
         NSLog(@"player playback state: %ld", (long)_player.playbackState);
+        NSLog(@"------------------------");
     }
     if (MPMoviePlayerLoadStateDidChangeNotification ==  notify.name) {
         NSLog(@"player load state: %ld", (long)_player.loadState);
@@ -202,12 +250,33 @@
         NSLog(@"buffer monitor  result: \n   empty count: %d, lasting: %f seconds",
               (int)_player.bufferEmptyCount,
               _player.bufferEmptyDuration);
-        stat.text = [NSString stringWithFormat:@"player finish"];
+        int reason = [[[notify userInfo] valueForKey:MPMoviePlayerPlaybackDidFinishReasonUserInfoKey] intValue];
+        if (reason == 0) {
+            stat.text = [NSString stringWithFormat:@"player finish"];
+
+        }else if (reason == 1){
+            stat.text = [NSString stringWithFormat:@"player Error"];
+
+        }else if (reason == 2){
+            stat.text = [NSString stringWithFormat:@"player userExited"];
+
+        }
         [self StopTimer];
     }
     if (MPMovieNaturalSizeAvailableNotification ==  notify.name) {
         NSLog(@"video size %.0f-%.0f", _player.naturalSize.width, _player.naturalSize.height);
     }
+	if (MPMoviePlayerFirstVideoFrameRenderedNotification == notify.name)
+	{
+        fvr_costtime = (int)((long long int)([self getCurrentTime] * 1000) - prepared_time);
+		NSLog(@"first video frame show, cost time : %dms!\n", fvr_costtime);
+	}
+	
+	if (MPMoviePlayerFirstAudioFrameRenderedNotification == notify.name)
+	{
+        far_costtime = (int)((long long int)([self getCurrentTime] * 1000) - prepared_time);
+		NSLog(@"first audio frame render, cost time : %dms!\n", far_costtime);
+	}
 }
 - (void) toast:(NSString*)message{
     UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
@@ -246,6 +315,14 @@
                                             selector:@selector(handlePlayerNotify:)
                                                 name:(MPMovieNaturalSizeAvailableNotification)
                                               object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(handlePlayerNotify:)
+                                                name:(MPMoviePlayerFirstVideoFrameRenderedNotification)
+                                              object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(handlePlayerNotify:)
+                                                name:(MPMoviePlayerFirstAudioFrameRenderedNotification)
+                                              object:nil];
 }
 
 - (void)releaseObservers
@@ -265,14 +342,33 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self
                                                    name:MPMovieNaturalSizeAvailableNotification
                                                  object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self
+                                                   name:MPMoviePlayerFirstVideoFrameRenderedNotification
+                                                 object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self
+                                                   name:MPMoviePlayerFirstAudioFrameRenderedNotification
+                                                 object:nil];
 }
 - (IBAction)onPlayVideo:(id)sender {
+    
     if (_player) {
+        if (switchLog.isOn == NO) {
+            _player.shouldEnableKSYStatModule = NO;
+        }
         [_player play];
         [self StartTimer];
         return;
     }
-    _player =    [[KSYMoviePlayerController alloc] initWithContentURL: _url];
+    _player = [[KSYMoviePlayerController alloc] initWithContentURL: _url];
+    if (switchLog.isOn == NO) {
+        _player.shouldEnableKSYStatModule = NO;
+    }
+    
+    _player.logBlock = ^(NSString *logJson){
+        
+        NSLog(@"logJson is %@",logJson);
+    };
+    
     stat.text = [NSString stringWithFormat:@"url %@", _url];
     _player.controlStyle = MPMovieControlStyleNone;
     [_player.view setFrame: videoView.bounds];  // player's frame must match parent's
@@ -284,7 +380,20 @@
     _player.bufferTimeMax = 5;
     _player.shouldEnableVideoPostProcessing = switchVPP.on;
     _player.scalingMode = MPMovieScalingModeAspectFit;
+    _player.shouldUseHWCodec = switchHwCodec.isOn;
+    _player.shouldEnableKSYStatModule = TRUE;
+    //[_player setTimeout:10];
+    
+    NSLog(@"sdk version:%@", [_player getVersion]);
+    prepared_time = (long long int)([self getCurrentTime] * 1000);
     [_player prepareToPlay];
+    
+}
+
+- (IBAction)onReloadVideo:(id)sender {
+    if (_player) {
+        [_player reload:_reloadUrl];
+    }
 }
 
 - (IBAction)onPauseVideo:(id)sender {
@@ -305,10 +414,6 @@
         stat.text = [NSString stringWithFormat:@"url: %@\nstopped", _url];
         [self StopTimer];
     }
-}
-
-- (NSTimeInterval) getCurrentTime{
-    return [[NSDate date] timeIntervalSince1970];
 }
 
 - (void)StartTimer
@@ -335,13 +440,27 @@
         return;
     }
     double flowSize = [_player readSize];
-    
-    stat.text = [NSString stringWithFormat:@"%@\nip:%@ (w-h: %.0f-%.0f)\nplay time:%.1fs - %.1fs - %.1fs\ncached time:%.1fs/%ld - %.1fs\nspeed: %0.1f kbps",
+    NSLog(@"flowSize:%f", flowSize);
+    NSDictionary *meta = [_player getMetadata];
+    stat.text = [NSString stringWithFormat:@
+                 "SDK Version:v%@\n"
+                 "%@\nip:%@ (w-h: %.0f-%.0f)\n"
+                 "play time:%.1fs - %.1fs - %.1fs\n"
+                 "cached time:%.1fs/%ld - %.1fs\n"
+                 "speed: %0.1f kbps\nvideo/audio render cost time:%dms/%dms\n"
+                 "HttpConnectTime:%@\n"
+                 "HttpAnalyzeDns:%@\n"
+                 "HttpFirstDataTime:%@\n",
+                 [_player getVersion],
                  _url,
                  serverIp, _player.naturalSize.width, _player.naturalSize.height,
                  _player.currentPlaybackTime, _player.playableDuration, _player.duration,
                  _player.bufferEmptyDuration, _player.bufferEmptyCount, _player.bufferTimeMax,
-                 8*1024.0*(flowSize - lastSize)/([self getCurrentTime] - lastCheckTime)];
+                 8*1024.0*(flowSize - lastSize)/([self getCurrentTime] - lastCheckTime),
+				 fvr_costtime, far_costtime,
+                 [meta objectForKey:kKSYPLYHttpConnectTime],
+                 [meta objectForKey:kKSYPLYHttpAnalyzeDns],
+                 [meta objectForKey:kKSYPLYHttpFirstDataTime]];
     lastCheckTime = [self getCurrentTime];
     lastSize = flowSize;
 }
@@ -352,5 +471,39 @@
     [self dismissViewControllerAnimated:FALSE completion:nil];
 }
 
+- (void) remoteControlReceivedWithEvent: (UIEvent *) receivedEvent {
+    if (receivedEvent.type == UIEventTypeRemoteControl) {
+        
+        switch (receivedEvent.subtype) {
+                
+            case UIEventSubtypeRemoteControlPlay:
+                [_player play];
+                NSLog(@"play");
+                break;
+                
+            case UIEventSubtypeRemoteControlPause:
+                [_player pause];
+                NSLog(@"pause");
+                break;
+                
+            case UIEventSubtypeRemoteControlPreviousTrack:
+                
+                break;
+                
+            case UIEventSubtypeRemoteControlNextTrack:
+                
+                break;
+                
+            default:
+                break;
+        }
+    }
+}
+
+- (void)getQosBtnEvent
+{
+    KSYQosInfo *info = _player.qosInfo;
+    NSLog(@"\n audioBufferByteLength is %d \n audioBufferTimeLength is %d \n audioTotalDataSize is %lld \n videoBufferByteLength is %d \n videoBufferTimeLength is %d \n  videoTotalDataSize is %lld \n totalDataSize is %lld \n",info.audioBufferByteLength,info.audioBufferTimeLength,info.audioTotalDataSize,info.videoBufferByteLength,info.videoBufferTimeLength,info.videoTotalDataSize,info.totalDataSize);
+}
 
 @end

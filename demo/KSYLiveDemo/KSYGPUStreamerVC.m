@@ -73,9 +73,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI ];
-    [self initKSYAuth];
     [self setStreamerCfg];
     [self addObservers ];
+    NSLog(@"version: %@", [_gpuStreamer.streamerBase getKSYVersion]);
 }
 - (void) addObservers {
     // statistics update every seconds
@@ -311,10 +311,8 @@
         _cropfilter = [[GPUImageCropFilter alloc] initWithCropRegion:rect];
     }
     _gpuStreamer = [[KSYGPUStreamer alloc] initWithDefaultCfg];
-    
-    _gpuStreamer.streamerBase.shouldEnableKSYStatModule = NO;
     _gpuStreamer.streamerBase.logBlock = ^(NSString *string){
-        NSLog(@"logBlock: %@", string);
+//        NSLog(@"logBlock: %@", string);
     };
     _capDev = [[KSYGPUCamera alloc] initWithSessionPreset:preset
                                            cameraPosition:AVCaptureDevicePositionBack];
@@ -362,15 +360,17 @@
     }
 
     // rtmp server info
-    // stream name = 随机数 + codec名称 （构造流名，避免多个demo推向同一个流）
-    NSString *devCode  = [ [KSYAuthInfo sharedInstance].mCode substringToIndex:3];
-    NSString *codecSuf = _gpuStreamer.streamerBase.videoCodec == KSYVideoCodec_QY265 ? @"265" : @"264";
-    NSString *streamName = [NSString stringWithFormat:@"%@.%@", devCode, codecSuf ];
-    
-    // hostURL = rtmpSrv + streamName
-    NSString *rtmpSrv  = @"rtmp://test.uplive.ksyun.com/live";
-    NSString *url      = [  NSString stringWithFormat:@"%@/%@", rtmpSrv, streamName];
-    _hostURL = [[NSURL alloc] initWithString:url];
+    if (_hostURL == nil){
+        // stream name = 随机数 + codec名称 （构造流名，避免多个demo推向同一个流）
+        NSString *devCode  = [ [KSYGPUStreamerVC getUuid] substringToIndex:3];
+        NSString *codecSuf = _gpuStreamer.streamerBase.videoCodec == KSYVideoCodec_QY265 ? @"265" : @"264";
+        NSString *streamName = [NSString stringWithFormat:@"%@.%@", devCode, codecSuf ];
+        
+        // hostURL = rtmpSrv + streamName
+        NSString *rtmpSrv  = @"rtmp://test.uplive.ksyun.com/live";
+        NSString *url      = [  NSString stringWithFormat:@"%@/%@", rtmpSrv, streamName];
+        _hostURL = [[NSURL alloc] initWithString:url];
+    }
 }
 
 #pragma mark - UI responde
@@ -762,28 +762,7 @@
     });
 }
 
-/**
- @abstrace 初始化金山云认证信息
- @discussion 开发者帐号fpzeng，其他信息如下：
- 
- * appid: QYA0EEF0FDDD38C79913
- * ak: abc73bb5ab2328517415f8f52cd5ad37
- * sk: sff25dc4a428479ff1e20ebf225d113
- * sksign: md5(sk+tmsec)
- 
- 以上信息为错误ak/sk，请联系haomingfei@kingsoft.com获取正确认证信息。
- 
- @warning 请将appid/ak/sk信息更新至开发者自己信息，再进行编译测试
- */
-- (void)initKSYAuth {
-#warning "please replace ak/sk with your own"
-    NSString* time   = [NSString stringWithFormat:@"%d",(int)[[NSDate date]timeIntervalSince1970]];
-    NSString* skTime = [NSString stringWithFormat:@"s77xxxxxxxxxxxxxxxxxxxx@", time];
-    NSString* sksign = [KSYAuthInfo KSYMD5:skTime];
-    [[KSYAuthInfo sharedInstance]setAuthInfo:@"QYA0E0639AC997A8D128"
-                                   accessKey:@"a5644305efa79b56b8dac55378b83e35"
-                               secretKeySign:sksign
-                                 timeSeconds:time];
++ (NSString *) getUuid{
+    return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 }
-
 @end

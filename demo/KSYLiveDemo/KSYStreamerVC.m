@@ -57,7 +57,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI ];
-    [self initKSYAuth];
     _pubSession = [[KSYStreamer alloc] initWithDefaultCfg];
     [self setStreamerCfg];
     [self addObservers ];
@@ -256,16 +255,18 @@
     _pubSession.audiokBPS        = 48; // k bit ps
     _pubSession.enAutoApplyEstimateBW = _btnAutoBw.on;
     
-    // rtmp server info
-    // stream name = 随机数 + codec名称 （构造流名，避免多个demo推向同一个流）
-    NSString *devCode  = [ [KSYAuthInfo sharedInstance].mCode substringToIndex:3];
-    NSString *codecSuf = _pubSession.videoCodec == KSYVideoCodec_X264 ? @"264" : @"265";
-    NSString *streamName = [NSString stringWithFormat:@"%@.%@", devCode, codecSuf ];
-    
-    // hostURL = rtmpSrv + streamName
-    NSString *rtmpSrv  = @"rtmp://test.uplive.ksyun.com/live";
-    NSString *url      = [  NSString stringWithFormat:@"%@/%@", rtmpSrv, streamName];
-    _hostURL = [[NSURL alloc] initWithString:url];
+    if (_hostURL == nil){
+        // rtmp server info
+        // stream name = 随机数 + codec名称 （构造流名，避免多个demo推向同一个流）
+        NSString *devCode  = [ [KSYStreamerVC getUuid] substringToIndex:3];
+        NSString *codecSuf = _pubSession.videoCodec == KSYVideoCodec_X264 ? @"264" : @"265";
+        NSString *streamName = [NSString stringWithFormat:@"%@.%@", devCode, codecSuf ];
+        
+        // hostURL = rtmpSrv + streamName
+        NSString *rtmpSrv  = @"rtmp://test.uplive.ksyun.com/live";
+        NSString *url      = [  NSString stringWithFormat:@"%@/%@", rtmpSrv, streamName];
+        _hostURL = [[NSURL alloc] initWithString:url];
+    }
     [self setVideoOrientation];
 }
 #pragma mark - UI responds
@@ -602,25 +603,9 @@
         [toast dismissWithClickedButtonIndex:0 animated:YES];
     });
 }
-
-/**
- @abstrace 初始化金山云认证信息
- @discussion 开发者帐号fpzeng，其他信息如下：
- 
- * appid: QYA0EEF0FDDD38C79913
- * ak: abc73bb5ab2328517415f8f52cd5ad37
- * sk: sff25dc4a428479ff1e20ebf225d113
- * sksign: md5(sk+tmsec)
- 
- 以上信息为错误ak/sk，请联系haomingfei@kingsoft.com获取正确认证信息。
- 
- @warning 请将appid/ak/sk信息更新至开发者自己信息，再进行编译测试
- */
-- (void)initKSYAuth {
-    NSString* time = [NSString stringWithFormat:@"%d",(int)[[NSDate date]timeIntervalSince1970]];
-    NSString* sk = [NSString stringWithFormat:@"s77xxxxxxxxxxxxxxxxxxxx@", time];
-    NSString* sksign = [KSYAuthInfo KSYMD5:sk];
-    [[KSYAuthInfo sharedInstance]setAuthInfo:@"QYA0E0639AC997A8D128" accessKey:@"a5644305efa79b56b8dac55378b83e35" secretKeySign:sksign timeSeconds:time];
++ (NSString *) getUuid{
+    return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 }
+
 
 @end
