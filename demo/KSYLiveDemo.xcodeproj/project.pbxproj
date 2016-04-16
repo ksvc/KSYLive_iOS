@@ -24,6 +24,8 @@
 		06C98D3F1C84707400013DCA /* libksygpulive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C98D3E1C84707400013DCA /* libksygpulive.framework */; };
 		06D8CA7B1C1ED13E0068F7A4 /* KSYStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D8CA791C1ED13E0068F7A4 /* KSYStreamerVC.m */; };
 		627FB62C1CA2F8A80029AD04 /* KSYStreamerKitVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 627FB62B1CA2F8A80029AD04 /* KSYStreamerKitVC.m */; };
+		62E6611B1CBFD88200A08D5D /* KSYSQLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 62E6611A1CBFD88200A08D5D /* KSYSQLite.m */; };
+		62E6611E1CBFD89400A08D5D /* QRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62E6611D1CBFD89400A08D5D /* QRViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,10 @@
 		06D8CA7A1C1ED13E0068F7A4 /* KSYStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYStreamerVC.h; sourceTree = "<group>"; };
 		627FB62A1CA2F8A80029AD04 /* KSYStreamerKitVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYStreamerKitVC.h; sourceTree = "<group>"; };
 		627FB62B1CA2F8A80029AD04 /* KSYStreamerKitVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYStreamerKitVC.m; sourceTree = "<group>"; };
+		62E661191CBFD88200A08D5D /* KSYSQLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYSQLite.h; sourceTree = "<group>"; };
+		62E6611A1CBFD88200A08D5D /* KSYSQLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYSQLite.m; sourceTree = "<group>"; };
+		62E6611C1CBFD89400A08D5D /* QRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRViewController.h; sourceTree = "<group>"; };
+		62E6611D1CBFD89400A08D5D /* QRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRViewController.m; sourceTree = "<group>"; };
 		74ED32431C22D643005D2CA9 /* libksylive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libksylive.framework; path = ../build/libksylive.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +125,10 @@
 				627FB62B1CA2F8A80029AD04 /* KSYStreamerKitVC.m */,
 				069E42881C10357D00392B5E /* KSYLiveVC.m */,
 				069E42891C10357D00392B5E /* KSYLiveVC.h */,
+				62E661191CBFD88200A08D5D /* KSYSQLite.h */,
+				62E6611A1CBFD88200A08D5D /* KSYSQLite.m */,
+				62E6611C1CBFD89400A08D5D /* QRViewController.h */,
+				62E6611D1CBFD89400A08D5D /* QRViewController.m */,
 				06B2B1AA1BE8F0D900E0CC85 /* AppDelegate.h */,
 				06B2B1AB1BE8F0D900E0CC85 /* AppDelegate.m */,
 				06B2B1AD1BE8F0D900E0CC85 /* KSYPlayerVC.h */,
@@ -217,7 +227,9 @@
 				06D8CA7B1C1ED13E0068F7A4 /* KSYStreamerVC.m in Sources */,
 				069E428A1C10357D00392B5E /* KSYLiveVC.m in Sources */,
 				06B2B1AF1BE8F0D900E0CC85 /* KSYPlayerVC.m in Sources */,
+				62E6611E1CBFD89400A08D5D /* QRViewController.m in Sources */,
 				06B2B1A91BE8F0D900E0CC85 /* main.m in Sources */,
+				62E6611B1CBFD88200A08D5D /* KSYSQLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +362,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = KSYLiveDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ksyun.ios.KSYLiveDemo;
 				PRODUCT_NAME = KSYLiveDemo;

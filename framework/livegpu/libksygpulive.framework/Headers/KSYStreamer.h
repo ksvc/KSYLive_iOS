@@ -26,6 +26,11 @@
 
 @interface KSYStreamer : NSObject
 
+/**
+ @abstract   获取SDK版本号
+ */
+- (NSString*) getKSYVersion;
+
  /**
  @abstract   rtmp主机地址
  @discussion 将音视频流推向该主机

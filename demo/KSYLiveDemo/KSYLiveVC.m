@@ -9,91 +9,222 @@
 #import "KSYLiveVC.h"
 #import "KSYStreamerVC.h"
 #import "KSYStreamerKitVC.h"
-#import "KSYPlayerVC.h"
 #import "KSYGPUStreamerVC.h"
-
-
-@interface KSYLiveVC () {
-    UIButton * _btn[3];
+#import "QRViewController.h"
+#import "KSYPlayerVC.h"
+#import "KSYSQLite.h"
+@interface KSYLiveVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>{
+    UITextField     *_textFiled;
+    UIButton        *_buttonQR;
+    UITableView     *_ctrTableView;
+    UITableView     *_addressTable;
+    NSArray         *_controllers;
+    CGFloat         _width;
+    CGFloat         _height;
+    NSMutableArray  *_addressMulArray;
 }
 
-@property KSYPlayerVC    * playerVC;
-@property KSYStreamerKitVC  * streamerKitVC;
-@property KSYGPUStreamerVC  * streamerVC;
 @end
 
 @implementation KSYLiveVC
 
-- (UIButton *)addButton:(NSString*)title
-                 action:(SEL)action {
-    UIButton * button;
-    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle: title forState: UIControlStateNormal];
-    button.backgroundColor = [UIColor lightGrayColor];
-    [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
-    return button;
-}
-
-- (void) initUI {
-    _btn[0] = [self addButton:@"playerDemo" action:@selector(onPlayer:)];
-    _btn[1] = [self addButton:@"KSYGPUStreamerKit" action:@selector(onStreamer:)];
-    _btn[2] = [self addButton:@"KSYGPUStreamer" action:@selector(onGPUStreamer:)];
-    [self layoutUI];
-}
-
-- (void) layoutUI {
-    CGFloat wdt = self.view.bounds.size.width;
-    CGFloat hgt = self.view.bounds.size.height;
-    CGFloat gap = 40;
-    CGFloat btnWdt = wdt - gap*2;
-    CGFloat btnHgt = (hgt-gap)/4;
-    CGFloat yPos    = gap;
-    CGFloat xLeft   = gap;
-    
-    // bottom left
-    _btn[0].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
-    yPos += (btnHgt+gap);
-    _btn[1].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
-    yPos += (btnHgt+gap);
-    _btn[2].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
-    yPos += (btnHgt+gap);
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"KSYDEMO";
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self initVariable];
+    [self initLiveVCUI];
+}
 
-    [self initUI];
+- (UITextField *)addTextField{
+    UITextField *text = [[UITextField alloc]init];
+    text.delegate     = self;
+    [self.view addSubview:text];
+    text.layer.masksToBounds = YES;
+    text.layer.borderWidth   = 1;
+    text.layer.borderColor   = [UIColor blackColor].CGColor;
+    text.layer.cornerRadius  = 2;
+    return text;
+}
+- (UITableView *)addAddressTable{
+    UITableView *table      = [self addTableView];
+    return table;
+}
+- (UIBarButtonItem *)addBarButtonItemWithTitle:(NSString *)title action:(SEL)action{
+    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 80, 30)];
+    [button setTitle:title forState:UIControlStateNormal];
+    [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+    button.titleLabel.font = [UIFont systemFontOfSize:14];
+    button.layer.masksToBounds = YES;
+    [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    button.layer.masksToBounds = YES;
+    button.layer.borderColor   = [UIColor blackColor].CGColor;
+    button.layer.borderWidth   = 1;
+    button.layer.cornerRadius  = 5;
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithCustomView:button];
+    return barButton;
+}
+- (void)addLeftNavigationBarButton{
+    self.navigationItem.leftBarButtonItem = [self addBarButtonItemWithTitle:@"输入完成" action:@selector(closeKeyBoard)];
+}
+- (void)addRightNavigationBarButton{
+    
+    self.navigationItem.rightBarButtonItem = [self addBarButtonItemWithTitle:@"扫描二维码" action:@selector(scanQR)];
     
 }
-- (void) viewDidAppear:(BOOL)animated{
-    if (_streamerKitVC){
-        [_streamerKitVC rmObservers];
-    }
-    if (_streamerVC){
-        [_streamerVC rmObservers];
+- (UITableView *)addTableView{
+    UITableView *teble = [[UITableView alloc]init];
+    teble.layer.masksToBounds = YES;
+    teble.layer.borderColor   = [UIColor blackColor].CGColor;
+    teble.layer.borderWidth   = 1;
+    teble.delegate   = self;
+    teble.dataSource = self;
+    [self.view addSubview:teble];
+    return teble;
+}
+- (void)initVariable{
+    _width  = self.view.frame.size.width;
+    _height = self.view.frame.size.height;
+    _controllers = [NSArray arrayWithObjects:@"KSYPlayerVC",@"KSYStreamerKitVC",@"KSYGPUStreamerVC",nil];
+}
+
+
+- (void)initFrame{
+    
+    CGFloat textX   = 1;
+    CGFloat textY   = CGRectGetMaxY(self.navigationController.navigationBar.frame);
+    CGFloat textWdh = _width-2;
+    CGFloat textHgh = 30;
+    CGRect textRect = CGRectMake(textX, textY, textWdh, textHgh);
+    _textFiled.frame = textRect;
+    
+    CGFloat adTaY   = textY + textHgh;
+    CGFloat adTaHgh = _height / 2 - adTaY;
+    CGRect addressTableRect = CGRectMake(textX, adTaY, textWdh, adTaHgh);
+    _addressTable.frame = addressTableRect;
+    
+    CGFloat tableX   = 1;
+    CGFloat tableY   = _height / 2;
+    CGFloat tableWdh = _width  - 2;
+    CGFloat tableHgh = _height / 2;
+    CGRect tableRect = CGRectMake(tableX, tableY, tableWdh, tableHgh);
+    _ctrTableView.frame = tableRect;
+}
+- (void)initLiveVCUI{
+    _textFiled    = [self addTextField];
+    _addressTable = [self addAddressTable];
+    _ctrTableView = [self addTableView];
+    [self addLeftNavigationBarButton];
+    [self addRightNavigationBarButton];
+    [self initFrame];
+    [self myReloadData];
+}
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (tableView == _ctrTableView) {
+        return _controllers.count;
+    }else if(tableView == _addressTable){
+        return _addressMulArray.count;
+    }else{
+        return 0;
     }
     
-    _playerVC   = [[KSYPlayerVC alloc] init];
-    _streamerKitVC = [[KSYStreamerKitVC alloc] init];
-    _streamerVC = [[KSYGPUStreamerVC alloc] init];
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"identify"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"identify"];
+    }
+    if (tableView == _ctrTableView) {
+        cell.textLabel.text = _controllers[indexPath.row];
+    }else if(tableView == _addressTable){
+        cell.textLabel.text = _addressMulArray[indexPath.row];
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        UIView *cellView = [[UIView alloc]initWithFrame:cell.frame];
+        cellView.backgroundColor = [UIColor grayColor];
+        cell.backgroundView = cellView;
+    }
+    return cell;
 }
 
-- (IBAction)onPlayer:(id)sender {
-    [self presentViewController:_playerVC animated:true completion:nil];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    NSString *controllerName = _controllers[indexPath.row];
+//    UIViewController *viewController = [[NSClassFromString(controllerName) alloc]init];
+//    [self presentViewController:viewController animated:YES completion:nil];
+    if (tableView == _ctrTableView) {
+        if (_textFiled.text.length > 0) {
+            if (indexPath.row == 0) {
+                NSLog(@"url:%@",_textFiled.text);
+                NSURL *url = [NSURL URLWithString:_textFiled.text];
+                KSYPlayerVC *vc = [[KSYPlayerVC alloc]initWithURL:url];
+                [self presentViewController:vc animated:YES completion:nil];
+            }else if (indexPath.row == 1){
+                KSYStreamerKitVC *vc = [[KSYStreamerKitVC alloc]init];
+                vc.hostURL =[NSURL URLWithString:_textFiled.text] ;
+                [self presentViewController:vc animated:YES completion:nil];
+            }else if (indexPath.row == 2){
+                KSYGPUStreamerVC *vc = [[KSYGPUStreamerVC alloc]init];
+                vc.hostURL = [NSURL URLWithString:_textFiled.text] ;
+                [self presentViewController:vc animated:YES completion:nil];
+            }
+        }
+    }else if(tableView == _addressTable){
+        _textFiled.text = _addressMulArray[indexPath.row];
+        [_textFiled resignFirstResponder];
+    }
+}
+#pragma mark 返回每组头标题名称
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if (tableView == _ctrTableView) {
+        return @"控制器栏";
+    }else if (tableView == _addressTable){
+        return @"地址栏";
+    }
+    return nil;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 30;
+}
+- (void)closeKeyBoard{
+    [_textFiled resignFirstResponder];
+}
+- (void)scanQR{
+    
+    __weak __typeof(self)wself = self;
+    
+    QRViewController *QRview = [[QRViewController alloc]init];
+    QRview.getQrCode = ^(NSString *stringQR){
+        [wself showAddress:stringQR];
+    };
+    
+    [self.navigationController pushViewController:QRview animated:YES];
 }
 
-- (IBAction)onStreamer:(id)sender {
-    [self presentViewController:_streamerKitVC animated:true completion:nil];
+- (void)showAddress:(NSString *)str{
+    _textFiled.text = str;
+}
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [_textFiled resignFirstResponder];
+}
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    [self myReloadData];
 }
 
-- (IBAction)onGPUStreamer:(id)sender {
-    [self presentViewController:_streamerVC animated:true completion:nil];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)myReloadData{
+    KSYSQLite *ksysqlite = [KSYSQLite sharedInstance];
+    NSArray *addressArray = [ksysqlite getAddress];
+    _addressMulArray = [NSMutableArray array];
+    for(NSDictionary *dic in addressArray){
+        NSString *address = [dic objectForKey:@"address"];
+        [_addressMulArray addObject:address];
+    }
+    [_addressTable reloadData];
 }
 
 @end

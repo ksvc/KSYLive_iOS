@@ -38,40 +38,40 @@
 @property (nonatomic, readonly) NSURL*      hostURL;
 
 /**
- @abstract   视频帧率
+ @abstract   视频帧率 默认:15
  @discussion 请保持调用 processVideoSampleBuffer 或 processVideoPixelBuffer 的频率与此设置的帧率一致
  @discussion video frame per seconds 有效范围[1~30], 超出会提示参数错误
  */
 @property (nonatomic, assign) int           videoFPS;
 
 /**
- @abstract   视频编码器
+ @abstract   视频编码器 默认为264软编码
  @discussion video codec used for encode
  @see        KSYVideoCodec
  */
 @property (nonatomic, assign) KSYVideoCodec videoCodec;
 
 /**
- @abstract   视频编码起始码率（单位:kbps）
+ @abstract   视频编码起始码率（单位:kbps, 默认:500）
  @discussion 开始推流时的视频码率，开始推流后，根据网络情况在 [Min, Max]范围内调节
  @discussion 视频码率上调则画面更清晰，下调则画面更模糊
  @see videoMaxBitrate, videoMinBitrate
  */
 @property (nonatomic, assign) int          videoInitBitrate;   // kbit/s of video
 /**
- @abstract   视频编码最高码率（单位:kbps）
+ @abstract   视频编码最高码率（单位:kbps, 默认:800）
  @discussion 视频码率自适应调整的上限, 为目标码率
  @see videoInitBitrate, videoMinBitrate
  */
 @property (nonatomic, assign) int          videoMaxBitrate;   // kbit/s of video
 /**
- @abstract   视频编码最低码率（单位:kbps）
+ @abstract   视频编码最低码率（单位:kbps, 默认:200）
  @discussion 视频码率自适应调整的下限
  @see videoInitBitrate, videoMaxBitrate
  */
 @property (nonatomic, assign) int          videoMinBitrate;   // kbit/s of video
 /**
- @abstract   最大关键帧间隔（单位:秒, 默认:2）
+ @abstract   最大关键帧间隔（单位:秒, 默认:3）
  @discussion 即GOP长度 画面静止时,隔n秒插入一个关键帧
  */
 @property (nonatomic, assign) int          maxKeyInterval;   // seconds
@@ -81,8 +81,8 @@
  */
 @property (nonatomic, assign) int          audiokBPS;   // kbit/s of audio
 /**
- @abstract   启用自动调整码率
- @discussion 默认为关闭自动调整码率,开始预览前设置有效
+ @abstract   启用自动调整码率 默认开启
+ @discussion 自动根据网络状况调整码率,开始预览前设置有效
  */
 @property (nonatomic, assign) BOOL         enAutoApplyEstimateBW;
 
@@ -132,15 +132,14 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
  @abstract 初始化方法 （step1）
  @discussion 初始化，将下列属性设置为默认值
 
- * _videoDimension   = KSYVideoDimension_Default;
  * _videoFPS         = 15;
  * _videoCodec       = KSYVideoCodec_X264;
- * _audiokBPS        = 48;
- * _videoInitBitrate = 600;
+ * _audiokBPS        = 32;
+ * _videoInitBitrate = 500;
  * _videoMaxBitrate  = 800;
  * _videoMinBitrate  = 200;
 
- @warning KSYStreamer只支持单实例推流，构造多个实例会出现异常
+ @warning KSYStreamerBase只支持单实例推流，构造多个实例会出现异常
  */
 - (instancetype) initWithDefaultCfg;
 
@@ -309,15 +308,14 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 - (void) enableReverb:(int) level;
 
 #pragma mark - logblock
-
 /**
- @abstract 收集日志的状态，默认开启
+ @abstract 收集网络相关状态的日志，默认开启
  @discussion 可开关
  */
 @property (nonatomic, assign) BOOL shouldEnableKSYStatModule;
 
 /**
- @abstract 获取播放器日志
+ @abstract 获取Streamer中与网络相关的日志
  @discussion 相关字段说明请联系金山云技术支持
  */
 @property (nonatomic, copy)void (^logBlock)(NSString *logJson);
