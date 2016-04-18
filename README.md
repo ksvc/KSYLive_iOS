@@ -289,6 +289,37 @@ _hostURL      = [[NSURL alloc] initWithString:url];
  [[GPUImageCropFilter alloc] initWithCropRegion:rect];
 ```
 
+###音频处理
+本SDK支持声音的处理，用户可以很方便的使用接口对声音进行处理。
+＊开始混响
+
+```
+[_kit.streamerBase enableReverb:level];
+```
+level: 取值范围为[0，1，2，3，4]，分别为不同效果，level取值为0表示关闭。
+
+＊开启／关闭混音功能
+```
+[_kit.streamerBase enableMicMixMusic:YES/NO];
+```
+
+＊开始混音
+```
+[_kit.streamerBase startMixMusic:testMp3 isLoop:NO];
+```
+
+*暂停／恢复
+```
+[_kit.streamerBase pauseMixMusic];
+//...
+[_kit.streamerBase resumeMixMusic];
+```
+
+＊停止混音
+```
+[_kit.streamerBase stopMixMusic];
+```
+
 
 ##播放器使用示例
 请见github库：https://github.com/ksvc/KSYMediaPlayer_iOS.git
