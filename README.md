@@ -270,7 +270,7 @@ _hostURL      = [[NSURL alloc] initWithString:url];
 ```
 
 * 使用KSYGPUStreamer，需要开发者自行将 采集，滤镜，推流，预览等部分组装起来，自由度比较大
-   - 通过采集类KSYGPUCamera设置摄像头参数
+  - 通过采集类KSYGPUCamera设置摄像头参数
    - 通过GPUImageFilter来实现GPU滤镜图像处理
    - 通过KSYGPUStreamer实现编码推流
    - 通过GPUImageView实现画面预览
@@ -291,31 +291,31 @@ _hostURL      = [[NSURL alloc] initWithString:url];
 
 ###音频处理
 本SDK支持声音的处理，用户可以很方便的使用接口对声音进行处理。
-＊开始混响
+* 开始混响
 
 ```
 [_kit.streamerBase enableReverb:level];
 ```
 level: 取值范围为[0，1，2，3，4]，分别为不同效果，level取值为0表示关闭。
 
-＊开启／关闭混音功能
+* 开启／关闭混音功能
 ```
 [_kit.streamerBase enableMicMixMusic:YES/NO];
 ```
 
-＊开始混音
+* 开始混音
 ```
 [_kit.streamerBase startMixMusic:testMp3 isLoop:NO];
 ```
 
-*暂停／恢复
+* 暂停／恢复
 ```
 [_kit.streamerBase pauseMixMusic];
 //...
 [_kit.streamerBase resumeMixMusic];
 ```
 
-＊停止混音
+* 停止混音
 ```
 [_kit.streamerBase stopMixMusic];
 ```
