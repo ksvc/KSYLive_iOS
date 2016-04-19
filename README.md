@@ -289,7 +289,8 @@ _hostURL      = [[NSURL alloc] initWithString:url];
  [[GPUImageCropFilter alloc] initWithCropRegion:rect];
 ```
 
-###音频处理
+###混音、混响功能
+
 本SDK支持声音的处理，用户可以很方便的使用接口对声音进行处理。
 * 开始混响
 
@@ -319,6 +320,27 @@ level: 取值范围为[0，1，2，3，4]，分别为不同效果，level取值�
 ```
 [_kit.streamerBase stopMixMusic];
 ```
+
+
+###音视频处理回调接口
+
+* 音频处理回调接口
+```
+_kit.audioProcessingCallback = ^(CMSampleBufferRef sampleBuffer){
+//        processAudio(sampleBuffer);
+};
+```
+sampleBuffer 原始采集到的音频数据
+请注意本函数的执行时间，如果太长可能导致不可预知的问题
+
+* 视频处理回调接口
+```
+_kit.videoProcessingCallback = ^(CMSampleBufferRef sampleBuffer){
+//        processVideo(sampleBuffer);
+};
+```
+sampleBuffer 原始采集到的视频数据
+请注意本函数的执行时间，如果太长可能导致不可预知的问题
 
 
 ##播放器使用示例
