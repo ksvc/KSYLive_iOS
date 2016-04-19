@@ -330,8 +330,8 @@ _kit.audioProcessingCallback = ^(CMSampleBufferRef sampleBuffer){
 //        processAudio(sampleBuffer);
 };
 ```
-sampleBuffer 原始采集到的音频数据
-请注意本函数的执行时间，如果太长可能导致不可预知的问题
+- sampleBuffer 前处理，原始采集到的音频数据；
+
 
 * 视频处理回调接口
 ```
@@ -339,8 +339,9 @@ _kit.videoProcessingCallback = ^(CMSampleBufferRef sampleBuffer){
 //        processVideo(sampleBuffer);
 };
 ```
-sampleBuffer 原始采集到的视频数据
-请注意本函数的执行时间，如果太长可能导致不可预知的问题
+- sampleBuffer 前处理，原始采集到的视频数据，即美颜之前的数据。
+
+* 请注意以上两个函数的执行时间，如果太长可能导致不可预知的问题。
 
 
 ##播放器使用示例
