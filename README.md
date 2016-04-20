@@ -270,7 +270,7 @@ _hostURL      = [[NSURL alloc] initWithString:url];
 ```
 
 * 使用KSYGPUStreamer，需要开发者自行将 采集，滤镜，推流，预览等部分组装起来，自由度比较大
-   - 通过采集类KSYGPUCamera设置摄像头参数
+  - 通过采集类KSYGPUCamera设置摄像头参数
    - 通过GPUImageFilter来实现GPU滤镜图像处理
    - 通过KSYGPUStreamer实现编码推流
    - 通过GPUImageView实现画面预览
@@ -288,6 +288,60 @@ _hostURL      = [[NSURL alloc] initWithString:url];
 ```
  [[GPUImageCropFilter alloc] initWithCropRegion:rect];
 ```
+
+###混音、混响功能
+
+本SDK支持声音的处理，用户可以很方便的使用接口对声音进行处理。
+* 开始混响
+
+```
+[_kit.streamerBase enableReverb:level];
+```
+level: 取值范围为[0，1，2，3，4]，分别为不同效果，level取值为0表示关闭。
+
+* 开启／关闭混音功能
+```
+[_kit.streamerBase enableMicMixMusic:YES/NO];
+```
+
+* 开始混音
+```
+[_kit.streamerBase startMixMusic:testMp3 isLoop:NO];
+```
+
+* 暂停／恢复
+```
+[_kit.streamerBase pauseMixMusic];
+//...
+[_kit.streamerBase resumeMixMusic];
+```
+
+* 停止混音
+```
+[_kit.streamerBase stopMixMusic];
+```
+
+###音视频处理回调接口
+
+* 音频处理回调接口
+```
+_kit.audioProcessingCallback = ^(CMSampleBufferRef sampleBuffer){
+//        processAudio(sampleBuffer);
+};
+```
+sampleBuffer 前处理，原始采集到的音频数据；
+
+* 视频处理回调接口
+```
+_kit.videoProcessingCallback = ^(CMSampleBufferRef sampleBuffer){
+//        processVideo(sampleBuffer);
+};
+```
+
+sampleBuffer 前处理，原始采集到的视频数据，即美颜之前的数据。
+
+
+* 请注意以上两个函数的执行时间，如果太长可能导致不可预知的问题。
 
 
 ##播放器使用示例
