@@ -361,6 +361,7 @@
 
     // rtmp server info
     if (_hostURL == nil){
+        
         // stream name = 随机数 + codec名称 （构造流名，避免多个demo推向同一个流）
         NSString *devCode  = [ [KSYGPUStreamerVC getUuid] substringToIndex:3];
         NSString *codecSuf = _gpuStreamer.streamerBase.videoCodec == KSYVideoCodec_QY265 ? @"265" : @"264";
@@ -371,6 +372,7 @@
         NSString *url      = [  NSString stringWithFormat:@"%@/%@", rtmpSrv, streamName];
         _hostURL = [[NSURL alloc] initWithString:url];
     }
+  
 }
 
 #pragma mark - UI responde

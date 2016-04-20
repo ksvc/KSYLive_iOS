@@ -193,6 +193,8 @@
 }
 - (void)closeKeyBoard{
     [_textFiled resignFirstResponder];
+    KSYSQLite *sqlite = [KSYSQLite sharedInstance];
+    [sqlite insertAddress:_textFiled.text];
 }
 - (void)scanQR{
     
