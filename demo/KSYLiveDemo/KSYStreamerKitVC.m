@@ -10,7 +10,6 @@
 #import <libksygpulive/libksygpulive.h>
 #import <libksygpulive/libksygpuimage.h>
 
-
 @interface KSYStreamerKitVC ()
 {
     UIButton *_btnMusicPlay;
@@ -346,6 +345,7 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
         NSString *url      = [  NSString stringWithFormat:@"%@/%@", rtmpSrv, streamName];
         _hostURL = [[NSURL alloc] initWithString:url];
     }
+
     [self setVideoOrientation];
 }
 
