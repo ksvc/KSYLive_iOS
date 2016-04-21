@@ -68,6 +68,24 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  */
 - (void) setupFilter:(GPUImageFilter*) filter;
 
+/**
+ @abstract   添加水印
+ @param      inputImage 输入的图像
+ @param      position  图像显示的顶点位置信息
+ @param      transparency 透明度(0-1),0完全透明，1完全不透明；
+ */
+-(void)addLogo:(UIImage *)inputImage
+           pos:(CGPoint)position
+         trans:(float)transparency;
+
+/**
+ @abstract   显示时间的Label
+ @param      自定义的label
+ @discussion 默认不显示时间，
+ */
+-(void)addTimeLabel:(UILabel *)TimeLabel;
+
+
 #pragma mark - get sub modules
 /**
  @abstract   获取初始化时创建的底层推流工具
