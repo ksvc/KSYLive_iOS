@@ -10,6 +10,7 @@
 #import <libksygpulive/libksygpulive.h>
 #import <libksygpulive/libksygpuimage.h>
 
+
 @interface KSYStreamerKitVC ()
 {
     UIButton *_btnMusicPlay;
@@ -61,6 +62,7 @@
 // set this filter to kit
 @property GPUImageFilter     * filter;
 
+
 // status monitor
 @property NSTimer *timer;
 @end
@@ -93,7 +95,27 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     _kit = [[KSYGPUStreamerKit alloc] initWithDefaultCfg];
     [self setStreamerCfg];
     [self addObservers ];
+    [self setupLogo];
     NSLog(@"version: %@", [_kit getKSYVersion]);
+}
+
+-(void)setupLogo;
+{
+    NSString *aPath3=[NSString stringWithFormat:@"%@/Documents/%@.png",NSHomeDirectory(),@"test"];
+    UIImage *imgFromUrl3=[[UIImage alloc]initWithContentsOfFile:aPath3];
+    CGPoint size = CGPointMake(600, 10);
+    [_kit addLogo:imgFromUrl3 pos:size trans:1];
+    
+    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(600,15+imgFromUrl3.size.height, 500, 10)];
+    label.textColor = [UIColor redColor];
+    label.font = [UIFont systemFontOfSize:17.0];
+    label.backgroundColor = [UIColor clearColor];
+    label.hidden = NO;
+    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    NSDate *now = [[NSDate alloc] init];
+    label.text = [dateFormatter stringFromDate:now];
+    [_kit addTimeLabel:label];
 }
 
 - (void) addObservers {
@@ -345,7 +367,6 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
         NSString *url      = [  NSString stringWithFormat:@"%@/%@", rtmpSrv, streamName];
         _hostURL = [[NSURL alloc] initWithString:url];
     }
-
     [self setVideoOrientation];
 }
 
