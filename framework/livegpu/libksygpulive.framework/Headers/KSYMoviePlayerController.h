@@ -319,13 +319,7 @@ MP_EXTERN const NSString *const kKSYPLYHttpConnectTime;
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 - (UIImage *)thumbnailImageAtCurrentTime;
-/**
- @abstract 视频本地保持路径
- @warning 该方法由金山云引入，不是原生系统接口
- @discussion 设置m3u8文件保存路径
- @since Available in KSYMoviePlayerController 1.0 and later.
- */
-- (void)saveVideoLocalPath:(NSString *)localpath;
+
 /**
  @abstract 是否开启视频后处理
  @warning 该方法由金山云引入，不是原生系统接口

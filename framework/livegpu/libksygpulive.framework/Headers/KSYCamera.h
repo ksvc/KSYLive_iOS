@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@import AVFoundation;
+#import <AVFoundation/AVFoundation.h>
 #import "KSYStreamerBase.h"
 
 
