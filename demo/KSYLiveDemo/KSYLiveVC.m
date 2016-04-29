@@ -166,11 +166,11 @@
                 [self presentViewController:vc animated:YES completion:nil];
             }else if (indexPath.row == 1){
                 KSYStreamerKitVC *vc = [[KSYStreamerKitVC alloc]init];
-                vc.hostURL =[NSURL URLWithString:_textFiled.text] ;
+                vc.hostURL = [NSURL URLWithString:_textFiled.text];
                 [self presentViewController:vc animated:YES completion:nil];
             }else if (indexPath.row == 2){
                 KSYGPUStreamerVC *vc = [[KSYGPUStreamerVC alloc]init];
-                vc.hostURL = [NSURL URLWithString:_textFiled.text] ;
+                vc.hostURL = [NSURL URLWithString:_textFiled.text];
                 [self presentViewController:vc animated:YES completion:nil];
             }
         }
