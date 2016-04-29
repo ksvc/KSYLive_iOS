@@ -13,6 +13,7 @@
 
 @interface KSYStreamerKitVC ()
 {
+    UIView   *_controlView;
     UIButton *_btnMusicPlay;
     UIButton *_btnMusicPause;
     UIButton *_btnMusicMix;
@@ -55,6 +56,7 @@
     int       _raiseCnt;
     int       _dropCnt;
     double    _startTime;
+    UIImageView *_foucsCursor;
 }
 
 // kit =  KSYGPUCamera + KSYGPUStreamer
@@ -91,19 +93,53 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
 #pragma mark - UIViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initUI ];
+    [self addControlview];
     _kit = [[KSYGPUStreamerKit alloc] initWithDefaultCfg];
     [self setStreamerCfg];
+    [self addfoucsCursor];
     [self addObservers ];
     [self setupLogo];
     NSLog(@"version: %@", [_kit getKSYVersion]);
+}
+
+- (void)addControlview{
+    _controlView = [[UIView alloc]initWithFrame:self.view.frame];
+    [self.view addSubview:_controlView];
+    [self addSwipeGesture];
+    [self initUI];
+}
+- (void)addfoucsCursor{
+    _foucsCursor = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"camera_focus_red"]];
+    _foucsCursor.frame = CGRectMake(80, 80, 80, 80);
+    [_kit.preview addSubview:_foucsCursor];
+    _foucsCursor.alpha = 0;
+}
+- (void)addSwipeGesture{
+    UISwipeGestureRecognizer *swiptGestureToRight = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeController:)];
+    [self.view addGestureRecognizer:swiptGestureToRight];
+    
+    UISwipeGestureRecognizer *swiptGestureToLeft = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeController:)];
+    [self.view addGestureRecognizer:swiptGestureToLeft];
+    swiptGestureToLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+}
+
+- (void)swipeController:(UISwipeGestureRecognizer *)state{
+    if (state.direction == UISwipeGestureRecognizerDirectionRight) {
+        [UIView animateWithDuration:0.5 animations:^{
+            _controlView.layer.frame = CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
+        }];
+    }else if (state.direction == UISwipeGestureRecognizerDirectionLeft){
+        [UIView animateWithDuration:0.5 animations:^{
+            _controlView.layer.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        }];
+    }
 }
 
 -(void)setupLogo;
 {
     NSString *aPath3=[NSString stringWithFormat:@"%@/Documents/%@.png",NSHomeDirectory(),@"test"];
     UIImage *imgFromUrl3=[[UIImage alloc]initWithContentsOfFile:aPath3];
-    CGPoint size = CGPointMake(600, 10);
+    CGPoint size = CGPointMake(0, 0);
     [_kit addLogo:imgFromUrl3 pos:size trans:1];
     
     UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(600,15+imgFromUrl3.size.height, 500, 10)];
@@ -188,19 +224,19 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     [button setTitle: title forState: UIControlStateNormal];
     button.backgroundColor = [UIColor lightGrayColor];
     [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
+    [_controlView addSubview:button];
     return button;
 }
 
 - (UILabel *)addLable:(NSString*)title{
     UILabel *  lbl = [[UILabel alloc] init];
     lbl.text = title;
-    [self.view addSubview:lbl];
+    [_controlView addSubview:lbl];
     return lbl;
 }
 - (UISwitch *)addSwitch:(BOOL) on{
     UISwitch *sw = [[UISwitch alloc] init];
-    [self.view addSubview:sw];
+    [_controlView addSubview:sw];
     sw.on = on;
     return sw;
 }
@@ -208,13 +244,14 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
 - (UISlider *)addSliderFrom: (float) minV
                          To: (float) maxV{
     UISlider *sl = [[UISlider alloc] init];
-    [self.view addSubview:sl];
+    [_controlView addSubview:sl];
     sl.minimumValue = minV;
     sl.maximumValue = maxV;
     sl.value = 0.5;
     [ sl addTarget:self action:@selector(onVolChanged:) forControlEvents:UIControlEventValueChanged ];
     return sl;
 }
+
 - (void) initUI {
     _btnPreview = [self addButton:@"开始预览" action:@selector(onPreview:)];
     _btnTStream = [self addButton:@"开始推流" action:@selector(onStream:)];
@@ -254,12 +291,16 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     _lblHighRes =[self addLable:@"360p/540p"];
     _btnHighRes =[self addSwitch:NO];
 
-    _stat = [self addLable:@""];
+    _stat = [[UILabel alloc] init];
+    _stat.text = @"";
+    [self.view addSubview:_stat];
     _stat.backgroundColor = [UIColor clearColor];
     _stat.textColor = [UIColor redColor];
-    _stat.numberOfLines = 6;
+    _stat.lineBreakMode = UILineBreakModeWordWrap;
+    _stat.numberOfLines = 0;
     _stat.textAlignment = NSTextAlignmentLeft;
 
+    
     self.view.backgroundColor = [UIColor whiteColor];
     _netEventRaiseDrop = @"";
     [self layoutUI];
@@ -275,6 +316,8 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     CGFloat xLeft   = gap;
     CGFloat xMiddle = (wdt - btnWdt*3 - gap*2) /2 + gap + btnWdt;
     CGFloat xRight  = wdt - btnWdt - gap;
+    
+    
     
     // bottom left
     _btnPreview.frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
@@ -326,7 +369,7 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     yPos += ( btnHgt);
     btnWdt = self.view.bounds.size.width - gap*2;
     btnHgt = hgt - yPos - btnHgt;
-    _stat.frame = CGRectMake(gap, yPos , btnWdt, btnHgt);
+    _stat.frame = CGRectMake(gap, 20 , btnWdt, hgt - 20);
 }
 
 #pragma mark - stream setup (采集推流参数设置)
@@ -354,7 +397,10 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     _kit.streamerBase.videoMinBitrate  = 100; // k bit ps
     _kit.streamerBase.audiokBPS        = 48; // k bit ps
     _kit.streamerBase.enAutoApplyEstimateBW = _btnAutoBw.on;
-    
+    _kit.streamerBase.shouldEnableKSYStatModule = YES;
+    _kit.streamerBase.logBlock = ^(NSString* str){
+        NSLog(@"%@", str);
+    };
     // rtmp server info
     if (_hostURL == nil){
         // stream name = 随机数 + codec名称 （构造流名，避免多个demo推向同一个流）
@@ -438,29 +484,42 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     [_btnFlash  setEnabled:backCam ];
 }
 
-- (IBAction)onTap:(id)sender {
-    CGPoint point = [sender locationInView:self.view];
-    CGPoint tap;
-    tap.x = (point.x/self.view.frame.size.width);
-    tap.y = (point.y/self.view.frame.size.height);
-    NSError __autoreleasing *error;
-    [self focusAtPoint:tap error:&error];
+-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    UITouch *touch = [touches anyObject];
+    CGPoint current = [touch locationInView:self.view];
+    _foucsCursor.center = current;
+    _foucsCursor.transform = CGAffineTransformMakeScale(1.5, 1.5);
+    _foucsCursor.alpha=1.0;
+    [UIView animateWithDuration:1.0 animations:^{
+        _foucsCursor.transform=CGAffineTransformIdentity;
+    } completion:^(BOOL finished) {
+        _foucsCursor.alpha=0;
+        
+    }];
 }
-
-- (BOOL)focusAtPoint:(CGPoint )point error:(NSError *__autoreleasing* )error
-{
-    AVCaptureDevice *dev = [_kit getCurrentCameraDevices];
-    if ([dev isFocusPointOfInterestSupported] && [dev isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
-        if ([dev lockForConfiguration:error]) {
-            [dev setFocusPointOfInterest:point];
-            [dev setFocusMode:AVCaptureFocusModeAutoFocus];
-            NSLog(@"Focusing..");
-            [dev unlockForConfiguration];
-            return YES;
-        }
-    }
-    return NO;
-}
+//- (IBAction)onTap:(id)sender {
+//    CGPoint point = [sender locationInView:self.view];
+//    CGPoint tap;
+//    tap.x = (point.x/self.view.frame.size.width);
+//    tap.y = (point.y/self.view.frame.size.height);
+//    NSError __autoreleasing *error;
+//    [self focusAtPoint:tap error:&error];
+//}
+//
+//- (BOOL)focusAtPoint:(CGPoint )point error:(NSError *__autoreleasing* )error
+//{
+//    AVCaptureDevice *dev = [_kit getCurrentCameraDevices];
+//    if ([dev isFocusPointOfInterestSupported] && [dev isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
+//        if ([dev lockForConfiguration:error]) {
+//            [dev setFocusPointOfInterest:point];
+//            [dev setFocusMode:AVCaptureFocusModeAutoFocus];
+//            NSLog(@"Focusing..");
+//            [dev unlockForConfiguration];
+//            return YES;
+//        }
+//    }
+//    return NO;
+//}
 -(IBAction)OnChoseFilter:(id)sender {
     for (int b = 0; b < 4; ++b) {
         if (sender == _btnFilters[b]) {
@@ -589,6 +648,7 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
 
 - (void)updateStat:(NSTimer *)theTimer{
     if (_kit.streamerBase.streamState == KSYStreamStateConnected ) {
+        
         int    KB          = [_kit.streamerBase uploadedKByte];
         int    curFrames   = [_kit.streamerBase encodedFrames];
         int    droppedF    = [_kit.streamerBase droppedVideoFrames];
@@ -607,17 +667,21 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
         _lastFrames   = curFrames;
         _lastDroppedF = droppedF;
         NSString *uploadDateSize = [ self sizeFormatted:KB ];
-        NSString* stateurl  = [NSString stringWithFormat:@"%@\n", [_hostURL absoluteString]] ;
+        NSString *SDK_version = [_kit getKSYVersion];
+        
+        NSString* stateurl  = [NSString stringWithFormat:@"\n%@\n", [_hostURL absoluteString]] ;
         NSString* statekbps = [NSString stringWithFormat:@"realtime:%4.1fkbps %@\n", realKbps, _netEventRaiseDrop];
         NSString* statefps  = [NSString stringWithFormat:@"%2.1f fps | %@  | %@ \n", fps, uploadDateSize, [self timeFormatted: (int)(curTime-_startTime) ] ];
         NSString* statedrop = [NSString stringWithFormat:@"dropFrame %4d | %3.1f | %2.1f%% \n", droppedF, dropRate, droppedF * 100.0 / curFrames ];
         
-        NSString* netEvent = [NSString stringWithFormat:@"netEvent %d notGood | %d raise | %d drop", _netEventCnt, _raiseCnt, _dropCnt];
+        NSString* netEvent = [NSString stringWithFormat:@"netEvent %d notGood | %d raise | %d drop \n", _netEventCnt, _raiseCnt, _dropCnt];
         
-        _stat.text = [ stateurl    stringByAppendingString:statekbps ];
+        _stat.text = [ SDK_version stringByAppendingString:stateurl  ];
+        _stat.text = [ _stat.text  stringByAppendingString:statekbps ];
         _stat.text = [ _stat.text  stringByAppendingString:statefps  ];
         _stat.text = [ _stat.text  stringByAppendingString:statedrop ];
         _stat.text = [ _stat.text  stringByAppendingString:netEvent  ];
+        
         
         if (_netTimeOut == 0) {
             _netEventRaiseDrop = @" ";
@@ -767,5 +831,23 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
 
 + (NSString *) getUuid{
     return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+}
+
+- (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString {
+    
+    if (jsonString == nil) {
+        return nil;
+    }
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                        options:NSJSONReadingMutableContainers
+                                                          error:&err];
+    
+    if(err) {
+        NSLog(@"json解析失败：%@",err);
+        return nil;
+    }
+    return dic;
 }
 @end

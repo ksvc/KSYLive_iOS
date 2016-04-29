@@ -7,9 +7,6 @@
 
 #import "KSYPlayerVC.h"
 #import <CommonCrypto/CommonDigest.h>
-#import <ifaddrs.h>
-#import <arpa/inet.h>
-
 
 @interface KSYPlayerVC ()
 @property (strong, nonatomic) NSURL *url;
@@ -147,7 +144,7 @@
     btnStop.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     xPos += gap + btnWdt;
     btnQuit.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    stat.frame = CGRectMake(gap, 0, wdt, hgt);
+    stat.frame = CGRectMake(gap, 0, wdt, hgt/2);
     // top row 3 left
     yPos += (gap + btnHgt);
     xPos = gap;
@@ -445,52 +442,25 @@
     double flowSize = [_player readSize];
     NSLog(@"flowSize:%f", flowSize);
     NSDictionary *meta = [_player getMetadata];
-    KSYQosInfo *info = _player.qosInfo;
     stat.text = [NSString stringWithFormat:@
                  "SDK Version:v%@\n"
-                 "streamerUrl:%@\n"
-                 "serverIp:%@\n"
-                 "clentIp:%@\n"
-                 "Resolution:(width-height: %.0f-%.0f)\n"
-                 "play time:%.1fs\n"
-                 "playable Time:%.1fs\n"
-                 "on demond Time%.1fs\n"
-                 "cached times:%.1fs/%ld\n"
-                 "cached mix time:%.1fs\n"
+                 "%@\nip:%@ (w-h: %.0f-%.0f)\n"
+                 "play time:%.1fs - %.1fs - %.1fs\n"
+                 "cached time:%.1fs/%ld - %.1fs\n"
                  "speed: %0.1f kbps\nvideo/audio render cost time:%dms/%dms\n"
                  "HttpConnectTime:%@\n"
                  "HttpAnalyzeDns:%@\n"
-                 "HttpFirstDataTime:%@\n"
-                 "audioBufferByteLength:%d\n"
-                 "audioBufferTimeLength:%d\n"
-                 "audioTotalDataSize:%lld\n"
-                 "videoBufferByteLength:%d\n"
-                 "videoBufferTimeLength:%d\n"
-                 "videoTotalDataSize:%lld\n"
-                 "totalDataSize:%lld\n",
+                 "HttpFirstDataTime:%@\n",
                  [_player getVersion],
                  _url,
-                 serverIp,
-                 [self getIPAddress],
-                 _player.naturalSize.width,_player.naturalSize.height,
-                 _player.currentPlaybackTime,
-                 _player.playableDuration,
-                 _player.duration,
-                 _player.bufferEmptyDuration,
-                 _player.bufferEmptyCount,
-                 _player.bufferTimeMax,
+                 serverIp, _player.naturalSize.width, _player.naturalSize.height,
+                 _player.currentPlaybackTime, _player.playableDuration, _player.duration,
+                 _player.bufferEmptyDuration, _player.bufferEmptyCount, _player.bufferTimeMax,
                  8*1024.0*(flowSize - lastSize)/([self getCurrentTime] - lastCheckTime),
-                 fvr_costtime, far_costtime,
+				 fvr_costtime, far_costtime,
                  [meta objectForKey:kKSYPLYHttpConnectTime],
                  [meta objectForKey:kKSYPLYHttpAnalyzeDns],
-                 [meta objectForKey:kKSYPLYHttpFirstDataTime],
-                 info.audioBufferByteLength,
-                 info.audioBufferTimeLength,
-                 info.audioTotalDataSize,
-                 info.videoBufferByteLength,
-                 info.videoBufferTimeLength,
-                 info.videoTotalDataSize,
-                 info.totalDataSize];
+                 [meta objectForKey:kKSYPLYHttpFirstDataTime]];
     lastCheckTime = [self getCurrentTime];
     lastSize = flowSize;
 }
@@ -532,34 +502,8 @@
 
 - (void)getQosBtnEvent
 {
-    [self StartTimer];
-}
-
-// Get IP Address
-- (NSString *)getIPAddress {
-    NSString *address = @"error";
-    struct ifaddrs *interfaces = NULL;
-    struct ifaddrs *temp_addr = NULL;
-    int success = 0;
-    // retrieve the current interfaces - returns 0 on success
-    success = getifaddrs(&interfaces);
-    if (success == 0) {
-        // Loop through linked list of interfaces
-        temp_addr = interfaces;
-        while(temp_addr != NULL) {
-            if(temp_addr->ifa_addr->sa_family == AF_INET) {
-                // Check if interface is en0 which is the wifi connection on the iPhone
-                if([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]) {
-                    // Get NSString from C String
-                    address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
-                }
-            }
-            temp_addr = temp_addr->ifa_next;
-        }
-    }
-    // Free memory
-    freeifaddrs(interfaces);
-    return address;
+    KSYQosInfo *info = _player.qosInfo;
+    NSLog(@"\n audioBufferByteLength is %d \n audioBufferTimeLength is %d \n audioTotalDataSize is %lld \n videoBufferByteLength is %d \n videoBufferTimeLength is %d \n  videoTotalDataSize is %lld \n totalDataSize is %lld \n",info.audioBufferByteLength,info.audioBufferTimeLength,info.audioTotalDataSize,info.videoBufferByteLength,info.videoBufferTimeLength,info.videoTotalDataSize,info.totalDataSize);
 }
 
 @end

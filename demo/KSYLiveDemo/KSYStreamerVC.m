@@ -255,8 +255,8 @@
     _pubSession.audiokBPS        = 48; // k bit ps
     _pubSession.enAutoApplyEstimateBW = _btnAutoBw.on;
     
-    // rtmp server info
     if (_hostURL == nil){
+        // rtmp server info
         // stream name = 随机数 + codec名称 （构造流名，避免多个demo推向同一个流）
         NSString *devCode  = [ [KSYStreamerVC getUuid] substringToIndex:3];
         NSString *codecSuf = _pubSession.videoCodec == KSYVideoCodec_X264 ? @"264" : @"265";
