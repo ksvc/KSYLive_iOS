@@ -74,10 +74,7 @@
 
 2. SDK Cocoapods
 通过Cocoapods 能将本SDK的静态库framework下载到本地，只需要 将如下语句加入你的Podfile：   
-（libksylive）   
-```
-pod 'KSYLive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
-```
+
 （libksygpulive）    
 ```
 pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
@@ -87,7 +84,7 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 
 ###添加工程
 * SDK压缩包
-将压缩包中framework下的libksylive.framework添加到XCode的工程，具体步骤为：
+将压缩包中framework下的libksygpulive.framework添加到XCode的工程，具体步骤为：
 1. 选中应用的Target，进入项目配置页面
 2. 切换到 Build Phases标签页
 3. 如果需要使用GPU美颜滤镜，则用同样的方法加上libksygpulive.framework，并且需要添加第三方库GPUImage.framework
@@ -98,8 +95,6 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 ##SDK使用示例
 
 具体可参见KSYLiveDemo工程中的KSYStreamerVC/KSYGPUStreamerVC/KSYStreamerKitVC.
-- KSYStreamerVC    
-  KSYStreamer的使用示例（使用libksylive时不依赖GPUImage）
 - KSYStreamerKitVC     
   KSYGPUStreamerKit的使用示例，与KSYStreamer用法一致，仅仅添加了设置美颜接口
 - KSYGPUStreamerVC 
