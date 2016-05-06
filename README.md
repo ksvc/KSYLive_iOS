@@ -68,7 +68,7 @@
   - doc/html    : appleDoc风格的[接口文档](http://ksvc.github.io/KSYLive_iOS/html/index.html)
   - framework   : 本SDK的静态库framework，集成时需要将该framework加入到项目中
     - framework/live264/libksylive.framework    
-    不依赖GPUImage的推流SDK
+    不依赖GPUImage的推流SDK,不再支持[2016年5月6日]
     - framework/livegpu/libksygpulive.framework     
     依赖GPUImage，支持美颜功能，并包含了libksylive全部功能的推流SDK
 
@@ -90,9 +90,7 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 将压缩包中framework下的libksylive.framework添加到XCode的工程，具体步骤为：
 1. 选中应用的Target，进入项目配置页面
 2. 切换到 Build Phases标签页
-3. 在Link Binary With Libraries的列表中添加上 libksylive.framework   
-(点击列表底部的加号，在弹出的向导中选择libksylive.framework)
-4. 如果需要使用GPU美颜滤镜，则用同样的方法加上libksygpulive.framework，并且需要添加第三方库GPUImage.framework
+3. 如果需要使用GPU美颜滤镜，则用同样的方法加上libksygpulive.framework，并且需要添加第三方库GPUImage.framework
 
 * SDK Cocoapods
 在Podfile中本SDK的条目，并执行了 pod install 之后， 本SDK就已经加入工程中，打开工程的workspace即可。
@@ -107,11 +105,7 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 - KSYGPUStreamerVC 
   KSYGPUStreamer使用示例，可以自由组合采集，滤镜和推流，实现高度定制化的需求
 
-* 在使用libksylive，引入头文件
-```
-#import <libksylive/libksylive.h>
-```
-或者使用支持滤镜的 libksygpulive
+* 引libksygpulive入头文件
 ```
 #import <GPUImage/GPUImage.h>
 #import <libksygpulive/libksygpulive.h>
@@ -133,14 +127,6 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 * 两种使用方式： 
   - 简单接口 KSYGPUStreamerKit 与 KSYStreamer类似，打包了采集和推流部分
   - 进阶接口 KSYGPUCamera+KSYGPUStreamer，自由度比较大，采集和推流模块分离可以自由组合
-
-以下总结使用libksygpulive和使用libksylive中基本推流的几点修改：
-* 依赖的头文件不同，本SDK的头文件分为两个，并且需要在引入GPUImage 之后引入：
-```
-#import <GPUImage/GPUImage.h>
-#import <libksygpulive/libksygpulive.h>
-#import <libksygpulive/libksygpuimage.h>
-```
 
 ###采集参数设置
 * 设置分辨率
