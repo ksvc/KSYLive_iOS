@@ -139,7 +139,7 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
 {
     NSString *aPath3=[NSString stringWithFormat:@"%@/Documents/%@.png",NSHomeDirectory(),@"test"];
     UIImage *imgFromUrl3=[[UIImage alloc]initWithContentsOfFile:aPath3];
-    CGPoint size = CGPointMake(0, 0);
+    CGPoint size = CGPointMake(600, 10);
     [_kit addLogo:imgFromUrl3 pos:size trans:1];
     
     UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(600,15+imgFromUrl3.size.height, 500, 10)];
