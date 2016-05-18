@@ -11,7 +11,6 @@
 #import <libksygpulive/libksygpulive.h>
 #import <libksygpulive/libksygpuimage.h>
 
-
 @interface KSYGPUStreamerVC () {
     UIButton *_btnMusicPlay;
     UIButton *_btnMusicPause;
@@ -51,16 +50,29 @@
     int       _raiseCnt;
     int       _dropCnt;
     double    _startTime;
+    
+    
+    UIView   *_controlView;
+    UIImageView *_foucsCursor;
+    CGFloat _initialPinchZoom;
+    
 }
-@property KSYGPUStreamer * gpuStreamer;
-@property KSYGPUCamera * capDev;
+
+// player
+@property int       micTrack;
+@property int       bgmTrack;
+
+@property KSYGPUStreamer*  gpuStreamer;
+@property KSYGPUCamera *   capDev;
+@property KSYBgmPlayer*    bgmPlayer;
+@property KSYAudioMixer*   audioMixer;
+
 @property GPUImageFilter     * filter;
 @property GPUImageCropFilter * cropfilter;
-@property GPUImageFilter * scalefilter;
-@property GPUImageView   * preview;
+@property GPUImageFilter     * scalefilter;
+@property GPUImageView       * preview;
 
 @property NSTimer *timer;
-
 @end
 
 @implementation KSYGPUStreamerVC
@@ -72,14 +84,60 @@
 #pragma mark - UIViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self addSubViews];
     [self initUI ];
+    [self addfoucsCursor];
     [self setStreamerCfg];
     [self addObservers ];
     NSLog(@"version: %@", [_gpuStreamer.streamerBase getKSYVersion]);
 }
+- (void)addSubViews{
+    [self addPreview];
+    [self addControlview];
+    [self addfoucsCursor];
+    [self addPinchGestureRecognizer];
+}
+- (void)addPreview{
+    _preview    = [[GPUImageView alloc] init];
+    [_preview setFillMode:kGPUImageFillModePreserveAspectRatioAndFill];
+    [self.view addSubview:_preview];
+}
+- (void)addControlview{
+    _controlView = [[UIView alloc]initWithFrame:self.view.frame];
+    [_preview addSubview:_controlView];
+    [self addSwipeGesture];
+    
+}
+- (void)addfoucsCursor{
+    _foucsCursor = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"camera_focus_red"]];
+    _foucsCursor.frame = CGRectMake(80, 80, 80, 80);
+    [_preview addSubview:_foucsCursor];
+    _foucsCursor.alpha = 0;
+    
+}
+- (void)addSwipeGesture{
+    UISwipeGestureRecognizer *swiptGestureToRight = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeController:)];
+    [self.view addGestureRecognizer:swiptGestureToRight];
+    
+    UISwipeGestureRecognizer *swiptGestureToLeft = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeController:)];
+    [self.view addGestureRecognizer:swiptGestureToLeft];
+    swiptGestureToLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+}
+- (void)swipeController:(UISwipeGestureRecognizer *)state{
+    if (state.direction == UISwipeGestureRecognizerDirectionRight) {
+        [UIView animateWithDuration:0.5 animations:^{
+            _controlView.layer.frame = CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
+        }];
+    }else if (state.direction == UISwipeGestureRecognizerDirectionLeft){
+        [UIView animateWithDuration:0.5 animations:^{
+            _controlView.layer.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        }];
+    }
+}
+
 - (void) addObservers {
     // statistics update every seconds
-    _timer =  [NSTimer scheduledTimerWithTimeInterval:1.2
+    _timer =  [NSTimer scheduledTimerWithTimeInterval:1.0
                                                target:self
                                              selector:@selector(updateStat:)
                                              userInfo:nil
@@ -104,6 +162,9 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:KSYNetStateEventNotification
                                                   object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self
+                                                   name:MPMoviePlayerPlaybackDidFinishNotification
+                                                 object:nil];
 }
 - (void)viewDidAppear:(BOOL)animated {
     if ( _btnAutoBw != nil ) {
@@ -124,7 +185,7 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    NSLog(@"memory warning");
 }
 
 
@@ -136,19 +197,19 @@
     [button setTitle: title forState: UIControlStateNormal];
     button.backgroundColor = [UIColor lightGrayColor];
     [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
+    [_controlView addSubview:button];
     return button;
 }
 
 - (UILabel *)addLable:(NSString*)title{
     UILabel *  lbl = [[UILabel alloc] init];
     lbl.text = title;
-    [self.view addSubview:lbl];
+    [_controlView addSubview:lbl];
     return lbl;
 }
 - (UISwitch *)addSwitch:(BOOL) on{
     UISwitch *sw = [[UISwitch alloc] init];
-    [self.view addSubview:sw];
+    [_controlView addSubview:sw];
     sw.on = on;
     return sw;
 }
@@ -156,19 +217,16 @@
 - (UISlider *)addSliderFrom: (float) minV
                          To: (float) maxV{
     UISlider *sl = [[UISlider alloc] init];
-    [self.view addSubview:sl];
+    [_controlView addSubview:sl];
     sl.minimumValue = minV;
     sl.maximumValue = maxV;
-    sl.value = 0.5;
+    sl.value = 1.0;
     [ sl addTarget:self action:@selector(onVolChanged:) forControlEvents:UIControlEventValueChanged ];
     return sl;
 }
 
 - (void) initUI {
     // add prevew at bottom
-    _preview    = [[GPUImageView alloc] init];
-    [_preview setFillMode:kGPUImageFillModePreserveAspectRatioAndFill];
-    [self.view addSubview:_preview];
     
     _btnPreview = [self addButton:@"开始预览"  action:@selector(onPreview:)];
     _btnTStream = [self addButton:@"开始推流"  action:@selector(onStream:)];
@@ -192,10 +250,8 @@
     
     _bgmVolS     = [self addSliderFrom:0.0 To:1.0];
     _micVolS     = [self addSliderFrom:0.0 To:1.0];
-    _micVolS.value = 1.0;
-    _btnMute    = [self addButton:@"静音"   action:@selector(onStreamMute:)];
+    _btnMute     = [self addButton:@"静音"   action:@selector(onStreamMute:)];
     
-
     _lblAutoBW = [self addLable:@"自动调码率"];
     _btnAutoBw = [self addSwitch:YES];
 
@@ -204,7 +260,7 @@
 
     _lblHighRes =[self addLable:@"360p/540p"];
     _btnHighRes =[self addSwitch:YES];
-
+    
     _stat = [self addLable:@""];
     _stat.backgroundColor = [UIColor clearColor];
     _stat.textColor = [UIColor redColor];
@@ -305,6 +361,7 @@
     NSString *preset = @"";
     if (_btnHighRes.on ) {
         preset = AVCaptureSessionPresetiFrame960x540;
+        _cropfilter = nil;
     }
     else {
         preset = AVCaptureSessionPreset640x480;
@@ -323,15 +380,16 @@
     _capDev.outputImageOrientation = orien;
     _filter = [[KSYGPUBeautifyFilter alloc] init];
     
+    _capDev.bInterruptOtherAudio = NO;
     _capDev.bStreamVideo = NO;
-    _capDev.bStreamAudio = YES;
-    [_capDev setAudioEncTarget:_gpuStreamer];
+    _capDev.bStreamAudio = NO;  // use mixer instead
+    //[_capDev setAudioEncTarget:_gpuStreamer];
 
     _capDev.horizontallyMirrorFrontFacingCamera = NO;
     _capDev.horizontallyMirrorRearFacingCamera  = NO;
     _capDev.frameRate = 15;
     [_capDev addAudioInputsAndOutputs];
-
+    _capDev.bInterruptOtherAudio = NO;
     // stream settings
     _gpuStreamer.streamerBase.videoCodec = KSYVideoCodec_X264;
     //_gpuStreamer.streamerBase.videoCodec = KSYVideoCodec_VT264;
@@ -339,26 +397,36 @@
     _gpuStreamer.streamerBase.audiokBPS  = 48;   // k bit ps
     _gpuStreamer.streamerBase.enAutoApplyEstimateBW = _btnAutoBw.on;
     if (_gpuStreamer.streamerBase.enAutoApplyEstimateBW) {
-        _gpuStreamer.streamerBase.videoInitBitrate  = 500;  // k bit ps
+        _gpuStreamer.streamerBase.videoInitBitrate  = 300;  // k bit ps
     }
     else {
-        _gpuStreamer.streamerBase.videoInitBitrate  = 1000; // k bit ps
+        _gpuStreamer.streamerBase.videoInitBitrate  = 500; // k bit ps
     }
-    _gpuStreamer.streamerBase.videoMaxBitrate   = 1000; // k bit ps
-    _gpuStreamer.streamerBase.videoMinBitrate   = 300;  // k bit ps
-    // connect blocks
-    if (_btnHighRes.on) {
-        [_capDev addTarget:_filter];
-        [_filter addTarget:_preview];
-        [_filter addTarget:_gpuStreamer];
-    }
-    else {
-        [_capDev addTarget:_filter];
-        [_filter addTarget:_cropfilter];
-        [_cropfilter addTarget:_preview];
-        [_cropfilter addTarget:_gpuStreamer];
-    }
+    _gpuStreamer.streamerBase.videoMaxBitrate   = 500; // k bit ps
+    _gpuStreamer.streamerBase.videoMinBitrate   = 200;  // k bit ps
 
+    _bgmPlayer  = [[KSYBgmPlayer alloc] init];
+    _audioMixer = [[KSYAudioMixer alloc] init];
+    _micTrack   = 0;
+    _bgmTrack   = 2;
+    [_audioMixer setTrack:_micTrack enable:YES];
+    _audioMixer.mainTrack = _micTrack;
+    [_audioMixer setTrack:_bgmTrack enable:NO];
+    [_audioMixer setMixVolume:0.2 of:_bgmTrack];
+    __weak KSYGPUStreamerVC * vc = self;
+    _capDev.audioProcessingCallback = ^(CMSampleBufferRef buf){
+        [vc.audioMixer processAudioSampleBuffer:buf of:vc.micTrack];
+//        [vc.bgmPlayer processMicAudioSampleBuffer:buf];
+    };
+    _bgmPlayer.audioDataBlock = ^(CMSampleBufferRef buf){
+        [vc.audioMixer processAudioSampleBuffer:buf of:vc.bgmTrack];
+    };
+    _audioMixer.audioProcessingCallback = ^(CMSampleBufferRef buf){
+        [vc.gpuStreamer.streamerBase processAudioSampleBuffer:buf];
+    };
+    // connect blocks
+    [self setupFilters];
+    
     // rtmp server info
     if (_hostURL == nil){
         // stream name = 随机数 + codec名称 （构造流名，避免多个demo推向同一个流）
@@ -368,15 +436,19 @@
         
         // hostURL = rtmpSrv + streamName
         NSString *rtmpSrv  = @"rtmp://test.uplive.ksyun.com/live";
+//        NSString *rtmpSrv  = @"rtmp://192.168.1.115/live";
         NSString *url      = [  NSString stringWithFormat:@"%@/%@", rtmpSrv, streamName];
         _hostURL = [[NSURL alloc] initWithString:url];
     }
+}
+- (void) setVideoOrientation {
+    
 }
 
 #pragma mark - UI responde
 
 - (IBAction)onQuit:(id)sender {
-    [_gpuStreamer.streamerBase stopMixMusic];
+    [_bgmPlayer stopPlayBgm];
     [_gpuStreamer.streamerBase stopStream];
     [_capDev stopCameraCapture];
     [self dismissViewControllerAnimated:FALSE completion:nil];
@@ -403,13 +475,24 @@
     else if( sender == _btnFilters[3])    {
         _filter = [[KSYGPUBeautifyPlusFilter alloc] init];
     }
-
+    [self setupFilters];
+}
+-(void) setupFilters{
     [_capDev removeAllTargets];
-    [_filter removeAllTargets];
+    GPUImageOutput* src = _capDev;
+    if (_cropfilter){
+        [_cropfilter removeAllTargets];
+        [src addTarget:_cropfilter];
+        src = _cropfilter;
+    }
+    if (_filter) {
+        [_filter removeAllTargets];
+        [src addTarget:_filter];
+        src = _filter;
+    }
     
-    [_capDev addTarget:_filter];
-    [_filter addTarget:_preview];
-    [_filter addTarget:_gpuStreamer];
+    [src     addTarget:_preview];
+    [src     addTarget:_gpuStreamer];
 }
 
 - (IBAction)onPreview:(id)sender {
@@ -435,8 +518,7 @@
     }
     if (_gpuStreamer.streamerBase.streamState != KSYStreamStateConnected) {
         [_gpuStreamer.streamerBase startStream: _hostURL];
-        [_gpuStreamer.streamerBase setMicVolume:_micVolS.value];
-        [_gpuStreamer.streamerBase setBgmVolume:_bgmVolS.value];
+        [_bgmPlayer setBgmVolume:_bgmVolS.value];
         [self initStatData];
     }
     else {
@@ -464,35 +546,40 @@
 }
 - (IBAction)onMusicPlay:(id)sender {
     NSString *testMp3 = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/test.mp3"];
-    static int i = 0;
-    i = !i;
-    if (i) {
-        NSLog(@"bgm start %@", testMp3);
-        _gpuStreamer.streamerBase.bgmFinishBlock = ^{
-            NSLog(@"bgm over %@", testMp3);
-        };
-        [_gpuStreamer.streamerBase startMixMusic:testMp3 isLoop:NO];
+    if(_bgmPlayer == nil){
+        _bgmPlayer  = [[KSYBgmPlayer alloc] init];
     }
-    else {
-        [_gpuStreamer.streamerBase stopMixMusic];
+    if (_bgmPlayer.bgmPlayerState == KSYBgmPlayerStatePlaying) {
+        [_bgmPlayer stopPlayBgm];
+        [_btnMusicPlay setTitle:@"播放bgm" forState:UIControlStateNormal];
+    }
+    else  {
+        NSLog(@"bgm start %@", testMp3);
+        [_bgmPlayer startPlayBgm:testMp3 isLoop:NO];
+        [_btnMusicPlay setTitle:@"停止bgm" forState:UIControlStateNormal];
     }
 }
 
 - (IBAction)onMusicPause:(id)sender {
-    static int i = 0;
-    i = !i;
-    if (i) {
-        [_gpuStreamer.streamerBase pauseMixMusic];
+    if(_bgmPlayer == nil){
+        return;
     }
-    else {
-        [_gpuStreamer.streamerBase resumeMixMusic];
+    NSLog(@"isrunning %d", _bgmPlayer.isRunning);
+    if (_bgmPlayer.bgmPlayerState == KSYBgmPlayerStatePlaying) {
+        [_bgmPlayer pauseBgm];
+        [_btnMusicPause setTitle:@"恢复bgm" forState:UIControlStateNormal];
+    }
+    else if (_bgmPlayer.bgmPlayerState == KSYBgmPlayerStatePaused){
+        [_bgmPlayer resumeBgm];
+        [_btnMusicPause setTitle:@"暂停bgm" forState:UIControlStateNormal];
     }
 }
 
 - (IBAction)onMusicMix:(id)sender {
-    static BOOL i = NO;
-    i = !i;
-    [_gpuStreamer.streamerBase enableMicMixMusic:i];
+    if (_audioMixer){
+        BOOL enMix = [_audioMixer getTrackEnable:_bgmTrack];
+        [_audioMixer setTrack:_bgmTrack enable: !enMix];
+    }
 }
 
 -(IBAction)onReverbStart:(id)sender {
@@ -515,10 +602,9 @@
 
 - (IBAction)onVolChanged:(id)sender {
     if (sender == _bgmVolS) {
-        [_gpuStreamer.streamerBase setBgmVolume:_bgmVolS.value];
+        [_bgmPlayer setBgmVolume:_bgmVolS.value];
     }
     else if (sender == _micVolS) {
-        [_gpuStreamer.streamerBase setMicVolume:_micVolS.value];
     }
 }
 
@@ -529,7 +615,16 @@
         [_gpuStreamer.streamerBase muteStreame:i];
     }
 }
-
+-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    UITouch *touch = [touches anyObject];
+    CGPoint current = [touch locationInView:_preview];
+    _foucsCursor.center = current;
+    _foucsCursor.transform = CGAffineTransformMakeScale(1.5, 1.5);
+    _foucsCursor.alpha=1.0;
+    NSError __autoreleasing *error;
+    [self focusAtPoint:current error:&error];
+    
+}
 - (IBAction)onTap:(id)sender {
     CGPoint point = [sender locationInView:self.view];
     CGPoint tap;
@@ -546,12 +641,48 @@
         if ([dev lockForConfiguration:error]) {
             [dev setFocusPointOfInterest:point];
             [dev setFocusMode:AVCaptureFocusModeAutoFocus];
-            NSLog(@"Focusing..");
+            [UIView animateWithDuration:1.0 animations:^{
+                _foucsCursor.transform=CGAffineTransformIdentity;
+            } completion:^(BOOL finished) {
+                _foucsCursor.alpha=0;
+                
+            }];
             [dev unlockForConfiguration];
             return YES;
         }
     }
     return NO;
+}
+/**
+ *  添加缩放手势，缩放时镜头放大或缩小，
+ */
+- (void)addPinchGestureRecognizer{
+    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(pinchDetected:)];
+    [_preview addGestureRecognizer:pinch];
+}
+- (void)pinchDetected:(UIPinchGestureRecognizer *)recognizer{
+    AVCaptureDevice *captureDevice=_capDev.inputCamera;
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        _initialPinchZoom = captureDevice.videoZoomFactor;
+    }
+    NSError *error = nil;
+    [captureDevice lockForConfiguration:&error];
+    
+    if (!error) {
+        CGFloat zoomFactor;
+        CGFloat scale = recognizer.scale;
+        if (scale < 1.0f) {
+            zoomFactor = _initialPinchZoom - pow(captureDevice.activeFormat.videoMaxZoomFactor, 1.0f - recognizer.scale);
+        }else{
+            zoomFactor = _initialPinchZoom + pow(captureDevice.activeFormat.videoMaxZoomFactor, (recognizer.scale - 1.0f)/2.0);
+        }
+        zoomFactor = MIN(10.0f, zoomFactor);
+        zoomFactor = MAX(1.0f,  zoomFactor);
+        
+        captureDevice.videoZoomFactor = zoomFactor;
+        
+        [captureDevice unlockForConfiguration];
+    }
 }
 
 #pragma mark - status monitor

@@ -13,6 +13,9 @@
 #import <libksygpulive/libksygpulive.h>
 #import <libksygpulive/KSYGPUCamera.h>
 
+//simple interface
+#import <libksygpulive/KSYGPUStreamerKit.h>
+
 // filters
 #import <libksygpulive/KSYGPUBeautifyFilter.h>
 #import <libksygpulive/KSYGPUBeautifyExtFilter.h>

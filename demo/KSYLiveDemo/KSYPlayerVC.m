@@ -7,6 +7,9 @@
 
 #import "KSYPlayerVC.h"
 #import <CommonCrypto/CommonDigest.h>
+#import <ifaddrs.h>
+#import <arpa/inet.h>
+
 
 @interface KSYPlayerVC ()
 @property (strong, nonatomic) NSURL *url;
@@ -27,11 +30,14 @@
     UIButton *btnReload;
     UIButton *btnStop;
     UIButton *btnQuit;
-    UILabel  *lableVPP;
-    UISwitch *switchVPP;
-    UISwitch *switchLog;
-    UIButton *getQosBtn;
+    UILabel  *lableHWCodec;
     UISwitch  *switchHwCodec;
+    UILabel  *labelMute;
+    UISwitch *switchMute;
+    
+    UISlider *sliderLeftVolume;
+    UISlider *sliderRightVolume;
+    
     long long int prepared_time;
     int fvr_costtime;
     int far_costtime;
@@ -42,6 +48,7 @@
         self.url = url;
         self.reloadUrl = url;
     }
+    
     return self;
 }
 
@@ -49,9 +56,7 @@
     [super viewDidLoad];
     [self initUI];
     [self setupObservers];
-    [self initKSYAuth];
 }
-
 - (void) initUI {
     //add UIView for player
     videoView = [[UIView alloc] init];
@@ -73,9 +78,6 @@
     //add quit button
     btnQuit = [self addButtonWithTitle:@"quit" action:@selector(onQuit:)];
     
-    //add getQosBtn
-    getQosBtn = [self addButtonWithTitle:@"QosInfo" action:@selector(getQosBtnEvent)];
-
     stat = [[UILabel alloc] init];
     stat.backgroundColor = [UIColor clearColor];
     stat.textColor = [UIColor redColor];
@@ -83,10 +85,16 @@
     stat.textAlignment = NSTextAlignmentLeft;
     [self.view addSubview:stat];
     
-    lableVPP = [[UILabel alloc] init];
-    lableVPP.text = @"开启硬件解码";
-    lableVPP.textColor = [UIColor lightGrayColor];
-    [self.view addSubview:lableVPP];
+    lableHWCodec = [[UILabel alloc] init];
+    lableHWCodec.text = @"开启硬件解码";
+    lableHWCodec.textColor = [UIColor lightGrayColor];
+    [self.view addSubview:lableHWCodec];
+    
+    labelMute = [[UILabel alloc] init];
+    labelMute.text = @"静音";
+    labelMute.textColor = [UIColor lightGrayColor];
+    [self.view addSubview:labelMute];
+    
 
 //    switchVPP = [[UISwitch alloc] init];
 //    [self.view addSubview:switchVPP];
@@ -101,6 +109,24 @@
     [self.view  addSubview:switchHwCodec];
     switchHwCodec.on = YES;
     
+    switchMute = [[UISwitch alloc] init];
+    [switchMute addTarget:self action:@selector(switchMuteEvent:) forControlEvents:UIControlEventValueChanged];
+    [self.view  addSubview:switchMute];
+    switchMute.on = NO;
+    
+    sliderLeftVolume = [[UISlider alloc] init];
+    sliderLeftVolume.minimumValue = 0;
+    sliderLeftVolume.maximumValue = 100;
+    sliderLeftVolume.value = 100;
+    [sliderLeftVolume addTarget:self action:@selector(onLeftVolumeChanged:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:sliderLeftVolume];
+
+    sliderRightVolume = [[UISlider alloc] init];
+    sliderRightVolume.minimumValue = 0;
+    sliderRightVolume.maximumValue = 100;
+    sliderRightVolume.value = 100;
+    [sliderRightVolume addTarget:self action:@selector(onRightVolumeChanged:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:sliderRightVolume];
     [self layoutUI];
 }
 - (UIButton *)addButtonWithTitle:(NSString *)title action:(SEL)action{
@@ -126,12 +152,17 @@
 
     yPos = gap;
     xPos = gap;
-    lableVPP.frame =CGRectMake(xPos, yPos, btnWdt * 2, btnHgt);
+    lableHWCodec.frame =CGRectMake(xPos, yPos, btnWdt * 2, btnHgt);
     xPos = wdt/2 - btnWdt/2;
-    switchVPP.frame = CGRectMake(xPos, gap, btnWdt, btnHgt);
-    switchLog.frame = CGRectMake(xPos + btnWdt + 50, gap, btnWdt, btnHgt);
     switchHwCodec.frame = CGRectMake(xPos, gap, btnWdt, btnHgt);
+    
+    labelMute.frame  = CGRectMake(gap, btnHgt + 30, btnWdt*2, btnHgt);
+    switchMute.frame = CGRectMake(xPos, btnHgt + 30, btnWdt, btnHgt);
 
+    sliderLeftVolume.frame  = CGRectMake(gap, btnHgt + 35*2, 300, 20);
+    sliderRightVolume.frame = CGRectMake(gap, btnHgt + 35*3, 300, 20);
+    
+    
     videoView.frame = CGRectMake(0, 0, wdt, hgt);
     xPos = gap;
     yPos = hgt - btnHgt - gap;
@@ -144,13 +175,7 @@
     btnStop.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     xPos += gap + btnWdt;
     btnQuit.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    stat.frame = CGRectMake(gap, 0, wdt, hgt/2);
-    // top row 3 left
-    yPos += (gap + btnHgt);
-    xPos = gap;
-    getQosBtn.frame = CGRectMake(xPos, btnStop.frame.origin.y - 40, btnWdt, btnHgt);
-
-    
+    stat.frame = CGRectMake(gap, 0, wdt, hgt);
 }
 
 - (BOOL)shouldAutorotate {
@@ -162,9 +187,31 @@
 {
     if (_player) {
         _player.shouldEnableKSYStatModule = switchControl.isOn;
-
     }
 }
+
+-(void)onLeftVolumeChanged:(UISlider *)slider
+{
+    if (_player){
+        [_player setVolume:slider.value/100 rigthVolume:sliderRightVolume.value/100];
+    }
+}
+
+-(void)onRightVolumeChanged:(UISlider *)slider
+{
+    if (_player){
+        [_player setVolume:sliderLeftVolume.value/100 rigthVolume:slider.value/100];
+    }
+}
+
+- (void)switchMuteEvent:(UISwitch *)switchControl
+{
+    if (_player) {
+        _player.shouldMute = switchControl.isOn;
+        
+    }
+}
+
 - (NSString *)MD5:(NSString*)raw {
     
     const char * pointer = [raw UTF8String];
@@ -183,27 +230,7 @@
     return [[NSDate date] timeIntervalSince1970];
 }
 
-/**
- @abstrace 初始化金山云认证信息
- @discussion 开发者帐号fpzeng，其他信息如下：
- 
- * appid: QYA0EEF0FDDD38C79913
- * ak: abc73bb5ab2328517415f8f52cd5ad37
- * sk: sff25dc4a428479ff1e20ebf225d113
- * sksign: md5(sk+tmsec)
- 
- 以上信息随时可能失效，请找金山云提供。
- 
- @warning 请将appid/ak/sk信息更新至开发者自己信息，再进行编译测试
- */
 
-- (void)initKSYAuth
-{
-    NSString* time = [NSString stringWithFormat:@"%d",(int)[[NSDate date]timeIntervalSince1970]];
-    NSString* sk = [NSString stringWithFormat:@"sff25dc4a428479ff1e20ebf225d113%@", time];
-    NSString* sksign = [self MD5:sk];
-    [[KSYPlayerAuth sharedInstance]setAuthInfo:@"QYA0EEF0FDDD38C79913" accessKey:@"abc73bb5ab2328517415f8f52cd5ad37" secretKeySign:sksign timeSeconds:time];
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -219,7 +246,7 @@
         // using autoPlay to start live stream
         //        [_player play];
         serverIp = [_player serverAddress];
-        NSLog(@"%@ -- ip:%@", _url, serverIp);
+        NSLog(@"KSYPlayerVC: %@ -- ip:%@", _url, serverIp);
         [self StartTimer];
     }
     if (MPMoviePlayerPlaybackStateDidChangeNotification ==  notify.name) {
@@ -251,13 +278,11 @@
               (int)_player.bufferEmptyCount,
               _player.bufferEmptyDuration);
         int reason = [[[notify userInfo] valueForKey:MPMoviePlayerPlaybackDidFinishReasonUserInfoKey] intValue];
-        if (reason == 0) {
+        if (reason ==  MPMovieFinishReasonPlaybackEnded) {
             stat.text = [NSString stringWithFormat:@"player finish"];
-
-        }else if (reason == 1){
-            stat.text = [NSString stringWithFormat:@"player Error"];
-
-        }else if (reason == 2){
+        }else if (reason == MPMovieFinishReasonPlaybackError){
+            stat.text = [NSString stringWithFormat:@"player Error : %@", [[notify userInfo] valueForKey:@"error"]];
+        }else if (reason == MPMovieFinishReasonUserExited){
             stat.text = [NSString stringWithFormat:@"player userExited"];
 
         }
@@ -325,7 +350,7 @@
                                               object:nil];
 }
 
-- (void)releaseObservers
+- (void)releaseObservers 
 {
     [[NSNotificationCenter defaultCenter]removeObserver:self
                                                    name:MPMediaPlaybackIsPreparedToPlayDidChangeNotification
@@ -352,23 +377,26 @@
 - (IBAction)onPlayVideo:(id)sender {
     
     if (_player) {
-        if (switchLog.isOn == NO) {
-            _player.shouldEnableKSYStatModule = NO;
-        }
         [_player play];
         [self StartTimer];
         return;
     }
+    lastSize = 0.0;
     _player = [[KSYMoviePlayerController alloc] initWithContentURL: _url];
-    if (switchLog.isOn == NO) {
-        _player.shouldEnableKSYStatModule = NO;
-    }
     
     _player.logBlock = ^(NSString *logJson){
-        
         NSLog(@"logJson is %@",logJson);
     };
+    int i = 8, j = 9;
+    _player.videoDataBlock = ^(CVPixelBufferRef pixelBuffer){
+        //NSLog(@"video data i:%d", i);
+    };
     
+    _player.audioDataBlock = ^(CMSampleBufferRef sampleBuffer){
+        
+        //NSLog(@"audio data j:%d", j);
+    };
+   
     stat.text = [NSString stringWithFormat:@"url %@", _url];
     _player.controlStyle = MPMovieControlStyleNone;
     [_player.view setFrame: videoView.bounds];  // player's frame must match parent's
@@ -377,11 +405,13 @@
     videoView.autoresizesSubviews = TRUE;
     _player.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     _player.shouldAutoplay = TRUE;
-    _player.bufferTimeMax = 5;
-    _player.shouldEnableVideoPostProcessing = switchVPP.on;
+//    _player.bufferTimeMax = 5;
+    _player.shouldEnableVideoPostProcessing = TRUE;
     _player.scalingMode = MPMovieScalingModeAspectFit;
     _player.shouldUseHWCodec = switchHwCodec.isOn;
+    _player.shouldMute  = switchMute.isOn;
     _player.shouldEnableKSYStatModule = TRUE;
+    _player.shouldLoop = TRUE;
     //[_player setTimeout:10];
     
     NSLog(@"sdk version:%@", [_player getVersion]);
@@ -389,7 +419,6 @@
     [_player prepareToPlay];
     
 }
-
 - (IBAction)onReloadVideo:(id)sender {
     if (_player) {
         [_player reload:_reloadUrl];
@@ -419,7 +448,6 @@
 - (void)StartTimer
 {
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateStat:) userInfo:nil repeats:YES];
-    switchVPP.enabled = NO;
 }
 - (void)StopTimer
 {
@@ -428,7 +456,6 @@
     }
     [timer invalidate];
     timer = nil;
-    switchVPP.enabled = YES;
 }
 - (void)updateStat:(NSTimer *)t
 {
@@ -440,27 +467,54 @@
         return;
     }
     double flowSize = [_player readSize];
-    NSLog(@"flowSize:%f", flowSize);
+//    NSLog(@"flowSize:%f", flowSize);
     NSDictionary *meta = [_player getMetadata];
+    KSYQosInfo *info = _player.qosInfo;
     stat.text = [NSString stringWithFormat:@
                  "SDK Version:v%@\n"
-                 "%@\nip:%@ (w-h: %.0f-%.0f)\n"
-                 "play time:%.1fs - %.1fs - %.1fs\n"
-                 "cached time:%.1fs/%ld - %.1fs\n"
+                 "streamerUrl:%@\n"
+                 "serverIp:%@\n"
+                 "clientIp:%@\n"
+                 "Resolution:(w-h: %.0f-%.0f)\n"
+                 "play time:%.1fs\n"
+                 "playable Time:%.1fs\n"
+                 "video duration%.1fs\n"
+                 "cached times:%.1fs/%ld\n"
+                 "cached max time:%.1fs\n"
                  "speed: %0.1f kbps\nvideo/audio render cost time:%dms/%dms\n"
                  "HttpConnectTime:%@\n"
                  "HttpAnalyzeDns:%@\n"
-                 "HttpFirstDataTime:%@\n",
+                 "HttpFirstDataTime:%@\n"
+                 "audioBufferByteLength:%d\n"
+                 "audioBufferTimeLength:%d\n"
+                 "audioTotalDataSize:%lld\n"
+                 "videoBufferByteLength:%d\n"
+                 "videoBufferTimeLength:%d\n"
+                 "videoTotalDataSize:%lld\n"
+                 "totalDataSize:%lld\n",
                  [_player getVersion],
                  _url,
-                 serverIp, _player.naturalSize.width, _player.naturalSize.height,
-                 _player.currentPlaybackTime, _player.playableDuration, _player.duration,
-                 _player.bufferEmptyDuration, _player.bufferEmptyCount, _player.bufferTimeMax,
+                 serverIp,
+                 [self getIPAddress],
+                 _player.naturalSize.width,_player.naturalSize.height,
+                 _player.currentPlaybackTime,
+                 _player.playableDuration,
+                 _player.duration,
+                 _player.bufferEmptyDuration,
+                 _player.bufferEmptyCount,
+                 _player.bufferTimeMax,
                  8*1024.0*(flowSize - lastSize)/([self getCurrentTime] - lastCheckTime),
-				 fvr_costtime, far_costtime,
+                 fvr_costtime, far_costtime,
                  [meta objectForKey:kKSYPLYHttpConnectTime],
                  [meta objectForKey:kKSYPLYHttpAnalyzeDns],
-                 [meta objectForKey:kKSYPLYHttpFirstDataTime]];
+                 [meta objectForKey:kKSYPLYHttpFirstDataTime],
+                 info.audioBufferByteLength,
+                 info.audioBufferTimeLength,
+                 info.audioTotalDataSize,
+                 info.videoBufferByteLength,
+                 info.videoBufferTimeLength,
+                 info.videoTotalDataSize,
+                 info.totalDataSize];
     lastCheckTime = [self getCurrentTime];
     lastSize = flowSize;
 }
@@ -500,10 +554,31 @@
     }
 }
 
-- (void)getQosBtnEvent
-{
-    KSYQosInfo *info = _player.qosInfo;
-    NSLog(@"\n audioBufferByteLength is %d \n audioBufferTimeLength is %d \n audioTotalDataSize is %lld \n videoBufferByteLength is %d \n videoBufferTimeLength is %d \n  videoTotalDataSize is %lld \n totalDataSize is %lld \n",info.audioBufferByteLength,info.audioBufferTimeLength,info.audioTotalDataSize,info.videoBufferByteLength,info.videoBufferTimeLength,info.videoTotalDataSize,info.totalDataSize);
+// Get IP Address
+- (NSString *)getIPAddress {
+    NSString *address = @"error";
+    struct ifaddrs *interfaces = NULL;
+    struct ifaddrs *temp_addr = NULL;
+    int success = 0;
+    // retrieve the current interfaces - returns 0 on success
+    success = getifaddrs(&interfaces);
+    if (success == 0) {
+        // Loop through linked list of interfaces
+        temp_addr = interfaces;
+        while(temp_addr != NULL) {
+            if(temp_addr->ifa_addr->sa_family == AF_INET) {
+                // Check if interface is en0 which is the wifi connection on the iPhone
+                if([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]) {
+                    // Get NSString from C String
+                    address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
+                }
+            }
+            temp_addr = temp_addr->ifa_next;
+        }
+    }
+    // Free memory
+    freeifaddrs(interfaces);
+    return address;
 }
 
 @end

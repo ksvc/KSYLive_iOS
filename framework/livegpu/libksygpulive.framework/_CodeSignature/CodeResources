@@ -4,9 +4,17 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Headers/KSYAudioMixer.h</key>
+		<data>
+		9GzHPqNxpAfTJzXI5rWg8bSMj7g=
+		</data>
 		<key>Headers/KSYAuthInfo.h</key>
 		<data>
 		RUzEMHLu6E4D2cYoev6Hv6sakas=
+		</data>
+		<key>Headers/KSYBgmPlayer.h</key>
+		<data>
+		cmjAr3ukD9eAUbwtFrHy6K/uXJY=
 		</data>
 		<key>Headers/KSYCamera.h</key>
 		<data>
@@ -30,11 +38,15 @@
 		</data>
 		<key>Headers/KSYGPUCamera.h</key>
 		<data>
-		iFizz4PJhetA/SWRib6Z6QyIwZU=
+		bN4AxgneiA4Sm/ej+HFvHt347pg=
 		</data>
 		<key>Headers/KSYGPUDnoiseFilter.h</key>
 		<data>
 		Y1UGJpWUotvgtaYyanl36wiG6iU=
+		</data>
+		<key>Headers/KSYGPUPipBlendFilter.h</key>
+		<data>
+		FotQw7XYIQQAcaZNagsj5wcrUoM=
 		</data>
 		<key>Headers/KSYGPUSkinWhiteFilter.h</key>
 		<data>
@@ -42,11 +54,15 @@
 		</data>
 		<key>Headers/KSYGPUStreamer.h</key>
 		<data>
-		FDabFsNoAS59yuLpWSprCGT30uk=
+		H/2S8D01+qvHb5nEuEo5Bl5+HgY=
 		</data>
 		<key>Headers/KSYGPUStreamerKit.h</key>
 		<data>
-		/NQSwZlz/M7op5G9tp3mScnuZs8=
+		wQqmoHiR9ZE9zukMXvpyHQt65M4=
+		</data>
+		<key>Headers/KSYGPUYUVInput.h</key>
+		<data>
+		uPpdrSDs1yNWUiA8WHlN3jQtwd4=
 		</data>
 		<key>Headers/KSYMediaPlayback.h</key>
 		<data>
@@ -54,11 +70,11 @@
 		</data>
 		<key>Headers/KSYMediaPlayer.h</key>
 		<data>
-		BzXxLyN1WAUTAAx2uDIWwQfj8jw=
+		nu62cvU1U2fm7AyDEZp9OYS5tjA=
 		</data>
 		<key>Headers/KSYMoviePlayerController.h</key>
 		<data>
-		vnpSYwjlPEi3lNLQoFq1c2r6YBg=
+		jLWoRGqrwezPg4F1DaUpNbuk25k=
 		</data>
 		<key>Headers/KSYPlayerAuth.h</key>
 		<data>
@@ -74,23 +90,23 @@
 		</data>
 		<key>Headers/KSYStreamerBase.h</key>
 		<data>
-		S8RDYTyrjw/jMw78gu0WAxGkpO8=
+		7jOmh8G0YtcfzIYJnbxjKvxzNjM=
 		</data>
 		<key>Headers/KSYTypeDef.h</key>
 		<data>
-		i7BLaNbbWlTCa/t3wKG8O+w1RKM=
+		2cMwyWpyLG43t7mhPI+MZzfoP1g=
 		</data>
 		<key>Headers/libksygpuimage.h</key>
 		<data>
-		D5e1wM96QVnSeST60UgsXpEQhrs=
+		VLxG4vGcMcgkSdVsshLkK5S6QW0=
 		</data>
 		<key>Headers/libksygpulive.h</key>
 		<data>
-		dMS2qILeGshm/6HWX2RoJyrm9gw=
+		YWcBOFLwtT7hN4Q989cFLURgHRQ=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		J/FutZIHw9Z0m8mVf9ByQfYDsr4=
+		I9UKjw+sQwKbuYTHO0VpueCIpNM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -99,248 +115,110 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Headers/KSYAudioMixer.h</key>
+		<data>
+		9GzHPqNxpAfTJzXI5rWg8bSMj7g=
+		</data>
 		<key>Headers/KSYAuthInfo.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			RUzEMHLu6E4D2cYoev6Hv6sakas=
-			</data>
-			<key>hash2</key>
-			<data>
-			bVrIeWom96LGG5KqAIUV5vyx/5oZs7qorazOJMtnLXs=
-			</data>
-		</dict>
+		<data>
+		RUzEMHLu6E4D2cYoev6Hv6sakas=
+		</data>
+		<key>Headers/KSYBgmPlayer.h</key>
+		<data>
+		cmjAr3ukD9eAUbwtFrHy6K/uXJY=
+		</data>
 		<key>Headers/KSYCamera.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			YIqt5BWhTrnZD9aoYbrjmBWImsc=
-			</data>
-			<key>hash2</key>
-			<data>
-			Y6imR9gw2R32qYLJkbzSrWzdVCdYmmNV1T8o8Mrc3UE=
-			</data>
-		</dict>
+		<data>
+		YIqt5BWhTrnZD9aoYbrjmBWImsc=
+		</data>
 		<key>Headers/KSYGPUBeautifyExtFilter.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			k86o7w8VdSuaA2sufQ0yoQRdEbU=
-			</data>
-			<key>hash2</key>
-			<data>
-			DDCUnHw7iCplHa0V1KNDuE8i7Msk6kdjt0gOBSi/yW0=
-			</data>
-		</dict>
+		<data>
+		k86o7w8VdSuaA2sufQ0yoQRdEbU=
+		</data>
 		<key>Headers/KSYGPUBeautifyFilter.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			dqme10Xt8tnAzNQH98mPwgAf9ZE=
-			</data>
-			<key>hash2</key>
-			<data>
-			ZfbAvTkJ+7APU0BYpD1nfWFtrlfTnr5uzOMjsSHGllE=
-			</data>
-		</dict>
+		<data>
+		dqme10Xt8tnAzNQH98mPwgAf9ZE=
+		</data>
 		<key>Headers/KSYGPUBeautifyPlusFilter.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			rzGZvAXT6vkLFe2jcIkyULrBl7w=
-			</data>
-			<key>hash2</key>
-			<data>
-			KB+1m4783bMJHelirBsyNsWFKTCIYqZPHzBrLyyzTHo=
-			</data>
-		</dict>
+		<data>
+		rzGZvAXT6vkLFe2jcIkyULrBl7w=
+		</data>
 		<key>Headers/KSYGPUBeautifyPlusFilter_t.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			TJDhRnm0RwufxP0cw3/do6k4djs=
-			</data>
-			<key>hash2</key>
-			<data>
-			+FTSKnCLCCDoS+vSfNk3WHdhJP4PkwkA6r1fWFRH6Dg=
-			</data>
-		</dict>
+		<data>
+		TJDhRnm0RwufxP0cw3/do6k4djs=
+		</data>
 		<key>Headers/KSYGPUCamera.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			iFizz4PJhetA/SWRib6Z6QyIwZU=
-			</data>
-			<key>hash2</key>
-			<data>
-			V16iFQGs4IAm9eakCBasW/k1LoYZe8TWl9MZsi0oGKA=
-			</data>
-		</dict>
+		<data>
+		bN4AxgneiA4Sm/ej+HFvHt347pg=
+		</data>
 		<key>Headers/KSYGPUDnoiseFilter.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			Y1UGJpWUotvgtaYyanl36wiG6iU=
-			</data>
-			<key>hash2</key>
-			<data>
-			68NTEQ0GB2KnxAkyLa7YVpOo0NHu3hoTCWcQMq4ygrc=
-			</data>
-		</dict>
+		<data>
+		Y1UGJpWUotvgtaYyanl36wiG6iU=
+		</data>
+		<key>Headers/KSYGPUPipBlendFilter.h</key>
+		<data>
+		FotQw7XYIQQAcaZNagsj5wcrUoM=
+		</data>
 		<key>Headers/KSYGPUSkinWhiteFilter.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			c9RMtPnm1jWCPLu+8vuKULEfp9o=
-			</data>
-			<key>hash2</key>
-			<data>
-			XLlMeE2SeG+T/lrceqXlo9G4mq51wlKc6w/bkpfNOlU=
-			</data>
-		</dict>
+		<data>
+		c9RMtPnm1jWCPLu+8vuKULEfp9o=
+		</data>
 		<key>Headers/KSYGPUStreamer.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			FDabFsNoAS59yuLpWSprCGT30uk=
-			</data>
-			<key>hash2</key>
-			<data>
-			IL14Oq0Pkw64kIJ3Qr3nIzfupqilQK1bv/nl5hyx+dU=
-			</data>
-		</dict>
+		<data>
+		H/2S8D01+qvHb5nEuEo5Bl5+HgY=
+		</data>
 		<key>Headers/KSYGPUStreamerKit.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			/NQSwZlz/M7op5G9tp3mScnuZs8=
-			</data>
-			<key>hash2</key>
-			<data>
-			GRZWaXFxmptJsJL0IotchuDV/ZdotTHFsjDXrzhlAdY=
-			</data>
-		</dict>
+		<data>
+		wQqmoHiR9ZE9zukMXvpyHQt65M4=
+		</data>
+		<key>Headers/KSYGPUYUVInput.h</key>
+		<data>
+		uPpdrSDs1yNWUiA8WHlN3jQtwd4=
+		</data>
 		<key>Headers/KSYMediaPlayback.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			SE0jttjHQBC2/BoMJiOE9sHHSk8=
-			</data>
-			<key>hash2</key>
-			<data>
-			AD5pgPTte880nDgM3QklrcC2N1FOWSBjfbft+goIVZ8=
-			</data>
-		</dict>
+		<data>
+		SE0jttjHQBC2/BoMJiOE9sHHSk8=
+		</data>
 		<key>Headers/KSYMediaPlayer.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			BzXxLyN1WAUTAAx2uDIWwQfj8jw=
-			</data>
-			<key>hash2</key>
-			<data>
-			FGTS3jAcLdCK1BLjpwxrRPmNjCSPkl54vzJS5KgiX3I=
-			</data>
-		</dict>
+		<data>
+		nu62cvU1U2fm7AyDEZp9OYS5tjA=
+		</data>
 		<key>Headers/KSYMoviePlayerController.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			vnpSYwjlPEi3lNLQoFq1c2r6YBg=
-			</data>
-			<key>hash2</key>
-			<data>
-			INPWd3QY4aVscRpB42MR8UUYmCEHU9kTz8NQIudx6h8=
-			</data>
-		</dict>
+		<data>
+		jLWoRGqrwezPg4F1DaUpNbuk25k=
+		</data>
 		<key>Headers/KSYPlayerAuth.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			JM5yh6ys+RSrgBXgtBcIqXhaqXs=
-			</data>
-			<key>hash2</key>
-			<data>
-			Io4Y58pXymBc8Uu+kWjdBkVgKI6XxoVKzM67W682VCM=
-			</data>
-		</dict>
+		<data>
+		JM5yh6ys+RSrgBXgtBcIqXhaqXs=
+		</data>
 		<key>Headers/KSYQosInfo.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			4R8xOKdhadVApriBeN2JcGbBwlU=
-			</data>
-			<key>hash2</key>
-			<data>
-			JM1p123ToRnPEyLf4mqhBB9VagLhJMhp8jELWAQvtig=
-			</data>
-		</dict>
+		<data>
+		4R8xOKdhadVApriBeN2JcGbBwlU=
+		</data>
 		<key>Headers/KSYStreamer.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			rsi9+h6pxadZ3nveHHr/LdGy6Y0=
-			</data>
-			<key>hash2</key>
-			<data>
-			0FowBmr3dXQNFfHsAjti/NMzunK4LwvNLNcCvHQFmLo=
-			</data>
-		</dict>
+		<data>
+		rsi9+h6pxadZ3nveHHr/LdGy6Y0=
+		</data>
 		<key>Headers/KSYStreamerBase.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			S8RDYTyrjw/jMw78gu0WAxGkpO8=
-			</data>
-			<key>hash2</key>
-			<data>
-			oTSuoMSmMbNGMpAFGH2oohkxvfHqIvkU318z76DXRyM=
-			</data>
-		</dict>
+		<data>
+		7jOmh8G0YtcfzIYJnbxjKvxzNjM=
+		</data>
 		<key>Headers/KSYTypeDef.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			i7BLaNbbWlTCa/t3wKG8O+w1RKM=
-			</data>
-			<key>hash2</key>
-			<data>
-			lIxGvaM6mSRftpej0ntzafB0hM/+kotYIsfJQjaO8zo=
-			</data>
-		</dict>
+		<data>
+		2cMwyWpyLG43t7mhPI+MZzfoP1g=
+		</data>
 		<key>Headers/libksygpuimage.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			D5e1wM96QVnSeST60UgsXpEQhrs=
-			</data>
-			<key>hash2</key>
-			<data>
-			M5AFoJ/fGix3xmcY8ZViWldEFYTOZFItEo8qx7ERd8Y=
-			</data>
-		</dict>
+		<data>
+		VLxG4vGcMcgkSdVsshLkK5S6QW0=
+		</data>
 		<key>Headers/libksygpulive.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			dMS2qILeGshm/6HWX2RoJyrm9gw=
-			</data>
-			<key>hash2</key>
-			<data>
-			t8VNNnqAWCHsKfIFJXaqoG8USr3iEnxVUD3B3VRwjqs=
-			</data>
-		</dict>
+		<data>
+		YWcBOFLwtT7hN4Q989cFLURgHRQ=
+		</data>
 		<key>Modules/module.modulemap</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			tNTGUaghlYivLL+hZHRELBPGv9M=
-			</data>
-			<key>hash2</key>
-			<data>
-			Q3b25cJbVpJl1iYh6+//AHeT412vFZmzeKUAs1vBrCA=
-			</data>
-		</dict>
+		<data>
+		tNTGUaghlYivLL+hZHRELBPGv9M=
+		</data>
 	</dict>
 	<key>rules</key>
 	<dict>

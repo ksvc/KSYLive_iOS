@@ -101,6 +101,7 @@
  @see AVCaptureTorchMode
  */
 - (void) setTorchMode: (AVCaptureTorchMode)mode;
+- (void) setAVAudioSessionOption;
 
 /**
  @abstract  判断是否运行
@@ -125,4 +126,5 @@
  @see CMSampleBufferRef
  */
 @property(nonatomic, copy) void(^videoProcessingCallback)(CMSampleBufferRef sampleBuffer);
+
 @end

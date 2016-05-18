@@ -8,6 +8,7 @@
 
 #import "KSYMediaPlayback.h"
 #import "KSYQosInfo.h"
+#import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 /**
  金山云播放内核提供了跨终端平台的播放器SDK，支持Android/iOS/Flash平台的视频播放需求。金山云播放内核集成有业界一流的高性能H.265/HEVC解码器，提供流畅、低功耗的播放体验。同时SDK提供和系统播放器一致的音视频播放、控制接口，极大地降低了开发门槛。
@@ -20,15 +21,15 @@
  * 支持rmvb/flv/avi/mkv/mov等主流封装格式；
  * 支持HLS/rtmp协议；
  * 完美支持rtmp/http live streaming，结合金山云直播流动态调整功能，实现持续低于2秒的低延时直播体验。
-
+ 
  ## 环境搭建
  KSYMoviePlayerController依赖如下第三方库：
-
+ 
  * VideoToolbox.framework
  * libz.tbd or libz.dylib
  * libbz2.tbd or libbz2.dylib
  * libstdc++.tbd or libstdc++.dylib
-
+ 
  ## 使用说明
  
  * 开发IDE建议使用Xcode 7，在旧版本Xcode上可能出现其他异常，请直接联系客服人员。
@@ -46,8 +47,12 @@
  
  */
 
+typedef void (^KSYPlyVideoDataBlock)(CVPixelBufferRef pixelBuffer);
+
+typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
+
 @interface KSYMoviePlayerController : NSObject <KSYMediaPlayback>
-#pragma mark MPMoviePlayerController 
+#pragma mark MPMoviePlayerController
 
 /**
  @abstract 初始化播放器并设置播放地址
@@ -81,7 +86,7 @@
  
  * 可以通过frame设置view大大小
  * 使用[scalingMode]([KSYMoviePlayerController scalingMode]) 可以更改视频内容在VIEW中的显示情况
-
+ 
  @see scalingMode
  */
 // The view in which the media and playback controls are displayed.
@@ -99,12 +104,12 @@
  
  <pre><code>
  typedef NS_ENUM(NSInteger, MPMoviePlaybackState) {
-    MPMoviePlaybackStateStopped,           // 播放停止
-    MPMoviePlaybackStatePlaying,           // 正在播放
-    MPMoviePlaybackStatePaused,            // 播放暂停
-    MPMoviePlaybackStateInterrupted,       // 播放被打断
-    MPMoviePlaybackStateSeekingForward,    // 向前seeking中
-    MPMoviePlaybackStateSeekingBackward    // 向后seeking中
+ MPMoviePlaybackStateStopped,           // 播放停止
+ MPMoviePlaybackStatePlaying,           // 正在播放
+ MPMoviePlaybackStatePaused,            // 播放暂停
+ MPMoviePlaybackStateInterrupted,       // 播放被打断
+ MPMoviePlaybackStateSeekingForward,    // 向前seeking中
+ MPMoviePlaybackStateSeekingBackward    // 向后seeking中
  } NS_DEPRECATED_IOS(3_2, 9_0);
  </code></pre>
  @discussion 通知：
@@ -124,10 +129,10 @@
  
  <pre><code>
  typedef NS_OPTIONS(NSUInteger, MPMovieLoadState) {
-    MPMovieLoadStateUnknown        = 0,        // 加载情况未知
-    MPMovieLoadStatePlayable       = 1 << 0,   // 加载完成，可以播放
-    MPMovieLoadStatePlaythroughOK  = 1 << 1,   // 加载完成，如果shouldAutoplay为YES，将自动开始播放
-    MPMovieLoadStateStalled        = 1 << 2,   // 如果视频正在加载中
+ MPMovieLoadStateUnknown        = 0,        // 加载情况未知
+ MPMovieLoadStatePlayable       = 1 << 0,   // 加载完成，可以播放
+ MPMovieLoadStatePlaythroughOK  = 1 << 1,   // 加载完成，如果shouldAutoplay为YES，将自动开始播放
+ MPMovieLoadStateStalled        = 1 << 2,   // 如果视频正在加载中
  } NS_DEPRECATED_IOS(3_2, 9_0);
  </code></pre>
  @discussion 通知：
@@ -157,13 +162,13 @@
  
  <pre><code>
  typedef NS_ENUM(NSInteger, MPMovieScalingMode) {
-    MPMovieScalingModeNone,       // 无缩放
-    MPMovieScalingModeAspectFit,  // 同比适配，某个方向会有黑边
-    MPMovieScalingModeAspectFill, // 同比填充，某个方向的显示内容可能被裁剪
-    MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
+ MPMovieScalingModeNone,       // 无缩放
+ MPMovieScalingModeAspectFit,  // 同比适配，某个方向会有黑边
+ MPMovieScalingModeAspectFill, // 同比填充，某个方向的显示内容可能被裁剪
+ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
  } NS_DEPRECATED_IOS(2_0, 9_0);
  </code></pre>
-
+ 
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 // Determines how the content scales to fit the view. Defaults to MPMovieScalingModeAspectFit.
@@ -172,7 +177,7 @@
 /**
  @abstract 当前视频总时长
  @discussion 视频总时长，单位是秒。
-
+ 
  * 如果是直播视频源，总时长为0.
  * 如果该信息未知，总时长默认为0.
  @since Available in KSYMoviePlayerController 1.0 and later.
@@ -195,7 +200,7 @@
 /**
  @abstract 收集日志的状态，默认开启
  @discussion 可开关
-  @since Available in KSYMoviePlayerController 1.0 and later.
+ @since Available in KSYMoviePlayerController 1.0 and later.
  */
 @property (nonatomic, assign) BOOL shouldEnableKSYStatModule;
 
@@ -207,39 +212,14 @@
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 @property (nonatomic, readonly) CGSize naturalSize;
+
+#pragma mark KSYMoviePlayerController New Feature
 /**
  @abstract 获取播放器日志
  @discussion 相关字段说明请联系金山云技术支持
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 @property (nonatomic, copy)void (^logBlock)(NSString *logJson);
-
-// Posted when the playback state changes, either programatically or by the user.
-MP_EXTERN NSString * const MPMoviePlayerPlaybackStateDidChangeNotification;
-
-// Posted when movie playback ends or a user exits playback.
-MP_EXTERN NSString * const MPMoviePlayerPlaybackDidFinishNotification;
-
-MP_EXTERN NSString * const MPMoviePlayerPlaybackDidFinishReasonUserInfoKey; // NSNumber (MPMovieFinishReason)
-
-// Posted when the network load state changes.
-MP_EXTERN NSString * const MPMoviePlayerLoadStateDidChangeNotification;
-
-MP_EXTERN NSString * const MPMovieNaturalSizeAvailableNotification;
-
-MP_EXTERN NSString * const MPMoviePlayerFirstVideoFrameRenderedNotification;
-
-MP_EXTERN NSString * const MPMoviePlayerFirstAudioFrameRenderedNotification;
-
-MP_EXTERN const NSString *const kKSYPLYFormat;
-
-MP_EXTERN const NSString *const kKSYPLYHttpFirstDataTime;
-
-MP_EXTERN const NSString *const kKSYPLYHttpAnalyzeDns;
-
-MP_EXTERN const NSString *const kKSYPLYHttpConnectTime;
-
-#pragma mark KSYMoviePlayerController New Feature
 
 /**
  @abstract bufferTimeMax指定直播流播放时的最大缓冲时长，单位为秒。
@@ -250,15 +230,6 @@ MP_EXTERN const NSString *const kKSYPLYHttpConnectTime;
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 @property NSTimeInterval bufferTimeMax;
-/**
- @abstract 当前播放器是否在播放
- @warning 该方法由金山云引入，不是原生系统接口
- @return 获取[playbackState]([KSYMoviePlayerController playbackState])信息，如果当前状态为MPMoviePlaybackStatePlaying，则返回TRUE。其他情况返回FASLE。
- @see playbackState
- @since Available in KSYMoviePlayerController 1.0 and later.
- */
-// A description of the error encountered.
-- (BOOL)isPlaying;
 
 /**
  @abstract 已经加载的数据大小
@@ -330,12 +301,68 @@ MP_EXTERN const NSString *const kKSYPLYHttpConnectTime;
 @property(nonatomic)  BOOL  shouldEnableVideoPostProcessing;
 
 /**
+ @abstract 是否开启硬件解码
+ @discussion 默认是关闭
+ * 只在[prepareToPlay]([KSYMediaPlayback prepareToPlay]) 调用前设置生效；
+ @since Available in KSYMoviePlayerController 1.3.1 and later.
+ */
+@property(nonatomic) BOOL shouldUseHWCodec;
+
+/**
+ @abstract 是否静音
+ @discussion 默认不静音
+ * 只在[prepareToPlay]([KSYMediaPlayback prepareToPlay]) 调用前设置生效；
+ @since Available in KSYMoviePlayerController 1.3.1 and later.
+ */
+@property(nonatomic) BOOL shouldMute;
+
+/**
+ @abstract 是否循环播放
+ @discussion 默认不循环
+ * 只在[prepareToPlay]([KSYMediaPlayback prepareToPlay]) 调用前设置生效；
+ 只有点播生效
+ @since Available in KSYMoviePlayerController 1.3.1 and later.
+ */
+@property(nonatomic) BOOL shouldLoop;
+
+/**
+ @abstract 视频数据回调
+ @discussion
+ 调用[prepareToPlay]([KSYMediaPlayback prepareToPlay])方法之前设置生效，回调数据为同步完成后的数据
+ @since Available in KSYMoviePlayerController 1.3.3 and later.
+ @see CVPixelBufferRef
+ */
+@property (nonatomic, copy)KSYPlyVideoDataBlock videoDataBlock;
+
+/**
+ @abstract 音频数据回调
+ @discussion
+ 调用[prepareToPlay]([KSYMediaPlayback prepareToPlay])方法之前设置生效，回调数据为同步完成后的数据
+ @since Available in KSYMoviePlayerController 1.3.3 and later.
+ @see CMSampleBufferRef
+ */
+@property (nonatomic, copy)KSYPlyAudioDataBlock audioDataBlock;
+
+/**
  @abstract timeout指定拉流超时时间,单位是秒。
  @warning 该方法由金山云引入，不是原生系统接口
  * 默认值为30秒。
  @since Available in KSYMoviePlayerController 1.3.1 and later.
  */
 - (void)setTimeout:(int)timeout;
+
+/**
+ @abstract setVolume指定播放器输出音量。
+ @param leftVolume  left volume scalar  [0~1.0f]
+ @param rightVolume right volume scalar [0~1.0f]
+ @discussion
+ 1.输入参数超出范围将失效
+ 2.输出到speaker时需同时设置左右音量为有效值
+    如：leftVolume ＝ rightVolume ＝ 0.5f
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 1.3.3 and later.
+ */
+-(void)setVolume:(float)leftVolume rigthVolume:(float)rightVolume;
 
 /**
  @abstract 获取sdk版本。
@@ -347,23 +374,26 @@ MP_EXTERN const NSString *const kKSYPLYHttpConnectTime;
 /**
  @abstract 获取播放流版本。
  @warning 该方法由金山云引入，不是原生系统接口
- @discussion 
+ @discussion
  *收到MPMediaPlaybackIsPreparedToPlayDidChangeNotification通知后才能获取到数据
  *暂时支持的查询包括
-    kKSYPLYFormat
-    kKSYPLYHttpFirstDataTime
-    kKSYPLYHttpConnectTime
-    kKSYPLYHttpAnalyzeDns
+ kKSYPLYFormat
+ kKSYPLYHttpFirstDataTime
+ kKSYPLYHttpConnectTime
+ kKSYPLYHttpAnalyzeDns
  @since Available in KSYMoviePlayerController 1.3.1 and later.
  */
 - (NSDictionary *)getMetadata;
+
 /**
- @abstract 是否开启硬件解码
- @discussion 默认是关闭
- * 只在[prepareToPlay]([KSYMediaPlayback prepareToPlay]) 调用前设置生效；
- @since Available in KSYMoviePlayerController 1.3.1 and later.
+ @abstract 当前播放器是否在播放
+ @warning 该方法由金山云引入，不是原生系统接口
+ @return 获取[playbackState]([KSYMoviePlayerController playbackState])信息，如果当前状态为MPMoviePlaybackStatePlaying，则返回TRUE。其他情况返回FASLE。
+ @see playbackState
+ @since Available in KSYMoviePlayerController 1.0 and later.
  */
-@property(nonatomic) BOOL shouldUseHWCodec;
+// A description of the error encountered.
+- (BOOL)isPlaying;
 
 /**
  @abstract 重新启动拉流
@@ -380,3 +410,29 @@ MP_EXTERN const NSString *const kKSYPLYHttpConnectTime;
 - (void)reload:(NSURL *)aUrl;
 
 @end
+
+
+// Posted when the playback state changes, either programatically or by the user.
+MP_EXTERN NSString * const MPMoviePlayerPlaybackStateDidChangeNotification;
+
+// Posted when movie playback ends or a user exits playback.
+MP_EXTERN NSString * const MPMoviePlayerPlaybackDidFinishNotification;
+
+MP_EXTERN NSString * const MPMoviePlayerPlaybackDidFinishReasonUserInfoKey; // NSNumber (MPMovieFinishReason)
+
+// Posted when the network load state changes.
+MP_EXTERN NSString * const MPMoviePlayerLoadStateDidChangeNotification;
+
+MP_EXTERN NSString * const MPMovieNaturalSizeAvailableNotification;
+
+MP_EXTERN NSString * const MPMoviePlayerFirstVideoFrameRenderedNotification;
+
+MP_EXTERN NSString * const MPMoviePlayerFirstAudioFrameRenderedNotification;
+
+MP_EXTERN const NSString *const kKSYPLYFormat;
+
+MP_EXTERN const NSString *const kKSYPLYHttpFirstDataTime;
+
+MP_EXTERN const NSString *const kKSYPLYHttpAnalyzeDns;
+
+MP_EXTERN const NSString *const kKSYPLYHttpConnectTime;

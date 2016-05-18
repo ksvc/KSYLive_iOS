@@ -1,10 +1,12 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
-#import "KSYStreamerBase.h"
+
 
 @class KSYGPUCamera;
 @class GPUImageFilter;
 @class GPUImageView;
+@class KSYAudioMixer;
+@class KSYBgmPlayer;
 
 @interface KSYGPUStreamerKit : NSObject
 /**
@@ -256,6 +258,37 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  @abstract   获取SDK版本号
  */
 - (NSString*) getKSYVersion;
+
+#pragma mark - player and mixer
+/**
+ @abstract  背景音乐播放器
+ */
+@property (nonatomic, readonly) KSYBgmPlayer*   bgmPlayer;
+
+/**
+ @abstract  混音调节器
+ */
+@property (nonatomic, readonly) KSYAudioMixer * audioMixer;
+
+/**
+ @abstract  麦克风 的trackID
+ */
+@property (nonatomic, readonly) int  micTrack;
+
+/**
+ @abstract  背景音乐 的trackID
+ */
+@property (nonatomic, readonly) int  bgmTrack;
+
+/**
+ @abstract 预览设置成镜像模式
+ */
+@property (nonatomic, assign) BOOL previewMirrored;
+
+/**
+ @abstract 推流设置成镜像模式
+ */
+@property (nonatomic, assign) BOOL streamerMirrored;
 
 
 @end

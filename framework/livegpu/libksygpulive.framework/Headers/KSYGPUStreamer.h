@@ -14,7 +14,6 @@
  */
 - (instancetype) initWithDefaultCfg;
 
-
 #pragma mark - get sub modules
 /**
  @abstract   获取初始化时创建的底层推流工具
@@ -33,4 +32,14 @@
  @abstract   GPUImageInput - (BOOL)enabled;
  */
 @property(nonatomic) BOOL enabled;
+
+#pragma mark - raw data
+/**
+ @abstract   视频处理回调接口
+ @param      pixelBuffer 美颜处理后，编码之前的视频数据
+ @param      timeInfo    时间戳
+ @warnning   请注意本函数的执行时间，如果太长可能导致不可预知的问题
+ @see        CVPixelBufferRef
+ */
+@property(nonatomic, copy) void(^videoProcessingCallback)(CVPixelBufferRef pixelBuffer, CMTime timeInfo );
 @end
