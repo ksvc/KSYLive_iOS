@@ -13,7 +13,7 @@
 
 @interface KSYStreamerKitVC ()
 {
-    UIView   *_controlView;
+    
     UIButton *_btnMusicPlay;
     UIButton *_btnMusicPause;
     UIButton *_btnMusicMix;
@@ -43,6 +43,8 @@
 
     UISwitch *_btnHighRes;
     UILabel  *_lblHighRes;
+    UIProgressView* _progressView;
+
     
     // status monitor
     double    _lastSecond;
@@ -56,7 +58,12 @@
     int       _raiseCnt;
     int       _dropCnt;
     double    _startTime;
+    
+    
+    
+    UIView   *_controlView;
     UIImageView *_foucsCursor;
+    CGFloat _initialPinchZoom;
 }
 
 // kit =  KSYGPUCamera + KSYGPUStreamer
@@ -174,6 +181,10 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
                                              selector:@selector(onNetStateEvent:)
                                                  name:KSYNetStateEventNotification
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onAudioStateChange:)
+                                                 name:KSYAudioStateDidChangeNotification
+                                               object:nil];
 }
 - (void) rmObservers {
     if (_timer) {
@@ -188,6 +199,9 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
                                                   object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:KSYNetStateEventNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:KSYAudioStateDidChangeNotification
                                                   object:nil];
 }
 
@@ -296,13 +310,19 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     [self.view addSubview:_stat];
     _stat.backgroundColor = [UIColor clearColor];
     _stat.textColor = [UIColor redColor];
-    _stat.lineBreakMode = UILineBreakModeWordWrap;
+    _stat.lineBreakMode = NSLineBreakByWordWrapping;
     _stat.numberOfLines = 0;
     _stat.textAlignment = NSTextAlignmentLeft;
 
     
     self.view.backgroundColor = [UIColor whiteColor];
     _netEventRaiseDrop = @"";
+    
+    
+    _progressView = [[UIProgressView alloc]init];
+    _progressView.progressViewStyle= UIProgressViewStyleDefault;
+    [_controlView addSubview:_progressView];
+
     [self layoutUI];
 }
 
@@ -353,6 +373,8 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     _micVolS.frame    = CGRectMake(xMiddle, yPos, btnWdt, btnHgt);
     _btnMute.frame    = CGRectMake(xRight,  yPos, btnWdt, btnHgt);
     
+    _progressView.frame   = CGRectMake(xLeft, yPos+btnHgt+5, btnWdt, btnHgt);
+    
     yPos += (btnHgt+20);
     _btnFilters[0].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
     _startReverb.frame = CGRectMake(xRight,   yPos, btnWdt, btnHgt);
@@ -372,7 +394,7 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     _stat.frame = CGRectMake(gap, 20 , btnWdt, hgt - 20);
 }
 
-#pragma mark - stream setup (采集推流参数设置)
+#pragma mark - stream setup (采集推流参数设置)目前的分辨率有两级 960X540 和 640X360即横款比例
 - (void) setCaptureCfg {
     // capture settings
     if (_btnHighRes.on ) {
@@ -387,6 +409,7 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
 //        processVideo(sampleBuffer);
     };
     [self setVideoOrientation];
+    _kit.previewMirrored = YES;
 }
 - (void) setStreamerCfg {
     // stream settings
@@ -423,7 +446,7 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
 
 #pragma mark - UI responds
 - (IBAction)onQuit:(id)sender {
-    [_kit.streamerBase stopMixMusic];
+    [_kit.bgmPlayer stopPlayBgm];
     [_kit.streamerBase stopStream];
     [_kit stopPreview];
     [self rmObservers];  // need remove observers to dealloc
@@ -442,7 +465,8 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     if ( _kit.captureState != KSYCaptureStateCapturing ) {
         [self setCaptureCfg]; // update capture settings
         [_kit startPreview: self.view];
-        [UIApplication sharedApplication].idleTimerDisabled=YES;
+        [UIApplication sharedApplication].idleTimerDisabled=YES;//idleTimerDisable禁止锁屏
+        [self addPinchGestureRecognizer];
     }
     else {
         [_kit stopPreview];
@@ -490,12 +514,9 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     _foucsCursor.center = current;
     _foucsCursor.transform = CGAffineTransformMakeScale(1.5, 1.5);
     _foucsCursor.alpha=1.0;
-    [UIView animateWithDuration:1.0 animations:^{
-        _foucsCursor.transform=CGAffineTransformIdentity;
-    } completion:^(BOOL finished) {
-        _foucsCursor.alpha=0;
-        
-    }];
+    NSError __autoreleasing *error;
+    [self focusAtPoint:current error:&error];
+
 }
 //- (IBAction)onTap:(id)sender {
 //    CGPoint point = [sender locationInView:self.view];
@@ -506,20 +527,57 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
 //    [self focusAtPoint:tap error:&error];
 //}
 //
-//- (BOOL)focusAtPoint:(CGPoint )point error:(NSError *__autoreleasing* )error
-//{
-//    AVCaptureDevice *dev = [_kit getCurrentCameraDevices];
-//    if ([dev isFocusPointOfInterestSupported] && [dev isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
-//        if ([dev lockForConfiguration:error]) {
-//            [dev setFocusPointOfInterest:point];
-//            [dev setFocusMode:AVCaptureFocusModeAutoFocus];
-//            NSLog(@"Focusing..");
-//            [dev unlockForConfiguration];
-//            return YES;
-//        }
-//    }
-//    return NO;
-//}
+- (BOOL)focusAtPoint:(CGPoint )point error:(NSError *__autoreleasing* )error
+{
+    AVCaptureDevice *dev = [_kit getCurrentCameraDevices];
+    if ([dev isFocusPointOfInterestSupported] && [dev isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
+        if ([dev lockForConfiguration:error]) {
+            [dev setFocusPointOfInterest:point];
+            [dev setFocusMode:AVCaptureFocusModeAutoFocus];
+            [UIView animateWithDuration:1.0 animations:^{
+                _foucsCursor.transform=CGAffineTransformIdentity;
+            } completion:^(BOOL finished) {
+                _foucsCursor.alpha=0;
+                
+            }];
+            [dev unlockForConfiguration];
+            return YES;
+        }
+    }
+    return NO;
+}
+/**
+ *  添加缩放手势，缩放时镜头放大或缩小，
+ */
+- (void)addPinchGestureRecognizer{
+    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(pinchDetected:)];
+    [_kit.preview addGestureRecognizer:pinch];
+}
+- (void)pinchDetected:(UIPinchGestureRecognizer *)recognizer{
+    AVCaptureDevice *captureDevice= _kit.capDev.inputCamera;
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        _initialPinchZoom = captureDevice.videoZoomFactor;
+    }
+    NSError *error = nil;
+    [captureDevice lockForConfiguration:&error];
+    
+    if (!error) {
+        CGFloat zoomFactor;
+        CGFloat scale = recognizer.scale;
+        if (scale < 1.0f) {
+            zoomFactor = _initialPinchZoom - pow(captureDevice.activeFormat.videoMaxZoomFactor, 1.0f - recognizer.scale);
+        }else{
+            zoomFactor = _initialPinchZoom + pow(captureDevice.activeFormat.videoMaxZoomFactor, (recognizer.scale - 1.0f)/2.0);
+        }
+        zoomFactor = MIN(10.0f, zoomFactor);
+        zoomFactor = MAX(1.0f,  zoomFactor);
+        
+        captureDevice.videoZoomFactor = zoomFactor;
+        
+        [captureDevice unlockForConfiguration];
+    }
+}
+
 -(IBAction)OnChoseFilter:(id)sender {
     for (int b = 0; b < 4; ++b) {
         if (sender == _btnFilters[b]) {
@@ -570,13 +628,13 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     i = !i;
     if (i) {
         NSLog(@"bgm start %@", testMp3);
-        _kit.streamerBase.bgmFinishBlock = ^{
+        _kit.bgmPlayer.bgmFinishBlock = ^{
             NSLog(@"bgm over %@", testMp3);
         };
-        [_kit.streamerBase startMixMusic:testMp3 isLoop:NO];
+        [_kit.bgmPlayer startPlayBgm:testMp3 isLoop:NO];
     }
     else {
-        [_kit.streamerBase stopMixMusic];
+        [_kit.bgmPlayer stopPlayBgm];
     }
 }
 
@@ -584,29 +642,28 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     static int i = 0;
     i = !i;
     if (i) {
-        [_kit.streamerBase pauseMixMusic];
+        [_kit.bgmPlayer pauseBgm];
     }
     else {
-        [_kit.streamerBase resumeMixMusic];
+        [_kit.bgmPlayer resumeBgm];
     }
 }
 
 - (IBAction)onMusicMix:(id)sender {
-    static BOOL i = NO;
-    i = !i;
-    [_kit.streamerBase enableMicMixMusic:i];
+    if (_kit && _kit.audioMixer){
+        BOOL enMix = [_kit.audioMixer getTrackEnable:_kit.bgmTrack];
+        [_kit.audioMixer setTrack:_kit.bgmTrack enable: !enMix];
+    }
 }
-
 
 - (IBAction)onVolChanged:(id)sender {
     if (sender == _bgmVolS) {
-        [_kit.streamerBase setBgmVolume:_bgmVolS.value];
+        [_kit.audioMixer setMixVolume:_bgmVolS.value of:_kit.bgmTrack];
     }
     else if (sender == _micVolS) {
-        [_kit.streamerBase setMicVolume:_micVolS.value];
+        [_kit.audioMixer setMixVolume:_micVolS.value of:_kit.micTrack];
     }
 }
-
 
 - (IBAction)onStreamMute:(id)sender {
     static BOOL i = NO;
@@ -647,6 +704,8 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
 }
 
 - (void)updateStat:(NSTimer *)theTimer{
+    
+    _progressView.progress = _kit.bgmPlayer.bgmProcess;
     if (_kit.streamerBase.streamState == KSYStreamStateConnected ) {
         
         int    KB          = [_kit.streamerBase uploadedKByte];
@@ -787,6 +846,25 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
         _netTimeOut = 5;
         NSLog(@"bitrate dropping" );
     }
+}
+
+- (void) onAudioStateChange:(NSNotification *)notification {
+   if(_kit.bgmPlayer.bgmPlayerState == KSYBgmPlayerStateStopped)
+   {
+       NSLog(@"Audio stoped");
+   }
+   else if(_kit.bgmPlayer.bgmPlayerState == KSYBgmPlayerStatePlaying)
+   {
+       NSLog(@"Audio started");
+   }
+   else if(_kit.bgmPlayer.bgmPlayerState ==KSYBgmPlayerStatePaused)
+   {
+        NSLog(@"Audio paused");
+   }
+   else if(_kit.bgmPlayer.bgmPlayerState ==KSYBgmPlayerStateError)
+   {
+       NSLog(@"audio error,errorcode is %d",(int)_kit.bgmPlayer.audioErrorCode);
+   }
 }
 
 - (void) onStreamStateChange:(NSNotification *)notification {

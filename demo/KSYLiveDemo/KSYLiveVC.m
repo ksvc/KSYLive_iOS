@@ -7,12 +7,12 @@
 //
 
 #import "KSYLiveVC.h"
-#import "KSYStreamerVC.h"
 #import "KSYStreamerKitVC.h"
 #import "KSYGPUStreamerVC.h"
 #import "QRViewController.h"
 #import "KSYPlayerVC.h"
 #import "KSYSQLite.h"
+#import "KSYDBCreater.h"
 @interface KSYLiveVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>{
     UITextField     *_textFiled;
     UIButton        *_buttonQR;
@@ -193,8 +193,7 @@
 }
 - (void)closeKeyBoard{
     [_textFiled resignFirstResponder];
-    KSYSQLite *sqlite = [KSYSQLite sharedInstance];
-    [sqlite insertAddress:_textFiled.text];
+    [[KSYSQLite sharedInstance] insertAddress:_textFiled.text];
 }
 - (void)scanQR{
     
@@ -219,8 +218,7 @@
 }
 
 - (void)myReloadData{
-    KSYSQLite *ksysqlite = [KSYSQLite sharedInstance];
-    NSArray *addressArray = [ksysqlite getAddress];
+    NSArray *addressArray = [[KSYSQLite sharedInstance] getAddress];;
     _addressMulArray = [NSMutableArray array];
     for(NSDictionary *dic in addressArray){
         NSString *address = [dic objectForKey:@"address"];

@@ -2,7 +2,7 @@
 //  KSYSQLite.m
 //  KSYLiveDemo
 //
-//  Created by 孙健 on 16/4/13.
+//  Created by ksy on 16/4/13.
 //  Copyright © 2016年 qyvideo. All rights reserved.
 //
 
@@ -29,28 +29,28 @@
     if (self) {
         //打开数据库
         [self openDb:kDatabaseName];
-        //并创建一个表格
-        [self createTable];
     }
     return self;
 }
 - (void)openDb:(NSString *)dataName{
     //取得数据库保存路径，通常保存沙盒Documents目录
     NSString *directory=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    NSLog(@"%@",directory);
     NSString *filePath=[directory stringByAppendingPathComponent:dataName];
     //如果有数据库则直接打开，否则创建并打开（注意filePath是ObjC中的字符串，需要转化为C语言字符串类型）
     if (SQLITE_OK ==sqlite3_open(filePath.UTF8String, &_database)) {
-        NSLog(@"数据库打开成功!");
+        return ;
     }else{
-        NSLog(@"数据库打开失败!");
+        NSLog(@"open sqlite dadabase fail!");
     }
 }
 -(void)executeNonQuery:(NSString *)sql{
     char *error;
     //单步执行sql语句，用于插入、修改、删除
-    if (SQLITE_OK!=sqlite3_exec(_database, sql.UTF8String, NULL, NULL,&error)) {
-        NSLog(@"执行SQL语句过程中发生错误！错误信息：%s",error);
+    if (SQLITE_OK == sqlite3_exec(_database, sql.UTF8String, NULL, NULL,&error)) {
+        return;
+    }else{
+        NSLog(@"table creat error %s",error);
+        sqlite3_free(error);//每次使用完毕清空error字符串，提供下次使用
     }
 }
 
@@ -78,11 +78,6 @@
     sqlite3_finalize(stmt);
     
     return rows;
-}
-- (void)createTable{
-    NSString *sql=@"CREATE TABLE Address (address text)";
-    [self executeNonQuery:sql];
-   
 }
 - (void)insertAddress:(NSString *)addr{
     NSString *sql=[NSString stringWithFormat:@"INSERT INTO Address (address) VALUES('%@')",addr];
