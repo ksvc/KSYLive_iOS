@@ -321,6 +321,16 @@ sampleBuffer 前处理，原始采集到的视频数据，即美颜之前的数�
 
 * 请注意以上两个函数的执行时间，如果太长可能导致不可预知的问题。
 
+###添加水印接口
+
+本SDK支持添加水印的功能，用户可以很方便的使用该接口添加水印。
+
+* 添加水印
+
+```
+[_kit addLogo:logoImage pos:size trans:1];//logo:输入得图片信息，pos:图片在视图的中的位置，trans:输入图片的透明度；
+[_kit addTimeLabel:TimeLabel];//TimeLabel:显示时间的Label，用户要对Label的基本属性进行设置（如demo中所示）。
+```
 
 ##播放器使用示例
 请见github库：https://github.com/ksvc/KSYMediaPlayer_iOS.git
