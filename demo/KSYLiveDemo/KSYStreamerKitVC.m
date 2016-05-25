@@ -40,6 +40,10 @@
 
     UIButton *_startReverb;
     UIButton *_stopReverb;
+    UIButton * _btnPreviewMirrored;
+    UIButton * _btnStreamerMirrored;
+    BOOL _previewMirrored;
+    BOOL _streamerMirrored;
 
     UISwitch *_btnHighRes;
     UILabel  *_lblHighRes;
@@ -106,6 +110,8 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     [self addfoucsCursor];
     [self addObservers ];
     [self setupLogo];
+    _previewMirrored = NO;
+    _streamerMirrored = NO;
     NSLog(@"version: %@", [_kit getKSYVersion]);
 }
 
@@ -146,19 +152,20 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
 {
     NSString *aPath3=[NSString stringWithFormat:@"%@/Documents/%@.png",NSHomeDirectory(),@"test"];
     UIImage *imgFromUrl3=[[UIImage alloc]initWithContentsOfFile:aPath3];
-    CGPoint size = CGPointMake(600, 10);
-    [_kit addLogo:imgFromUrl3 pos:size trans:1];
+    CGPoint size = CGPointMake(10, 10);
+    [_kit addLogo:imgFromUrl3 pos:size trans:0.0];
     
-    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(600,15+imgFromUrl3.size.height, 500, 10)];
+    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 500, 10)];
     label.textColor = [UIColor redColor];
     label.font = [UIFont systemFontOfSize:17.0];
     label.backgroundColor = [UIColor clearColor];
     label.hidden = NO;
+    label.alpha = 0.5;
     NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    dateFormatter.dateFormat = @"HH:mm:ss";
     NSDate *now = [[NSDate alloc] init];
     label.text = [dateFormatter stringFromDate:now];
-    [_kit addTimeLabel:label];
+    [_kit addTimeLabel:label dateFormat:dateFormatter.dateFormat];
 }
 
 - (void) addObservers {
@@ -288,6 +295,10 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     [_startReverb setTitle:SReverb  forState: UIControlStateNormal];
     _stopReverb = [self addButton:@"停止混响" action:@selector(onReverbStop:)];
     _iReverb    = 1;
+    _btnPreviewMirrored = [self addButton:@"预览镜像关" action:@selector(onPreviewMirror:)];
+    _btnPreviewMirrored.hidden = YES;
+    _btnStreamerMirrored= [self addButton:@"推流镜像关" action:@selector(onSteamerMirror:)];
+    _btnStreamerMirrored.hidden = YES;
     
     _btnMusicPlay  = [self addButton:@"播放"  action:@selector(onMusicPlay:)];
     _btnMusicPause = [self addButton:@"暂停"  action:@selector(onMusicPause:)];
@@ -373,18 +384,22 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     _micVolS.frame    = CGRectMake(xMiddle, yPos, btnWdt, btnHgt);
     _btnMute.frame    = CGRectMake(xRight,  yPos, btnWdt, btnHgt);
     
-    _progressView.frame   = CGRectMake(xLeft, yPos+btnHgt+5, btnWdt, btnHgt);
-    
-    yPos += (btnHgt+20);
+    _progressView.frame   = CGRectMake(xLeft, yPos+btnHgt+15, btnWdt, btnHgt);
+
+    yPos += (btnHgt+40);
     _btnFilters[0].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
     _startReverb.frame = CGRectMake(xRight,   yPos, btnWdt, btnHgt);
     
     yPos += (btnHgt+5);
     _btnFilters[1].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
+    _btnPreviewMirrored.frame= CGRectMake(xMiddle,   yPos, btnWdt, btnHgt);
     _stopReverb.frame = CGRectMake(xRight,   yPos, btnWdt, btnHgt);
+    
     yPos += (btnHgt+5);
     _btnFilters[2].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
+    _btnStreamerMirrored.frame= CGRectMake(xMiddle,   yPos, btnWdt, btnHgt);
     _btnSnapshot.frame =CGRectMake(xRight,   yPos, btnWdt, btnHgt);
+    
     yPos += (btnHgt+5);
     _btnFilters[3].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
     // top row 5
@@ -409,7 +424,6 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
 //        processVideo(sampleBuffer);
     };
     [self setVideoOrientation];
-    _kit.previewMirrored = YES;
 }
 - (void) setStreamerCfg {
     // stream settings
@@ -601,6 +615,7 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     }
     
     [_kit setupFilter:_filter];
+    
 }
 
 
@@ -621,6 +636,34 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     _startReverb.enabled = YES;
     _stopReverb.enabled = NO;
 } //Reverb
+
+-(IBAction)onSteamerMirror:(id)sender{
+    _kit.streamerMirrored =!_streamerMirrored;
+    _streamerMirrored = !_streamerMirrored;
+    if(_streamerMirrored)
+    {
+        [_btnStreamerMirrored setTitle:@"推流镜像开" forState: UIControlStateNormal];
+    }
+    else
+    {
+        [_btnStreamerMirrored setTitle:@"推流镜像关" forState: UIControlStateNormal];
+    }
+}
+
+-(IBAction)onPreviewMirror:(id)sender{
+    _kit.previewMirrored = !_previewMirrored;
+    _previewMirrored = !_previewMirrored;
+    if(_previewMirrored)
+    {
+        [_btnPreviewMirrored setTitle:@"预览镜像开" forState: UIControlStateNormal];
+    }
+    else
+    {
+        [_btnPreviewMirrored setTitle:@"预览镜像关" forState: UIControlStateNormal];
+    }
+    
+}
+
 
 - (IBAction)onMusicPlay:(id)sender {
     NSString *testMp3 = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/test.mp3"];
