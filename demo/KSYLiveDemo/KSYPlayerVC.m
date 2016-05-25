@@ -30,6 +30,8 @@
     UIButton *btnReload;
     UIButton *btnStop;
     UIButton *btnQuit;
+    UIButton *btnRotate;
+    UIButton *btnContentMode;
     UILabel  *lableHWCodec;
     UISwitch  *switchHwCodec;
     UILabel  *labelMute;
@@ -41,6 +43,8 @@
     long long int prepared_time;
     int fvr_costtime;
     int far_costtime;
+	int rotate_degress;
+	int content_mode;
 }
 
 - (instancetype)initWithURL:(NSURL *)url {
@@ -78,7 +82,13 @@
     //add quit button
     btnQuit = [self addButtonWithTitle:@"quit" action:@selector(onQuit:)];
     
-    stat = [[UILabel alloc] init];
+    //add rotate button
+    btnRotate = [self addButtonWithTitle:@"rotate" action:@selector(onRotate:)];
+   
+	//add content mode butten
+	btnContentMode = [self addButtonWithTitle:@"mode" action:@selector(onContentMode:)];
+    
+	stat = [[UILabel alloc] init];
     stat.backgroundColor = [UIColor clearColor];
     stat.textColor = [UIColor redColor];
     stat.numberOfLines = -1;
@@ -175,7 +185,13 @@
     btnStop.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     xPos += gap + btnWdt;
     btnQuit.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    stat.frame = CGRectMake(gap, 0, wdt, hgt);
+    xPos = gap;
+	yPos -= (btnHgt + gap);
+    btnRotate.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
+    xPos += gap + btnWdt;
+    btnContentMode.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
+    
+	stat.frame = CGRectMake(gap, 0, wdt, hgt);
 }
 
 - (BOOL)shouldAutorotate {
@@ -387,16 +403,7 @@
     _player.logBlock = ^(NSString *logJson){
         NSLog(@"logJson is %@",logJson);
     };
-    int i = 8, j = 9;
-    _player.videoDataBlock = ^(CVPixelBufferRef pixelBuffer){
-        //NSLog(@"video data i:%d", i);
-    };
-    
-    _player.audioDataBlock = ^(CMSampleBufferRef sampleBuffer){
-        
-        //NSLog(@"audio data j:%d", j);
-    };
-   
+
     stat.text = [NSString stringWithFormat:@"url %@", _url];
     _player.controlStyle = MPMovieControlStyleNone;
     [_player.view setFrame: videoView.bounds];  // player's frame must match parent's
@@ -408,10 +415,14 @@
 //    _player.bufferTimeMax = 5;
     _player.shouldEnableVideoPostProcessing = TRUE;
     _player.scalingMode = MPMovieScalingModeAspectFit;
-    _player.shouldUseHWCodec = switchHwCodec.isOn;
+	content_mode = _player.scalingMode + 1;
+	if(content_mode > MPMovieScalingModeFill)
+		content_mode = MPMovieScalingModeNone;
+    
+	_player.shouldUseHWCodec = switchHwCodec.isOn;
     _player.shouldMute  = switchMute.isOn;
     _player.shouldEnableKSYStatModule = TRUE;
-    _player.shouldLoop = TRUE;
+    _player.shouldLoop = NO;
     //[_player setTimeout:10];
     
     NSLog(@"sdk version:%@", [_player getVersion]);
@@ -421,7 +432,7 @@
 }
 - (IBAction)onReloadVideo:(id)sender {
     if (_player) {
-        [_player reload:_reloadUrl];
+        [_player reload:_reloadUrl is_flush:FALSE];
     }
 }
 
@@ -523,6 +534,27 @@
     [self onStopVideo:nil];
     //[self.navigationController popToRootViewControllerAnimated:FALSE];
     [self dismissViewControllerAnimated:FALSE completion:nil];
+}
+
+- (IBAction)onRotate:(id)sender {
+	
+	rotate_degress += 90;
+	if(rotate_degress >= 360)
+		rotate_degress = 0;
+
+    if (_player) {
+        _player.rotateDegress = rotate_degress;
+    }
+}
+
+- (IBAction)onContentMode:(id)sender {
+
+	if (_player) {
+        _player.scalingMode = content_mode;
+    }
+	content_mode++;
+	if(content_mode > MPMovieScalingModeFill)
+		content_mode = MPMovieScalingModeNone;
 }
 
 - (void) remoteControlReceivedWithEvent: (UIEvent *) receivedEvent {

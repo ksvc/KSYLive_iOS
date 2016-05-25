@@ -127,4 +127,16 @@
  */
 @property(nonatomic, copy) void(^videoProcessingCallback)(CMSampleBufferRef sampleBuffer);
 
+#pragma mark - audio input ports
+/**
+ @abstract   是否有蓝牙麦克风可用
+ @return     是/否有蓝牙麦克风可用
+ */
+- (BOOL)isBluetoothInputAvaible;
+/**
+ @abstract   选择是否使用蓝牙麦克风
+ @param      onOrOff : YES 使用蓝牙麦克风 NO
+ @return     是/否有蓝牙麦克风可用
+ */
+- (BOOL)switchBluetoothInput:(BOOL)onOrOff;
 @end

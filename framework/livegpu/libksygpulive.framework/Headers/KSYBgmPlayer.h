@@ -59,6 +59,16 @@
  */
 @property (nonatomic, readonly) KSYBgmPlayerState bgmPlayerState;
 /**
+ @abstract   获取状态对应的字符串
+ @param      stat 状态
+ */
+- (NSString*) getBgmStateName : (KSYBgmPlayerState) stat;
+/**
+ @abstract   获取当前状态对应的字符串
+ */
+- (NSString*) getCurBgmStateName;
+
+/**
  @abstract    播放错误码
  @discuss     播放错误码具体内容可以参考AudioQueue的Apple文档。
  */

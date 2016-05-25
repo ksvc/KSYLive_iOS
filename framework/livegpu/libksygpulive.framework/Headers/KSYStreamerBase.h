@@ -76,7 +76,7 @@
  @abstract   最大关键帧间隔（单位:秒, 默认:3）
  @discussion 即GOP长度 画面静止时,隔n秒插入一个关键帧
  */
-@property (nonatomic, assign) int          maxKeyInterval;   // seconds
+@property (nonatomic, assign) float          maxKeyInterval;   // seconds
 /**
  @abstract   音频编码码率（单位:kbps）
  @discussion 音频目标编码码率 (比如48,96,128等)

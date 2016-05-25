@@ -25,5 +25,6 @@ FOUNDATION_EXPORT const unsigned char libqyliveVersionString[];
 #import "KSYBgmPlayer.h"
 
 #import "KSYGPUStreamerKit.h"
+
 // player
 #import "KSYMediaPlayer.h"

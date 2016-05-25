@@ -320,7 +320,7 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
  @abstract 是否循环播放
  @discussion 默认不循环
  * 只在[prepareToPlay]([KSYMediaPlayback prepareToPlay]) 调用前设置生效；
- 只有点播生效
+ 只有点播生效,直播场景请勿设置
  @since Available in KSYMoviePlayerController 1.3.1 and later.
  */
 @property(nonatomic) BOOL shouldLoop;
@@ -342,6 +342,13 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
  @see CMSampleBufferRef
  */
 @property (nonatomic, copy)KSYPlyAudioDataBlock audioDataBlock;
+
+/**
+ @abstract 指定逆时针旋转角度，只能是0/90/180/270, 不符合上述值不进行旋转。
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 1.4.1 and later.
+ */
+@property (nonatomic) int rotateDegress;
 
 /**
  @abstract timeout指定拉流超时时间,单位是秒。
@@ -399,6 +406,7 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
  @abstract 重新启动拉流
  @warning 该方法由金山云引入，不是原生系统接口
  @param url 视频播放地址，该地址可以是本地地址或者服务器地址.如果为nil，则使用前一次播放地址。
+ @param is_flush 是否清除上一个url的缓冲区内容，该值为FALSE不清除，为TRUE则清除
  @discussion 调用场景如下：
  1. 当播放器调用方发现卡顿时，可以主动调用。
  2. 当估计出更优质的拉流ip时，可以主动调用。
@@ -407,7 +415,7 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
  5. 播放器SDK不会自动调用reload功能。
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
-- (void)reload:(NSURL *)aUrl;
+- (void)reload:(NSURL *)aUrl is_flush:(bool)is_flush;
 
 @end
 

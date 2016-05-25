@@ -83,9 +83,11 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 /**
  @abstract   显示时间的Label
  @param      自定义的label
+  @param     自定义的日期格式，比如“yyyy-MM-dd HH:mm:ss"等
  @discussion 默认不显示时间，
  */
--(void)addTimeLabel:(UILabel *)TimeLabel;
+-(void)addTimeLabel:(UILabel *)TimeLabel
+         dateFormat:(NSString *)format;
 
 
 #pragma mark - get sub modules
@@ -281,13 +283,14 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 @property (nonatomic, readonly) int  bgmTrack;
 
 /**
- @abstract 预览设置成镜像模式
- */
+ @abstract 预览设置成镜像模式，默认为NO
+*/
 @property (nonatomic, assign) BOOL previewMirrored;
 
+
 /**
- @abstract 推流设置成镜像模式
- */
+  @abstract 推流设置成镜像模式,默认为NO
+*/
 @property (nonatomic, assign) BOOL streamerMirrored;
 
 

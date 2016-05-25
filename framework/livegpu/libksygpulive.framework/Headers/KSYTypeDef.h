@@ -174,17 +174,19 @@ typedef NS_ENUM(NSUInteger, KSYNetStateCode) {
  * @abstract  音频播放状态
  */
 typedef NS_ENUM(NSUInteger, KSYBgmPlayerState) {
-    //初始状态
+    /// 初始状态
     KSYBgmPlayerStateInit,
-    //背景音停止
+    /// 背景音正在播放
+    KSYBgmPlayerStateStarting,
+    /// 背景音停止
     KSYBgmPlayerStateStopped,
-    //背景音正在播放
+    /// 背景音正在播放
     KSYBgmPlayerStatePlaying,
-    //背景音暂停
+    /// 背景音暂停
     KSYBgmPlayerStatePaused,
-    //背景音播放出错
+    /// 背景音播放出错
     KSYBgmPlayerStateError,
-    //背景音被打断
+    /// 背景音被打断
     KSYBgmPlayerStateInterrupted
 };
 
