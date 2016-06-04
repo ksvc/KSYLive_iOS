@@ -87,7 +87,7 @@ NSLog(@"version: %@", [kit getKSYVersion]);
 * 本framework为静态库，虽然库的大小为20M+，但是最后链接后，对app的增量只有4M+
 
 ## 参考文档
-* [[iOS直播推流SDK使用指南|KSYStreamerSDKUserManual]]
+* [iOS直播推流SDK使用指南](https://github.com/ksvc/KSYLive_iOS/wiki/KSYStreamerSDKUserManual)
 * [[iOS直播推流SDK常见问题|FAQ]]
 
 ## 播放器使用示例
