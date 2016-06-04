@@ -270,34 +270,37 @@ _hostURL      = [[NSURL alloc] initWithString:url];
  [[GPUImageCropFilter alloc] initWithCropRegion:rect];
 ```
 
-###音频处理接口
+###混音、混响功能
 
 本SDK支持声音的处理，用户可以很方便的使用接口对声音进行处理。
-
-* KSYStreamerKitVC增加了bgmPlayer背景音乐播放器，通过该属性我们就可以对背景音乐进行处理
-
-```
-[_kit.bgmPlayer startPlayBgm:testMp3 isLoop:NO];//开始播放背景音乐，testMp3：数据源地址，isLoop：是否循环播放
-[_kit.bgmPlayer pauseBgm];//暂停播放背景音乐
-[_kit.bgmPlayer resumeBgm];//恢复播放背景音乐
-[_kit.bgmPlayer stopPlayBgm];//停止播放背景音乐
+* 开始混响
 
 ```
-
-* KSYStreamerKitVC增加了audioMixer混音调节器，通过该属性我们就可以将背景音乐和麦克风声音进行混合处理
-
+[_kit.streamerBase enableReverb:level];
 ```
-[_kit.audioMixer setTrack:_kit.bgmTrack enable: !enMix];//开混音（即将背景音乐和麦克风声音混合），enMix：混音开关
-[_kit.audioMixer setMixVolume:_bgmVolS.value of:_kit.bgmTrack];//设置背景音乐的音量
-[_kit.audioMixer setMixVolume:_micVolS.value of:_kit.micTrack];//设置麦克分的音量
-```
+level: 取值范围为[0，1，2，3，4]，分别为不同效果，level取值为0表示关闭。
 
-* 设置音乐特效
-
+* 开启／关闭混音功能
 ```
-[_kit.streamerBase enableReverb:level];//level: 取值范围为[0，1，2，3，4]，分别为不同效果，level取值为0表示关闭。
+[_kit.streamerBase enableMicMixMusic:YES/NO];
 ```
 
+* 开始混音
+```
+[_kit.streamerBase startMixMusic:testMp3 isLoop:NO];
+```
+
+* 暂停／恢复
+```
+[_kit.streamerBase pauseMixMusic];
+//...
+[_kit.streamerBase resumeMixMusic];
+```
+
+* 停止混音
+```
+[_kit.streamerBase stopMixMusic];
+```
 
 ###音视频处理回调接口
 
@@ -321,17 +324,6 @@ sampleBuffer 前处理，原始采集到的视频数据，即美颜之前的数�
 
 * 请注意以上两个函数的执行时间，如果太长可能导致不可预知的问题。
 
-###添加水印接口
-
-本SDK支持添加水印的功能，用户可以很方便的使用该接口添加水印。
-
-* 添加水印
-
-```
-[_kit addLogo:logoImage pos:size trans:1];//logo:输入得图片信息，pos:图片在视图的中的位置，trans:输入图片的透明度；
-
-[_kit addTimeLabel:TimeLabel];//TimeLabel:显示时间的Label，用户要对Label的基本属性进行设置（如demo中所示）。
-```
 
 ##播放器使用示例
 请见github库：https://github.com/ksvc/KSYMediaPlayer_iOS.git
