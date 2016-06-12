@@ -47,10 +47,19 @@
  
  */
 
+/**
+ @abstract 视频数据回调
+ */
 typedef void (^KSYPlyVideoDataBlock)(CVPixelBufferRef pixelBuffer);
 
+/**
+ @abstract 音频数据回调
+ */
 typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 
+/**
+ * KSYMoviePlayerController
+ */
 @interface KSYMoviePlayerController : NSObject <KSYMediaPlayback>
 #pragma mark MPMoviePlayerController
 
@@ -147,6 +156,7 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 /**
  @abstract 播放视频时是否需要自动播放，默认值为YES。
  @discussion
+ 
  * 如果shouldAutoplay值为YES，则调用[prepareToPlay]([KSYMediaPlayback prepareToPlay])方法后，播放器完成初始化后将自动调用[play]([KSYMediaPlayback play])方法播放视频。
  * 如果shouldAutoplay值为NO，则播放器完成初始化后将等待外部调用[play]([KSYMediaPlayback play])方法。
  * 开发者可以监听播放SDK发送的MPMediaPlaybackIsPreparedToPlayDidChangeNotification通知。在收到该通知后进行其他操作并主动调用[play]([KSYMediaPlayback play])方法开启播放。
@@ -180,6 +190,7 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
  
  * 如果是直播视频源，总时长为0.
  * 如果该信息未知，总时长默认为0.
+ 
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 // The duration of the movie, or 0.0 if not known.
@@ -192,6 +203,7 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
  * currentPlaybackTime 标记的是播放器当前已播放的时长。
  * playableDuration 标记的是播放器缓冲的时间，会稍大于currentPlaybackTime，与currentPlaybackTime的差值则是缓冲长度。
  * duration 是视频总时长。
+ 
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 // The currently playable duration of the movie, for progressively downloaded network content.
@@ -200,6 +212,7 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 /**
  @abstract 收集日志的状态，默认开启
  @discussion 可开关
+ @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 @property (nonatomic, assign) BOOL shouldEnableKSYStatModule;
@@ -207,13 +220,16 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 /**
  @abstract 当前视频宽高
  @discussion 获取信息
+ 
  * 监听MPMovieNaturalSizeAvailableNotification
  * 播放过程中，宽高信息可能会产生更改
+ 
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 @property (nonatomic, readonly) CGSize naturalSize;
 
 #pragma mark KSYMoviePlayerController New Feature
+
 /**
  @abstract 获取播放器日志
  @discussion 相关字段说明请联系金山云技术支持
@@ -223,22 +239,24 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 
 /**
  @abstract bufferTimeMax指定直播流播放时的最大缓冲时长，单位为秒。
- @warning 该方法由金山云引入，不是原生系统接口
  @discussion 当buffer为负数时，关闭直播追赶。
+ 
  * 该属性仅对直播流有效；
  * 默认值为2秒。
+ 
+ @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 @property NSTimeInterval bufferTimeMax;
 
 /**
  @abstract 已经加载的数据大小
- @warning 该方法由金山云引入，不是原生系统接口
  @discussion 已经加载的数据大小，单位是兆。
  
  * 已经加载的全部数据大小，包括音频和视频。
  * 数据包括已经播放的，和当前的cache数据。
  
+ @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 // The flow size of the movie which has been download, or 0.0 if not known.
@@ -246,43 +264,45 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 
 /**
  @abstract buffer为空时，拉取数据所耗的时长
- @warning 该方法由金山云引入，不是原生系统接口
  @discussion 当buffer为空时，开始统计。单位为秒。
  
  * 当MPMoviePlayerLoadStateDidChangeNotification 通知发起；
  * MPMovieLoadState状态为MPMovieLoadStateStalled 开始计时；
  * MPMovieLoadState状态为MPMovieLoadStatePlayable 或者 MPMovieLoadStatePlaythroughOK时，结束计时；
  
+ @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 @property (nonatomic, readonly) NSTimeInterval bufferEmptyDuration;
 
 /**
  @abstract 发起cache的次数
- @warning 该方法由金山云引入，不是原生系统接口
  @discussion 当buffer为空时，统计一次，统计的条件为
  
  * 当MPMoviePlayerLoadStateDidChangeNotification 通知发起
  * MPMovieLoadState 状态为MPMovieLoadStateStalled
- 
+
+ @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 @property (nonatomic, readonly) NSInteger bufferEmptyCount;
 
 /**
  @abstract 视频流server ip
+ @discussion 当收到prepared后，即可以查询当前连接的视频流server ip
  @warning 该方法由金山云引入，不是原生系统接口
- @discussion 当收到prepared后，即可以查询当前连接的视频流server ip.
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 @property (nonatomic, readonly) NSString* serverAddress;
+
 /**
  @abstract 视频流qos信息
+ @discussion 在播放过程中，即可以查询当前连接的视频流qos信息
  @warning 该方法由金山云引入，不是原生系统接口
- @discussion 在播放过程中，即可以查询当前连接的视频流qos信息.
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 @property (nonatomic, strong) KSYQosInfo *qosInfo;
+
 /**
  @abstract 截图
  @warning 该方法由金山云引入，不是原生系统接口
@@ -293,9 +313,11 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 
 /**
  @abstract 是否开启视频后处理
- @warning 该方法由金山云引入，不是原生系统接口
- @discussion 默认是开启
+ @discussion 默认是关闭
+ 
  * 只在[prepareToPlay]([KSYMediaPlayback prepareToPlay]) 调用前设置生效；
+ 
+ @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 @property(nonatomic)  BOOL  shouldEnableVideoPostProcessing;
@@ -303,15 +325,18 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 /**
  @abstract 是否开启硬件解码
  @discussion 默认是关闭
- * 只在[prepareToPlay]([KSYMediaPlayback prepareToPlay]) 调用前设置生效；
+ 
+ * 只在[prepareToPlay]([KSYMediaPlayback prepareToPlay]) 调用前设置生效
+ 
+ @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.3.1 and later.
  */
 @property(nonatomic) BOOL shouldUseHWCodec;
 
 /**
  @abstract 是否静音
- @discussion 默认不静音
- * 只在[prepareToPlay]([KSYMediaPlayback prepareToPlay]) 调用前设置生效；
+ @discussion 默认不静音，在播放过程中设置生效
+ @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.3.1 and later.
  */
 @property(nonatomic) BOOL shouldMute;
@@ -319,83 +344,89 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 /**
  @abstract 是否循环播放
  @discussion 默认不循环
+ 
  * 只在[prepareToPlay]([KSYMediaPlayback prepareToPlay]) 调用前设置生效；
- 只有点播生效,直播场景请勿设置
+ * 只有点播生效,直播场景请勿设置
+ 
+ @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.3.1 and later.
  */
 @property(nonatomic) BOOL shouldLoop;
 
 /**
  @abstract 视频数据回调
- @discussion
- 调用[prepareToPlay]([KSYMediaPlayback prepareToPlay])方法之前设置生效，回调数据为同步完成后的数据
+ @discussion 调用[prepareToPlay]([KSYMediaPlayback prepareToPlay])方法之前设置生效，回调数据为同步完成后的数据
+ @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.3.3 and later.
- @see CVPixelBufferRef
+ @see KSYPlyVideoDataBlock
  */
 @property (nonatomic, copy)KSYPlyVideoDataBlock videoDataBlock;
 
 /**
  @abstract 音频数据回调
- @discussion
- 调用[prepareToPlay]([KSYMediaPlayback prepareToPlay])方法之前设置生效，回调数据为同步完成后的数据
+ @discussion 调用[prepareToPlay]([KSYMediaPlayback prepareToPlay])方法之前设置生效，回调数据为同步完成后的数据
+ @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.3.3 and later.
- @see CMSampleBufferRef
+ @see KSYPlyAudioDataBlock
  */
 @property (nonatomic, copy)KSYPlyAudioDataBlock audioDataBlock;
 
 /**
- @abstract 指定逆时针旋转角度，只能是0/90/180/270, 不符合上述值不进行旋转。
+ @abstract 指定逆时针旋转角度，只能是0/90/180/270, 不符合上述值不进行旋转
  @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.4.1 and later.
  */
 @property (nonatomic) int rotateDegress;
 
 /**
- @abstract timeout指定拉流超时时间,单位是秒。
+ @abstract timeout指定拉流超时时间,单位是秒
+ @param timeout 拉流超时时间，默认值是30秒
  @warning 该方法由金山云引入，不是原生系统接口
- * 默认值为30秒。
  @since Available in KSYMoviePlayerController 1.3.1 and later.
  */
 - (void)setTimeout:(int)timeout;
 
 /**
- @abstract setVolume指定播放器输出音量。
+ @abstract setVolume指定播放器输出音量
  @param leftVolume  left volume scalar  [0~1.0f]
  @param rightVolume right volume scalar [0~1.0f]
  @discussion
- 1.输入参数超出范围将失效
- 2.输出到speaker时需同时设置左右音量为有效值
+ 
+ * 输入参数超出范围将失效
+ * 输出到speaker时需同时设置左右音量为有效值
     如：leftVolume ＝ rightVolume ＝ 0.5f
+ 
  @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.3.3 and later.
  */
 -(void)setVolume:(float)leftVolume rigthVolume:(float)rightVolume;
 
 /**
- @abstract 获取sdk版本。
+ @abstract 获取sdk版本
  @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.3.1 and later.
  */
 - (NSString *)getVersion;
 
 /**
- @abstract 获取播放流版本。
+ @abstract 获取播放Meta信息
+ @discussion 收到MPMediaPlaybackIsPreparedToPlayDidChangeNotification通知后才能获取到数据
+ @discussion 暂时支持的查询包括
+ 
+ * kKSYPLYFormat
+ * kKSYPLYHttpFirstDataTime
+ * kKSYPLYHttpConnectTime
+ * kKSYPLYHttpAnalyzeDns
+ 
  @warning 该方法由金山云引入，不是原生系统接口
- @discussion
- *收到MPMediaPlaybackIsPreparedToPlayDidChangeNotification通知后才能获取到数据
- *暂时支持的查询包括
- kKSYPLYFormat
- kKSYPLYHttpFirstDataTime
- kKSYPLYHttpConnectTime
- kKSYPLYHttpAnalyzeDns
  @since Available in KSYMoviePlayerController 1.3.1 and later.
  */
 - (NSDictionary *)getMetadata;
 
 /**
  @abstract 当前播放器是否在播放
- @warning 该方法由金山云引入，不是原生系统接口
  @return 获取[playbackState]([KSYMoviePlayerController playbackState])信息，如果当前状态为MPMoviePlaybackStatePlaying，则返回TRUE。其他情况返回FASLE。
+ @warning 该方法由金山云引入，不是原生系统接口
  @see playbackState
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
@@ -404,15 +435,17 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 
 /**
  @abstract 重新启动拉流
- @warning 该方法由金山云引入，不是原生系统接口
- @param url 视频播放地址，该地址可以是本地地址或者服务器地址.如果为nil，则使用前一次播放地址。
+ @param aUrl 视频播放地址，该地址可以是本地地址或者服务器地址.如果为nil，则使用前一次播放地址
  @param is_flush 是否清除上一个url的缓冲区内容，该值为FALSE不清除，为TRUE则清除
  @discussion 调用场景如下：
- 1. 当播放器调用方发现卡顿时，可以主动调用。
- 2. 当估计出更优质的拉流ip时，可以主动调用。
- 3. 当发生WiFi/3G网络切换时，可以主动调用。
- 4. 当播放器回调体现播放完全时，可以主动调用。
- 5. 播放器SDK不会自动调用reload功能。
+ 
+ * 当播放器调用方发现卡顿时，可以主动调用
+ * 当估计出更优质的拉流ip时，可以主动调用
+ * 当发生WiFi/3G网络切换时，可以主动调用
+ * 当播放器回调体现播放完全时，可以主动调用
+ * 播放器SDK不会自动调用reload功能
+ 
+ @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 - (void)reload:(NSURL *)aUrl is_flush:(bool)is_flush;

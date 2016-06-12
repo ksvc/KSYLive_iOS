@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Qos信息
+ */
 @interface KSYQosInfo : NSObject
 
 /**

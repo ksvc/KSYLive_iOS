@@ -50,7 +50,7 @@
 @property(nonatomic, copy) void(^bgmFinishBlock)(void);
 /**
  @abstract   背景音乐的音量
-@discussion  0.0~0.1
+@discussion  0.0~1.0
  */
 @property (nonatomic, assign) double bgmVolume;
 

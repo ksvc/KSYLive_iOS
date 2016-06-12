@@ -1,12 +1,15 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
+@class KSYMoviePlayerController;
 
 @class KSYGPUCamera;
 @class GPUImageFilter;
 @class GPUImageView;
 @class KSYAudioMixer;
 @class KSYBgmPlayer;
+@class KSYMicMonitor;
+@class GPUImagePicture;
 
 @interface KSYGPUStreamerKit : NSObject
 /**
@@ -261,6 +264,7 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  */
 - (NSString*) getKSYVersion;
 
+
 #pragma mark - player and mixer
 /**
  @abstract  背景音乐播放器
@@ -282,6 +286,7 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  */
 @property (nonatomic, readonly) int  bgmTrack;
 
+#pragma mark -  mirror
 /**
  @abstract 预览设置成镜像模式，默认为NO
 */
@@ -292,6 +297,40 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
   @abstract 推流设置成镜像模式,默认为NO
 */
 @property (nonatomic, assign) BOOL streamerMirrored;
+
+#pragma mark - pip
+/**
+ @abstract   开启画中画
+ @param playerUrl:播放视频的url
+ @param bgUrl:背景图片的url
+ @param CapRect:摄像数据矩阵显示的位置
+ */
+-(void)startPipWithPlayerUrl:(NSURL*)playerUrl
+                       bgPic:(NSURL*)bgUrl
+                     capRect:(CGRect)capRect;
+/**
+ @abstract   停止画中画
+ **/
+-(void)stopPip;
+
+/**
+ @abstract   画中画音频的trackID
+ */
+@property (nonatomic, readonly) int  pipTrack;
+
+/**
+ @abstract 背景播放器
+ */
+@property (nonatomic, strong) KSYMoviePlayerController *player;
+/**
+ @abstract 背景图片
+ */
+@property (nonatomic, strong) GPUImagePicture          *bgPic;
+
+/**
+ @abstract mic返音接口
+ */
+@property (nonatomic, strong) KSYMicMonitor  * micMonitor;
 
 
 @end

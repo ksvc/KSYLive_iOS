@@ -55,10 +55,12 @@ typedef NS_ENUM(NSUInteger, KSYVideoDimension) {
 typedef NS_ENUM(NSUInteger, KSYVideoCodec) {
     /// 视频编码器 - h264 软件编码器
     KSYVideoCodec_X264 = 0,
-    /// 视频编码器 - 仟壹265 软件编码器
+    /// 视频编码器 - KSY265 软件编码器
     KSYVideoCodec_QY265,
     /// 视频编码器 - iOS VT264硬件编码器 (iOS 8.0以上支持)
     KSYVideoCodec_VT264,
+    /// 视频编码器 - 由SDK自动选择（ VT264 > X264）
+    KSYVideoCodec_AUTO = 100,
 };
 
 #pragma mark - Video Gravity

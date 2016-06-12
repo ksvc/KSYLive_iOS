@@ -12,6 +12,7 @@
 #import <UIKit/UIKit.h>
 #import <libksygpulive/libksygpulive.h>
 #import <libksygpulive/KSYGPUCamera.h>
+#import <libksygpulive/KSYGPUYUVInput.h>
 
 //simple interface
 #import <libksygpulive/KSYGPUStreamerKit.h>
@@ -22,3 +23,4 @@
 #import <libksygpulive/KSYGPUDnoiseFilter.h>
 #import <libksygpulive/KSYGPUBeautifyPlusFilter.h>
 #import <libksygpulive/KSYGPUBeautifyPlusFilter_t.h>
+#import <libksygpulive/KSYGPUPipBlendFilter.h>

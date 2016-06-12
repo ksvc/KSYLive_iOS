@@ -40,6 +40,7 @@
     if (SQLITE_OK ==sqlite3_open(filePath.UTF8String, &_database)) {
         return ;
     }else{
+
         NSLog(@"open sqlite dadabase fail!");
     }
 }
@@ -47,7 +48,9 @@
     char *error;
     //单步执行sql语句，用于插入、修改、删除
     if (SQLITE_OK == sqlite3_exec(_database, sql.UTF8String, NULL, NULL,&error)) {
+        
         return;
+
     }else{
         NSLog(@"table creat error %s",error);
         sqlite3_free(error);//每次使用完毕清空error字符串，提供下次使用
