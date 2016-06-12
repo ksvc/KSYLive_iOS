@@ -7,9 +7,9 @@
 //
 
 #import "KSYStreamerKitVC.h"
+#import <GPUImage/GPUImage.h>
 #import <libksygpulive/libksygpulive.h>
 #import <libksygpulive/libksygpuimage.h>
-
 
 @interface KSYStreamerKitVC ()
 {
@@ -40,6 +40,13 @@
 
     UIButton *_startReverb;
     UIButton *_stopReverb;
+    //pip
+    UIButton *_btnPipStart;
+    UIButton *_btnPipStop;
+    UIButton *_btnPipPlay;
+    UIButton *_btnPipPause;
+    UIButton *_btnPipPlayStop;
+    
     UIButton * _btnPreviewMirrored;
     UIButton * _btnStreamerMirrored;
     BOOL _previewMirrored;
@@ -63,19 +70,16 @@
     int       _dropCnt;
     double    _startTime;
     
-    
-    
     UIView   *_controlView;
     UIImageView *_foucsCursor;
     CGFloat _initialPinchZoom;
+    
 }
 
 // kit =  KSYGPUCamera + KSYGPUStreamer
 @property KSYGPUStreamerKit * kit;
-// set this filter to kit
-@property GPUImageFilter     * filter;
 
-
+@property GPUImageFilter            * filter;
 // status monitor
 @property NSTimer *timer;
 @end
@@ -112,6 +116,8 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     [self setupLogo];
     _previewMirrored = NO;
     _streamerMirrored = NO;
+    if([self hasHeadset])
+        [_kit.micMonitor start];
     NSLog(@"version: %@", [_kit getKSYVersion]);
 }
 
@@ -155,14 +161,14 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     CGPoint size = CGPointMake(10, 10);
     [_kit addLogo:imgFromUrl3 pos:size trans:0.0];
     
-    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 500, 10)];
+    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0,100, 500, 100)];
     label.textColor = [UIColor redColor];
     label.font = [UIFont systemFontOfSize:17.0];
     label.backgroundColor = [UIColor clearColor];
     label.hidden = NO;
     label.alpha = 0.5;
     NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"HH:mm:ss";
+    dateFormatter.dateFormat = @"yyyy-MM-dd";
     NSDate *now = [[NSDate alloc] init];
     label.text = [dateFormatter stringFromDate:now];
     [_kit addTimeLabel:label dateFormat:dateFormatter.dateFormat];
@@ -192,6 +198,11 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
                                              selector:@selector(onAudioStateChange:)
                                                  name:KSYAudioStateDidChangeNotification
                                                object:nil];
+    //播放器播放完成
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(handlePlayerNotify:)
+                                                name:(MPMoviePlayerPlaybackDidFinishNotification)
+                                              object:nil];
 }
 - (void) rmObservers {
     if (_timer) {
@@ -210,6 +221,9 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:KSYAudioStateDidChangeNotification
                                                   object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self
+                                                   name:MPMoviePlayerPlaybackDidFinishNotification
+                                                 object:nil];
 }
 
 
@@ -315,6 +329,12 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
 
     _lblHighRes =[self addLable:@"360p/540p"];
     _btnHighRes =[self addSwitch:NO];
+    
+    _btnPipStart = [self addButton:@"pip开启"   action:@selector(onPipStart:)];
+    _btnPipStop = [self addButton:@"pip关闭"   action:@selector(onPipStop:)];
+    _btnPipPlay = [self addButton:@"pipPlay" action:@selector(onPipCtrl:)];
+    _btnPipPause= [self addButton:@"pipPause"action:@selector(onPipCtrl:)];
+    _btnPipPlayStop = [self addButton:@"pipStop" action:@selector(onPipCtrl:)];
 
     _stat = [[UILabel alloc] init];
     _stat.text = @"";
@@ -388,22 +408,26 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
 
     yPos += (btnHgt+40);
     _btnFilters[0].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
+    _btnPipStart.frame      = CGRectMake(xMiddle,   yPos, btnWdt, btnHgt);
     _startReverb.frame = CGRectMake(xRight,   yPos, btnWdt, btnHgt);
     
     yPos += (btnHgt+5);
     _btnFilters[1].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
-    _btnPreviewMirrored.frame= CGRectMake(xMiddle,   yPos, btnWdt, btnHgt);
+    _btnPipStop.frame = CGRectMake(xMiddle,   yPos, btnWdt, btnHgt);
     _stopReverb.frame = CGRectMake(xRight,   yPos, btnWdt, btnHgt);
     
     yPos += (btnHgt+5);
     _btnFilters[2].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
-    _btnStreamerMirrored.frame= CGRectMake(xMiddle,   yPos, btnWdt, btnHgt);
+    _btnPipPlay.frame    =CGRectMake(xMiddle,   yPos, btnWdt, btnHgt);
     _btnSnapshot.frame =CGRectMake(xRight,   yPos, btnWdt, btnHgt);
     
     yPos += (btnHgt+5);
     _btnFilters[3].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
+    _btnPipPause.frame    =CGRectMake(xMiddle,   yPos, btnWdt, btnHgt);
+
     // top row 5
-    yPos += ( btnHgt);
+    yPos += ( btnHgt+5);
+    _btnPipPlayStop.frame    =CGRectMake(xMiddle,   yPos, btnWdt, btnHgt);
     btnWdt = self.view.bounds.size.width - gap*2;
     btnHgt = hgt - yPos - btnHgt;
     _stat.frame = CGRectMake(gap, 20 , btnWdt, hgt - 20);
@@ -423,12 +447,14 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     _kit.videoProcessingCallback = ^(CMSampleBufferRef sampleBuffer){
 //        processVideo(sampleBuffer);
     };
+    _kit.audioProcessingCallback =^(CMSampleBufferRef sampleBuffer){
+    };
     [self setVideoOrientation];
 }
 - (void) setStreamerCfg {
     // stream settings
     //_kit.streamerBase.videoCodec = KSYVideoCodec_X264;
-    _kit.streamerBase.videoCodec = KSYVideoCodec_VT264;
+    _kit.streamerBase.videoCodec = KSYVideoCodec_AUTO;
     _kit.streamerBase.videoInitBitrate = 1000; // k bit ps
     _kit.streamerBase.videoMaxBitrate  = 1000; // k bit ps
     _kit.streamerBase.videoMinBitrate  = 100; // k bit ps
@@ -460,8 +486,10 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
 
 #pragma mark - UI responds
 - (IBAction)onQuit:(id)sender {
+    [_kit.player stop];
     [_kit.bgmPlayer stopPlayBgm];
     [_kit.streamerBase stopStream];
+    [_kit.micMonitor stop];
     [_kit stopPreview];
     [self rmObservers];  // need remove observers to dealloc
     [self dismissViewControllerAnimated:FALSE completion:nil];
@@ -705,6 +733,7 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     }
     else if (sender == _micVolS) {
         [_kit.audioMixer setMixVolume:_micVolS.value of:_kit.micTrack];
+        [_kit.micMonitor setVolume:_micVolS.value];
     }
 }
 
@@ -715,7 +744,39 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
         [_kit.streamerBase muteStreame:i];
     }
 }
+- (IBAction)onPipCtrl:(id)sender {
+    if (_kit.player == nil){
+        return;
+    }
+    if (sender ==_btnPipPlay ) {
+        [_kit.audioMixer setTrack:_kit.pipTrack enable:YES];
+        [_kit.player play];
+       
+    }
+    else if (sender ==_btnPipPause ) {
+        [_kit.player pause];
+    }
+    else if (sender ==_btnPipPlayStop ) {
+        [_kit.player stop];
+        _kit.player = nil;
+        [_kit.audioMixer setTrack:_kit.pipTrack enable:NO];
+    }
+}
 
+- (IBAction)onPipStart:(id)sender {
+   
+    NSString * pathComp = [NSString stringWithFormat:@"Documents/t2.mp4"];
+    NSString *testflv = [NSHomeDirectory() stringByAppendingPathComponent:pathComp];
+    NSURL* videoUrl = [NSURL fileURLWithPath:testflv];
+    
+    NSString *testjpg = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/c.jpg"];
+    NSURL* bgUrl = [NSURL fileURLWithPath:testjpg];
+  
+    [_kit startPipWithPlayerUrl:videoUrl bgPic:bgUrl capRect:CGRectMake(0.6, 0.6, 0.3, 0.3)];
+}
+- (IBAction)onPipStop:(id)sender {
+    [_kit stopPip];
+}
 
 #pragma mark - status monitor
 - (void) initStatData {
@@ -971,4 +1032,64 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     }
     return dic;
 }
+-(void)handlePlayerNotify:(NSNotification*)notify{
+    if (!_kit.player) {
+        return;
+    }
+    if (MPMoviePlayerPlaybackDidFinishNotification ==  notify.name) {
+        NSLog(@"player finish state: %ld", (long)_kit.player.playbackState);
+        NSLog(@"player download flow size: %f MB", _kit.player.readSize);
+        [_kit.player play];
+    }
+}
+
+
+- (BOOL)hasHeadset {
+#if TARGET_IPHONE_SIMULATOR
+    return NO;
+#endif
+    
+    CFStringRef route;
+    UInt32 propertySize = sizeof(CFStringRef);
+    AudioSessionGetProperty(kAudioSessionProperty_AudioRoute, &propertySize, &route);
+    
+    BOOL hasHeadset = NO;
+    if((route == NULL) || (CFStringGetLength(route) == 0))
+    {
+        // Silent Mode
+    }
+    else
+    {
+        /* Known values of route:
+         * "Headset"
+         * "Headphone"
+         * "Speaker"
+         * "SpeakerAndMicrophone"
+         * "HeadphonesAndMicrophone"
+         * "HeadsetInOut"
+         * "ReceiverAndMicrophone"
+         * "Lineout"
+         */
+        NSString* routeStr = (__bridge NSString*)route;
+        NSRange headphoneRange = [routeStr rangeOfString : @"Headphone"];
+        NSRange headsetRange = [routeStr rangeOfString : @"Headset"];
+        
+        if (headphoneRange.location != NSNotFound)
+        {
+            hasHeadset = YES;
+        }
+        else if(headsetRange.location != NSNotFound)
+        {
+            hasHeadset = YES;
+        }
+    }
+    
+    if (route)
+    {
+        CFRelease(route);
+    }
+    
+    return hasHeadset;
+}
+
 @end
