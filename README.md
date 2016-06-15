@@ -72,6 +72,7 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 * GPUImage.h是因为依赖第三方framework需要引入的
 * libksygpulive.h 是本SDK中不依赖 GPUImage部分的头文件
 * libksygpuimage.h 是依赖GPUImage部分的头文件
+* 当自定义GPUImage时，GPUImage的版本要求是0.1.7
 
 ### SDK版本号查询
 本SDK的版本号 主要通过核心类查询
