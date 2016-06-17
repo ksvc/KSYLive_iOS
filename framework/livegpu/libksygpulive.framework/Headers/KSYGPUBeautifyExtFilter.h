@@ -7,9 +7,9 @@
 //
 
  /* KSYGPUBeautifyFilter_h */
-@class  GPUImageFilter;
+#import "KSYGPUFilter.h"
 
-@interface KSYGPUBeautifyExtFilter : GPUImageFilter
+@interface KSYGPUBeautifyExtFilter : KSYGPUFilter
 {
     GLint paramsUniform, singleStepOffsetUniform;
     

@@ -48,7 +48,7 @@ typedef NS_ENUM(NSUInteger, KSYVideoDimension) {
     KSYVideoDimension_Default = KSYVideoDimension_4_3__640x480,
 };
 
-#pragma mark - Video Codec ID
+#pragma mark - Video & Audio Codec ID
 /*!
  * @abstract  视频编码器类型
  */
@@ -61,6 +61,16 @@ typedef NS_ENUM(NSUInteger, KSYVideoCodec) {
     KSYVideoCodec_VT264,
     /// 视频编码器 - 由SDK自动选择（ VT264 > X264）
     KSYVideoCodec_AUTO = 100,
+};
+
+/*!
+ * @abstract  音频编码器类型
+ */
+typedef NS_ENUM(NSUInteger, KSYAudioCodec) {
+    /// 音频编码器 - AAC
+    KSYAudioCodec_AAC = 0,
+    /// 音频编码器 - AAC_HE
+    KSYAudioCodec_AAC_HE,
 };
 
 #pragma mark - Video Gravity

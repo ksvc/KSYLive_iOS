@@ -82,6 +82,7 @@
 @property KSYGPUCamera *   capDev;
 @property KSYBgmPlayer*    bgmPlayer;
 @property KSYAudioMixer*   audioMixer;
+@property KSYAudioReverb*  audioReverb;
 
 @property GPUImageFilter     * filter;
 @property GPUImageCropFilter * cropfilter;
@@ -478,9 +479,14 @@
     _audioMixer.mainTrack = _micTrack;
     [_audioMixer setTrack:_bgmTrack enable:YES];
     [_audioMixer setMixVolume:0.2 of:_bgmTrack];
+    
+    _audioReverb = nil;
     __weak KSYGPUStreamerVC * vc = self;
     //采集设备的音频数据回调
     _capDev.audioProcessingCallback = ^(CMSampleBufferRef buf){
+        if (vc.audioReverb){
+            [vc.audioReverb processAudioSampleBuffer:buf];
+        }
         [vc.audioMixer processAudioSampleBuffer:buf of:vc.micTrack];
     };
     _bgmPlayer.audioDataBlock = ^(CMSampleBufferRef buf){
@@ -678,10 +684,20 @@
 }
 
 -(IBAction)onReverbStart:(id)sender {
-//    [_gpuStreamer.streamerBase enableReverb:_iReverb];
+    if (_audioReverb == nil){
+        _iReverb = (_iReverb+1) % 4;
+        _audioReverb = [[ KSYAudioReverb alloc] initWithType:_iReverb+1];
+        NSString * str = [NSString stringWithFormat:@"停止混响%d",_iReverb+1];
+        [_startReverb setTitle:str forState:UIControlStateNormal];
+    }
+    else {
+        _audioReverb = nil;
+        [_startReverb setTitle:@"开始混响" forState:UIControlStateNormal];
+    }
 } // Reverb
 
 -(IBAction)onReverbStop:(id)sender{
+    _audioReverb = nil;
 } //Reverb
 
 - (IBAction)onVolChanged:(id)sender {
@@ -772,7 +788,7 @@
         [vc.yuvInput processPixelBuffer:buf time:CMTimeMake(2, 10)];
     };
     _player.audioDataBlock = ^(CMSampleBufferRef buf){
-//        [vc.audioMixer processAudioSampleBuffer:buf of:vc.pipTrack];
+        [vc.audioMixer processAudioSampleBuffer:buf of:vc.pipTrack];
     };
     
     CGRect rect = CGRectMake(0.6, 0.6, 0.3, 0.3);

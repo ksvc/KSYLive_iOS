@@ -442,7 +442,7 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
  * 当播放器调用方发现卡顿时，可以主动调用
  * 当估计出更优质的拉流ip时，可以主动调用
  * 当发生WiFi/3G网络切换时，可以主动调用
- * 当播放器回调体现播放完全时，可以主动调用
+ * 当播放器回调体现播放完成时，可以主动调用
  * 播放器SDK不会自动调用reload功能
  
  @warning 该方法由金山云引入，不是原生系统接口
@@ -469,6 +469,8 @@ MP_EXTERN NSString * const MPMovieNaturalSizeAvailableNotification;
 MP_EXTERN NSString * const MPMoviePlayerFirstVideoFrameRenderedNotification;
 
 MP_EXTERN NSString * const MPMoviePlayerFirstAudioFrameRenderedNotification;
+
+MP_EXTERN NSString * const MPMoviePlayerSuggestReloadNotification;
 
 MP_EXTERN const NSString *const kKSYPLYFormat;
 

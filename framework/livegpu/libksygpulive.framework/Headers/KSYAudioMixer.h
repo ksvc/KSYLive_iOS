@@ -28,7 +28,7 @@ typedef struct  _KSYAudioFormat {
  3. 将输入的音频pcm数据存入buffer，每一路音频的buffer独立
  4. 每次麦克风的音频输入，都会触发从所有buffer中取数据，混合，发送的动作
  5. 每一路音频可以单独配置音量
- 6. 输出格式固定为 44.1KHz, 单声道， fltp
+ 6. 输出格式固定为 44.1KHz, 单声道， S16
 
  */
 @interface KSYAudioMixer : NSObject

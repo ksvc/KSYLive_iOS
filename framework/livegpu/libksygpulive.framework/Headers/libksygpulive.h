@@ -16,16 +16,12 @@ FOUNDATION_EXPORT const unsigned char libqyliveVersionString[];
 
 // streamer
 #import "KSYTypeDef.h"
-#import "KSYCamera.h"
 #import "KSYStreamerBase.h"
 #import "KSYGPUStreamer.h"
-#import "KSYStreamer.h"
-#import "KSYAuthInfo.h"
 #import "KSYAudioMixer.h"
 #import "KSYBgmPlayer.h"
 
 #import "KSYGPUStreamerKit.h"
-
 // player
 #import "KSYMediaPlayer.h"
 #import "KSYMicMonitor.h"

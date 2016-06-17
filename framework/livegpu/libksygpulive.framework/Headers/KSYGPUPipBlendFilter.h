@@ -42,4 +42,5 @@
  @discussion 比如切换不同的视频内容时，避免出现黑色背景
  */
 -(void)clearSecondTexture;
+
 @end

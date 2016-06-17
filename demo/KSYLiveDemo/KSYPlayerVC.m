@@ -17,10 +17,16 @@
 @property (strong, nonatomic) KSYMoviePlayerController *player;
 @end
 
-
+#define dispatch_main_sync_safe(block)\
+if ([NSThread isMainThread]) {\
+block();\
+} else {\
+dispatch_sync(dispatch_get_main_queue(), block);\
+}
 @implementation KSYPlayerVC{
     UILabel *stat;
     NSTimer* timer;
+    NSTimer* repeateTimer;
     double lastSize;
     NSTimeInterval lastCheckTime;
     NSString* serverIp;
@@ -30,6 +36,7 @@
     UIButton *btnReload;
     UIButton *btnStop;
     UIButton *btnQuit;
+    UIButton *btnRepeat;
     UIButton *btnRotate;
     UIButton *btnContentMode;
     UILabel  *lableHWCodec;
@@ -60,6 +67,7 @@
     [super viewDidLoad];
     [self initUI];
     [self setupObservers];
+    repeateTimer = nil;
 }
 - (void) initUI {
     //add UIView for player
@@ -85,9 +93,12 @@
     //add rotate button
     btnRotate = [self addButtonWithTitle:@"rotate" action:@selector(onRotate:)];
    
-	//add content mode butten
+	//add content mode buttpn
 	btnContentMode = [self addButtonWithTitle:@"mode" action:@selector(onContentMode:)];
     
+    //add repeate play button
+    btnRepeat = [self addButtonWithTitle:@"repeat" action:@selector(onRepeatPlay:)];
+
 	stat = [[UILabel alloc] init];
     stat.backgroundColor = [UIColor clearColor];
     stat.textColor = [UIColor redColor];
@@ -190,6 +201,8 @@
     btnRotate.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     xPos += gap + btnWdt;
     btnContentMode.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
+    xPos += gap + btnWdt;
+    btnRepeat.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     
 	stat.frame = CGRectMake(gap, 0, wdt, hgt);
 }
@@ -318,6 +331,11 @@
         far_costtime = (int)((long long int)([self getCurrentTime] * 1000) - prepared_time);
 		NSLog(@"first audio frame render, cost time : %dms!\n", far_costtime);
 	}
+    
+    if (MPMoviePlayerSuggestReloadNotification == notify.name)
+    {
+        NSLog(@"suggest using reload function!\n");
+    }
 }
 - (void) toast:(NSString*)message{
     UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
@@ -364,6 +382,10 @@
                                             selector:@selector(handlePlayerNotify:)
                                                 name:(MPMoviePlayerFirstAudioFrameRenderedNotification)
                                               object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(handlePlayerNotify:)
+                                                name:(MPMoviePlayerSuggestReloadNotification)
+                                              object:nil];
 }
 
 - (void)releaseObservers 
@@ -388,6 +410,9 @@
                                                  object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self
                                                    name:MPMoviePlayerFirstAudioFrameRenderedNotification
+                                                 object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self
+                                                   name:MPMoviePlayerSuggestReloadNotification
                                                  object:nil];
 }
 - (IBAction)onPlayVideo:(id)sender {
@@ -424,7 +449,11 @@
     _player.shouldEnableKSYStatModule = TRUE;
     _player.shouldLoop = NO;
     //[_player setTimeout:10];
-    
+    NSKeyValueObservingOptions opts = NSKeyValueObservingOptionNew;
+    [_player addObserver:self
+                      forKeyPath:@"currentPlaybackTime"
+                         options:opts
+                         context:nil];
     NSLog(@"sdk version:%@", [_player getVersion]);
     prepared_time = (long long int)([self getCurrentTime] * 1000);
     [_player prepareToPlay];
@@ -441,6 +470,26 @@
         [_player pause];
     }
 }
+- (void)repeatPlay:(NSTimer *)t {
+    if(nil == _player||arc4random() % 20 == 0)
+    {
+        dispatch_main_sync_safe(^{
+            [self onStopVideo:nil];
+            [self onPlayVideo:nil];
+        });
+    }else if(arc4random() % 5 == 0){
+        [self onReloadVideo:nil];
+    }else if(arc4random() % 30 == 0){
+        switchHwCodec.on = !switchHwCodec.isOn;
+    }
+}
+- (IBAction)onRepeatPlay:(id)sender{
+    if ([repeateTimer isValid]) {
+        [repeateTimer invalidate];
+    }else{
+        repeateTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(repeatPlay:) userInfo:nil repeats:YES];
+    }
+}
 - (IBAction)onStopVideo:(id)sender {
     if (_player) {
         NSLog(@"player download flow size: %f MB", _player.readSize);
@@ -449,6 +498,9 @@
               _player.bufferEmptyDuration);
         
         [_player stop];
+        [_player removeObserver:self
+                             forKeyPath:@"currentPlaybackTime"
+                                context:nil];
         [_player.view removeFromSuperview];
         _player = nil;
         stat.text = [NSString stringWithFormat:@"url: %@\nstopped", _url];
@@ -613,4 +665,16 @@
     return address;
 }
 
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+    if ([keyPath isEqual:@"currentPlaybackTime"] == NO) {
+        return;
+    }
+    
+    NSTimeInterval position = [[change objectForKey:NSKeyValueChangeNewKey] floatValue];
+    //NSLog(@">>>>>>>>>>>>>>>>> current playback position:%.1fs\n", position);
+}
 @end

@@ -7,9 +7,9 @@
 //
 
  /* KSYGPUBeautifyFilter_h */
-@class  GPUImageFilter;
+#import "KSYGPUFilter.h"
 
-@interface KSYGPUDnoiseFilter : GPUImageFilter
+@interface KSYGPUDnoiseFilter : KSYGPUFilter
 {
     
 };

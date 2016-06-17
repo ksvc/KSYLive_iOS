@@ -18,9 +18,9 @@
 #import <libksygpulive/KSYGPUStreamerKit.h>
 
 // filters
+#import <libksygpulive/KSYGPUFilter.h>
 #import <libksygpulive/KSYGPUBeautifyFilter.h>
 #import <libksygpulive/KSYGPUBeautifyExtFilter.h>
 #import <libksygpulive/KSYGPUDnoiseFilter.h>
 #import <libksygpulive/KSYGPUBeautifyPlusFilter.h>
-#import <libksygpulive/KSYGPUBeautifyPlusFilter_t.h>
 #import <libksygpulive/KSYGPUPipBlendFilter.h>

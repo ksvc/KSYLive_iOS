@@ -54,6 +54,13 @@
 @property (nonatomic, assign) KSYVideoCodec videoCodec;
 
 /**
+ @abstract   音频编码器 (默认为AAC-HE)
+ @discussion audio codec used for encode
+ @see        KSYAudioCodec
+ */
+@property (nonatomic, assign) KSYAudioCodec audioCodec;
+
+/**
  @abstract   视频编码起始码率（单位:kbps, 默认:500）
  @discussion 开始推流时的视频码率，开始推流后，根据网络情况在 [Min, Max]范围内调节
  @discussion 视频码率上调则画面更清晰，下调则画面更模糊
@@ -170,13 +177,6 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 - (void)processVideoSampleBuffer:(CMSampleBufferRef)sampleBuffer;
 
 /**
- @abstract 处理一段音频数据
- @param sampleBuffer Buffer to process
- @discussion 应当在开始推流前定期调用此接口，与processVideoSampleBuffer 交错进行
- */
-- (void)processAudioSampleBuffer:(CMSampleBufferRef)sampleBuffer;
-
-/**
  @abstract  处理一个视频帧
  @param pixelBuffer 待编码的像素数据
  @param timeStamp   待编码的时间戳
@@ -184,6 +184,14 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
  */
 - (void)processVideoPixelBuffer:(CVPixelBufferRef)pixelBuffer
                        timeInfo:(CMTime)timeStamp;
+
+/**
+ @abstract 处理一段音频数据
+ @param sampleBuffer Buffer to process
+ @discussion 应当在开始推流前定期调用此接口，与processVideoSampleBuffer 交错进行
+ @warning    目前只支持 单通道  S16 格式的PCM数据
+ */
+- (void)processAudioSampleBuffer:(CMSampleBufferRef)sampleBuffer;
 
 #pragma mark - Status property
 /**
