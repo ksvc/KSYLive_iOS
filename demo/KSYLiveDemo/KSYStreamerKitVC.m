@@ -11,6 +11,8 @@
 #import <libksygpulive/libksygpulive.h>
 #import <libksygpulive/libksygpuimage.h>
 
+
+
 @interface KSYStreamerKitVC ()
 {
     
@@ -82,6 +84,7 @@
 @property GPUImageFilter            * filter;
 // status monitor
 @property NSTimer *timer;
+@property KSYAudioReverb*  audioReverb;
 @end
 
 
@@ -116,6 +119,7 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     [self setupLogo];
     _previewMirrored = NO;
     _streamerMirrored = NO;
+    _audioReverb = nil;
     if([self hasHeadset])
         [_kit.micMonitor start];
     NSLog(@"version: %@", [_kit getKSYVersion]);
@@ -310,9 +314,9 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     _stopReverb = [self addButton:@"停止混响" action:@selector(onReverbStop:)];
     _iReverb    = 1;
     _btnPreviewMirrored = [self addButton:@"预览镜像关" action:@selector(onPreviewMirror:)];
-    _btnPreviewMirrored.hidden = YES;
+    _btnPreviewMirrored.hidden = NO;
     _btnStreamerMirrored= [self addButton:@"推流镜像关" action:@selector(onSteamerMirror:)];
-    _btnStreamerMirrored.hidden = YES;
+    _btnStreamerMirrored.hidden = NO;
     
     _btnMusicPlay  = [self addButton:@"播放"  action:@selector(onMusicPlay:)];
     _btnMusicPause = [self addButton:@"暂停"  action:@selector(onMusicPause:)];
@@ -427,7 +431,9 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
 
     // top row 5
     yPos += ( btnHgt+5);
+    _btnPreviewMirrored.frame =CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
     _btnPipPlayStop.frame    =CGRectMake(xMiddle,   yPos, btnWdt, btnHgt);
+    _btnStreamerMirrored.frame = CGRectMake(xRight,   yPos, btnWdt, btnHgt);
     btnWdt = self.view.bounds.size.width - gap*2;
     btnHgt = hgt - yPos - btnHgt;
     _stat.frame = CGRectMake(gap, 20 , btnWdt, hgt - 20);
@@ -447,7 +453,12 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     _kit.videoProcessingCallback = ^(CMSampleBufferRef sampleBuffer){
 //        processVideo(sampleBuffer);
     };
-    _kit.audioProcessingCallback =^(CMSampleBufferRef sampleBuffer){
+
+    __weak KSYStreamerKitVC * vc = self;
+    _kit.audioProcessingCallback =^(CMSampleBufferRef buf){
+        if (vc.audioReverb){
+            [vc.audioReverb processAudioSampleBuffer:buf];
+        }
     };
     [self setVideoOrientation];
 }
@@ -648,22 +659,21 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
 
 
 -(IBAction)onReverbStart:(id)sender {
-    [_kit.streamerBase enableReverb:_iReverb];
-    
-    _startReverb.enabled = NO;
-    _stopReverb.enabled = YES;
-    
-    _iReverb++;
-    _iReverb = _iReverb % 4;
-    NSString * SReverb = [NSString stringWithFormat:@"开始混响%d",_iReverb];
-    [sender setTitle:SReverb  forState: UIControlStateNormal];
-} // Reverb
+    if (_audioReverb == nil){
+        _iReverb = (_iReverb+1) % 4;
+        _audioReverb = [[ KSYAudioReverb alloc] initWithType:_iReverb+1];
+        NSString * str = [NSString stringWithFormat:@"停止混响%d",_iReverb+1];
+        [_startReverb setTitle:str forState:UIControlStateNormal];
+    }
+    else {
+        _audioReverb = nil;
+        [_startReverb setTitle:@"开始混响" forState:UIControlStateNormal];
+    }
+} 
 
 -(IBAction)onReverbStop:(id)sender{
-    [_kit.streamerBase enableReverb:0];
-    _startReverb.enabled = YES;
-    _stopReverb.enabled = NO;
-} //Reverb
+    _audioReverb = nil;
+}
 
 -(IBAction)onSteamerMirror:(id)sender{
     _kit.streamerMirrored =!_streamerMirrored;
@@ -729,7 +739,7 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
 
 - (IBAction)onVolChanged:(id)sender {
     if (sender == _bgmVolS) {
-        [_kit.audioMixer setMixVolume:_bgmVolS.value of:_kit.bgmTrack];
+         [_kit.bgmPlayer setBgmVolume:_bgmVolS.value];
     }
     else if (sender == _micVolS) {
         [_kit.audioMixer setMixVolume:_micVolS.value of:_kit.micTrack];
@@ -852,6 +862,7 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
         else {
             _netTimeOut--;
         }
+        
     }
 }
 
@@ -1091,5 +1102,6 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     
     return hasHeadset;
 }
+
 
 @end
