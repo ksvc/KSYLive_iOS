@@ -17,8 +17,6 @@
  * 视频频编码采用H.264编码，码率可配置;
  * 支持 RTMP 协议直播推流;
  
- ## 版本信息
- __Version__: 1.0
  
  __Found__: 2015-10-15
  
@@ -94,6 +92,16 @@
  @discussion 自动根据网络状况调整码率,开始预览前设置有效
  */
 @property (nonatomic, assign) BOOL         enAutoApplyEstimateBW;
+
+/**
+ @abstract 是否处理视频的图像数据 (默认YES)
+ */
+@property (atomic, assign) BOOL          bWithVideo;
+
+/**
+ @abstract 是否处理音频数据 (默认YES)
+ */
+@property (atomic, assign) BOOL          bWithAudio;
 
 #pragma mark - Status Notification
 
@@ -290,5 +298,4 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
  */
 - (void) takePhotoWithQuality:(CGFloat)jpegCompressionQuality
                      fileName:(NSString *)filename;
-
 @end

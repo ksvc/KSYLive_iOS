@@ -450,6 +450,13 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
  */
 - (void)reload:(NSURL *)aUrl is_flush:(bool)is_flush;
 
+/**
+ @abstract 获取当前播放的pts
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 1.0 and later.
+ */
+- (NSTimeInterval)getCurrentPts;
+
 @end
 
 

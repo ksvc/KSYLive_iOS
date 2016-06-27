@@ -26,3 +26,5 @@ FOUNDATION_EXPORT const unsigned char libqyliveVersionString[];
 #import "KSYMediaPlayer.h"
 #import "KSYMicMonitor.h"
 #import "KSYAudioReverb.h"
+#import "KSYMovieWriter.h"
+#import "KSYAVMuxer.h"

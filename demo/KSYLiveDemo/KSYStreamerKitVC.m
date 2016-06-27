@@ -740,6 +740,7 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
 - (IBAction)onVolChanged:(id)sender {
     if (sender == _bgmVolS) {
          [_kit.bgmPlayer setBgmVolume:_bgmVolS.value];
+        [_kit.audioMixer setMixVolume:_bgmVolS.value of:_kit.bgmTrack];
     }
     else if (sender == _micVolS) {
         [_kit.audioMixer setMixVolume:_micVolS.value of:_kit.micTrack];

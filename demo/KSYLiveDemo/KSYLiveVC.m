@@ -34,6 +34,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self initVariable];
     [self initLiveVCUI];
+    [KSYDBCreater initDatabase];
 }
 
 - (UITextField *)addTextField{

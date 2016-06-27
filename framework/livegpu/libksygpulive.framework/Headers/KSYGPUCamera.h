@@ -42,18 +42,19 @@
  @discussion YES:开始采集时，会打断其他的后台播放音乐，也会被其他音乐打断（采集过程中，启动其他音乐播放，采集被中止）
  @discussion NO: 可以与其他后台播放共存，相互之间不会被打断
  @discussion 默认为YES
+ @see AVAudioSessionCategoryOptionMixWithOthers
  */
 @property BOOL  bInterruptOtherAudio;
 
 /**
- @abstract   是否将视频数据送入streamer
+ @abstract   是否将视频数据送入streamer (默认为NO)
 
  @see streamer
  */
 @property BOOL  bStreamVideo;
 
 /**
- @abstract   是否将音频数据送入streamer
+ @abstract   是否将音频数据送入streamer (默认为YES)
  
  @see streamer
  */

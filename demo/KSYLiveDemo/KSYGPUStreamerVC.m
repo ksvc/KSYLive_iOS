@@ -19,6 +19,7 @@
 
     UISlider *_bgmVolS;
     UISlider *_micVolS;
+    UISlider *_pipVolS;
     // chose filters
     UIButton *_btnFilters[4];
     
@@ -258,12 +259,13 @@
 }
 //add slider
 - (UISlider *)addSliderFrom: (float) minV
-                         To: (float) maxV{
+                         To: (float) maxV
+                    Default: (float) defV{
     UISlider *sl = [[UISlider alloc] init];
     [_controlView addSubview:sl];
     sl.minimumValue = minV;
     sl.maximumValue = maxV;
-    sl.value = 1.0;
+    sl.value = defV;
     [ sl addTarget:self action:@selector(onVolChanged:) forControlEvents:UIControlEventValueChanged ];
     return sl;
 }
@@ -291,8 +293,9 @@
     _btnMusicPause = [self addButton:@"暂停"  action:@selector(onMusicPause:)];
     _btnMusicMix   = [self addButton:@"混音"  action:@selector(onMusicMix:)];
     
-    _bgmVolS     = [self addSliderFrom:0.0 To:1.0];
-    _micVolS     = [self addSliderFrom:0.0 To:1.0];
+    _bgmVolS     = [self addSliderFrom:0.0 To:1.0 Default:0.2];
+    _micVolS     = [self addSliderFrom:0.0 To:1.0 Default:1.0];
+    _pipVolS     = [self addSliderFrom:0.0 To:1.0 Default:0.2];
     _btnMute     = [self addButton:@"静音"   action:@selector(onStreamMute:)];
     
     _lblAutoBW = [self addLable:@"自动调码率"];
@@ -366,7 +369,8 @@
     yPos += (btnHgt+2);
     _bgmVolS.frame    = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
     _micVolS.frame    = CGRectMake(xMiddle, yPos, btnWdt, btnHgt);
-    _btnMute.frame    = CGRectMake(xRight,  yPos, btnWdt, btnHgt);
+    _pipVolS.frame    = CGRectMake(xRight, yPos, btnWdt, btnHgt);
+    //_btnMute.frame    = CGRectMake(xRight,  yPos, btnWdt, btnHgt);
 
      yPos += (btnHgt+20);
     _btnFilters[0].frame = CGRectMake(xLeft,   yPos, btnWdt, btnHgt);
@@ -543,9 +547,11 @@
     }
     if( sender == _btnFilters[0]) {
         _filter = [[KSYGPUBeautifyExtFilter alloc] init];
+        _bgmPlayer.bMutBgmPlay = YES;
     }
     else if( sender == _btnFilters[1]) {
         _filter = [[KSYGPUBeautifyFilter alloc] init];
+        _bgmPlayer.bMutBgmPlay = NO;
     }
     else if( sender == _btnFilters[2]) {
         _filter = [[KSYGPUDnoiseFilter alloc] init];
@@ -703,9 +709,14 @@
 - (IBAction)onVolChanged:(id)sender {
     if (sender == _bgmVolS) {
         [_bgmPlayer setBgmVolume:_bgmVolS.value];
+        [_audioMixer setMixVolume:_bgmVolS.value of:_bgmTrack];
     }
     else if (sender == _micVolS) {
         [_audioMixer setMixVolume:_micVolS.value of:_micTrack];
+    }
+    else if (sender == _pipVolS) {
+        // player setVolume会改变PCM的音量, 不能再修改 mixer 的音量了
+        [_player setVolume:_pipVolS.value rigthVolume:_pipVolS.value];
     }
 }
 
@@ -782,7 +793,8 @@
     
      _yuvInput = [[KSYGPUYUVInput alloc] init];
     [_audioMixer setTrack:_pipTrack enable:YES];
-    [_audioMixer setMixVolume:0.2 of:_pipTrack];
+    [self onVolChanged:_pipVolS];
+    [self onVolChanged:_bgmVolS];
     __weak KSYGPUStreamerVC * vc = self;
     _player.videoDataBlock = ^(CVPixelBufferRef buf){
         [vc.yuvInput processPixelBuffer:buf time:CMTimeMake(2, 10)];

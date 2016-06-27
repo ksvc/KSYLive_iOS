@@ -9,14 +9,15 @@
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
 #import "KSYTypeDef.h"
-/**
- @abstract   播放背景音乐 提供混音接口
- */
 
 @class KSYAudioMixer;
 
+/** 背景音乐播放器
+    提供播放后的音频数据的回调
+ */
 @interface KSYBgmPlayer : NSObject
 
+#pragma mark - player control
 /**
  @abstract   开始播放背景音乐
  @param      path 本地音乐的路径
@@ -39,41 +40,34 @@
 - (void) resumeBgm;
 
 /**
- @abstract  耳返功能，注入mic音频
-*/
-- (BOOL)processMicAudioSampleBuffer:(CMSampleBufferRef)sampleBuffer;
+ @abstract   背景音乐的音量
+ @discussion 调整范围 0.0~1.0
+ @discussion 仅仅调整播放的音量, 不影响回调的音频数据
+ */
+@property (nonatomic, assign) double bgmVolume;
+
+/**
+ @abstract   背景音乐播放静音
+ @discussion 仅仅静音播放, 不影响回调的音频数据
+ */
+@property (nonatomic, assign) BOOL bMutBgmPlay;
+
+#pragma mark - callbacks
+/**
+ @abstract   音频数据输出回调
+ @param      sampleBuffer 从音乐文件中解码得到的PCM数据
+ 
+ @see CMSampleBufferRef
+ */
+@property(nonatomic, copy) void(^audioDataBlock)(CMSampleBufferRef sampleBuffer);
 
 /**
  @abstract   当背景音乐播放完成时，调用此回调函数
  @discussion 只有设置 loop为NO时才有效, 在开始播放前设置有效
  */
 @property(nonatomic, copy) void(^bgmFinishBlock)(void);
-/**
- @abstract   背景音乐的音量
-@discussion  0.0~1.0
- */
-@property (nonatomic, assign) double bgmVolume;
 
-/**
- @abstract    播放状态
- */
-@property (nonatomic, readonly) KSYBgmPlayerState bgmPlayerState;
-/**
- @abstract   获取状态对应的字符串
- @param      stat 状态
- */
-- (NSString*) getBgmStateName : (KSYBgmPlayerState) stat;
-/**
- @abstract   获取当前状态对应的字符串
- */
-- (NSString*) getCurBgmStateName;
-
-/**
- @abstract    播放错误码
- @discuss     播放错误码具体内容可以参考AudioQueue的Apple文档。
- */
-@property (nonatomic, readonly) OSStatus audioErrorCode;
-
+#pragma mark - player state
 /**
  @abstract    背景音的duration信息（总时长, 单位:秒）
  */
@@ -98,13 +92,24 @@
 @property (nonatomic, readonly) BOOL isRunning;
 
 /**
- @abstract   音频数据输出回调
- @param      sampleBuffer 从音乐文件中解码得到的PCM数据
- 
- @see CMSampleBufferRef
+ @abstract    播放错误码
+ @discuss     播放错误码具体内容可以参考AudioQueue的Apple文档。
  */
-@property(nonatomic, copy) void(^audioDataBlock)(CMSampleBufferRef sampleBuffer);
+@property (nonatomic, readonly) OSStatus audioErrorCode;
 
+/**
+ @abstract    播放状态
+ */
+@property (nonatomic, readonly) KSYBgmPlayerState bgmPlayerState;
+/**
+ @abstract   获取状态对应的字符串
+ @param      stat 状态
+ */
+- (NSString*) getBgmStateName : (KSYBgmPlayerState) stat;
+/**
+ @abstract   获取当前状态对应的字符串
+ */
+- (NSString*) getCurBgmStateName;
 
 // Posted when audio state changes
 FOUNDATION_EXPORT NSString *const KSYAudioStateDidChangeNotification NS_AVAILABLE_IOS(7_0);
