@@ -296,6 +296,22 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 @property (nonatomic, readonly) NSString* serverAddress;
 
 /**
+ @abstract 客户端出口IP
+ @discussion 当收到prepared后，即可以查询客户端的出口IP
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 1.5.0.1 and later.
+ */
+@property (nonatomic, readonly) NSString *clientIP;
+
+/**
+ @abstract 客户端LocalDNSIP
+ @discussion 当收到prepared后，即可以查询客户端的LocalDNSIP
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 1.5.0.1 and later.
+ */
+@property (nonatomic, readonly) NSString *localDNSIP;
+
+/**
  @abstract 视频流qos信息
  @discussion 在播放过程中，即可以查询当前连接的视频流qos信息
  @warning 该方法由金山云引入，不是原生系统接口
@@ -453,7 +469,7 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 /**
  @abstract 获取当前播放的pts
  @warning 该方法由金山云引入，不是原生系统接口
- @since Available in KSYMoviePlayerController 1.0 and later.
+ @since Available in KSYMoviePlayerController 1.5.0.0 and later.
  */
 - (NSTimeInterval)getCurrentPts;
 

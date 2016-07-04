@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "KSYLiveVC.h"
 
-//#import <Bugly/Bugly.h>
+#import <Bugly/Bugly.h>
 
 @interface AppDelegate ()
 
@@ -20,7 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    //[Bugly startWithAppId:@"900034350"];
+    [Bugly startWithAppId:@"900034350"];
     
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];

@@ -7,9 +7,6 @@
 
 #import "KSYPlayerVC.h"
 #import <CommonCrypto/CommonDigest.h>
-#import <ifaddrs.h>
-#import <arpa/inet.h>
-
 
 @interface KSYPlayerVC ()
 @property (strong, nonatomic) NSURL *url;
@@ -449,11 +446,12 @@ dispatch_sync(dispatch_get_main_queue(), block);\
     _player.shouldEnableKSYStatModule = TRUE;
     _player.shouldLoop = NO;
     //[_player setTimeout:10];
+    
     NSKeyValueObservingOptions opts = NSKeyValueObservingOptionNew;
-    [_player addObserver:self
-                      forKeyPath:@"currentPlaybackTime"
-                         options:opts
-                         context:nil];
+    [_player addObserver:self forKeyPath:@"currentPlaybackTime" options:opts context:nil];
+    [_player addObserver:self forKeyPath:@"clientIP" options:opts context:nil];
+    [_player addObserver:self forKeyPath:@"localDNSIP" options:opts context:nil];
+    
     NSLog(@"sdk version:%@", [_player getVersion]);
     prepared_time = (long long int)([self getCurrentTime] * 1000);
     [_player prepareToPlay];
@@ -471,15 +469,17 @@ dispatch_sync(dispatch_get_main_queue(), block);\
     }
 }
 - (void)repeatPlay:(NSTimer *)t {
-    if(nil == _player||arc4random() % 20 == 0)
+    if(nil == _player||arc4random() % 20 == 0 || _player.currentPlaybackTime > 60)
     {
         dispatch_main_sync_safe(^{
             [self onStopVideo:nil];
             [self onPlayVideo:nil];
+            _player.bufferTimeMax = (arc4random() % 8) - 1;
+            NSLog(@"bufferTimeMax %f", _player.bufferTimeMax);
         });
-    }else if(arc4random() % 5 == 0){
+    }else if(arc4random() % 15 == 0){
         [self onReloadVideo:nil];
-    }else if(arc4random() % 30 == 0){
+    }else if(arc4random() % 25 == 0){
         switchHwCodec.on = !switchHwCodec.isOn;
     }
 }
@@ -498,9 +498,11 @@ dispatch_sync(dispatch_get_main_queue(), block);\
               _player.bufferEmptyDuration);
         
         [_player stop];
-        [_player removeObserver:self
-                             forKeyPath:@"currentPlaybackTime"
-                                context:nil];
+        
+        [_player removeObserver:self forKeyPath:@"currentPlaybackTime" context:nil];
+        [_player removeObserver:self forKeyPath:@"clientIP" context:nil];
+        [_player removeObserver:self forKeyPath:@"localDNSIP" context:nil];
+        
         [_player.view removeFromSuperview];
         _player = nil;
         stat.text = [NSString stringWithFormat:@"url: %@\nstopped", _url];
@@ -538,6 +540,7 @@ dispatch_sync(dispatch_get_main_queue(), block);\
                  "streamerUrl:%@\n"
                  "serverIp:%@\n"
                  "clientIp:%@\n"
+                 "localDnsIp:%@\n"
                  "Resolution:(w-h: %.0f-%.0f)\n"
                  "play time:%.1fs\n"
                  "playable Time:%.1fs\n"
@@ -558,7 +561,8 @@ dispatch_sync(dispatch_get_main_queue(), block);\
                  [_player getVersion],
                  _url,
                  serverIp,
-                 [self getIPAddress],
+                 _player.clientIP,
+                 _player.localDNSIP,
                  _player.naturalSize.width,_player.naturalSize.height,
                  _player.currentPlaybackTime,
                  _player.playableDuration,
@@ -638,43 +642,23 @@ dispatch_sync(dispatch_get_main_queue(), block);\
     }
 }
 
-// Get IP Address
-- (NSString *)getIPAddress {
-    NSString *address = @"error";
-    struct ifaddrs *interfaces = NULL;
-    struct ifaddrs *temp_addr = NULL;
-    int success = 0;
-    // retrieve the current interfaces - returns 0 on success
-    success = getifaddrs(&interfaces);
-    if (success == 0) {
-        // Loop through linked list of interfaces
-        temp_addr = interfaces;
-        while(temp_addr != NULL) {
-            if(temp_addr->ifa_addr->sa_family == AF_INET) {
-                // Check if interface is en0 which is the wifi connection on the iPhone
-                if([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]) {
-                    // Get NSString from C String
-                    address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
-                }
-            }
-            temp_addr = temp_addr->ifa_next;
-        }
-    }
-    // Free memory
-    freeifaddrs(interfaces);
-    return address;
-}
-
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context
 {
-    if ([keyPath isEqual:@"currentPlaybackTime"] == NO) {
-        return;
+    if([keyPath isEqual:@"currentPlaybackTime"])
+    {
+        NSTimeInterval position = [[change objectForKey:NSKeyValueChangeNewKey] floatValue];
+        //NSLog(@"current playback position is:%.1fs\n", position);
     }
-    
-    NSTimeInterval position = [[change objectForKey:NSKeyValueChangeNewKey] floatValue];
-    //NSLog(@">>>>>>>>>>>>>>>>> current playback position:%.1fs\n", position);
+    else if([keyPath isEqual:@"clientIP"])
+    {
+        NSLog(@"client IP is %@\n", [change objectForKey:NSKeyValueChangeNewKey]);
+    }
+    else if([keyPath isEqual:@"localDNSIP"])
+    {
+        NSLog(@"local DNS IP is %@\n", [change objectForKey:NSKeyValueChangeNewKey]);
+    }
 }
 @end
