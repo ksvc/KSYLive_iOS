@@ -20,6 +20,7 @@
 		06B2B1BA1BE8F0D900E0CC85 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B2B1B81BE8F0D900E0CC85 /* LaunchScreen.xib */; };
 		06C98D3D1C84701900013DCA /* KSYGPUStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 064928801C83296C00F0C09B /* KSYGPUStreamerVC.m */; };
 		06F0E1ED1D0FAB6500A59BE1 /* libksygpulive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 067EB3EA1CD998A800CE13AE /* libksygpulive.framework */; };
+		58D3E67D1D2A0B9E00BD554B /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58D3E67C1D2A0B9E00BD554B /* Bugly.framework */; };
 		625EF3B51C9A95BE00DBA1CC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 625EF3B41C9A95BE00DBA1CC /* libsqlite3.tbd */; };
 		627FB6211CA2EBD40029AD04 /* KSYStreamerKitVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 627FB6201CA2EBD40029AD04 /* KSYStreamerKitVC.m */; };
 		627FB6231CA2EEDB0029AD04 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 627FB6221CA2EEDB0029AD04 /* GPUImage.framework */; };
@@ -50,6 +51,7 @@
 		06B2B1B41BE8F0D900E0CC85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		06B2B1B61BE8F0D900E0CC85 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		06B2B1B91BE8F0D900E0CC85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		58D3E67C1D2A0B9E00BD554B /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugly.framework; path = ../framework/livegpu/Bugly.framework; sourceTree = "<group>"; };
 		625EF3B41C9A95BE00DBA1CC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		627FB61F1CA2EBD40029AD04 /* KSYStreamerKitVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYStreamerKitVC.h; sourceTree = "<group>"; };
 		627FB6201CA2EBD40029AD04 /* KSYStreamerKitVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYStreamerKitVC.m; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58D3E67D1D2A0B9E00BD554B /* Bugly.framework in Frameworks */,
 				E3EDA85D1D17BBDA00B54437 /* Security.framework in Frameworks */,
 				E3EDA85B1D17BBCE00B54437 /* SystemConfiguration.framework in Frameworks */,
 				06F0E1ED1D0FAB6500A59BE1 /* libksygpulive.framework in Frameworks */,
@@ -98,6 +101,7 @@
 		06B2B19A1BE8F0D900E0CC85 = {
 			isa = PBXGroup;
 			children = (
+				58D3E67C1D2A0B9E00BD554B /* Bugly.framework */,
 				E3EDA85C1D17BBDA00B54437 /* Security.framework */,
 				E3EDA85A1D17BBCE00B54437 /* SystemConfiguration.framework */,
 				E3680E301D14070100B2D558 /* libz.tbd */,
