@@ -1,0 +1,6 @@
+framework module libksygpulivedylib {
+  umbrella header "libksygpulivedylib.h"
+
+  export *
+  module * { export * }
+}
