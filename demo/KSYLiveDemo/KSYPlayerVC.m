@@ -445,7 +445,7 @@ dispatch_sync(dispatch_get_main_queue(), block);\
     _player.shouldMute  = switchMute.isOn;
     _player.shouldEnableKSYStatModule = TRUE;
     _player.shouldLoop = NO;
-    //[_player setTimeout:10];
+    //[_player setTimeout:5 readTimeout:10];
     
     NSKeyValueObservingOptions opts = NSKeyValueObservingOptionNew;
     [_player addObserver:self forKeyPath:@"currentPlaybackTime" options:opts context:nil];
