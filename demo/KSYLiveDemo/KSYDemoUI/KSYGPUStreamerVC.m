@@ -8,9 +8,13 @@
 
 #import "KSYGPUStreamerVC.h"
 #import <GPUImage/GPUImage.h>
+#if USING_DYNAMIC_FRAMEWORK
+#import <libksygpulivedylib/libksygpulivedylib.h>
+#import <libksygpulivedylib/libksygpuimage.h>
+#else
 #import <libksygpulive/libksygpulive.h>
 #import <libksygpulive/libksygpuimage.h>
-
+#endif
 @interface KSYGPUStreamerVC () {
     UIButton *_btnMusicPlay;
     UIButton *_btnMusicPause;
@@ -443,6 +447,10 @@
     _capDev.outputImageOrientation = orien;
     //init filter
     _filter = [[KSYGPUBeautifyFilter alloc] init];
+    //_filter = [[KSYGPUBeautifyProFilter alloc] init];
+    //_filter = [[KSYGPUBeautifyExtFilter alloc] initWithMethodOrder:3];
+    //_filter = [[KSYGPUBeautifyProFilterA alloc] init];
+
     _pipFilter = nil;
     _yuvInput  = nil;
     _bgPic     = nil;
@@ -551,6 +559,7 @@
     }
     else if( sender == _btnFilters[1]) {
         _filter = [[KSYGPUBeautifyFilter alloc] init];
+        //_filter = [[KSYGPUBeautifyProFilterA alloc] init];
         _bgmPlayer.bMutBgmPlay = NO;
     }
     else if( sender == _btnFilters[2]) {
@@ -569,6 +578,7 @@
         [src addTarget:_cropfilter];
         src = _cropfilter;
     }
+    
     if (_filter) {
         [_filter removeAllTargets];
         [src addTarget:_filter];
@@ -806,7 +816,7 @@
     CGRect rect = CGRectMake(0.6, 0.6, 0.3, 0.3);
     _pipFilter = [[KSYGPUPipBlendFilter alloc] initWithPipRect:rect];
     
-    NSString *testjpg = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/c.jpg"];
+    NSString *testjpg = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/snap.png"];
     NSURL* bgUrl = [NSURL fileURLWithPath:testjpg];
     _bgPic = [[GPUImagePicture alloc] initWithURL:bgUrl];
     [_player prepareToPlay];

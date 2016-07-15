@@ -19,6 +19,8 @@
 
 // filters
 #import <libksygpulive/KSYGPUFilter.h>
+#import <libksygpulive/KSYGPUTwoFilter.h>
+#import <libksygpulive/KSYGPUTwoPassFilter.h>
 #import <libksygpulive/KSYGPUBeautifyFilter.h>
 #import <libksygpulive/KSYGPUBeautifyExtFilter.h>
 #import <libksygpulive/KSYGPUDnoiseFilter.h>

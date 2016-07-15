@@ -76,13 +76,23 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 /**
  @abstract   添加水印
  @param      inputImage 输入的图像
- @param      position  图像显示的顶点位置信息
+ @param      position  图像显示的左上角的位置 单位为像素
  @param      transparency 透明度(0-1),0完全透明，1完全不透明；
+ @discussion 大小等于inputImage的原始尺寸
  */
 -(void)addLogo:(UIImage *)inputImage
            pos:(CGPoint)position
          trans:(float)transparency;
 
+/**
+ @abstract   添加水印
+ @param      inputImage   输入的图像
+ @param      pixelRect    位置和大小(单位为像素)
+ @param      transparency 透明度(0-1),0完全透明，1完全不透明；
+ */
+-(void) addLogo:(UIImage *)inputImage
+         toRect:(CGRect)pixelRect
+          trans:(float)transparency;
 /**
  @abstract   显示时间的Label
  @param      自定义的label
@@ -92,6 +102,20 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 -(void)addTimeLabel:(UILabel *)TimeLabel
          dateFormat:(NSString *)format;
 
+/**
+ @abstract   显示文字的lable
+ @param      借用UILable来指定文字的颜色字体等属性
+ @discussion 请在启动预览前添加,启动预览后更新
+ */
+-(void)addTextLabel:(UILabel *)textLabel
+             toRect:(CGRect)pixelRect;
+
+/**
+ @abstract   更新文字内容
+ @param      新label
+ @discussion 只有文字内容改变才会刷新
+ */
+-(void)updateTextLable:(UILabel *)textLabel;
 
 #pragma mark - get sub modules
 /**

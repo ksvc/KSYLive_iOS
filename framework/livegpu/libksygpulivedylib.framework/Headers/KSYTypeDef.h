@@ -73,19 +73,6 @@ typedef NS_ENUM(NSUInteger, KSYAudioCodec) {
     KSYAudioCodec_AAC_HE,
 };
 
-#pragma mark - Video Gravity
-/*!
- * @abstract  预览视频的填充方式
- */
-typedef NS_ENUM(NSUInteger, KSYVideoGravity) {
-    /// 保持宽高比，留白边 Preserve aspect ratio; fit within layer bounds.
-    KSYVideoGravity_ResizeAspect = 0,
-    /// 保持宽高比并填充，裁剪边缘 Preserve aspect ratio; fill layer bounds.
-    KSYVideoGravity_ResizeAspectFill,
-    /// 拉伸 Stretch to fill layer bounds.
-    KSYVideoGravity_Resize,
-};
-
 #pragma mark - QYPublisher State
 
 /*!
@@ -162,6 +149,12 @@ typedef NS_ENUM(NSUInteger, KSYStreamErrorCode) {
     KSYStreamErrorCode_FRAMES_THRESHOLD,
     /// 没有输入的数据，无法开始推流
     KSYStreamErrorCode_NO_INPUT_SAMPLE,
+    /// 对于URL中的域名解析失败
+    KSYStreamErrorCode_DNS_Parse_failed,
+    /// 对于URL对应的服务器连接失败(无法建立TCP连接)
+    KSYStreamErrorCode_Connect_Server_failed,
+    /// 跟RTMP服务器完成握手后,向{appname}/{streamname} 推流失败
+    KSYStreamErrorCode_RTMP_Publish_failed,
 };
 
 /*!
@@ -200,6 +193,23 @@ typedef NS_ENUM(NSUInteger, KSYBgmPlayerState) {
     KSYBgmPlayerStateError,
     /// 背景音被打断
     KSYBgmPlayerStateInterrupted
+};
+
+
+/*!
+ * @abstract  音频输入设备类型
+ * @see AVAudioSessionPortBuiltInMic
+ */
+typedef NS_ENUM(NSUInteger, KSYMicType) {
+    /// Built-in microphone on an iOS device
+    KSYMicType_builtinMic = 0,
+    /// Microphone on a wired headset
+    KSYMicType_headsetMic,
+    /// 蓝牙设备
+    KSYMicType_bluetoothMic,
+    
+    /// 未知设备
+    KSYMicType_unknow = -1,
 };
 
 #pragma mark - KSY_EXTERN

@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'KSYGPULiveDy_iOS'
-  spec.version      = '1.5.1.1'
+  spec.version      = '1.5.2.2'
   spec.license      = {
 :type => 'Proprietary',
 :text => <<-LICENSE
@@ -17,12 +17,12 @@ Pod::Spec.new do |spec|
     * KSYGPULiveSDK KSYGPUCamera    capture video, Inherits from  GPUImageVideoCamera
     * KSYGPULiveSDK KSYGPUStreamer  Conforms to GPUImageInput, compress and publish filted video to rtmp server
   DESC
-  spec.platform     = :ios, '7.0'
+  spec.platform     = :ios, '8.0'
   spec.requires_arc = true
   spec.frameworks   = 'VideoToolbox'
   spec.dependency 'GPUImage'
   spec.ios.library = 'z', 'iconv', 'stdc++.6'
-  spec.source = { :git => 'https://github.com/ksvc/KSYLive_iOS.git', :tag => 'v1.5.1.1'}
+  spec.source = { :git => 'https://github.com/ksvc/KSYLive_iOS.git', :tag => 'v1.5.2.2'}
   spec.preserve_paths      = 'framework/livegpu/libksygpulivedylib.framework'
   spec.public_header_files = 'framework/livegpu/libksygpulivedylib.framework/Headers'
   spec.vendored_frameworks = 'framework/livegpu/libksygpulivedylib.framework'

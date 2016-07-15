@@ -395,12 +395,28 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 @property (nonatomic) int rotateDegress;
 
 /**
+ @abstract 快速播放
+ @discussion 默认不快速播放
+ 
+ * 非固定倍速下的快速播放，而是全速将解码器中的数据显示出来
+ * 当播放文件存在音频时该功能生效；
+ * 播放前或者播放过程中均可配置；
+ * 开启快速播放后，不在输出声音，但是audioDataBlock中依然会上抛pcm数据
+ * 开启快速播放后，可能会导致播放器不停的进入/结束缓冲状态；
+ 
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 1.5.2 and later.
+ */
+@property(nonatomic) BOOL superFastPlay;
+
+/**
  @abstract timeout指定拉流超时时间,单位是秒
- @param timeout 拉流超时时间，默认值是30秒
+ @param prepareTimeout 建立链接超时时间，默认值是10秒
+ @param readTimeout 拉流超时时间，默认值是30秒
  @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.3.1 and later.
  */
-- (void)setTimeout:(int)timeout;
+- (void)setTimeout:(int)prepareTimeout readTimeout:(int)readTimeout;
 
 /**
  @abstract setVolume指定播放器输出音量

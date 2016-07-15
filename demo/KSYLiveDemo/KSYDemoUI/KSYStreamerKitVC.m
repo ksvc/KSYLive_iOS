@@ -8,10 +8,15 @@
 
 #import "KSYStreamerKitVC.h"
 #import <GPUImage/GPUImage.h>
+#if USING_DYNAMIC_FRAMEWORK
+#import <libksygpulivedylib/libksygpulivedylib.h>
+#import <libksygpulivedylib/libksygpulive.h>
+#import <libksygpulivedylib/libksygpuimage.h>
+#else
 #import <libksygpulive/libksygpulive.h>
 #import <libksygpulive/libksygpuimage.h>
 
-
+#endif
 
 @interface KSYStreamerKitVC ()
 {
@@ -120,8 +125,9 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     _previewMirrored = NO;
     _streamerMirrored = NO;
     _audioReverb = nil;
-    if([self hasHeadset])
+    if([KSYMicMonitor isHeadsetPluggedIn]){
         [_kit.micMonitor start];
+    }
     NSLog(@"version: %@", [_kit getKSYVersion]);
 }
 
@@ -172,7 +178,7 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     label.hidden = NO;
     label.alpha = 0.5;
     NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"yyyy-MM-dd";
+    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     NSDate *now = [[NSDate alloc] init];
     label.text = [dateFormatter stringFromDate:now];
     [_kit addTimeLabel:label dateFormat:dateFormatter.dateFormat];
@@ -780,7 +786,7 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     NSString *testflv = [NSHomeDirectory() stringByAppendingPathComponent:pathComp];
     NSURL* videoUrl = [NSURL fileURLWithPath:testflv];
     
-    NSString *testjpg = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/c.jpg"];
+    NSString *testjpg = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/snap.png"];
     NSURL* bgUrl = [NSURL fileURLWithPath:testjpg];
   
     [_kit startPipWithPlayerUrl:videoUrl bgPic:bgUrl capRect:CGRectMake(0.6, 0.6, 0.3, 0.3)];
@@ -1054,55 +1060,4 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
         [_kit.player play];
     }
 }
-
-
-- (BOOL)hasHeadset {
-#if TARGET_IPHONE_SIMULATOR
-    return NO;
-#endif
-    
-    CFStringRef route;
-    UInt32 propertySize = sizeof(CFStringRef);
-    AudioSessionGetProperty(kAudioSessionProperty_AudioRoute, &propertySize, &route);
-    
-    BOOL hasHeadset = NO;
-    if((route == NULL) || (CFStringGetLength(route) == 0))
-    {
-        // Silent Mode
-    }
-    else
-    {
-        /* Known values of route:
-         * "Headset"
-         * "Headphone"
-         * "Speaker"
-         * "SpeakerAndMicrophone"
-         * "HeadphonesAndMicrophone"
-         * "HeadsetInOut"
-         * "ReceiverAndMicrophone"
-         * "Lineout"
-         */
-        NSString* routeStr = (__bridge NSString*)route;
-        NSRange headphoneRange = [routeStr rangeOfString : @"Headphone"];
-        NSRange headsetRange = [routeStr rangeOfString : @"Headset"];
-        
-        if (headphoneRange.location != NSNotFound)
-        {
-            hasHeadset = YES;
-        }
-        else if(headsetRange.location != NSNotFound)
-        {
-            hasHeadset = YES;
-        }
-    }
-    
-    if (route)
-    {
-        CFRelease(route);
-    }
-    
-    return hasHeadset;
-}
-
-
 @end

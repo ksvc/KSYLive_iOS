@@ -52,6 +52,14 @@
  */
 @property (nonatomic, assign) BOOL bMutBgmPlay;
 
+/**
+ @abstract   默认输出设备 (默认为YES)
+ @discussion 当没有插耳机时, bgmplayer 是否要默认往外放播放
+ @discussion 为NO时, 不修改 Audiosession的属性
+ @see AVAudioSessionCategoryOptionDefaultToSpeaker
+ */
+@property (nonatomic, assign) BOOL bDefaultToSpeaker;
+
 #pragma mark - callbacks
 /**
  @abstract   音频数据输出回调

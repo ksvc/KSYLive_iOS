@@ -116,6 +116,16 @@
 @property (nonatomic, readonly) KSYStreamState streamState;
 
 /**
+ @abstract   获取推流状态对应的字符串
+ */
+- (NSString*) getStreamStateName : (KSYStreamState) stat;
+
+/**
+ @abstract   获取当前推流状态对应的字符串
+ */
+- (NSString*) getCurStreamStateName;
+
+/**
  @abstract   当前推流的错误码
  @discussion 可以通过该属性获取推流失败的原因
  
@@ -126,6 +136,16 @@
  @see streamState
  */
 @property (nonatomic, readonly) KSYStreamErrorCode streamErrorCode;
+
+/**
+ @abstract   获取错误码对应的字符串
+ */
+- (NSString*) getKSYStreamErrorCodeName:(KSYStreamErrorCode)code;
+
+/**
+ @abstract   获取当前错误码对应的字符串
+ */
+- (NSString*) getCurKSYStreamErrorCodeName;
 
 /**
  @abstract   当前推流的网络事件
@@ -212,6 +232,12 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 @property (nonatomic, readonly) NSString *streamID;
 
 /**
+ @abstract   查询当前是否处于推流状态 (建立连接中, 或连接中)
+ @see
+ */
+-(BOOL) isStreaming;
+
+/**
  @abstract   当前编码的视频码率大小（每秒更新）
  @discussion 该码率为编码器产生的视频码率大小，单位为kbps
  
@@ -269,7 +295,7 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
  */
 - (void) muteStreame:(BOOL) bMute;
 
-/*
+/* [此调用无效]
   @abstract 启/停混响 Reverberation
   @param  Reverberation level: 取值范围为[0~4]
   @discussion level取值为0表示关闭
@@ -298,4 +324,11 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
  */
 - (void) takePhotoWithQuality:(CGFloat)jpegCompressionQuality
                      fileName:(NSString *)filename;
+
+/**
+ @abstract 获取当前编码的截图
+ @param    通过完成代码块获取到截图完成的图像
+ */
+- (void) getSnapshotWithCompletion:(void (^)(UIImage*))completion;
+
 @end

@@ -13,6 +13,7 @@
 #import "KSYPlayerVC.h"
 #import "KSYSQLite.h"
 #import "KSYDBCreater.h"
+#import "KSYPresetCfgVC.h"
 @interface KSYLiveVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>{
     UITextField     *_textFiled;
     UIButton        *_buttonQR;
@@ -86,7 +87,7 @@
 - (void)initVariable{
     _width  = self.view.frame.size.width;
     _height = self.view.frame.size.height;
-    _controllers = [NSArray arrayWithObjects:@"KSYPlayerVC",@"KSYStreamerKitVC",@"KSYGPUStreamerVC",nil];
+    _controllers = [NSArray arrayWithObjects:@"KSYPlayerVC",@"推流demo",nil];
 }
 
 
@@ -155,9 +156,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    NSString *controllerName = _controllers[indexPath.row];
-//    UIViewController *viewController = [[NSClassFromString(controllerName) alloc]init];
-//    [self presentViewController:viewController animated:YES completion:nil];
+
     if (tableView == _ctrTableView) {
         if (_textFiled.text.length > 0) {
             if (indexPath.row == 0) {
@@ -166,8 +165,8 @@
                 KSYPlayerVC *vc = [[KSYPlayerVC alloc]initWithURL:url];
                 [self presentViewController:vc animated:YES completion:nil];
             }else if (indexPath.row == 1){
-                KSYStreamerKitVC *vc = [[KSYStreamerKitVC alloc]init];
-                vc.hostURL = [NSURL URLWithString:_textFiled.text];
+                KSYPresetCfgVC *vc = [[KSYPresetCfgVC alloc]init];
+                vc.rtmpURL = _textFiled.text;
                 [self presentViewController:vc animated:YES completion:nil];
             }else if (indexPath.row == 2){
                 KSYGPUStreamerVC *vc = [[KSYGPUStreamerVC alloc]init];

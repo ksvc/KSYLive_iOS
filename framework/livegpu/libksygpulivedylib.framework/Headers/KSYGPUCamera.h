@@ -133,11 +133,26 @@
  @abstract   是否有蓝牙麦克风可用
  @return     是/否有蓝牙麦克风可用
  */
-- (BOOL)isBluetoothInputAvaible;
++ (BOOL)isBluetoothInputAvaible;
+
 /**
  @abstract   选择是否使用蓝牙麦克风
  @param      onOrOff : YES 使用蓝牙麦克风 NO
  @return     是/否有蓝牙麦克风可用
  */
 - (BOOL)switchBluetoothInput:(BOOL)onOrOff;
+
+/**
+ @abstract   是否有耳机麦克风可用
+ @return     是/否有耳机麦克风
+ */
++ (BOOL)isHeadsetInputAvaible;
+
+/**
+ @abstract   当前使用的音频设备
+ @discussion 当设置新值时, 如果修改成功, 重新查询为新值,修改不成功值不变
+ @see        KSYMicType
+ */
+@property KSYMicType currentMicType;
+
 @end
