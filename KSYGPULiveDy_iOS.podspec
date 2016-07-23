@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'KSYGPULiveDy_iOS'
-  spec.version      = '1.5.2.2'
+  spec.version      = '1.5.3.0'
   spec.license      = {
 :type => 'Proprietary',
 :text => <<-LICENSE
