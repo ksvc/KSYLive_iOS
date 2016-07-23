@@ -63,14 +63,14 @@
     else if (sender == _filterBtns[1]){
         _curFilter  = nil;
     }
-    else if (sender == _filterBtns[2]){     /// KSY_PRO_ONLY ///
-        _curFilter = [[KSYGPUBeautifyProFilter alloc] init];   /// KSY_PRO_ONLY ///
+    else if (sender == _filterBtns[2]){     /// KSYGPUBeautifyFilter ///
+        _curFilter = [[KSYGPUBeautifyFilter alloc] init];   /// KSYGPUBeautifyFilter ///
     }     /// KSY_PRO_ONLY ///
-    else if (sender == _filterBtns[3]){     /// KSY_PRO_ONLY ///
-        _curFilter = [[KSYGPUBeautifyProPostFilter alloc] initWithProPostType:0];    /// KSY_PRO_ONLY ///
+    else if (sender == _filterBtns[3]){     /// KSYGPUBeautifyPlusFilter ///
+        _curFilter = [[KSYGPUBeautifyPlusFilter alloc] init];    /// KSYGPUBeautifyPlusFilter ///
     }    /// KSY_PRO_ONLY ///
-    else if (sender == _filterBtns[4]){      /// KSY_PRO_ONLY ///
-        _curFilter = [[KSYGPUBeautifyProPostFilter alloc] initWithProPostType:1];     /// KSY_PRO_ONLY ///
+    else if (sender == _filterBtns[4]){      /// KSYGPUDnoiseFilter ///
+        _curFilter = [[KSYGPUDnoiseFilter alloc] init];     /// KSYGPUDnoiseFilter ///
     }      /// KSY_PRO_ONLY ///
     else { // 关闭
         _curFilter  = nil;
@@ -81,21 +81,6 @@
     if (sender != _filterLevel) {
         return;
     }
-    float nalVal = _filterLevel.normalValue;
-    if (_curBtn == _filterBtns[0]){
-        int val = (nalVal*5) + 1; // level 1~5
-        [(KSYGPUBeautifyExtFilter *)_curFilter setBeautylevel: val];
-    }
-    else if (_curBtn == _filterBtns[2]){     /// KSY_PRO_ONLY ///
-        [(KSYGPUBeautifyProFilter *)_curFilter setlightenRatio: nalVal];     /// KSY_PRO_ONLY ///
-    }    /// KSY_PRO_ONLY ///
-    else if (_curBtn == _filterBtns[3]){      /// KSY_PRO_ONLY ///
-        [(KSYGPUBeautifyProPostFilter *)_curFilter setlightenRatio: nalVal];    /// KSY_PRO_ONLY ///
-    }     /// KSY_PRO_ONLY ///
-    else if (_curBtn == _filterBtns[4]){     /// KSY_PRO_ONLY ///
-        [(KSYGPUBeautifyProPostFilter *)_curFilter setlightenRatio: nalVal];     /// KSY_PRO_ONLY ///
-    }  /// KSY_PRO_ONLY ///
-    //
     [super onSlider:sender];
 }
 @end
