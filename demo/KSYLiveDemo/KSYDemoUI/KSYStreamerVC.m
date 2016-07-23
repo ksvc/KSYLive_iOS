@@ -500,6 +500,7 @@
     if (self.bgmPlayer){
         [self onBgmStop];
     }
+    [self.streamerBase stopStream];
     [self rmObservers];
     [self dismissViewControllerAnimated:FALSE completion:nil];
 }

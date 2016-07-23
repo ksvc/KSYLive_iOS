@@ -23,6 +23,9 @@
     self = [super init];
     _filterBtns[0]  = [self addButton:@"美颜"];
     _filterBtns[1]  = [self addButton:@"关闭"];
+    _filterBtns[2]  = [self addButton:@"新磨皮"]; /// KSY_PRO_ONLY ///
+    _filterBtns[3]  = [self addButton:@"新锐化"]; /// KSY_PRO_ONLY ///
+    _filterBtns[4]  = [self addButton:@"新美白"]; /// KSY_PRO_ONLY ///
     
     [self  selectFilter:_filterBtns[0]];  // 默认开启
     
@@ -36,6 +39,9 @@
     self.btnH = 30;
     [self putRow2:_filterBtns[0]
               and:_filterBtns[1]];
+    [self putRow3:_filterBtns[2]      /// KSY_PRO_ONLY ///
+              and:_filterBtns[3]      /// KSY_PRO_ONLY ///
+              and:_filterBtns[4]];    /// KSY_PRO_ONLY ///
 }
 - (IBAction)onBtn:(id)sender {
     [self  selectFilter:sender];
@@ -57,6 +63,15 @@
     else if (sender == _filterBtns[1]){
         _curFilter  = nil;
     }
+    else if (sender == _filterBtns[2]){     /// KSY_PRO_ONLY ///
+        _curFilter = [[KSYGPUBeautifyProFilter alloc] init];   /// KSY_PRO_ONLY ///
+    }     /// KSY_PRO_ONLY ///
+    else if (sender == _filterBtns[3]){     /// KSY_PRO_ONLY ///
+        _curFilter = [[KSYGPUBeautifyProPostFilter alloc] initWithProPostType:0];    /// KSY_PRO_ONLY ///
+    }    /// KSY_PRO_ONLY ///
+    else if (sender == _filterBtns[4]){      /// KSY_PRO_ONLY ///
+        _curFilter = [[KSYGPUBeautifyProPostFilter alloc] initWithProPostType:1];     /// KSY_PRO_ONLY ///
+    }      /// KSY_PRO_ONLY ///
     else { // 关闭
         _curFilter  = nil;
     }
@@ -71,6 +86,15 @@
         int val = (nalVal*5) + 1; // level 1~5
         [(KSYGPUBeautifyExtFilter *)_curFilter setBeautylevel: val];
     }
+    else if (_curBtn == _filterBtns[2]){     /// KSY_PRO_ONLY ///
+        [(KSYGPUBeautifyProFilter *)_curFilter setlightenRatio: nalVal];     /// KSY_PRO_ONLY ///
+    }    /// KSY_PRO_ONLY ///
+    else if (_curBtn == _filterBtns[3]){      /// KSY_PRO_ONLY ///
+        [(KSYGPUBeautifyProPostFilter *)_curFilter setlightenRatio: nalVal];    /// KSY_PRO_ONLY ///
+    }     /// KSY_PRO_ONLY ///
+    else if (_curBtn == _filterBtns[4]){     /// KSY_PRO_ONLY ///
+        [(KSYGPUBeautifyProPostFilter *)_curFilter setlightenRatio: nalVal];     /// KSY_PRO_ONLY ///
+    }  /// KSY_PRO_ONLY ///
     //
     [super onSlider:sender];
 }
