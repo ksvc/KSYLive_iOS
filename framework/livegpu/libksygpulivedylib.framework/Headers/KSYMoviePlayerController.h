@@ -410,6 +410,16 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 @property(nonatomic) BOOL superFastPlay;
 
 /**
+ @abstract 是否打断其他后台的音乐播放
+ @discussion 也可以理解为是否允许和其他音频同时播放
+ @discussion YES:开始播放时，会打断其他的后台播放音频，也会被其他音频播放打断
+ @discussion NO: 可以与其他后台播放共存，相互之间不会被打断
+ @discussion 默认为YES
+ @see AVAudioSessionCategoryOptionMixWithOthers
+ */
+@property(nonatomic) BOOL  bInterruptOtherAudio;
+
+/**
  @abstract timeout指定拉流超时时间,单位是秒
  @param prepareTimeout 建立链接超时时间，默认值是10秒
  @param readTimeout 拉流超时时间，默认值是30秒

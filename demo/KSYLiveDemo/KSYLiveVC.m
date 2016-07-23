@@ -11,6 +11,7 @@
 #import "KSYGPUStreamerVC.h"
 #import "QRViewController.h"
 #import "KSYPlayerVC.h"
+#import "KSYProberVC.h"
 #import "KSYSQLite.h"
 #import "KSYDBCreater.h"
 #import "KSYPresetCfgVC.h"
@@ -87,7 +88,7 @@
 - (void)initVariable{
     _width  = self.view.frame.size.width;
     _height = self.view.frame.size.height;
-    _controllers = [NSArray arrayWithObjects:@"KSYPlayerVC",@"推流demo",nil];
+    _controllers = [NSArray arrayWithObjects:@"KSYPlayerVC",@"推流demo", @"文件格式探测", nil];
 }
 
 
@@ -169,6 +170,10 @@
                 vc.rtmpURL = _textFiled.text;
                 [self presentViewController:vc animated:YES completion:nil];
             }else if (indexPath.row == 2){
+                NSURL *url = [NSURL URLWithString:_textFiled.text];
+                KSYProberVC *vc = [[KSYProberVC alloc]initWithURL:url];
+                [self presentViewController:vc animated:YES completion:nil];
+            }else if (indexPath.row == 3){
                 KSYGPUStreamerVC *vc = [[KSYGPUStreamerVC alloc]init];
                 vc.hostURL = [NSURL URLWithString:_textFiled.text];
                 [self presentViewController:vc animated:YES completion:nil];

@@ -32,3 +32,6 @@ FOUNDATION_EXPORT const unsigned char libksygpulivedylibVersionString[];
 
 // player
 #import <libksygpulivedylib/KSYMediaPlayer.h>
+
+// prober
+#import <libksygpulivedylib/KSYMediaInfoProber.h>
