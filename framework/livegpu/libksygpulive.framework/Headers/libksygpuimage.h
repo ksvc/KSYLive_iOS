@@ -27,9 +27,3 @@
 #import <libksygpulive/KSYGPUBeautifyPlusFilter.h>
 #import <libksygpulive/KSYGPUPipBlendFilter.h>
 
-// for test
-#import <libksygpulive/KSYGPUBeautifyProFilter.h>
-#import <libksygpulive/KSYGPUBeautifyProFilterA.h>
-#import <libksygpulive/KSYGPUBeautifyProFilterB.h>
-#import <libksygpulive/KSYGPUBeautifyProFilterC.h>
-#import <libksygpulive/KSYGPUBeautifyProPostFilter.h>
