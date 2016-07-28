@@ -43,7 +43,8 @@
     [self putRow3:_btnCapture
               and:nil
               and:_btnStream];
-    self.yPos -= (self.btnH*5+self.gap);
+    self.btnH *= 5;
+    self.yPos -= (self.btnH+self.gap*2);
     [self putRow1:_lblStat];
 }
 
