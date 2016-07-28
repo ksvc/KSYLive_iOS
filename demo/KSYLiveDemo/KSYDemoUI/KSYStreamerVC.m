@@ -61,10 +61,8 @@
 
 - (void)addSubViews{
     [self initCtrView];
-
     _ksyMenuView    = [[KSYMenuView alloc]initWithParent:_ctrlView];
-    _ksyMenuView.hidden = NO;
-    
+    _ksyMenuView.hidden = NO; // menu
     _ksyFilterView  = [[KSYFilterView alloc]initWithParent:_ksyMenuView];
     _ksyBgmView     = [[KSYBgmView alloc]initWithParent:_ksyMenuView];
     _ksyPipView     = [[KSYPipView alloc]initWithParent:_ksyMenuView];
@@ -199,7 +197,7 @@
 
 - (BOOL)shouldAutorotate {
     [self layoutUI];
-    return [super shouldAutorotate];
+    return NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -219,7 +217,6 @@
         _ctrlView.btnH   = _ctrlView.height-_ctrlView.yPos-_ksyMenuView.btnH;
         [_ctrlView putRow1:_ksyMenuView];
         [_ksyMenuView    layoutUI];
-
     }
 }
 

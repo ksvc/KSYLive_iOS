@@ -184,6 +184,15 @@
     self.audioMixerView.bgmVol.slider.value = 0.2;
 }
 #pragma mark - basic ctrl
+- (void) onPipPlayerNotify:(NSNotification *)notification{
+    if (MPMediaPlaybackIsPreparedToPlayDidChangeNotification == notification.name) {
+        [self.player play]; // 准备好后开始播放
+    }
+    if (MPMoviePlayerPlaybackDidFinishNotification == notification.name) {
+        [self.player stop]; // 播放完成
+    }
+}
+
 - (void) onFlash {
     [self.capDev toggleTorch];
 }
@@ -315,6 +324,12 @@
     }
 }
 
+- (void)pipVolChange:(id)sender{
+    if (self.player && sender == self.ksyPipView.volumSl) {
+        float vol = self.ksyPipView.volumSl.normalValue;
+        [self.player setVolume:vol rigthVolume:vol];
+    }
+}
 - (void)onBgpNext{
     if (self.pipFilter == nil){
         return;
