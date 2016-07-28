@@ -7,7 +7,7 @@
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
-	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
 </head>
 <body class="appledoc">
 	<header>
@@ -54,9 +54,21 @@
 	
 	<optgroup label="Properties">
 		
+		<option value="//api/name/audioMixer">audioMixer</option>
+		
 		<option value="//api/name/audioProcessingCallback">audioProcessingCallback</option>
 		
+		<option value="//api/name/bAllowBluetooth">bAllowBluetooth</option>
+		
+		<option value="//api/name/bDefaultToSpeaker">bDefaultToSpeaker</option>
+		
 		<option value="//api/name/bInterruptOtherAudio">bInterruptOtherAudio</option>
+		
+		<option value="//api/name/bgPic">bgPic</option>
+		
+		<option value="//api/name/bgmPlayer">bgmPlayer</option>
+		
+		<option value="//api/name/bgmTrack">bgmTrack</option>
 		
 		<option value="//api/name/cameraPosition">cameraPosition</option>
 		
@@ -66,9 +78,21 @@
 		
 		<option value="//api/name/filter">filter</option>
 		
+		<option value="//api/name/micMonitor">micMonitor</option>
+		
+		<option value="//api/name/micTrack">micTrack</option>
+		
+		<option value="//api/name/pipTrack">pipTrack</option>
+		
+		<option value="//api/name/player">player</option>
+		
 		<option value="//api/name/preview">preview</option>
 		
+		<option value="//api/name/previewMirrored">previewMirrored</option>
+		
 		<option value="//api/name/streamerBase">streamerBase</option>
+		
+		<option value="//api/name/streamerMirrored">streamerMirrored</option>
 		
 		<option value="//api/name/videoDimension">videoDimension</option>
 		
@@ -94,6 +118,14 @@
 	
 	<optgroup label="Instance Methods">
 		
+		<option value="//api/name/addLogo:pos:trans:">- addLogo:pos:trans:</option>
+		
+		<option value="//api/name/addLogo:toRect:trans:">- addLogo:toRect:trans:</option>
+		
+		<option value="//api/name/addTextLabel:toPos:">- addTextLabel:toPos:</option>
+		
+		<option value="//api/name/addTextLabel:toRect:">- addTextLabel:toRect:</option>
+		
 		<option value="//api/name/getCaptureStateName:">- getCaptureStateName:</option>
 		
 		<option value="//api/name/getCurCaptureStateName">- getCurCaptureStateName</option>
@@ -114,13 +146,19 @@
 		
 		<option value="//api/name/setupFilter:">- setupFilter:</option>
 		
+		<option value="//api/name/startPipWithPlayerUrl:bgPic:capRect:">- startPipWithPlayerUrl:bgPic:capRect:</option>
+		
 		<option value="//api/name/startPreview:">- startPreview:</option>
+		
+		<option value="//api/name/stopPip">- stopPip</option>
 		
 		<option value="//api/name/stopPreview">- stopPreview</option>
 		
 		<option value="//api/name/switchCamera">- switchCamera</option>
 		
 		<option value="//api/name/toggleTorch">- toggleTorch</option>
+		
+		<option value="//api/name/updateTextLable:">- updateTextLable:</option>
 		
 	</optgroup>
 	
@@ -484,6 +522,303 @@
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>若<a href="#//api/name/filter">filter</a> 为nil， 则关闭滤镜</p><p>若<a href="#//api/name/filter">filter</a> 为GPUImageFilter的实例，则使用该滤镜做处理</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addLogo:pos:trans:" title="addLogo:pos:trans:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addLogo:pos:trans:">&ndash;&nbsp;addLogo:pos:trans:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>添加水印</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)addLogo:(UIImage *)<em>inputImage</em> pos:(CGPoint)<em>position</em> trans:(float)<em>transparency</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>inputImage</code></th>
+						<td><p>输入的图像</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>position</code></th>
+						<td><p>图像显示的左上角的位置 单位为像素</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>transparency</code></th>
+						<td><p>透明度(0-1),0完全透明，1完全不透明；</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>大小等于inputImage的原始尺寸(请注意提供的图片的尺寸)</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addLogo:toRect:trans:" title="addLogo:toRect:trans:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addLogo:toRect:trans:">&ndash;&nbsp;addLogo:toRect:trans:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>添加水印</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)addLogo:(UIImage *)<em>inputImage</em> toRect:(CGRect)<em>pixelRect</em> trans:(float)<em>transparency</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>inputImage</code></th>
+						<td><p>输入的图像</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>pixelRect</code></th>
+						<td><p>位置和大小(单位为像素)</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>transparency</code></th>
+						<td><p>透明度(0-1),0完全透明，1完全不透明；</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addTextLabel:toPos:" title="addTextLabel:toPos:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addTextLabel:toPos:">&ndash;&nbsp;addTextLabel:toPos:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>显示字符串的Label
+@param      自定义的label</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)addTextLabel:(UILabel *)<em>textLabel</em> toPos:(CGPoint)<em>pos</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>label</code></th>
+						<td><p>左上角的位置</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>字符串的内容在 textLabel.text中
+discussion  size则通过调用 label的sizeToFit得到</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addTextLabel:toRect:" title="addTextLabel:toRect:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addTextLabel:toRect:">&ndash;&nbsp;addTextLabel:toRect:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>显示文字的lable
+@param      借用UILable来指定文字的颜色字体等属性</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)addTextLabel:(UILabel *)<em>textLabel</em> toRect:(CGRect)<em>pixelRect</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>pixelRect</code></th>
+						<td><p>左上角位置和 文字框大小</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>请在启动预览前添加,启动预览后更新</p><div class="warning"><p><strong>Warning:</strong> 请注意, 宽度不足时,可能导致部分文字无法显示</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateTextLable:" title="updateTextLable:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateTextLable:">&ndash;&nbsp;updateTextLable:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>更新文字内容
+@param      新label</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)updateTextLable:(UILabel *)<em>textLabel</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>只有文字内容改变才会刷新</p>
 			</div>
 			
 
@@ -1024,7 +1359,99 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>也可以理解为是否允许在其他后台音乐播放的同时进行采集</p><p>YES:开始采集时，会打断其他的后台播放音乐，也会被其他音乐打断（采集过程中，启动其他音乐播放，采集被中止）</p><p>NO: 可以与其他后台播放共存，相互之间不会被打断</p><p>默认为YES</p>
+				<p>也可以理解为是否允许在其他后台音乐播放的同时进行采集</p><p>YES:开始采集时，会打断其他的后台播放音乐，也会被其他音乐打断（采集过程中，启动其他音乐播放，采集被中止）</p><p>NO: 可以与其他后台播放共存，相互之间不会被打断</p><p>默认为YES</p><p>透传给 <a href="../Classes/KSYGPUCamera.html">KSYGPUCamera</a></p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bDefaultToSpeaker" title="bDefaultToSpeaker"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bDefaultToSpeaker">&nbsp;&nbsp;bDefaultToSpeaker</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>启动采集后,是否从扬声器播放声音 (默认为YES)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL bDefaultToSpeaker</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>启动声音采集后,iOS系统的行为是默认从听筒播放声音的</p><p>将该属性设为YES, 则改为默认从扬声器播放</p><p>透传给 <a href="../Classes/KSYGPUCamera.html">KSYGPUCamera</a></p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bAllowBluetooth" title="bAllowBluetooth"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bAllowBluetooth">&nbsp;&nbsp;bAllowBluetooth</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>是否启用蓝牙设备 (默认为YES)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL bAllowBluetooth</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>透传给 <a href="../Classes/KSYGPUCamera.html">KSYGPUCamera</a></p>
 			</div>
 			
 
@@ -1511,6 +1938,502 @@
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/bgmPlayer" title="bgmPlayer"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bgmPlayer">&nbsp;&nbsp;bgmPlayer</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>背景音乐播放器</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) KSYBgmPlayer *bgmPlayer</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/audioMixer" title="audioMixer"></a>
+	<h3 class="method-title"><code><a href="#//api/name/audioMixer">&nbsp;&nbsp;audioMixer</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>混音调节器</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) KSYAudioMixer *audioMixer</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/micTrack" title="micTrack"></a>
+	<h3 class="method-title"><code><a href="#//api/name/micTrack">&nbsp;&nbsp;micTrack</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>麦克风 的trackID</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) int micTrack</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bgmTrack" title="bgmTrack"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bgmTrack">&nbsp;&nbsp;bgmTrack</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>背景音乐 的trackID</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) int bgmTrack</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/previewMirrored" title="previewMirrored"></a>
+	<h3 class="method-title"><code><a href="#//api/name/previewMirrored">&nbsp;&nbsp;previewMirrored</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>预览设置成镜像模式，默认为NO</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL previewMirrored</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/streamerMirrored" title="streamerMirrored"></a>
+	<h3 class="method-title"><code><a href="#//api/name/streamerMirrored">&nbsp;&nbsp;streamerMirrored</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>推流设置成镜像模式,默认为NO</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL streamerMirrored</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/startPipWithPlayerUrl:bgPic:capRect:" title="startPipWithPlayerUrl:bgPic:capRect:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/startPipWithPlayerUrl:bgPic:capRect:">&ndash;&nbsp;startPipWithPlayerUrl:bgPic:capRect:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>开启画中画
+@param playerUrl:播放视频的url
+@param bgUrl:背景图片的url
+@param CapRect:摄像数据矩阵显示的位置</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)startPipWithPlayerUrl:(NSURL *)<em>playerUrl</em> bgPic:(NSURL *)<em>bgUrl</em> capRect:(CGRect)<em>capRect</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/stopPip" title="stopPip"></a>
+	<h3 class="method-title"><code><a href="#//api/name/stopPip">&ndash;&nbsp;stopPip</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>停止画中画
+*</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)stopPip</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/pipTrack" title="pipTrack"></a>
+	<h3 class="method-title"><code><a href="#//api/name/pipTrack">&nbsp;&nbsp;pipTrack</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>画中画音频的trackID</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) int pipTrack</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/player" title="player"></a>
+	<h3 class="method-title"><code><a href="#//api/name/player">&nbsp;&nbsp;player</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>背景播放器</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) KSYMoviePlayerController *player</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bgPic" title="bgPic"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bgPic">&nbsp;&nbsp;bgPic</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>背景图片</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) GPUImagePicture *bgPic</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/micMonitor" title="micMonitor"></a>
+	<h3 class="method-title"><code><a href="#//api/name/micMonitor">&nbsp;&nbsp;micMonitor</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>mic返音接口</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) KSYMicMonitor *micMonitor</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -1524,10 +2447,10 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-04-11</p>
+						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-07-28</p>
 						
 						
-						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
 						
 					</div>
 				</footer>

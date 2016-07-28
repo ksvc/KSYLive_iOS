@@ -7,7 +7,7 @@
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
-	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
 </head>
 <body class="appledoc">
 	<header>
@@ -58,11 +58,17 @@
 		
 		<option value="//api/name/audioProcessingCallback">audioProcessingCallback</option>
 		
+		<option value="//api/name/bAllowBluetooth">bAllowBluetooth</option>
+		
+		<option value="//api/name/bDefaultToSpeaker">bDefaultToSpeaker</option>
+		
 		<option value="//api/name/bInterruptOtherAudio">bInterruptOtherAudio</option>
 		
 		<option value="//api/name/bStreamAudio">bStreamAudio</option>
 		
 		<option value="//api/name/bStreamVideo">bStreamVideo</option>
+		
+		<option value="//api/name/currentMicType">currentMicType</option>
 		
 		<option value="//api/name/isRunning">isRunning</option>
 		
@@ -72,6 +78,14 @@
 	
 
 	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/isBluetoothInputAvaible">+ isBluetoothInputAvaible</option>
+		
+		<option value="//api/name/isHeadsetInputAvaible">+ isHeadsetInputAvaible</option>
+		
+	</optgroup>
+	
 
 	
 	<optgroup label="Instance Methods">
@@ -80,11 +94,15 @@
 		
 		<option value="//api/name/isTorchSupported">- isTorchSupported</option>
 		
+		<option value="//api/name/setAVAudioSessionOption">- setAVAudioSessionOption</option>
+		
 		<option value="//api/name/setAudioEncTarget:">- setAudioEncTarget:</option>
 		
 		<option value="//api/name/setBaseAudioEncTarget:">- setBaseAudioEncTarget:</option>
 		
 		<option value="//api/name/setTorchMode:">- setTorchMode:</option>
+		
+		<option value="//api/name/switchBluetoothInput:">- switchBluetoothInput:</option>
 		
 		<option value="//api/name/toggleTorch">- toggleTorch</option>
 		
@@ -220,7 +238,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>是否打断其他后台的音乐播放</p>
+				<p>是否打断其他后台的音乐播放 (默认为YES)</p>
 			</div>
 			
 		    
@@ -237,8 +255,95 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>也可以理解为是否允许在其他后台音乐播放的同时进行采集</p><p>YES:开始采集时，会打断其他的后台播放音乐，也会被其他音乐打断（采集过程中，启动其他音乐播放，采集被中止）</p><p>NO: 可以与其他后台播放共存，相互之间不会被打断</p><p>默认为YES</p>
+				<p>也可以理解为是否允许在其他后台音乐播放的同时进行采集</p><p>YES:开始采集时，会打断其他的后台播放音乐，也会被其他音乐打断（采集过程中，启动其他音乐播放，采集被中止）</p><p>NO: 可以与其他后台播放共存，相互之间不会被打断</p>
 			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUCamera.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bDefaultToSpeaker" title="bDefaultToSpeaker"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bDefaultToSpeaker">&nbsp;&nbsp;bDefaultToSpeaker</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>启动采集后,是否从扬声器播放声音 (默认为YES)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL bDefaultToSpeaker</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>启动声音采集后,iOS系统的行为是默认从听筒播放声音的</p><p>将该属性设为YES, 则改为默认从扬声器播放</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUCamera.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bAllowBluetooth" title="bAllowBluetooth"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bAllowBluetooth">&nbsp;&nbsp;bAllowBluetooth</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>是否启用蓝牙设备 (默认为YES)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL bAllowBluetooth</code></div>
+
+		    
+			
+
+			
+
+			
+
 			
 
 			
@@ -266,7 +371,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>是否将视频数据送入streamer</p>
+				<p>是否将视频数据送入streamer (默认为NO)</p>
 			</div>
 			
 		    
@@ -307,7 +412,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>是否将音频数据送入streamer</p>
+				<p>是否将音频数据送入streamer (默认为YES)</p>
 			</div>
 			
 		    
@@ -592,6 +697,52 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/setAVAudioSessionOption" title="setAVAudioSessionOption"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setAVAudioSessionOption">&ndash;&nbsp;setAVAudioSessionOption</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置声音采集需要的AVAudioSession的参数</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setAVAudioSessionOption</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>主要是保证音频采集需要的PlayAndRecord类型</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUCamera.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/isRunning" title="isRunning"></a>
 	<h3 class="method-title"><code><a href="#//api/name/isRunning">&nbsp;&nbsp;isRunning</a></code>
 </h3>
@@ -748,6 +899,211 @@
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/isBluetoothInputAvaible" title="isBluetoothInputAvaible"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isBluetoothInputAvaible">+&nbsp;isBluetoothInputAvaible</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>是否有蓝牙麦克风可用</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BOOL)isBluetoothInputAvaible</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>是/否有蓝牙麦克风可用</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUCamera.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/switchBluetoothInput:" title="switchBluetoothInput:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/switchBluetoothInput:">&ndash;&nbsp;switchBluetoothInput:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>选择是否使用蓝牙麦克风</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)switchBluetoothInput:(BOOL)<em>onOrOff</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>onOrOff</code></th>
+						<td><p>: YES 使用蓝牙麦克风 NO</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>是/否有蓝牙麦克风可用</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUCamera.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isHeadsetInputAvaible" title="isHeadsetInputAvaible"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isHeadsetInputAvaible">+&nbsp;isHeadsetInputAvaible</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>是否有耳机麦克风可用</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BOOL)isHeadsetInputAvaible</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>是/否有耳机麦克风</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUCamera.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/currentMicType" title="currentMicType"></a>
+	<h3 class="method-title"><code><a href="#//api/name/currentMicType">&nbsp;&nbsp;currentMicType</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>当前使用的音频设备</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property KSYMicType currentMicType</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>当设置新值时, 如果修改成功, 重新查询为新值,修改不成功值不变</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Constants/KSYMicType.html">KSYMicType</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUCamera.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -761,10 +1117,10 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-04-11</p>
+						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-07-28</p>
 						
 						
-						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
 						
 					</div>
 				</footer>

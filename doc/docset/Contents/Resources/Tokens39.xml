@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/KSYMicType.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYMicType</TokenIdentifier>
+			<Abstract type="html">音频输入设备类型</Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+			
+			<NodeRef refid="39"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYMicType_builtinMic</TokenIdentifier>
+            <Abstract type="html">Built-in microphone on an iOS device</Abstract>
+            <Declaration>KSYMicType_builtinMic</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="39"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYMicType_headsetMic</TokenIdentifier>
+            <Abstract type="html">Microphone on a wired headset</Abstract>
+            <Declaration>KSYMicType_headsetMic</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="39"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYMicType_bluetoothMic</TokenIdentifier>
+            <Abstract type="html">蓝牙设备</Abstract>
+            <Declaration>KSYMicType_bluetoothMic</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="39"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYMicType_unknow</TokenIdentifier>
+            <Abstract type="html">未知设备</Abstract>
+            <Declaration>KSYMicType_unknow</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="39"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

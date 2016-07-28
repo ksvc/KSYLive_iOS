@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/KSYAudioCodec.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYAudioCodec</TokenIdentifier>
+			<Abstract type="html">音频编码器类型</Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+			
+			<NodeRef refid="34"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioCodec_AAC</TokenIdentifier>
+            <Abstract type="html">音频编码器 - AAC</Abstract>
+            <Declaration>KSYAudioCodec_AAC</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="34"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioCodec_AAC_HE</TokenIdentifier>
+            <Abstract type="html">音频编码器 - AAC_HE</Abstract>
+            <Declaration>KSYAudioCodec_AAC_HE</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="34"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

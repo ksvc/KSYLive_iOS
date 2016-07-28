@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUBeautifyFilter.html">
+	<File path="Classes/KSYAudioReverb.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUBeautifyFilter</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYAudioReverb</TokenIdentifier>
+			<Abstract type="html">音效处理 - 混响</Abstract>
+			<DeclaredIn>KSYAudioReverb.h</DeclaredIn>
             
 			
 			<NodeRef refid="4"/>
@@ -13,98 +13,43 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyFilter/setBeautylevel:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioReverb/initWithType:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
+			<DeclaredIn>KSYAudioReverb.h</DeclaredIn>
 			
-			<Declaration>- (void)setBeautylevel:(int)level</Declaration>
+			<Declaration>- (instancetype)initWithType:(int)type</Declaration>
 			
 			
-			<Anchor>//api/name/setBeautylevel:</Anchor>
+			<Anchor>//api/name/initWithType:</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyFilter/setSingleStepOffset:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioReverb/ReverbWithSrc:nbSample:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
+			<DeclaredIn>KSYAudioReverb.h</DeclaredIn>
 			
-			<Declaration>@property (readwrite, nonatomic) CGPoint singleStepOffset</Declaration>
+			<Declaration>- (void)ReverbWithSrc:(int16_t *)pInPcm nbSample:(int)nbSample</Declaration>
 			
 			
-			<Anchor>//api/name/singleStepOffset</Anchor>
+			<Anchor>//api/name/ReverbWithSrc:nbSample:</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyFilter/singleStepOffset</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioReverb/processAudioSampleBuffer:</TokenIdentifier>
+			<Abstract type="html">处理一段音频数据,添加混响音效</Abstract>
+			<DeclaredIn>KSYAudioReverb.h</DeclaredIn>
 			
-			<Declaration>@property (readwrite, nonatomic) CGPoint singleStepOffset</Declaration>
+			<Declaration>- (void)processAudioSampleBuffer:(CMSampleBufferRef)sampleBuffer</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sampleBuffer</Name>
+					<Abstract type="html">Buffer to process</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/singleStepOffset</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUBeautifyFilter/singleStepOffset</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
-			
-			<Declaration>@property (readwrite, nonatomic) CGPoint singleStepOffset</Declaration>
-			
-			
-			<Anchor>//api/name/singleStepOffset</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyFilter/setParams:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
-			
-			<Declaration>@property (readwrite, nonatomic) GPUVector4 params</Declaration>
-			
-			
-			<Anchor>//api/name/params</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyFilter/params</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
-			
-			<Declaration>@property (readwrite, nonatomic) GPUVector4 params</Declaration>
-			
-			
-			<Anchor>//api/name/params</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUBeautifyFilter/params</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
-			
-			<Declaration>@property (readwrite, nonatomic) GPUVector4 params</Declaration>
-			
-			
-			<Anchor>//api/name/params</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyFilter/setTexelSize:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
-			
-			<Declaration>- (void)setTexelSize:(CGPoint)size</Declaration>
-			
-			
-			<Anchor>//api/name/setTexelSize:</Anchor>
+			<Anchor>//api/name/processAudioSampleBuffer:</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
