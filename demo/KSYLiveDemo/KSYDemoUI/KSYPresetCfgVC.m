@@ -20,13 +20,13 @@
 @end
 @interface KSYGPUStreamerKitVC : UIViewController
 @end
-@interface KSYAlphagoVC : UIViewController
-@end
 @interface rawVC : UIViewController
 @end
 @interface imageVC : UIViewController
 @end
 @interface movieWriterVC : UIViewController
+@end
+@interface KSYSimKitVC : UIViewController
 @end
 #endif
 
@@ -40,6 +40,12 @@
 @end
 
 @implementation KSYPresetCfgVC
+
+- (instancetype)initWithURL:(NSString *)url{
+    self = [super init];
+    _rtmpURL = url;
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -67,7 +73,7 @@
 - (void) pressBtnAfter : (double) delay {
     dispatch_time_t dt = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC));
     dispatch_after(dt, dispatch_get_main_queue(), ^{
-        [self btnFunc:_demoView.btn2];
+        [self btnFunc:_demoView.btn0];
     });
 }
 
@@ -83,7 +89,7 @@
 }
 
 - (IBAction)btnFunc:(id)sender {
-    UIViewController *vc;
+    UIViewController *vc = nil;
     if ( sender == _demoView.btn0) { // kit demo
         vc = [[KSYKitDemoVC alloc] initWithCfg:_demoView];
     }
@@ -98,6 +104,7 @@
 #else
         [self dismissViewControllerAnimated:FALSE
                                  completion:nil];
+        return;
 #endif
     }
     else if ( sender == _demoView.btn3) { // tests
@@ -106,8 +113,9 @@
     else if ( sender == _demoView.btn4) { // tests
         vc = [[KSYGPUStreamerVC alloc] init];
     }
-    [self presentViewController:vc animated:true completion:nil];
-    self.view.window.rootViewController = self;
+    if (vc){
+        [self presentViewController:vc animated:true completion:nil];
+    }
 }
 
 @end

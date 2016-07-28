@@ -37,14 +37,27 @@
 
 #pragma mark - KSYStreamer config
 /**
- @abstract 是否打断其他后台的音乐播放
+ @abstract 是否打断其他后台的音乐播放 (默认为YES)
  @discussion 也可以理解为是否允许在其他后台音乐播放的同时进行采集
  @discussion YES:开始采集时，会打断其他的后台播放音乐，也会被其他音乐打断（采集过程中，启动其他音乐播放，采集被中止）
  @discussion NO: 可以与其他后台播放共存，相互之间不会被打断
- @discussion 默认为YES
  @see AVAudioSessionCategoryOptionMixWithOthers
  */
 @property BOOL  bInterruptOtherAudio;
+
+/**
+ @abstract   启动采集后,是否从扬声器播放声音 (默认为YES)
+ @discussion 启动声音采集后,iOS系统的行为是默认从听筒播放声音的
+ @discussion 将该属性设为YES, 则改为默认从扬声器播放
+ @see AVAudioSessionCategoryOptionDefaultToSpeaker
+ */
+@property (nonatomic, assign) BOOL bDefaultToSpeaker;
+
+/**
+ @abstract   是否启用蓝牙设备 (默认为YES)
+ @see AVAudioSessionCategoryOptionAllowBluetooth
+ */
+@property (nonatomic, assign) BOOL bAllowBluetooth;
 
 /**
  @abstract   是否将视频数据送入streamer (默认为NO)
@@ -102,6 +115,13 @@
  @see AVCaptureTorchMode
  */
 - (void) setTorchMode: (AVCaptureTorchMode)mode;
+
+
+/**
+ @abstract   设置声音采集需要的AVAudioSession的参数
+ @discussion 主要是保证音频采集需要的PlayAndRecord类型
+ @see AVAudioSession
+ */
 - (void) setAVAudioSessionOption;
 
 /**

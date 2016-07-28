@@ -160,22 +160,17 @@
 
     if (tableView == _ctrTableView) {
         if (_textFiled.text.length > 0) {
+            NSLog(@"url:%@",_textFiled.text);
+            NSURL *url = [NSURL URLWithString:_textFiled.text];
+            UIViewController* vc = nil;
             if (indexPath.row == 0) {
-                NSLog(@"url:%@",_textFiled.text);
-                NSURL *url = [NSURL URLWithString:_textFiled.text];
-                KSYPlayerVC *vc = [[KSYPlayerVC alloc]initWithURL:url];
-                [self presentViewController:vc animated:YES completion:nil];
+                vc = [[KSYPlayerVC alloc]initWithURL:url];
             }else if (indexPath.row == 1){
-                KSYPresetCfgVC *vc = [[KSYPresetCfgVC alloc]init];
-                vc.rtmpURL = _textFiled.text;
-                [self presentViewController:vc animated:YES completion:nil];
+                vc = [[KSYPresetCfgVC alloc]initWithURL:_textFiled.text];
             }else if (indexPath.row == 2){
-                NSURL *url = [NSURL URLWithString:_textFiled.text];
-                KSYProberVC *vc = [[KSYProberVC alloc]initWithURL:url];
-                [self presentViewController:vc animated:YES completion:nil];
-            }else if (indexPath.row == 3){
-                KSYGPUStreamerVC *vc = [[KSYGPUStreamerVC alloc]init];
-                vc.hostURL = [NSURL URLWithString:_textFiled.text];
+                vc = [[KSYProberVC alloc]initWithURL:url];
+            }
+            if (vc){
                 [self presentViewController:vc animated:YES completion:nil];
             }
         }

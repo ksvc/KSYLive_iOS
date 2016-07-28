@@ -125,9 +125,6 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     _previewMirrored = NO;
     _streamerMirrored = NO;
     _audioReverb = nil;
-    if([KSYMicMonitor isHeadsetPluggedIn]){
-        [_kit.micMonitor start];
-    }
     NSLog(@"version: %@", [_kit getKSYVersion]);
 }
 
@@ -181,7 +178,7 @@ void processVideo (CMSampleBufferRef sampleBuffer) {
     dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     NSDate *now = [[NSDate alloc] init];
     label.text = [dateFormatter stringFromDate:now];
-    [_kit addTimeLabel:label dateFormat:dateFormatter.dateFormat];
+    [_kit addTextLabel:label toPos:CGPointMake(10, 10+imgFromUrl3.size.height)];
 }
 
 - (void) addObservers {

@@ -8,6 +8,7 @@
 
 #import "KSYBlockDemoVC.h"
 
+
 @interface KSYBlockDemoVC()
 
 @property (nonatomic, retain) KSYMoviePlayerController *player;
@@ -50,6 +51,9 @@
     self.aMixer = [[KSYAudioMixer alloc]init];
     // 混响
     self.reverb    = nil;
+    // 耳返
+    self.micMonitor = nil;
+    
     // 组装音频通道
     [self setupAudioPath];
 }
@@ -140,7 +144,7 @@
 }
 - (void) setupAudioPath {
     __weak KSYBlockDemoVC * vc = self;
-    //采集设备的麦克风音频数据, 通过混响处理后, 送入混音器
+    //1. 采集设备的麦克风音频数据, 通过混响处理后, 送入混音器
     self.micTrack = 0;
     self.capDev.audioProcessingCallback = ^(CMSampleBufferRef buf){
         if (![vc.streamerBase isStreaming]){
@@ -149,9 +153,11 @@
         if (vc.reverb){
             [vc.reverb processAudioSampleBuffer:buf];
         }
-        [vc.aMixer processAudioSampleBuffer:buf of:vc.micTrack];
+        if (vc.aMixer){
+            [vc.aMixer processAudioSampleBuffer:buf of:vc.micTrack];
+        }
     };
-    //背景音乐播放,音乐数据送入混音器
+    //2. 背景音乐播放,音乐数据送入混音器
     self.bgmTrack = 1;
     self.bgmPlayer.audioDataBlock = ^(CMSampleBufferRef buf){
         if (![vc.streamerBase isStreaming]){
@@ -159,9 +165,8 @@
         }
         [vc.aMixer processAudioSampleBuffer:buf of:vc.bgmTrack];
     };
-    // pip
-    
-    
+    //3. 画中画的音频
+    self.pipTrack = 2;
     // 混音结果送入streamer
     self.aMixer.audioProcessingCallback = ^(CMSampleBufferRef buf){
         [vc.streamerBase processAudioSampleBuffer:buf];
@@ -206,6 +211,15 @@
 }
 - (void) onQuit{  // quit current demo
     [self onPipStop];
+    [self.micMonitor stop];
+    if (self.streamerBase){
+        [self.streamerBase stopStream];
+        self.streamerBase = nil;
+    }
+    if (self.capDev){
+        [self.capDev stopCameraCapture];
+        self.capDev = nil;
+    }
     [super onQuit];
 }
 - (void) onFilterChange:(id)sender{
@@ -239,6 +253,11 @@
 
 - (void)setupPip{
     if (self.pipFilter == nil) {
+        //pipFilter
+        CGRect rect = CGRectMake(0.6, 0.6, 0.3, 0.3);
+        self.pipFilter = [[KSYGPUPipBlendFilter alloc] initWithPipRect:rect];
+        self.yuvInput  = [[KSYGPUYUVInput alloc] init];
+        
         //player
         self.player = [[KSYMoviePlayerController alloc] initWithContentURL: self.ksyPipView.pipURL];
         self.player.controlStyle = MPMovieControlStyleNone;
@@ -253,10 +272,6 @@
         self.player.audioDataBlock = ^(CMSampleBufferRef buf){
             [vc.aMixer processAudioSampleBuffer:buf of:vc.pipTrack];
         };
-        //pipFilter
-        CGRect rect = CGRectMake(0.6, 0.6, 0.3, 0.3);
-        self.pipFilter = [[KSYGPUPipBlendFilter alloc] initWithPipRect:rect];
-        self.yuvInput  = [[KSYGPUYUVInput alloc] init];
         if (self.ksyPipView.bgpURL){
             self.bgPic = [[GPUImagePicture alloc] initWithURL: self.ksyPipView.bgpURL];
         }
@@ -294,13 +309,46 @@
 }
 
 - (void)onPipNext{
-    [self onPipStop];
-    //[self setupPip];
+    if (self.player){
+        [self onPipStop];
+        [self onPipPlay];
+    }
 }
 
 - (void)onBgpNext{
+    if (self.pipFilter == nil){
+        return;
+    }
     self.bgPic = [[GPUImagePicture alloc] initWithURL:self.ksyPipView.bgpURL];
     [self.bgPic    removeAllTargets];  // 3rd (bottom) layer: picture
     [self.bgPic    addTarget:self.pipFilter atTextureLocation:2];
+}
+
+#pragma mark - micMonitor
+// 是否开启耳返
+- (void)onMiscSwitch:(UISwitch *)sw{
+    if (sw == self.miscView.micmMix){
+        if ( [KSYMicMonitor isHeadsetPluggedIn] == NO ){
+            return;
+        }
+        if (sw.isOn){
+            if (self.micMonitor == nil){
+                self.micMonitor = [[KSYMicMonitor alloc] init];
+            }
+            [self.micMonitor start];
+        }
+        else{
+            [self.micMonitor stop];
+        }
+    }
+}
+
+// 调节耳返音量
+- (void)onMiscSlider:(KSYNameSlider *)slider {
+    if (slider == self.miscView.micmVol){
+        if (self.micMonitor){
+            [self.micMonitor setVolume:slider.normalValue];
+        }
+    }
 }
 @end

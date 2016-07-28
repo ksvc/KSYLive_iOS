@@ -8,6 +8,7 @@
 
 #import "KSYMediaPlayback.h"
 #import "KSYQosInfo.h"
+#import "KSYMoviePlayerDefines.h"
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 /**
@@ -520,6 +521,10 @@ MP_EXTERN NSString * const MPMoviePlayerFirstVideoFrameRenderedNotification;
 MP_EXTERN NSString * const MPMoviePlayerFirstAudioFrameRenderedNotification;
 
 MP_EXTERN NSString * const MPMoviePlayerSuggestReloadNotification;
+
+MP_EXTERN NSString * const MPMoviePlayerPlaybackStatusNotification;
+
+MP_EXTERN NSString * const MPMoviePlayerPlaybackStatusUserInfoKey; // NSNumber (MPMovieStatus)
 
 MP_EXTERN const NSString *const kKSYPLYFormat;
 

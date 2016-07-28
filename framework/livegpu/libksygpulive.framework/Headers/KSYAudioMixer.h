@@ -23,6 +23,7 @@ typedef struct  _KSYAudioFormat {
 
 
 /** 多路pcm混音
+ 
  1. 用trackId来表示某一路音频，从0开始编号
  2. 要求一定要有一路麦克风的音频，其他音频都叠加到麦克风上
  3. 将输入的音频pcm数据存入buffer，每一路音频的buffer独立

@@ -332,6 +332,19 @@ dispatch_sync(dispatch_get_main_queue(), block);\
     if (MPMoviePlayerSuggestReloadNotification == notify.name)
     {
         NSLog(@"suggest using reload function!\n");
+	}
+    
+    if(MPMoviePlayerPlaybackStatusNotification == notify.name)
+    {
+        int status = [[[notify userInfo] valueForKey:MPMoviePlayerPlaybackStatusUserInfoKey] intValue];
+        if(MPMovieStatusVideoDecodeWrong == status)
+        {
+            NSLog(@"Video Decode Wrong!\n");
+        }
+        else if(MPMovieStatusAudioDecodeWrong == status)
+        {
+            NSLog(@"Audio Decode Wrong!\n");
+        }
     }
 }
 - (void) toast:(NSString*)message{
@@ -383,6 +396,10 @@ dispatch_sync(dispatch_get_main_queue(), block);\
                                             selector:@selector(handlePlayerNotify:)
                                                 name:(MPMoviePlayerSuggestReloadNotification)
                                               object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(handlePlayerNotify:)
+                                                name:(MPMoviePlayerPlaybackStatusNotification)
+                                              object:nil];
 }
 
 - (void)releaseObservers 
@@ -410,6 +427,9 @@ dispatch_sync(dispatch_get_main_queue(), block);\
                                                  object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self
                                                    name:MPMoviePlayerSuggestReloadNotification
+                                                 object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self
+                                                   name:MPMoviePlayerPlaybackStatusNotification
                                                  object:nil];
 }
 - (IBAction)onPlayVideo:(id)sender {

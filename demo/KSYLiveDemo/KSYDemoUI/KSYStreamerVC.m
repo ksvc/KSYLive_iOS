@@ -113,6 +113,12 @@
     _miscView.onBtnBlock = ^(id sender) {
         [weakself onMiscBtns: sender];
     };
+    _miscView.onSwitchBlock = ^(id sender) {
+        [weakself onMiscSwitch: sender];
+    };
+    _miscView.onSliderBlock = ^(id sender) {
+        [weakself onMiscSlider: sender];
+    };
 }
 
 - (void)initCtrView{
@@ -184,6 +190,11 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [self layoutUI];
+    [UIApplication sharedApplication].idleTimerDisabled=YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [UIApplication sharedApplication].idleTimerDisabled=NO;
 }
 
 - (BOOL)shouldAutorotate {
@@ -386,6 +397,7 @@
     }
     else if (btn == _ksyMenuView.miscBtn ){
         view = _miscView;
+        [_miscView initMicmOutput];
     }
     else if (btn == _ksyMenuView.reverbBtn ){
         view = _reverbView;
@@ -500,7 +512,10 @@
     if (self.bgmPlayer){
         [self onBgmStop];
     }
-    [self.streamerBase stopStream];
+    if (self.streamerBase){
+        [self.streamerBase stopStream];
+        self.streamerBase = nil;
+    }
     [self rmObservers];
     [self dismissViewControllerAnimated:FALSE completion:nil];
 }
@@ -583,4 +598,9 @@
     NSLog(@"write %@ %@", file, ret ? @"OK":@"failed");
 }
 
+#pragma mark - micMonitor
+- (void)onMiscSwitch:(UISwitch *)sw{  // see kit & block
+}
+- (void)onMiscSlider:(KSYNameSlider *)slider {  // see kit & block
+}
 @end

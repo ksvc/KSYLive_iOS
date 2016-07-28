@@ -143,6 +143,8 @@
 
     if(MEDIAINFO_MUXTYPE_MP2T == muxType)
         muxTypeStr = @"mpeg-ts";
+    else if(MEDIAINFO_MUXTYPE_MOV == muxType)
+        muxTypeStr = @"mov";
     else if(MEDIAINFO_MUXTYPE_AVI == muxType)
         muxTypeStr = @"avi";
     else if(MEDIAINFO_MUXTYPE_FLV == muxType)

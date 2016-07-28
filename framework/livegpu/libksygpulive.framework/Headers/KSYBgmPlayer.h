@@ -13,7 +13,8 @@
 @class KSYAudioMixer;
 
 /** 背景音乐播放器
-    提供播放后的音频数据的回调
+ 
+    提供背景音乐播放的功能, 并能将被播放的音频数据通过回调送出
  */
 @interface KSYBgmPlayer : NSObject
 
@@ -56,6 +57,7 @@
  @abstract   默认输出设备 (默认为YES)
  @discussion 当没有插耳机时, bgmplayer 是否要默认往外放播放
  @discussion 为NO时, 不修改 Audiosession的属性
+ @warning    请注意保持与KSYGPUCamera中的bDefaultToSpeaker一致,否则行为可能比较奇怪
  @see AVAudioSessionCategoryOptionDefaultToSpeaker
  */
 @property (nonatomic, assign) BOOL bDefaultToSpeaker;

@@ -14,6 +14,8 @@
 @interface KSYKitDemoVC () {
     id _filterBtn;
     UILabel* label;
+    NSDateFormatter * _dateFormatter;
+    int64_t _seconds;
 }
 
 @end
@@ -55,38 +57,40 @@
     _kit.videoFPS       = [self.presetCfgView frameRate];
     _kit.cameraPosition = [self.presetCfgView cameraPos];
     _kit.bInterruptOtherAudio = NO;
-    _kit.videoProcessingCallback = ^(CMSampleBufferRef sampleBuffer){
+    _kit.bDefaultToSpeaker    = YES; // 没有耳机的话音乐播放从扬声器播放
+    _kit.videoProcessingCallback = ^(CMSampleBufferRef buf){
     };
-    _kit.audioProcessingCallback =^(CMSampleBufferRef buf){
+    _kit.audioProcessingCallback = ^(CMSampleBufferRef buf){
     };
 }
 - (void) setupLogo{
-    NSString *aPath3=[NSHomeDirectory() stringByAppendingString:@"/Documents/ksvc.png"];
-    UIImage *imgFromUrl3=[[UIImage alloc]initWithContentsOfFile:aPath3];
-    CGPoint pz = CGPointMake(10, 10);
-    [_kit addLogo:imgFromUrl3 pos:pz trans:0.5];
+    NSString *logoFile=[NSHomeDirectory() stringByAppendingString:@"/Documents/ksvc.png"];
+    UIImage *logoImg=[[UIImage alloc]initWithContentsOfFile:logoFile];
+    CGRect rect = CGRectMake(10, 10, 80, 80);
+    [_kit addLogo:logoImg toRect:rect trans:0.5];
     
     label = [[UILabel alloc] initWithFrame:CGRectMake(0,100, 500, 100)];
     label.textColor = [UIColor whiteColor];
     //label.font = [UIFont systemFontOfSize:17.0]; // 非等宽字体, 可能导致闪烁
     label.font = [UIFont fontWithName:@"Courier-Bold" size:20.0];
     label.backgroundColor = [UIColor clearColor];
-    label.hidden = NO;
-    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"MM-dd HH:mm:ss";
+    _dateFormatter = [[NSDateFormatter alloc] init];
+    _dateFormatter.dateFormat = @"MM-dd HH:mm:ss";
     NSDate *now = [[NSDate alloc] init];
-    label.text = [dateFormatter stringFromDate:now];
-    [_kit addTimeLabel:label dateFormat:dateFormatter.dateFormat];
+    label.text = [_dateFormatter stringFromDate:now];
+    rect.origin.y += (rect.size.height+5);
+    [_kit addTextLabel:label toPos:rect.origin];
 }
 
 #pragma mark -  state change
 - (void)onTimer:(NSTimer *)theTimer{
     [super onTimer:theTimer];
-    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"MM-dd HH:mm:ss";
-    NSDate *now = [[NSDate alloc] init];
-    label.text = [dateFormatter stringFromDate:now];
-    [_kit updateTextLable:label];
+    _seconds++;
+    if (_seconds%5){ // update label every 5 second
+        NSDate *now = [[NSDate alloc] init];
+        label.text = [_dateFormatter stringFromDate:now];
+        [_kit updateTextLable:label];
+    }
 }
 
 - (void) onCaptureStateChange:(NSNotification *)notification{
@@ -131,6 +135,7 @@
         _kit.streamerBase.streamState == KSYStreamStateError) {
         [_kit.streamerBase startStream:self.hostURL];
         self.streamerBase = _kit.streamerBase;
+        _seconds = 0;
     }
     else {
         [_kit.streamerBase stopStream];
@@ -140,10 +145,12 @@
 
 
 - (void) onQuit{  // quit current demo
-    [_kit stopPreview];
+    [_kit.streamerBase stopStream];
+    self.streamerBase = nil;
     if (_kit.player){
         [self onPipStop];
     }
+    [_kit stopPreview];
     [super onQuit];
 }
 
@@ -186,18 +193,57 @@
     [_kit stopPip];
 }
 - (void)onPipNext{
-    [_kit stopPip];
-    [self onPipPlay];
+    if (_kit.player){
+        [_kit stopPip];
+        [self onPipPlay];
+    }
 }
+
+- (void)onPipPause{
+    if (_kit.player && _kit.player.playbackState == MPMoviePlaybackStatePlaying) {
+        [_kit.player pause];
+    }
+    else if (_kit.player && _kit.player.playbackState == MPMoviePlaybackStatePaused){
+        [_kit.player play];
+    }
+}
+
 - (void)onBgpNext{
-    [_kit startPipWithPlayerUrl:nil
-                          bgPic:self.ksyPipView.bgpURL
-                        capRect:CGRectMake(0.6, 0.6, 0.3, 0.3)];
+    if ( _kit.player ){
+        [_kit startPipWithPlayerUrl:nil
+                              bgPic:self.ksyPipView.bgpURL
+                            capRect:CGRectMake(0.6, 0.6, 0.3, 0.3)];
+    }
 }
+
 - (void)pipVolChange:(id)sender{
     if (_kit.player && sender == self.ksyPipView.volumSl) {
         float vol = self.ksyPipView.volumSl.normalValue;
         [_kit.player setVolume:vol rigthVolume:vol];
     }
 }
+
+#pragma mark - micMonitor
+// 是否开启耳返
+- (void)onMiscSwitch:(UISwitch *)sw{
+    if (sw == self.miscView.micmMix){
+        if ( [KSYMicMonitor isHeadsetPluggedIn] == NO ){
+            return;
+        }
+        if (sw.isOn){
+            [_kit.micMonitor start];
+        }
+        else{
+            [_kit.micMonitor stop];
+        }
+    }
+}
+
+// 调节耳返音量
+- (void)onMiscSlider:(KSYNameSlider *)slider {
+    if (slider == self.miscView.micmVol){
+        [_kit.micMonitor setVolume:slider.normalValue];
+    }
+}
+
 @end

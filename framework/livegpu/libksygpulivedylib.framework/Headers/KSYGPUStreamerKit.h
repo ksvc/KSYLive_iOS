@@ -78,7 +78,7 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  @param      inputImage 输入的图像
  @param      position  图像显示的左上角的位置 单位为像素
  @param      transparency 透明度(0-1),0完全透明，1完全不透明；
- @discussion 大小等于inputImage的原始尺寸
+ @discussion 大小等于inputImage的原始尺寸(请注意提供的图片的尺寸)
  */
 -(void)addLogo:(UIImage *)inputImage
            pos:(CGPoint)position
@@ -94,18 +94,21 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
          toRect:(CGRect)pixelRect
           trans:(float)transparency;
 /**
- @abstract   显示时间的Label
+ @abstract   显示字符串的Label
  @param      自定义的label
-  @param     自定义的日期格式，比如“yyyy-MM-dd HH:mm:ss"等
- @discussion 默认不显示时间，
+ @param      label 左上角的位置
+ @discussion 字符串的内容在 textLabel.text中
+ discussion  size则通过调用 label的sizeToFit得到
  */
--(void)addTimeLabel:(UILabel *)TimeLabel
-         dateFormat:(NSString *)format;
+-(void)addTextLabel:(UILabel *)textLabel
+              toPos:(CGPoint) pos;
 
 /**
  @abstract   显示文字的lable
  @param      借用UILable来指定文字的颜色字体等属性
+ @param      pixelRect 左上角位置和 文字框大小
  @discussion 请在启动预览前添加,启动预览后更新
+ @warning    请注意, 宽度不足时,可能导致部分文字无法显示
  */
 -(void)addTextLabel:(UILabel *)textLabel
              toRect:(CGRect)pixelRect;
@@ -198,8 +201,25 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  @discussion YES:开始采集时，会打断其他的后台播放音乐，也会被其他音乐打断（采集过程中，启动其他音乐播放，采集被中止）
  @discussion NO: 可以与其他后台播放共存，相互之间不会被打断
  @discussion 默认为YES
+ @discussion 透传给 KSYGPUCamera
  */
 @property BOOL  bInterruptOtherAudio;
+
+/**
+ @abstract   启动采集后,是否从扬声器播放声音 (默认为YES)
+ @discussion 启动声音采集后,iOS系统的行为是默认从听筒播放声音的
+ @discussion 将该属性设为YES, 则改为默认从扬声器播放
+ @discussion 透传给 KSYGPUCamera
+ @see AVAudioSessionCategoryOptionDefaultToSpeaker
+ */
+@property (nonatomic, assign) BOOL bDefaultToSpeaker;
+
+/**
+ @abstract   是否启用蓝牙设备 (默认为YES)
+ @discussion 透传给 KSYGPUCamera
+ @see AVAudioSessionCategoryOptionAllowBluetooth
+ */
+@property (nonatomic, assign) BOOL bAllowBluetooth;
 
 #pragma mark - camera operation
 /**
@@ -354,7 +374,7 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 /**
  @abstract mic返音接口
  */
-@property (nonatomic, strong) KSYMicMonitor  * micMonitor;
+@property (nonatomic, readonly) KSYMicMonitor  * micMonitor;
 
 
 @end
