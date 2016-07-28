@@ -45,7 +45,6 @@
     frame.size.height = height;
     self.frame = frame;
 }
-
 - (CGPoint)origin{
     return self.origin;
 }
@@ -76,17 +75,24 @@
     self = [super init];
     self.backgroundColor = [UIColor clearColor];
     self.gap = 4;
-    self.btnH = 40;
-    self.winWdt = self.width - self.gap*2;
+    self.btnH = 35;
+    self.winWdt = self.width;
     return self;
 }
 
 #pragma mark - UI elements layout
 // 每次布局前,设置默认值
 - (void) layoutUI {
-    self.btnH = 40;
-    self.winWdt = self.width - _gap*2;
+    self.btnH = 35;
+    self.winWdt = self.width;
     self.yPos =_gap;
+}
+- (CGFloat) getXStart {
+    CGFloat xPos = _gap;
+    if (_yPos > self.height){
+        xPos += _winWdt;
+    }
+    return xPos;
 }
 
 - (void) putRow:(NSArray *) subV {
@@ -94,13 +100,14 @@
     if ( cnt < 1){
         return ;
     }
-    CGFloat btnW = (self.width/cnt) - _gap*2;
-    CGFloat xPos = _gap;
+    CGFloat btnW = (_winWdt/cnt) - _gap*2;
+    CGFloat xPos = [self getXStart];
     CGFloat step = _gap*2+btnW;
+    CGFloat yPos = _yPos > self.height ? _yPos - self.height : _yPos;
     for (id item in subV) {
         if ([item isKindOfClass:[UIView class]]){
             UIView * v = item;
-            v.frame = CGRectMake(xPos, _yPos, btnW, _btnH);
+            v.frame = CGRectMake(xPos, yPos, btnW, _btnH);
         }
         xPos += step;
     }
@@ -108,60 +115,71 @@
 }
 
 - (void) putRow1:(UIView*)subV {
-    subV.frame = CGRectMake(_gap, _yPos, _winWdt, _btnH);
+    CGFloat yPos = _yPos > self.height ? _yPos - self.height : _yPos;
+    subV.frame = CGRectMake([self getXStart], yPos, _winWdt - _gap*2, _btnH);
     _yPos += (_btnH + _gap);
 }
 
 - (void) putRow2:(UIView*)subV0
              and:(UIView*)subV1{
-    CGFloat btnW = (self.width/2) - _gap*2;
-    subV0.frame = CGRectMake(_gap, _yPos, btnW, _btnH);
-    subV1.frame = CGRectMake(_gap*3+btnW, _yPos, btnW, _btnH);
+    CGFloat btnW = (_winWdt/2) - _gap*2;
+    CGFloat y = _yPos > self.height ? _yPos - self.height : _yPos;
+    CGFloat x = [self getXStart]+_gap;
+    subV0.frame = CGRectMake(x, y, btnW, _btnH);
+    subV1.frame = CGRectMake(x+_gap*2+btnW, y, btnW, _btnH);
     _yPos += (_btnH + _gap);
 }
 
 - (void) putRow3:(UIView*)subV0
              and:(UIView*)subV1
              and:(UIView*)subV2 {
-    CGFloat btnW = (self.width/3) - _gap*2;
-    CGFloat xPos[3] = {_gap, _gap*3+btnW, _gap*5+btnW*2};
+    CGFloat btnW = (_winWdt/3) - _gap*2;
+    
+    CGFloat x = [self getXStart]+_gap;
+    CGFloat y = _yPos > self.height ? _yPos - self.height : _yPos;
+    CGFloat xPos[3] = {x, x+_gap*2+btnW, x+_gap*4+btnW*2};
     if (subV0){
-        subV0.frame = CGRectMake(xPos[0], _yPos, btnW, _btnH);
+        subV0.frame = CGRectMake(xPos[0], y, btnW, _btnH);
     }
     if (subV1) {
-        subV1.frame = CGRectMake(xPos[1], _yPos, btnW, _btnH);
+        subV1.frame = CGRectMake(xPos[1], y, btnW, _btnH);
     }
     if (subV2) {
-        subV2.frame = CGRectMake(xPos[2], _yPos, btnW, _btnH);
+        subV2.frame = CGRectMake(xPos[2], y, btnW, _btnH);
     }
     _yPos += (_btnH + _gap);
 }
 
 - (void) putLable:(UIView*)lbl
           andView:(UIView*)subV{
+    CGFloat x = [self getXStart]+_gap;
+    CGFloat y = _yPos > self.height ? _yPos - self.height : _yPos;
     [lbl sizeToFit];
     CGRect rect = lbl.frame;
-    rect.origin = CGPointMake(_gap, _yPos);
+    rect.origin = CGPointMake(x, y);
     rect.size.height = _btnH;
     lbl.frame = rect;
     
-    CGFloat btnW = (self.width) - _gap*3 - rect.size.width;
+    CGFloat btnW = (_winWdt) - _gap*3 - rect.size.width;
     CGFloat xPos = rect.origin.x + rect.size.width + _gap;
-    subV.frame = CGRectMake( xPos, _yPos, btnW, _btnH);
+    subV.frame = CGRectMake( xPos, y, btnW, _btnH);
     _yPos += (_btnH + _gap);
 }
 
 - (void)  putSlider:(UIView*)sl
           andSwitch:(UIView*)sw{
+    CGFloat x = [self getXStart]+_gap;
+    CGFloat y = _yPos > self.height ? _yPos - self.height : _yPos;
+    
     [sw sizeToFit];
     CGRect rect = sw.frame;
     rect.size.height = _btnH;
     
-    CGFloat slW = (self.width) - _gap*3 - rect.size.width;
-    rect.origin = CGPointMake(slW+_gap, _yPos);
+    CGFloat slW = (_winWdt) - _gap*3 - rect.size.width;
+    rect.origin = CGPointMake(slW+x, y);
     sw.frame = rect;
     
-    rect.origin = CGPointMake(_gap, _yPos);
+    rect.origin = CGPointMake(x, y);
     rect.size.width = slW;
     sl.frame = rect;
     _yPos += (_btnH + _gap);

@@ -69,10 +69,13 @@
 
 - (void) layoutUI {
     [super layoutUI];
+    if (self.width > self.height){
+        self.winWdt = self.width/2;
+    }
     [self putRow1:_configLable];
-    self.btnH = 40*2;
+    self.btnH = 35*2;
     [self putRow1:_hostUrlUI];
-    self.btnH=40;
+    self.btnH=35;
     [self putLable:_lblResolutionUI andView:_resolutionUI];
     [self putLable:_lblCameraPosUI andView:_cameraPosUI];
 
@@ -83,7 +86,9 @@
     [self putLable:_lblAudioKbpsUI andView:_audioKbpsUI];
     
     [self putRow1:_demoLable];
-    self.btnH= (self.height - self.yPos - self.gap*2)/2;
+    
+    CGFloat yPos = self.yPos > self.height ? self.yPos - self.height : self.yPos;
+    self.btnH= (self.height - yPos - self.gap*2)/2;
     [self putRow3:_btn0 and:_btn1 and:_btn2];
     [self putRow2:_btn3 and:_btn4];
 }

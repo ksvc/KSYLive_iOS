@@ -33,7 +33,9 @@
 
 - (void) layoutUI {
     [super layoutUI];
-    self.yPos =self.gap*5; // skip status bar
+    if ( self.width <self.height ){
+        self.yPos =self.gap*5; // skip status bar
+    }
     [self putRow3: _btnFlash
               and:_btnCameraToggle
               and: _btnQuit];
@@ -41,8 +43,7 @@
     [self putRow3:_btnCapture
               and:nil
               and:_btnStream];
-    self.btnH *= 5;// 5lines
-    self.yPos -= (self.btnH+self.gap);
+    self.yPos -= (self.btnH*5+self.gap);
     [self putRow1:_lblStat];
 }
 
