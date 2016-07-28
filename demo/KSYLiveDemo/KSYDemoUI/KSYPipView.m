@@ -8,20 +8,15 @@
 
 #import "KSYPipView.h"
 #import "KSYNameSlider.h"
+#import "KSYFileSelector.h"
+
 @interface KSYPipView (){
-    NSString* _pipDir;  //app的"Documents/movies"
-    NSMutableArray * _pipList; // pipDir目录下存放的文件列表
-    int       _pipIdx;  // 当前正在播放的视频文件的索引
-    
-    NSString* _bgpDir;  //app的"Documents/movies"
-    NSMutableArray * _bgpList; // bgpDir目录下存放的文件列表
-    int       _bgpIdx;  // 当前显示的背景图片的索引
-    
     UILabel * _pipTitle;
-    NSString* _pipFileInfo;
-    NSString* _bgpFileInfo;
+    KSYFileSelector * _pipSel;
+    KSYFileSelector * _bgpSel;
 }
 @end
+
 @implementation KSYPipView
 -(id)init{
     self = [super init];
@@ -38,9 +33,20 @@
     _pipNext    = [self addButton:@"下一个视频文件"];
     _bgpNext    = [self addButton:@"下一个背景图片"];
     _volumSl    = [self addSliderName:@"音量" From:0 To:100 Init:50];
+    
     _pipPattern = @[@".mp4", @".flv"];
     _bgpPattern = @[@".jpg",@".jpeg", @".png"];
-    [self loadFiles];
+    
+    _pipSel = [[KSYFileSelector alloc] initWithDir:@"/Documents/movies/"
+                                         andSuffix:_pipPattern];
+    _bgpSel = [[KSYFileSelector alloc] initWithDir:@"/Documents/images/"
+                                         andSuffix:_bgpPattern];
+    if(_pipSel.filePath){
+        _pipURL = [NSURL fileURLWithPath:_pipSel.filePath];
+    }
+    if(_bgpSel.filePath){
+        _bgpURL = [NSURL fileURLWithPath:_bgpSel.filePath];
+    }
     return self;
 }
 - (void)layoutUI{
@@ -55,79 +61,19 @@
     [self putRow2:_pipNext
               and:_bgpNext];
 }
-- (void) loadFiles{
-    _pipDir = [NSHomeDirectory() stringByAppendingString:@"/Documents/movies/"];
-    NSFileManager * fmgr = [NSFileManager defaultManager];
-    NSArray * pipL = [fmgr contentsOfDirectoryAtPath:_pipDir
-                                               error:nil];
-    _pipList = [NSMutableArray array];
-    // filter all files
-    for (NSString*f in pipL) {
-        for (NSString*p in _pipPattern) {
-            if ( [f hasSuffix:p]){
-                [_pipList addObject:f];
-                break;
-            }
-        }
-    }
-    _pipIdx = -1;
-    [self nextPipFile];
-    NSLog(@"find %lu movies", (unsigned long)[_pipList count]);
-    
-    _bgpDir = [NSHomeDirectory() stringByAppendingString:@"/Documents/images/"];
-    NSArray * bgpL = [fmgr contentsOfDirectoryAtPath:_bgpDir
-                                               error:nil];
-    _bgpList = [NSMutableArray array];
-    // filter all files
-    for (NSString*f in bgpL) {
-        for (NSString*p in _bgpPattern) {
-            if ( [f hasSuffix:p]){
-                [_bgpList addObject:f];
-                break;
-            }
-        }
-    }
-    _bgpIdx = -1;
-    [self nextBgpFile];
-    NSLog(@"find %lu background pictures", (unsigned long)[_bgpList count]);
-}
-- (void) nextPipFile{
-    NSInteger cnt =[_pipList count];
-    if (cnt == 0) { // no file
-        _pipURL = nil;
-        _pipFileInfo = @"can't find movies";
-        return;
-    }
-    // find a new file
-    _pipIdx = (_pipIdx+1)%cnt;
-    NSString * name = _pipList[_pipIdx];
-    NSString *pipPath = [_pipDir stringByAppendingString:name];
-    _pipURL = [NSURL fileURLWithPath:pipPath];
-    _pipFileInfo = [NSString stringWithFormat:@" %@(%d/%lu)",name,_pipIdx,cnt];
-}
-- (void) nextBgpFile{
-    NSInteger cnt =[_bgpList count];
-    if (cnt == 0) { // no file
-        _bgpURL = nil;
-        _bgpFileInfo = @"can't find picture";
-        return;
-    }
-    // find a new file
-    _bgpIdx = (_bgpIdx+1)%cnt;
-    NSString * name = _bgpList[_bgpIdx];
-    NSString *bgpPath = [_bgpDir stringByAppendingString:name];
-    _bgpURL = [NSURL fileURLWithPath:bgpPath];
-    _bgpFileInfo = [NSString stringWithFormat:@" %@(%d/%lu)",name,_bgpIdx,cnt];
-}
 
 - (IBAction)onBtn:(id)sender {
     if (sender == _pipNext){
-        [self nextPipFile];
+        if( [_pipSel nextFile]){
+            _pipURL = [NSURL fileURLWithPath:_pipSel.filePath];
+        }
     }
     if (sender == _bgpNext){
-        [self nextBgpFile];
+        if( [_bgpSel nextFile] ){
+            _bgpURL = [NSURL fileURLWithPath:_bgpSel.filePath];
+        }
     }
-    _pipTitle.text = [NSString stringWithFormat:@"%@: %@\n%@", _pipStatus, _pipFileInfo, _bgpFileInfo ];
+    _pipTitle.text = [NSString stringWithFormat:@"%@: %@\n%@", _pipStatus, _pipSel.fileInfo, _bgpSel.fileInfo ];
     [super onBtn:sender];
 }
 @end

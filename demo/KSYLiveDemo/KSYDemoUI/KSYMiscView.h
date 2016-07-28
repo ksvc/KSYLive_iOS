@@ -19,4 +19,10 @@
 @property UIButton* btn2;
 @property UIButton* btn3;
 @property UIButton* btn4;
+
+@property KSYNameSlider * micmVol;
+@property UISwitch      * micmMix;
+// 初始化micm选择控件
+- (void) initMicmOutput;
+
 @end

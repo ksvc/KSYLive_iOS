@@ -23,9 +23,6 @@
     self = [super init];
     _filterBtns[0]  = [self addButton:@"美颜"];
     _filterBtns[1]  = [self addButton:@"关闭"];
-    _filterBtns[2]  = [self addButton:@"新磨皮"]; /// KSY_PRO_ONLY ///
-    _filterBtns[3]  = [self addButton:@"新锐化"]; /// KSY_PRO_ONLY ///
-    _filterBtns[4]  = [self addButton:@"新美白"]; /// KSY_PRO_ONLY ///
     
     [self  selectFilter:_filterBtns[0]];  // 默认开启
     
@@ -39,9 +36,6 @@
     self.btnH = 30;
     [self putRow2:_filterBtns[0]
               and:_filterBtns[1]];
-    [self putRow3:_filterBtns[2]      /// KSY_PRO_ONLY ///
-              and:_filterBtns[3]      /// KSY_PRO_ONLY ///
-              and:_filterBtns[4]];    /// KSY_PRO_ONLY ///
 }
 - (IBAction)onBtn:(id)sender {
     [self  selectFilter:sender];
@@ -63,15 +57,6 @@
     else if (sender == _filterBtns[1]){
         _curFilter  = nil;
     }
-    else if (sender == _filterBtns[2]){     /// KSYGPUBeautifyFilter ///
-        _curFilter = [[KSYGPUBeautifyFilter alloc] init];   /// KSYGPUBeautifyFilter ///
-    }     /// KSY_PRO_ONLY ///
-    else if (sender == _filterBtns[3]){     /// KSYGPUBeautifyPlusFilter ///
-        _curFilter = [[KSYGPUBeautifyPlusFilter alloc] init];    /// KSYGPUBeautifyPlusFilter ///
-    }    /// KSY_PRO_ONLY ///
-    else if (sender == _filterBtns[4]){      /// KSYGPUDnoiseFilter ///
-        _curFilter = [[KSYGPUDnoiseFilter alloc] init];     /// KSYGPUDnoiseFilter ///
-    }      /// KSY_PRO_ONLY ///
     else { // 关闭
         _curFilter  = nil;
     }
@@ -81,6 +66,12 @@
     if (sender != _filterLevel) {
         return;
     }
+    float nalVal = _filterLevel.normalValue;
+    if (_curBtn == _filterBtns[0]){
+        int val = (nalVal*5) + 1; // level 1~5
+        [(KSYGPUBeautifyExtFilter *)_curFilter setBeautylevel: val];
+    }
+    //
     [super onSlider:sender];
 }
 @end

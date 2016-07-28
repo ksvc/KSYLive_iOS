@@ -58,6 +58,8 @@ typedef struct _StreamState {
 @property (nonatomic, retain) GPUImageFilter*    filter;
 @property (nonatomic, retain) KSYBgmPlayer*      bgmPlayer;
 @property (nonatomic, retain) KSYAudioReverb*    reverb;
+@property (nonatomic, retain) KSYMicMonitor*     micMonitor;
+
 // 画中画
 @property (nonatomic, retain) KSYGPUYUVInput           *yuvInput;
 @property (nonatomic, retain) KSYGPUPipBlendFilter     *pipFilter;

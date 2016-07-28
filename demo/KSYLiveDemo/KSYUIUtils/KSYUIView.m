@@ -81,7 +81,8 @@
     return self;
 }
 
-//
+#pragma mark - UI elements layout
+// 每次布局前,设置默认值
 - (void) layoutUI {
     self.btnH = 40;
     self.winWdt = self.width - _gap*2;
@@ -166,7 +167,7 @@
     _yPos += (_btnH + _gap);
 }
 
-#pragma mark - add UI elements
+#pragma mark - new and add UI elements
 
 - (UITextField *)addTextField: (NSString*)text{
     UITextField * textF;
@@ -293,6 +294,8 @@
     };
     return sl;
 }
+
+#pragma mark - UI respond
 
 //UIControlEventTouchUpInside
 - (IBAction)onBtn:(id)sender {

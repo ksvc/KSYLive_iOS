@@ -7,7 +7,7 @@
  
  控件格式为: 参数名称 + 滑块 + 当前数值
  通过 onSliderBlock,可以得到滑块值改变的事件
- 通过 normalValue
+ 通过 normalValue, 可以查询到归一化的值(0~1.0)
  */
 @interface KSYNameSlider: UIView
 

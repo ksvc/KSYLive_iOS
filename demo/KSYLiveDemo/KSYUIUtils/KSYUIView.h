@@ -37,6 +37,7 @@
 // set by call [super layoutUI]
 @property (nonatomic, assign) CGFloat winWdt; // default self.width - gap*2
 @property (nonatomic, assign) CGFloat yPos;   // default gap*5
+// 在布局函数中, 每次使用putXXX接口增加一行控件, yPos 往下增加btnH+gap
 
 #pragma mark - UI elements layout
 - (void) layoutUI;
@@ -68,6 +69,7 @@
                          To: (float) maxV
                        Init: (float) iniV;
 
+// 添加滑块 (结构为 名字+滑块+值)
 - (KSYNameSlider *)addSliderName: (NSString*) name
                             From: (float) minV
                               To: (float) maxV
