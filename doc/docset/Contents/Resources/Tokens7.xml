@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUCamera.html">
+	<File path="Classes/KSYCamera.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUCamera</TokenIdentifier>
-			<Abstract type="html">A KSYGPUCamera that provides frames from either camera</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYCamera</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYCamera.h</DeclaredIn>
             
 			
 			<NodeRef refid="7"/>
@@ -13,346 +13,267 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/initWithSessionPreset:cameraPosition:</TokenIdentifier>
-			<Abstract type="html">Begin a capture session</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
-			
-			<Declaration>- (id)initWithSessionPreset:(NSString *)sessionPreset cameraPosition:(AVCaptureDevicePosition)cameraPosition</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>sessionPreset</Name>
-					<Abstract type="html">Session preset to use</Abstract>
-				</Parameter><Parameter>
-					<Name>cameraPosition</Name>
-					<Abstract type="html">Camera to capture from</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">nil 表明cameraPosition对应的sessionPreset不支持，初始化不成功</Abstract></ReturnValue>
-			<Anchor>//api/name/initWithSessionPreset:cameraPosition:</Anchor>
-            <NodeRef refid="7"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/setBInterruptOtherAudio:</TokenIdentifier>
-			<Abstract type="html">是否打断其他后台的音乐播放</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
-			
-			<Declaration>@property BOOL bInterruptOtherAudio</Declaration>
-			
-			
-			<Anchor>//api/name/bInterruptOtherAudio</Anchor>
-            <NodeRef refid="7"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/bInterruptOtherAudio</TokenIdentifier>
-			<Abstract type="html">是否打断其他后台的音乐播放</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
-			
-			<Declaration>@property BOOL bInterruptOtherAudio</Declaration>
-			
-			
-			<Anchor>//api/name/bInterruptOtherAudio</Anchor>
-            <NodeRef refid="7"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUCamera/bInterruptOtherAudio</TokenIdentifier>
-			<Abstract type="html">是否打断其他后台的音乐播放</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
-			
-			<Declaration>@property BOOL bInterruptOtherAudio</Declaration>
-			
-			
-			<Anchor>//api/name/bInterruptOtherAudio</Anchor>
-            <NodeRef refid="7"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/setBStreamVideo:</TokenIdentifier>
-			<Abstract type="html">是否将视频数据送入streamer</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
-			
-			<Declaration>@property BOOL bStreamVideo</Declaration>
-			
-			
-			<Anchor>//api/name/bStreamVideo</Anchor>
-            <NodeRef refid="7"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/bStreamVideo</TokenIdentifier>
-			<Abstract type="html">是否将视频数据送入streamer</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
-			
-			<Declaration>@property BOOL bStreamVideo</Declaration>
-			
-			
-			<Anchor>//api/name/bStreamVideo</Anchor>
-            <NodeRef refid="7"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUCamera/bStreamVideo</TokenIdentifier>
-			<Abstract type="html">是否将视频数据送入streamer</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
-			
-			<Declaration>@property BOOL bStreamVideo</Declaration>
-			
-			
-			<Anchor>//api/name/bStreamVideo</Anchor>
-            <NodeRef refid="7"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/setBStreamAudio:</TokenIdentifier>
-			<Abstract type="html">是否将音频数据送入streamer</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
-			
-			<Declaration>@property BOOL bStreamAudio</Declaration>
-			
-			
-			<Anchor>//api/name/bStreamAudio</Anchor>
-            <NodeRef refid="7"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/bStreamAudio</TokenIdentifier>
-			<Abstract type="html">是否将音频数据送入streamer</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
-			
-			<Declaration>@property BOOL bStreamAudio</Declaration>
-			
-			
-			<Anchor>//api/name/bStreamAudio</Anchor>
-            <NodeRef refid="7"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUCamera/bStreamAudio</TokenIdentifier>
-			<Abstract type="html">是否将音频数据送入streamer</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
-			
-			<Declaration>@property BOOL bStreamAudio</Declaration>
-			
-			
-			<Anchor>//api/name/bStreamAudio</Anchor>
-            <NodeRef refid="7"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/setBaseAudioEncTarget:</TokenIdentifier>
-			<Abstract type="html">采集到的音频通过此target发送</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYCamera/setVideoDimensionUserDefine:</TokenIdentifier>
+			<Abstract type="html">用户定义的视频分辨率</Abstract>
+			<DeclaredIn>KSYCamera.h</DeclaredIn>
 			
 	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUCamera/bStreamAudio</TokenIdentifier>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYCamera/videoOrientation</TokenIdentifier>
 		
 	</RelatedTokens>
 	
-			<Declaration>- (void)setBaseAudioEncTarget:(KSYStreamerBase *)target</Declaration>
+			<Declaration>@property (nonatomic, assign) CGSize videoDimensionUserDefine</Declaration>
 			
 			
-			<Anchor>//api/name/setBaseAudioEncTarget:</Anchor>
+			<Anchor>//api/name/videoDimensionUserDefine</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/setAudioEncTarget:</TokenIdentifier>
-			<Abstract type="html">采集到的音频通过此target发送</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYCamera/videoDimensionUserDefine</TokenIdentifier>
+			<Abstract type="html">用户定义的视频分辨率</Abstract>
+			<DeclaredIn>KSYCamera.h</DeclaredIn>
 			
 	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUCamera/bStreamAudio</TokenIdentifier>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYCamera/videoOrientation</TokenIdentifier>
 		
 	</RelatedTokens>
 	
-			<Declaration>- (void)setAudioEncTarget:(KSYGPUStreamer *)target</Declaration>
+			<Declaration>@property (nonatomic, assign) CGSize videoDimensionUserDefine</Declaration>
 			
 			
-			<Anchor>//api/name/setAudioEncTarget:</Anchor>
+			<Anchor>//api/name/videoDimensionUserDefine</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/isTorchSupported</TokenIdentifier>
-			<Abstract type="html">当前采集设备是否支持闪光灯</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYCamera/videoDimensionUserDefine</TokenIdentifier>
+			<Abstract type="html">用户定义的视频分辨率</Abstract>
+			<DeclaredIn>KSYCamera.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)isTorchSupported</Declaration>
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYCamera/videoOrientation</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, assign) CGSize videoDimensionUserDefine</Declaration>
 			
-			<ReturnValue><Abstract type="html">YES / NO</Abstract></ReturnValue>
-			<Anchor>//api/name/isTorchSupported</Anchor>
+			
+			<Anchor>//api/name/videoDimensionUserDefine</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/toggleTorch</TokenIdentifier>
-			<Abstract type="html">开关闪光灯</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYCamera/setCameraPosition:</TokenIdentifier>
+			<Abstract type="html">摄像头位置</Abstract>
+			<DeclaredIn>KSYCamera.h</DeclaredIn>
 			
-			<Declaration>- (void)toggleTorch</Declaration>
+			<Declaration>@property (nonatomic, assign) AVCaptureDevicePosition cameraPosition</Declaration>
 			
 			
-			<Anchor>//api/name/toggleTorch</Anchor>
+			<Anchor>//api/name/cameraPosition</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/setTorchMode:</TokenIdentifier>
-			<Abstract type="html">设置闪光灯</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYCamera/cameraPosition</TokenIdentifier>
+			<Abstract type="html">摄像头位置</Abstract>
+			<DeclaredIn>KSYCamera.h</DeclaredIn>
 			
-			<Declaration>- (void)setTorchMode:(AVCaptureTorchMode)mode</Declaration>
+			<Declaration>@property (nonatomic, assign) AVCaptureDevicePosition cameraPosition</Declaration>
+			
+			
+			<Anchor>//api/name/cameraPosition</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYCamera/cameraPosition</TokenIdentifier>
+			<Abstract type="html">摄像头位置</Abstract>
+			<DeclaredIn>KSYCamera.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) AVCaptureDevicePosition cameraPosition</Declaration>
+			
+			
+			<Anchor>//api/name/cameraPosition</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYCamera/setVideoOrientation:</TokenIdentifier>
+			<Abstract type="html">摄像头朝向</Abstract>
+			<DeclaredIn>KSYCamera.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) AVCaptureVideoOrientation videoOrientation</Declaration>
+			
+			
+			<Anchor>//api/name/videoOrientation</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYCamera/videoOrientation</TokenIdentifier>
+			<Abstract type="html">摄像头朝向</Abstract>
+			<DeclaredIn>KSYCamera.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) AVCaptureVideoOrientation videoOrientation</Declaration>
+			
+			
+			<Anchor>//api/name/videoOrientation</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYCamera/videoOrientation</TokenIdentifier>
+			<Abstract type="html">摄像头朝向</Abstract>
+			<DeclaredIn>KSYCamera.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) AVCaptureVideoOrientation videoOrientation</Declaration>
+			
+			
+			<Anchor>//api/name/videoOrientation</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYCamera/setVideoFPS:</TokenIdentifier>
+			<Abstract type="html">视频帧率</Abstract>
+			<DeclaredIn>KSYCamera.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int videoFPS</Declaration>
+			
+			
+			<Anchor>//api/name/videoFPS</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYCamera/videoFPS</TokenIdentifier>
+			<Abstract type="html">视频帧率</Abstract>
+			<DeclaredIn>KSYCamera.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int videoFPS</Declaration>
+			
+			
+			<Anchor>//api/name/videoFPS</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYCamera/videoFPS</TokenIdentifier>
+			<Abstract type="html">视频帧率</Abstract>
+			<DeclaredIn>KSYCamera.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int videoFPS</Declaration>
+			
+			
+			<Anchor>//api/name/videoFPS</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYCamera/setCaptureState:</TokenIdentifier>
+			<Abstract type="html">当前采集设备状况</Abstract>
+			<DeclaredIn>KSYCamera.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) KSYCaptureState captureState</Declaration>
+			
+			
+			<Anchor>//api/name/captureState</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYCamera/captureState</TokenIdentifier>
+			<Abstract type="html">当前采集设备状况</Abstract>
+			<DeclaredIn>KSYCamera.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) KSYCaptureState captureState</Declaration>
+			
+			
+			<Anchor>//api/name/captureState</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYCamera/captureState</TokenIdentifier>
+			<Abstract type="html">当前采集设备状况</Abstract>
+			<DeclaredIn>KSYCamera.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) KSYCaptureState captureState</Declaration>
+			
+			
+			<Anchor>//api/name/captureState</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYCamera/setStreamer:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYCamera.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) KSYStreamerBase *streamer</Declaration>
+			
+			
+			<Anchor>//api/name/streamer</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYCamera/streamer</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYCamera.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) KSYStreamerBase *streamer</Declaration>
+			
+			
+			<Anchor>//api/name/streamer</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYCamera/streamer</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYCamera.h</DeclaredIn>
+			
+			<Declaration>@property (strong, nonatomic, readonly) KSYStreamerBase *streamer</Declaration>
+			
+			
+			<Anchor>//api/name/streamer</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYCamera/startPreview:streamer:</TokenIdentifier>
+			<Abstract type="html">启动预览 （step2）</Abstract>
+			<DeclaredIn>KSYCamera.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYCamera/videoFPS</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>- (void)startPreview:(UIView *)view streamer:(KSYStreamerBase *)streamer</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>mode</Name>
-					<Abstract type="html">AVCaptureTorchModeOn/Off</Abstract>
+					<Name>view</Name>
+					<Abstract type="html">预览画面作为subview，插入到 view 的最底层</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/setTorchMode:</Anchor>
+			<Anchor>//api/name/startPreview:streamer:</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/setIsRunning:</TokenIdentifier>
-			<Abstract type="html">判断是否运行
-  </Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYCamera/stopPreview</TokenIdentifier>
+			<Abstract type="html">停止预览，停止采集设备，并清理会话（step5）</Abstract>
+			<DeclaredIn>KSYCamera.h</DeclaredIn>
 			
-			<Declaration>@property (readonly, nonatomic) BOOL isRunning</Declaration>
-			
-			
-			<Anchor>//api/name/isRunning</Anchor>
-            <NodeRef refid="7"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/isRunning</TokenIdentifier>
-			<Abstract type="html">判断是否运行
-  </Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
-			
-			<Declaration>@property (readonly, nonatomic) BOOL isRunning</Declaration>
+			<Declaration>- (void)stopPreview</Declaration>
 			
 			
-			<Anchor>//api/name/isRunning</Anchor>
-            <NodeRef refid="7"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUCamera/isRunning</TokenIdentifier>
-			<Abstract type="html">判断是否运行
-  </Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
-			
-			<Declaration>@property (readonly, nonatomic) BOOL isRunning</Declaration>
-			
-			
-			<Anchor>//api/name/isRunning</Anchor>
-            <NodeRef refid="7"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/setAudioProcessingCallback:</TokenIdentifier>
-			<Abstract type="html">音频处理回调接口</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>sampleBuffer</Name>
-					<Abstract type="html">原始采集到的音频数据</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/audioProcessingCallback</Anchor>
-            <NodeRef refid="7"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/audioProcessingCallback</TokenIdentifier>
-			<Abstract type="html">音频处理回调接口</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>sampleBuffer</Name>
-					<Abstract type="html">原始采集到的音频数据</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/audioProcessingCallback</Anchor>
-            <NodeRef refid="7"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUCamera/audioProcessingCallback</TokenIdentifier>
-			<Abstract type="html">音频处理回调接口</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>sampleBuffer</Name>
-					<Abstract type="html">原始采集到的音频数据</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/audioProcessingCallback</Anchor>
-            <NodeRef refid="7"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/setVideoProcessingCallback:</TokenIdentifier>
-			<Abstract type="html">视频处理回调接口</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) videoProcessingCallback</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>sampleBuffer</Name>
-					<Abstract type="html">原始采集到的视频数据</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/videoProcessingCallback</Anchor>
-            <NodeRef refid="7"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/videoProcessingCallback</TokenIdentifier>
-			<Abstract type="html">视频处理回调接口</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) videoProcessingCallback</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>sampleBuffer</Name>
-					<Abstract type="html">原始采集到的视频数据</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/videoProcessingCallback</Anchor>
-            <NodeRef refid="7"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUCamera/videoProcessingCallback</TokenIdentifier>
-			<Abstract type="html">视频处理回调接口</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) videoProcessingCallback</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>sampleBuffer</Name>
-					<Abstract type="html">原始采集到的视频数据</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/videoProcessingCallback</Anchor>
+			<Anchor>//api/name/stopPreview</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		

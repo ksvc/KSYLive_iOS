@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KSYQosInfo.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYQosInfo</TokenIdentifier>
+			<Abstract type="html">Qos信息</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+            
+			
+			<NodeRef refid="27"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setAudioBufferByteLength:</TokenIdentifier>
+			<Abstract type="html">    audio queue size in bytes</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int audioBufferByteLength</Declaration>
+			
+			
+			<Anchor>//api/name/audioBufferByteLength</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/audioBufferByteLength</TokenIdentifier>
+			<Abstract type="html">    audio queue size in bytes</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int audioBufferByteLength</Declaration>
+			
+			
+			<Anchor>//api/name/audioBufferByteLength</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/audioBufferByteLength</TokenIdentifier>
+			<Abstract type="html">    audio queue size in bytes</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int audioBufferByteLength</Declaration>
+			
+			
+			<Anchor>//api/name/audioBufferByteLength</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setAudioBufferTimeLength:</TokenIdentifier>
+			<Abstract type="html">    audio queue time length in ms</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int audioBufferTimeLength</Declaration>
+			
+			
+			<Anchor>//api/name/audioBufferTimeLength</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/audioBufferTimeLength</TokenIdentifier>
+			<Abstract type="html">    audio queue time length in ms</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int audioBufferTimeLength</Declaration>
+			
+			
+			<Anchor>//api/name/audioBufferTimeLength</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/audioBufferTimeLength</TokenIdentifier>
+			<Abstract type="html">    audio queue time length in ms</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int audioBufferTimeLength</Declaration>
+			
+			
+			<Anchor>//api/name/audioBufferTimeLength</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setAudioTotalDataSize:</TokenIdentifier>
+			<Abstract type="html">    size of data have arrived at audio queue since playing. unit:byte</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int64_t audioTotalDataSize</Declaration>
+			
+			
+			<Anchor>//api/name/audioTotalDataSize</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/audioTotalDataSize</TokenIdentifier>
+			<Abstract type="html">    size of data have arrived at audio queue since playing. unit:byte</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int64_t audioTotalDataSize</Declaration>
+			
+			
+			<Anchor>//api/name/audioTotalDataSize</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/audioTotalDataSize</TokenIdentifier>
+			<Abstract type="html">    size of data have arrived at audio queue since playing. unit:byte</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int64_t audioTotalDataSize</Declaration>
+			
+			
+			<Anchor>//api/name/audioTotalDataSize</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setVideoBufferByteLength:</TokenIdentifier>
+			<Abstract type="html">    video queue size in bytes</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int videoBufferByteLength</Declaration>
+			
+			
+			<Anchor>//api/name/videoBufferByteLength</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/videoBufferByteLength</TokenIdentifier>
+			<Abstract type="html">    video queue size in bytes</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int videoBufferByteLength</Declaration>
+			
+			
+			<Anchor>//api/name/videoBufferByteLength</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/videoBufferByteLength</TokenIdentifier>
+			<Abstract type="html">    video queue size in bytes</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int videoBufferByteLength</Declaration>
+			
+			
+			<Anchor>//api/name/videoBufferByteLength</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setVideoBufferTimeLength:</TokenIdentifier>
+			<Abstract type="html">    video queue time length in ms</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int videoBufferTimeLength</Declaration>
+			
+			
+			<Anchor>//api/name/videoBufferTimeLength</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/videoBufferTimeLength</TokenIdentifier>
+			<Abstract type="html">    video queue time length in ms</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int videoBufferTimeLength</Declaration>
+			
+			
+			<Anchor>//api/name/videoBufferTimeLength</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/videoBufferTimeLength</TokenIdentifier>
+			<Abstract type="html">    video queue time length in ms</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int videoBufferTimeLength</Declaration>
+			
+			
+			<Anchor>//api/name/videoBufferTimeLength</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setVideoTotalDataSize:</TokenIdentifier>
+			<Abstract type="html">    size of data have arrived at video queue since playing. unit:byte</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int64_t videoTotalDataSize</Declaration>
+			
+			
+			<Anchor>//api/name/videoTotalDataSize</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/videoTotalDataSize</TokenIdentifier>
+			<Abstract type="html">    size of data have arrived at video queue since playing. unit:byte</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int64_t videoTotalDataSize</Declaration>
+			
+			
+			<Anchor>//api/name/videoTotalDataSize</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/videoTotalDataSize</TokenIdentifier>
+			<Abstract type="html">    size of data have arrived at video queue since playing. unit:byte</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int64_t videoTotalDataSize</Declaration>
+			
+			
+			<Anchor>//api/name/videoTotalDataSize</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setTotalDataSize:</TokenIdentifier>
+			<Abstract type="html">    size of total audio and video data since playing. unit: byte</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int64_t totalDataSize</Declaration>
+			
+			
+			<Anchor>//api/name/totalDataSize</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/totalDataSize</TokenIdentifier>
+			<Abstract type="html">    size of total audio and video data since playing. unit: byte</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int64_t totalDataSize</Declaration>
+			
+			
+			<Anchor>//api/name/totalDataSize</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/totalDataSize</TokenIdentifier>
+			<Abstract type="html">    size of total audio and video data since playing. unit: byte</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int64_t totalDataSize</Declaration>
+			
+			
+			<Anchor>//api/name/totalDataSize</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

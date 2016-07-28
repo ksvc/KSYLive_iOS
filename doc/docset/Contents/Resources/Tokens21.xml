@@ -1,197 +1,161 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYStreamErrorCode.html">
+	<File path="Classes/KSYMediaInfo.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYStreamErrorCode</TokenIdentifier>
-			<Abstract type="html">推流错误码，用于指示推流失败的原因</Abstract>
-			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYMediaInfo</TokenIdentifier>
+			<Abstract type="html">媒体信息</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
 			
 			<NodeRef refid="21"/>
 		</Token>
 		
 		
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_NONE</TokenIdentifier>
-            <Abstract type="html">正常无错误</Abstract>
-            <Declaration>KSYStreamErrorCode_NONE</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/setType:</TokenIdentifier>
+			<Abstract type="html">封装格式，具体类型为MEDIAINFOMUXTYPE</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) MEDIAINFO_MUX_TYPE type</Declaration>
+			
+			
+			<Anchor>//api/name/type</Anchor>
             <NodeRef refid="21"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_KSYAUTHFAILED</TokenIdentifier>
-            <Abstract type="html">SDK 鉴权失败 (暂时正常推流5~8分钟后终止推流)</Abstract>
-            <Declaration>KSYStreamErrorCode_KSYAUTHFAILED</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/type</TokenIdentifier>
+			<Abstract type="html">封装格式，具体类型为MEDIAINFOMUXTYPE</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) MEDIAINFO_MUX_TYPE type</Declaration>
+			
+			
+			<Anchor>//api/name/type</Anchor>
             <NodeRef refid="21"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_ENCODE_FRAMES_FAILED</TokenIdentifier>
-            <Abstract type="html">当前帧编码失败</Abstract>
-            <Declaration>KSYStreamErrorCode_ENCODE_FRAMES_FAILED</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfo/type</TokenIdentifier>
+			<Abstract type="html">封装格式，具体类型为MEDIAINFOMUXTYPE</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) MEDIAINFO_MUX_TYPE type</Declaration>
+			
+			
+			<Anchor>//api/name/type</Anchor>
             <NodeRef refid="21"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_CODEC_OPEN_FAILED</TokenIdentifier>
-            <Abstract type="html">无法打开配置指示的CODEC</Abstract>
-            <Declaration>KSYStreamErrorCode_CODEC_OPEN_FAILED</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/setBitrate:</TokenIdentifier>
+			<Abstract type="html">码率</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int64_t bitrate</Declaration>
+			
+			
+			<Anchor>//api/name/bitrate</Anchor>
             <NodeRef refid="21"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_CONNECT_FAILED</TokenIdentifier>
-            <Abstract type="html">连接出错，检查地址</Abstract>
-            <Declaration>KSYStreamErrorCode_CONNECT_FAILED</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/bitrate</TokenIdentifier>
+			<Abstract type="html">码率</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int64_t bitrate</Declaration>
+			
+			
+			<Anchor>//api/name/bitrate</Anchor>
             <NodeRef refid="21"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_CONNECT_BREAK</TokenIdentifier>
-            <Abstract type="html">网络连接中断</Abstract>
-            <Declaration>KSYStreamErrorCode_CONNECT_BREAK</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfo/bitrate</TokenIdentifier>
+			<Abstract type="html">码率</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int64_t bitrate</Declaration>
+			
+			
+			<Anchor>//api/name/bitrate</Anchor>
             <NodeRef refid="21"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_NonExistDomain</TokenIdentifier>
-            <Abstract type="html">rtmp 推流域名不存在 (KSY 自定义)</Abstract>
-            <Declaration>KSYStreamErrorCode_RTMP_NonExistDomain</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/setVideos:</TokenIdentifier>
+			<Abstract type="html">所有视频流信息，具体对象类型为KSYVideoInfo</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSMutableArray *videos</Declaration>
+			
+			
+			<Anchor>//api/name/videos</Anchor>
             <NodeRef refid="21"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_NonExistApplication</TokenIdentifier>
-            <Abstract type="html">rtmp 应用名不存在(KSY 自定义)</Abstract>
-            <Declaration>KSYStreamErrorCode_RTMP_NonExistApplication</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/videos</TokenIdentifier>
+			<Abstract type="html">所有视频流信息，具体对象类型为KSYVideoInfo</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSMutableArray *videos</Declaration>
+			
+			
+			<Anchor>//api/name/videos</Anchor>
             <NodeRef refid="21"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_AlreadyExistStreamName</TokenIdentifier>
-            <Abstract type="html">rtmp 流名已存在(KSY 自定义)</Abstract>
-            <Declaration>KSYStreamErrorCode_RTMP_AlreadyExistStreamName</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfo/videos</TokenIdentifier>
+			<Abstract type="html">所有视频流信息，具体对象类型为KSYVideoInfo</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSMutableArray *videos</Declaration>
+			
+			
+			<Anchor>//api/name/videos</Anchor>
             <NodeRef refid="21"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_ForbiddenByBlacklist</TokenIdentifier>
-            <Abstract type="html">rtmp 被黑名单拒绝(KSY 自定义)</Abstract>
-            <Declaration>KSYStreamErrorCode_RTMP_ForbiddenByBlacklist</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/setAudios:</TokenIdentifier>
+			<Abstract type="html">所有音频流信息，具体对象类型为KSYAudioInfo</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSMutableArray *audios</Declaration>
+			
+			
+			<Anchor>//api/name/audios</Anchor>
             <NodeRef refid="21"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_InternalError</TokenIdentifier>
-            <Abstract type="html">rtmp 内部错误(KSY 自定义)</Abstract>
-            <Declaration>KSYStreamErrorCode_RTMP_InternalError</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/audios</TokenIdentifier>
+			<Abstract type="html">所有音频流信息，具体对象类型为KSYAudioInfo</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSMutableArray *audios</Declaration>
+			
+			
+			<Anchor>//api/name/audios</Anchor>
             <NodeRef refid="21"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_URLExpired</TokenIdentifier>
-            <Abstract type="html">rtmp URL 地址已过期(KSY 自定义)</Abstract>
-            <Declaration>KSYStreamErrorCode_RTMP_URLExpired</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfo/audios</TokenIdentifier>
+			<Abstract type="html">所有音频流信息，具体对象类型为KSYAudioInfo</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSMutableArray *audios</Declaration>
+			
+			
+			<Anchor>//api/name/audios</Anchor>
             <NodeRef refid="21"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_SignatureDoesNotMatch</TokenIdentifier>
-            <Abstract type="html">rtmp URL 地址签名错误(KSY 自定义)</Abstract>
-            <Declaration>KSYStreamErrorCode_RTMP_SignatureDoesNotMatch</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="21"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_InvalidAccessKeyId</TokenIdentifier>
-            <Abstract type="html">rtmp URL 中AccessKeyId非法(KSY 自定义)</Abstract>
-            <Declaration>KSYStreamErrorCode_RTMP_InvalidAccessKeyId</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="21"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_BadParams</TokenIdentifier>
-            <Abstract type="html">rtmp URL 中参数错误(KSY 自定义)</Abstract>
-            <Declaration>KSYStreamErrorCode_RTMP_BadParams</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="21"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_ForbiddenByRegion</TokenIdentifier>
-            <Abstract type="html">rtmp URL 中的推流不在发布点内（KSY 自定义）</Abstract>
-            <Declaration>KSYStreamErrorCode_RTMP_ForbiddenByRegion</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="21"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_FRAMES_THRESHOLD</TokenIdentifier>
-            <Abstract type="html">SDK 因为鉴权失败停止推流</Abstract>
-            <Declaration>KSYStreamErrorCode_FRAMES_THRESHOLD</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="21"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_NO_INPUT_SAMPLE</TokenIdentifier>
-            <Abstract type="html">没有输入的数据，无法开始推流</Abstract>
-            <Declaration>KSYStreamErrorCode_NO_INPUT_SAMPLE</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="21"/>
-        </Token>
+		</Token>
+		
         
         
 	</File>
