@@ -78,6 +78,7 @@
 						<NodeRef refid="46"/>
 						<NodeRef refid="47"/>
 						<NodeRef refid="48"/>
+						<NodeRef refid="49"/>
 						
 					</Subnodes>
 				</Node>
@@ -87,8 +88,8 @@
                     <Name>Blocks</Name>
                     <Path>index.html</Path>
                     <Subnodes>
-                        <NodeRef refid="49"/>
                         <NodeRef refid="50"/>
+                        <NodeRef refid="51"/>
                         
                     </Subnodes>
                 </Node>
@@ -1155,13 +1156,18 @@
             <Path>Constants/MPMovieStatus.html</Path>
             
         </Node>
+		<Node id="49" type="file" documentType="reference">
+            <Name>MPMovieVideoDecoderMode</Name>
+            <Path>Constants/MPMovieVideoDecoderMode.html</Path>
+            
+        </Node>
 		
-        <Node id="49" type="file" documentType="reference">
+        <Node id="50" type="file" documentType="reference">
             <Name>KSYPlyAudioDataBlock</Name>
             <Path>Blocks/KSYPlyAudioDataBlock.html</Path>
             
         </Node>
-        <Node id="50" type="file" documentType="reference">
+        <Node id="51" type="file" documentType="reference">
             <Name>KSYPlyVideoDataBlock</Name>
             <Path>Blocks/KSYPlyVideoDataBlock.html</Path>
             

@@ -816,38 +816,38 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setShouldUseHWCodec:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setVideoDecoderMode:</TokenIdentifier>
 			<Abstract type="html">是否开启硬件解码</Abstract>
 			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) BOOL shouldUseHWCodec</Declaration>
+			<Declaration>@property (nonatomic, assign) MPMovieVideoDecoderMode videoDecoderMode</Declaration>
 			
 			
-			<Anchor>//api/name/shouldUseHWCodec</Anchor>
+			<Anchor>//api/name/videoDecoderMode</Anchor>
             <NodeRef refid="24"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/shouldUseHWCodec</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/videoDecoderMode</TokenIdentifier>
 			<Abstract type="html">是否开启硬件解码</Abstract>
 			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) BOOL shouldUseHWCodec</Declaration>
+			<Declaration>@property (nonatomic, assign) MPMovieVideoDecoderMode videoDecoderMode</Declaration>
 			
 			
-			<Anchor>//api/name/shouldUseHWCodec</Anchor>
+			<Anchor>//api/name/videoDecoderMode</Anchor>
             <NodeRef refid="24"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/shouldUseHWCodec</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/videoDecoderMode</TokenIdentifier>
 			<Abstract type="html">是否开启硬件解码</Abstract>
 			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) BOOL shouldUseHWCodec</Declaration>
+			<Declaration>@property (nonatomic, assign) MPMovieVideoDecoderMode videoDecoderMode</Declaration>
 			
 			
-			<Anchor>//api/name/shouldUseHWCodec</Anchor>
+			<Anchor>//api/name/videoDecoderMode</Anchor>
             <NodeRef refid="24"/>
 		</Token>
 		
