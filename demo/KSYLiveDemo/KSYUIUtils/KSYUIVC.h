@@ -35,4 +35,6 @@
 - (NSString*) sizeFormatted : (int )KB;
 - (NSString *)timeFormatted:(int)totalSeconds;
 - (void) toast:(NSString*)message;
+//cpu use rate
+-(float) cpu_usage;
 @end

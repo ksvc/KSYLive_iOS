@@ -757,7 +757,7 @@
         _pipIdx = (_pipIdx+1)%_pipList.count;
         _player = [[KSYMoviePlayerController alloc] initWithContentURL: videoUrl];
         _player.controlStyle = MPMovieControlStyleNone;
-        _player.shouldUseHWCodec = YES;
+        _player.videoDecoderMode = MPMovieVideoDecoderMode_Hardware;
         _player.shouldAutoplay = YES;
         _player.shouldMute     = NO;
         __weak KSYGPUStreamerVC * vc = self;
@@ -797,7 +797,7 @@
     _pipIdx = (_pipIdx+1)%_pipList.count;
     _player = [[KSYMoviePlayerController alloc] initWithContentURL: videoUrl];
     _player.controlStyle = MPMovieControlStyleNone;
-    _player.shouldUseHWCodec = YES;
+    _player.videoDecoderMode = MPMovieVideoDecoderMode_Hardware;
     _player.shouldAutoplay = YES;
     _player.shouldMute     = NO;
     

@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'KSYGPULive_iOS'
-  spec.version      = '1.5.4'
+  spec.version      = '1.6.0'
   spec.license      = {
 :type => 'Proprietary',
 :text => <<-LICENSE
@@ -22,7 +22,7 @@ Pod::Spec.new do |spec|
   spec.frameworks   = 'VideoToolbox'
   spec.dependency 'GPUImage'
   spec.ios.library = 'z', 'iconv', 'stdc++.6'
-  spec.source = { :git => 'https://github.com/ksvc/KSYLive_iOS.git', :tag => 'v1.5.4'}
+  spec.source = { :git => 'https://github.com/ksvc/KSYLive_iOS.git', :tag => 'v1.6.0'}
   spec.vendored_frameworks = 'framework/livegpu/libksygpulive.framework'
 end
 

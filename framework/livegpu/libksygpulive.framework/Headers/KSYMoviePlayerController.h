@@ -341,14 +341,14 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 
 /**
  @abstract 是否开启硬件解码
- @discussion 默认是关闭
+ @discussion 如果系统版本高于8.0，默认开启硬件解码；否则，默认使用软件解码
  
  * 只在[prepareToPlay]([KSYMediaPlayback prepareToPlay]) 调用前设置生效
  
  @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.3.1 and later.
  */
-@property(nonatomic) BOOL shouldUseHWCodec;
+@property (nonatomic, assign) MPMovieVideoDecoderMode videoDecoderMode;
 
 /**
  @abstract 是否静音

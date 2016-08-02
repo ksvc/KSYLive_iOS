@@ -26,5 +26,3 @@
 #import <libksygpulive/KSYGPUDnoiseFilter.h>
 #import <libksygpulive/KSYGPUBeautifyPlusFilter.h>
 #import <libksygpulive/KSYGPUPipBlendFilter.h>
-
-// for test

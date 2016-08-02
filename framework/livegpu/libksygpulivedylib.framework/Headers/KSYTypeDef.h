@@ -209,7 +209,7 @@ typedef NS_ENUM(NSUInteger, KSYMicType) {
     KSYMicType_bluetoothMic,
     
     /// 未知设备
-    KSYMicType_unknow = -1,
+    KSYMicType_unknow = 1000,
 };
 
 #pragma mark - KSY_EXTERN

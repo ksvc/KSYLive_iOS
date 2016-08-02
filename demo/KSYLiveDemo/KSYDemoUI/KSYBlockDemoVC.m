@@ -59,6 +59,8 @@
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self.ctrlView.btnQuit setTitle: @"退出block"
+                           forState: UIControlStateNormal];
     if (self.capDev) {
         self.filter = self.ksyFilterView.curFilter;
         [self setupVideoPath];
@@ -270,7 +272,7 @@
         //player
         self.player = [[KSYMoviePlayerController alloc] initWithContentURL: self.ksyPipView.pipURL];
         self.player.controlStyle = MPMovieControlStyleNone;
-        self.player.shouldUseHWCodec = YES;
+        self.player.videoDecoderMode = MPMovieVideoDecoderMode_Hardware;
         self.player.shouldAutoplay = YES;
         self.player.shouldMute     = NO;
         [self.aMixer setTrack:self.pipTrack enable:YES];
@@ -356,6 +358,7 @@
             [self.micMonitor stop];
         }
     }
+    [super onMiscSwitch:sw];
 }
 
 // 调节耳返音量
