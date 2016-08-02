@@ -344,12 +344,14 @@
         NSString* statekbps = [NSString stringWithFormat:@"实时码率(kbps):%4.1f  A%4.1f V%4.1f\n", realTKbps, [_streamerBase encodeAKbps], [_streamerBase encodeVKbps] ];
         NSString* statefps  = [NSString stringWithFormat:@"实时帧率%2.1f fps  总上传:%@\n", encFps, uploadDateSize ];
         NSString* statedrop = [NSString stringWithFormat:@"丢帧 %4d | %3.1f | %2.1f%% \n", curState.droppedVFrames, dropRate, dropPercent ];
-        NSString* netEvent = [NSString stringWithFormat:@"网络事件 %d bad | %d raise | %d drop", _notGoodCnt, _raiseCnt, _dropCnt];
+        NSString* netEvent = [NSString stringWithFormat:@"网络事件 %d bad | %d raise | %d drop\n", _notGoodCnt, _raiseCnt, _dropCnt];
+        NSString *cpu_use = [NSString stringWithFormat:@"cpu_use: %.2f",[self cpu_usage]];
         UILabel *stat = _ctrlView.lblStat;
         stat.text = [ stateurl    stringByAppendingString:statekbps ];
         stat.text = [ stat.text  stringByAppendingString:statefps  ];
         stat.text = [ stat.text  stringByAppendingString:statedrop ];
         stat.text = [ stat.text  stringByAppendingString:netEvent  ];
+        stat.text = [ stat.text  stringByAppendingString:cpu_use  ];
     }
     if (_bgmPlayer && _bgmPlayer.bgmPlayerState ==KSYBgmPlayerStatePlaying ) {
         _ksyBgmView.progressV.progress = _bgmPlayer.bgmProcess;
@@ -375,6 +377,7 @@
         [self onStream];
     }
 }
+
 //menuView control
 - (void)onMenuBtnPress:(UIButton *)btn{
     KSYUIView * view = nil;
@@ -597,6 +600,7 @@
 
 #pragma mark - micMonitor
 - (void)onMiscSwitch:(UISwitch *)sw{  // see kit & block
+
 }
 - (void)onMiscSlider:(KSYNameSlider *)slider {  // see kit & block
 }

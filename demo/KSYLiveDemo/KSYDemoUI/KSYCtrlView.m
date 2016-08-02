@@ -26,7 +26,7 @@
     // stat string  formats
     _lblStat.backgroundColor = [UIColor clearColor];
     _lblStat.textColor = [UIColor redColor];
-    _lblStat.numberOfLines = 6;
+    _lblStat.numberOfLines = 7;
     _lblStat.textAlignment = NSTextAlignmentLeft;
     return self;
 }
@@ -43,8 +43,8 @@
     [self putRow3:_btnCapture
               and:nil
               and:_btnStream];
-    self.btnH *= 5;
-    self.yPos -= (self.btnH+self.gap*2);
+    self.btnH *= 7;
+    self.yPos -= (self.btnH +self.gap*2);
     [self putRow1:_lblStat];
 }
 

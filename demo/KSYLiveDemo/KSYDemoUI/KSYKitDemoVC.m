@@ -44,6 +44,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self.ctrlView.btnQuit setTitle: @"退出kit"
+                           forState: UIControlStateNormal];
     if (_kit) {
         // init with default filter
         self.filter =self.ksyFilterView.curFilter;
@@ -237,6 +239,7 @@
             [_kit.micMonitor stop];
         }
     }
+    [super onMiscSwitch:sw];
 }
 
 // 调节耳返音量

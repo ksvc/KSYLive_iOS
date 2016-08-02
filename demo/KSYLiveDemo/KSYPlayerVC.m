@@ -461,7 +461,8 @@ dispatch_sync(dispatch_get_main_queue(), block);\
 	if(content_mode > MPMovieScalingModeFill)
 		content_mode = MPMovieScalingModeNone;
     
-	_player.shouldUseHWCodec = switchHwCodec.isOn;
+    _player.videoDecoderMode = switchHwCodec.isOn? MPMovieVideoDecoderMode_Hardware : MPMovieVideoDecoderMode_Software;
+//    _player.videoDecoderMode = MPMovieVideoDecoderMode_AUTO;
     _player.shouldMute  = switchMute.isOn;
     _player.shouldEnableKSYStatModule = TRUE;
     _player.shouldLoop = NO;

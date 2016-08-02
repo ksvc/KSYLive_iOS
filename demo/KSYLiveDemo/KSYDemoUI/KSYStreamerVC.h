@@ -110,4 +110,6 @@ typedef struct _StreamState {
 - (void)onReverbType:(UISegmentedControl *)seg;
 //pip
 - (void)onPipStop;
+//pure audio stream
+- (void)onMiscSwitch:(UISwitch *)sw;
 @end
