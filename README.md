@@ -35,7 +35,7 @@
 
 ### 下载工程
 本SDK 提供如下三种获取方式:   
-* 从[github](https://github.com/ksvc/KSYLive_iOS.git) clone
+#### 从[github](https://github.com/ksvc/KSYLive_iOS.git) clone
 
 目录结构如下所示:  
 - demo        : demo工程为KSYLive ，演示本SDK的主要接口的使用
@@ -47,14 +47,14 @@
 $ git clone https://github.com/ksvc/KSYLive_iOS.git KSYLive_iOS
 ```
 
-* 从[oschina](http://git.oschina.net/ksvc/KSYLive_iOS) clone
+#### 从[oschina](http://git.oschina.net/ksvc/KSYLive_iOS) clone
 
 对于部分地方访问github比较慢的情况，可以从oschina clone，获取的库内容和github一致。
 ```
 $ git clone https://git.oschina.net/ksvc/KSYLive_iOS.git
 ```
 
-* 使用Cocoapods进行安装    
+#### 使用Cocoapods进行安装    
 通过Cocoapods 能将本SDK的静态库framework下载到本地，只需要将如下语句加入你的Podfile：   
 ```
 pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
