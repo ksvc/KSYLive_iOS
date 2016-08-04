@@ -34,14 +34,24 @@
 * 含有i386和x86_64模拟器版本的库文件，推流功能无法在模拟器上工作，播放功能完全支持模拟器。
 
 ### 下载工程
-本SDK 提供如下两种获取方式:   
-* 从[github](https://github.com/ksvc/KSYLive_iOS.git) clone或下载zip格式的压缩包，目录结构如下所示:  
+本SDK 提供如下三种获取方式:   
+* 从[github](https://github.com/ksvc/KSYLive_iOS.git) clone
+
+目录结构如下所示:  
 - demo        : demo工程为KSYLive ，演示本SDK的主要接口的使用
 - doc/docset  : appleDoc风格的接口文档，安装后可在xcode中直接看到方法和属性的文档
 - doc/html    : appleDoc风格的网页版接口文档，也可查看[在线版](http://ksvc.github.io/KSYLive_iOS/html/index.html)
 - framework/livegpu/libksygpulive.framework : 本SDK的静态库framework，集成时需要将该framework加入到项目中
+
 ```
 $ git clone https://github.com/ksvc/KSYLive_iOS.git KSYLive_iOS
+```
+
+* 从[oschina](http://git.oschina.net/ksvc/KSYLive_iOS) clone
+
+对于部分地方访问github比较慢的情况，可以从oschina clone，获取的库内容和github一致。
+```
+$ git clone https://git.oschina.net/ksvc/KSYLive_iOS.git
 ```
 
 * 使用Cocoapods进行安装    
