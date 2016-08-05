@@ -16,6 +16,9 @@
 - [x] [在线API 文档支持](http://ksvc.github.io/KSYLive_iOS/html/index.html)
 - [x] Apple Doc 文档支持
 
+### 文档
+[详情请见wiki](https://github.com/ksvc/KSYLive_iOS/wiki)
+
 ### 播放特点
 - [x] 与系统播放器MPMoviePlayerController接口一致，可以无缝快速切换至KSYMediaPlayer；
 - [x] 本地全媒体格式支持, 并对主流的媒体格式(mp4, avi, wmv, flv, mkv, mov, rmvb 等 )进行优化；
