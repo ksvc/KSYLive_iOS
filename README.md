@@ -65,6 +65,12 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 
 执行 pod install 或者 pod update后，将SDK加入工程。
 
+####
+配置工程Podfile文件，添加KSYGPULive_iOS配置信息
+```
+pod 'KSYGPULive_iOS'
+```
+
 ###添加framework到工程中
 * SDK压缩包
 将压缩包中framework下的libksygpulive.framework添加到XCode的工程，具体步骤为：
