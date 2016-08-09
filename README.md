@@ -57,7 +57,7 @@ $ git clone https://github.com/ksvc/KSYLive_iOS.git KSYLive_iOS
 $ git clone https://git.oschina.net/ksvc/KSYLive_iOS.git
 ```
 
-#### 使用Cocoapods进行安装    
+#### 使用Cocoapods 私有库进行安装    
 通过Cocoapods 能将本SDK的静态库framework下载到本地，只需要将如下语句加入你的Podfile：   
 ```
 pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
@@ -65,7 +65,7 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 
 执行 pod install 或者 pod update后，将SDK加入工程。
 
-####
+#### 使用Cocoapods 官方库进行安装    
 配置工程Podfile文件，添加KSYGPULive_iOS配置信息
 ```
 pod 'KSYGPULive_iOS'
