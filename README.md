@@ -11,10 +11,14 @@
 - [x] 支持 RTMP 协议直播推流
 - [x] 提供两种层次的API：简单易用的的kit类API 和 灵活的组件化API
 - [x] 能够与GPUImage无缝集成
-- [x] 提供GPU实现的美颜滤镜
-- [x] 支持背景音乐播放和混音
+- [x] 提供GPU实现的[内置美颜滤镜](https://github.com/ksvc/KSYLive_iOS/wiki/filter)
+- [x] 支持[背景音乐播放](https://github.com/ksvc/KSYLive_iOS/wiki/BGM)
+- [x] 支持[混音](https://github.com/ksvc/KSYLive_iOS/wiki/mixer)
+- [x] 支持视频动态推流开关
 - [x] [在线API 文档支持](http://ksvc.github.io/KSYLive_iOS/html/index.html)
-- [x] Apple Doc 文档支持
+- [x] 支持[耳返](https://github.com/ksvc/KSYLive_iOS/wiki/micMonitor)
+- [x] 支持[画中画](https://github.com/ksvc/KSYLive_iOS/wiki/pip)推流
+- [x] 支持一对一[连麦](https://github.com/ksvc/KSYLive_iOS/wiki/rtc)
 
 ### 1.2 文档
 [详情请见wiki](https://github.com/ksvc/KSYLive_iOS/wiki)
