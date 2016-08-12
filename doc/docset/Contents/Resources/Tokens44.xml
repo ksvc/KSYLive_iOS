@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYVideoDimension.html">
+	<File path="Constants/KSYNetStateCode.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYVideoDimension</TokenIdentifier>
-			<Abstract type="html">采集分辨率</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYNetStateCode</TokenIdentifier>
+			<Abstract type="html">网络状况事件码，用于指示当前网络健康状况</Abstract>
 			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_16_9__1280x720</TokenIdentifier>
-            <Abstract type="html">16 : 9 宽高比，1280 x 720 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_16_9__1280x720</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_NONE</TokenIdentifier>
+            <Abstract type="html">正常无错误</Abstract>
+            <Declaration>KSYNetStateCode_NONE</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -24,9 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_16_9__960x540</TokenIdentifier>
-            <Abstract type="html">16 : 9 宽高比，960 x 540 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_16_9__960x540</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_SEND_PACKET_SLOW</TokenIdentifier>
+            <Abstract type="html">发送包时间过长，( 单次发送超过 500毫秒 ）</Abstract>
+            <Declaration>KSYNetStateCode_SEND_PACKET_SLOW</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -34,9 +34,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_4_3__640x480</TokenIdentifier>
-            <Abstract type="html">4 : 3 宽高比，640 x 480 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_4_3__640x480</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_EST_BW_RAISE</TokenIdentifier>
+            <Abstract type="html">估计带宽调整，上调</Abstract>
+            <Declaration>KSYNetStateCode_EST_BW_RAISE</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -44,9 +44,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_16_9__640x360</TokenIdentifier>
-            <Abstract type="html">16 : 9 宽高比，640 x 360 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_16_9__640x360</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_EST_BW_DROP</TokenIdentifier>
+            <Abstract type="html">估计带宽调整，下调</Abstract>
+            <Declaration>KSYNetStateCode_EST_BW_DROP</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -54,9 +54,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_5_4__352x288</TokenIdentifier>
-            <Abstract type="html">4 : 3 宽高比，320 x 240 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_5_4__352x288</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_KSYAUTHFAILED</TokenIdentifier>
+            <Abstract type="html">SDK 鉴权失败 (暂时正常推流5~8分钟后终止推流)</Abstract>
+            <Declaration>KSYNetStateCode_KSYAUTHFAILED</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -64,29 +64,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_UserDefine_Scale</TokenIdentifier>
-            <Abstract type="html">缩放自定义分辨率 从设备支持的最近分辨率缩放获得, 若设备没有对应宽高比的分辨率，则裁剪后进行缩放</Abstract>
-            <Declaration>KSYVideoDimension_UserDefine_Scale</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="44"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_UserDefine_Crop</TokenIdentifier>
-            <Abstract type="html">裁剪自定义分辨率 从设备支持的最近分辨率裁剪获得</Abstract>
-            <Declaration>KSYVideoDimension_UserDefine_Crop</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="44"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_Default</TokenIdentifier>
-            <Abstract type="html">默认分辨率，默认为 4 : 3 宽高比，640 x 480 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_Default</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_IN_AUDIO_DISCONTINUOUS</TokenIdentifier>
+            <Abstract type="html">输入音频不连续</Abstract>
+            <Declaration>KSYNetStateCode_IN_AUDIO_DISCONTINUOUS</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             

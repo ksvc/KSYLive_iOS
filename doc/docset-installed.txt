@@ -1,4 +1,4 @@
 Documentation set was installed to Xcode!
 
-Path: /Users/qianyi/Library/Developer/Shared/Documentation/DocSets/com.ksyun.KSYLive_iOS.docset
-Time: 2016-08-02 13:08:11 +0000
+Path: /Users/shixuemei1/Library/Developer/Shared/Documentation/DocSets/com.ksyun.KSYLive_iOS.docset
+Time: 2016-08-11 07:22:46 +0000

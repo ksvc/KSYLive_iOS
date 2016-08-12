@@ -202,6 +202,8 @@
     [button setTitle: title forState: UIControlStateNormal];
     button.backgroundColor = [UIColor lightGrayColor];
     button.alpha = 0.9;
+    button.layer.cornerRadius = 10;
+    button.clipsToBounds = YES;
     [self addSubview:button];
     return button;
 }

@@ -76,7 +76,7 @@
     // find a new file
     _fileIdx = (_fileIdx+1)%cnt;
     NSString * name = _fileList[_fileIdx];
-    _fileInfo = [NSString stringWithFormat:@" %@(%d/%lu)",name,_fileIdx,cnt];
+    _fileInfo = [NSString stringWithFormat:@" %@(%d/%d)",name,_fileIdx,(int)cnt];
     _filePath = [_fullDir stringByAppendingString:name];
     return YES;
 }

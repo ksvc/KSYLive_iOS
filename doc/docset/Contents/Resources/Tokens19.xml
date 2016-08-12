@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUTwoPassFilter.html">
+	<File path="Classes/KSYGPUPipBlendFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUTwoPassFilter</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUTwoPassFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUPipBlendFilter</TokenIdentifier>
+			<Abstract type="html">画中画中画 混合filter  （pip）
+三输入filter，将两个视频和一个图片叠加到一起，三个依次叠加
+两个输入中，按照添加顺序：
+首先被添加的为firstTexture （视频）
+中间添加的为secondTexture  （视频）
+最后添加的为thirdTexture   （图片）
+本filter的输出纹理大小与 firstTexture 一致
+叠加方式只支持将firstTexture缩小后 叠加到 secondTexture上，再叠加 到thirdTexture上
+其中，firstTexture 保持宽高比缩小
+secondTexture 保持宽高比缩放来适应firstTexture的原始大小
+thirdTexture 不保持宽高比，填充firstTexture的原始大小</Abstract>
+			<DeclaredIn>KSYGPUPipBlendFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="19"/>
@@ -13,38 +23,38 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUTwoPassFilter/encodeFilterString:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUTwoPassFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipBlendFilter/initWithPipRect:</TokenIdentifier>
+			<Abstract type="html">初始化，并设置画中画左上角点的坐标（位置和大小）</Abstract>
+			<DeclaredIn>KSYGPUPipBlendFilter.h</DeclaredIn>
 			
-			<Declaration>- (NSString *)encodeFilterString:(NSString *)strString</Declaration>
+			<Declaration>- (id)initWithPipRect:(CGRect)rect</Declaration>
 			
 			
-			<Anchor>//api/name/encodeFilterString:</Anchor>
+			<Anchor>//api/name/initWithPipRect:</Anchor>
             <NodeRef refid="19"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUTwoPassFilter/init</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUTwoPassFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipBlendFilter/setPipRect:</TokenIdentifier>
+			<Abstract type="html">设置画中画左上角点的坐标（位置和大小）</Abstract>
+			<DeclaredIn>KSYGPUPipBlendFilter.h</DeclaredIn>
 			
-			<Declaration>- (instancetype)init</Declaration>
+			<Declaration>- (void)setPipRect:(CGRect)rect</Declaration>
 			
 			
-			<Anchor>//api/name/init</Anchor>
+			<Anchor>//api/name/setPipRect:</Anchor>
             <NodeRef refid="19"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUTwoPassFilter/reloadFirstStageVertexShaderFromString:firstStageFragmentShaderFromString:secondStageVertexShaderFromString:secondStageFragmentShaderFromString:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUTwoPassFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipBlendFilter/clearSecondTexture</TokenIdentifier>
+			<Abstract type="html">当secondTexture 需要刷新时调用</Abstract>
+			<DeclaredIn>KSYGPUPipBlendFilter.h</DeclaredIn>
 			
-			<Declaration>- (void)reloadFirstStageVertexShaderFromString:(NSString *)firstStageVertexShaderString firstStageFragmentShaderFromString:(NSString *)firstStageFragmentShaderString secondStageVertexShaderFromString:(NSString *)secondStageVertexShaderString secondStageFragmentShaderFromString:(NSString *)secondStageFragmentShaderString</Declaration>
+			<Declaration>- (void)clearSecondTexture</Declaration>
 			
 			
-			<Anchor>//api/name/reloadFirstStageVertexShaderFromString:firstStageFragmentShaderFromString:secondStageVertexShaderFromString:secondStageFragmentShaderFromString:</Anchor>
+			<Anchor>//api/name/clearSecondTexture</Anchor>
             <NodeRef refid="19"/>
 		</Token>
 		

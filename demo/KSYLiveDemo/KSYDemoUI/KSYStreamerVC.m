@@ -27,6 +27,7 @@
     int         _dropCnt;
     
     BOOL        _bgmPlayNext;
+    UISwipeGestureRecognizer *_swipeGest;
 }
 @property KSYAudioReverb*  audioReverb;
 
@@ -57,6 +58,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addSubViews];
+    [self addSwipeGesture];
+}
+
+- (void) addSwipeGesture{
+    SEL onSwip =@selector(swipeController:);
+    _swipeGest = [[UISwipeGestureRecognizer alloc]initWithTarget:self
+                                                          action:onSwip];
+    _swipeGest.direction |= UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:_swipeGest];
 }
 
 - (void)addSubViews{
@@ -221,8 +231,8 @@
 }
 
 #pragma mark - Capture & stream setup
-- (void) setCaptureCfg {
-    [_presetCfgView resolution];
+- (void) setCaptureCfg { // see blk/kit
+    [_presetCfgView capResolution];
     [_presetCfgView cameraPos];
     [_presetCfgView frameRate];
 }
@@ -241,7 +251,7 @@
     };
     _hostURL = [NSURL URLWithString:@"rtmp://test.uplive.ksyun.com/live/123"];
 }
-- (void) setStreamerCfg {
+- (void) setStreamerCfg { // must set after capture
     if (_streamerBase == nil) {
         return;
     }
@@ -297,13 +307,20 @@
     }
 }
 - (void) onStreamStateChange :(NSNotification *)notification{
-    NSLog(@"stream State %@", [_streamerBase getCurStreamStateName]);
+    if (_streamerBase){
+        NSLog(@"stream State %@", [_streamerBase getCurStreamStateName]);
+    }
     _ctrlView.lblStat.text = [_streamerBase getCurStreamStateName];
     if(_streamerBase.streamState == KSYStreamStateError) {
         [self onStreamError:_streamerBase.streamErrorCode];
     }
     else if (_streamerBase.streamState == KSYStreamStateConnecting) {
         [self initStreamStat]; // 尝试开始连接时,重置统计数据
+    }
+    else if (_streamerBase.streamState == KSYStreamStateConnected) {
+        if ([self.miscView.swiAudio isOn] ){
+            _streamerBase.bWithVideo = NO;
+        }
     }
 }
 
@@ -313,6 +330,7 @@
         // Reconnect
         dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
         dispatch_after(delay, dispatch_get_main_queue(), ^{
+            _streamerBase.bWithVideo = YES;
             [_streamerBase startStream:self.hostURL];
         });
     }
@@ -408,6 +426,18 @@
         view.hidden = NO;
         view.frame = _ksyMenuView.frame;
         [view     layoutUI];
+    }
+}
+
+- (void)swipeController:(UISwipeGestureRecognizer *)swipGestRec{
+    if (swipGestRec == _swipeGest){
+        CGRect rect = self.view.frame;
+        if ( CGRectEqualToRect(rect, _ctrlView.frame)){
+            rect.origin.x = rect.size.width; // hide
+        }
+        [UIView animateWithDuration:0.1 animations:^{
+            _ctrlView.frame = rect;
+        }];
     }
 }
 #pragma mark - subviews: bgmview
@@ -600,7 +630,15 @@
 
 #pragma mark - micMonitor
 - (void)onMiscSwitch:(UISwitch *)sw{  // see kit & block
-
+    if (sw == _miscView.swiAudio && _streamerBase) {
+        if (sw.on == YES) {
+            // disable video, only stream with audio
+            _streamerBase.bWithVideo = NO;
+        }else{
+            _streamerBase.bWithVideo = YES;
+        }
+        sw.on = !_streamerBase.bWithVideo;
+    }
 }
 - (void)onMiscSlider:(KSYNameSlider *)slider {  // see kit & block
 }

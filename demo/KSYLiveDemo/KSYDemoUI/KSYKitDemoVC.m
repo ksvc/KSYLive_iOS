@@ -55,7 +55,12 @@
 }
 
 - (void) setCaptureCfg {
-    _kit.videoDimension = [self.presetCfgView resolution];
+    _kit.videoDimension = [self.presetCfgView capResolution];
+    KSYVideoDimension strDim = [self.presetCfgView strResolution];
+    if(_kit.videoDimension != strDim){
+        _kit.bCustomStreamDimension = YES;
+        _kit.streamDimension = [self.presetCfgView strResolutionSize ];
+    }
     _kit.videoFPS       = [self.presetCfgView frameRate];
     _kit.cameraPosition = [self.presetCfgView cameraPos];
     _kit.bInterruptOtherAudio = NO;
@@ -135,6 +140,7 @@
 - (void) onStream{
     if (_kit.streamerBase.streamState == KSYStreamStateIdle ||
         _kit.streamerBase.streamState == KSYStreamStateError) {
+        _kit.streamerBase.bWithVideo = !self.miscView.swiAudio.on;
         [_kit.streamerBase startStream:self.hostURL];
         self.streamerBase = _kit.streamerBase;
         _seconds = 0;

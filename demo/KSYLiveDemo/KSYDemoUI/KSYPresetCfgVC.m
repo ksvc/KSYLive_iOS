@@ -31,7 +31,7 @@
 #endif
 
 @interface KSYPresetCfgVC () {
-    KSYPresetCfgView * _demoView;
+    KSYPresetCfgView * _cfgView;
 }
 
 // 方便调试 可以在app启动后自动开启预览和推流
@@ -49,13 +49,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _demoView = [[KSYPresetCfgView alloc] init];
+    _cfgView = [[KSYPresetCfgView alloc] init];
     __weak KSYPresetCfgVC * weakSelf = self;
-    _demoView.onBtnBlock = ^(id sender){
+    _cfgView.onBtnBlock = ^(id sender){
         [weakSelf  btnFunc:sender];
     };
-    _demoView.frame = self.view.frame;
-    self.view = _demoView;
+    _cfgView.frame = self.view.frame;
+    self.view = _cfgView;
 
     //  TODO: !!!! 设置是否自动启动推流
     _bAutoStart = YES;
@@ -63,7 +63,7 @@
 //        [self pressBtnAfter:0.5];
     }
     if (_rtmpURL && [_rtmpURL length] ){
-        _demoView.hostUrlUI.text = _rtmpURL;
+        _cfgView.hostUrlUI.text = _rtmpURL;
     }
 }
 - (void)viewDidAppear:(BOOL)animated {
@@ -73,14 +73,12 @@
 - (void) pressBtnAfter : (double) delay {
     dispatch_time_t dt = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC));
     dispatch_after(dt, dispatch_get_main_queue(), ^{
-        [self btnFunc:_demoView.btn0];
+        [self btnFunc:_cfgView.btn0];
     });
 }
 
 -(void)layoutUI{
-    if (_demoView){
-        [_demoView layoutUI];
-    }
+    [_cfgView layoutUI];
 }
 
 - (BOOL)shouldAutorotate {
@@ -90,13 +88,13 @@
 
 - (IBAction)btnFunc:(id)sender {
     UIViewController *vc = nil;
-    if ( sender == _demoView.btn0) { // kit demo
-        vc = [[KSYKitDemoVC alloc] initWithCfg:_demoView];
+    if ( sender == _cfgView.btn0) { // kit demo
+        vc = [[KSYKitDemoVC alloc] initWithCfg:_cfgView];
     }
-    else if (sender == _demoView.btn1) { // block demo
-        vc = [[KSYBlockDemoVC alloc] initWithCfg:_demoView];
+    else if (sender == _cfgView.btn1) { // block demo
+        vc = [[KSYBlockDemoVC alloc] initWithCfg:_cfgView];
     }
-    else if ( sender == _demoView.btn2) { // tests
+    else if ( sender == _cfgView.btn2) { // tests
 #ifdef KSYSTREAMER_DEMO
         vc = [[KSYSimpleStreamerVC alloc] init];
         vc = [[imageVC alloc] init];
@@ -107,10 +105,10 @@
         return;
 #endif
     }
-    else if ( sender == _demoView.btn3) { // tests
+    else if ( sender == _cfgView.btn3) { // tests
         vc = [[KSYStreamerKitVC alloc] init];
     }
-    else if ( sender == _demoView.btn4) { // tests
+    else if ( sender == _cfgView.btn4) { // tests
         vc = [[KSYGPUStreamerVC alloc] init];
     }
     if (vc){
