@@ -66,8 +66,11 @@ typedef NS_ENUM(NSInteger, MPMovieStatus) {
  * 视频解码模式
  */
 typedef NS_ENUM(NSUInteger, MPMovieVideoDecoderMode) {
+    ///视频解码方式采用软解
     MPMovieVideoDecoderMode_Software = 0,
+    ///视频解码方式采用硬解
     MPMovieVideoDecoderMode_Hardware,
+    ///自动选择解码方式，8.0以上的系统优先选择硬解
     MPMovieVideoDecoderMode_AUTO,
 };
 

@@ -14,9 +14,9 @@
 @interface KSYGPUStreamerKit : NSObject
 /**
  @abstract 初始化方法
- @discussion 创建带有默认参数的 KSYGPUStreamer
+ @discussion 创建带有默认参数的 kit
  
- @warning KSYGPUStreamer只支持单实例推流，构造多个实例会出现异常
+ @warning kit只支持单实例推流，构造多个实例会出现异常
  */
 - (instancetype) initWithDefaultCfg;
 
@@ -146,7 +146,7 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  */
 @property (nonatomic, readonly) GPUImageView*   preview;
 
-#pragma mark - capture settings
+#pragma mark - capture & preview settings
 
 /**
  @abstract   视频帧率
@@ -155,15 +155,14 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 @property (nonatomic, assign) int                       videoFPS;
 
 /**
- @abstract   视频分辨率
+ @abstract   视频预览分辨率
  @discussion width x height （ 此处width始终大于高度，是否竖屏取决于videoOrientation的值 )
- 
  @see KSYVideoDimension, videoOrientation
  */
 @property (nonatomic, assign) KSYVideoDimension        videoDimension;
 
 /**
- @abstract   用户定义的视频分辨率
+ @abstract   用户定义的视频预览分辨率
  @discussion 当videoDimension 设置为 KSYVideoDimension_UserDefine_* 时有效
  @discussion 内部始终将较大的值作为宽度 (若需要竖屏，请设置 videoOrientation）
  @discussion 宽高都会向上取整为4的整数倍
@@ -220,6 +219,27 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  @see AVAudioSessionCategoryOptionAllowBluetooth
  */
 @property (nonatomic, assign) BOOL bAllowBluetooth;
+
+#pragma mark - stream settings
+/**
+ @abstract   是否使用自定义的视频 **推流** 分辨率 (默认为NO)
+ @discussion 是指送入视频编码压缩的图像的尺寸, 开始预览前设置有效
+ @discussion NO:  表示跟采集预览的尺寸一致
+ @discussion YES: 表示通过streamDimension 来指定尺寸
+ @warning    如果streamDimension 和 videoDimension 的宽高比不一致时, 观众看到的图像会变形
+ @see KSYVideoDimension, videoOrientation, streamDimension
+ */
+@property (nonatomic, assign) BOOL        bCustomStreamDimension;
+
+/**
+ @abstract   用户定义的视频 **推流** 分辨率
+ @discussion bCustomStreamDimension 为YES时有效, 开始预览前设置有效
+ @discussion 内部始终将较大的值作为宽度 (若需要竖屏，请设置 videoOrientation）
+ @discussion 宽高都会向上取整为4的整数倍
+ @discussion 有效范围: 宽度[160, 1280],高度[ 90,  720] (超出范围会提示参数错误)
+ @see KSYVideoDimension, bCustomStreamDimension
+ */
+@property (nonatomic, assign) CGSize      streamDimension;
 
 #pragma mark - camera operation
 /**

@@ -12,14 +12,16 @@
 @interface KSYBlockDemoVC()
 
 @property (nonatomic, retain) KSYMoviePlayerController *player;
-@property KSYGPUStreamer     * gpuStreamer;
+
 @property GPUImageCropFilter * cropfilter;
 @property GPUImageView       * preview;
+@property KSYGPUPicOutput    * yuvOutput;
 @end
 
 @implementation KSYBlockDemoVC
 
 #pragma mark - UIViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     /////1. 数据源 ///////////
@@ -30,15 +32,17 @@
     
     /////2. 数据出口 ///////////
     // 创建 推流模块
-    _gpuStreamer = [[KSYGPUStreamer alloc] initWithDefaultCfg];
-    self.streamerBase = _gpuStreamer.streamerBase;
-    [self setStreamerCfg];
+    self.streamerBase = [[KSYStreamerBase alloc] initWithDefaultCfg];
+    
+    
     // 创建 预览模块, 并放到视图底部
     _preview = [[GPUImageView alloc] init];
     _preview.frame = self.view.frame;
     [self.view addSubview:_preview];
     [self.view sendSubviewToBack:_preview];
-    
+    // get pic data from filter
+    _yuvOutput =[[KSYGPUPicOutput alloc] init];
+    [self setStreamerCfg];
     ///// 3. 数据处理和通路 ///////////
     ///// 3.1 视频通路 ///////////
     // 核心部件:视频叠加混合 (初始化时不开启)
@@ -53,10 +57,11 @@
     self.reverb    = nil;
     // 耳返
     self.micMonitor = nil;
-    
+
     // 组装音频通道
     [self setupAudioPath];
 }
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.ctrlView.btnQuit setTitle: @"退出block"
@@ -67,26 +72,33 @@
         [self.capDev startCameraCapture];
     }
 }
-
+// 根据UI的朝向 , 决定是否需要宽高对调
+// 假设输入的都是横屏方式 (wdt> hgt)
+- (CGRect) getRectByOrientaion: (CGRect)rect {
+    UIInterfaceOrientation orien = [[UIApplication sharedApplication] statusBarOrientation];
+    if (orien == UIInterfaceOrientationPortrait ||
+        orien == UIInterfaceOrientationPortraitUpsideDown) {
+        CGPoint pt = CGPointMake(rect.origin.y, rect.origin.x);
+        CGSize  sz = CGSizeMake(rect.size.height, rect.size.width);
+        rect.origin = pt;
+        rect.size   = sz;
+    }
+    return rect;
+}
+// 计算 需要裁掉的边的长度
+// 输入的size 都认为 wdt > hgt
 - (CGRect) calcCrop: (CGSize) src
                  to: (CGSize) dst {
-    UIInterfaceOrientation orien = [[UIApplication sharedApplication] statusBarOrientation];
     CGFloat x = (src.width-dst.width)/2/dst.width;
     CGFloat y = (src.height-dst.height)/2/src.height;
     CGFloat wdt = dst.width/src.width;
     CGFloat hgt = dst.height/src.height;
-    if (orien == UIInterfaceOrientationPortrait ||
-        orien == UIInterfaceOrientationPortraitUpsideDown) {
-        return CGRectMake(y, x, hgt, wdt);
-    }
-    else {
-        return CGRectMake(x, y, wdt, hgt);
-    }
+    return [self getRectByOrientaion: CGRectMake(x, y, wdt, hgt)];
 }
 
 - (void) setCaptureCfg {
     NSString * preset = nil;
-    KSYVideoDimension dim = [self.presetCfgView resolution];
+    KSYVideoDimension dim = [self.presetCfgView capResolution];
     if ( dim == KSYVideoDimension_16_9__640x360){
         preset = AVCaptureSessionPreset640x480;
         CGRect rect = [self calcCrop:CGSizeMake(640, 480)
@@ -98,6 +110,9 @@
     }
     else if ( dim == KSYVideoDimension_16_9__1280x720){
         preset = AVCaptureSessionPreset1280x720;
+    }
+    else if ( dim == KSYVideoDimension_4_3__640x480){
+        preset = AVCaptureSessionPreset640x480;
     }
     AVCaptureDevicePosition pos = [self.presetCfgView cameraPos];
     self.capDev = [[KSYGPUCamera alloc] initWithSessionPreset:preset
@@ -114,6 +129,31 @@
     self.capDev.horizontallyMirrorFrontFacingCamera = NO;
     self.capDev.horizontallyMirrorRearFacingCamera  = NO;
     [self.capDev addAudioInputsAndOutputs];
+}
+- (void) setStreamerCfg { // must set after capture
+    [super setStreamerCfg];
+    KSYVideoDimension dim = [self.presetCfgView strResolution];
+    if (dim == [self.presetCfgView capResolution]){
+        _yuvOutput.bCustomOutputSize = NO;
+        return;
+    }
+    CGSize sz = CGSizeMake(640, 360);
+    if ( dim == KSYVideoDimension_16_9__640x360){
+         sz = CGSizeMake(640, 360);
+    }
+    else if ( dim == KSYVideoDimension_16_9__960x540){
+        sz  = CGSizeMake(960, 540);
+    }
+    else if ( dim == KSYVideoDimension_16_9__1280x720){
+        sz  = CGSizeMake(1280, 720);
+    }
+    else if ( dim == KSYVideoDimension_4_3__640x480){
+        sz  = CGSizeMake(640, 480);
+    }
+    CGRect rect = {{0,0}, sz};
+    rect = [ self getRectByOrientaion:rect];
+    _yuvOutput.bCustomOutputSize = YES;
+    _yuvOutput.outputSize = rect.size;
 }
 
 -(void) setupVideoPath{
@@ -142,7 +182,12 @@
         src = self.pipFilter;
     }
     [src     addTarget:_preview];
-    [src     addTarget:_gpuStreamer];
+    [src     addTarget:_yuvOutput];
+    
+    __weak KSYBlockDemoVC * vc = self;
+    _yuvOutput.videoProcessingCallback = ^(CVPixelBufferRef pixelBuffer, CMTime timeInfo ){
+        [vc.streamerBase processVideoPixelBuffer:pixelBuffer timeInfo:timeInfo];
+    };
 }
 - (void) setupAudioPath {
     __weak KSYBlockDemoVC * vc = self;
@@ -201,6 +246,7 @@
 
 - (void) onCameraToggle{
     [self.capDev rotateCamera];
+    [super onCameraToggle];
 }
 
 - (void) onCapture{

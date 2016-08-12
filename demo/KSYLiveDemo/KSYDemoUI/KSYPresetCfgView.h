@@ -30,7 +30,9 @@
 // capture
 @property UITextField        * hostUrlUI;           // host URL
 @property UILabel            *lblResolutionUI;
-@property UISegmentedControl *resolutionUI; // 分辨率
+@property UISegmentedControl *resolutionUI; // 采集分辨率
+@property UILabel            *lblStreamResoUI;
+@property UISegmentedControl *streamResoUI; // 推流分辨率
 @property UILabel            *lblCameraPosUI;
 @property UISegmentedControl *cameraPosUI;  //
 
@@ -46,7 +48,9 @@
 @property UISegmentedControl *audioKbpsUI; //
 // get config data
 - (NSString*) hostUrl;
-- (KSYVideoDimension) resolution;
+- (KSYVideoDimension) capResolution;
+- (KSYVideoDimension) strResolution;
+- (CGSize) strResolutionSize;
 - (AVCaptureDevicePosition) cameraPos;
 - (int) frameRate;
 - (KSYVideoCodec) videoCodec;

@@ -95,13 +95,15 @@
 
 /**
  @abstract 是否处理视频的图像数据 (默认YES)
+ @warning  如果在推流前设置为NO, 则在推流过程中无法再开启图像
+ @discussion 启动推流前设置为NO, 推流过程中修改本属性无效
  */
-@property (atomic, assign) BOOL          bWithVideo;
+@property (nonatomic, assign) BOOL          bWithVideo;
 
 /**
  @abstract 是否处理音频数据 (默认YES)
  */
-@property (atomic, assign) BOOL          bWithAudio;
+@property (nonatomic, assign) BOOL          bWithAudio;
 
 #pragma mark - Status Notification
 

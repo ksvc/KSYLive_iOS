@@ -90,7 +90,6 @@ static KSYMicType int2MicType( int t) {
 - (void) setMicType:(KSYMicType)micType{
     _micType = micType;
     _micInput.selectedSegmentIndex = micType2Int(micType);
-    NSLog(@"mic: %ld", (long)_micInput.selectedSegmentIndex);
 }
 
 - (KSYMicType) micType{

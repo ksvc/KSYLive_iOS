@@ -466,7 +466,7 @@ dispatch_sync(dispatch_get_main_queue(), block);\
     _player.shouldMute  = switchMute.isOn;
     _player.shouldEnableKSYStatModule = TRUE;
     _player.shouldLoop = NO;
-    [_player setTimeout:5 readTimeout:10];
+    [_player setTimeout:10 readTimeout:60];
     
     NSKeyValueObservingOptions opts = NSKeyValueObservingOptionNew;
     [_player addObserver:self forKeyPath:@"currentPlaybackTime" options:opts context:nil];
@@ -480,7 +480,7 @@ dispatch_sync(dispatch_get_main_queue(), block);\
 }
 - (IBAction)onReloadVideo:(id)sender {
     if (_player) {
-        [_player reload:_reloadUrl is_flush:FALSE];
+        [_player reload:_reloadUrl flush:FALSE];
     }
 }
 

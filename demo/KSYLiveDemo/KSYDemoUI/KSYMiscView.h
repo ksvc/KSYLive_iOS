@@ -22,6 +22,8 @@
 
 @property KSYNameSlider * micmVol;
 @property UISwitch      * micmMix;
+@property UILabel       * audioLabel;
+@property UISwitch      * swiAudio;
 // 初始化micm选择控件
 - (void) initMicmOutput;
 

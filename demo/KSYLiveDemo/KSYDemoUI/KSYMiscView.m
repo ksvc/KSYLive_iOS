@@ -24,6 +24,8 @@
     _btn2  = [self addButton:@"filter截图"];
     _micmVol = [self addSliderName:@"耳返音量" From:0.0 To:1.0 Init:1.0];
     _micmMix = [self addSwitch:NO]; // default to NO
+    _audioLabel = [self addLable:@"纯音频推流"];
+    _swiAudio =[self addSwitch:NO];
     return self;
 }
 
@@ -37,6 +39,10 @@
         
     [self putSlider:_micmVol
           andSwitch:_micmMix];
+    
+    [self putRow3:_audioLabel
+              and:_swiAudio
+              and:nil];
 }
 
 - (void) initMicmOutput {

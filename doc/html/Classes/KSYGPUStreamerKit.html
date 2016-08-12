@@ -60,6 +60,8 @@
 		
 		<option value="//api/name/bAllowBluetooth">bAllowBluetooth</option>
 		
+		<option value="//api/name/bCustomStreamDimension">bCustomStreamDimension</option>
+		
 		<option value="//api/name/bDefaultToSpeaker">bDefaultToSpeaker</option>
 		
 		<option value="//api/name/bInterruptOtherAudio">bInterruptOtherAudio</option>
@@ -89,6 +91,8 @@
 		<option value="//api/name/preview">preview</option>
 		
 		<option value="//api/name/previewMirrored">previewMirrored</option>
+		
+		<option value="//api/name/streamDimension">streamDimension</option>
 		
 		<option value="//api/name/streamerBase">streamerBase</option>
 		
@@ -230,7 +234,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>创建带有默认参数的 <a href="../Classes/KSYGPUStreamer.html">KSYGPUStreamer</a></p><div class="warning"><p><strong>Warning:</strong> KSYGPUStreamer只支持单实例推流，构造多个实例会出现异常</p></div>
+				<p>创建带有默认参数的 kit</p><div class="warning"><p><strong>Warning:</strong> kit只支持单实例推流，构造多个实例会出现异常</p></div>
 			</div>
 			
 
@@ -1083,7 +1087,7 @@ discussion  size则通过调用 label的sizeToFit得到</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>视频分辨率</p>
+				<p>视频预览分辨率</p>
 			</div>
 			
 		    
@@ -1138,7 +1142,7 @@ discussion  size则通过调用 label的sizeToFit得到</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>用户定义的视频分辨率</p>
+				<p>用户定义的视频预览分辨率</p>
 			</div>
 			
 		    
@@ -1457,6 +1461,116 @@ discussion  size则通过调用 label的sizeToFit得到</p>
 
 			
 
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bCustomStreamDimension" title="bCustomStreamDimension"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bCustomStreamDimension">&nbsp;&nbsp;bCustomStreamDimension</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>是否使用自定义的视频 <strong>推流</strong> 分辨率 (默认为NO)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL bCustomStreamDimension</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>是指送入视频编码压缩的图像的尺寸, 开始预览前设置有效</p><p>NO:  表示跟采集预览的尺寸一致</p><p>YES: 表示通过<a href="#//api/name/streamDimension">streamDimension</a> 来指定尺寸</p><div class="warning"><p><strong>Warning:</strong> 如果<a href="#//api/name/streamDimension">streamDimension</a> 和 <a href="#//api/name/videoDimension">videoDimension</a> 的宽高比不一致时, 观众看到的图像会变形</p></div>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Constants/KSYVideoDimension.html">KSYVideoDimension</a>, <a href="#//api/name/videoOrientation">@property videoOrientation</a>, <a href="#//api/name/streamDimension">@property streamDimension</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/streamDimension" title="streamDimension"></a>
+	<h3 class="method-title"><code><a href="#//api/name/streamDimension">&nbsp;&nbsp;streamDimension</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>用户定义的视频 <strong>推流</strong> 分辨率</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) CGSize streamDimension</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p><a href="#//api/name/bCustomStreamDimension">bCustomStreamDimension</a> 为YES时有效, 开始预览前设置有效</p><p>内部始终将较大的值作为宽度 (若需要竖屏，请设置 videoOrientation）</p><p>宽高都会向上取整为4的整数倍</p><p>有效范围: 宽度[160, 1280],高度[ 90,  720] (超出范围会提示参数错误)</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Constants/KSYVideoDimension.html">KSYVideoDimension</a>, <a href="#//api/name/bCustomStreamDimension">@property bCustomStreamDimension</a></p></code></li>
+					
+				</ul>
+			</div>
 			
 
 			
@@ -2442,12 +2556,14 @@ discussion  size则通过调用 label的sizeToFit得到</p>
 					
 
                     
+                    
+          
 				</main>
 
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-08-02</p>
+						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-08-11</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

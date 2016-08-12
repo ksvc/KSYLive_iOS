@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYPlayerAuth.html">
+	<File path="Classes/KSYMediaInfoProber.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYPlayerAuth</TokenIdentifier>
-			<Abstract type="html">金山云播放内核需要提供鉴权信息，鉴权信息未完成，将导致如下效果：</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYMediaInfoProber</TokenIdentifier>
+			<Abstract type="html">KSYMediaInfoProber</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
             
 			
 			<NodeRef refid="26"/>
@@ -13,295 +13,271 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setAppId:</TokenIdentifier>
-			<Abstract type="html">开发者设置的开发者标识</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSString *appId</Declaration>
-			
-			
-			<Anchor>//api/name/appId</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/appId</TokenIdentifier>
-			<Abstract type="html">开发者设置的开发者标识</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSString *appId</Declaration>
-			
-			
-			<Anchor>//api/name/appId</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYPlayerAuth/appId</TokenIdentifier>
-			<Abstract type="html">开发者设置的开发者标识</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSString *appId</Declaration>
-			
-			
-			<Anchor>//api/name/appId</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setAccessKey:</TokenIdentifier>
-			<Abstract type="html">开发者设置的应用接入信息</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSString *accessKey</Declaration>
-			
-			
-			<Anchor>//api/name/accessKey</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/accessKey</TokenIdentifier>
-			<Abstract type="html">开发者设置的应用接入信息</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSString *accessKey</Declaration>
-			
-			
-			<Anchor>//api/name/accessKey</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYPlayerAuth/accessKey</TokenIdentifier>
-			<Abstract type="html">开发者设置的应用接入信息</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSString *accessKey</Declaration>
-			
-			
-			<Anchor>//api/name/accessKey</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setSecretKey:</TokenIdentifier>
-			<Abstract type="html">开发者设置的密钥</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSString *secretKey</Declaration>
-			
-			
-			<Anchor>//api/name/secretKey</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/secretKey</TokenIdentifier>
-			<Abstract type="html">开发者设置的密钥</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSString *secretKey</Declaration>
-			
-			
-			<Anchor>//api/name/secretKey</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYPlayerAuth/secretKey</TokenIdentifier>
-			<Abstract type="html">开发者设置的密钥</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSString *secretKey</Declaration>
-			
-			
-			<Anchor>//api/name/secretKey</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setTimeSeconds:</TokenIdentifier>
-			<Abstract type="html">开发者设置的1970年至今经过的秒数。</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSString *timeSeconds</Declaration>
-			
-			
-			<Anchor>//api/name/timeSeconds</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/timeSeconds</TokenIdentifier>
-			<Abstract type="html">开发者设置的1970年至今经过的秒数。</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSString *timeSeconds</Declaration>
-			
-			
-			<Anchor>//api/name/timeSeconds</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYPlayerAuth/timeSeconds</TokenIdentifier>
-			<Abstract type="html">开发者设置的1970年至今经过的秒数。</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSString *timeSeconds</Declaration>
-			
-			
-			<Anchor>//api/name/timeSeconds</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setMCode:</TokenIdentifier>
-			<Abstract type="html">设备id</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSString *mCode</Declaration>
-			
-			
-			<Anchor>//api/name/mCode</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/mCode</TokenIdentifier>
-			<Abstract type="html">设备id</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSString *mCode</Declaration>
-			
-			
-			<Anchor>//api/name/mCode</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYPlayerAuth/mCode</TokenIdentifier>
-			<Abstract type="html">设备id</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSString *mCode</Declaration>
-			
-			
-			<Anchor>//api/name/mCode</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setSam:</TokenIdentifier>
-			<Abstract type="html">设备版本信息</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSString *sam</Declaration>
-			
-			
-			<Anchor>//api/name/sam</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/sam</TokenIdentifier>
-			<Abstract type="html">设备版本信息</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSString *sam</Declaration>
-			
-			
-			<Anchor>//api/name/sam</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYPlayerAuth/sam</TokenIdentifier>
-			<Abstract type="html">设备版本信息</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSString *sam</Declaration>
-			
-			
-			<Anchor>//api/name/sam</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setUniqname:</TokenIdentifier>
-			<Abstract type="html">开发者在控制台申请服务时由系统分配</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSString *uniqname</Declaration>
-			
-			
-			<Anchor>//api/name/uniqname</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/uniqname</TokenIdentifier>
-			<Abstract type="html">开发者在控制台申请服务时由系统分配</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSString *uniqname</Declaration>
-			
-			
-			<Anchor>//api/name/uniqname</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYPlayerAuth/uniqname</TokenIdentifier>
-			<Abstract type="html">开发者在控制台申请服务时由系统分配</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSString *uniqname</Declaration>
-			
-			
-			<Anchor>//api/name/uniqname</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KSYPlayerAuth/sharedInstance</TokenIdentifier>
-			<Abstract type="html">获取认证单例</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>+ (KSYPlayerAuth *)sharedInstance</Declaration>
-			
-			
-			<Anchor>//api/name/sharedInstance</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYPlayerAuth/setAuthInfo:accessKey:secretKeySign:timeSeconds:</TokenIdentifier>
-			<Abstract type="html">设置认证信息</Abstract>
-			<DeclaredIn>KSYPlayerAuth.h</DeclaredIn>
-			
-			<Declaration>- (void)setAuthInfo:(NSString *)appId accessKey:(NSString *)ak secretKeySign:(NSString *)skSign timeSeconds:(NSString *)seconds</Declaration>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/initWithContentURL:</TokenIdentifier>
+			<Abstract type="html">初始化文件格式探测器并设置播放地址</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)initWithContentURL:(NSURL *)url</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>appId</Name>
-					<Abstract type="html">开发者标识，由haomingfei@kingsoft.com分配</Abstract>
-				</Parameter><Parameter>
-					<Name>ak</Name>
-					<Abstract type="html">应用接入信息，与SecretKey对应，由开放平台针对appid分配</Abstract>
-				</Parameter><Parameter>
-					<Name>skSign</Name>
-					<Abstract type="html">设置加密后的SecretKey，加密方式为SecretKeySign=md5( SecretKey + TimeSec )，其中“+”号表示字符串连接</Abstract>
-				</Parameter><Parameter>
-					<Name>seconds</Name>
-					<Abstract type="html">1970年至今经过的秒数。</Abstract>
-				</Parameter><Parameter>
-					<Name>uniqname</Name>
-					<Abstract type="html">开发者在控制台申请服务时由系统分配。</Abstract>
+					<Name>url</Name>
+					<Abstract type="html">待探测格式的文件地址，该地址可以是本地地址或者服务器地址.</Abstract>
 				</Parameter>
 			</Parameters>
+			<ReturnValue><Abstract type="html">返回KSYMediaInfoProber对象</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithContentURL:</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/setTimeout:</TokenIdentifier>
+			<Abstract type="html">文件格式探测时间，单位是秒，默认值是3秒</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
 			
-			<Anchor>//api/name/setAuthInfo:accessKey:secretKeySign:timeSeconds:</Anchor>
+			<Declaration>@property (nonatomic) int timeout</Declaration>
+			
+			
+			<Anchor>//api/name/timeout</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/timeout</TokenIdentifier>
+			<Abstract type="html">文件格式探测时间，单位是秒，默认值是3秒</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) int timeout</Declaration>
+			
+			
+			<Anchor>//api/name/timeout</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfoProber/timeout</TokenIdentifier>
+			<Abstract type="html">文件格式探测时间，单位是秒，默认值是3秒</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) int timeout</Declaration>
+			
+			
+			<Anchor>//api/name/timeout</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/setUrl:</TokenIdentifier>
+			<Abstract type="html">待探测的文件格式地址</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSURL *url</Declaration>
+			
+			
+			<Anchor>//api/name/url</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/url</TokenIdentifier>
+			<Abstract type="html">待探测的文件格式地址</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSURL *url</Declaration>
+			
+			
+			<Anchor>//api/name/url</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfoProber/url</TokenIdentifier>
+			<Abstract type="html">待探测的文件格式地址</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) NSURL *url</Declaration>
+			
+			
+			<Anchor>//api/name/url</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/setBH264Codec:</TokenIdentifier>
+			<Abstract type="html">编码类型是否是h264</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL bH264Codec</Declaration>
+			
+			
+			<Anchor>//api/name/bH264Codec</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/bH264Codec</TokenIdentifier>
+			<Abstract type="html">编码类型是否是h264</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL bH264Codec</Declaration>
+			
+			
+			<Anchor>//api/name/bH264Codec</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfoProber/bH264Codec</TokenIdentifier>
+			<Abstract type="html">编码类型是否是h264</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL bH264Codec</Declaration>
+			
+			
+			<Anchor>//api/name/bH264Codec</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/setBHEVCCodec:</TokenIdentifier>
+			<Abstract type="html">编码类型是否是hevc</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL bHEVCCodec</Declaration>
+			
+			
+			<Anchor>//api/name/bHEVCCodec</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/bHEVCCodec</TokenIdentifier>
+			<Abstract type="html">编码类型是否是hevc</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL bHEVCCodec</Declaration>
+			
+			
+			<Anchor>//api/name/bHEVCCodec</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfoProber/bHEVCCodec</TokenIdentifier>
+			<Abstract type="html">编码类型是否是hevc</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL bHEVCCodec</Declaration>
+			
+			
+			<Anchor>//api/name/bHEVCCodec</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/setBAACCodec:</TokenIdentifier>
+			<Abstract type="html">编码类型是否是aac</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL bAACCodec</Declaration>
+			
+			
+			<Anchor>//api/name/bAACCodec</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/bAACCodec</TokenIdentifier>
+			<Abstract type="html">编码类型是否是aac</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL bAACCodec</Declaration>
+			
+			
+			<Anchor>//api/name/bAACCodec</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfoProber/bAACCodec</TokenIdentifier>
+			<Abstract type="html">编码类型是否是aac</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL bAACCodec</Declaration>
+			
+			
+			<Anchor>//api/name/bAACCodec</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/setBMP3Codec:</TokenIdentifier>
+			<Abstract type="html">编码类型是否是mp3</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL bMP3Codec</Declaration>
+			
+			
+			<Anchor>//api/name/bMP3Codec</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/bMP3Codec</TokenIdentifier>
+			<Abstract type="html">编码类型是否是mp3</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL bMP3Codec</Declaration>
+			
+			
+			<Anchor>//api/name/bMP3Codec</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfoProber/bMP3Codec</TokenIdentifier>
+			<Abstract type="html">编码类型是否是mp3</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL bMP3Codec</Declaration>
+			
+			
+			<Anchor>//api/name/bMP3Codec</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/setKsyMediaInfo:</TokenIdentifier>
+			<Abstract type="html">媒体信息, 具体对象类型为KSYMediaInfo</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) KSYMediaInfo *ksyMediaInfo</Declaration>
+			
+			
+			<Anchor>//api/name/ksyMediaInfo</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/ksyMediaInfo</TokenIdentifier>
+			<Abstract type="html">媒体信息, 具体对象类型为KSYMediaInfo</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) KSYMediaInfo *ksyMediaInfo</Declaration>
+			
+			
+			<Anchor>//api/name/ksyMediaInfo</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfoProber/ksyMediaInfo</TokenIdentifier>
+			<Abstract type="html">媒体信息, 具体对象类型为KSYMediaInfo</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) KSYMediaInfo *ksyMediaInfo</Declaration>
+			
+			
+			<Anchor>//api/name/ksyMediaInfo</Anchor>
             <NodeRef refid="26"/>
 		</Token>
 		

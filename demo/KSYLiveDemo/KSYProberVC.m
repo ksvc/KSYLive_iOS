@@ -54,6 +54,7 @@
     NSString *aUrlString = [_url isFileURL] ? [_url path] : [_url absoluteString];
     stat.text = [NSString stringWithFormat:@"url is : %@", aUrlString];
     _prober = [[KSYMediaInfoProber alloc] initWithContentURL: _url];
+    _prober.timeout = 10;
 }
 
 - (UIButton *)addButtonWithTitle:(NSString *)title action:(SEL)action{
@@ -163,6 +164,8 @@
         muxTypeStr = @"ape";
     else if(MEDIAINFO_MUXTYPE_RAWVIDEO == muxType)
         muxTypeStr = @"rawvideo";
+    else if(MEDIAINFO_MUXTYPE_HLS == muxType)
+        muxTypeStr = @"hls";
     
     return muxTypeStr;
 }

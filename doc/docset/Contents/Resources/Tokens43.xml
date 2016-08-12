@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYVideoCodec.html">
+	<File path="Constants/KSYMicType.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYVideoCodec</TokenIdentifier>
-			<Abstract type="html">视频编码器类型</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYMicType</TokenIdentifier>
+			<Abstract type="html">音频输入设备类型</Abstract>
 			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoCodec_X264</TokenIdentifier>
-            <Abstract type="html">视频编码器 - h264 软件编码器</Abstract>
-            <Declaration>KSYVideoCodec_X264</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYMicType_builtinMic</TokenIdentifier>
+            <Abstract type="html">Built-in microphone on an iOS device</Abstract>
+            <Declaration>KSYMicType_builtinMic</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -24,9 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoCodec_QY265</TokenIdentifier>
-            <Abstract type="html">视频编码器 - KSY265 软件编码器</Abstract>
-            <Declaration>KSYVideoCodec_QY265</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYMicType_headsetMic</TokenIdentifier>
+            <Abstract type="html">Microphone on a wired headset</Abstract>
+            <Declaration>KSYMicType_headsetMic</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -34,9 +34,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoCodec_VT264</TokenIdentifier>
-            <Abstract type="html">视频编码器 - iOS VT264硬件编码器 (iOS 8.0以上支持)</Abstract>
-            <Declaration>KSYVideoCodec_VT264</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYMicType_bluetoothMic</TokenIdentifier>
+            <Abstract type="html">蓝牙设备</Abstract>
+            <Declaration>KSYMicType_bluetoothMic</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -44,9 +44,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoCodec_AUTO</TokenIdentifier>
-            <Abstract type="html">视频编码器 - 由SDK自动选择（ VT264 &gt; X264）</Abstract>
-            <Declaration>KSYVideoCodec_AUTO</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYMicType_unknow</TokenIdentifier>
+            <Abstract type="html">未知设备</Abstract>
+            <Declaration>KSYMicType_unknow</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             

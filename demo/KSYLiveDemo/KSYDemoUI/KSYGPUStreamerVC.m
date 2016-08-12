@@ -1071,7 +1071,7 @@
     }
 }
 - (void) onAudioStateChange:(NSNotification *)notification {
-    NSLog(@"bgmState:%ld %@", _bgmPlayer.bgmPlayerState, [_bgmPlayer getCurBgmStateName]);
+    NSLog(@"bgmState: %@", [_bgmPlayer getCurBgmStateName]);
 }
 
 - (void) onStreamStateChange:(NSNotification *)notification {
