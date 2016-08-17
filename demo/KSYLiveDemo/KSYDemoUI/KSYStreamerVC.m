@@ -28,8 +28,11 @@
     
     BOOL        _bgmPlayNext;
     UISwipeGestureRecognizer *_swipeGest;
+    
 }
+
 @property KSYAudioReverb*  audioReverb;
+
 
 @end
 
@@ -42,7 +45,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     _lastState = &_lastStD;
     [self initStreamStat];
-    _bgmPlayNext = NO;
+    _bgmPlayNext = YES;
     return self;
 }
 // 将推流状态信息清0
@@ -91,6 +94,9 @@
     _ksyBgmView.onSliderBlock = ^(id sender) {
         [weakself onBgmVolume:sender];
     };
+//    _ksyBgmView.onSegCtrlBlock = ^(id sender) {
+//        [weakself onBgmCtrSle:sender];
+//    };
     // 滤镜相关参数改变
     _ksyFilterView.onBtnBlock=^(id sender) {
         [weakself onFilterChange:sender];
@@ -302,7 +308,6 @@
     if ( _bgmPlayer.bgmPlayerState == KSYBgmPlayerStateStopped){
         if (_bgmPlayNext){
             [self onBgmPlay];
-            _bgmPlayNext = NO;
         }
     }
 }
@@ -443,7 +448,10 @@
 #pragma mark - subviews: bgmview
 //bgmView Control
 - (void)onBgmBtnPress:(UIButton *)btn{
-    if (btn == _ksyBgmView.playBtn){
+    if (btn == _ksyBgmView.previousBtn) {
+        [self onBgmStop];
+    }
+    else if (btn == _ksyBgmView.playBtn){
         [self onBgmPlay];
     }
     else if (btn ==  _ksyBgmView.pauseBtn){
@@ -458,7 +466,6 @@
         [self onBgmStop];
     }
     else if (btn == _ksyBgmView.nextBtn){
-        _bgmPlayNext = YES;
         [self onBgmStop];
     }
     else if (btn == _ksyBgmView.muteBtn){
@@ -466,17 +473,19 @@
         _bgmPlayer.bMutBgmPlay = !_bgmPlayer.bMutBgmPlay;
     }
 }
-
 - (void) onBgmPlay{
     NSString* path = _ksyBgmView.bgmPath;
+    if (!path) {
+        [self onBgmStop];
+    }
     if (_bgmPlayer) {
-        NSLog(@"bgm start %@", path);
         _bgmPlayer.bgmFinishBlock = ^{
             NSLog(@"bgm over %@", path);
         };
         [_bgmPlayer startPlayBgm:path isLoop:NO];
     }
 }
+
 - (void) onBgmStop{
     if (_bgmPlayer && _bgmPlayer.bgmPlayerState == KSYBgmPlayerStatePlaying) {
         [_bgmPlayer stopPlayBgm];
@@ -489,7 +498,6 @@
         _bgmPlayer.bgmVolume = _ksyBgmView.volumSl.normalValue;
     }
 }
-
 #pragma mark - subviews: pipView
 //pipView btn Control
 - (void)onPipBtnPress:(UIButton *)btn{

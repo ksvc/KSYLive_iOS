@@ -51,7 +51,7 @@
 /**
  @abstract 视频数据回调
  */
-typedef void (^KSYPlyVideoDataBlock)(CVPixelBufferRef pixelBuffer);
+typedef void (^KSYPlyVideoDataBlock)(CMSampleBufferRef pixelBuffer);
 
 /**
  @abstract 音频数据回调
@@ -432,7 +432,8 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
  @discussion YES:开始播放时，会打断其他的后台播放音频，也会被其他音频播放打断
  @discussion NO: 可以与其他后台播放共存，相互之间不会被打断
  @discussion 默认为YES
- @see AVAudioSessionCategoryOptionMixWithOthers
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 1.5.3 and later.
  */
 @property(nonatomic) BOOL  bInterruptOtherAudio;
 
@@ -449,7 +450,7 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
  @abstract setVolume指定播放器输出音量
  @param leftVolume  left volume scalar  [0~1.0f]
  @param rightVolume right volume scalar [0~1.0f]
- @discussion
+ @discussion 使用说明
  
  * 输入参数超出范围将失效
  * 输出到speaker时需同时设置左右音量为有效值
@@ -494,7 +495,7 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 /**
  @abstract 重新启动拉流
  @param aUrl 视频播放地址，该地址可以是本地地址或者服务器地址.如果为nil，则使用前一次播放地址
- @param is_flush 是否清除上一个url的缓冲区内容，该值为FALSE不清除，为TRUE则清除
+ @param flush 是否清除上一个url的缓冲区内容，该值为FALSE不清除，为TRUE则清除
  @discussion 调用场景如下：
  
  * 当播放器调用方发现卡顿时，可以主动调用
@@ -514,6 +515,34 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
  @since Available in KSYMoviePlayerController 1.5.0.0 and later.
  */
 - (NSTimeInterval)getCurrentPts;
+
+/**
+ @abstract 设置播放url
+ @param url 视频播放地址，该地址可以是本地地址或者服务器地址.如果为nil，则使用前一次播放地址
+ @discussion 使用说明
+ 
+ * 通常用于使用一个对象进行多次播放的场景
+ * 调用reset接口停止播放后使用该接口来设置下一次播放地址
+ * 需要在[prepareToPlay]([KSYMediaPlayback prepareToPlay])方法之前设置
+ 
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 1.6.2 and later.
+ */
+- (void)setUrl:(NSURL *)url;
+
+/**
+ @abstract 重置播放器
+ @discussion 使用说明
+ 
+ * 通常用于使用一个对象进行多次播放的场景
+ * 该方法可以停止播放，但是不会销毁播放器
+ * 调用该方法后可以通过调用stop方法来销毁播放器
+ * 如果使用一个对象进行多次播放，需要在reset后使用setUrl方法设置下次播放地址
+ 
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 1.6.2 and later.
+ */
+- (void)reset;
 
 @end
 

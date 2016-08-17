@@ -58,7 +58,7 @@
  @discussion 当没有插耳机时, bgmplayer 是否要默认往外放播放
  @discussion 为NO时, 不修改 Audiosession的属性
  @warning    请注意保持与KSYGPUCamera中的bDefaultToSpeaker一致,否则行为可能比较奇怪
- @see AVAudioSessionCategoryOptionDefaultToSpeaker
+ @discussion AVAudioSessionCategoryOptionDefaultToSpeaker
  */
 @property (nonatomic, assign) BOOL bDefaultToSpeaker;
 
@@ -67,7 +67,7 @@
  @abstract   音频数据输出回调
  @param      sampleBuffer 从音乐文件中解码得到的PCM数据
  
- @see CMSampleBufferRef
+ @discussion CMSampleBufferRef
  */
 @property(nonatomic, copy) void(^audioDataBlock)(CMSampleBufferRef sampleBuffer);
 
@@ -85,25 +85,25 @@
 
 /**
  @abstract    背景音的已经播放长度 (单位:秒)
- @discuss     从0开始，最大为bgmDuration长度
+ @discussion  从0开始，最大为bgmDuration长度
  */
 @property (nonatomic, readonly) float bgmPlayTime;
 
 /**
  @abstract    音频的播放进度
- @discuss     取值从0.0~1.0，大小为bgmPlayTime/bgmDuration;
+ @discussion  取值从0.0~1.0，大小为bgmPlayTime/bgmDuration;
  */
 @property (nonatomic, readonly) float bgmProcess;
 
 /**
  @abstract    音频播放是否运行
- @discuss     音频是否输出到speaker播放
+ @discussion  音频是否输出到speaker播放
  */
 @property (nonatomic, readonly) BOOL isRunning;
 
 /**
  @abstract    播放错误码
- @discuss     播放错误码具体内容可以参考AudioQueue的Apple文档。
+ @discussion  播放错误码具体内容可以参考AudioQueue的Apple文档。
  */
 @property (nonatomic, readonly) OSStatus audioErrorCode;
 
@@ -111,6 +111,10 @@
  @abstract    播放状态
  */
 @property (nonatomic, readonly) KSYBgmPlayerState bgmPlayerState;
+/**
+ @abstract    单曲循环
+ */
+@property (nonatomic, assign) BOOL bLoop;
 /**
  @abstract   获取状态对应的字符串
  @param      stat 状态

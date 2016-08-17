@@ -60,6 +60,10 @@ typedef NS_ENUM(NSInteger, MPMovieStatus) {
     MPMovieStatusVideoDecodeWrong,
     ///音频解码出错
     MPMovieStatusAudioDecodeWrong,
+    //使用硬件解码
+    MPMovieStatusHWCodecUsed,
+    //使用软件解码
+    MPMovieStatusSWCodecUsed
 };
 
 /**

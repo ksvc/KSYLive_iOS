@@ -323,8 +323,8 @@
         self.player.shouldMute     = NO;
         [self.aMixer setTrack:self.pipTrack enable:YES];
         __weak KSYBlockDemoVC * vc = self;
-        self.player.videoDataBlock = ^(CVPixelBufferRef buf){
-            [vc.yuvInput processPixelBuffer:buf time:CMTimeMake(2, 10)];
+        self.player.videoDataBlock = ^(CMSampleBufferRef buf){
+            [vc.yuvInput processPixelBuffer:CMSampleBufferGetImageBuffer(buf) time:CMTimeMake(2, 10)];
         };
         self.player.audioDataBlock = ^(CMSampleBufferRef buf){
             [vc.aMixer processAudioSampleBuffer:buf of:vc.pipTrack];

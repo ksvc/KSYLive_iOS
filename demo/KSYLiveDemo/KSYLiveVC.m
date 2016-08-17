@@ -7,8 +7,6 @@
 //
 
 #import "KSYLiveVC.h"
-#import "KSYStreamerKitVC.h"
-#import "KSYGPUStreamerVC.h"
 #import "QRViewController.h"
 #import "KSYPlayerVC.h"
 #import "KSYProberVC.h"
@@ -34,6 +32,14 @@
     [super viewDidLoad];
     self.title = @"KSYDEMO";
     self.view.backgroundColor = [UIColor whiteColor];
+    _addressMulArray = [NSMutableArray new];
+    NSString *devCode  = [ [[[UIDevice currentDevice] identifierForVendor] UUIDString] substringToIndex:3];
+    NSString *streamSrv  = @"rtmp://test.uplive.ksyun.com/live";
+    NSString *playSrv  = @"rtmp://test.rtmplive.ks-cdn.com/live";
+    NSString *streamUrl      = [ NSString stringWithFormat:@"%@/%@", streamSrv, devCode];
+    NSString *playUrl      = [ NSString stringWithFormat:@"%@/%@", playSrv, devCode];
+    [_addressMulArray addObject:streamUrl];
+    [_addressMulArray addObject:playUrl];
     [self initVariable];
     [self initLiveVCUI];
     [KSYDBCreater initDatabase];
@@ -68,7 +74,7 @@
     return barButton;
 }
 - (void)addLeftNavigationBarButton{
-    self.navigationItem.leftBarButtonItem = [self addBarButtonItemWithTitle:@"输入完成" action:@selector(closeKeyBoard)];
+    self.navigationItem.leftBarButtonItem = [self addBarButtonItemWithTitle:@"关闭键盘" action:@selector(closeKeyBoard)];
 }
 - (void)addRightNavigationBarButton{
     
@@ -120,26 +126,32 @@
     [self addLeftNavigationBarButton];
     [self addRightNavigationBarButton];
     [self initFrame];
-    [self myReloadData];
+    //    [self myReloadData];
 }
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    if (tableView == _ctrTableView) {
+        return 1;
+    }else if(tableView == _addressTable){
+        return 2;
+    }else{
+        return 0;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (tableView == _ctrTableView) {
         return _controllers.count;
     }else if(tableView == _addressTable){
-        return _addressMulArray.count;
+        return 1;
     }else{
         return 0;
     }
     
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"identify"];
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"identify"];
@@ -147,7 +159,12 @@
     if (tableView == _ctrTableView) {
         cell.textLabel.text = _controllers[indexPath.row];
     }else if(tableView == _addressTable){
-        cell.textLabel.text = _addressMulArray[indexPath.row];
+        if (indexPath.section == 0) {
+            cell.textLabel.text = _addressMulArray[indexPath.section];
+        }
+        else if (indexPath.section == 1){
+            cell.textLabel.text = _addressMulArray[indexPath.section];
+        }
         cell.textLabel.font = [UIFont systemFontOfSize:14];
         UIView *cellView = [[UIView alloc]initWithFrame:cell.frame];
         cellView.backgroundColor = [UIColor grayColor];
@@ -157,7 +174,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     if (tableView == _ctrTableView) {
         if (_textFiled.text.length > 0) {
             NSLog(@"url:%@",_textFiled.text);
@@ -175,7 +192,12 @@
             }
         }
     }else if(tableView == _addressTable){
-        _textFiled.text = _addressMulArray[indexPath.row];
+        if (indexPath.section == 0) {
+            _textFiled.text = _addressMulArray[indexPath.section];
+        }
+        else if (indexPath.section == 1){
+            _textFiled.text = _addressMulArray[indexPath.section];
+        }
         [_textFiled resignFirstResponder];
     }
 }
@@ -184,7 +206,12 @@
     if (tableView == _ctrTableView) {
         return @"控制器栏";
     }else if (tableView == _addressTable){
-        return @"地址栏";
+        if (section == 0) {
+            return @"推流地址";
+        }else if (section == 1){
+            return @"拉流地址";
+        }
+        
     }
     return nil;
 }
@@ -193,7 +220,7 @@
 }
 - (void)closeKeyBoard{
     [_textFiled resignFirstResponder];
-    [[KSYSQLite sharedInstance] insertAddress:_textFiled.text];
+    //    [[KSYSQLite sharedInstance] insertAddress:_textFiled.text];
 }
 - (void)scanQR{
     
@@ -214,12 +241,11 @@
     [_textFiled resignFirstResponder];
 }
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
-    [self myReloadData];
+    //    [self myReloadData];
 }
 
 - (void)myReloadData{
-    NSArray *addressArray = [[KSYSQLite sharedInstance] getAddress];;
-    _addressMulArray = [NSMutableArray array];
+    NSArray *addressArray = [[KSYSQLite sharedInstance] getAddress];
     for(NSDictionary *dic in addressArray){
         NSString *address = [dic objectForKey:@"address"];
         [_addressMulArray addObject:address];

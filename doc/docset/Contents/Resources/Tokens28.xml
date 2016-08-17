@@ -1207,12 +1207,7 @@
 					<Abstract type="html">left volume scalar  [0~1.0f]</Abstract>
 				</Parameter><Parameter>
 					<Name>rightVolume</Name>
-					<Abstract type="html">right volume scalar [0~1.0f]
-@discussion
-
-* 输入参数超出范围将失效
-* 输出到speaker时需同时设置左右音量为有效值
-    如：leftVolume ＝ rightVolume ＝ 0.5f</Abstract>
+					<Abstract type="html">right volume scalar [0~1.0f]</Abstract>
 				</Parameter>
 			</Parameters>
 			
@@ -1272,7 +1267,7 @@
 					<Name>aUrl</Name>
 					<Abstract type="html">视频播放地址，该地址可以是本地地址或者服务器地址.如果为nil，则使用前一次播放地址</Abstract>
 				</Parameter><Parameter>
-					<Name>is_flush</Name>
+					<Name>flush</Name>
 					<Abstract type="html">是否清除上一个url的缓冲区内容，该值为FALSE不清除，为TRUE则清除</Abstract>
 				</Parameter>
 			</Parameters>
@@ -1290,6 +1285,35 @@
 			
 			
 			<Anchor>//api/name/getCurrentPts</Anchor>
+            <NodeRef refid="28"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setUrl:</TokenIdentifier>
+			<Abstract type="html">设置播放url</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>- (void)setUrl:(NSURL *)url</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>url</Name>
+					<Abstract type="html">视频播放地址，该地址可以是本地地址或者服务器地址.如果为nil，则使用前一次播放地址</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setUrl:</Anchor>
+            <NodeRef refid="28"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/reset</TokenIdentifier>
+			<Abstract type="html">重置播放器</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>- (void)reset</Declaration>
+			
+			
+			<Anchor>//api/name/reset</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		

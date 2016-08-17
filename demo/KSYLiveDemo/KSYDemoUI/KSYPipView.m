@@ -64,12 +64,12 @@
 
 - (IBAction)onBtn:(id)sender {
     if (sender == _pipNext){
-        if( [_pipSel nextFile]){
+        if( [_pipSel selectFileWithType:KSYSelectType_NEXT]){
             _pipURL = [NSURL fileURLWithPath:_pipSel.filePath];
         }
     }
     if (sender == _bgpNext){
-        if( [_bgpSel nextFile] ){
+        if( [_bgpSel selectFileWithType:KSYSelectType_NEXT] ){
             _bgpURL = [NSURL fileURLWithPath:_bgpSel.filePath];
         }
     }
