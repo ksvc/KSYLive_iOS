@@ -301,8 +301,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/setBgmPlayTime:</TokenIdentifier>
-			<Abstract type="html">背景音的已经播放长度 (单位:秒)
-@discuss     从0开始，最大为bgmDuration长度</Abstract>
+			<Abstract type="html">背景音的已经播放长度 (单位:秒)</Abstract>
 			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) float bgmPlayTime</Declaration>
@@ -314,8 +313,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/bgmPlayTime</TokenIdentifier>
-			<Abstract type="html">背景音的已经播放长度 (单位:秒)
-@discuss     从0开始，最大为bgmDuration长度</Abstract>
+			<Abstract type="html">背景音的已经播放长度 (单位:秒)</Abstract>
 			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) float bgmPlayTime</Declaration>
@@ -327,8 +325,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmPlayer/bgmPlayTime</TokenIdentifier>
-			<Abstract type="html">背景音的已经播放长度 (单位:秒)
-@discuss     从0开始，最大为bgmDuration长度</Abstract>
+			<Abstract type="html">背景音的已经播放长度 (单位:秒)</Abstract>
 			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) float bgmPlayTime</Declaration>
@@ -340,8 +337,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/setBgmProcess:</TokenIdentifier>
-			<Abstract type="html">音频的播放进度
-@discuss     取值从0.0~1.0，大小为bgmPlayTime/bgmDuration;</Abstract>
+			<Abstract type="html">音频的播放进度</Abstract>
 			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) float bgmProcess</Declaration>
@@ -353,8 +349,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/bgmProcess</TokenIdentifier>
-			<Abstract type="html">音频的播放进度
-@discuss     取值从0.0~1.0，大小为bgmPlayTime/bgmDuration;</Abstract>
+			<Abstract type="html">音频的播放进度</Abstract>
 			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) float bgmProcess</Declaration>
@@ -366,8 +361,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmPlayer/bgmProcess</TokenIdentifier>
-			<Abstract type="html">音频的播放进度
-@discuss     取值从0.0~1.0，大小为bgmPlayTime/bgmDuration;</Abstract>
+			<Abstract type="html">音频的播放进度</Abstract>
 			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) float bgmProcess</Declaration>
@@ -379,8 +373,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/setIsRunning:</TokenIdentifier>
-			<Abstract type="html">音频播放是否运行
-@discuss     音频是否输出到speaker播放</Abstract>
+			<Abstract type="html">音频播放是否运行</Abstract>
 			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) BOOL isRunning</Declaration>
@@ -392,8 +385,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/isRunning</TokenIdentifier>
-			<Abstract type="html">音频播放是否运行
-@discuss     音频是否输出到speaker播放</Abstract>
+			<Abstract type="html">音频播放是否运行</Abstract>
 			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) BOOL isRunning</Declaration>
@@ -405,8 +397,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmPlayer/isRunning</TokenIdentifier>
-			<Abstract type="html">音频播放是否运行
-@discuss     音频是否输出到speaker播放</Abstract>
+			<Abstract type="html">音频播放是否运行</Abstract>
 			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) BOOL isRunning</Declaration>
@@ -418,8 +409,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/setAudioErrorCode:</TokenIdentifier>
-			<Abstract type="html">播放错误码
-@discuss     播放错误码具体内容可以参考AudioQueue的Apple文档。</Abstract>
+			<Abstract type="html">播放错误码</Abstract>
 			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) OSStatus audioErrorCode</Declaration>
@@ -431,8 +421,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/audioErrorCode</TokenIdentifier>
-			<Abstract type="html">播放错误码
-@discuss     播放错误码具体内容可以参考AudioQueue的Apple文档。</Abstract>
+			<Abstract type="html">播放错误码</Abstract>
 			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) OSStatus audioErrorCode</Declaration>
@@ -444,8 +433,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmPlayer/audioErrorCode</TokenIdentifier>
-			<Abstract type="html">播放错误码
-@discuss     播放错误码具体内容可以参考AudioQueue的Apple文档。</Abstract>
+			<Abstract type="html">播放错误码</Abstract>
 			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) OSStatus audioErrorCode</Declaration>
@@ -488,6 +476,42 @@
 			
 			
 			<Anchor>//api/name/bgmPlayerState</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/setBLoop:</TokenIdentifier>
+			<Abstract type="html">单曲循环</Abstract>
+			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bLoop</Declaration>
+			
+			
+			<Anchor>//api/name/bLoop</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/bLoop</TokenIdentifier>
+			<Abstract type="html">单曲循环</Abstract>
+			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bLoop</Declaration>
+			
+			
+			<Anchor>//api/name/bLoop</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmPlayer/bLoop</TokenIdentifier>
+			<Abstract type="html">单曲循环</Abstract>
+			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bLoop</Declaration>
+			
+			
+			<Anchor>//api/name/bLoop</Anchor>
             <NodeRef refid="6"/>
 		</Token>
 		

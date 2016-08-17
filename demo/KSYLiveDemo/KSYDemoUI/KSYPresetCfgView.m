@@ -37,8 +37,6 @@
 #else
     _btn2 =  [self addButton:@"返回"  ];
 #endif
-    _btn3 =  [self addButton:@"oldkit"   ];
-    _btn4 =  [self addButton:@"oldBlock" ];
     
     CGRect screenRect = [[UIScreen mainScreen]bounds];
     CGFloat ratio = screenRect.size.width / screenRect.size.height;
@@ -95,9 +93,9 @@
     
     //剩余空间全部用来放按钮
     CGFloat yPos = self.yPos > self.height ? self.yPos - self.height : self.yPos;
-    self.btnH = (self.height - yPos - self.gap*2)/2;
+    self.btnH = (self.height - yPos - self.gap*2);
     [self putRow3:_btn0 and:_btn1 and:_btn2];
-    [self putRow2:_btn3 and:_btn4];
+    //[self putRow2:_btn3 and:_btn4];
 }
 
 - (NSString*) hostUrl {

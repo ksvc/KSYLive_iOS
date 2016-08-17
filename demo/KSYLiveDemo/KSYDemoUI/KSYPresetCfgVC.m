@@ -9,8 +9,6 @@
 #import "KSYPresetCfgVC.h"
 #import "KSYUIView.h"
 #import "KSYPresetCfgView.h"
-#import "KSYGPUStreamerVC.h"
-#import "KSYStreamerKitVC.h"
 #import "KSYBlockDemoVC.h"
 #import "KSYKitDemoVC.h"
 
@@ -58,9 +56,9 @@
     self.view = _cfgView;
 
     //  TODO: !!!! 设置是否自动启动推流
-    _bAutoStart = YES;
+    _bAutoStart = NO;
     if (_bAutoStart) {
-//        [self pressBtnAfter:0.5];
+        [self pressBtnAfter:0.5];
     }
     if (_rtmpURL && [_rtmpURL length] ){
         _cfgView.hostUrlUI.text = _rtmpURL;
@@ -104,12 +102,6 @@
                                  completion:nil];
         return;
 #endif
-    }
-    else if ( sender == _cfgView.btn3) { // tests
-        vc = [[KSYStreamerKitVC alloc] init];
-    }
-    else if ( sender == _cfgView.btn4) { // tests
-        vc = [[KSYGPUStreamerVC alloc] init];
     }
     if (vc){
         [self presentViewController:vc animated:true completion:nil];

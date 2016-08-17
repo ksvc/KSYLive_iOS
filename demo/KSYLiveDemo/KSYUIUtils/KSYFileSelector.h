@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, KSYSelectType){
+    KSYSelectType_NEXT = 0,
+    KSYSelectType_RANDOM,
+    KSYSelectType_PREVIOUS
+};
 /** 文件选择工具
  在app的目录下选择特定文件用的工具类
  
@@ -36,7 +41,7 @@
 @property (atomic, readonly) NSString* filePath;
 
 // 当前正在播放的音乐文件的索引
-@property (atomic, readonly) int fileIdx;
+@property (atomic, readonly) NSInteger fileIdx;
 
 // "文件名(index/满足条件的文件总数)"
 @property (atomic, readonly) NSString* fileInfo;
@@ -60,9 +65,7 @@
 - (BOOL) reload;
 
 /**
- @abstract   获取下一个文件的
- @discussion 循环遍历所有文件, fileIdx++
+ @abstract   获取一个文件
  */
-- (BOOL) nextFile;
-
+- (BOOL) selectFileWithType:(KSYSelectType)type;
 @end

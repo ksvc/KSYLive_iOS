@@ -136,7 +136,11 @@
 		
 		<option value="//api/name/reload:flush:">- reload:flush:</option>
 		
+		<option value="//api/name/reset">- reset</option>
+		
 		<option value="//api/name/setTimeout:readTimeout:">- setTimeout:readTimeout:</option>
+		
+		<option value="//api/name/setUrl:">- setUrl:</option>
 		
 		<option value="//api/name/setVolume:rigthVolume:">- setVolume:rigthVolume:</option>
 		
@@ -1959,11 +1963,16 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 			
 
 			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in KSYMoviePlayerController 1.5.3 and later.</p>
+			</div>
+			
 
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>也可以理解为是否允许和其他音频同时播放</p><p>YES:开始播放时，会打断其他的后台播放音频，也会被其他音频播放打断</p><p>NO: 可以与其他后台播放共存，相互之间不会被打断</p><p>默认为YES</p>
+				<p>也可以理解为是否允许和其他音频同时播放</p><p>YES:开始播放时，会打断其他的后台播放音频，也会被其他音频播放打断</p><p>NO: 可以与其他后台播放共存，相互之间不会被打断</p><p>默认为YES</p><div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div>
 			</div>
 			
 
@@ -2080,15 +2089,7 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>rightVolume</code></th>
-						<td><p>right volume scalar [0~1.0f]
-@discussion</p>
-
-<ul>
-<li>输入参数超出范围将失效</li>
-<li>输出到speaker时需同时设置左右音量为有效值
-  如：leftVolume ＝ rightVolume ＝ 0.5f</li>
-</ul>
-</td>
+						<td><p>right volume scalar [0~1.0f]</p></td>
 					</tr>
 				
 				</table>
@@ -2107,7 +2108,14 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div>
+				<p>使用说明</p>
+
+<ul>
+<li>输入参数超出范围将失效</li>
+<li>输出到speaker时需同时设置左右音量为有效值
+  如：leftVolume ＝ rightVolume ＝ 0.5f</li>
+</ul>
+<div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div>
 			</div>
 			
 
@@ -2329,7 +2337,7 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 					</tr>
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>is_flush</code></th>
+						<th scope="row" class="argument-name"><code>flush</code></th>
 						<td><p>是否清除上一个url的缓冲区内容，该值为FALSE不清除，为TRUE则清除</p></td>
 					</tr>
 				
@@ -2426,6 +2434,135 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/setUrl:" title="setUrl:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setUrl:">&ndash;&nbsp;setUrl:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置播放url</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setUrl:(NSURL *)<em>url</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>url</code></th>
+						<td><p>视频播放地址，该地址可以是本地地址或者服务器地址.如果为nil，则使用前一次播放地址</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in KSYMoviePlayerController 1.6.2 and later.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>使用说明</p>
+
+<ul>
+<li>通常用于使用一个对象进行多次播放的场景</li>
+<li>调用reset接口停止播放后使用该接口来设置下一次播放地址</li>
+<li>需要在<a href="../Protocols/KSYMediaPlayback.html#//api/name/prepareToPlay">prepareToPlay</a>方法之前设置</li>
+</ul>
+<div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/reset" title="reset"></a>
+	<h3 class="method-title"><code><a href="#//api/name/reset">&ndash;&nbsp;reset</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>重置播放器</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)reset</code></div>
+
+		    
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in KSYMoviePlayerController 1.6.2 and later.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>使用说明</p>
+
+<ul>
+<li>通常用于使用一个对象进行多次播放的场景</li>
+<li>该方法可以停止播放，但是不会销毁播放器</li>
+<li>调用该方法后可以通过调用stop方法来销毁播放器</li>
+<li>如果使用一个对象进行多次播放，需要在reset后使用setUrl方法设置下次播放地址</li>
+</ul>
+<div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -2441,7 +2578,7 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-08-11</p>
+						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-08-15</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

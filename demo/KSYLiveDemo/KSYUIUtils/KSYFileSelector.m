@@ -59,24 +59,36 @@
     }
     _fileIdx = -1;
     NSLog(@"find %lu in %@", (unsigned long)[_fileList count], _filesDir);
-    return [self nextFile];
+    return [self selectFileWithType:KSYSelectType_NEXT];
 }
 
 /**
- @abstract   获取下一个文件的
- @discussion 循环遍历所有文件, fileIdx++
- */
-- (BOOL) nextFile{
+ @abstract   获取一个音频文件
+*/
+- (BOOL)selectFileWithType:(KSYSelectType)type{
     NSInteger cnt =[_fileList count];
     if (cnt == 0) { // no file
         _fileInfo = @"can't find any file";
         _filePath = nil;
         return NO;
     }
-    // find a new file
-    _fileIdx = (_fileIdx+1)%cnt;
+    if (type == KSYSelectType_NEXT) {
+        //next
+        _fileIdx = (_fileIdx+1)%cnt;
+    }
+    else if (type == KSYSelectType_RANDOM){
+        //random
+        _fileIdx = (NSInteger)(arc4random() % cnt);
+    }
+    else if (type == KSYSelectType_PREVIOUS){
+        //previous
+        _fileIdx = (_fileIdx+cnt-1)%cnt;
+    }
+    else {
+        return NO;
+    }
     NSString * name = _fileList[_fileIdx];
-    _fileInfo = [NSString stringWithFormat:@" %@(%d/%d)",name,_fileIdx,(int)cnt];
+    _fileInfo = [NSString stringWithFormat:@" %@(%ld/%d)",name,(long)_fileIdx,(int)cnt];
     _filePath = [_fullDir stringByAppendingString:name];
     return YES;
 }
