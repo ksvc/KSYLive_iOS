@@ -120,4 +120,5 @@ NSLog(@"version: %@", [kit getKSYVersion]);
 ## 五. 反馈与建议
 * 主页：[金山云](http://www.ksyun.com/)
 * 邮箱：<zengfanping@kingsoft.com>
+* QQ讨论群：574179720
 * Issues:<https://github.com/ksvc/KSYLive_iOS/issues>
