@@ -18,7 +18,7 @@
 - [x] [在线API 文档支持](http://ksvc.github.io/KSYLive_iOS/html/index.html)
 - [x] 支持[耳返](https://github.com/ksvc/KSYLive_iOS/wiki/micMonitor)
 - [x] 支持[画中画](https://github.com/ksvc/KSYLive_iOS/wiki/pip)推流
-- [x] 支持[预览和采集分辨率分别设置]9https://github.com/ksvc/KSYLive_iOS/wiki/customOutputSize)
+- [x] 支持[预览和采集分辨率分别设置](https://github.com/ksvc/KSYLive_iOS/wiki/customOutputSize)
 - [x] 支持一对一[连麦](https://github.com/ksvc/KSYLive_iOS/wiki/rtc)
 
 ### 1.2 文档
