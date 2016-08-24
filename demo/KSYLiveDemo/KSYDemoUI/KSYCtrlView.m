@@ -19,15 +19,19 @@
     _btnFlash  =  [self addButton:@"闪光灯" ];
     _btnCameraToggle =  [self addButton:@"前后摄像头" ];
     _btnQuit   =  [self addButton:@"退出" ];
+    _lblNetwork=  [self addLable:@""  ];
     _btnStream =  [self addButton:@"推流"  ];
     _btnCapture=  [self addButton:@"采集"  ];
     _lblStat   =  [self addLable:@""  ];
+    
     
     // stat string  formats
     _lblStat.backgroundColor = [UIColor clearColor];
     _lblStat.textColor = [UIColor redColor];
     _lblStat.numberOfLines = 7;
     _lblStat.textAlignment = NSTextAlignmentLeft;
+    // format
+    _lblNetwork.textAlignment = NSTextAlignmentCenter;
     return self;
 }
 
@@ -41,7 +45,7 @@
               and: _btnQuit];
     self.yPos = self.height - self.btnH - self.gap;
     [self putRow3:_btnCapture
-              and:nil
+              and:_lblNetwork
               and:_btnStream];
     self.btnH *= 7;
     self.yPos -= (self.btnH +self.gap*2);

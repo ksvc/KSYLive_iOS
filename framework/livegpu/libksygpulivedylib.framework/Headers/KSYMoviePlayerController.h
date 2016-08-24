@@ -84,11 +84,10 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 - (instancetype)initWithContentURL:(NSURL *)url NS_DESIGNATED_INITIALIZER;
 
 /**
- @abstract 视频文件的URL地址，该地址可以是本地地址或者服务器地址。
- @discussion 当播放器正在播放视频时，设置contenURL将不会导致播放新视频。如果希望播放新视频，需要调用[prepareToPlay]([KSYMediaPlayback prepareToPlay])方法.
+ @abstract 正在播放的视频文件的URL地址，该地址可以是本地地址或者服务器地址。
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
-@property (nonatomic, copy) NSURL *contentURL;
+@property (nonatomic, readonly) NSURL *contentURL;
 
 /**
  @abstract 包含视频播放内容的VIEW（只读）。
@@ -495,7 +494,6 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 /**
  @abstract 重新启动拉流
  @param aUrl 视频播放地址，该地址可以是本地地址或者服务器地址.如果为nil，则使用前一次播放地址
- @param flush 是否清除上一个url的缓冲区内容，该值为FALSE不清除，为TRUE则清除
  @discussion 调用场景如下：
  
  * 当播放器调用方发现卡顿时，可以主动调用
@@ -507,7 +505,37 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
  @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
-- (void)reload:(NSURL *)aUrl flush:(bool)flush;
+- (void)reload:(NSURL *)aUrl;
+
+/**
+ @abstract 重新启动拉流
+ @param aUrl 视频播放地址，该地址可以是本地地址或者服务器地址.如果为nil，则使用前一次播放地址
+ @param flush 是否清除上一个url的缓冲区内容，该值为NO不清除，为YES则清除
+ @discussion 说明：
+ 
+ * 如果在直播过程中使用reload，希望达到续播的效果，建议flush值设为NO
+ 
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 1.0 and later.
+ */
+- (void)reload:(NSURL *)aUrl flush:(BOOL)flush;
+
+/**
+ @abstract 重新启动拉流
+ @param aUrl 视频播放地址，该地址可以是本地地址或者服务器地址.如果为nil，则使用前一次播放地址
+ @param flush 是否清除上一个url的缓冲区内容，该值为NO不清除，为YES则清除
+ @param mode 配置reload后的加载模式，该值为MPMovieReloadMode_Fast则启用加速播放；若为MPMovieReloadMode_Accurate则启用精准查找模式播放
+ @discussion 说明：
+ 
+ * 如果在直播过程中使用reload，希望达到续播的效果，建议flush值设为NO
+ * 设置为MPMovieReloadMode_Fast模式可以加快起播速度，但在码流音视频交织较差的情况下，可能无法检测到所有音视频流
+ * 设置为MPMovieReloadMode_Accurate模式起播速度会有所下降，但可以保证检测到所有音视频流
+ * 如果是监听到MPMoviePlayerSuggestReloadNotification消息后调用reload接口，则mode模式一定要设置为MPMovieReloadMode_Accurate，其它情况可根据实际使用场景自行配置
+ 
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 1.6.3 and later.
+ */
+- (void)reload:(NSURL *)aUrl flush:(bool)flush mode:(MPMovieReloadMode)mode;
 
 /**
  @abstract 获取当前播放的pts
@@ -532,6 +560,7 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 
 /**
  @abstract 重置播放器
+ @param holdLastPic 是否保留最后一帧
  @discussion 使用说明
  
  * 通常用于使用一个对象进行多次播放的场景
@@ -542,7 +571,7 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
  @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.6.2 and later.
  */
-- (void)reset;
+- (void)reset:(BOOL)holdLastPic;
 
 @end
 

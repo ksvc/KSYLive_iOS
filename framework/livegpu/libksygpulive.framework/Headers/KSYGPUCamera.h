@@ -35,7 +35,18 @@
  */
 - (id)initWithSessionPreset:(NSString *)sessionPreset cameraPosition:(AVCaptureDevicePosition)cameraPosition;
 
-#pragma mark - KSYStreamer config
+#pragma mark - KSYGPUCamera config
+
+/**
+ @abstract 收到通知事件时是否暂停采集 (默认为YES)
+ @discussion 通知事件也包括下拉通知栏或上拉控制台
+ @discussion YES: 类似事件发生时 SDK主动暂停采集
+ @discussion NO: 发生时, 继续采集 , 但是切后台, 音频采集会停止
+ @discussion UIApplicationWillResignActiveNotification
+ @warning    如果需要后台推音频, 此参数需要设置为YES
+ */
+@property BOOL  bPauseCaptureOnNotice;
+
 /**
  @abstract 是否打断其他后台的音乐播放 (默认为YES)
  @discussion 也可以理解为是否允许在其他后台音乐播放的同时进行采集

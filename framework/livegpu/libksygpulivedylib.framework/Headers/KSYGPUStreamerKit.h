@@ -9,7 +9,13 @@
 @class KSYAudioMixer;
 @class KSYBgmPlayer;
 @class KSYMicMonitor;
+@class KSYAUAudioCapture;
 @class GPUImagePicture;
+@class GPUImageCropFilter;
+@class GPUImageLanczosResamplingFilter;
+@class KSYGPUPicOutput;
+@class KSYGPUYUVInput;
+@class GPUImageOutput;
 
 @interface KSYGPUStreamerKit : NSObject
 /**
@@ -68,10 +74,11 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  @abstract   设置当前使用的滤镜
  @discussion 若filter 为nil， 则关闭滤镜
  @discussion 若filter 为GPUImageFilter的实例，则使用该滤镜做处理
+ @discussion filter 也可以是GPUImageFilterGroup的实例，可以将多个滤镜组合
  
  @see GPUImageFilter
  */
-- (void) setupFilter:(GPUImageFilter*) filter;
+- (void) setupFilter:(GPUImageOutput<GPUImageInput>*) filter;
 
 /**
  @abstract   添加水印
@@ -137,8 +144,9 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 /**
  @abstract   获取当前使用的滤镜
  @discussion 通过此指针可以对滤镜参数进行设置
+ @waning     请确保外部保留了filter的真实类型的指针, 否则会出现奔溃
  */
-@property (nonatomic, readonly) GPUImageFilter* filter;
+@property (nonatomic, readonly) GPUImageOutput<GPUImageInput>* filter;
 
 /**
  @abstract   获取预览视图
@@ -396,5 +404,13 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  */
 @property (nonatomic, readonly) KSYMicMonitor  * micMonitor;
 
+#pragma mark - 图层接口
+@property (nonatomic, readonly)GPUImageCropFilter              * cropfilter;
+
+@property (nonatomic, readonly)GPUImageLanczosResamplingFilter * scalefilter;
+
+@property (nonatomic, readonly)KSYGPUPicOutput * picOutput;
+
+@property (nonatomic, readwrite)KSYGPUYUVInput           *yuvInput;
 
 @end

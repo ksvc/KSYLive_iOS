@@ -19,4 +19,5 @@
 @property UIButton * btnStream;
 @property UIButton * btnCapture;
 @property UILabel  * lblStat;
+@property UILabel  * lblNetwork;
 @end

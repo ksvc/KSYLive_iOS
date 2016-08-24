@@ -14,11 +14,14 @@ FOUNDATION_EXPORT double libqyliveVersionNumber;
 //! Project version string for libksylive.
 FOUNDATION_EXPORT const unsigned char libqyliveVersionString[];
 
+@class GPUImageOutput;
+
 // streamer
 #import "KSYTypeDef.h"
 #import "KSYStreamerBase.h"
 #import "KSYGPUStreamer.h"
 #import "KSYAudioMixer.h"
+#import "KSYAUAudioCapture.h"
 #import "KSYBgmPlayer.h"
 
 #import "KSYGPUStreamerKit.h"

@@ -525,7 +525,7 @@ dispatch_sync(dispatch_get_main_queue(), block);\
 
 - (IBAction)onReloadVideo:(id)sender {
     if (_player) {
-        [_player reload:_reloadUrl flush:FALSE];
+        [_player reload:_reloadUrl];
     }
 }
 
@@ -572,7 +572,7 @@ dispatch_sync(dispatch_get_main_queue(), block);\
               _player.bufferEmptyDuration);
         
         if(YES == switchOneInstance.on)
-            [_player reset];
+            [_player reset:NO];
         else
         {
             [_player stop];
@@ -638,7 +638,7 @@ dispatch_sync(dispatch_get_main_queue(), block);\
                  "videoTotalDataSize:%lld\n"
                  "totalDataSize:%lld\n",
                  [_player getVersion],
-                 _url,
+                 _player.contentURL,
                  serverIp,
                  _player.clientIP,
                  _player.localDNSIP,

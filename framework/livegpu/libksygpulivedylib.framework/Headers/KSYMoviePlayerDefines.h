@@ -60,9 +60,9 @@ typedef NS_ENUM(NSInteger, MPMovieStatus) {
     MPMovieStatusVideoDecodeWrong,
     ///音频解码出错
     MPMovieStatusAudioDecodeWrong,
-    //使用硬件解码
+    ///使用硬件解码
     MPMovieStatusHWCodecUsed,
-    //使用软件解码
+    ///使用软件解码
     MPMovieStatusSWCodecUsed
 };
 
@@ -76,6 +76,17 @@ typedef NS_ENUM(NSUInteger, MPMovieVideoDecoderMode) {
     MPMovieVideoDecoderMode_Hardware,
     ///自动选择解码方式，8.0以上的系统优先选择硬解
     MPMovieVideoDecoderMode_AUTO,
+};
+
+
+/**
+ * reload模式
+ */
+typedef NS_ENUM(NSUInteger, MPMovieReloadMode) {
+    ///加速播放模式
+    MPMovieReloadMode_Fast,
+    ///精确检测模式
+    MPMovieReloadMode_Accurate,
 };
 
 //----------------------------------------------

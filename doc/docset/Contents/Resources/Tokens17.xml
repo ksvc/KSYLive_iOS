@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPULogoFilter.html">
+	<File path="Classes/KSYGPUFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPULogoFilter</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUFilter</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
+			<DeclaredIn>KSYGPUFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="17"/>
@@ -13,170 +13,38 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/setLogoImage:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUFilter/encodeFilterString:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
+			<DeclaredIn>KSYGPUFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) UIImage *logoImage</Declaration>
+			<Declaration>- (NSString *)encodeFilterString:(NSString *)strString</Declaration>
 			
 			
-			<Anchor>//api/name/logoImage</Anchor>
+			<Anchor>//api/name/encodeFilterString:</Anchor>
             <NodeRef refid="17"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/logoImage</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUFilter/init</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
+			<DeclaredIn>KSYGPUFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) UIImage *logoImage</Declaration>
+			<Declaration>- (instancetype)init</Declaration>
 			
 			
-			<Anchor>//api/name/logoImage</Anchor>
+			<Anchor>//api/name/init</Anchor>
             <NodeRef refid="17"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPULogoFilter/logoImage</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUFilter/reload:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
+			<DeclaredIn>KSYGPUFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) UIImage *logoImage</Declaration>
-			
-			
-			<Anchor>//api/name/logoImage</Anchor>
-            <NodeRef refid="17"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/setLogoRect:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) CGRect logoRect</Declaration>
+			<Declaration>- (void)reload:(NSString *)fragmentShaderString</Declaration>
 			
 			
-			<Anchor>//api/name/logoRect</Anchor>
-            <NodeRef refid="17"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/logoRect</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) CGRect logoRect</Declaration>
-			
-			
-			<Anchor>//api/name/logoRect</Anchor>
-            <NodeRef refid="17"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPULogoFilter/logoRect</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) CGRect logoRect</Declaration>
-			
-			
-			<Anchor>//api/name/logoRect</Anchor>
-            <NodeRef refid="17"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/setLogoAlpha:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float logoAlpha</Declaration>
-			
-			
-			<Anchor>//api/name/logoAlpha</Anchor>
-            <NodeRef refid="17"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/logoAlpha</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float logoAlpha</Declaration>
-			
-			
-			<Anchor>//api/name/logoAlpha</Anchor>
-            <NodeRef refid="17"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPULogoFilter/logoAlpha</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float logoAlpha</Declaration>
-			
-			
-			<Anchor>//api/name/logoAlpha</Anchor>
-            <NodeRef refid="17"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/initWithLogo:toRect:alpha:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
-			
-			<Declaration>- (id)initWithLogo:(UIImage *)logo toRect:(CGRect)lRect alpha:(float)alpha</Declaration>
-			
-			
-			<Anchor>//api/name/initWithLogo:toRect:alpha:</Anchor>
-            <NodeRef refid="17"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/setLogoImage:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
-			
-			<Declaration>- (void)setLogoImage:(UIImage *)logo</Declaration>
-			
-			
-			<Anchor>//api/name/setLogoImage:</Anchor>
-            <NodeRef refid="17"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/setLogoAlpha:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
-			
-			<Declaration>- (void)setLogoAlpha:(float)alpha</Declaration>
-			
-			
-			<Anchor>//api/name/setLogoAlpha:</Anchor>
-            <NodeRef refid="17"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/setLogoRect:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
-			
-			<Declaration>- (void)setLogoRect:(CGRect)rect</Declaration>
-			
-			
-			<Anchor>//api/name/setLogoRect:</Anchor>
-            <NodeRef refid="17"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/clearLogo</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
-			
-			<Declaration>- (void)clearLogo</Declaration>
-			
-			
-			<Anchor>//api/name/clearLogo</Anchor>
+			<Anchor>//api/name/reload:</Anchor>
             <NodeRef refid="17"/>
 		</Token>
 		

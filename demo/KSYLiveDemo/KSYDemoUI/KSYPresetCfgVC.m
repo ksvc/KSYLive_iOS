@@ -26,6 +26,8 @@
 @end
 @interface KSYSimKitVC : UIViewController
 @end
+@interface captureVC : UIViewController
+@end
 #endif
 
 @interface KSYPresetCfgVC () {
@@ -96,6 +98,7 @@
 #ifdef KSYSTREAMER_DEMO
         vc = [[KSYSimpleStreamerVC alloc] init];
         vc = [[imageVC alloc] init];
+        vc = [[captureVC alloc] init];
         //vc = [[movieWriterVC alloc] init];
 #else
         [self dismissViewControllerAnimated:FALSE

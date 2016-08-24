@@ -134,9 +134,13 @@
 		
 		<option value="//api/name/isPlaying">- isPlaying</option>
 		
+		<option value="//api/name/reload:">- reload:</option>
+		
 		<option value="//api/name/reload:flush:">- reload:flush:</option>
 		
-		<option value="//api/name/reset">- reset</option>
+		<option value="//api/name/reload:flush:mode:">- reload:flush:mode:</option>
+		
+		<option value="//api/name/reset:">- reset:</option>
 		
 		<option value="//api/name/setTimeout:readTimeout:">- setTimeout:readTimeout:</option>
 		
@@ -285,12 +289,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>视频文件的URL地址，该地址可以是本地地址或者服务器地址。</p>
+				<p>正在播放的视频文件的URL地址，该地址可以是本地地址或者服务器地址。</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSURL *contentURL</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSURL *contentURL</code></div>
 
 		    
 			
@@ -304,11 +308,6 @@
 			</div>
 			
 
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>当播放器正在播放视频时，设置contenURL将不会导致播放新视频。如果希望播放新视频，需要调用<a href="../Protocols/KSYMediaPlayback.html#//api/name/prepareToPlay">prepareToPlay</a>方法.</p>
-			</div>
 			
 
 			
@@ -2307,8 +2306,8 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/reload:flush:" title="reload:flush:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/reload:flush:">&ndash;&nbsp;reload:flush:</a></code>
+	<a name="//api/name/reload:" title="reload:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/reload:">&ndash;&nbsp;reload:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -2323,7 +2322,7 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)reload:(NSURL *)<em>aUrl</em> flush:(bool)<em>flush</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)reload:(NSURL *)<em>aUrl</em></code></div>
 
 		    
 			
@@ -2334,11 +2333,6 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 					<tr>
 						<th scope="row" class="argument-name"><code>aUrl</code></th>
 						<td><p>视频播放地址，该地址可以是本地地址或者服务器地址.如果为nil，则使用前一次播放地址</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>flush</code></th>
-						<td><p>是否清除上一个url的缓冲区内容，该值为FALSE不清除，为TRUE则清除</p></td>
 					</tr>
 				
 				</table>
@@ -2365,6 +2359,160 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 <li>当发生WiFi/3G网络切换时，可以主动调用</li>
 <li>当播放器回调体现播放完成时，可以主动调用</li>
 <li>播放器SDK不会自动调用reload功能</li>
+</ul>
+<div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/reload:flush:" title="reload:flush:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/reload:flush:">&ndash;&nbsp;reload:flush:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>重新启动拉流</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)reload:(NSURL *)<em>aUrl</em> flush:(BOOL)<em>flush</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>aUrl</code></th>
+						<td><p>视频播放地址，该地址可以是本地地址或者服务器地址.如果为nil，则使用前一次播放地址</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>flush</code></th>
+						<td><p>是否清除上一个url的缓冲区内容，该值为NO不清除，为YES则清除</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in KSYMoviePlayerController 1.0 and later.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>说明：</p>
+
+<ul>
+<li>如果在直播过程中使用reload，希望达到续播的效果，建议flush值设为NO</li>
+</ul>
+<div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/reload:flush:mode:" title="reload:flush:mode:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/reload:flush:mode:">&ndash;&nbsp;reload:flush:mode:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>重新启动拉流</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)reload:(NSURL *)<em>aUrl</em> flush:(bool)<em>flush</em> mode:(MPMovieReloadMode)<em>mode</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>aUrl</code></th>
+						<td><p>视频播放地址，该地址可以是本地地址或者服务器地址.如果为nil，则使用前一次播放地址</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>flush</code></th>
+						<td><p>是否清除上一个url的缓冲区内容，该值为NO不清除，为YES则清除</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>mode</code></th>
+						<td><p>配置reload后的加载模式，该值为<a href="../Constants/MPMovieReloadMode.html">MPMovieReloadMode</a><em>Fast则启用加速播放；若为<a href="../Constants/MPMovieReloadMode.html">MPMovieReloadMode</a></em>Accurate则启用精准查找模式播放</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in KSYMoviePlayerController 1.6.3 and later.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>说明：</p>
+
+<ul>
+<li>如果在直播过程中使用reload，希望达到续播的效果，建议flush值设为NO</li>
+<li>设置为<a href="../Constants/MPMovieReloadMode.html">MPMovieReloadMode</a>_Fast模式可以加快起播速度，但在码流音视频交织较差的情况下，可能无法检测到所有音视频流</li>
+<li>设置为<a href="../Constants/MPMovieReloadMode.html">MPMovieReloadMode</a>_Accurate模式起播速度会有所下降，但可以保证检测到所有音视频流</li>
+<li>如果是监听到MPMoviePlayerSuggestReloadNotification消息后调用reload接口，则mode模式一定要设置为MPMovieReloadMode_Accurate，其它情况可根据实际使用场景自行配置</li>
 </ul>
 <div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div>
 			</div>
@@ -2505,8 +2653,8 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/reset" title="reset"></a>
-	<h3 class="method-title"><code><a href="#//api/name/reset">&ndash;&nbsp;reset</a></code>
+	<a name="//api/name/reset:" title="reset:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/reset:">&ndash;&nbsp;reset:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -2521,9 +2669,21 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)reset</code></div>
+			<div class="method-subsection method-declaration"><code>- (void)reset:(BOOL)<em>holdLastPic</em></code></div>
 
 		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>holdLastPic</code></th>
+						<td><p>是否保留最后一帧</p></td>
+					</tr>
+				
+				</table>
+			</div>
 			
 
 			
@@ -2578,7 +2738,7 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-08-15</p>
+						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-08-22</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
