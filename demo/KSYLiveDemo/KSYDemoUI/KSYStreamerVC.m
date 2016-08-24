@@ -598,8 +598,6 @@
         return;
     }
     int t = (int)_reverbView.reverbType.selectedSegmentIndex;
-    self.audioCapDev.reverbType = t;
-/*
     //cpu 混响
     if (t == 0){
         _reverb = nil;
@@ -607,7 +605,6 @@
     else {
         _reverb = [[ KSYAudioReverb alloc] initWithType:t];
     }
- */
 }
 
 #pragma mark - misc features

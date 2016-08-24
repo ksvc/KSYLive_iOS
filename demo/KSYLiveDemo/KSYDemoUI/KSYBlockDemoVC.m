@@ -53,8 +53,11 @@
     ///// 3.2 音频通路 ///////////
     // 核心部件:音频叠加混合
     self.aMixer = [[KSYAudioMixer alloc]init];
-    // 音频采集模块
-    self.audioCapDev = [[KSYAUAudioCapture alloc] init];
+    
+    // 混响
+    self.reverb    = nil;
+    // 耳返
+    self.micMonitor = nil;
     
     // 组装音频通道
     [self setupAudioPath];
@@ -67,7 +70,6 @@
     if (self.capDev) {
         [self setupVideoPath];
         [self.capDev startCameraCapture];
-        [self.audioCapDev startCapture];
     }
 }
 // 根据UI的朝向 , 决定是否需要宽高对调
@@ -120,13 +122,13 @@
     }
     self.capDev.frameRate      = [self.presetCfgView frameRate];
     self.capDev.bInterruptOtherAudio = NO;
-    self.capDev.bPauseCaptureOnNotice = NO;
     self.capDev.outputImageOrientation = [[UIApplication sharedApplication] statusBarOrientation];
 
     self.capDev.bStreamVideo = NO;
     self.capDev.bStreamAudio = NO;  // use mixer instead
     self.capDev.horizontallyMirrorFrontFacingCamera = NO;
     self.capDev.horizontallyMirrorRearFacingCamera  = NO;
+    [self.capDev addAudioInputsAndOutputs];
 }
 - (void) setStreamerCfg { // must set after capture
     [super setStreamerCfg];
@@ -190,13 +192,20 @@
 - (void) setupAudioPath {
     __weak KSYBlockDemoVC * vc = self;
     self.micTrack = 0;
-    self.audioCapDev.audioProcessingCallback = ^(CMSampleBufferRef buf){
+    //1. 采集设备的麦克风音频数据, 通过混响处理后, 送入混音器
+    self.capDev.audioProcessingCallback = ^(CMSampleBufferRef buf){
         if (![vc.streamerBase isStreaming]){
             return;
         }
+        if (vc.reverb){
+            [vc.reverb processAudioSampleBuffer:buf];
+        }
+        if (vc.aMixer){
+            [vc.aMixer processAudioSampleBuffer:buf of:vc.micTrack];
+        }
         [vc.aMixer processAudioSampleBuffer:buf of:vc.micTrack];
     };
-    
+
     //2. 背景音乐播放,音乐数据送入混音器
     self.bgmTrack = 1;
     self.bgmPlayer.audioDataBlock = ^(CMSampleBufferRef buf){
@@ -245,11 +254,9 @@
 - (void) onCapture{
     if (!self.capDev.isRunning){
         [self.capDev startCameraCapture];
-        [self.audioCapDev startCapture];
     }
     else {
         [self.capDev stopCameraCapture];
-        [self.audioCapDev stopCapture];
     }
 }
 - (void) onStream{
@@ -263,7 +270,7 @@
 }
 - (void) onQuit{  // quit current demo
     [self onPipStop];
-    [self.audioCapDev stopCapture];
+    [self.micMonitor stop];
     if (self.streamerBase){
         [self.streamerBase stopStream];
         self.streamerBase = nil;
@@ -383,15 +390,20 @@
 // 是否开启音频采集、耳返、回声消除
 - (void)onMiscSwitch:(UISwitch *)sw{
     if (sw == self.miscView.swPlayCapture){
-        if ( ![KSYAUAudioCapture isHeadsetPluggedIn] ) {
-            [self toast:@"没有耳机, 开启耳返会有刺耳的声音"];
-            sw.on = NO;
-            return;
+        if (sw.isOn){
+            if ( [KSYMicMonitor isHeadsetPluggedIn] == NO ){
+                [self toast:@"没有耳机, 开启耳返会有刺耳的声音"];
+                sw.on = NO;
+                return;
+            }
+            if (self.micMonitor == nil){
+                self.micMonitor = [[KSYMicMonitor alloc] init];
+            }
+            [self.micMonitor start];
         }
-        self.audioCapDev.bPlayCapturedAudio = sw.isOn;
-    }
-    else if (sw == self.miscView.swiauEchoCancelAudio){
-        self.audioCapDev.bEchoCancelAudio = sw.isOn;
+        else {
+            [self.micMonitor stop];
+        }
     }
     [super onMiscSwitch:sw];
 }
@@ -399,8 +411,8 @@
 // 调节耳返音量
 - (void)onMiscSlider:(KSYNameSlider *)slider {
     if (slider == self.miscView.micmVol){
-        if (self.audioCapDev){
-            self.audioCapDev.micVolume = slider.normalValue;
+        if (self.micMonitor){
+            [self.micMonitor setVolume:slider.normalValue];
         }
     }
 }
