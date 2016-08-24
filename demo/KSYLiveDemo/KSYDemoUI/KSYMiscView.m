@@ -45,8 +45,5 @@
     [self putRow3:_lblPlayCapture
               and:_swPlayCapture
               and:nil];
-    [self putRow3:_audioEchoCancelLabel
-              and:_swiauEchoCancelAudio
-              and:nil];
 }
 @end
