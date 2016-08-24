@@ -11,6 +11,8 @@
 		060277CD1BE995E500DD6A2D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 060277CC1BE995E500DD6A2D /* libz.dylib */; };
 		060277E01BE9FF7F00DD6A2D /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 060277DF1BE9FF7F00DD6A2D /* VideoToolbox.framework */; };
 		060AE9C51D4653010064DD65 /* KSYFileSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 060AE9C41D4653010064DD65 /* KSYFileSelector.m */; };
+		060BFE4D1D6B22CD00F36BCA /* KSYReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 065E7CF31D66E60F00EC8D45 /* KSYReachability.m */; };
+		065E7CF51D66E60F00EC8D45 /* KSYReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 065E7CF31D66E60F00EC8D45 /* KSYReachability.m */; };
 		0671DC5E1C0D5439000EE969 /* libbz2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0671DC5D1C0D5439000EE969 /* libbz2.dylib */; };
 		069E428A1C10357D00392B5E /* KSYLiveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 069E42881C10357D00392B5E /* KSYLiveVC.m */; };
 		06B2B1A91BE8F0D900E0CC85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B2B1A81BE8F0D900E0CC85 /* main.m */; };
@@ -51,8 +53,9 @@
 		06FBBD6B1D2E17E00065ED55 /* KSYUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD4A1D2E17E00065ED55 /* KSYUIView.m */; };
 		06FBBD6C1D2E17E00065ED55 /* KSYUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD4A1D2E17E00065ED55 /* KSYUIView.m */; };
 		584AD2C11D4F6649001CA44A /* KSYFileSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 060AE9C41D4653010064DD65 /* KSYFileSelector.m */; };
-		58A9C6581D61FF7C00FBDBBD /* libksygpulivedylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A9C6571D61FF7C00FBDBBD /* libksygpulivedylib.framework */; };
-		58A9C65A1D61FF8F00FBDBBD /* libksygpulivedylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 58A9C6591D61FF8F00FBDBBD /* libksygpulivedylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		58A59A4B1D6B25560086380D /* libksygpulivedylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A59A4A1D6B25560086380D /* libksygpulivedylib.framework */; };
+		58A59A4D1D6B25690086380D /* libksygpulivedylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A59A4C1D6B25690086380D /* libksygpulivedylib.framework */; };
+		58A59A4E1D6B25690086380D /* libksygpulivedylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 58A59A4C1D6B25690086380D /* libksygpulivedylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		58C462AE1D3C76E0001BC26A /* KSYProberVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C462AD1D3C76E0001BC26A /* KSYProberVC.m */; };
 		58C462B31D3C808A001BC26A /* KSYProberVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C462AD1D3C76E0001BC26A /* KSYProberVC.m */; };
 		5E231D2D1D22CF870064F77E /* KSYDBCreater.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B007381CE31547009AF074 /* KSYDBCreater.m */; };
@@ -73,7 +76,6 @@
 		5E231D411D22CF870064F77E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06B2B1B31BE8F0D900E0CC85 /* Main.storyboard */; };
 		5E231D421D22CF870064F77E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B2B1B81BE8F0D900E0CC85 /* LaunchScreen.xib */; };
 		5E231D431D22CF870064F77E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06B2B1B61BE8F0D900E0CC85 /* Images.xcassets */; };
-		5E72AEC11D22D10200F22AFF /* libksygpulivedylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E72AEBF1D22D0FC00F22AFF /* libksygpulivedylib.framework */; };
 		625EF3B51C9A95BE00DBA1CC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 625EF3B41C9A95BE00DBA1CC /* libsqlite3.tbd */; };
 		627FB6231CA2EEDB0029AD04 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 627FB6221CA2EEDB0029AD04 /* GPUImage.framework */; };
 		95B4A3EF1CBF6CC700CB6804 /* KSYSQLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B4A3EA1CBF6CC700CB6804 /* KSYSQLite.m */; };
@@ -87,13 +89,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		5E72AEC31D22D10200F22AFF /* Embed Frameworks */ = {
+		58A59A4F1D6B25690086380D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				58A9C65A1D61FF8F00FBDBBD /* libksygpulivedylib.framework in Embed Frameworks */,
+				58A59A4E1D6B25690086380D /* libksygpulivedylib.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,6 +108,8 @@
 		060277DF1BE9FF7F00DD6A2D /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		060AE9C31D4653010064DD65 /* KSYFileSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYFileSelector.h; sourceTree = "<group>"; };
 		060AE9C41D4653010064DD65 /* KSYFileSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYFileSelector.m; sourceTree = "<group>"; };
+		065E7CF31D66E60F00EC8D45 /* KSYReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYReachability.m; sourceTree = "<group>"; };
+		065E7CF41D66E60F00EC8D45 /* KSYReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYReachability.h; sourceTree = "<group>"; };
 		0671DC5D1C0D5439000EE969 /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = usr/lib/libbz2.dylib; sourceTree = SDKROOT; };
 		067EB3EA1CD998A800CE13AE /* libksygpulive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libksygpulive.framework; path = ../build/libksygpulive.framework; sourceTree = "<group>"; };
 		069E42881C10357D00392B5E /* KSYLiveVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYLiveVC.m; sourceTree = "<group>"; };
@@ -130,8 +134,6 @@
 		06FBBD2F1D2E17E00065ED55 /* KSYCtrlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYCtrlView.m; sourceTree = "<group>"; };
 		06FBBD301D2E17E00065ED55 /* KSYFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYFilterView.h; sourceTree = "<group>"; };
 		06FBBD311D2E17E00065ED55 /* KSYFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYFilterView.m; sourceTree = "<group>"; };
-		06FBBD321D2E17E00065ED55 /* KSYGPUStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYGPUStreamerVC.h; sourceTree = "<group>"; };
-		06FBBD331D2E17E00065ED55 /* KSYGPUStreamerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYGPUStreamerVC.m; sourceTree = "<group>"; };
 		06FBBD341D2E17E00065ED55 /* KSYKitDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYKitDemoVC.h; sourceTree = "<group>"; };
 		06FBBD351D2E17E00065ED55 /* KSYKitDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYKitDemoVC.m; sourceTree = "<group>"; };
 		06FBBD361D2E17E00065ED55 /* KSYMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYMenuView.h; sourceTree = "<group>"; };
@@ -144,8 +146,6 @@
 		06FBBD3D1D2E17E00065ED55 /* KSYPresetCfgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYPresetCfgView.m; sourceTree = "<group>"; };
 		06FBBD3E1D2E17E00065ED55 /* KSYReverbView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYReverbView.h; sourceTree = "<group>"; };
 		06FBBD3F1D2E17E00065ED55 /* KSYReverbView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYReverbView.m; sourceTree = "<group>"; };
-		06FBBD401D2E17E00065ED55 /* KSYStreamerKitVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYStreamerKitVC.h; sourceTree = "<group>"; };
-		06FBBD411D2E17E00065ED55 /* KSYStreamerKitVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYStreamerKitVC.m; sourceTree = "<group>"; };
 		06FBBD421D2E17E00065ED55 /* KSYStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYStreamerVC.h; sourceTree = "<group>"; };
 		06FBBD431D2E17E00065ED55 /* KSYStreamerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYStreamerVC.m; sourceTree = "<group>"; };
 		06FBBD451D2E17E00065ED55 /* KSYNameSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYNameSlider.h; sourceTree = "<group>"; };
@@ -154,8 +154,8 @@
 		06FBBD481D2E17E00065ED55 /* KSYUIVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYUIVC.m; sourceTree = "<group>"; };
 		06FBBD491D2E17E00065ED55 /* KSYUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYUIView.h; sourceTree = "<group>"; };
 		06FBBD4A1D2E17E00065ED55 /* KSYUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYUIView.m; sourceTree = "<group>"; };
-		58A9C6571D61FF7C00FBDBBD /* libksygpulivedylib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libksygpulivedylib.framework; path = ../framework/livegpu/libksygpulivedylib.framework; sourceTree = "<group>"; };
-		58A9C6591D61FF8F00FBDBBD /* libksygpulivedylib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libksygpulivedylib.framework; path = ../framework/livegpu/libksygpulivedylib.framework; sourceTree = "<group>"; };
+		58A59A4A1D6B25560086380D /* libksygpulivedylib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libksygpulivedylib.framework; path = ../framework/livegpu/libksygpulivedylib.framework; sourceTree = "<group>"; };
+		58A59A4C1D6B25690086380D /* libksygpulivedylib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libksygpulivedylib.framework; path = ../framework/livegpu/libksygpulivedylib.framework; sourceTree = "<group>"; };
 		58C462AD1D3C76E0001BC26A /* KSYProberVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYProberVC.m; path = KSYLiveDemo/KSYProberVC.m; sourceTree = "<group>"; };
 		58C462AF1D3C772F001BC26A /* KSYProberVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYProberVC.h; path = KSYLiveDemo/KSYProberVC.h; sourceTree = "<group>"; };
 		5E231D471D22CF870064F77E /* KSYLiveDemoDylib.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSYLiveDemoDylib.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,9 +199,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58A9C6581D61FF7C00FBDBBD /* libksygpulivedylib.framework in Frameworks */,
+				58A59A4B1D6B25560086380D /* libksygpulivedylib.framework in Frameworks */,
 				5E231D361D22CF870064F77E /* Security.framework in Frameworks */,
-				5E72AEC11D22D10200F22AFF /* libksygpulivedylib.framework in Frameworks */,
+				58A59A4D1D6B25690086380D /* libksygpulivedylib.framework in Frameworks */,
 				5E231D371D22CF870064F77E /* SystemConfiguration.framework in Frameworks */,
 				5E231D391D22CF870064F77E /* libsqlite3.tbd in Frameworks */,
 				5E231D3A1D22CF870064F77E /* libbz2.dylib in Frameworks */,
@@ -248,8 +248,8 @@
 		06B2B19A1BE8F0D900E0CC85 = {
 			isa = PBXGroup;
 			children = (
-				58A9C6591D61FF8F00FBDBBD /* libksygpulivedylib.framework */,
-				58A9C6571D61FF7C00FBDBBD /* libksygpulivedylib.framework */,
+				58A59A4C1D6B25690086380D /* libksygpulivedylib.framework */,
+				58A59A4A1D6B25560086380D /* libksygpulivedylib.framework */,
 				060AE9C21D4652CC0064DD65 /* Libs */,
 				06FBBD271D2E17E00065ED55 /* KSYDemoUI */,
 				067F7E4F1D4762AC00F54FEA /* KSYPlayer */,
@@ -313,10 +313,6 @@
 				06FBBD341D2E17E00065ED55 /* KSYKitDemoVC.h */,
 				06FBBD351D2E17E00065ED55 /* KSYKitDemoVC.m */,
 				06FBBD8E1D2E23110065ED55 /* subviews */,
-				06FBBD401D2E17E00065ED55 /* KSYStreamerKitVC.h */,
-				06FBBD411D2E17E00065ED55 /* KSYStreamerKitVC.m */,
-				06FBBD321D2E17E00065ED55 /* KSYGPUStreamerVC.h */,
-				06FBBD331D2E17E00065ED55 /* KSYGPUStreamerVC.m */,
 			);
 			name = KSYDemoUI;
 			path = KSYLiveDemo/KSYDemoUI;
@@ -325,6 +321,8 @@
 		06FBBD441D2E17E00065ED55 /* KSYUIUtils */ = {
 			isa = PBXGroup;
 			children = (
+				065E7CF41D66E60F00EC8D45 /* KSYReachability.h */,
+				065E7CF31D66E60F00EC8D45 /* KSYReachability.m */,
 				060AE9C31D4653010064DD65 /* KSYFileSelector.h */,
 				060AE9C41D4653010064DD65 /* KSYFileSelector.m */,
 				06FBBD451D2E17E00065ED55 /* KSYNameSlider.h */,
@@ -388,7 +386,7 @@
 				5E231D2B1D22CF870064F77E /* Sources */,
 				5E231D351D22CF870064F77E /* Frameworks */,
 				5E231D401D22CF870064F77E /* Resources */,
-				5E72AEC31D22D10200F22AFF /* Embed Frameworks */,
+				58A59A4F1D6B25690086380D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -486,6 +484,7 @@
 				06FBBD591D2E17E00065ED55 /* KSYMenuView.m in Sources */,
 				06FBBD4B1D2E17E00065ED55 /* KSYAudioMixerView.m in Sources */,
 				06FBBD611D2E17E00065ED55 /* KSYReverbView.m in Sources */,
+				065E7CF51D66E60F00EC8D45 /* KSYReachability.m in Sources */,
 				06FBBD5D1D2E17E00065ED55 /* KSYPresetCfgVC.m in Sources */,
 				060AE9C51D4653010064DD65 /* KSYFileSelector.m in Sources */,
 				06FBBD4F1D2E17E00065ED55 /* KSYBlockDemoVC.m in Sources */,
@@ -496,6 +495,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				060BFE4D1D6B22CD00F36BCA /* KSYReachability.m in Sources */,
 				584AD2C11D4F6649001CA44A /* KSYFileSelector.m in Sources */,
 				58C462B31D3C808A001BC26A /* KSYProberVC.m in Sources */,
 				F296EC011D352B07001C4120 /* KSYMiscView.m in Sources */,

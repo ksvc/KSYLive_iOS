@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUYUVInput.html">
+	<File path="Classes/KSYGPUTwoPassFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUYUVInput</TokenIdentifier>
-			<Abstract type="html">GPU图像输输入</Abstract>
-			<DeclaredIn>KSYGPUYUVInput.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUTwoPassFilter</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPUTwoPassFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="24"/>
@@ -13,11 +13,23 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUYUVInput/init</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUTwoPassFilter/encodeFilterString:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUYUVInput.h</DeclaredIn>
+			<DeclaredIn>KSYGPUTwoPassFilter.h</DeclaredIn>
 			
-			<Declaration>- (id)init</Declaration>
+			<Declaration>- (NSString *)encodeFilterString:(NSString *)strString</Declaration>
+			
+			
+			<Anchor>//api/name/encodeFilterString:</Anchor>
+            <NodeRef refid="24"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUTwoPassFilter/init</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPUTwoPassFilter.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)init</Declaration>
 			
 			
 			<Anchor>//api/name/init</Anchor>
@@ -25,39 +37,14 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUYUVInput/processSampleBuffer:</TokenIdentifier>
-			<Abstract type="html">输入图像数据</Abstract>
-			<DeclaredIn>KSYGPUYUVInput.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUTwoPassFilter/reloadFirstStageVertexShaderFromString:firstStageFragmentShaderFromString:secondStageVertexShaderFromString:secondStageFragmentShaderFromString:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPUTwoPassFilter.h</DeclaredIn>
 			
-			<Declaration>- (void)processSampleBuffer:(CMSampleBufferRef)sampleBuffer</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>sampleBuffer</Name>
-					<Abstract type="html">图像数据和时间信息</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>- (void)reloadFirstStageVertexShaderFromString:(NSString *)firstStageVertexShaderString firstStageFragmentShaderFromString:(NSString *)firstStageFragmentShaderString secondStageVertexShaderFromString:(NSString *)secondStageVertexShaderString secondStageFragmentShaderFromString:(NSString *)secondStageFragmentShaderString</Declaration>
 			
-			<Anchor>//api/name/processSampleBuffer:</Anchor>
-            <NodeRef refid="24"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUYUVInput/processPixelBuffer:time:</TokenIdentifier>
-			<Abstract type="html">输入图像数据</Abstract>
-			<DeclaredIn>KSYGPUYUVInput.h</DeclaredIn>
 			
-			<Declaration>- (void)processPixelBuffer:(CVPixelBufferRef)pixelBuffer time:(CMTime)timeInfo</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>pixelBuffer</Name>
-					<Abstract type="html">图像数据</Abstract>
-				</Parameter><Parameter>
-					<Name>timeInfo</Name>
-					<Abstract type="html">时间信息</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/processPixelBuffer:time:</Anchor>
+			<Anchor>//api/name/reloadFirstStageVertexShaderFromString:firstStageFragmentShaderFromString:secondStageVertexShaderFromString:secondStageFragmentShaderFromString:</Anchor>
             <NodeRef refid="24"/>
 		</Token>
 		

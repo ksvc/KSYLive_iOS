@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUPicOutput.html">
+	<File path="Classes/KSYGPULogoFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUPicOutput</TokenIdentifier>
-			<Abstract type="html">GPU图像输出</Abstract>
-			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPULogoFilter</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="18"/>
@@ -13,236 +13,170 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/init</TokenIdentifier>
-			<Abstract type="html">初始化方法</Abstract>
-			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/setLogoImage:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
 			
-			<Declaration>- (id)init</Declaration>
+			<Declaration>@property (nonatomic, readonly) UIImage *logoImage</Declaration>
 			
 			
-			<Anchor>//api/name/init</Anchor>
+			<Anchor>//api/name/logoImage</Anchor>
             <NodeRef refid="18"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setEnabled:</TokenIdentifier>
-			<Abstract type="html">GPUImageInput - (BOOL)enabled;</Abstract>
-			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/logoImage</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) BOOL enabled</Declaration>
+			<Declaration>@property (nonatomic, readonly) UIImage *logoImage</Declaration>
 			
 			
-			<Anchor>//api/name/enabled</Anchor>
+			<Anchor>//api/name/logoImage</Anchor>
             <NodeRef refid="18"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/enabled</TokenIdentifier>
-			<Abstract type="html">GPUImageInput - (BOOL)enabled;</Abstract>
-			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPULogoFilter/logoImage</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) BOOL enabled</Declaration>
+			<Declaration>@property (nonatomic, readonly) UIImage *logoImage</Declaration>
 			
 			
-			<Anchor>//api/name/enabled</Anchor>
+			<Anchor>//api/name/logoImage</Anchor>
             <NodeRef refid="18"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/enabled</TokenIdentifier>
-			<Abstract type="html">GPUImageInput - (BOOL)enabled;</Abstract>
-			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/setLogoRect:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) BOOL enabled</Declaration>
+			<Declaration>@property (nonatomic, readonly) CGRect logoRect</Declaration>
 			
 			
-			<Anchor>//api/name/enabled</Anchor>
+			<Anchor>//api/name/logoRect</Anchor>
             <NodeRef refid="18"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setBCustomOutputSize:</TokenIdentifier>
-			<Abstract type="html">是否使用自定义输出尺寸 (默认为NO)</Abstract>
-			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/logoRect</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL bCustomOutputSize</Declaration>
+			<Declaration>@property (nonatomic, readonly) CGRect logoRect</Declaration>
 			
 			
-			<Anchor>//api/name/bCustomOutputSize</Anchor>
+			<Anchor>//api/name/logoRect</Anchor>
             <NodeRef refid="18"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/bCustomOutputSize</TokenIdentifier>
-			<Abstract type="html">是否使用自定义输出尺寸 (默认为NO)</Abstract>
-			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPULogoFilter/logoRect</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL bCustomOutputSize</Declaration>
+			<Declaration>@property (nonatomic, readonly) CGRect logoRect</Declaration>
 			
 			
-			<Anchor>//api/name/bCustomOutputSize</Anchor>
+			<Anchor>//api/name/logoRect</Anchor>
             <NodeRef refid="18"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/bCustomOutputSize</TokenIdentifier>
-			<Abstract type="html">是否使用自定义输出尺寸 (默认为NO)</Abstract>
-			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/setLogoAlpha:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL bCustomOutputSize</Declaration>
+			<Declaration>@property (nonatomic, readonly) float logoAlpha</Declaration>
 			
 			
-			<Anchor>//api/name/bCustomOutputSize</Anchor>
+			<Anchor>//api/name/logoAlpha</Anchor>
             <NodeRef refid="18"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setOutputSize:</TokenIdentifier>
-			<Abstract type="html">output picture size</Abstract>
-			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/logoAlpha</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
 			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/bCustomOutputSize</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) CGSize outputSize</Declaration>
+			<Declaration>@property (nonatomic, readonly) float logoAlpha</Declaration>
 			
 			
-			<Anchor>//api/name/outputSize</Anchor>
+			<Anchor>//api/name/logoAlpha</Anchor>
             <NodeRef refid="18"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/outputSize</TokenIdentifier>
-			<Abstract type="html">output picture size</Abstract>
-			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPULogoFilter/logoAlpha</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
 			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/bCustomOutputSize</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) CGSize outputSize</Declaration>
+			<Declaration>@property (nonatomic, readonly) float logoAlpha</Declaration>
 			
 			
-			<Anchor>//api/name/outputSize</Anchor>
+			<Anchor>//api/name/logoAlpha</Anchor>
             <NodeRef refid="18"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/outputSize</TokenIdentifier>
-			<Abstract type="html">output picture size</Abstract>
-			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/initWithLogo:toRect:alpha:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
 			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/bCustomOutputSize</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) CGSize outputSize</Declaration>
+			<Declaration>- (id)initWithLogo:(UIImage *)logo toRect:(CGRect)lRect alpha:(float)alpha</Declaration>
 			
 			
-			<Anchor>//api/name/outputSize</Anchor>
+			<Anchor>//api/name/initWithLogo:toRect:alpha:</Anchor>
             <NodeRef refid="18"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setInputSize:</TokenIdentifier>
-			<Abstract type="html">input picture size</Abstract>
-			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/setLogoImage:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) CGSize inputSize</Declaration>
+			<Declaration>- (void)setLogoImage:(UIImage *)logo</Declaration>
 			
 			
-			<Anchor>//api/name/inputSize</Anchor>
+			<Anchor>//api/name/setLogoImage:</Anchor>
             <NodeRef refid="18"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/inputSize</TokenIdentifier>
-			<Abstract type="html">input picture size</Abstract>
-			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/setLogoAlpha:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) CGSize inputSize</Declaration>
+			<Declaration>- (void)setLogoAlpha:(float)alpha</Declaration>
 			
 			
-			<Anchor>//api/name/inputSize</Anchor>
+			<Anchor>//api/name/setLogoAlpha:</Anchor>
             <NodeRef refid="18"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/inputSize</TokenIdentifier>
-			<Abstract type="html">input picture size</Abstract>
-			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/setLogoRect:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) CGSize inputSize</Declaration>
+			<Declaration>- (void)setLogoRect:(CGRect)rect</Declaration>
 			
 			
-			<Anchor>//api/name/inputSize</Anchor>
+			<Anchor>//api/name/setLogoRect:</Anchor>
             <NodeRef refid="18"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setVideoProcessingCallback:</TokenIdentifier>
-			<Abstract type="html">视频处理回调接口</Abstract>
-			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/clearLogo</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CVPixelBufferRef pixelBuffer , CMTime timeInfo ) videoProcessingCallback</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>pixelBuffer</Name>
-					<Abstract type="html">美颜处理后，编码之前的视频数据</Abstract>
-				</Parameter><Parameter>
-					<Name>timeInfo</Name>
-					<Abstract type="html">时间戳
-@warnning   请注意本函数的执行时间，如果太长可能导致不可预知的问题</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>- (void)clearLogo</Declaration>
 			
-			<Anchor>//api/name/videoProcessingCallback</Anchor>
-            <NodeRef refid="18"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/videoProcessingCallback</TokenIdentifier>
-			<Abstract type="html">视频处理回调接口</Abstract>
-			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CVPixelBufferRef pixelBuffer , CMTime timeInfo ) videoProcessingCallback</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>pixelBuffer</Name>
-					<Abstract type="html">美颜处理后，编码之前的视频数据</Abstract>
-				</Parameter><Parameter>
-					<Name>timeInfo</Name>
-					<Abstract type="html">时间戳
-@warnning   请注意本函数的执行时间，如果太长可能导致不可预知的问题</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/videoProcessingCallback</Anchor>
-            <NodeRef refid="18"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/videoProcessingCallback</TokenIdentifier>
-			<Abstract type="html">视频处理回调接口</Abstract>
-			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CVPixelBufferRef pixelBuffer , CMTime timeInfo ) videoProcessingCallback</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>pixelBuffer</Name>
-					<Abstract type="html">美颜处理后，编码之前的视频数据</Abstract>
-				</Parameter><Parameter>
-					<Name>timeInfo</Name>
-					<Abstract type="html">时间戳
-@warnning   请注意本函数的执行时间，如果太长可能导致不可预知的问题</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/videoProcessingCallback</Anchor>
+			<Anchor>//api/name/clearLogo</Anchor>
             <NodeRef refid="18"/>
 		</Token>
 		

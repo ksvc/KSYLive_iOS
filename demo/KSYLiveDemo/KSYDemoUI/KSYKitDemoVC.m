@@ -48,7 +48,6 @@
                            forState: UIControlStateNormal];
     if (_kit) {
         // init with default filter
-        self.filter =self.ksyFilterView.curFilter;
         [_kit setupFilter:self.ksyFilterView.curFilter];
         [_kit startPreview:self.view];
     }
@@ -140,7 +139,7 @@
 - (void) onStream{
     if (_kit.streamerBase.streamState == KSYStreamStateIdle ||
         _kit.streamerBase.streamState == KSYStreamStateError) {
-        _kit.streamerBase.bWithVideo = !self.miscView.swiAudio.on;
+        _kit.streamerBase.bWithVideo = !self.miscView.swAudioOnly.on;
         [_kit.streamerBase startStream:self.hostURL];
         self.streamerBase = _kit.streamerBase;
         _seconds = 0;
@@ -165,7 +164,6 @@
 - (void) onFilterChange:(id)sender{
     if (self.ksyFilterView.curFilter != _kit.filter){
         // use a new filter
-        self.filter = self.ksyFilterView.curFilter;
         [_kit setupFilter:self.ksyFilterView.curFilter];
     }
 }
@@ -234,16 +232,22 @@
 #pragma mark - micMonitor
 // 是否开启耳返
 - (void)onMiscSwitch:(UISwitch *)sw{
-    if (sw == self.miscView.micmMix){
-        if ( [KSYMicMonitor isHeadsetPluggedIn] == NO ){
-            return;
-        }
+    if (sw == self.miscView.swPlayCapture){
         if (sw.isOn){
+            if ( [KSYMicMonitor isHeadsetPluggedIn] == NO ){
+                [self toast:@"没有耳机, 开启耳返会有刺耳的声音"];
+                sw.on = NO;
+                return;
+            }
             [_kit.micMonitor start];
         }
         else{
             [_kit.micMonitor stop];
         }
+    }
+    else if (sw == self.miscView.swiauEchoCancelAudio){
+        sw.on = NO;
+        NSLog(@"AEC in kit is coming soon");
     }
     [super onMiscSwitch:sw];
 }

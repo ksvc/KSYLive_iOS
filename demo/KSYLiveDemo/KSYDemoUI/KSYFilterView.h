@@ -7,13 +7,21 @@
 //
 
 #import "KSYUIView.h"
-@class KSYNameSlider;
-@class GPUImageFilter;
 
-@interface KSYFilterView : KSYUIView {
-    UIButton  * _filterBtns[6];
-}
-@property KSYNameSlider * filterLevel;
-// 通过按钮选择的滤镜
-@property GPUImageFilter * curFilter;
+
+@class GPUImageFilter;
+@class GPUImageFilterGroup;
+@class GPUImageOutput;
+@protocol GPUImageInput;
+
+@interface KSYFilterView : KSYUIView
+
+// 参数调节
+@property (nonatomic, readonly) KSYNameSlider * filterLevel;
+
+// 选择滤镜
+@property (nonatomic, readonly) GPUImageOutput<GPUImageInput>* curFilter;
+// 滤镜组合
+@property (nonatomic, readonly) UISegmentedControl  * filterGroupType;
+
 @end

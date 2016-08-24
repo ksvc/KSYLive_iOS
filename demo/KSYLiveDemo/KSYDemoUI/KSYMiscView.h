@@ -21,10 +21,11 @@
 @property UIButton* btn4;
 
 @property KSYNameSlider * micmVol;
-@property UISwitch      * micmMix;
-@property UILabel       * audioLabel;
-@property UISwitch      * swiAudio;
-// 初始化micm选择控件
-- (void) initMicmOutput;
+@property UILabel       * lblAudioOnly;
+@property UISwitch      * swAudioOnly;
+@property UILabel       * lblPlayCapture;
+@property UISwitch      * swPlayCapture;
+@property UILabel       * audioEchoCancelLabel;
+@property UISwitch      * swiauEchoCancelAudio;
 
 @end

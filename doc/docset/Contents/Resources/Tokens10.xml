@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUBeautifyPlusFilter.html">
+	<File path="Classes/KSYGPUBeautifyFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUBeautifyPlusFilter</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUBeautifyFilter</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUBeautifyPlusFilter.h</DeclaredIn>
+			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="10"/>
@@ -13,14 +13,98 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyPlusFilter/setBeautylevel:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyFilter/setBeautylevel:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUBeautifyPlusFilter.h</DeclaredIn>
+			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
 			
 			<Declaration>- (void)setBeautylevel:(int)level</Declaration>
 			
 			
 			<Anchor>//api/name/setBeautylevel:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyFilter/setSingleStepOffset:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGPoint singleStepOffset</Declaration>
+			
+			
+			<Anchor>//api/name/singleStepOffset</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyFilter/singleStepOffset</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGPoint singleStepOffset</Declaration>
+			
+			
+			<Anchor>//api/name/singleStepOffset</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUBeautifyFilter/singleStepOffset</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGPoint singleStepOffset</Declaration>
+			
+			
+			<Anchor>//api/name/singleStepOffset</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyFilter/setParams:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) GPUVector4 params</Declaration>
+			
+			
+			<Anchor>//api/name/params</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyFilter/params</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) GPUVector4 params</Declaration>
+			
+			
+			<Anchor>//api/name/params</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUBeautifyFilter/params</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) GPUVector4 params</Declaration>
+			
+			
+			<Anchor>//api/name/params</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyFilter/setTexelSize:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
+			
+			<Declaration>- (void)setTexelSize:(CGPoint)size</Declaration>
+			
+			
+			<Anchor>//api/name/setTexelSize:</Anchor>
             <NodeRef refid="10"/>
 		</Token>
 		

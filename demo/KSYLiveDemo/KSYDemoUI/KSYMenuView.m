@@ -22,7 +22,9 @@
         
         _backBtn   = [self addButton:@"返回菜单"
                               action:@selector(onBack:)];
+        _backBtn.hidden = YES;
     }
+    
     return self;
 }
 - (void)layoutUI{
@@ -30,7 +32,7 @@
     
     [self putRow: @[_bgmBtn, _pipBtn, _mixBtn,_backBtn] ];
     [self putRow: @[_filterBtn, _reverbBtn, _miscBtn, [NSNull null] ] ];
-    [self hideAllBtn:NO];
+    [self hideAllBtn:!_backBtn.hidden];
 }
 - (void)hideAllBtn: (BOOL) bHide {
     _backBtn.hidden   = !bHide; // 返回

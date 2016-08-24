@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUBeautifyFilter.html">
+	<File path="Classes/KSYGPUBeautifyExtFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUBeautifyFilter</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUBeautifyExtFilter</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
+			<DeclaredIn>KSYGPUBeautifyExtFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="9"/>
@@ -13,9 +13,9 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyFilter/setBeautylevel:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyExtFilter/setBeautylevel:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
+			<DeclaredIn>KSYGPUBeautifyExtFilter.h</DeclaredIn>
 			
 			<Declaration>- (void)setBeautylevel:(int)level</Declaration>
 			
@@ -25,9 +25,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyFilter/setSingleStepOffset:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyExtFilter/setSingleStepOffset:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
+			<DeclaredIn>KSYGPUBeautifyExtFilter.h</DeclaredIn>
 			
 			<Declaration>@property (readwrite, nonatomic) CGPoint singleStepOffset</Declaration>
 			
@@ -37,9 +37,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyFilter/singleStepOffset</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyExtFilter/singleStepOffset</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
+			<DeclaredIn>KSYGPUBeautifyExtFilter.h</DeclaredIn>
 			
 			<Declaration>@property (readwrite, nonatomic) CGPoint singleStepOffset</Declaration>
 			
@@ -49,9 +49,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUBeautifyFilter/singleStepOffset</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUBeautifyExtFilter/singleStepOffset</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
+			<DeclaredIn>KSYGPUBeautifyExtFilter.h</DeclaredIn>
 			
 			<Declaration>@property (readwrite, nonatomic) CGPoint singleStepOffset</Declaration>
 			
@@ -61,9 +61,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyFilter/setParams:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyExtFilter/setParams:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
+			<DeclaredIn>KSYGPUBeautifyExtFilter.h</DeclaredIn>
 			
 			<Declaration>@property (readwrite, nonatomic) GPUVector4 params</Declaration>
 			
@@ -73,9 +73,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyFilter/params</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyExtFilter/params</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
+			<DeclaredIn>KSYGPUBeautifyExtFilter.h</DeclaredIn>
 			
 			<Declaration>@property (readwrite, nonatomic) GPUVector4 params</Declaration>
 			
@@ -85,9 +85,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUBeautifyFilter/params</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUBeautifyExtFilter/params</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
+			<DeclaredIn>KSYGPUBeautifyExtFilter.h</DeclaredIn>
 			
 			<Declaration>@property (readwrite, nonatomic) GPUVector4 params</Declaration>
 			
@@ -97,9 +97,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyFilter/setTexelSize:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyExtFilter/setTexelSize:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
+			<DeclaredIn>KSYGPUBeautifyExtFilter.h</DeclaredIn>
 			
 			<Declaration>- (void)setTexelSize:(CGPoint)size</Declaration>
 			
