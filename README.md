@@ -38,7 +38,7 @@
 ### 2.1 2016年发布大事记  
 1. 2016.02.25 上行网络自适应上线；
 2. 2016.03.26 [内建美颜](https://github.com/ksvc/KSYLive_iOS/wiki/filter)上线；
-3. 2016.04.11 支持四种混响模式的[混音](https://github.com/ksvc/KSYLive_iOS/wiki/mixer)上线；
+3. 2016.04.11 支持四种混响模式的[美声](https://github.com/ksvc/KSYLive_iOS/wiki/reverb)上线；
 4. 2016.05.18 [耳返](https://github.com/ksvc/KSYLive_iOS/wiki/micMonitor)上线；
 5. 2016.06.12 [画中画](https://github.com/ksvc/KSYLive_iOS/wiki/pip)推流上线；
 6. 2016.06.27 支持短视频录制；
