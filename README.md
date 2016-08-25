@@ -34,16 +34,31 @@
 - [x] 业内一流的H.265解码；
 - [x] 小于2M大小的超轻量级直播sdk；
 
-## 二. SDK集成方法介绍   
-### 2.1 系统要求    
+## 二. 推流端大事记  
+### 2.1 2016年发布大事记  
+1. 2016.02.25 上行网络自适应上线；
+2. 2016.03.26 内建美颜上线；
+3. 2016.04.11 支持四种混响模式的美声上线；
+4. 2016.05.18 耳返上线；
+5. 2016.06.12 画中画推流上线；
+6. 2016.06.27 支持短视频录制；
+7. 2016.08.24 支持纯音频推流，支持后台音频推流，支持视频动态发送开关；
+
+### 2.2 近期工作  
+1. 2016.09.xx kit顶层库代码开源；
+2. 2016.09.xx 内建极致美颜上线；
+3. 2016.09.xx 高达50% cpu性能节省的场景编码上线；
+
+## 三. SDK集成方法介绍   
+### 3.1 系统要求    
 * 最低支持iOS版本：iOS 7.0
 * 最低支持iPhone型号：iPhone 4
 * 支持CPU架构： armv7,armv7s,arm64(和i386,x86_64模拟器)
 * 含有i386和x86_64模拟器版本的库文件，推流功能无法在模拟器上工作，播放功能完全支持模拟器。
 
-### 2.2 下载工程
+### 3.2 下载工程
 本SDK 提供如下三种获取方式:   
-#### 2.2.1 从[github](https://github.com/ksvc/KSYLive_iOS.git) clone
+#### 3.2.1 从[github](https://github.com/ksvc/KSYLive_iOS.git) clone
 
 目录结构如下所示:  
 - demo        : demo工程为KSYLive ，演示本SDK的主要接口的使用
@@ -55,14 +70,14 @@
 $ git clone https://github.com/ksvc/KSYLive_iOS.git KSYLive_iOS
 ```
 
-#### 2.2.2 从[oschina](http://git.oschina.net/ksvc/KSYLive_iOS) clone
+#### 3.2.2 从[oschina](http://git.oschina.net/ksvc/KSYLive_iOS) clone
 
 对于部分地方访问github比较慢的情况，可以从oschina clone，获取的库内容和github一致。
 ```
 $ git clone https://git.oschina.net/ksvc/KSYLive_iOS.git
 ```
 
-#### 2.2.3 使用Cocoapods 私有库进行安装    
+#### 3.2.3 使用Cocoapods 私有库进行安装    
 通过Cocoapods 能将本SDK的静态库framework下载到本地，只需要将如下语句加入你的Podfile：   
 ```
 pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
@@ -70,13 +85,13 @@ pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 
 执行 pod install 或者 pod update后，将SDK加入工程。
 
-#### 2.2.4 使用Cocoapods 官方库进行安装    
+#### 3.2.4 使用Cocoapods 官方库进行安装    
 配置工程Podfile文件，添加KSYGPULive_iOS配置信息
 ```
 pod 'KSYGPULive_iOS'
 ```
 
-### 2.3 添加framework到工程中
+### 3.3 添加framework到工程中
 * SDK压缩包
 将压缩包中framework下的libksygpulive.framework添加到XCode的工程，具体步骤为：
 1. 选中应用的Target，进入项目配置页面
@@ -86,7 +101,7 @@ pod 'KSYGPULive_iOS'
 * SDK Cocoapods
 在Podfile中本SDK的条目，并执行了 pod install 之后， 本SDK就已经加入工程中，打开工程的workspace即可。
 
-### 2.4 添加头文件到需要使用本SDK的文件中
+### 3.4 添加头文件到需要使用本SDK的文件中
 ```
 #import <GPUImage/GPUImage.h>
 #import <libksygpulive/libksygpulive.h>
@@ -98,27 +113,27 @@ pod 'KSYGPULive_iOS'
 * libksygpuimage.h 是依赖GPUImage部分的头文件
 * 当自定义GPUImage时，GPUImage的版本要求是0.1.7
 
-### 2.5 SDK版本号查询
+### 3.5 SDK版本号查询
 本SDK的版本号 主要通过核心类查询
 ```
 NSLog(@"version: %@", [streamerBase getKSYVersion]);
 NSLog(@"version: %@", [kit getKSYVersion]);
 ```
 
-### 2.6 集成时的注意事项
+### 3.6 集成时的注意事项
 * 本framework已经包含[播放SDK](https://github.com/ksvc/KSYMediaPlayer_iOS.git)   
 且会跟播放SDK产生冲突，在集成前，请先保证将之前集成的KSY播放SDK移除
 * 本framework可能与其他使用了FFmpeg的静态库冲突
 * 本framework为静态库，虽然库的大小为20M+，但是最后链接后，对app的增量只有4M+
 
-## 三. 参考文档
+## 四. 参考文档
 * [iOS直播推流SDK使用指南](https://github.com/ksvc/KSYLive_iOS/wiki/KSYStreamerSDKUserManual)
 * [iOS直播推流SDK常见问题](https://github.com/ksvc/KSYLive_iOS/wiki/FAQ)
 
-## 四. 播放器使用示例
+## 五. 播放器使用示例
 请见github库：https://github.com/ksvc/KSYMediaPlayer_iOS.git
 
-## 五. 反馈与建议
+## 六. 反馈与建议
 * 主页：[金山云](http://www.ksyun.com/)
 * 邮箱：<zengfanping@kingsoft.com>
 * QQ讨论群：574179720
