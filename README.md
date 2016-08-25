@@ -37,16 +37,16 @@
 ## 二. 推流端大事记  
 ### 2.1 2016年发布大事记  
 1. 2016.02.25 上行网络自适应上线；
-2. 2016.03.26 内建美颜上线；
-3. 2016.04.11 支持四种混响模式的美声上线；
-4. 2016.05.18 耳返上线；
-5. 2016.06.12 画中画推流上线；
+2. 2016.03.26 [内建美颜](https://github.com/ksvc/KSYLive_iOS/wiki/filter)上线；
+3. 2016.04.11 支持四种混响模式的[混音](https://github.com/ksvc/KSYLive_iOS/wiki/mixer)上线；
+4. 2016.05.18 [耳返](https://github.com/ksvc/KSYLive_iOS/wiki/micMonitor)上线；
+5. 2016.06.12 [画中画](https://github.com/ksvc/KSYLive_iOS/wiki/pip)推流上线；
 6. 2016.06.27 支持短视频录制；
-7. 2016.08.24 支持纯音频推流，支持后台音频推流，支持视频动态发送开关；
+7. 2016.08.24 支持[纯音频](https://github.com/ksvc/KSYLive_iOS/wiki/pureAudioStream)推流，支持后台音频推流，支持视频动态发送开关；
 
 ### 2.2 近期工作  
 1. 2016.09.xx kit顶层库代码开源；
-2. 2016.09.xx 内建极致美颜上线；
+2. 2016.09.xx 内建[极致美颜](https://github.com/ksvc/KSYLive_iOS/wiki/filter)上线；
 3. 2016.09.xx 高达50% cpu性能节省的场景编码上线；
 
 ## 三. SDK集成方法介绍   
