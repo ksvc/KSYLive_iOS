@@ -42,7 +42,8 @@
 4. 2016.05.18 [耳返](https://github.com/ksvc/KSYLive_iOS/wiki/micMonitor)上线；
 5. 2016.06.12 [画中画](https://github.com/ksvc/KSYLive_iOS/wiki/pip)推流上线；
 6. 2016.06.27 支持短视频录制；
-7. 2016.08.24 支持[纯音频](https://github.com/ksvc/KSYLive_iOS/wiki/pureAudioStream)推流，支持后台音频推流，支持视频动态发送开关；
+7. 2016.08.04 [两人连麦](https://github.com/ksvc/KSYLive_iOS/wiki/rtc)内测；
+8. 2016.08.24 支持[纯音频](https://github.com/ksvc/KSYLive_iOS/wiki/pureAudioStream)推流，支持后台音频推流，支持视频动态发送开关；
 
 ### 2.2 近期工作  
 1. 2016.09.xx kit顶层库代码开源；
