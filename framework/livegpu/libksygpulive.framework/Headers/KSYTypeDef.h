@@ -9,6 +9,27 @@
 #ifndef _KSYTypeDef_h_
 #define _KSYTypeDef_h_
 
+#pragma mark - scene and performance settings
+
+/// 直播场景 (KSY内部会根据场景的特征进行参数调优)
+typedef NS_ENUM(NSUInteger, KSYLiveScene) {
+    /// 默认通用场景(不确定场景时使用)
+    KSYLiveScene_Default = 0,
+    /// 秀场场景, 主播上半身为主
+    KSYLiveScene_Showself,
+    // others comming soon
+};
+
+/// 视频编码性能档次 (视频质量 和 设备资源之间的权衡)
+typedef NS_ENUM(NSUInteger, KSYVideoEncodePerformance) {
+    /// 低功耗:  cpu资源消耗低一些,视频质量差一些
+    KSYVideoEncodePer_LowPower= 0,
+    /// 均衡档次: 性价比比较高
+    KSYVideoEncodePer_Balance,
+    /// 高性能: 画面质量高
+    KSYVideoEncodePer_HighPerformance,
+};
+
 #pragma mark - Authorization
 
 /// 设备授权状态

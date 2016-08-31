@@ -15,7 +15,7 @@
 
 @property GPUImageCropFilter * cropfilter;
 @property GPUImageView       * preview;
-@property KSYGPUPicOutput    * yuvOutput;
+@property KSYGPUPicOutput    * gpuToStr;
 @end
 
 @implementation KSYBlockDemoVC
@@ -40,8 +40,8 @@
     _preview.frame = self.view.frame;
     [self.view addSubview:_preview];
     [self.view sendSubviewToBack:_preview];
-    // get pic data from filter
-    _yuvOutput =[[KSYGPUPicOutput alloc] init];
+    // get pic data from gpu filter
+    _gpuToStr =[[KSYGPUPicOutput alloc] init];
     [self setStreamerCfg];
     ///// 3. 数据处理和通路 ///////////
     ///// 3.1 视频通路 ///////////
@@ -53,11 +53,8 @@
     ///// 3.2 音频通路 ///////////
     // 核心部件:音频叠加混合
     self.aMixer = [[KSYAudioMixer alloc]init];
-    
-    // 混响
-    self.reverb    = nil;
-    // 耳返
-    self.micMonitor = nil;
+    // 音频采集模块
+    self.audioCapDev = [[KSYAUAudioCapture alloc] init];
     
     // 组装音频通道
     [self setupAudioPath];
@@ -70,6 +67,7 @@
     if (self.capDev) {
         [self setupVideoPath];
         [self.capDev startCameraCapture];
+        [self.audioCapDev startCapture];
     }
 }
 // 根据UI的朝向 , 决定是否需要宽高对调
@@ -122,19 +120,17 @@
     }
     self.capDev.frameRate      = [self.presetCfgView frameRate];
     self.capDev.bInterruptOtherAudio = NO;
+    self.capDev.bPauseCaptureOnNotice = NO;
     self.capDev.outputImageOrientation = [[UIApplication sharedApplication] statusBarOrientation];
 
     self.capDev.bStreamVideo = NO;
     self.capDev.bStreamAudio = NO;  // use mixer instead
-    self.capDev.horizontallyMirrorFrontFacingCamera = NO;
-    self.capDev.horizontallyMirrorRearFacingCamera  = NO;
-    [self.capDev addAudioInputsAndOutputs];
 }
 - (void) setStreamerCfg { // must set after capture
     [super setStreamerCfg];
     KSYVideoDimension dim = [self.presetCfgView strResolution];
     if (dim == [self.presetCfgView capResolution]){
-        _yuvOutput.bCustomOutputSize = NO;
+        _gpuToStr.bCustomOutputSize = NO;
         return;
     }
     CGSize sz = CGSizeMake(640, 360);
@@ -152,8 +148,8 @@
     }
     CGRect rect = {{0,0}, sz};
     rect = [ self getRectByOrientaion:rect];
-    _yuvOutput.bCustomOutputSize = YES;
-    _yuvOutput.outputSize = rect.size;
+    _gpuToStr.bCustomOutputSize = YES;
+    _gpuToStr.outputSize = rect.size;
 }
 
 -(void) setupVideoPath{
@@ -182,30 +178,32 @@
         src = self.pipFilter;
     }
     [src     addTarget:_preview];
-    [src     addTarget:_yuvOutput];
+    [src     addTarget:_gpuToStr];
     
     __weak KSYBlockDemoVC * vc = self;
-    _yuvOutput.videoProcessingCallback = ^(CVPixelBufferRef pixelBuffer, CMTime timeInfo ){
+    _gpuToStr.videoProcessingCallback = ^(CVPixelBufferRef pixelBuffer, CMTime timeInfo ){
         [vc.streamerBase processVideoPixelBuffer:pixelBuffer timeInfo:timeInfo];
     };
+    [self setupPicMirror];
+}
+
+- (void) setupPicMirror {
+    GPUImageRotationMode ro[] = {kGPUImageNoRotation,  kGPUImageFlipHorizonal};
+    BOOL previewFlip = self.ksyFilterView.swPrevewFlip.on;
+    BOOL streamFlip  = self.ksyFilterView.swStreamFlip.on;
+    [self.preview setInputRotation:ro[previewFlip] atIndex:0];
+    [self.gpuToStr setInputRotation:ro[streamFlip] atIndex:0];
 }
 - (void) setupAudioPath {
     __weak KSYBlockDemoVC * vc = self;
     self.micTrack = 0;
-    //1. 采集设备的麦克风音频数据, 通过混响处理后, 送入混音器
-    self.capDev.audioProcessingCallback = ^(CMSampleBufferRef buf){
+    self.audioCapDev.audioProcessingCallback = ^(CMSampleBufferRef buf){
         if (![vc.streamerBase isStreaming]){
             return;
         }
-        if (vc.reverb){
-            [vc.reverb processAudioSampleBuffer:buf];
-        }
-        if (vc.aMixer){
-            [vc.aMixer processAudioSampleBuffer:buf of:vc.micTrack];
-        }
         [vc.aMixer processAudioSampleBuffer:buf of:vc.micTrack];
     };
-
+    
     //2. 背景音乐播放,音乐数据送入混音器
     self.bgmTrack = 1;
     self.bgmPlayer.audioDataBlock = ^(CMSampleBufferRef buf){
@@ -254,14 +252,17 @@
 - (void) onCapture{
     if (!self.capDev.isRunning){
         [self.capDev startCameraCapture];
+        [self.audioCapDev startCapture];
     }
     else {
         [self.capDev stopCameraCapture];
+        [self.audioCapDev stopCapture];
     }
 }
 - (void) onStream{
     if (self.streamerBase.streamState == KSYStreamStateIdle ||
         self.streamerBase.streamState == KSYStreamStateError) {
+        
         [self.streamerBase startStream:self.hostURL];
     }
     else {
@@ -270,7 +271,7 @@
 }
 - (void) onQuit{  // quit current demo
     [self onPipStop];
-    [self.micMonitor stop];
+    [self.audioCapDev stopCapture];
     if (self.streamerBase){
         [self.streamerBase stopStream];
         self.streamerBase = nil;
@@ -285,6 +286,12 @@
     [self setupVideoPath];
 }
 
+- (void) onFilterSwitch:(id)sender{ // see kit or block
+    if (sender == self.ksyFilterView.swPrevewFlip ||
+        sender == self.ksyFilterView.swStreamFlip){
+        [self setupPicMirror];
+    }
+}
 // volume change
 - (void)onAMixerSlider:(KSYNameSlider *)slider {
     float val = 0.0;
@@ -387,32 +394,25 @@
 }
 
 #pragma mark - micMonitor
-// 是否开启音频采集、耳返、回声消除
+// 是否开启音频采集、耳返
 - (void)onMiscSwitch:(UISwitch *)sw{
     if (sw == self.miscView.swPlayCapture){
-        if (sw.isOn){
-            if ( [KSYMicMonitor isHeadsetPluggedIn] == NO ){
-                [self toast:@"没有耳机, 开启耳返会有刺耳的声音"];
-                sw.on = NO;
-                return;
-            }
-            if (self.micMonitor == nil){
-                self.micMonitor = [[KSYMicMonitor alloc] init];
-            }
-            [self.micMonitor start];
+        if ( ![KSYAUAudioCapture isHeadsetPluggedIn] ) {
+            [self toast:@"没有耳机, 开启耳返会有刺耳的声音"];
+            sw.on = NO;
+            return;
         }
-        else {
-            [self.micMonitor stop];
-        }
+        self.audioCapDev.bPlayCapturedAudio = sw.isOn;
     }
+
     [super onMiscSwitch:sw];
 }
 
 // 调节耳返音量
 - (void)onMiscSlider:(KSYNameSlider *)slider {
     if (slider == self.miscView.micmVol){
-        if (self.micMonitor){
-            [self.micMonitor setVolume:slider.normalValue];
+        if (self.audioCapDev){
+            self.audioCapDev.micVolume = slider.normalValue;
         }
     }
 }

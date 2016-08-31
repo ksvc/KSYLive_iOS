@@ -10,6 +10,7 @@
 #import "QRViewController.h"
 #import "KSYPlayerVC.h"
 #import "KSYProberVC.h"
+#import "MonkeyTestViewController.h"
 #import "KSYSQLite.h"
 #import "KSYDBCreater.h"
 #import "KSYPresetCfgVC.h"
@@ -94,7 +95,7 @@
 - (void)initVariable{
     _width  = self.view.frame.size.width;
     _height = self.view.frame.size.height;
-    _controllers = [NSArray arrayWithObjects:@"KSYPlayerVC",@"推流demo", @"文件格式探测", nil];
+    _controllers = [NSArray arrayWithObjects:@"KSYPlayerVC",@"推流demo", @"文件格式探测",  @"播放自动化测试", nil];
 }
 
 
@@ -186,6 +187,8 @@
                 vc = [[KSYPresetCfgVC alloc]initWithURL:_textFiled.text];
             }else if (indexPath.row == 2){
                 vc = [[KSYProberVC alloc]initWithURL:url];
+            }else if(indexPath.row == 3){
+                vc =  [[MonkeyTestViewController alloc] init];
             }
             if (vc){
                 [self presentViewController:vc animated:YES completion:nil];

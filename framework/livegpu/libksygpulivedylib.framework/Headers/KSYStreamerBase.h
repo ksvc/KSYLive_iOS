@@ -45,7 +45,7 @@
 @property (nonatomic, assign) int           videoFPS;
 
 /**
- @abstract   视频编码器 默认为264软编码
+ @abstract   视频编码器 默认为 自动选择
  @discussion video codec used for encode
  @see        KSYVideoCodec
  */
@@ -89,9 +89,19 @@
 @property (nonatomic, assign) int          audiokBPS;   // kbit/s of audio
 /**
  @abstract   启用自动调整码率 默认开启
- @discussion 自动根据网络状况调整码率,开始预览前设置有效
+ @discussion 自动根据网络状况调整码率,开始推流前设置有效
  */
 @property (nonatomic, assign) BOOL         enAutoApplyEstimateBW;
+/**
+ @abstract   本次直播的目标场景 (默认为KSYLiveScene_Default)
+ @discussion KSY内部会根据场景的特征进行参数调优,开始推流前设置有效
+ */
+@property (nonatomic, assign) KSYLiveScene              liveScene;
+/**
+ @abstract   视频编码性能档次 ( 默认为 KSYVideoEncodePer_LowPower)
+ @discussion 视频质量和设备资源之间的权衡,开始推流前设置有效
+ */
+@property (nonatomic, assign) KSYVideoEncodePerformance videoEncodePerf;
 
 /**
  @abstract 是否处理视频的图像数据 (默认YES)

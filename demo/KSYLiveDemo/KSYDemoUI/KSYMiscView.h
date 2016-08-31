@@ -25,7 +25,11 @@
 @property UISwitch      * swAudioOnly;
 @property UILabel       * lblPlayCapture;
 @property UISwitch      * swPlayCapture;
-@property UILabel       * audioEchoCancelLabel;
-@property UISwitch      * swiauEchoCancelAudio;
+
+@property UISegmentedControl  * liveSceneSeg;
+@property UISegmentedControl  * vEncPerfSeg;
+
+@property (nonatomic, readonly) KSYLiveScene liveScene;
+@property (nonatomic, readonly) KSYVideoEncodePerformance  vEncPerf;
 
 @end
