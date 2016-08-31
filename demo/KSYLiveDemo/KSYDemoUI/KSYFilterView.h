@@ -24,4 +24,7 @@
 // 滤镜组合
 @property (nonatomic, readonly) UISegmentedControl  * filterGroupType;
 
+// 镜像翻转按钮
+@property (nonatomic) UISwitch * swPrevewFlip;
+@property (nonatomic) UISwitch * swStreamFlip;
 @end

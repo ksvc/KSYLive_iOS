@@ -28,6 +28,8 @@
 @end
 @interface captureVC : UIViewController
 @end
+@interface gpuimageVC : UIViewController
+@end
 #endif
 
 @interface KSYPresetCfgVC () {
@@ -99,7 +101,8 @@
         vc = [[KSYSimpleStreamerVC alloc] init];
         vc = [[imageVC alloc] init];
         vc = [[captureVC alloc] init];
-        //vc = [[movieWriterVC alloc] init];
+        vc = [[movieWriterVC alloc] init];
+        vc = [[gpuimageVC alloc] init];
 #else
         [self dismissViewControllerAnimated:FALSE
                                  completion:nil];

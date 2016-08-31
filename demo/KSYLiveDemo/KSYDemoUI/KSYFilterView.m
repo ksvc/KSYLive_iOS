@@ -15,8 +15,11 @@
 @interface KSYFilterView() {
     UILabel * _lblSeg;
     NSInteger _curIdx;
+    
 }
 
+@property (nonatomic) UILabel * lbPrevewFlip;
+@property (nonatomic) UILabel * lbStreamFlip;
 @end
 
 @implementation KSYFilterView
@@ -34,6 +37,11 @@
      ]];
     _filterGroupType.selectedSegmentIndex = 1;
     [self selectFilter:1];
+    
+    _lbPrevewFlip = [self addLable:@"预览镜像"];
+    _lbStreamFlip = [self addLable:@"推流镜像"];
+    _swPrevewFlip = [self addSwitch:NO];
+    _swStreamFlip = [self addSwitch:NO];
     return self;
 }
 - (void)layoutUI{
@@ -41,6 +49,8 @@
     [self putRow1:_filterLevel];
     self.btnH = 30;
     [self putLable:_lblSeg andView: _filterGroupType];
+    [self putRow: @[_lbPrevewFlip, _swPrevewFlip,
+                    _lbStreamFlip, _swStreamFlip ]];
 }
 - (IBAction)onSegCtrl:(id)sender {
     if (_filterGroupType == sender){

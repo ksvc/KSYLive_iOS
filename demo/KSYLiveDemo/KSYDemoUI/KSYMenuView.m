@@ -15,7 +15,7 @@
     if (self) {
         _bgmBtn   = [self addButton:@"背景音乐"];
         _pipBtn    = [self addButton:@"画中画"];
-        _filterBtn = [self addButton:@"美颜"];
+        _filterBtn = [self addButton:@"滤镜/美颜"];
         _miscBtn   = [self addButton:@"其他"];
         _mixBtn    = [self addButton:@"混音"];
         _reverbBtn = [self addButton:@"混响"];

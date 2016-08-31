@@ -11,6 +11,8 @@
 
 @interface KSYMiscView() {
     UIButton * _curBtn;
+    UILabel  * _lblScene;
+    UILabel  * _lblPerf;
 }
 
 @end
@@ -27,8 +29,10 @@
     _swAudioOnly  = [self addSwitch:NO];
     _lblPlayCapture = [self addLable:@"耳返"];
     _swPlayCapture  = [self addSwitch:NO];
-    _audioEchoCancelLabel = [self addLable:@"回声消除"];
-    _swiauEchoCancelAudio = [self addSwitch:YES];
+    _lblScene      = [self addLable:@"直播场景"];
+    _liveSceneSeg  = [self addSegCtrlWithItems:@[ @"默认", @"秀场"]];
+    _lblPerf       = [self addLable:@"编码性能"];
+    _vEncPerfSeg   = [self addSegCtrlWithItems:@[ @"低功耗", @"均衡", @"高性能"]];
     return self;
 }
 
@@ -45,5 +49,34 @@
     [self putRow3:_lblPlayCapture
               and:_swPlayCapture
               and:nil];
+    [self putLable:_lblScene
+           andView:_liveSceneSeg];
+    [self putLable:_lblPerf
+           andView:_vEncPerfSeg];
+}
+
+@synthesize liveScene = _liveScene;
+- (KSYLiveScene) liveScene{
+    if (_liveSceneSeg.selectedSegmentIndex == 1){
+        return KSYLiveScene_Showself;
+    }
+    else {
+        return KSYLiveScene_Default;
+    }
+}
+@synthesize vEncPerf =  _vEncPerf;
+- (KSYVideoEncodePerformance) vEncPerf{
+    if ( _vEncPerfSeg.selectedSegmentIndex == 0){
+        return KSYVideoEncodePer_LowPower;
+    }
+    else if ( _vEncPerfSeg.selectedSegmentIndex == 1){
+        return KSYVideoEncodePer_Balance;
+    }
+    else if ( _vEncPerfSeg.selectedSegmentIndex == 2){
+        return KSYVideoEncodePer_HighPerformance;
+    }
+    else {
+        return KSYVideoEncodePer_Balance;
+    }
 }
 @end

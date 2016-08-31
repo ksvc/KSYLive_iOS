@@ -98,7 +98,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setVideoCodec:</TokenIdentifier>
-			<Abstract type="html">视频编码器 默认为264软编码</Abstract>
+			<Abstract type="html">视频编码器 默认为 自动选择</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 	<RelatedTokens>
@@ -115,7 +115,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/videoCodec</TokenIdentifier>
-			<Abstract type="html">视频编码器 默认为264软编码</Abstract>
+			<Abstract type="html">视频编码器 默认为 自动选择</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 	<RelatedTokens>
@@ -132,7 +132,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/videoCodec</TokenIdentifier>
-			<Abstract type="html">视频编码器 默认为264软编码</Abstract>
+			<Abstract type="html">视频编码器 默认为 自动选择</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 	<RelatedTokens>
@@ -456,6 +456,78 @@
 			
 			
 			<Anchor>//api/name/enAutoApplyEstimateBW</Anchor>
+            <NodeRef refid="35"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setLiveScene:</TokenIdentifier>
+			<Abstract type="html">本次直播的目标场景 (默认为KSYLiveScene_Default)</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) KSYLiveScene liveScene</Declaration>
+			
+			
+			<Anchor>//api/name/liveScene</Anchor>
+            <NodeRef refid="35"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/liveScene</TokenIdentifier>
+			<Abstract type="html">本次直播的目标场景 (默认为KSYLiveScene_Default)</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) KSYLiveScene liveScene</Declaration>
+			
+			
+			<Anchor>//api/name/liveScene</Anchor>
+            <NodeRef refid="35"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/liveScene</TokenIdentifier>
+			<Abstract type="html">本次直播的目标场景 (默认为KSYLiveScene_Default)</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) KSYLiveScene liveScene</Declaration>
+			
+			
+			<Anchor>//api/name/liveScene</Anchor>
+            <NodeRef refid="35"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setVideoEncodePerf:</TokenIdentifier>
+			<Abstract type="html">视频编码性能档次 ( 默认为 KSYVideoEncodePer_LowPower)</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) KSYVideoEncodePerformance videoEncodePerf</Declaration>
+			
+			
+			<Anchor>//api/name/videoEncodePerf</Anchor>
+            <NodeRef refid="35"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/videoEncodePerf</TokenIdentifier>
+			<Abstract type="html">视频编码性能档次 ( 默认为 KSYVideoEncodePer_LowPower)</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) KSYVideoEncodePerformance videoEncodePerf</Declaration>
+			
+			
+			<Anchor>//api/name/videoEncodePerf</Anchor>
+            <NodeRef refid="35"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/videoEncodePerf</TokenIdentifier>
+			<Abstract type="html">视频编码性能档次 ( 默认为 KSYVideoEncodePer_LowPower)</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) KSYVideoEncodePerformance videoEncodePerf</Declaration>
+			
+			
+			<Anchor>//api/name/videoEncodePerf</Anchor>
             <NodeRef refid="35"/>
 		</Token>
 		

@@ -230,6 +230,8 @@
     UISegmentedControl * segC;
     segC = [[UISegmentedControl alloc] initWithItems:items];
     segC.selectedSegmentIndex = 0;
+    segC.layer.cornerRadius = 5;
+    segC.backgroundColor = [UIColor lightGrayColor];
     [segC addTarget:self
                action:@selector(onSegCtrl:)
      forControlEvents:UIControlEventValueChanged];
@@ -361,7 +363,7 @@
 
 // 获取设备的UUID
 + (NSString *) getUuid{
-    return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    return [[[[UIDevice currentDevice] identifierForVendor] UUIDString] lowercaseString];
 }
 @end
 

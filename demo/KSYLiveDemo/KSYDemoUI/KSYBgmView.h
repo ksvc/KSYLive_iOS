@@ -23,9 +23,9 @@
 @property UISegmentedControl * loopType;
 
 // 当前播放的背景音乐的路径
-@property NSString* bgmPath;
+@property (nonatomic, readonly) NSString* bgmPath;
 // bgmStatus string
-@property NSString* bgmStatus;
+@property (nonatomic) NSString* bgmStatus;
 // match pattern
-@property NSArray* bgmPattern;
+@property (nonatomic, readonly) NSArray* bgmPattern;
 @end

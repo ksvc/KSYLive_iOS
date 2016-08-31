@@ -56,9 +56,7 @@ typedef struct _StreamState {
 @property (nonatomic, retain) KSYStreamerBase*   streamerBase;
 @property (nonatomic, retain) KSYGPUCamera*      capDev;
 @property (nonatomic, retain) KSYBgmPlayer*      bgmPlayer;
-@property (nonatomic, retain) KSYAudioReverb*    reverb;
-@property (nonatomic, retain) KSYMicMonitor*     micMonitor;
-
+@property (nonatomic, retain) KSYAUAudioCapture* audioCapDev;
 
 // 画中画
 @property (nonatomic, retain) KSYGPUYUVInput           *yuvInput;
@@ -82,6 +80,7 @@ typedef struct _StreamState {
 - (void) setCaptureCfg;
 // 推流的参数设置
 - (void) setStreamerCfg;
+- (void) updateStreamerCfg;
 
 // 一秒前的数据
 @property StreamState *lastState;

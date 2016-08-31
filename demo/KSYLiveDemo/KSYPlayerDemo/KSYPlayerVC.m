@@ -7,8 +7,11 @@
 
 #import "KSYPlayerVC.h"
 #import <CommonCrypto/CommonDigest.h>
+#import "QRViewController.h"
+#import "URLTableViewController.h"
 
-@interface KSYPlayerVC ()
+@interface KSYPlayerVC () <UITextFieldDelegate>
+@property (strong, nonatomic) NSMutableArray *urls;
 @property (strong, nonatomic) NSURL *url;
 @property (strong, nonatomic) NSURL *reloadUrl;
 @property (strong, nonatomic) KSYMoviePlayerController *player;
@@ -20,6 +23,7 @@ block();\
 } else {\
 dispatch_sync(dispatch_get_main_queue(), block);\
 }
+
 @implementation KSYPlayerVC{
     UILabel *stat;
     NSTimer* timer;
@@ -38,17 +42,18 @@ dispatch_sync(dispatch_get_main_queue(), block);\
     UIButton *btnReload;
     UIButton *btnRepeat;
     
+    UIButton *btnMute;
+    
+    UIButton *btnShotScreen;
+    
     UILabel  *lableHWCodec;
     UISwitch  *switchHwCodec;
     
-    UILabel  *labelMute;
-    UISwitch *switchMute;
-    
-    UILabel *labelOneInstance;
-    UISwitch *switchOneInstance;
-    
     UILabel *labelVolume;
     UISlider *sliderVolume;
+    
+    BOOL usingReset;
+    BOOL shouldMute;
     
     long long int prepared_time;
     int fvr_costtime;
@@ -68,10 +73,33 @@ dispatch_sync(dispatch_get_main_queue(), block);\
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _urls = [NSMutableArray array];
+    
     [self initUI];
-    //[self setupObservers];
     repeateTimer = nil;
+    
+    [self addObserver:self forKeyPath:@"player" options:NSKeyValueObservingOptionNew context:nil];
+    
+    UISwipeGestureRecognizer *leftSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
+    leftSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    UISwipeGestureRecognizer *rightSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
+    rightSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:leftSwipeRecognizer];
+    [self.view addGestureRecognizer:rightSwipeRecognizer];
+    
+    // 该变量决定停止播放时使用的接口，YES时调用reset接口，NO时调用stop接口
+    usingReset = YES;
+    
+    shouldMute = NO;
+    
+    
 }
+
+- (void)dealloc {
+    [self removeObserver:self forKeyPath:@"player"];
+}
+
 - (void) initUI {
     //add UIView for player
     videoView = [[UIView alloc] init];
@@ -79,31 +107,37 @@ dispatch_sync(dispatch_get_main_queue(), block);\
     [self.view addSubview:videoView];
     
     //add play button
-    btnPlay = [self addButtonWithTitle:@"play" action:@selector(onPlayVideo:)];
+    btnPlay = [self addButtonWithTitle:@"播放" action:@selector(onPlayVideo:)];
 
     //add pause button
-    btnPause = [self addButtonWithTitle:@"pause" action:@selector(onPauseVideo:)];
+    btnPause = [self addButtonWithTitle:@"暂停" action:@selector(onPauseVideo:)];
 
     //add resume button
-    btnResume = [self addButtonWithTitle:@"resume" action:@selector(onResumeVideo:)];
+    btnResume = [self addButtonWithTitle:@"继续" action:@selector(onResumeVideo:)];
     
     //add stop button
-    btnStop = [self addButtonWithTitle:@"stop" action:@selector(onStopVideo:)];
+    btnStop = [self addButtonWithTitle:@"停止" action:@selector(onStopVideo:)];
 
     //add quit button
-    btnQuit = [self addButtonWithTitle:@"quit" action:@selector(onQuit:)];
+    btnQuit = [self addButtonWithTitle:@"退出" action:@selector(onQuit:)];
     
     //add rotate button
-    btnRotate = [self addButtonWithTitle:@"rotate" action:@selector(onRotate:)];
+    btnRotate = [self addButtonWithTitle:@"旋转" action:@selector(onRotate:)];
    
 	//add content mode buttpn
-	btnContentMode = [self addButtonWithTitle:@"mode" action:@selector(onContentMode:)];
+	btnContentMode = [self addButtonWithTitle:@"缩放" action:@selector(onContentMode:)];
     
     //add reload button
     btnReload = [self addButtonWithTitle:@"reload" action:@selector(onReloadVideo:)];
     
     //add repeate play button
     btnRepeat = [self addButtonWithTitle:@"repeat" action:@selector(onRepeatPlay:)];
+    
+    btnShotScreen = [self addButtonWithTitle:@"截图" action:@selector(onShotScreen:)];
+    
+    btnMute = [self addButtonWithTitle:@"mute" action:@selector(onMute:)];
+    [btnMute setImage:[UIImage imageNamed:@"unmute.png"] forState:UIControlStateNormal];
+    btnMute.imageView.contentMode = UIViewContentModeScaleAspectFit;
 
 	stat = [[UILabel alloc] init];
     stat.backgroundColor = [UIColor clearColor];
@@ -113,55 +147,30 @@ dispatch_sync(dispatch_get_main_queue(), block);\
     [self.view addSubview:stat];
     
     lableHWCodec = [[UILabel alloc] init];
-    lableHWCodec.text = @"开启硬件解码";
+    lableHWCodec.text = @"硬解码";
     lableHWCodec.textColor = [UIColor lightGrayColor];
     [self.view addSubview:lableHWCodec];
-    
-    labelMute = [[UILabel alloc] init];
-    labelMute.text = @"静音";
-    labelMute.textColor = [UIColor lightGrayColor];
-    [self.view addSubview:labelMute];
-    
-    labelOneInstance = [[UILabel alloc] init];
-    labelOneInstance.text = @"一个对象多次播放";
-    labelOneInstance.textColor = [UIColor lightGrayColor];
-    [self.view addSubview:labelOneInstance];
     
     labelVolume = [[UILabel alloc] init];
     labelVolume.text = @"音量";
     labelVolume.textColor = [UIColor lightGrayColor];
     [self.view addSubview:labelVolume];
     
-//    switchVPP = [[UISwitch alloc] init];
-//    [self.view addSubview:switchVPP];
-//    switchVPP.on = YES;
-    
-//    switchLog = [[UISwitch alloc] init];
-//    [switchLog addTarget:self action:@selector(switchControlEvent:) forControlEvents:UIControlEventValueChanged];
-//    [self.view addSubview:switchLog];
-//    switchLog.on = YES;
-    
     switchHwCodec = [[UISwitch alloc] init];
     [self.view  addSubview:switchHwCodec];
     switchHwCodec.on = YES;
-    
-    switchMute = [[UISwitch alloc] init];
-    [switchMute addTarget:self action:@selector(switchMuteEvent:) forControlEvents:UIControlEventValueChanged];
-    [self.view  addSubview:switchMute];
-    switchMute.on = NO;
-    
-    switchOneInstance = [[UISwitch alloc] init];
-    [self.view  addSubview:switchOneInstance];
-    switchOneInstance.on = NO;
     
     sliderVolume = [[UISlider alloc] init];
     sliderVolume.minimumValue = 0;
     sliderVolume.maximumValue = 100;
     sliderVolume.value = 100;
     [sliderVolume addTarget:self action:@selector(onVolumeChanged:) forControlEvents:UIControlEventValueChanged];
+    
     [self.view addSubview:sliderVolume];
 
     [self layoutUI];
+    
+    [self.view bringSubviewToFront:stat];
 }
 - (UIButton *)addButtonWithTitle:(NSString *)title action:(SEL)action{
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -186,26 +195,17 @@ dispatch_sync(dispatch_get_main_queue(), block);\
 
     yPos = 2 * gap;
     xPos = gap;
-    
-    labelOneInstance.frame = CGRectMake(xPos, yPos, btnWdt * 3, btnHgt);
-    yPos +=  gap + btnHgt;
-    lableHWCodec.frame =CGRectMake(xPos, yPos, btnWdt * 3, btnHgt);
-    yPos += gap + btnHgt;
-    labelMute.frame  = CGRectMake(xPos, yPos, btnWdt * 3, btnHgt);
-    yPos += gap + btnHgt;
     labelVolume.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    
-    xPos = wdt / 2 - btnWdt / 2;
-    yPos = 2 * gap;
-    switchOneInstance.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    yPos += gap + btnHgt;
+    xPos += btnWdt + gap;
+    sliderVolume.frame  = CGRectMake(xPos, yPos, wdt - 3 * gap - btnWdt, btnHgt);
+    yPos += btnHgt + gap;
+    xPos = gap;
+    lableHWCodec.frame =CGRectMake(xPos, yPos, btnWdt * 2, btnHgt);
+    xPos += btnWdt + gap;
     switchHwCodec.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    yPos += gap + btnHgt;
-    switchMute.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    yPos += gap + btnHgt;
-    sliderVolume.frame  = CGRectMake(gap + btnWdt, yPos, 300, 20);
-
+    
     videoView.frame = CGRectMake(0, 0, wdt, hgt);
+    
     xPos = gap;
     yPos = hgt - btnHgt - gap;
     btnPlay.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
@@ -217,17 +217,20 @@ dispatch_sync(dispatch_get_main_queue(), block);\
     btnStop.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     xPos += gap + btnWdt;
     btnQuit.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
+    
     xPos = gap;
 	yPos -= (btnHgt + gap);
     btnRotate.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     xPos += gap + btnWdt;
     btnContentMode.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     xPos += gap + btnWdt;
+    btnShotScreen.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
+    xPos += gap + btnWdt;
     btnReload.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     xPos += gap + btnWdt;
-    btnRepeat.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
+    btnMute.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     
-	stat.frame = CGRectMake(gap, 0, wdt, hgt);
+    stat.frame = CGRectMake(0, 0, wdt, hgt);
 }
 
 - (BOOL)shouldAutorotate {
@@ -459,68 +462,103 @@ dispatch_sync(dispatch_get_main_queue(), block);\
                                                    name:MPMoviePlayerPlaybackStatusNotification
                                                  object:_player];
 }
+
+- (void)initPlayerWithURL:(NSURL *)aURL {
+    lastSize = 0.0;
+    self.player = [[KSYMoviePlayerController alloc] initWithContentURL: aURL];
+    [self setupObservers];
+    
+    _player.logBlock = ^(NSString *logJson){
+        NSLog(@"logJson is %@",logJson);
+    };
+    
+#if 0
+    _player.videoDataBlock = ^(CMSampleBufferRef sampleBuffer){
+        CMItemCount count;
+        CMSampleTimingInfo timing_info;
+        OSErr ret = CMSampleBufferGetOutputSampleTimingInfoArray(sampleBuffer, 1, &timing_info, &count);
+        if ( ret == noErr) {
+            NSLog(@"video Pts %d %lld",  timing_info.presentationTimeStamp.timescale, timing_info.presentationTimeStamp.value );
+        }
+    };
+    
+    _player.audioDataBlock = ^(CMSampleBufferRef sampleBuffer){
+        CMItemCount count;
+        CMSampleTimingInfo timing_info;
+        OSErr ret = CMSampleBufferGetOutputSampleTimingInfoArray(sampleBuffer, 1, &timing_info, &count);
+        if ( ret == noErr) {
+            NSLog(@"audio Pts %d %lld",  timing_info.presentationTimeStamp.timescale, timing_info.presentationTimeStamp.value );
+        }
+    };
+#endif
+    stat.text = [NSString stringWithFormat:@"url %@", aURL];
+    _player.controlStyle = MPMovieControlStyleNone;
+    [_player.view setFrame: videoView.bounds];  // player's frame must match parent's
+    [videoView addSubview: _player.view];
+    [videoView bringSubviewToFront:stat];
+    videoView.autoresizesSubviews = TRUE;
+    _player.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    _player.shouldAutoplay = TRUE;
+    _player.shouldEnableVideoPostProcessing = TRUE;
+    _player.scalingMode = MPMovieScalingModeAspectFit;
+    content_mode = _player.scalingMode + 1;
+    if(content_mode > MPMovieScalingModeFill)
+        content_mode = MPMovieScalingModeNone;
+    
+    _player.videoDecoderMode = switchHwCodec.isOn? MPMovieVideoDecoderMode_Hardware : MPMovieVideoDecoderMode_Software;
+    _player.shouldMute = shouldMute;
+    _player.shouldEnableKSYStatModule = TRUE;
+    _player.shouldLoop = NO;
+    [_player setTimeout:10 readTimeout:60];
+    
+    NSKeyValueObservingOptions opts = NSKeyValueObservingOptionNew;
+    [_player addObserver:self forKeyPath:@"currentPlaybackTime" options:opts context:nil];
+    [_player addObserver:self forKeyPath:@"clientIP" options:opts context:nil];
+    [_player addObserver:self forKeyPath:@"localDNSIP" options:opts context:nil];
+    
+    NSLog(@"sdk version:%@", [_player getVersion]);
+    prepared_time = (long long int)([self getCurrentTime] * 1000);
+    [_player prepareToPlay];
+}
+
+- (IBAction)onShotScreen:(id)sender {
+    if (_player) {
+        UIImage *thumbnailImage = _player.thumbnailImageAtCurrentTime;
+        UIImageWriteToSavedPhotosAlbum(thumbnailImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    }
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
+    
+    if (error == nil) {
+        UIAlertView *toast = [[UIAlertView alloc] initWithTitle:@"O(∩_∩)O~~"
+                                                        message:@"截图已保存至手机相册"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil, nil];
+        [toast show];
+        
+    }else{
+        
+        UIAlertView *toast = [[UIAlertView alloc] initWithTitle:@"￣へ￣"
+                                                        message:@"截图失败！"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil, nil];
+        [toast show];
+    }
+    
+}
+
 - (IBAction)onPlayVideo:(id)sender {
     
     if(nil == _player)
     {
-        lastSize = 0.0;
-        _player = [[KSYMoviePlayerController alloc] initWithContentURL: _url];
-        [self setupObservers];
-        
-        _player.logBlock = ^(NSString *logJson){
-            NSLog(@"logJson is %@",logJson);
-        };
-        
-#if 0
-		_player.videoDataBlock = ^(CMSampleBufferRef sampleBuffer){
-			CMItemCount count;
-			CMSampleTimingInfo timing_info;
-			OSErr ret = CMSampleBufferGetOutputSampleTimingInfoArray(sampleBuffer, 1, &timing_info, &count);
-			if ( ret == noErr) {
-				NSLog(@"video Pts %d %lld",  timing_info.presentationTimeStamp.timescale, timing_info.presentationTimeStamp.value );
-			}
-		};
-
-		_player.audioDataBlock = ^(CMSampleBufferRef sampleBuffer){
-			CMItemCount count;
-			CMSampleTimingInfo timing_info;
-			OSErr ret = CMSampleBufferGetOutputSampleTimingInfoArray(sampleBuffer, 1, &timing_info, &count);
-			if ( ret == noErr) {
-				NSLog(@"audio Pts %d %lld",  timing_info.presentationTimeStamp.timescale, timing_info.presentationTimeStamp.value );
-			}
-		};
-#endif
-        stat.text = [NSString stringWithFormat:@"url %@", _url];
-        _player.controlStyle = MPMovieControlStyleNone;
-        [_player.view setFrame: videoView.bounds];  // player's frame must match parent's
-        [videoView addSubview: _player.view];
-        [videoView bringSubviewToFront:stat];
-        videoView.autoresizesSubviews = TRUE;
-        _player.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-        _player.shouldAutoplay = TRUE;
-        _player.shouldEnableVideoPostProcessing = TRUE;
-        _player.scalingMode = MPMovieScalingModeAspectFit;
-        content_mode = _player.scalingMode + 1;
-        if(content_mode > MPMovieScalingModeFill)
-            content_mode = MPMovieScalingModeNone;
-        
-        _player.videoDecoderMode = switchHwCodec.isOn? MPMovieVideoDecoderMode_Hardware : MPMovieVideoDecoderMode_Software;
-        _player.shouldMute  = switchMute.isOn;
-        _player.shouldEnableKSYStatModule = TRUE;
-        _player.shouldLoop = NO;
-        [_player setTimeout:10 readTimeout:60];
-        
-        NSKeyValueObservingOptions opts = NSKeyValueObservingOptionNew;
-        [_player addObserver:self forKeyPath:@"currentPlaybackTime" options:opts context:nil];
-        [_player addObserver:self forKeyPath:@"clientIP" options:opts context:nil];
-        [_player addObserver:self forKeyPath:@"localDNSIP" options:opts context:nil];
+        [self initPlayerWithURL:_url];
+    } else {
+        [_player setUrl:_url];
+        [_player prepareToPlay];
     }
-    else
-        [_player setUrl:[NSURL URLWithString:@"http://maichang.kssws.ks-cdn.com/upload20150716161913.mp4"]];
-        
-    NSLog(@"sdk version:%@", [_player getVersion]);
-    prepared_time = (long long int)([self getCurrentTime] * 1000);
-    [_player prepareToPlay];
 }
 
 - (IBAction)onReloadVideo:(id)sender {
@@ -542,26 +580,54 @@ dispatch_sync(dispatch_get_main_queue(), block);\
     }
 }
 
+- (void)randomPlay {
+    NSURL *randomURL = [_urls objectAtIndex:arc4random() % _urls.count];
+    if (_player == nil) {
+        [self initPlayerWithURL:randomURL];
+    } else {
+        [_player reset:NO];
+        [_player setUrl:randomURL];
+        [_player prepareToPlay];
+    }
+}
+
 - (void)repeatPlay:(NSTimer *)t {
-    if(nil == _player||arc4random() % 20 == 0 || _player.currentPlaybackTime > 60)
-    {
-        dispatch_main_sync_safe(^{
-            [self onStopVideo:nil];
-            [self onPlayVideo:nil];
-            _player.bufferTimeMax = (arc4random() % 8) - 1;
-            NSLog(@"bufferTimeMax %f", _player.bufferTimeMax);
-        });
-    }else if(arc4random() % 15 == 0){
-        [self onReloadVideo:nil];
-    }else if(arc4random() % 25 == 0){
-        switchHwCodec.on = !switchHwCodec.isOn;
+    if (_urls.count > 0) {
+        if(nil == _player||arc4random() % 20 == 0 || _player.currentPlaybackTime > 60)
+        {
+            dispatch_main_sync_safe(^{
+                [self onStopVideo:nil];
+                [self randomPlay];
+                _player.bufferTimeMax = (arc4random() % 8) - 1;
+                NSLog(@"bufferTimeMax %f", _player.bufferTimeMax);
+            });
+            stat.text = [NSString stringWithFormat:@"change stream"];
+        }else if(arc4random() % 15 == 0){
+            [self onReloadVideo:nil];
+            stat.text = [NSString stringWithFormat:@"reload stream"];
+        }else if(arc4random() % 25 == 0){
+            switchHwCodec.on = !switchHwCodec.isOn;
+            stat.text = [NSString stringWithFormat:@"%@", switchHwCodec.isOn ? @"hardware codec" : @"software codec"];
+        }
     }
 }
 - (IBAction)onRepeatPlay:(id)sender{
     if ([repeateTimer isValid]) {
         [repeateTimer invalidate];
     }else{
-        repeateTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(repeatPlay:) userInfo:nil repeats:YES];
+        URLTableViewController *URLTableVC = [[URLTableViewController alloc] initWithURLs:_urls];
+        URLTableVC.getURLs = ^(NSArray<NSURL *> *scannedURLs){
+            [_urls removeAllObjects];
+            for (NSURL *url in scannedURLs) {
+                [_urls addObject:url];
+            }
+            
+            [repeateTimer fire];
+        };
+        UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:URLTableVC];
+        [self presentViewController:navVC animated:YES completion:nil];
+        
+        repeateTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(repeatPlay:) userInfo:nil repeats:YES];
     }
 }
 - (IBAction)onStopVideo:(id)sender {
@@ -571,7 +637,7 @@ dispatch_sync(dispatch_get_main_queue(), block);\
               (int)_player.bufferEmptyCount,
               _player.bufferEmptyDuration);
         
-        if(YES == switchOneInstance.on)
+        if(usingReset)
             [_player reset:NO];
         else
         {
@@ -582,7 +648,7 @@ dispatch_sync(dispatch_get_main_queue(), block);\
             [_player removeObserver:self forKeyPath:@"localDNSIP" context:nil];
             
             [_player.view removeFromSuperview];
-            _player = nil;
+            self.player = nil;
         }
         stat.text = [NSString stringWithFormat:@"url: %@\nstopped", _url];
         [self StopTimer];
@@ -611,11 +677,11 @@ dispatch_sync(dispatch_get_main_queue(), block);\
         return;
     }
     double flowSize = [_player readSize];
-//    NSLog(@"flowSize:%f", flowSize);
     NSDictionary *meta = [_player getMetadata];
     KSYQosInfo *info = _player.qosInfo;
     stat.text = [NSString stringWithFormat:@
                  "SDK Version:v%@\n"
+                 "player instance:%p\n"
                  "streamerUrl:%@\n"
                  "serverIp:%@\n"
                  "clientIp:%@\n"
@@ -638,7 +704,8 @@ dispatch_sync(dispatch_get_main_queue(), block);\
                  "videoTotalDataSize:%lld\n"
                  "totalDataSize:%lld\n",
                  [_player getVersion],
-                 _player.contentURL,
+                 _player,
+                 [[_player contentURL] absoluteString],
                  serverIp,
                  _player.clientIP,
                  _player.localDNSIP,
@@ -675,10 +742,11 @@ dispatch_sync(dispatch_get_main_queue(), block);\
         [_player removeObserver:self forKeyPath:@"localDNSIP" context:nil];
         
         [_player.view removeFromSuperview];
-        _player = nil;
+        self.player = nil;
     }
     //[self.navigationController popToRootViewControllerAnimated:FALSE];
     [self dismissViewControllerAnimated:FALSE completion:nil];
+    stat.text = nil;
 }
 
 - (IBAction)onRotate:(id)sender {
@@ -689,6 +757,15 @@ dispatch_sync(dispatch_get_main_queue(), block);\
 
     if (_player) {
         _player.rotateDegress = rotate_degress;
+    }
+}
+
+- (IBAction)onMute:(id)sender {
+    if (_player) {
+        NSString *imageName = shouldMute ? @"unmute.png" : @"mute.png";
+        [btnMute setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+        shouldMute = shouldMute ? NO : YES;
+        _player.shouldMute = shouldMute;
     }
 }
 
@@ -738,7 +815,7 @@ dispatch_sync(dispatch_get_main_queue(), block);\
 {
     if([keyPath isEqual:@"currentPlaybackTime"])
     {
-        NSTimeInterval position = [[change objectForKey:NSKeyValueChangeNewKey] floatValue];
+//        NSTimeInterval position = [[change objectForKey:NSKeyValueChangeNewKey] floatValue];
         //NSLog(@"current playback position is:%.1fs\n", position);
     }
     else if([keyPath isEqual:@"clientIP"])
@@ -750,4 +827,16 @@ dispatch_sync(dispatch_get_main_queue(), block);\
         NSLog(@"local DNS IP is %@\n", [change objectForKey:NSKeyValueChangeNewKey]);
     }
 }
+
+- (void)handleSwipeGesture:(UISwipeGestureRecognizer *)swpie {
+    if (swpie.direction == UISwipeGestureRecognizerDirectionRight) {
+        CGRect originalFrame = stat.frame;
+        stat.frame = CGRectMake(0, originalFrame.origin.y, originalFrame.size.width, originalFrame.size.height);
+    }
+    if (swpie.direction == UISwipeGestureRecognizerDirectionLeft) {
+        CGRect originalFrame = stat.frame;
+        stat.frame = CGRectMake(-originalFrame.size.width, originalFrame.origin.y, originalFrame.size.width, originalFrame.size.height);
+    }
+}
+
 @end

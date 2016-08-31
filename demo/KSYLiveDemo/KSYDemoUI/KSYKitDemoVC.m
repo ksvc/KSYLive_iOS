@@ -40,8 +40,26 @@
     // 打印版本号信息
     NSLog(@"version: %@", [_kit getKSYVersion]);
     [self setupLogo];
+    
+    //addObserver
+    NSNotificationCenter *notiftication = [NSNotificationCenter defaultCenter];
+    [notiftication addObserver:self
+                      selector:@selector(willResignned:)
+                          name:UIApplicationWillResignActiveNotification
+                        object:nil];
+    [notiftication addObserver:self
+                      selector:@selector(becameActive:)
+                          name:UIApplicationDidBecomeActiveNotification
+                        object:nil];
 }
-
+//app will resigned
+- (void)willResignned:(NSNotification *)not{
+    [_kit.capDev removeAllTargets];
+}
+//app becameAction
+- (void) becameActive:(NSNotification *)not{
+    [_kit setupFilter:self.ksyFilterView.curFilter];
+}
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.ctrlView.btnQuit setTitle: @"退出kit"
@@ -52,7 +70,10 @@
         [_kit startPreview:self.view];
     }
 }
-
+//remove notification
+- (void)viewDidDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 - (void) setCaptureCfg {
     _kit.videoDimension = [self.presetCfgView capResolution];
     KSYVideoDimension strDim = [self.presetCfgView strResolution];
@@ -92,7 +113,9 @@
 - (void)onTimer:(NSTimer *)theTimer{
     [super onTimer:theTimer];
     _seconds++;
-    if (_seconds%5){ // update label every 5 second
+    UIApplicationState appState = [UIApplication sharedApplication].applicationState;
+    if (_seconds%5 == 0 && // update label every 5 second
+        appState == UIApplicationStateActive){
         NSDate *now = [[NSDate alloc] init];
         label.text = [_dateFormatter stringFromDate:now];
         [_kit updateTextLable:label];
@@ -136,17 +159,30 @@
         [_kit stopPreview];
     }
 }
+- (void) updateStreamCfg: (BOOL) bStart {
+    _kit.streamerBase.liveScene       =  self.miscView.liveScene;
+    _kit.streamerBase.videoEncodePerf =  self.miscView.vEncPerf;
+    _kit.streamerBase.bWithVideo = !self.miscView.swAudioOnly.on;
+    _seconds = 0;
+    if (bStart){
+        self.streamerBase = _kit.streamerBase;
+    }
+    else{
+        self.streamerBase = nil;
+    }
+    self.miscView.liveSceneSeg.enabled = !bStart;
+    self.miscView.vEncPerfSeg.enabled = !bStart;
+}
 - (void) onStream{
+    
     if (_kit.streamerBase.streamState == KSYStreamStateIdle ||
         _kit.streamerBase.streamState == KSYStreamStateError) {
-        _kit.streamerBase.bWithVideo = !self.miscView.swAudioOnly.on;
+        [self updateStreamCfg:YES];
         [_kit.streamerBase startStream:self.hostURL];
-        self.streamerBase = _kit.streamerBase;
-        _seconds = 0;
     }
     else {
+        [self updateStreamCfg:NO];
         [_kit.streamerBase stopStream];
-        self.streamerBase = nil;
     }
 }
 
@@ -168,6 +204,19 @@
     }
 }
 
+- (void) onFilterBtn:(id)sender{
+    NSLog(@"onFilterBtn");
+}
+
+- (void) onFilterSwitch:(id)sender{ // see kit or block
+    UISwitch* sw = sender;
+    if (sw == self.ksyFilterView.swPrevewFlip){
+        [_kit setPreviewMirrored:sw.on];
+    }
+    else if (sw == self.ksyFilterView.swStreamFlip){
+        [_kit setStreamerMirrored:sw.on];
+    }
+}
 // volume change
 - (void)onAMixerSlider:(KSYNameSlider *)slider {
     float val = 0.0;
@@ -245,10 +294,7 @@
             [_kit.micMonitor stop];
         }
     }
-    else if (sw == self.miscView.swiauEchoCancelAudio){
-        sw.on = NO;
-        NSLog(@"AEC in kit is coming soon");
-    }
+
     [super onMiscSwitch:sw];
 }
 

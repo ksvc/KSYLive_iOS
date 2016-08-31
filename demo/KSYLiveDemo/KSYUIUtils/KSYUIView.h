@@ -10,7 +10,7 @@
 #import "KSYNameSlider.h"
 
 /**
- ksy自定义视图
+ KSY自定义视图
  
  主要增加的功能如下:
  1. 增加更方便的视图尺寸查询属性

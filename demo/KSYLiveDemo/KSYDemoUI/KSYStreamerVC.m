@@ -101,6 +101,12 @@
     _ksyFilterView.onSegCtrlBlock=^(id sender) {
         [weakself onFilterChange:sender];
     };
+    _ksyFilterView.onBtnBlock=^(id sender) {
+        [weakself onFilterBtn:sender];
+    };
+    _ksyFilterView.onSwitchBlock=^(id sender) {
+        [weakself onFilterSwitch:sender];
+    };
     // 混音相关参数改变
     _audioMixerView.onSwitchBlock=^(id sender){
         [weakself onAMixerSwitch:sender];
@@ -567,7 +573,10 @@
 #pragma mark - UI respond : gpu filters
 - (void) onFilterChange:(id)sender{ // see kit or block
 }
-
+- (void) onFilterBtn:(id)sender{ // see kit or block
+}
+- (void) onFilterSwitch:(id)sender{ // see kit or block
+}
 #pragma mark - UI respond : audio mixer
 - (void)onAMixerSwitch:(UISwitch *)sw{
     if (sw == _audioMixerView.muteStream){
@@ -598,6 +607,8 @@
         return;
     }
     int t = (int)_reverbView.reverbType.selectedSegmentIndex;
+    self.audioCapDev.reverbType = t;
+/*
     //cpu 混响
     if (t == 0){
         _reverb = nil;
@@ -605,6 +616,7 @@
     else {
         _reverb = [[ KSYAudioReverb alloc] initWithType:t];
     }
+ */
 }
 
 #pragma mark - misc features
@@ -626,9 +638,10 @@
     }
     else if (sender == _miscView.btn2) {
         // 方法3: 如果有美颜滤镜, 可以从滤镜上获取截图(UIImage)
-        if (self.ksyFilterView.curFilter){
-            [self.ksyFilterView.curFilter useNextFrameForImageCapture];
-            [self saveImage: self.ksyFilterView.curFilter.imageFromCurrentFramebuffer
+        GPUImageOutput * filter = self.ksyFilterView.curFilter;
+        if (filter){
+            [filter useNextFrameForImageCapture];
+            [self saveImage: filter.imageFromCurrentFramebuffer
                          to: @"snap2.png" ];
         }
     }
