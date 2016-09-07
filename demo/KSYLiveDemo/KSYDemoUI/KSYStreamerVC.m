@@ -424,7 +424,8 @@
     }
     else if (btn == _ksyMenuView.mixBtn ){
         view = _audioMixerView;    // 混音控制台
-        _audioMixerView.micType = _capDev.currentMicType;
+        //_audioMixerView.micType = _capDev.currentMicType;
+        _audioMixerView.micType = _audioCapDev.currentMicType;
         [_audioMixerView initMicInput];
     }
     else if (btn == _ksyMenuView.miscBtn ){
@@ -593,8 +594,11 @@
     }
 }
 - (void)onAMixerSegCtrl:(UISegmentedControl *)seg{
-    if (_capDev && seg == _audioMixerView.micInput) {
-        _capDev.currentMicType = _audioMixerView.micType;
+    //if (_capDev && seg == _audioMixerView.micInput) {
+    //    _capDev.currentMicType = _audioMixerView.micType;
+    //}
+    if (_audioCapDev && seg == _audioMixerView.micInput) {
+        _audioCapDev.currentMicType = _audioMixerView.micType;
     }
 }
 - (void)onAMixerSlider:(KSYNameSlider *)slider{
@@ -603,20 +607,7 @@
 
 #pragma mark - reverb action
 - (void)onReverbType:(UISegmentedControl *)seg{
-    if (seg != _reverbView.reverbType){
-        return;
-    }
-    int t = (int)_reverbView.reverbType.selectedSegmentIndex;
-    self.audioCapDev.reverbType = t;
-/*
-    //cpu 混响
-    if (t == 0){
-        _reverb = nil;
-    }
-    else {
-        _reverb = [[ KSYAudioReverb alloc] initWithType:t];
-    }
- */
+    // see kit or block
 }
 
 #pragma mark - misc features

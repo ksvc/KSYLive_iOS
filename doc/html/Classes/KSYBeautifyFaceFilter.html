@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>KSYGPUBeautifyPlusFilter Class Reference</title>
+	<title>KSYBeautifyFaceFilter Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -52,15 +52,23 @@
 
 	
 	
-
-	
-
-	
-	<optgroup label="Instance Methods">
+	<optgroup label="Properties">
 		
-		<option value="//api/name/setBeautylevel:">- setBeautylevel:</option>
+		<option value="//api/name/grindRatio">grindRatio</option>
+		
+		<option value="//api/name/whitenRatio">whitenRatio</option>
 		
 	</optgroup>
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/showVersion">+ showVersion</option>
+		
+	</optgroup>
+	
+
 	
 	
 </select>
@@ -75,16 +83,16 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">KSYGPUBeautifyPlusFilter Class Reference</h1>
+					<h1 class="title">KSYBeautifyFaceFilter Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<th>Inherits from</th>
-	<td><a href="../Classes/KSYGPUFilter.html">KSYGPUFilter</a> : GPUImageFilter</td>
+	<td>GPUImageFilterGroup</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>KSYGPUBeautifyPlusFilter.h</td>
+	<td>KSYBeautifyFaceFilter.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -102,8 +110,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/setBeautylevel:" title="setBeautylevel:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/setBeautylevel:">&ndash;&nbsp;setBeautylevel:</a></code>
+	<a name="//api/name/grindRatio" title="grindRatio"></a>
+	<h3 class="method-title"><code><a href="#//api/name/grindRatio">&nbsp;&nbsp;grindRatio</a></code>
 </h3>
 
 	<div class="method-info">
@@ -112,7 +120,39 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>- (void)setBeautylevel:(int)<em>level</em></code></div>
+			<div class="method-subsection method-declaration"><code>@property (readwrite, nonatomic) CGFloat grindRatio</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/whitenRatio" title="whitenRatio"></a>
+	<h3 class="method-title"><code><a href="#//api/name/whitenRatio">&nbsp;&nbsp;whitenRatio</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property (readwrite, nonatomic) CGFloat whitenRatio</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/showVersion" title="showVersion"></a>
+	<h3 class="method-title"><code><a href="#//api/name/showVersion">+&nbsp;showVersion</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (void)showVersion</code></div>
 
 		    
 		</div>

@@ -87,8 +87,6 @@
     _kit.bDefaultToSpeaker    = YES; // 没有耳机的话音乐播放从扬声器播放
     _kit.videoProcessingCallback = ^(CMSampleBufferRef buf){
     };
-    _kit.audioProcessingCallback = ^(CMSampleBufferRef buf){
-    };
 }
 - (void) setupLogo{
     NSString *logoFile=[NSHomeDirectory() stringByAppendingString:@"/Documents/ksvc.png"];
@@ -157,6 +155,7 @@
     }
     else {
         [_kit stopPreview];
+        [_kit.audioCapDev stopCapture];
     }
 }
 - (void) updateStreamCfg: (BOOL) bStart {
@@ -236,6 +235,16 @@
         [_kit.audioMixer setMixVolume:val of: _kit.pipTrack];
     }
 }
+
+#pragma mark - reverb action
+- (void)onReverbType:(UISegmentedControl *)seg{
+    if (seg != self.reverbView.reverbType){
+        return;
+    }
+    int t = (int)self.reverbView.reverbType.selectedSegmentIndex;
+    _kit.audioCapDev.reverbType = t;
+}
+
 #pragma mark - pip ctrl
 // pip start
 - (void)onPipPlay{
@@ -278,31 +287,27 @@
     }
 }
 
-#pragma mark - micMonitor
-// 是否开启耳返
+#pragma mark - AUAudioCapture
+// 是否开启音频采集、耳返
 - (void)onMiscSwitch:(UISwitch *)sw{
     if (sw == self.miscView.swPlayCapture){
-        if (sw.isOn){
-            if ( [KSYMicMonitor isHeadsetPluggedIn] == NO ){
-                [self toast:@"没有耳机, 开启耳返会有刺耳的声音"];
-                sw.on = NO;
-                return;
-            }
-            [_kit.micMonitor start];
+        if ( ![KSYAUAudioCapture isHeadsetPluggedIn] ) {
+            [self toast:@"没有耳机, 开启耳返会有刺耳的声音"];
+            sw.on = NO;
+            return;
         }
-        else{
-            [_kit.micMonitor stop];
-        }
+        _kit.audioCapDev.bPlayCapturedAudio = sw.isOn;
     }
-
+    
     [super onMiscSwitch:sw];
 }
 
 // 调节耳返音量
 - (void)onMiscSlider:(KSYNameSlider *)slider {
     if (slider == self.miscView.micmVol){
-        [_kit.micMonitor setVolume:slider.normalValue];
+        if (_kit.audioCapDev){
+            _kit.audioCapDev.micVolume = slider.normalValue;
+        }
     }
 }
-
 @end

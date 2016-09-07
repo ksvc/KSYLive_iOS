@@ -66,10 +66,6 @@
 		
 		<option value="//api/name/bPauseCaptureOnNotice">bPauseCaptureOnNotice</option>
 		
-		<option value="//api/name/bStreamAudio">bStreamAudio</option>
-		
-		<option value="//api/name/bStreamVideo">bStreamVideo</option>
-		
 		<option value="//api/name/currentMicType">currentMicType</option>
 		
 		<option value="//api/name/isRunning">isRunning</option>
@@ -97,10 +93,6 @@
 		<option value="//api/name/isTorchSupported">- isTorchSupported</option>
 		
 		<option value="//api/name/setAVAudioSessionOption">- setAVAudioSessionOption</option>
-		
-		<option value="//api/name/setAudioEncTarget:">- setAudioEncTarget:</option>
-		
-		<option value="//api/name/setBaseAudioEncTarget:">- setBaseAudioEncTarget:</option>
 		
 		<option value="//api/name/setTorchMode:">- setTorchMode:</option>
 		
@@ -145,7 +137,15 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>A KSYGPUCamera that provides frames from either camera</p>
+						<p>基于 AVFoundation的 音视频采集模块</p>
+
+<ul>
+<li>通过回调将采集的音频和视频数据传出</li>
+<li>将摄像头和音频的常用操作进行封装</li>
+<li>注意: 同时使用AVFoundation的音视频采集, 可能无法使用后台采集的功能</li>
+<li>音频采集为可选项</li>
+</ul>
+
 					</div>
 					
 					
@@ -257,7 +257,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>通知事件也包括下拉通知栏或上拉控制台</p><p>YES: 类似事件发生时 SDK主动暂停采集</p><p>NO: 发生时, 继续采集 , 但是切后台, 音频采集会停止</p><p>UIApplicationWillResignActiveNotification</p><div class="warning"><p><strong>Warning:</strong> 如果需要后台推音频, 此参数需要设置为YES</p></div>
+				<p>通知事件也包括下拉通知栏、上拉控制台和切后台</p><p>YES: 类似事件发生时 视频主动暂停采集，音频继续采集</p><p>NO: 下拉通知栏和上拉控制台发生时，音视频继续采集；但是切后台，视频暂停采集，音频继续采集</p><p>UIApplicationWillResignActiveNotification</p>
 			</div>
 			
 
@@ -396,188 +396,6 @@
 
 			
 
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">KSYGPUCamera.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/bStreamVideo" title="bStreamVideo"></a>
-	<h3 class="method-title"><code><a href="#//api/name/bStreamVideo">&nbsp;&nbsp;bStreamVideo</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>是否将视频数据送入streamer (默认为NO)</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property BOOL bStreamVideo</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">KSYGPUCamera.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/bStreamAudio" title="bStreamAudio"></a>
-	<h3 class="method-title"><code><a href="#//api/name/bStreamAudio">&nbsp;&nbsp;bStreamAudio</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>是否将音频数据送入streamer (默认为YES)</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property BOOL bStreamAudio</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">KSYGPUCamera.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/setBaseAudioEncTarget:" title="setBaseAudioEncTarget:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/setBaseAudioEncTarget:">&ndash;&nbsp;setBaseAudioEncTarget:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>采集到的音频通过此target发送</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)setBaseAudioEncTarget:(KSYStreamerBase *)<em>target</em></code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection see-also-section">
-				<h4 class="method-subtitle">See Also</h4>
-				<ul>
-					
-					<li><code><p><a href="#//api/name/bStreamAudio">@property bStreamAudio</a></p></code></li>
-					
-				</ul>
-			</div>
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">KSYGPUCamera.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/setAudioEncTarget:" title="setAudioEncTarget:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/setAudioEncTarget:">&ndash;&nbsp;setAudioEncTarget:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>采集到的音频通过此target发送</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)setAudioEncTarget:(KSYGPUStreamer *)<em>target</em></code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection see-also-section">
-				<h4 class="method-subtitle">See Also</h4>
-				<ul>
-					
-					<li><code><p><a href="#//api/name/bStreamAudio">@property bStreamAudio</a></p></code></li>
-					
-				</ul>
-			</div>
 			
 
 			
@@ -1167,7 +985,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-08-31</p>
+						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-09-05</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUTwoPassFilter.html">
+	<File path="Classes/KSYGPUTwoFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUTwoPassFilter</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUTwoFilter</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUTwoPassFilter.h</DeclaredIn>
+			<DeclaredIn>KSYGPUTwoFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="24"/>
@@ -13,9 +13,9 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUTwoPassFilter/encodeFilterString:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUTwoFilter/encodeFilterString:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUTwoPassFilter.h</DeclaredIn>
+			<DeclaredIn>KSYGPUTwoFilter.h</DeclaredIn>
 			
 			<Declaration>- (NSString *)encodeFilterString:(NSString *)strString</Declaration>
 			
@@ -25,9 +25,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUTwoPassFilter/init</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUTwoFilter/init</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUTwoPassFilter.h</DeclaredIn>
+			<DeclaredIn>KSYGPUTwoFilter.h</DeclaredIn>
 			
 			<Declaration>- (instancetype)init</Declaration>
 			
@@ -37,14 +37,14 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUTwoPassFilter/reloadFirstStageVertexShaderFromString:firstStageFragmentShaderFromString:secondStageVertexShaderFromString:secondStageFragmentShaderFromString:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUTwoFilter/reload:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUTwoPassFilter.h</DeclaredIn>
+			<DeclaredIn>KSYGPUTwoFilter.h</DeclaredIn>
 			
-			<Declaration>- (void)reloadFirstStageVertexShaderFromString:(NSString *)firstStageVertexShaderString firstStageFragmentShaderFromString:(NSString *)firstStageFragmentShaderString secondStageVertexShaderFromString:(NSString *)secondStageVertexShaderString secondStageFragmentShaderFromString:(NSString *)secondStageFragmentShaderString</Declaration>
+			<Declaration>- (void)reload:(NSString *)fragmentShaderString</Declaration>
 			
 			
-			<Anchor>//api/name/reloadFirstStageVertexShaderFromString:firstStageFragmentShaderFromString:secondStageVertexShaderFromString:secondStageFragmentShaderFromString:</Anchor>
+			<Anchor>//api/name/reload:</Anchor>
             <NodeRef refid="24"/>
 		</Token>
 		

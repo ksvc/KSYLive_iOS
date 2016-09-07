@@ -28,12 +28,15 @@
     self = [super init];
     // 修改美颜参数
     _filterLevel = [self addSliderName:@"参数" From:0 To:100 Init:50];
+    _filterParam = [self addSliderName:@"美白" From:0 To:100 Init:50];
+    _filterParam.hidden = YES;
     
     _lblSeg = [self addLable:@"滤镜"];
     _filterGroupType = [self addSegCtrlWithItems:
   @[ @"关闭",
      @"美颜",
      @"组合",
+     @"金山",
      ]];
     _filterGroupType.selectedSegmentIndex = 1;
     [self selectFilter:1];
@@ -47,6 +50,7 @@
 - (void)layoutUI{
     [super layoutUI];
     [self putRow1:_filterLevel];
+    [self putRow1:_filterParam];
     self.btnH = 30;
     [self putLable:_lblSeg andView: _filterGroupType];
     [self putRow: @[_lbPrevewFlip, _swPrevewFlip,
@@ -63,6 +67,8 @@
         return;
     }
     _curIdx = idx;
+    _filterLevel.nameL.text = @"参数";
+    _filterParam.hidden = YES;
     // 标识当前被选择的滤镜
     if (idx == 0){
         _curFilter  = nil;
@@ -82,13 +88,22 @@
         [fg setTerminalFilter:pf];
         _curFilter = fg;
     }
+    else if (idx == 3){
+        KSYBeautifyFaceFilter * f = [[KSYBeautifyFaceFilter alloc] init];
+        _filterParam.hidden = NO;
+        _filterLevel.nameL.text = @"磨皮";
+        f.grindRatio = _filterLevel.normalValue;;
+        f.whitenRatio = _filterParam.normalValue;
+        _curFilter = f;
+    }
     else { // 关闭
         _curFilter  = nil;
     }
 }
 
 - (IBAction)onSlider:(id)sender {
-    if (sender != _filterLevel) {
+    if (sender != _filterLevel &&
+        sender != _filterParam ) {
         return;
     }
     float nalVal = _filterLevel.normalValue;
@@ -101,6 +116,15 @@
         GPUImageFilterGroup * fg = (GPUImageFilterGroup *)_curFilter;
         KSYGPUBeautifyExtFilter * cf = (KSYGPUBeautifyExtFilter *)[fg filterAtIndex:0];
         [cf setBeautylevel: val];
+    }
+    else if (_curIdx == 3){
+        KSYBeautifyFaceFilter * f =(KSYBeautifyFaceFilter*)_curFilter;
+        if (sender == _filterLevel){
+            f.grindRatio = _filterLevel.normalValue;
+        }
+        if (sender == _filterParam ) {
+            f.whitenRatio = _filterParam.normalValue;
+        }
     }
     [super onSlider:sender];
 }

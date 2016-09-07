@@ -9,6 +9,7 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "QRViewController.h"
 #import "URLTableViewController.h"
+#import "KSYProgressView.h"
 
 @interface KSYPlayerVC () <UITextFieldDelegate>
 @property (strong, nonatomic) NSMutableArray *urls;
@@ -52,6 +53,8 @@ dispatch_sync(dispatch_get_main_queue(), block);\
     UILabel *labelVolume;
     UISlider *sliderVolume;
     
+    KSYProgressView *progressView;
+    
     BOOL usingReset;
     BOOL shouldMute;
     
@@ -93,7 +96,7 @@ dispatch_sync(dispatch_get_main_queue(), block);\
     
     shouldMute = NO;
     
-    
+    progressView.hidden = YES;
 }
 
 - (void)dealloc {
@@ -136,8 +139,6 @@ dispatch_sync(dispatch_get_main_queue(), block);\
     btnShotScreen = [self addButtonWithTitle:@"截图" action:@selector(onShotScreen:)];
     
     btnMute = [self addButtonWithTitle:@"mute" action:@selector(onMute:)];
-    [btnMute setImage:[UIImage imageNamed:@"unmute.png"] forState:UIControlStateNormal];
-    btnMute.imageView.contentMode = UIViewContentModeScaleAspectFit;
 
 	stat = [[UILabel alloc] init];
     stat.backgroundColor = [UIColor clearColor];
@@ -165,8 +166,10 @@ dispatch_sync(dispatch_get_main_queue(), block);\
     sliderVolume.maximumValue = 100;
     sliderVolume.value = 100;
     [sliderVolume addTarget:self action:@selector(onVolumeChanged:) forControlEvents:UIControlEventValueChanged];
-    
     [self.view addSubview:sliderVolume];
+    
+    progressView = [[KSYProgressView alloc] init];
+    [self.view addSubview:progressView];
 
     [self layoutUI];
     
@@ -229,6 +232,10 @@ dispatch_sync(dispatch_get_main_queue(), block);\
     btnReload.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     xPos += gap + btnWdt;
     btnMute.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
+    
+    xPos = gap;
+    yPos = btnRotate.frame.origin.y - btnHgt - gap;
+    progressView.frame = CGRectMake(xPos, yPos, wdt - 2 * gap, btnHgt);
     
     stat.frame = CGRectMake(0, 0, wdt, hgt);
 }
@@ -650,7 +657,6 @@ dispatch_sync(dispatch_get_main_queue(), block);\
             [_player.view removeFromSuperview];
             self.player = nil;
         }
-        stat.text = [NSString stringWithFormat:@"url: %@\nstopped", _url];
         [self StopTimer];
     }
 }
@@ -658,6 +664,7 @@ dispatch_sync(dispatch_get_main_queue(), block);\
 - (void)StartTimer
 {
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateStat:) userInfo:nil repeats:YES];
+    progressView.totalTimeInSeconds = _player.duration;
 }
 - (void)StopTimer
 {
@@ -730,6 +737,12 @@ dispatch_sync(dispatch_get_main_queue(), block);\
                  info.totalDataSize];
     lastCheckTime = [self getCurrentTime];
     lastSize = flowSize;
+    
+    [self updateCacheProgress];
+}
+
+- (void)updateCacheProgress {
+    progressView.cacheProgress = _player.playableDuration / _player.duration;
 }
 
 - (IBAction)onQuit:(id)sender {
@@ -762,8 +775,6 @@ dispatch_sync(dispatch_get_main_queue(), block);\
 
 - (IBAction)onMute:(id)sender {
     if (_player) {
-        NSString *imageName = shouldMute ? @"unmute.png" : @"mute.png";
-        [btnMute setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
         shouldMute = shouldMute ? NO : YES;
         _player.shouldMute = shouldMute;
     }
@@ -817,6 +828,7 @@ dispatch_sync(dispatch_get_main_queue(), block);\
     {
 //        NSTimeInterval position = [[change objectForKey:NSKeyValueChangeNewKey] floatValue];
         //NSLog(@"current playback position is:%.1fs\n", position);
+        progressView.playProgress = _player.currentPlaybackTime / _player.duration;
     }
     else if([keyPath isEqual:@"clientIP"])
     {
@@ -825,6 +837,19 @@ dispatch_sync(dispatch_get_main_queue(), block);\
     else if([keyPath isEqual:@"localDNSIP"])
     {
         NSLog(@"local DNS IP is %@\n", [change objectForKey:NSKeyValueChangeNewKey]);
+    }
+    else if ([keyPath isEqualToString:@"player"]) {
+        if (_player) {
+            progressView.hidden = NO;
+            __weak typeof(_player) weakPlayer = _player;
+            progressView.dragingSliderCallback = ^(float progress){
+                typeof(weakPlayer) strongPlayer = weakPlayer;
+                strongPlayer.currentPlaybackTime = progress * strongPlayer.duration;
+            };
+        } else {
+            progressView.hidden = YES;
+        }
+        
     }
 }
 

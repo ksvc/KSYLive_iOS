@@ -17,7 +17,8 @@
 @interface KSYFilterView : KSYUIView
 
 // 参数调节
-@property (nonatomic, readonly) KSYNameSlider * filterLevel;
+@property (nonatomic, readonly) KSYNameSlider * filterLevel; // 参数1
+@property (nonatomic, readonly) KSYNameSlider * filterParam; // 参数2
 
 // 选择滤镜
 @property (nonatomic, readonly) GPUImageOutput<GPUImageInput>* curFilter;
