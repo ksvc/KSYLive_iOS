@@ -132,6 +132,7 @@ NSLog(@"version: %@", [kit getKSYVersion]);
 ## 四. 参考文档
 * [iOS直播推流SDK使用指南](https://github.com/ksvc/KSYLive_iOS/wiki/KSYStreamerSDKUserManual)
 * [iOS直播推流SDK常见问题](https://github.com/ksvc/KSYLive_iOS/wiki/FAQ)
+* [接口变更历史](https://github.com/ksvc/KSYLive_iOS/wiki/apiAdjust)
 
 ## 五. 播放器使用示例
 请见github库：https://github.com/ksvc/KSYMediaPlayer_iOS.git
