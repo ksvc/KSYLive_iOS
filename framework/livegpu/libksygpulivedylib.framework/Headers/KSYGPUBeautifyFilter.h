@@ -7,14 +7,18 @@
 //
 
  /* KSYGPUBeautifyFilter_h */
-@class  GPUImageFilter;
+#import "KSYGPUFilter.h"
 
-@interface KSYGPUBeautifyFilter : GPUImageFilter
+@interface KSYGPUBeautifyFilter : KSYGPUFilter
 {
     GLint paramsUniform, singleStepOffsetUniform;
     
 };
 
+/*
+ @abstract 美颜的等级
+ @discussion  1 ~ 5，逐级增强, 默认为3
+ */
 -(void)setBeautylevel:(int)level;
 
 @property (readwrite, nonatomic) CGPoint singleStepOffset;

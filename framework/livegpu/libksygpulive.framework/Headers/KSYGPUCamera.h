@@ -14,10 +14,13 @@
 #import <GPUImage/GPUImage.h>
 #endif
 
-@class KSYStreamerBase;
-@class KSYGPUStreamer;
 /**
- A KSYGPUCamera that provides frames from either camera
+ 基于 AVFoundation的 音视频采集模块
+ 
+ * 通过回调将采集的音频和视频数据传出
+ * 将摄像头和音频的常用操作进行封装
+ * 注意: 同时使用AVFoundation的音视频采集, 可能无法使用后台采集的功能
+ * 音频采集为可选项
  */
 @interface KSYGPUCamera : GPUImageVideoCamera <AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate> {
     
@@ -39,11 +42,10 @@
 
 /**
  @abstract 收到通知事件时是否暂停采集 (默认为YES)
- @discussion 通知事件也包括下拉通知栏或上拉控制台
- @discussion YES: 类似事件发生时 SDK主动暂停采集
- @discussion NO: 发生时, 继续采集 , 但是切后台, 音频采集会停止
+ @discussion 通知事件也包括下拉通知栏、上拉控制台和切后台
+ @discussion YES: 类似事件发生时 视频主动暂停采集，音频继续采集
+ @discussion NO: 下拉通知栏和上拉控制台发生时，音视频继续采集；但是切后台，视频暂停采集，音频继续采集
  @discussion UIApplicationWillResignActiveNotification
- @warning    如果需要后台推音频, 此参数需要设置为YES
  */
 @property BOOL  bPauseCaptureOnNotice;
 
@@ -69,35 +71,6 @@
  @see AVAudioSessionCategoryOptionAllowBluetooth
  */
 @property (nonatomic, assign) BOOL bAllowBluetooth;
-
-/**
- @abstract   是否将视频数据送入streamer (默认为NO)
-
- @see streamer
- */
-@property BOOL  bStreamVideo;
-
-/**
- @abstract   是否将音频数据送入streamer (默认为YES)
- 
- @see streamer
- */
-@property BOOL  bStreamAudio;
-
-/**
- @abstract   采集到的音频通过此target发送
- 
- @see bStreamAudio
- */
-- (void) setBaseAudioEncTarget:(KSYStreamerBase*) target;
-
-/**
- @abstract   采集到的音频通过此target发送
- 
- @see bStreamAudio
- */
-- (void) setAudioEncTarget:(KSYGPUStreamer*) target;
-
 
 #pragma mark - Torch
 /**

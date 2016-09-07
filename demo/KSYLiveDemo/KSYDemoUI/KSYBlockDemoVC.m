@@ -29,6 +29,7 @@
     [self  setCaptureCfg];
     // 创建背景音乐播放模块
     self.bgmPlayer = [[KSYBgmPlayer   alloc] init];
+    self.bgmPlayer.bDefaultToSpeaker = self.audioCapDev.bInterruptOtherAudio;
     
     /////2. 数据出口 ///////////
     // 创建 推流模块
@@ -53,8 +54,6 @@
     ///// 3.2 音频通路 ///////////
     // 核心部件:音频叠加混合
     self.aMixer = [[KSYAudioMixer alloc]init];
-    // 音频采集模块
-    self.audioCapDev = [[KSYAUAudioCapture alloc] init];
     
     // 组装音频通道
     [self setupAudioPath];
@@ -122,9 +121,13 @@
     self.capDev.bInterruptOtherAudio = NO;
     self.capDev.bPauseCaptureOnNotice = NO;
     self.capDev.outputImageOrientation = [[UIApplication sharedApplication] statusBarOrientation];
-
-    self.capDev.bStreamVideo = NO;
-    self.capDev.bStreamAudio = NO;  // use mixer instead
+    
+    // 音频采集模块
+    self.audioCapDev = [[KSYAUAudioCapture alloc] init];
+    //AuAudio采集参数配置
+    self.audioCapDev.bInterruptOtherAudio = NO;
+    self.audioCapDev.bDefaultToSpeaker    = YES; // 没有耳机的话音乐播放从扬声器播放
+    self.audioCapDev.bAllowBluetooth      = YES;
 }
 - (void) setStreamerCfg { // must set after capture
     [super setStreamerCfg];
@@ -196,6 +199,7 @@
 }
 - (void) setupAudioPath {
     __weak KSYBlockDemoVC * vc = self;
+    //1. Audio unit模块采集音频数据(或是带混响的音频数据)，然后送入混音器
     self.micTrack = 0;
     self.audioCapDev.audioProcessingCallback = ^(CMSampleBufferRef buf){
         if (![vc.streamerBase isStreaming]){
@@ -312,6 +316,15 @@
     }
 }
 
+#pragma mark - reverb action
+- (void)onReverbType:(UISegmentedControl *)seg{
+    if (seg != self.reverbView.reverbType){
+        return;
+    }
+    int t = (int)self.reverbView.reverbType.selectedSegmentIndex;
+    self.audioCapDev.reverbType = t;
+}
+
 #pragma mark - pip ctrl
 
 - (void)setupPip{
@@ -344,7 +357,8 @@
     }
     [self.player prepareToPlay];
     [self setupVideoPath];
-    [self.capDev setAVAudioSessionOption];
+    //[self.capDev setAVAudioSessionOption];
+    [self.audioCapDev setAUAudioSessionOption];
 }
 
 - (void)onPipPlay{
@@ -393,7 +407,7 @@
     [self.bgPic    addTarget:self.pipFilter atTextureLocation:2];
 }
 
-#pragma mark - micMonitor
+#pragma mark - AUAudioCapture
 // 是否开启音频采集、耳返
 - (void)onMiscSwitch:(UISwitch *)sw{
     if (sw == self.miscView.swPlayCapture){

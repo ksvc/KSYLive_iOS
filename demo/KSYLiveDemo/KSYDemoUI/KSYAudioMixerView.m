@@ -48,8 +48,8 @@
     
 }
 - (void) initMicInput {
-    BOOL bHS = [KSYGPUCamera isHeadsetInputAvaible];
-    BOOL bBT = [KSYGPUCamera isBluetoothInputAvaible];
+    BOOL bHS = [KSYAUAudioCapture isHeadsetInputAvaible];
+    BOOL bBT = [KSYAUAudioCapture isBluetoothInputAvaible];
     [_micInput setEnabled:YES forSegmentAtIndex:1];
     [_micInput setEnabled:YES forSegmentAtIndex:2];
     if (!bHS){

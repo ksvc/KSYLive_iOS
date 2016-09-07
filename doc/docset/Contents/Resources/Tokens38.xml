@@ -1,67 +1,167 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYAVMuxerStatus.html">
+	<File path="Protocols/KSYMediaPlayback.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYAVMuxerStatus</TokenIdentifier>
-			<Abstract type="html">交织处理状态</Abstract>
-			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intf/KSYMediaPlayback</TokenIdentifier>
+			<Abstract type="html">KSYMediaPlayback为播放内核KSYMoviePlayerController提供播放控制功能。</Abstract>
+			<DeclaredIn>KSYMediaPlayback.h</DeclaredIn>
             
 			
 			<NodeRef refid="38"/>
 		</Token>
 		
 		
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusIdle</TokenIdentifier>
-            <Abstract type="html">初始状态</Abstract>
-            <Declaration>KSYAVMuxerStatusIdle</Declaration>
-            
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
-            
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/KSYMediaPlayback/prepareToPlay</TokenIdentifier>
+			<Abstract type="html">准备视频播放</Abstract>
+			<DeclaredIn>KSYMediaPlayback.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/intfp/KSYMediaPlayback/isPreparedToPlay</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>- (void)prepareToPlay</Declaration>
+			
+			
+			<Anchor>//api/name/prepareToPlay</Anchor>
             <NodeRef refid="38"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusMuxing</TokenIdentifier>
-            <Abstract type="html">处理中</Abstract>
-            <Declaration>KSYAVMuxerStatusMuxing</Declaration>
-            
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/KSYMediaPlayback/setIsPreparedToPlay:</TokenIdentifier>
+			<Abstract type="html">查询视频准备是否完成</Abstract>
+			<DeclaredIn>KSYMediaPlayback.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/intfm/KSYMediaPlayback/prepareToPlay</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, readonly) BOOL isPreparedToPlay</Declaration>
+			
+			
+			<Anchor>//api/name/isPreparedToPlay</Anchor>
             <NodeRef refid="38"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusCompleted</TokenIdentifier>
-            <Abstract type="html">处理完成</Abstract>
-            <Declaration>KSYAVMuxerStatusCompleted</Declaration>
-            
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/KSYMediaPlayback/isPreparedToPlay</TokenIdentifier>
+			<Abstract type="html">查询视频准备是否完成</Abstract>
+			<DeclaredIn>KSYMediaPlayback.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/intfm/KSYMediaPlayback/prepareToPlay</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, readonly) BOOL isPreparedToPlay</Declaration>
+			
+			
+			<Anchor>//api/name/isPreparedToPlay</Anchor>
             <NodeRef refid="38"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusFailed</TokenIdentifier>
-            <Abstract type="html">处理失败</Abstract>
-            <Declaration>KSYAVMuxerStatusFailed</Declaration>
-            
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfp/KSYMediaPlayback/isPreparedToPlay</TokenIdentifier>
+			<Abstract type="html">查询视频准备是否完成</Abstract>
+			<DeclaredIn>KSYMediaPlayback.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/intfm/KSYMediaPlayback/prepareToPlay</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, readonly) BOOL isPreparedToPlay</Declaration>
+			
+			
+			<Anchor>//api/name/isPreparedToPlay</Anchor>
             <NodeRef refid="38"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusCancelled</TokenIdentifier>
-            <Abstract type="html">处理任务被取消</Abstract>
-            <Declaration>KSYAVMuxerStatusCancelled</Declaration>
-            
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/KSYMediaPlayback/play</TokenIdentifier>
+			<Abstract type="html">播放当前视频。</Abstract>
+			<DeclaredIn>KSYMediaPlayback.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/intfm/KSYMediaPlayback/prepareToPlay</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>- (void)play</Declaration>
+			
+			
+			<Anchor>//api/name/play</Anchor>
             <NodeRef refid="38"/>
-        </Token>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/KSYMediaPlayback/pause</TokenIdentifier>
+			<Abstract type="html">暂停播放当前视频。</Abstract>
+			<DeclaredIn>KSYMediaPlayback.h</DeclaredIn>
+			
+			<Declaration>- (void)pause</Declaration>
+			
+			
+			<Anchor>//api/name/pause</Anchor>
+            <NodeRef refid="38"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/KSYMediaPlayback/stop</TokenIdentifier>
+			<Abstract type="html">结束当前视频的播放。</Abstract>
+			<DeclaredIn>KSYMediaPlayback.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/intfm/KSYMediaPlayback/prepareToPlay</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>- (void)stop</Declaration>
+			
+			
+			<Anchor>//api/name/stop</Anchor>
+            <NodeRef refid="38"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/KSYMediaPlayback/setCurrentPlaybackTime:</TokenIdentifier>
+			<Abstract type="html">播放视频的当前时刻，单位为秒。</Abstract>
+			<DeclaredIn>KSYMediaPlayback.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSTimeInterval currentPlaybackTime</Declaration>
+			
+			
+			<Anchor>//api/name/currentPlaybackTime</Anchor>
+            <NodeRef refid="38"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/KSYMediaPlayback/currentPlaybackTime</TokenIdentifier>
+			<Abstract type="html">播放视频的当前时刻，单位为秒。</Abstract>
+			<DeclaredIn>KSYMediaPlayback.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSTimeInterval currentPlaybackTime</Declaration>
+			
+			
+			<Anchor>//api/name/currentPlaybackTime</Anchor>
+            <NodeRef refid="38"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfp/KSYMediaPlayback/currentPlaybackTime</TokenIdentifier>
+			<Abstract type="html">播放视频的当前时刻，单位为秒。</Abstract>
+			<DeclaredIn>KSYMediaPlayback.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSTimeInterval currentPlaybackTime</Declaration>
+			
+			
+			<Anchor>//api/name/currentPlaybackTime</Anchor>
+            <NodeRef refid="38"/>
+		</Token>
+		
         
         
 	</File>

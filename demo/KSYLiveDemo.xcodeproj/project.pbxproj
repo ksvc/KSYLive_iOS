@@ -51,9 +51,11 @@
 		06FBBD6A1D2E17E00065ED55 /* KSYUIVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD481D2E17E00065ED55 /* KSYUIVC.m */; };
 		06FBBD6B1D2E17E00065ED55 /* KSYUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD4A1D2E17E00065ED55 /* KSYUIView.m */; };
 		06FBBD6C1D2E17E00065ED55 /* KSYUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD4A1D2E17E00065ED55 /* KSYUIView.m */; };
-		5800A0D91D77032600AB55F7 /* libksygpulivedylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5800A0D81D77032600AB55F7 /* libksygpulivedylib.framework */; };
-		5800A0DA1D77035F00AB55F7 /* libksygpulivedylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5800A0D81D77032600AB55F7 /* libksygpulivedylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		584AD2C11D4F6649001CA44A /* KSYFileSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 060AE9C41D4653010064DD65 /* KSYFileSelector.m */; };
+		588110B81D7D82E100A4EC4A /* KSYProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 588110B71D7D82E100A4EC4A /* KSYProgressView.m */; };
+		588110B91D7D82EF00A4EC4A /* KSYProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 588110B71D7D82E100A4EC4A /* KSYProgressView.m */; };
+		588110BF1D7D995900A4EC4A /* libksygpulivedylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588110BE1D7D995900A4EC4A /* libksygpulivedylib.framework */; };
+		588110C01D7D996100A4EC4A /* libksygpulivedylib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 588110BE1D7D995900A4EC4A /* libksygpulivedylib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		58D112681D71DBD700AA610A /* KSYPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D112651D71DBD700AA610A /* KSYPlayerVC.m */; };
 		58D112691D71DBD700AA610A /* KSYProberVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D112671D71DBD700AA610A /* KSYProberVC.m */; };
 		58D1126C1D71DF0400AA610A /* MonkeyTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D1126B1D71DF0400AA610A /* MonkeyTestViewController.m */; };
@@ -79,6 +81,7 @@
 		5E231D411D22CF870064F77E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06B2B1B31BE8F0D900E0CC85 /* Main.storyboard */; };
 		5E231D421D22CF870064F77E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B2B1B81BE8F0D900E0CC85 /* LaunchScreen.xib */; };
 		5E231D431D22CF870064F77E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06B2B1B61BE8F0D900E0CC85 /* Images.xcassets */; };
+		5E72AEC11D22D10200F22AFF /* libksygpulivedylib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E72AEBF1D22D0FC00F22AFF /* libksygpulivedylib.framework */; };
 		625EF3B51C9A95BE00DBA1CC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 625EF3B41C9A95BE00DBA1CC /* libsqlite3.tbd */; };
 		627FB6231CA2EEDB0029AD04 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 627FB6221CA2EEDB0029AD04 /* GPUImage.framework */; };
 		95B4A3EF1CBF6CC700CB6804 /* KSYSQLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B4A3EA1CBF6CC700CB6804 /* KSYSQLite.m */; };
@@ -98,7 +101,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5800A0DA1D77035F00AB55F7 /* libksygpulivedylib.framework in Embed Frameworks */,
+				588110C01D7D996100A4EC4A /* libksygpulivedylib.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -155,7 +158,9 @@
 		06FBBD481D2E17E00065ED55 /* KSYUIVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYUIVC.m; sourceTree = "<group>"; };
 		06FBBD491D2E17E00065ED55 /* KSYUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYUIView.h; sourceTree = "<group>"; };
 		06FBBD4A1D2E17E00065ED55 /* KSYUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYUIView.m; sourceTree = "<group>"; };
-		5800A0D81D77032600AB55F7 /* libksygpulivedylib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libksygpulivedylib.framework; path = ../framework/livegpu/libksygpulivedylib.framework; sourceTree = "<group>"; };
+		588110B61D7D82E100A4EC4A /* KSYProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYProgressView.h; sourceTree = "<group>"; };
+		588110B71D7D82E100A4EC4A /* KSYProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYProgressView.m; sourceTree = "<group>"; };
+		588110BE1D7D995900A4EC4A /* libksygpulivedylib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libksygpulivedylib.framework; path = ../framework/livegpu/libksygpulivedylib.framework; sourceTree = "<group>"; };
 		58D112641D71DBD700AA610A /* KSYPlayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYPlayerVC.h; sourceTree = "<group>"; };
 		58D112651D71DBD700AA610A /* KSYPlayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYPlayerVC.m; sourceTree = "<group>"; };
 		58D112661D71DBD700AA610A /* KSYProberVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYProberVC.h; sourceTree = "<group>"; };
@@ -205,8 +210,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5800A0D91D77032600AB55F7 /* libksygpulivedylib.framework in Frameworks */,
+				588110BF1D7D995900A4EC4A /* libksygpulivedylib.framework in Frameworks */,
 				5E231D361D22CF870064F77E /* Security.framework in Frameworks */,
+				5E72AEC11D22D10200F22AFF /* libksygpulivedylib.framework in Frameworks */,
 				5E231D371D22CF870064F77E /* SystemConfiguration.framework in Frameworks */,
 				5E231D391D22CF870064F77E /* libsqlite3.tbd in Frameworks */,
 				5E231D3A1D22CF870064F77E /* libbz2.dylib in Frameworks */,
@@ -242,7 +248,7 @@
 		06B2B19A1BE8F0D900E0CC85 = {
 			isa = PBXGroup;
 			children = (
-				5800A0D81D77032600AB55F7 /* libksygpulivedylib.framework */,
+				588110BE1D7D995900A4EC4A /* libksygpulivedylib.framework */,
 				060AE9C21D4652CC0064DD65 /* Libs */,
 				06FBBD271D2E17E00065ED55 /* KSYDemoUI */,
 				58D112631D71DBD700AA610A /* KSYPlayerDemo */,
@@ -355,6 +361,8 @@
 		58D112631D71DBD700AA610A /* KSYPlayerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				588110B61D7D82E100A4EC4A /* KSYProgressView.h */,
+				588110B71D7D82E100A4EC4A /* KSYProgressView.m */,
 				58D1126D1D71E02A00AA610A /* URLTableViewController.h */,
 				58D1126E1D71E02A00AA610A /* URLTableViewController.m */,
 				58D1126A1D71DF0400AA610A /* MonkeyTestViewController.h */,
@@ -499,6 +507,7 @@
 				060AE9C51D4653010064DD65 /* KSYFileSelector.m in Sources */,
 				58D112691D71DBD700AA610A /* KSYProberVC.m in Sources */,
 				06FBBD4F1D2E17E00065ED55 /* KSYBlockDemoVC.m in Sources */,
+				588110B81D7D82E100A4EC4A /* KSYProgressView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +515,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				588110B91D7D82EF00A4EC4A /* KSYProgressView.m in Sources */,
 				58D112731D71E79D00AA610A /* KSYProberVC.m in Sources */,
 				58D112721D71E79700AA610A /* KSYPlayerVC.m in Sources */,
 				58D112711D71E77900AA610A /* MonkeyTestViewController.m in Sources */,

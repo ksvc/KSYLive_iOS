@@ -307,15 +307,6 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 
 #pragma mark - raw data
 /**
- @abstract   音频处理回调接口
- @param      sampleBuffer 原始采集到的音频数据
- @discussion 请注意本函数的执行时间，如果太长可能导致不可预知的问题
- 
- @see CMSampleBufferRef
- */
-@property(nonatomic, copy) void(^audioProcessingCallback)(CMSampleBufferRef sampleBuffer);
-
-/**
  @abstract   视频处理回调接口
  @param      sampleBuffer 原始采集到的视频数据
  @discussion 请注意本函数的执行时间，如果太长可能导致不可预知的问题
@@ -347,6 +338,11 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  @abstract  混音调节器
  */
 @property (nonatomic, readonly) KSYAudioMixer * audioMixer;
+
+/**
+ @abstract  Audio Unit 音频采集
+ */
+@property (nonatomic, readonly) KSYAUAudioCapture* audioCapDev;
 
 /**
  @abstract  麦克风 的trackID

@@ -1,6 +1,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
+#import "KSYTypeDef.h"
 
 /** 音频采集模块
  
@@ -12,6 +13,37 @@
 
  */
 @interface KSYAUAudioCapture : NSObject
+
+#pragma mark - KSYAUAudioCapture config
+/**
+ @abstract 是否打断其他后台的音乐播放 (默认为YES)
+ @discussion 也可以理解为是否允许在其他后台音乐播放的同时进行采集
+ @discussion YES:开始采集时，会打断其他的后台播放音乐，也会被其他音乐打断（采集过程中，启动其他音乐播放，采集被中止）
+ @discussion NO: 可以与其他后台播放共存，相互之间不会被打断
+ @see AVAudioSessionCategoryOptionMixWithOthers
+ */
+@property BOOL  bInterruptOtherAudio;
+
+/**
+ @abstract   启动采集后,是否从扬声器播放声音 (默认为YES)
+ @discussion 启动声音采集后,iOS系统的行为是默认从听筒播放声音的
+ @discussion 将该属性设为YES, 则改为默认从扬声器播放
+ @see AVAudioSessionCategoryOptionDefaultToSpeaker
+ */
+@property (nonatomic, assign) BOOL bDefaultToSpeaker;
+
+/**
+ @abstract   是否启用蓝牙设备 (默认为YES)
+ @see AVAudioSessionCategoryOptionAllowBluetooth
+ */
+@property (nonatomic, assign) BOOL bAllowBluetooth;
+
+/**
+ @abstract   设置声音采集需要的AUAudioSession的参数
+ @discussion 主要是保证音频采集需要的PlayAndRecord类型
+ @see AUAudioSession
+ */
+- (void) setAUAudioSessionOption;
 
 /** Start Audio capturing
  @abstract  启动音频采集
@@ -35,16 +67,6 @@
 @property(nonatomic, assign) Float32 micVolume;
 
 /**
- @abstract 是否开启采集时的回声消除
- */
-@property(nonatomic, assign) BOOL bEchoCancelAudio;
-
-/**
- @abstract  查询当前是否有耳机
- */
-+ (BOOL) isHeadsetPluggedIn;
-
-/**
  目前提供了4种类型的混响场景， type和场景的对应关系如下：
  * 0 关闭
  * 1 录音棚
@@ -59,5 +81,38 @@
  @param      sampleBuffer 采集到的音频数据
  */
 @property(nonatomic, copy) void(^audioProcessingCallback)(CMSampleBufferRef sampleBuffer);
+
+#pragma mark - audio input ports
+/**
+ @abstract   是否有蓝牙麦克风可用
+ @return     是/否有蓝牙麦克风可用
+ */
++ (BOOL)isBluetoothInputAvaible;
+
+/**
+ @abstract   选择是否使用蓝牙麦克风
+ @param      onOrOff : YES 使用蓝牙麦克风 NO
+ @return     是/否有蓝牙麦克风可用
+ */
+- (BOOL)switchBluetoothInput:(BOOL)onOrOff;
+
+/**
+ @abstract   是否有耳机麦克风可用
+ @return     是/否有耳机麦克风
+ */
++ (BOOL)isHeadsetInputAvaible;
+
+/**
+ @abstract  查询当前是否有耳机(包括蓝牙耳机)
+ */
++ (BOOL) isHeadsetPluggedIn;
+
+/**
+ @abstract   当前使用的音频设备
+ @discussion 当设置新值时, 如果修改成功, 重新查询为新值,修改不成功值不变
+ @see        KSYMicType
+ */
+@property KSYMicType currentMicType;
+
 
 @end

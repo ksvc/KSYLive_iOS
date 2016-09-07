@@ -210,6 +210,12 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 - (void) stopStream;
 
 /**
+ @abstract  静音推流 (仍然有音频输出发送, 只是音量为0)
+ @param     bMute YES / ON
+ */
+- (void) muteStreame:(BOOL) bMute;
+
+/**
  @abstract  处理一个视频帧
  @param sampleBuffer Buffer to process
  @discussion 应当在开始推流前定期调用此接口，比如按照采集帧率调用
@@ -300,20 +306,6 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
  
  */
 @property (atomic, readonly) NSString* rtmpHostIP;
-
-/**
- @abstract  静音推流
- @param     bMute YES / ON
- */
-- (void) muteStreame:(BOOL) bMute;
-
-/* [此调用无效]
-  @abstract 启/停混响 Reverberation
-  @param  Reverberation level: 取值范围为[0~4]
-  @discussion level取值为0表示关闭
-              [1~4]分别为不同效果
-*/
-- (void) enableReverb:(int) level;
 
 #pragma mark - logblock
 /**
