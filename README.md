@@ -45,11 +45,12 @@
 6. 2016.06.27 支持短视频录制；
 7. 2016.08.04 [两人连麦](https://github.com/ksvc/KSYLive_iOS/wiki/rtc)内测；
 8. 2016.08.24 支持[纯音频](https://github.com/ksvc/KSYLive_iOS/wiki/pureAudioStream)推流，支持后台音频推流，支持视频动态发送开关；
-9. 2016.08.31 [场景编码](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)，有效提升直播画质
+9. 2016.08.31 [场景编码](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)，有效提升直播画质；
+10. 2016.09.07 内建[新美颜](https://github.com/ksvc/KSYLive_iOS/wiki/filter)上线； 
 
 ### 2.2 近期工作  
 1. 2016.09.xx kit顶层库代码开源；
-2. 2016.09.xx 内建[极致美颜](https://github.com/ksvc/KSYLive_iOS/wiki/filter)上线；
+2. 2016.09.xx 横竖屏推流功能上线；
 
 
 ## 三. SDK集成方法介绍   
