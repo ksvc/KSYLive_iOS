@@ -15,6 +15,7 @@
 - [x] 支持[背景音乐播放](https://github.com/ksvc/KSYLive_iOS/wiki/BGM)
 - [x] 支持[混音](https://github.com/ksvc/KSYLive_iOS/wiki/mixer)
 - [x] 支持[视频动态推流开关/纯音频推流](https://github.com/ksvc/KSYLive_iOS/wiki/pureAudioStream)
+- [x] 支持[后台推流](https://github.com/ksvc/KSYLive_iOS/wiki/backgroupStream)
 - [x] [在线API 文档支持](http://ksvc.github.io/KSYLive_iOS/html/index.html)
 - [x] 支持[耳返](https://github.com/ksvc/KSYLive_iOS/wiki/micMonitor)
 - [x] 支持[画中画](https://github.com/ksvc/KSYLive_iOS/wiki/pip)推流
@@ -44,7 +45,7 @@
 5. 2016.06.12 [画中画](https://github.com/ksvc/KSYLive_iOS/wiki/pip)推流上线；
 6. 2016.06.27 支持短视频录制；
 7. 2016.08.04 [两人连麦](https://github.com/ksvc/KSYLive_iOS/wiki/rtc)内测；
-8. 2016.08.24 支持[纯音频](https://github.com/ksvc/KSYLive_iOS/wiki/pureAudioStream)推流，支持后台音频推流，支持视频动态发送开关；
+8. 2016.08.24 支持[纯音频](https://github.com/ksvc/KSYLive_iOS/wiki/pureAudioStream)推流，支持[后台推流](https://github.com/ksvc/KSYLive_iOS/wiki/backgroupStream)，支持视频动态发送开关；
 9. 2016.08.31 [场景编码](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)，有效提升直播画质；
 10. 2016.09.07 内建[新美颜](https://github.com/ksvc/KSYLive_iOS/wiki/filter)上线； 
 
