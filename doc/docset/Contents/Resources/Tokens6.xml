@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KSYAudioReverb.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYAudioReverb</TokenIdentifier>
+			<Abstract type="html">音效处理 - 混响</Abstract>
+			<DeclaredIn>KSYAudioReverb.h</DeclaredIn>
+            
+			
+			<NodeRef refid="6"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioReverb/initWithType:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYAudioReverb.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)initWithType:(int)type</Declaration>
+			
+			
+			<Anchor>//api/name/initWithType:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioReverb/ReverbWithSrc:nbSample:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYAudioReverb.h</DeclaredIn>
+			
+			<Declaration>- (void)ReverbWithSrc:(int16_t *)pInPcm nbSample:(int)nbSample</Declaration>
+			
+			
+			<Anchor>//api/name/ReverbWithSrc:nbSample:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioReverb/processAudioSampleBuffer:</TokenIdentifier>
+			<Abstract type="html">处理一段音频数据,添加混响音效</Abstract>
+			<DeclaredIn>KSYAudioReverb.h</DeclaredIn>
+			
+			<Declaration>- (void)processAudioSampleBuffer:(CMSampleBufferRef)sampleBuffer</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sampleBuffer</Name>
+					<Abstract type="html">Buffer to process</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/processAudioSampleBuffer:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

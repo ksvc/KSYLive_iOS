@@ -1,0 +1,1 @@
+OTHER_LDFLAGS = $(inherited) -ObjC -all_load -framework KSYMediaPlayer -framework Bugly -lz -lstdc++.6

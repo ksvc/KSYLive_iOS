@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KSYGPUDnoiseFilter.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUDnoiseFilter</TokenIdentifier>
+			<Abstract type="html">去噪滤镜</Abstract>
+			<DeclaredIn>KSYGPUDnoiseFilter.h</DeclaredIn>
+            
+			
+			<NodeRef refid="13"/>
+		</Token>
+		
+		
+        
+        
+	</File>
+</Tokens>

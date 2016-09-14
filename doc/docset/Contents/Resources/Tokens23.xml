@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KSYMicMonitor.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYMicMonitor</TokenIdentifier>
+			<Abstract type="html">耳返模块</Abstract>
+			<DeclaredIn>KSYMicMonitor.h</DeclaredIn>
+            
+			
+			<NodeRef refid="23"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMicMonitor/start</TokenIdentifier>
+			<Abstract type="html">启动mic返音功能</Abstract>
+			<DeclaredIn>KSYMicMonitor.h</DeclaredIn>
+			
+			<Declaration>- (void)start</Declaration>
+			
+			
+			<Anchor>//api/name/start</Anchor>
+            <NodeRef refid="23"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMicMonitor/stop</TokenIdentifier>
+			<Abstract type="html">关闭mic返音功能</Abstract>
+			<DeclaredIn>KSYMicMonitor.h</DeclaredIn>
+			
+			<Declaration>- (void)stop</Declaration>
+			
+			
+			<Anchor>//api/name/stop</Anchor>
+            <NodeRef refid="23"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMicMonitor/setVolume:</TokenIdentifier>
+			<Abstract type="html">设置mic返音音量</Abstract>
+			<DeclaredIn>KSYMicMonitor.h</DeclaredIn>
+			
+			<Declaration>- (void)setVolume:(Float32)volume</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>volume</Name>
+					<Abstract type="html">设置音量</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setVolume:</Anchor>
+            <NodeRef refid="23"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMicMonitor/setSampleRate:</TokenIdentifier>
+			<Abstract type="html">mic的采样率</Abstract>
+			<DeclaredIn>KSYMicMonitor.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) Float64 sampleRate</Declaration>
+			
+			
+			<Anchor>//api/name/sampleRate</Anchor>
+            <NodeRef refid="23"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMicMonitor/sampleRate</TokenIdentifier>
+			<Abstract type="html">mic的采样率</Abstract>
+			<DeclaredIn>KSYMicMonitor.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) Float64 sampleRate</Declaration>
+			
+			
+			<Anchor>//api/name/sampleRate</Anchor>
+            <NodeRef refid="23"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMicMonitor/sampleRate</TokenIdentifier>
+			<Abstract type="html">mic的采样率</Abstract>
+			<DeclaredIn>KSYMicMonitor.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) Float64 sampleRate</Declaration>
+			
+			
+			<Anchor>//api/name/sampleRate</Anchor>
+            <NodeRef refid="23"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KSYMicMonitor/isHeadsetPluggedIn</TokenIdentifier>
+			<Abstract type="html">查询当前是否有耳机</Abstract>
+			<DeclaredIn>KSYMicMonitor.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)isHeadsetPluggedIn</Declaration>
+			
+			
+			<Anchor>//api/name/isHeadsetPluggedIn</Anchor>
+            <NodeRef refid="23"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

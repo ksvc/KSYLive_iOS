@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>KSYStreamErrorCode Constants Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">KSYLive_iOS </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Kingsoft</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+
+	
+
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">KSYStreamErrorCode Constants Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Declared in</th>
+	<td>KSYTypeDef.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+
+					
+
+                    
+                    <h3 class="subsubtitle method-title">KSYStreamErrorCode</h3>
+                    
+					
+					
+                    <div class="section">
+                        <!-- display enum values -->
+                        
+                        <h4 class="method-subtitle">Definition</h4>
+                        <code>typedef NS_ENUM(NSUInteger, KSYStreamErrorCode ) {<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYStreamErrorCode_NONE</a> = 0,<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYStreamErrorCode_KSYAUTHFAILED</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYStreamErrorCode_ENCODE_FRAMES_FAILED</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYStreamErrorCode_CODEC_OPEN_FAILED</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYStreamErrorCode_CONNECT_FAILED</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYStreamErrorCode_CONNECT_BREAK</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYStreamErrorCode_RTMP_NonExistDomain</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYStreamErrorCode_RTMP_NonExistApplication</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYStreamErrorCode_RTMP_AlreadyExistStreamName</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYStreamErrorCode_RTMP_ForbiddenByBlacklist</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYStreamErrorCode_RTMP_InternalError</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYStreamErrorCode_RTMP_URLExpired</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYStreamErrorCode_RTMP_SignatureDoesNotMatch</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYStreamErrorCode_RTMP_InvalidAccessKeyId</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYStreamErrorCode_RTMP_BadParams</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYStreamErrorCode_RTMP_ForbiddenByRegion</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYStreamErrorCode_FRAMES_THRESHOLD</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYStreamErrorCode_NO_INPUT_SAMPLE</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYStreamErrorCode_DNS_Parse_failed</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYStreamErrorCode_Connect_Server_failed</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYStreamErrorCode_RTMP_Publish_failed</a>,<br>
+                            
+                            };</code>
+                    
+                    </div>
+                    
+                    <div class="section section-methods">
+                        <h4 class="method-subtitle">Constants</h4>
+                        <dl class="termdef">
+                            
+                            <dt><a name="" title="KSYStreamErrorCode_NONE"></a><code>KSYStreamErrorCode_NONE</code></dt>
+<dd>
+
+
+<p>正常无错误</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="KSYStreamErrorCode_KSYAUTHFAILED"></a><code>KSYStreamErrorCode_KSYAUTHFAILED</code></dt>
+<dd>
+
+
+<p>SDK 鉴权失败 (暂时正常推流5~8分钟后终止推流)</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="KSYStreamErrorCode_ENCODE_FRAMES_FAILED"></a><code>KSYStreamErrorCode_ENCODE_FRAMES_FAILED</code></dt>
+<dd>
+
+
+<p>当前帧编码失败</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="KSYStreamErrorCode_CODEC_OPEN_FAILED"></a><code>KSYStreamErrorCode_CODEC_OPEN_FAILED</code></dt>
+<dd>
+
+
+<p>无法打开配置指示的CODEC</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="KSYStreamErrorCode_CONNECT_FAILED"></a><code>KSYStreamErrorCode_CONNECT_FAILED</code></dt>
+<dd>
+
+
+<p>连接出错，检查地址</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="KSYStreamErrorCode_CONNECT_BREAK"></a><code>KSYStreamErrorCode_CONNECT_BREAK</code></dt>
+<dd>
+
+
+<p>网络连接中断</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="KSYStreamErrorCode_RTMP_NonExistDomain"></a><code>KSYStreamErrorCode_RTMP_NonExistDomain</code></dt>
+<dd>
+
+
+<p>rtmp 推流域名不存在 (KSY 自定义)</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="KSYStreamErrorCode_RTMP_NonExistApplication"></a><code>KSYStreamErrorCode_RTMP_NonExistApplication</code></dt>
+<dd>
+
+
+<p>rtmp 应用名不存在(KSY 自定义)</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="KSYStreamErrorCode_RTMP_AlreadyExistStreamName"></a><code>KSYStreamErrorCode_RTMP_AlreadyExistStreamName</code></dt>
+<dd>
+
+
+<p>rtmp 流名已存在(KSY 自定义)</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="KSYStreamErrorCode_RTMP_ForbiddenByBlacklist"></a><code>KSYStreamErrorCode_RTMP_ForbiddenByBlacklist</code></dt>
+<dd>
+
+
+<p>rtmp 被黑名单拒绝(KSY 自定义)</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="KSYStreamErrorCode_RTMP_InternalError"></a><code>KSYStreamErrorCode_RTMP_InternalError</code></dt>
+<dd>
+
+
+<p>rtmp 内部错误(KSY 自定义)</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="KSYStreamErrorCode_RTMP_URLExpired"></a><code>KSYStreamErrorCode_RTMP_URLExpired</code></dt>
+<dd>
+
+
+<p>rtmp URL 地址已过期(KSY 自定义)</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="KSYStreamErrorCode_RTMP_SignatureDoesNotMatch"></a><code>KSYStreamErrorCode_RTMP_SignatureDoesNotMatch</code></dt>
+<dd>
+
+
+<p>rtmp URL 地址签名错误(KSY 自定义)</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="KSYStreamErrorCode_RTMP_InvalidAccessKeyId"></a><code>KSYStreamErrorCode_RTMP_InvalidAccessKeyId</code></dt>
+<dd>
+
+
+<p>rtmp URL 中AccessKeyId非法(KSY 自定义)</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="KSYStreamErrorCode_RTMP_BadParams"></a><code>KSYStreamErrorCode_RTMP_BadParams</code></dt>
+<dd>
+
+
+<p>rtmp URL 中参数错误(KSY 自定义)</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="KSYStreamErrorCode_RTMP_ForbiddenByRegion"></a><code>KSYStreamErrorCode_RTMP_ForbiddenByRegion</code></dt>
+<dd>
+
+
+<p>rtmp URL 中的推流不在发布点内（KSY 自定义）</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="KSYStreamErrorCode_FRAMES_THRESHOLD"></a><code>KSYStreamErrorCode_FRAMES_THRESHOLD</code></dt>
+<dd>
+
+
+<p>SDK 因为鉴权失败停止推流</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="KSYStreamErrorCode_NO_INPUT_SAMPLE"></a><code>KSYStreamErrorCode_NO_INPUT_SAMPLE</code></dt>
+<dd>
+
+
+<p>没有输入的数据，无法开始推流</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="KSYStreamErrorCode_DNS_Parse_failed"></a><code>KSYStreamErrorCode_DNS_Parse_failed</code></dt>
+<dd>
+
+
+<p>对于URL中的域名解析失败</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="KSYStreamErrorCode_Connect_Server_failed"></a><code>KSYStreamErrorCode_Connect_Server_failed</code></dt>
+<dd>
+
+
+<p>对于URL对应的服务器连接失败(无法建立TCP连接)</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="KSYStreamErrorCode_RTMP_Publish_failed"></a><code>KSYStreamErrorCode_RTMP_Publish_failed</code></dt>
+<dd>
+
+
+<p>跟RTMP服务器完成握手后,向{appname}/{streamname} 推流失败</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                        </dl>
+                    </div>
+                    
+
+                    
+                    
+
+                    
+
+                    
+                    <div class="method-subsection declared-in-section">
+                        <h4 class="method-subtitle">Declared In</h4>
+                        <p><code class="declared-in-ref">KSYTypeDef.h</code></p>
+                    </div>
+                    
+                    
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-09-12</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

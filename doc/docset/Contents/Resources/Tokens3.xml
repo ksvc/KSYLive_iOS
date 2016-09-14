@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KSYAVMuxer.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYAVMuxer</TokenIdentifier>
+			<Abstract type="html">音视频交织工具类</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+            
+			
+			<NodeRef refid="3"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVMuxer/setBLoopVideo:</TokenIdentifier>
+			<Abstract type="html">当视频数据比音频数据短时,是否循环使用视频数据 （默认为NO）</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+			
+			<Declaration>@property (atomic, assign) BOOL bLoopVideo</Declaration>
+			
+			
+			<Anchor>//api/name/bLoopVideo</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVMuxer/bLoopVideo</TokenIdentifier>
+			<Abstract type="html">当视频数据比音频数据短时,是否循环使用视频数据 （默认为NO）</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+			
+			<Declaration>@property (atomic, assign) BOOL bLoopVideo</Declaration>
+			
+			
+			<Anchor>//api/name/bLoopVideo</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAVMuxer/bLoopVideo</TokenIdentifier>
+			<Abstract type="html">当视频数据比音频数据短时,是否循环使用视频数据 （默认为NO）</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+			
+			<Declaration>@property (atomic, assign) BOOL bLoopVideo</Declaration>
+			
+			
+			<Anchor>//api/name/bLoopVideo</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVMuxer/setBLoopAudio:</TokenIdentifier>
+			<Abstract type="html">当音频数据比视频数据短时,是否循环使用音频数据 （默认为NO）</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+			
+			<Declaration>@property (atomic, assign) BOOL bLoopAudio</Declaration>
+			
+			
+			<Anchor>//api/name/bLoopAudio</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVMuxer/bLoopAudio</TokenIdentifier>
+			<Abstract type="html">当音频数据比视频数据短时,是否循环使用音频数据 （默认为NO）</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+			
+			<Declaration>@property (atomic, assign) BOOL bLoopAudio</Declaration>
+			
+			
+			<Anchor>//api/name/bLoopAudio</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAVMuxer/bLoopAudio</TokenIdentifier>
+			<Abstract type="html">当音频数据比视频数据短时,是否循环使用音频数据 （默认为NO）</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+			
+			<Declaration>@property (atomic, assign) BOOL bLoopAudio</Declaration>
+			
+			
+			<Anchor>//api/name/bLoopAudio</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVMuxer/setMetadata:</TokenIdentifier>
+			<Abstract type="html">最后输出视频文件时附带的metadata (默认为nil)</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+			
+			<Declaration>@property (atomic, copy) NSDictionary *metadata</Declaration>
+			
+			
+			<Anchor>//api/name/metadata</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVMuxer/metadata</TokenIdentifier>
+			<Abstract type="html">最后输出视频文件时附带的metadata (默认为nil)</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+			
+			<Declaration>@property (atomic, copy) NSDictionary *metadata</Declaration>
+			
+			
+			<Anchor>//api/name/metadata</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAVMuxer/metadata</TokenIdentifier>
+			<Abstract type="html">最后输出视频文件时附带的metadata (默认为nil)</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+			
+			<Declaration>@property (atomic, copy) NSDictionary *metadata</Declaration>
+			
+			
+			<Anchor>//api/name/metadata</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVMuxer/startMuxVideo:andAudio:To:</TokenIdentifier>
+			<Abstract type="html">启动处理(同步)</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+			
+			<Declaration>- (void)startMuxVideo:(NSURL *)vFile andAudio:(NSURL *)aFile To:(NSURL *)oFile</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>vFile</Name>
+					<Abstract type="html">为输入的纯视频文件的路径</Abstract>
+				</Parameter><Parameter>
+					<Name>aFile</Name>
+					<Abstract type="html">为输入的音频文件的路径</Abstract>
+				</Parameter><Parameter>
+					<Name>oFile</Name>
+					<Abstract type="html">为输出文件的路径</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/startMuxVideo:andAudio:To:</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVMuxer/asyncMuxVideo:andAudio:To:</TokenIdentifier>
+			<Abstract type="html">启动处理(异步)</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+			
+			<Declaration>- (void)asyncMuxVideo:(NSURL *)vFile andAudio:(NSURL *)aFile To:(NSURL *)oFile</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>vFile</Name>
+					<Abstract type="html">为输入的纯视频文件的路径</Abstract>
+				</Parameter><Parameter>
+					<Name>aFile</Name>
+					<Abstract type="html">为输入的音频文件的路径</Abstract>
+				</Parameter><Parameter>
+					<Name>oFile</Name>
+					<Abstract type="html">为输出文件的路径</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/asyncMuxVideo:andAudio:To:</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVMuxer/cancelMux</TokenIdentifier>
+			<Abstract type="html">中止处理</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+			
+			<Declaration>- (void)cancelMux</Declaration>
+			
+			
+			<Anchor>//api/name/cancelMux</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVMuxer/setMuxCompleteBlock:</TokenIdentifier>
+			<Abstract type="html">异步处理完成回调
+@param      status</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( KSYAVMuxerStatus status ) muxCompleteBlock</Declaration>
+			
+			
+			<Anchor>//api/name/muxCompleteBlock</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVMuxer/muxCompleteBlock</TokenIdentifier>
+			<Abstract type="html">异步处理完成回调
+@param      status</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( KSYAVMuxerStatus status ) muxCompleteBlock</Declaration>
+			
+			
+			<Anchor>//api/name/muxCompleteBlock</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAVMuxer/muxCompleteBlock</TokenIdentifier>
+			<Abstract type="html">异步处理完成回调
+@param      status</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( KSYAVMuxerStatus status ) muxCompleteBlock</Declaration>
+			
+			
+			<Anchor>//api/name/muxCompleteBlock</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

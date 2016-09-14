@@ -1,0 +1,22 @@
+platform :ios, '7.0'
+inhibit_all_warnings!
+install! 'cocoapods', :deterministic_uuids => false
+
+target 'KSYPlayerDemo' do
+	pod 'Bugly'
+	pod 'GPUImage'
+ 	pod 'libksygpulive/KSYMediaPlayer', :path => '../'
+end
+
+target 'KSYLiveDemo' do
+	pod 'Bugly'
+	pod 'GPUImage'
+	pod 'libksygpulive/libksygpulive', :path => '../'
+ 	#pod 'libksygpulive/libksygpulive_265', :path => '../'
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    puts "!!!! #{target.name}"
+  end
+end
