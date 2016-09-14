@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KSYGPUTwoPassFilter.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUTwoPassFilter</TokenIdentifier>
+			<Abstract type="html">two pass 滤镜</Abstract>
+			<DeclaredIn>KSYGPUTwoPassFilter.h</DeclaredIn>
+            
+			
+			<NodeRef refid="19"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUTwoPassFilter/reloadFirstStageVertexShaderFromString:firstStageFragmentShaderFromString:secondStageVertexShaderFromString:secondStageFragmentShaderFromString:</TokenIdentifier>
+			<Abstract type="html">reload</Abstract>
+			<DeclaredIn>KSYGPUTwoPassFilter.h</DeclaredIn>
+			
+			<Declaration>- (void)reloadFirstStageVertexShaderFromString:(NSString *)firstStageVertexShaderString firstStageFragmentShaderFromString:(NSString *)firstStageFragmentShaderString secondStageVertexShaderFromString:(NSString *)secondStageVertexShaderString secondStageFragmentShaderFromString:(NSString *)secondStageFragmentShaderString</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>firstStageVertexShaderString</Name>
+					<Abstract type="html">第一轮的顶点shader</Abstract>
+				</Parameter><Parameter>
+					<Name>firstStageFragmentShaderString</Name>
+					<Abstract type="html">第一轮的纹理shader</Abstract>
+				</Parameter><Parameter>
+					<Name>secondStageVertexShaderString</Name>
+					<Abstract type="html">第二轮的顶点shader</Abstract>
+				</Parameter><Parameter>
+					<Name>secondStageFragmentShaderString</Name>
+					<Abstract type="html">第二轮的纹理shader</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/reloadFirstStageVertexShaderFromString:firstStageFragmentShaderFromString:secondStageVertexShaderFromString:secondStageFragmentShaderFromString:</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KSYGPUBeautifyPlusFilter.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUBeautifyPlusFilter</TokenIdentifier>
+			<Abstract type="html">增强美颜滤镜</Abstract>
+			<DeclaredIn>KSYGPUBeautifyPlusFilter.h</DeclaredIn>
+            
+			
+			<NodeRef refid="11"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyPlusFilter/setBeautylevel:</TokenIdentifier>
+			<Abstract type="html">美颜的等级</Abstract>
+			<DeclaredIn>KSYGPUBeautifyPlusFilter.h</DeclaredIn>
+			
+			<Declaration>- (void)setBeautylevel:(int)level</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>level</Name>
+					<Abstract type="html">1 ~ 5，逐级增强, 默认为3</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setBeautylevel:</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KSYAUAudioCapture.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYAUAudioCapture</TokenIdentifier>
+			<Abstract type="html">音频采集模块</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+            
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/startCapture</TokenIdentifier>
+			<Abstract type="html">启动音频采集</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)startCapture</Declaration>
+			
+			<ReturnValue><Abstract type="html">是否启动采集成功</Abstract></ReturnValue>
+			<Anchor>//api/name/startCapture</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/stopCapture</TokenIdentifier>
+			<Abstract type="html">Start Audio capturing</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>- (void)stopCapture</Declaration>
+			
+			
+			<Anchor>//api/name/stopCapture</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/setBPlayCapturedAudio:</TokenIdentifier>
+			<Abstract type="html">是否播放采集的声音 (又称&quot;耳返&quot;)</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bPlayCapturedAudio</Declaration>
+			
+			
+			<Anchor>//api/name/bPlayCapturedAudio</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/bPlayCapturedAudio</TokenIdentifier>
+			<Abstract type="html">是否播放采集的声音 (又称&quot;耳返&quot;)</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bPlayCapturedAudio</Declaration>
+			
+			
+			<Anchor>//api/name/bPlayCapturedAudio</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAUAudioCapture/bPlayCapturedAudio</TokenIdentifier>
+			<Abstract type="html">是否播放采集的声音 (又称&quot;耳返&quot;)</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bPlayCapturedAudio</Declaration>
+			
+			
+			<Anchor>//api/name/bPlayCapturedAudio</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/setMicVolume:</TokenIdentifier>
+			<Abstract type="html">设置mic采集的声音音量</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) Float32 micVolume</Declaration>
+			
+			
+			<Anchor>//api/name/micVolume</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/micVolume</TokenIdentifier>
+			<Abstract type="html">设置mic采集的声音音量</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) Float32 micVolume</Declaration>
+			
+			
+			<Anchor>//api/name/micVolume</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAUAudioCapture/micVolume</TokenIdentifier>
+			<Abstract type="html">设置mic采集的声音音量</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) Float32 micVolume</Declaration>
+			
+			
+			<Anchor>//api/name/micVolume</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/setReverbType:</TokenIdentifier>
+			<Abstract type="html">目前提供了4种类型的混响场景， type和场景的对应关系
+* 0 关闭
+* 1 录音棚
+* 2 KTV
+* 3 小舞台
+* 4 演唱会</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int reverbType</Declaration>
+			
+			
+			<Anchor>//api/name/reverbType</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/reverbType</TokenIdentifier>
+			<Abstract type="html">目前提供了4种类型的混响场景， type和场景的对应关系
+* 0 关闭
+* 1 录音棚
+* 2 KTV
+* 3 小舞台
+* 4 演唱会</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int reverbType</Declaration>
+			
+			
+			<Anchor>//api/name/reverbType</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAUAudioCapture/reverbType</TokenIdentifier>
+			<Abstract type="html">目前提供了4种类型的混响场景， type和场景的对应关系
+* 0 关闭
+* 1 录音棚
+* 2 KTV
+* 3 小舞台
+* 4 演唱会</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int reverbType</Declaration>
+			
+			
+			<Anchor>//api/name/reverbType</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/setAudioProcessingCallback:</TokenIdentifier>
+			<Abstract type="html">采集数据输出回调函数</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/audioProcessingCallback</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/audioProcessingCallback</TokenIdentifier>
+			<Abstract type="html">采集数据输出回调函数</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/audioProcessingCallback</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAUAudioCapture/audioProcessingCallback</TokenIdentifier>
+			<Abstract type="html">采集数据输出回调函数</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/audioProcessingCallback</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KSYAUAudioCapture/isHeadsetPluggedIn</TokenIdentifier>
+			<Abstract type="html">是否有耳机麦克风可用</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)isHeadsetPluggedIn</Declaration>
+			
+			<ReturnValue><Abstract type="html">是/否有耳机麦克风</Abstract></ReturnValue>
+			<Anchor>//api/name/isHeadsetPluggedIn</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

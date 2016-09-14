@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/KSYAVMuxerStatus.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYAVMuxerStatus</TokenIdentifier>
+			<Abstract type="html">交织处理状态</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+            
+			
+			<NodeRef refid="30"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusIdle</TokenIdentifier>
+            <Abstract type="html">初始状态</Abstract>
+            <Declaration>KSYAVMuxerStatusIdle</Declaration>
+            
+            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+            
+            <NodeRef refid="30"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusMuxing</TokenIdentifier>
+            <Abstract type="html">处理中</Abstract>
+            <Declaration>KSYAVMuxerStatusMuxing</Declaration>
+            
+            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+            
+            <NodeRef refid="30"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusCompleted</TokenIdentifier>
+            <Abstract type="html">处理完成</Abstract>
+            <Declaration>KSYAVMuxerStatusCompleted</Declaration>
+            
+            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+            
+            <NodeRef refid="30"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusFailed</TokenIdentifier>
+            <Abstract type="html">处理失败</Abstract>
+            <Declaration>KSYAVMuxerStatusFailed</Declaration>
+            
+            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+            
+            <NodeRef refid="30"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusCancelled</TokenIdentifier>
+            <Abstract type="html">处理任务被取消</Abstract>
+            <Declaration>KSYAVMuxerStatusCancelled</Declaration>
+            
+            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+            
+            <NodeRef refid="30"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

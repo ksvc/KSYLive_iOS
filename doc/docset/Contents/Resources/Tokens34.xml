@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/KSYDevAuthStatus.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYDevAuthStatus</TokenIdentifier>
+			<Abstract type="html">设备授权状态</Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+			
+			<NodeRef refid="34"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYDevAuthStatusNotDetermined</TokenIdentifier>
+            <Abstract type="html">还没有确定是否授权</Abstract>
+            <Declaration>KSYDevAuthStatusNotDetermined</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="34"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYDevAuthStatusRestricted</TokenIdentifier>
+            <Abstract type="html">设备受限，一般在家长模式下设备会受限</Abstract>
+            <Declaration>KSYDevAuthStatusRestricted</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="34"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYDevAuthStatusDenied</TokenIdentifier>
+            <Abstract type="html">拒绝授权</Abstract>
+            <Declaration>KSYDevAuthStatusDenied</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="34"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYDevAuthStatusAuthorized</TokenIdentifier>
+            <Abstract type="html">已授权</Abstract>
+            <Declaration>KSYDevAuthStatusAuthorized</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="34"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

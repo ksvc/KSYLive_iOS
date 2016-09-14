@@ -1,0 +1,1015 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		06A646C01D8652C000D1C620 /* KSYAVAudioSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A646BE1D8652A400D1C620 /* KSYAVAudioSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06A646C11D8652CB00D1C620 /* KSYAVAudioSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A646BE1D8652A400D1C620 /* KSYAVAudioSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06A646D21D865B3B00D1C620 /* KSYGPUStreamerKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A646CE1D865B2C00D1C620 /* KSYGPUStreamerKit.m */; };
+		06A646D31D865B4100D1C620 /* KSYGPUStreamerKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A646CE1D865B2C00D1C620 /* KSYGPUStreamerKit.m */; };
+		06A646D71D865D1C00D1C620 /* KSYGPULogoFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A646D51D865D0900D1C620 /* KSYGPULogoFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06A646D81D865D2A00D1C620 /* KSYGPUStreamerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A646CF1D865B2C00D1C620 /* KSYGPUStreamerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06A646D91D865D2A00D1C620 /* KSYGPULogoFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A646D51D865D0900D1C620 /* KSYGPULogoFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06A646DA1D865D3200D1C620 /* KSYGPUStreamerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A646CF1D865B2C00D1C620 /* KSYGPUStreamerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800A0591D76E50100AB55F7 /* KSYMediaPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800A0181D76BFA600AB55F7 /* KSYMediaPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800A05A1D76E50E00AB55F7 /* KSYMediaPlayerDy.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800A0321D76C2D700AB55F7 /* KSYMediaPlayerDy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DC851D82B9AA00B1A884 /* KSYMediaInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC7F1D82B9AA00B1A884 /* KSYMediaInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DC861D82B9AA00B1A884 /* KSYMediaInfoProber.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC801D82B9AA00B1A884 /* KSYMediaInfoProber.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DC871D82B9AA00B1A884 /* KSYMediaPlayback.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC811D82B9AA00B1A884 /* KSYMediaPlayback.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DC881D82B9AA00B1A884 /* KSYMoviePlayerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC821D82B9AA00B1A884 /* KSYMoviePlayerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DC891D82B9AA00B1A884 /* KSYMoviePlayerDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC831D82B9AA00B1A884 /* KSYMoviePlayerDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DC8A1D82B9AA00B1A884 /* KSYQosInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC841D82B9AA00B1A884 /* KSYQosInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCD01D82BADE00B1A884 /* KSYMediaInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC7F1D82B9AA00B1A884 /* KSYMediaInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCD11D82BADE00B1A884 /* KSYMediaInfoProber.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC801D82B9AA00B1A884 /* KSYMediaInfoProber.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCD21D82BADE00B1A884 /* KSYMediaPlayback.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC811D82B9AA00B1A884 /* KSYMediaPlayback.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCD31D82BADE00B1A884 /* KSYMoviePlayerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC821D82B9AA00B1A884 /* KSYMoviePlayerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCD41D82BADE00B1A884 /* KSYMoviePlayerDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC831D82B9AA00B1A884 /* KSYMoviePlayerDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCD51D82BADE00B1A884 /* KSYQosInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC841D82B9AA00B1A884 /* KSYQosInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCD61D82BAF500B1A884 /* KSYAUAudioCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA21D82BAA800B1A884 /* KSYAUAudioCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCD71D82BAF500B1A884 /* KSYAudioMixer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA31D82BAA800B1A884 /* KSYAudioMixer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCD81D82BAF500B1A884 /* KSYAudioReverb.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA41D82BAA800B1A884 /* KSYAudioReverb.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCD91D82BAF500B1A884 /* KSYAVMuxer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA51D82BAA800B1A884 /* KSYAVMuxer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCDA1D82BAF500B1A884 /* KSYBeautifyFaceFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA61D82BAA800B1A884 /* KSYBeautifyFaceFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCDB1D82BAF500B1A884 /* KSYBgmPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA71D82BAA800B1A884 /* KSYBgmPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCDC1D82BAF500B1A884 /* KSYGPUBeautifyExtFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA81D82BAA800B1A884 /* KSYGPUBeautifyExtFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCDD1D82BAF500B1A884 /* KSYGPUBeautifyFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA91D82BAA800B1A884 /* KSYGPUBeautifyFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCDE1D82BAF500B1A884 /* KSYGPUBeautifyPlusFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCAA1D82BAA800B1A884 /* KSYGPUBeautifyPlusFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCDF1D82BAF500B1A884 /* KSYGPUCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCAB1D82BAA800B1A884 /* KSYGPUCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCE01D82BAF500B1A884 /* KSYGPUDnoiseFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCAC1D82BAA800B1A884 /* KSYGPUDnoiseFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCE11D82BAF500B1A884 /* KSYGPUFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCAD1D82BAA800B1A884 /* KSYGPUFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCE21D82BAF500B1A884 /* KSYGPUPicMixer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCAE1D82BAA800B1A884 /* KSYGPUPicMixer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCE31D82BAF500B1A884 /* KSYGPUPicOutput.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCAF1D82BAA800B1A884 /* KSYGPUPicOutput.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCE41D82BAF500B1A884 /* KSYGPUPipBlendFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCB01D82BAA800B1A884 /* KSYGPUPipBlendFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCE51D82BAF500B1A884 /* KSYGPUTwoPassFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCB11D82BAA800B1A884 /* KSYGPUTwoPassFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCE61D82BAF500B1A884 /* KSYGPUYUVInput.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCB21D82BAA800B1A884 /* KSYGPUYUVInput.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCE71D82BAF500B1A884 /* KSYMicMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCB31D82BAA800B1A884 /* KSYMicMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCE81D82BAF500B1A884 /* KSYMovieWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCB41D82BAA800B1A884 /* KSYMovieWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCE91D82BAF500B1A884 /* KSYStreamerBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCB51D82BAA800B1A884 /* KSYStreamerBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCEA1D82BAF500B1A884 /* KSYTypeDef.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCB61D82BAA800B1A884 /* KSYTypeDef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCEB1D82BAF500B1A884 /* libksygpuimage.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCB71D82BAA800B1A884 /* libksygpuimage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCEC1D82BAF500B1A884 /* libksygpulive.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCB81D82BAA800B1A884 /* libksygpulive.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCED1D82BAFF00B1A884 /* KSYMediaInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC7F1D82B9AA00B1A884 /* KSYMediaInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCEE1D82BAFF00B1A884 /* KSYMediaInfoProber.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC801D82B9AA00B1A884 /* KSYMediaInfoProber.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCEF1D82BAFF00B1A884 /* KSYMediaPlayback.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC811D82B9AA00B1A884 /* KSYMediaPlayback.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCF01D82BAFF00B1A884 /* KSYMoviePlayerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC821D82B9AA00B1A884 /* KSYMoviePlayerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCF11D82BAFF00B1A884 /* KSYMoviePlayerDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC831D82B9AA00B1A884 /* KSYMoviePlayerDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCF21D82BAFF00B1A884 /* KSYQosInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC841D82B9AA00B1A884 /* KSYQosInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCF31D82BB1C00B1A884 /* KSYAUAudioCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA21D82BAA800B1A884 /* KSYAUAudioCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCF41D82BB1C00B1A884 /* KSYAudioMixer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA31D82BAA800B1A884 /* KSYAudioMixer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCF51D82BB1C00B1A884 /* KSYAudioReverb.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA41D82BAA800B1A884 /* KSYAudioReverb.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCF61D82BB1C00B1A884 /* KSYAVMuxer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA51D82BAA800B1A884 /* KSYAVMuxer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCF71D82BB1C00B1A884 /* KSYBeautifyFaceFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA61D82BAA800B1A884 /* KSYBeautifyFaceFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCF81D82BB1C00B1A884 /* KSYBgmPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA71D82BAA800B1A884 /* KSYBgmPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCF91D82BB1C00B1A884 /* KSYGPUBeautifyExtFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA81D82BAA800B1A884 /* KSYGPUBeautifyExtFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCFA1D82BB1C00B1A884 /* KSYGPUBeautifyFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA91D82BAA800B1A884 /* KSYGPUBeautifyFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCFB1D82BB1C00B1A884 /* KSYGPUBeautifyPlusFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCAA1D82BAA800B1A884 /* KSYGPUBeautifyPlusFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCFC1D82BB1C00B1A884 /* KSYGPUCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCAB1D82BAA800B1A884 /* KSYGPUCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCFD1D82BB1C00B1A884 /* KSYGPUDnoiseFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCAC1D82BAA800B1A884 /* KSYGPUDnoiseFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCFE1D82BB1C00B1A884 /* KSYGPUFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCAD1D82BAA800B1A884 /* KSYGPUFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DCFF1D82BB1C00B1A884 /* KSYGPUPicMixer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCAE1D82BAA800B1A884 /* KSYGPUPicMixer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DD001D82BB1C00B1A884 /* KSYGPUPicOutput.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCAF1D82BAA800B1A884 /* KSYGPUPicOutput.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DD011D82BB1C00B1A884 /* KSYGPUPipBlendFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCB01D82BAA800B1A884 /* KSYGPUPipBlendFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DD021D82BB1C00B1A884 /* KSYGPUTwoPassFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCB11D82BAA800B1A884 /* KSYGPUTwoPassFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DD031D82BB1C00B1A884 /* KSYGPUYUVInput.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCB21D82BAA800B1A884 /* KSYGPUYUVInput.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DD041D82BB1C00B1A884 /* KSYMicMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCB31D82BAA800B1A884 /* KSYMicMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DD051D82BB1C00B1A884 /* KSYMovieWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCB41D82BAA800B1A884 /* KSYMovieWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DD061D82BB1C00B1A884 /* KSYStreamerBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCB51D82BAA800B1A884 /* KSYStreamerBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DD071D82BB1C00B1A884 /* KSYTypeDef.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCB61D82BAA800B1A884 /* KSYTypeDef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DD081D82BB1C00B1A884 /* libksygpuimage.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCB71D82BAA800B1A884 /* libksygpuimage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DD091D82BB1C00B1A884 /* libksygpulive.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCB81D82BAA800B1A884 /* libksygpulive.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DD0A1D82BB2400B1A884 /* KSYMediaInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC7F1D82B9AA00B1A884 /* KSYMediaInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DD0B1D82BB2400B1A884 /* KSYMediaInfoProber.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC801D82B9AA00B1A884 /* KSYMediaInfoProber.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DD0C1D82BB2400B1A884 /* KSYMediaPlayback.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC811D82B9AA00B1A884 /* KSYMediaPlayback.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DD0D1D82BB2400B1A884 /* KSYMoviePlayerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC821D82B9AA00B1A884 /* KSYMoviePlayerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DD0E1D82BB2400B1A884 /* KSYMoviePlayerDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC831D82B9AA00B1A884 /* KSYMoviePlayerDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5800DD0F1D82BB2400B1A884 /* KSYQosInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC841D82B9AA00B1A884 /* KSYQosInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		580489C51D798C8400232F6E /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 580489C41D798C8400232F6E /* libbz2.tbd */; };
+		58048A211D79C8EC00232F6E /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 58048A201D79C8EC00232F6E /* libstdc++.6.tbd */; };
+		58048A221D79C90600232F6E /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 58048A201D79C8EC00232F6E /* libstdc++.6.tbd */; };
+		58048A241D79C92A00232F6E /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 58048A231D79C92A00232F6E /* libz.tbd */; };
+		58048A251D79C93B00232F6E /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 58048A231D79C92A00232F6E /* libz.tbd */; };
+		588110C31D7D9F7B00A4EC4A /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58048A1D1D79C81F00232F6E /* GPUImage.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		06A646BE1D8652A400D1C620 /* KSYAVAudioSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYAVAudioSession.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYAVAudioSession.h; sourceTree = "<group>"; };
+		06A646CE1D865B2C00D1C620 /* KSYGPUStreamerKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYGPUStreamerKit.m; path = ../../source/KSYGPUStreamerKit.m; sourceTree = "<group>"; };
+		06A646CF1D865B2C00D1C620 /* KSYGPUStreamerKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUStreamerKit.h; path = ../../source/KSYGPUStreamerKit.h; sourceTree = "<group>"; };
+		06A646D51D865D0900D1C620 /* KSYGPULogoFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPULogoFilter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPULogoFilter.h; sourceTree = "<group>"; };
+		5800A0161D76BFA600AB55F7 /* KSYMediaPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KSYMediaPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5800A0181D76BFA600AB55F7 /* KSYMediaPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSYMediaPlayer.h; sourceTree = "<group>"; };
+		5800A01A1D76BFA600AB55F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5800A0301D76C2D700AB55F7 /* KSYMediaPlayerDy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KSYMediaPlayerDy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5800A0321D76C2D700AB55F7 /* KSYMediaPlayerDy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSYMediaPlayerDy.h; sourceTree = "<group>"; };
+		5800A0341D76C2D700AB55F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5800A09F1D76EC1600AB55F7 /* libksygpulive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = libksygpulive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5800A0A31D76EC1600AB55F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5800DC7F1D82B9AA00B1A884 /* KSYMediaInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSYMediaInfo.h; path = ../../../../prebuilt/include/KSYPlayer/KSYMediaInfo.h; sourceTree = "<group>"; };
+		5800DC801D82B9AA00B1A884 /* KSYMediaInfoProber.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSYMediaInfoProber.h; path = ../../../../prebuilt/include/KSYPlayer/KSYMediaInfoProber.h; sourceTree = "<group>"; };
+		5800DC811D82B9AA00B1A884 /* KSYMediaPlayback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSYMediaPlayback.h; path = ../../../../prebuilt/include/KSYPlayer/KSYMediaPlayback.h; sourceTree = "<group>"; };
+		5800DC821D82B9AA00B1A884 /* KSYMoviePlayerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSYMoviePlayerController.h; path = ../../../../prebuilt/include/KSYPlayer/KSYMoviePlayerController.h; sourceTree = "<group>"; };
+		5800DC831D82B9AA00B1A884 /* KSYMoviePlayerDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSYMoviePlayerDefines.h; path = ../../../../prebuilt/include/KSYPlayer/KSYMoviePlayerDefines.h; sourceTree = "<group>"; };
+		5800DC841D82B9AA00B1A884 /* KSYQosInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSYQosInfo.h; path = ../../../../prebuilt/include/KSYPlayer/KSYQosInfo.h; sourceTree = "<group>"; };
+		5800DC8B1D82B9F600B1A884 /* libksyplayer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksyplayer.a; path = ../../../../prebuilt/libs/libksyplayer.a; sourceTree = "<group>"; };
+		5800DC8E1D82BA4900B1A884 /* libksystreamer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksystreamer.a; path = ../../../../../prebuilt/libs/libksystreamer.a; sourceTree = "<group>"; };
+		5800DC901D82BA7200B1A884 /* libksybase.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksybase.a; path = ../../../prebuilt/libs/libksybase.a; sourceTree = "<group>"; };
+		5800DC911D82BA7200B1A884 /* libksymediacodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksymediacodec.a; path = ../../../prebuilt/libs/libksymediacodec.a; sourceTree = "<group>"; };
+		5800DC921D82BA7200B1A884 /* libksymediacore_dec_lite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksymediacore_dec_lite.a; path = ../../../prebuilt/libs/libksymediacore_dec_lite.a; sourceTree = "<group>"; };
+		5800DC931D82BA7200B1A884 /* libksymediacore_dec_vod.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksymediacore_dec_vod.a; path = ../../../prebuilt/libs/libksymediacore_dec_vod.a; sourceTree = "<group>"; };
+		5800DC941D82BA7200B1A884 /* libksymediacore_dec_lite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksymediacore_dec_lite.a; path = ../../../prebuilt/libs/libksymediacore_dec_lite.a; sourceTree = "<group>"; };
+		5800DC951D82BA7200B1A884 /* libksymediacore_enc_265.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksymediacore_enc_265.a; path = ../../../prebuilt/libs/libksymediacore_enc_265.a; sourceTree = "<group>"; };
+		5800DC961D82BA7200B1A884 /* libksymediacore_enc_lite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksymediacore_enc_lite.a; path = ../../../prebuilt/libs/libksymediacore_enc_lite.a; sourceTree = "<group>"; };
+		5800DC971D82BA7200B1A884 /* libksymediacore_enc_lite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksymediacore_enc_lite.a; path = ../../../prebuilt/libs/libksymediacore_enc_lite.a; sourceTree = "<group>"; };
+		5800DCA01D82BA8400B1A884 /* libksyyuv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksyyuv.a; path = ../../../prebuilt/libs/libksyyuv.a; sourceTree = "<group>"; };
+		5800DCA21D82BAA800B1A884 /* KSYAUAudioCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYAUAudioCapture.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYAUAudioCapture.h; sourceTree = "<group>"; };
+		5800DCA31D82BAA800B1A884 /* KSYAudioMixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYAudioMixer.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYAudioMixer.h; sourceTree = "<group>"; };
+		5800DCA41D82BAA800B1A884 /* KSYAudioReverb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYAudioReverb.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYAudioReverb.h; sourceTree = "<group>"; };
+		5800DCA51D82BAA800B1A884 /* KSYAVMuxer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYAVMuxer.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYAVMuxer.h; sourceTree = "<group>"; };
+		5800DCA61D82BAA800B1A884 /* KSYBeautifyFaceFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYBeautifyFaceFilter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYBeautifyFaceFilter.h; sourceTree = "<group>"; };
+		5800DCA71D82BAA800B1A884 /* KSYBgmPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYBgmPlayer.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYBgmPlayer.h; sourceTree = "<group>"; };
+		5800DCA81D82BAA800B1A884 /* KSYGPUBeautifyExtFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUBeautifyExtFilter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPUBeautifyExtFilter.h; sourceTree = "<group>"; };
+		5800DCA91D82BAA800B1A884 /* KSYGPUBeautifyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUBeautifyFilter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPUBeautifyFilter.h; sourceTree = "<group>"; };
+		5800DCAA1D82BAA800B1A884 /* KSYGPUBeautifyPlusFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUBeautifyPlusFilter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPUBeautifyPlusFilter.h; sourceTree = "<group>"; };
+		5800DCAB1D82BAA800B1A884 /* KSYGPUCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUCamera.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPUCamera.h; sourceTree = "<group>"; };
+		5800DCAC1D82BAA800B1A884 /* KSYGPUDnoiseFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUDnoiseFilter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPUDnoiseFilter.h; sourceTree = "<group>"; };
+		5800DCAD1D82BAA800B1A884 /* KSYGPUFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUFilter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPUFilter.h; sourceTree = "<group>"; };
+		5800DCAE1D82BAA800B1A884 /* KSYGPUPicMixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUPicMixer.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPUPicMixer.h; sourceTree = "<group>"; };
+		5800DCAF1D82BAA800B1A884 /* KSYGPUPicOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUPicOutput.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPUPicOutput.h; sourceTree = "<group>"; };
+		5800DCB01D82BAA800B1A884 /* KSYGPUPipBlendFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUPipBlendFilter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPUPipBlendFilter.h; sourceTree = "<group>"; };
+		5800DCB11D82BAA800B1A884 /* KSYGPUTwoPassFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUTwoPassFilter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPUTwoPassFilter.h; sourceTree = "<group>"; };
+		5800DCB21D82BAA800B1A884 /* KSYGPUYUVInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUYUVInput.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPUYUVInput.h; sourceTree = "<group>"; };
+		5800DCB31D82BAA800B1A884 /* KSYMicMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYMicMonitor.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYMicMonitor.h; sourceTree = "<group>"; };
+		5800DCB41D82BAA800B1A884 /* KSYMovieWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYMovieWriter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYMovieWriter.h; sourceTree = "<group>"; };
+		5800DCB51D82BAA800B1A884 /* KSYStreamerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYStreamerBase.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYStreamerBase.h; sourceTree = "<group>"; };
+		5800DCB61D82BAA800B1A884 /* KSYTypeDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYTypeDef.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYTypeDef.h; sourceTree = "<group>"; };
+		5800DCB71D82BAA800B1A884 /* libksygpuimage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libksygpuimage.h; path = ../../../../../prebuilt/include/KSYStreamer/libksygpuimage.h; sourceTree = "<group>"; };
+		5800DCB81D82BAA800B1A884 /* libksygpulive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libksygpulive.h; path = ../../../../../prebuilt/include/KSYStreamer/libksygpulive.h; sourceTree = "<group>"; };
+		580489A11D798AE600232F6E /* libksygpuliveDy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = libksygpuliveDy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		580489A51D798AE600232F6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		580489C41D798C8400232F6E /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		58048A1D1D79C81F00232F6E /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GPUImage.framework; path = ../../../framework/GPUImage.framework; sourceTree = "<group>"; };
+		58048A201D79C8EC00232F6E /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
+		58048A231D79C92A00232F6E /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5800A0121D76BFA600AB55F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5800A02C1D76C2D700AB55F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58048A241D79C92A00232F6E /* libz.tbd in Frameworks */,
+				58048A221D79C90600232F6E /* libstdc++.6.tbd in Frameworks */,
+				580489C51D798C8400232F6E /* libbz2.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5800A09B1D76EC1600AB55F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5804899D1D798AE600232F6E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				588110C31D7D9F7B00A4EC4A /* GPUImage.framework in Frameworks */,
+				58048A251D79C93B00232F6E /* libz.tbd in Frameworks */,
+				58048A211D79C8EC00232F6E /* libstdc++.6.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		06A646CD1D865B0300D1C620 /* KSYGPUStreamerKit */ = {
+			isa = PBXGroup;
+			children = (
+				06A646CF1D865B2C00D1C620 /* KSYGPUStreamerKit.h */,
+				06A646CE1D865B2C00D1C620 /* KSYGPUStreamerKit.m */,
+			);
+			name = KSYGPUStreamerKit;
+			sourceTree = "<group>";
+		};
+		58009FDB1D767B2C00AB55F7 = {
+			isa = PBXGroup;
+			children = (
+				06A646CD1D865B0300D1C620 /* KSYGPUStreamerKit */,
+				580489A91D798B4500232F6E /* BaseLibs */,
+				580489DF1D799EEA00232F6E /* KSYStreamer */,
+				580489CF1D798DF800232F6E /* KSYPlayer */,
+				5800A0171D76BFA600AB55F7 /* KSYMediaPlayer */,
+				5800A0311D76C2D700AB55F7 /* KSYMediaPlayerDy */,
+				5800A0A01D76EC1600AB55F7 /* libksygpulive */,
+				580489A21D798AE600232F6E /* libksygpuliveDy */,
+				58009FE61D767B2D00AB55F7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		58009FE61D767B2D00AB55F7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5800A0161D76BFA600AB55F7 /* KSYMediaPlayer.framework */,
+				5800A0301D76C2D700AB55F7 /* KSYMediaPlayerDy.framework */,
+				5800A09F1D76EC1600AB55F7 /* libksygpulive.framework */,
+				580489A11D798AE600232F6E /* libksygpuliveDy.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5800A0171D76BFA600AB55F7 /* KSYMediaPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				5800A0181D76BFA600AB55F7 /* KSYMediaPlayer.h */,
+				5800A01A1D76BFA600AB55F7 /* Info.plist */,
+			);
+			path = KSYMediaPlayer;
+			sourceTree = "<group>";
+		};
+		5800A0311D76C2D700AB55F7 /* KSYMediaPlayerDy */ = {
+			isa = PBXGroup;
+			children = (
+				5800A0321D76C2D700AB55F7 /* KSYMediaPlayerDy.h */,
+				5800A0341D76C2D700AB55F7 /* Info.plist */,
+			);
+			path = KSYMediaPlayerDy;
+			sourceTree = "<group>";
+		};
+		5800A0A01D76EC1600AB55F7 /* libksygpulive */ = {
+			isa = PBXGroup;
+			children = (
+				5800A0A31D76EC1600AB55F7 /* Info.plist */,
+			);
+			path = libksygpulive;
+			sourceTree = "<group>";
+		};
+		5800DC8D1D82BA2700B1A884 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				5800DC8E1D82BA4900B1A884 /* libksystreamer.a */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		580489A21D798AE600232F6E /* libksygpuliveDy */ = {
+			isa = PBXGroup;
+			children = (
+				580489A51D798AE600232F6E /* Info.plist */,
+			);
+			path = libksygpuliveDy;
+			sourceTree = "<group>";
+		};
+		580489A91D798B4500232F6E /* BaseLibs */ = {
+			isa = PBXGroup;
+			children = (
+				5800DCA01D82BA8400B1A884 /* libksyyuv.a */,
+				5800DC901D82BA7200B1A884 /* libksybase.a */,
+				5800DC911D82BA7200B1A884 /* libksymediacodec.a */,
+				5800DC921D82BA7200B1A884 /* libksymediacore_dec_lite.a */,
+				5800DC931D82BA7200B1A884 /* libksymediacore_dec_vod.a */,
+				5800DC941D82BA7200B1A884 /* libksymediacore_dec_lite.a */,
+				5800DC951D82BA7200B1A884 /* libksymediacore_enc_265.a */,
+				5800DC961D82BA7200B1A884 /* libksymediacore_enc_lite.a */,
+				5800DC971D82BA7200B1A884 /* libksymediacore_enc_lite.a */,
+				58048A231D79C92A00232F6E /* libz.tbd */,
+				580489C41D798C8400232F6E /* libbz2.tbd */,
+				58048A201D79C8EC00232F6E /* libstdc++.6.tbd */,
+				58048A1D1D79C81F00232F6E /* GPUImage.framework */,
+			);
+			path = BaseLibs;
+			sourceTree = "<group>";
+		};
+		580489CF1D798DF800232F6E /* KSYPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				580489D01D798E0B00232F6E /* include */,
+				580489D11D798E2800232F6E /* libs */,
+			);
+			path = KSYPlayer;
+			sourceTree = "<group>";
+		};
+		580489D01D798E0B00232F6E /* include */ = {
+			isa = PBXGroup;
+			children = (
+				5800DC7F1D82B9AA00B1A884 /* KSYMediaInfo.h */,
+				5800DC801D82B9AA00B1A884 /* KSYMediaInfoProber.h */,
+				5800DC811D82B9AA00B1A884 /* KSYMediaPlayback.h */,
+				5800DC821D82B9AA00B1A884 /* KSYMoviePlayerController.h */,
+				5800DC831D82B9AA00B1A884 /* KSYMoviePlayerDefines.h */,
+				5800DC841D82B9AA00B1A884 /* KSYQosInfo.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		580489D11D798E2800232F6E /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				5800DC8B1D82B9F600B1A884 /* libksyplayer.a */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		580489DF1D799EEA00232F6E /* KSYStreamer */ = {
+			isa = PBXGroup;
+			children = (
+				5800DC8D1D82BA2700B1A884 /* libs */,
+				580489E11D799FF200232F6E /* include */,
+			);
+			name = KSYStreamer;
+			path = KSYPlayer/KSYStreamer;
+			sourceTree = "<group>";
+		};
+		580489E11D799FF200232F6E /* include */ = {
+			isa = PBXGroup;
+			children = (
+				06A646BE1D8652A400D1C620 /* KSYAVAudioSession.h */,
+				5800DCA21D82BAA800B1A884 /* KSYAUAudioCapture.h */,
+				5800DCA31D82BAA800B1A884 /* KSYAudioMixer.h */,
+				5800DCA41D82BAA800B1A884 /* KSYAudioReverb.h */,
+				5800DCA51D82BAA800B1A884 /* KSYAVMuxer.h */,
+				5800DCA61D82BAA800B1A884 /* KSYBeautifyFaceFilter.h */,
+				5800DCA71D82BAA800B1A884 /* KSYBgmPlayer.h */,
+				5800DCA81D82BAA800B1A884 /* KSYGPUBeautifyExtFilter.h */,
+				5800DCA91D82BAA800B1A884 /* KSYGPUBeautifyFilter.h */,
+				06A646D51D865D0900D1C620 /* KSYGPULogoFilter.h */,
+				5800DCAA1D82BAA800B1A884 /* KSYGPUBeautifyPlusFilter.h */,
+				5800DCAB1D82BAA800B1A884 /* KSYGPUCamera.h */,
+				5800DCAC1D82BAA800B1A884 /* KSYGPUDnoiseFilter.h */,
+				5800DCAD1D82BAA800B1A884 /* KSYGPUFilter.h */,
+				5800DCAE1D82BAA800B1A884 /* KSYGPUPicMixer.h */,
+				5800DCAF1D82BAA800B1A884 /* KSYGPUPicOutput.h */,
+				5800DCB01D82BAA800B1A884 /* KSYGPUPipBlendFilter.h */,
+				5800DCB11D82BAA800B1A884 /* KSYGPUTwoPassFilter.h */,
+				5800DCB21D82BAA800B1A884 /* KSYGPUYUVInput.h */,
+				5800DCB31D82BAA800B1A884 /* KSYMicMonitor.h */,
+				5800DCB41D82BAA800B1A884 /* KSYMovieWriter.h */,
+				5800DCB51D82BAA800B1A884 /* KSYStreamerBase.h */,
+				5800DCB61D82BAA800B1A884 /* KSYTypeDef.h */,
+				5800DCB71D82BAA800B1A884 /* libksygpuimage.h */,
+				5800DCB81D82BAA800B1A884 /* libksygpulive.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		5800A0131D76BFA600AB55F7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5800A0591D76E50100AB55F7 /* KSYMediaPlayer.h in Headers */,
+				5800DC851D82B9AA00B1A884 /* KSYMediaInfo.h in Headers */,
+				5800DC861D82B9AA00B1A884 /* KSYMediaInfoProber.h in Headers */,
+				5800DC871D82B9AA00B1A884 /* KSYMediaPlayback.h in Headers */,
+				5800DC881D82B9AA00B1A884 /* KSYMoviePlayerController.h in Headers */,
+				5800DC891D82B9AA00B1A884 /* KSYMoviePlayerDefines.h in Headers */,
+				5800DC8A1D82B9AA00B1A884 /* KSYQosInfo.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5800A02D1D76C2D700AB55F7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5800A05A1D76E50E00AB55F7 /* KSYMediaPlayerDy.h in Headers */,
+				5800DCD01D82BADE00B1A884 /* KSYMediaInfo.h in Headers */,
+				5800DCD11D82BADE00B1A884 /* KSYMediaInfoProber.h in Headers */,
+				5800DCD21D82BADE00B1A884 /* KSYMediaPlayback.h in Headers */,
+				5800DCD31D82BADE00B1A884 /* KSYMoviePlayerController.h in Headers */,
+				5800DCD41D82BADE00B1A884 /* KSYMoviePlayerDefines.h in Headers */,
+				5800DCD51D82BADE00B1A884 /* KSYQosInfo.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5800A09C1D76EC1600AB55F7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5800DCED1D82BAFF00B1A884 /* KSYMediaInfo.h in Headers */,
+				5800DCEE1D82BAFF00B1A884 /* KSYMediaInfoProber.h in Headers */,
+				5800DCEF1D82BAFF00B1A884 /* KSYMediaPlayback.h in Headers */,
+				5800DCF01D82BAFF00B1A884 /* KSYMoviePlayerController.h in Headers */,
+				5800DCF11D82BAFF00B1A884 /* KSYMoviePlayerDefines.h in Headers */,
+				5800DCF21D82BAFF00B1A884 /* KSYQosInfo.h in Headers */,
+				5800DCD61D82BAF500B1A884 /* KSYAUAudioCapture.h in Headers */,
+				5800DCD71D82BAF500B1A884 /* KSYAudioMixer.h in Headers */,
+				5800DCD81D82BAF500B1A884 /* KSYAudioReverb.h in Headers */,
+				5800DCD91D82BAF500B1A884 /* KSYAVMuxer.h in Headers */,
+				5800DCDA1D82BAF500B1A884 /* KSYBeautifyFaceFilter.h in Headers */,
+				5800DCDB1D82BAF500B1A884 /* KSYBgmPlayer.h in Headers */,
+				5800DCDC1D82BAF500B1A884 /* KSYGPUBeautifyExtFilter.h in Headers */,
+				5800DCDD1D82BAF500B1A884 /* KSYGPUBeautifyFilter.h in Headers */,
+				5800DCDE1D82BAF500B1A884 /* KSYGPUBeautifyPlusFilter.h in Headers */,
+				5800DCDF1D82BAF500B1A884 /* KSYGPUCamera.h in Headers */,
+				5800DCE01D82BAF500B1A884 /* KSYGPUDnoiseFilter.h in Headers */,
+				5800DCE11D82BAF500B1A884 /* KSYGPUFilter.h in Headers */,
+				5800DCE21D82BAF500B1A884 /* KSYGPUPicMixer.h in Headers */,
+				5800DCE31D82BAF500B1A884 /* KSYGPUPicOutput.h in Headers */,
+				5800DCE41D82BAF500B1A884 /* KSYGPUPipBlendFilter.h in Headers */,
+				5800DCE51D82BAF500B1A884 /* KSYGPUTwoPassFilter.h in Headers */,
+				5800DCE61D82BAF500B1A884 /* KSYGPUYUVInput.h in Headers */,
+				5800DCE71D82BAF500B1A884 /* KSYMicMonitor.h in Headers */,
+				5800DCE81D82BAF500B1A884 /* KSYMovieWriter.h in Headers */,
+				5800DCE91D82BAF500B1A884 /* KSYStreamerBase.h in Headers */,
+				5800DCEA1D82BAF500B1A884 /* KSYTypeDef.h in Headers */,
+				5800DCEB1D82BAF500B1A884 /* libksygpuimage.h in Headers */,
+				5800DCEC1D82BAF500B1A884 /* libksygpulive.h in Headers */,
+				06A646C01D8652C000D1C620 /* KSYAVAudioSession.h in Headers */,
+				06A646DA1D865D3200D1C620 /* KSYGPUStreamerKit.h in Headers */,
+				06A646D71D865D1C00D1C620 /* KSYGPULogoFilter.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5804899E1D798AE600232F6E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5800DD0A1D82BB2400B1A884 /* KSYMediaInfo.h in Headers */,
+				5800DD0B1D82BB2400B1A884 /* KSYMediaInfoProber.h in Headers */,
+				5800DD0C1D82BB2400B1A884 /* KSYMediaPlayback.h in Headers */,
+				5800DD0D1D82BB2400B1A884 /* KSYMoviePlayerController.h in Headers */,
+				5800DD0E1D82BB2400B1A884 /* KSYMoviePlayerDefines.h in Headers */,
+				5800DD0F1D82BB2400B1A884 /* KSYQosInfo.h in Headers */,
+				5800DCF31D82BB1C00B1A884 /* KSYAUAudioCapture.h in Headers */,
+				5800DCF41D82BB1C00B1A884 /* KSYAudioMixer.h in Headers */,
+				5800DCF51D82BB1C00B1A884 /* KSYAudioReverb.h in Headers */,
+				5800DCF61D82BB1C00B1A884 /* KSYAVMuxer.h in Headers */,
+				5800DCF71D82BB1C00B1A884 /* KSYBeautifyFaceFilter.h in Headers */,
+				5800DCF81D82BB1C00B1A884 /* KSYBgmPlayer.h in Headers */,
+				5800DCF91D82BB1C00B1A884 /* KSYGPUBeautifyExtFilter.h in Headers */,
+				5800DCFA1D82BB1C00B1A884 /* KSYGPUBeautifyFilter.h in Headers */,
+				5800DCFB1D82BB1C00B1A884 /* KSYGPUBeautifyPlusFilter.h in Headers */,
+				5800DCFC1D82BB1C00B1A884 /* KSYGPUCamera.h in Headers */,
+				5800DCFD1D82BB1C00B1A884 /* KSYGPUDnoiseFilter.h in Headers */,
+				5800DCFE1D82BB1C00B1A884 /* KSYGPUFilter.h in Headers */,
+				5800DCFF1D82BB1C00B1A884 /* KSYGPUPicMixer.h in Headers */,
+				5800DD001D82BB1C00B1A884 /* KSYGPUPicOutput.h in Headers */,
+				5800DD011D82BB1C00B1A884 /* KSYGPUPipBlendFilter.h in Headers */,
+				5800DD021D82BB1C00B1A884 /* KSYGPUTwoPassFilter.h in Headers */,
+				5800DD031D82BB1C00B1A884 /* KSYGPUYUVInput.h in Headers */,
+				5800DD041D82BB1C00B1A884 /* KSYMicMonitor.h in Headers */,
+				5800DD051D82BB1C00B1A884 /* KSYMovieWriter.h in Headers */,
+				5800DD061D82BB1C00B1A884 /* KSYStreamerBase.h in Headers */,
+				5800DD071D82BB1C00B1A884 /* KSYTypeDef.h in Headers */,
+				5800DD081D82BB1C00B1A884 /* libksygpuimage.h in Headers */,
+				5800DD091D82BB1C00B1A884 /* libksygpulive.h in Headers */,
+				06A646C11D8652CB00D1C620 /* KSYAVAudioSession.h in Headers */,
+				06A646D81D865D2A00D1C620 /* KSYGPUStreamerKit.h in Headers */,
+				06A646D91D865D2A00D1C620 /* KSYGPULogoFilter.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		5800A0151D76BFA600AB55F7 /* KSYMediaPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5800A01B1D76BFA600AB55F7 /* Build configuration list for PBXNativeTarget "KSYMediaPlayer" */;
+			buildPhases = (
+				5800A0111D76BFA600AB55F7 /* Sources */,
+				5800A0121D76BFA600AB55F7 /* Frameworks */,
+				5800A0131D76BFA600AB55F7 /* Headers */,
+				5800A0141D76BFA600AB55F7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KSYMediaPlayer;
+			productName = KSYMediaPlayer;
+			productReference = 5800A0161D76BFA600AB55F7 /* KSYMediaPlayer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5800A02F1D76C2D700AB55F7 /* KSYMediaPlayerDy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5800A0351D76C2D700AB55F7 /* Build configuration list for PBXNativeTarget "KSYMediaPlayerDy" */;
+			buildPhases = (
+				5800A02B1D76C2D700AB55F7 /* Sources */,
+				5800A02C1D76C2D700AB55F7 /* Frameworks */,
+				5800A02D1D76C2D700AB55F7 /* Headers */,
+				5800A02E1D76C2D700AB55F7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KSYMediaPlayerDy;
+			productName = KSYMediaPlayerDy;
+			productReference = 5800A0301D76C2D700AB55F7 /* KSYMediaPlayerDy.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5800A09E1D76EC1600AB55F7 /* libksygpulive */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5800A0A41D76EC1600AB55F7 /* Build configuration list for PBXNativeTarget "libksygpulive" */;
+			buildPhases = (
+				5800A09A1D76EC1600AB55F7 /* Sources */,
+				5800A09B1D76EC1600AB55F7 /* Frameworks */,
+				5800A09C1D76EC1600AB55F7 /* Headers */,
+				5800A09D1D76EC1600AB55F7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libksygpulive;
+			productName = libksygpulive;
+			productReference = 5800A09F1D76EC1600AB55F7 /* libksygpulive.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		580489A01D798AE600232F6E /* libksygpuliveDy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 580489A61D798AE600232F6E /* Build configuration list for PBXNativeTarget "libksygpuliveDy" */;
+			buildPhases = (
+				5804899C1D798AE600232F6E /* Sources */,
+				5804899D1D798AE600232F6E /* Frameworks */,
+				5804899E1D798AE600232F6E /* Headers */,
+				5804899F1D798AE600232F6E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libksygpuliveDy;
+			productName = libksygpuliveDy;
+			productReference = 580489A11D798AE600232F6E /* libksygpuliveDy.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		58009FDC1D767B2C00AB55F7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "施雪梅";
+				TargetAttributes = {
+					5800A0151D76BFA600AB55F7 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					5800A02F1D76C2D700AB55F7 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					5800A09E1D76EC1600AB55F7 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					580489A01D798AE600232F6E = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = 58009FDF1D767B2C00AB55F7 /* Build configuration list for PBXProject "libKSYLive" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 58009FDB1D767B2C00AB55F7;
+			productRefGroup = 58009FE61D767B2D00AB55F7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5800A0151D76BFA600AB55F7 /* KSYMediaPlayer */,
+				5800A02F1D76C2D700AB55F7 /* KSYMediaPlayerDy */,
+				5800A09E1D76EC1600AB55F7 /* libksygpulive */,
+				580489A01D798AE600232F6E /* libksygpuliveDy */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5800A0141D76BFA600AB55F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5800A02E1D76C2D700AB55F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5800A09D1D76EC1600AB55F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5804899F1D798AE600232F6E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5800A0111D76BFA600AB55F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5800A02B1D76C2D700AB55F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5800A09A1D76EC1600AB55F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06A646D21D865B3B00D1C620 /* KSYGPUStreamerKit.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5804899C1D798AE600232F6E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06A646D31D865B4100D1C620 /* KSYGPUStreamerKit.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		58009FEB1D767B2D00AB55F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		58009FEC1D767B2D00AB55F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		5800A01C1D76BFA600AB55F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				HEADER_SEARCH_PATHS = ../../prebuilt/include/KSYPlayer;
+				INFOPLIST_FILE = KSYMediaPlayer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = ../../prebuilt/libs;
+				MACH_O_TYPE = staticlib;
+				OTHER_CFLAGS = "-fembed-bitcode-marker";
+				OTHER_LIBTOOLFLAGS = "-lksybase -lksyplayer -lksymediacore_dec";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ksyun.ios.KSYMediaPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		5800A01D1D76BFA600AB55F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				HEADER_SEARCH_PATHS = ../../prebuilt/include/KSYPlayer;
+				INFOPLIST_FILE = KSYMediaPlayer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = ../../prebuilt/libs;
+				MACH_O_TYPE = staticlib;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_LIBTOOLFLAGS = "-lksybase -lksyplayer -lksymediacore_dec";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ksyun.ios.KSYMediaPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		5800A0361D76C2D700AB55F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				HEADER_SEARCH_PATHS = ../../prebuilt/include/KSYPlayer;
+				INFOPLIST_FILE = KSYMediaPlayerDy/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = ../../prebuilt/libs;
+				OTHER_CFLAGS = "-fembed-bitcode-marker";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-lksymediacore_dec",
+					"-lksybase",
+					"-lksyplayer",
+				);
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ksyun.ios.KSYMediaPlayerDy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		5800A0371D76C2D700AB55F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				HEADER_SEARCH_PATHS = ../../prebuilt/include/KSYPlayer;
+				INFOPLIST_FILE = KSYMediaPlayerDy/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = ../../prebuilt/libs;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-lksymediacore_dec",
+					"-lksybase",
+					"-lksyplayer",
+				);
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ksyun.ios.KSYMediaPlayerDy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		5800A0A51D76EC1600AB55F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = ../../framework;
+				HEADER_SEARCH_PATHS = (
+					../../prebuilt/include/KSYPlayer,
+					../../prebuilt/include/KSYStreamer,
+				);
+				INFOPLIST_FILE = libksygpulive/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = ../../prebuilt/libs;
+				MACH_O_TYPE = staticlib;
+				OTHER_CFLAGS = "-fembed-bitcode-marker";
+				OTHER_LIBTOOLFLAGS = "";
+				"OTHER_LIBTOOLFLAGS[sdk=iphoneos*]" = "-lksybase -lksyplayer -lksystreamer -lksyyuv -lksymediacodec -lksymediacore_enc";
+				"OTHER_LIBTOOLFLAGS[sdk=iphonesimulator*]" = "-lksymediacore_enc -lksybase -lksyplayer -lksystreamer -lksyyuv";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ksyun.ios.libksygpulive;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		5800A0A61D76EC1600AB55F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = ../../framework;
+				HEADER_SEARCH_PATHS = (
+					../../prebuilt/include/KSYPlayer,
+					../../prebuilt/include/KSYStreamer,
+				);
+				INFOPLIST_FILE = libksygpulive/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = ../../prebuilt/libs;
+				MACH_O_TYPE = staticlib;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_LIBTOOLFLAGS = "";
+				"OTHER_LIBTOOLFLAGS[sdk=iphoneos*]" = "-lksybase -lksyplayer -lksystreamer -lksyyuv -lksymediacodec -lksymediacore_enc";
+				"OTHER_LIBTOOLFLAGS[sdk=iphonesimulator*]" = "-lksymediacore_enc -lksybase -lksyplayer -lksystreamer -lksyyuv";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ksyun.ios.libksygpulive;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		580489A71D798AE600232F6E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = ../../framework;
+				HEADER_SEARCH_PATHS = (
+					../../prebuilt/include/KSYPlayer,
+					../../prebuilt/include/KSYStreamer,
+				);
+				INFOPLIST_FILE = libksygpuliveDy/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = ../../prebuilt/libs;
+				OTHER_CFLAGS = "-fembed-bitcode-marker";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-lksybase",
+					"-lksyplayer",
+					"-lksystreamer",
+					"-lksyyuv",
+					"-lksymediacore_enc",
+					"-lksymediacodec",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ksyun.ios.libksygpuliveDy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		580489A81D798AE600232F6E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = ../../framework;
+				HEADER_SEARCH_PATHS = (
+					../../prebuilt/include/KSYPlayer,
+					../../prebuilt/include/KSYStreamer,
+				);
+				INFOPLIST_FILE = libksygpuliveDy/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = ../../prebuilt/libs;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-lksybase",
+					"-lksyplayer",
+					"-lksystreamer",
+					"-lksyyuv",
+					"-lksymediacore_enc",
+					"-lksymediacodec",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ksyun.ios.libksygpuliveDy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		58009FDF1D767B2C00AB55F7 /* Build configuration list for PBXProject "libKSYLive" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58009FEB1D767B2D00AB55F7 /* Debug */,
+				58009FEC1D767B2D00AB55F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5800A01B1D76BFA600AB55F7 /* Build configuration list for PBXNativeTarget "KSYMediaPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5800A01C1D76BFA600AB55F7 /* Debug */,
+				5800A01D1D76BFA600AB55F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5800A0351D76C2D700AB55F7 /* Build configuration list for PBXNativeTarget "KSYMediaPlayerDy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5800A0361D76C2D700AB55F7 /* Debug */,
+				5800A0371D76C2D700AB55F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5800A0A41D76EC1600AB55F7 /* Build configuration list for PBXNativeTarget "libksygpulive" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5800A0A51D76EC1600AB55F7 /* Debug */,
+				5800A0A61D76EC1600AB55F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		580489A61D798AE600232F6E /* Build configuration list for PBXNativeTarget "libksygpuliveDy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				580489A71D798AE600232F6E /* Debug */,
+				580489A81D798AE600232F6E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 58009FDC1D767B2C00AB55F7 /* Project object */;
+}

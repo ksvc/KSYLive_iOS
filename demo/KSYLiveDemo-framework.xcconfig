@@ -1,0 +1,1 @@
+OTHER_LDFLAGS = $(inherited) -ObjC -all_load -framework libksygpulive -framework GPUImage -framework Bugly -lstdc++.6 -lz

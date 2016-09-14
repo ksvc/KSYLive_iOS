@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KSYBeautifyFaceFilter.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYBeautifyFaceFilter</TokenIdentifier>
+			<Abstract type="html">金山云美颜滤镜</Abstract>
+			<DeclaredIn>KSYBeautifyFaceFilter.h</DeclaredIn>
+            
+			
+			<NodeRef refid="7"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyFaceFilter/setGrindRatio:</TokenIdentifier>
+			<Abstract type="html">grindRatio ranges from 0.0 to 0.8, with 0.7 as the normal level</Abstract>
+			<DeclaredIn>KSYBeautifyFaceFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGFloat grindRatio</Declaration>
+			
+			
+			<Anchor>//api/name/grindRatio</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyFaceFilter/grindRatio</TokenIdentifier>
+			<Abstract type="html">grindRatio ranges from 0.0 to 0.8, with 0.7 as the normal level</Abstract>
+			<DeclaredIn>KSYBeautifyFaceFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGFloat grindRatio</Declaration>
+			
+			
+			<Anchor>//api/name/grindRatio</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYBeautifyFaceFilter/grindRatio</TokenIdentifier>
+			<Abstract type="html">grindRatio ranges from 0.0 to 0.8, with 0.7 as the normal level</Abstract>
+			<DeclaredIn>KSYBeautifyFaceFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGFloat grindRatio</Declaration>
+			
+			
+			<Anchor>//api/name/grindRatio</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyFaceFilter/setWhitenRatio:</TokenIdentifier>
+			<Abstract type="html">whitenRatio ranges from 0.0 to 1.0, with 0.5 as the normal level</Abstract>
+			<DeclaredIn>KSYBeautifyFaceFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGFloat whitenRatio</Declaration>
+			
+			
+			<Anchor>//api/name/whitenRatio</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyFaceFilter/whitenRatio</TokenIdentifier>
+			<Abstract type="html">whitenRatio ranges from 0.0 to 1.0, with 0.5 as the normal level</Abstract>
+			<DeclaredIn>KSYBeautifyFaceFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGFloat whitenRatio</Declaration>
+			
+			
+			<Anchor>//api/name/whitenRatio</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYBeautifyFaceFilter/whitenRatio</TokenIdentifier>
+			<Abstract type="html">whitenRatio ranges from 0.0 to 1.0, with 0.5 as the normal level</Abstract>
+			<DeclaredIn>KSYBeautifyFaceFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGFloat whitenRatio</Declaration>
+			
+			
+			<Anchor>//api/name/whitenRatio</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

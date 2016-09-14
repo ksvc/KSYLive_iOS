@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KSYGPUPicMixer.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUPicMixer</TokenIdentifier>
+			<Abstract type="html">  图像混合filter</Abstract>
+			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+            
+			
+			<NodeRef refid="16"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/init</TokenIdentifier>
+			<Abstract type="html">初始化</Abstract>
+			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			
+			<Declaration>- (id)init</Declaration>
+			
+			
+			<Anchor>//api/name/init</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/initWithOutputSize:</TokenIdentifier>
+			<Abstract type="html">初始化,并制定输出图像的大小</Abstract>
+			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithOutputSize:(CGSize)sz</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sz</Name>
+					<Abstract type="html">输出图像的大小</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithOutputSize:</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/setMasterLayer:</TokenIdentifier>
+			<Abstract type="html">设置主要图层 (默认为0)</Abstract>
+			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSUInteger masterLayer</Declaration>
+			
+			
+			<Anchor>//api/name/masterLayer</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/masterLayer</TokenIdentifier>
+			<Abstract type="html">设置主要图层 (默认为0)</Abstract>
+			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSUInteger masterLayer</Declaration>
+			
+			
+			<Anchor>//api/name/masterLayer</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicMixer/masterLayer</TokenIdentifier>
+			<Abstract type="html">设置主要图层 (默认为0)</Abstract>
+			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSUInteger masterLayer</Declaration>
+			
+			
+			<Anchor>//api/name/masterLayer</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/setPicRect:ofLayer:</TokenIdentifier>
+			<Abstract type="html">设置图层的位置和大小 (单位为: 像素值 或者百分比)</Abstract>
+			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			
+			<Declaration>- (void)setPicRect:(CGRect)rect ofLayer:(NSInteger)idx</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>rect</Name>
+					<Abstract type="html">大小和位置</Abstract>
+				</Parameter><Parameter>
+					<Name>idx</Name>
+					<Abstract type="html">图层的索引</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setPicRect:ofLayer:</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/getPicRectOfLayer:</TokenIdentifier>
+			<Abstract type="html">获取图层的位置和大小 (单位为: 像素值 或者百分比)</Abstract>
+			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			
+			<Declaration>- (CGRect)getPicRectOfLayer:(NSInteger)idx</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>idx</Name>
+					<Abstract type="html">图层的索引</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">位置和大小</Abstract></ReturnValue>
+			<Anchor>//api/name/getPicRectOfLayer:</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/setPicAlpha:ofLayer:</TokenIdentifier>
+			<Abstract type="html">设置图层的透明度 (默认为1.0)</Abstract>
+			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			
+			<Declaration>- (void)setPicAlpha:(CGFloat)alpha ofLayer:(NSInteger)idx</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>alpha</Name>
+					<Abstract type="html">透明度(0~1.0), 0为全透明</Abstract>
+				</Parameter><Parameter>
+					<Name>idx</Name>
+					<Abstract type="html">图层的索引</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setPicAlpha:ofLayer:</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/getPicAlphaOfLayer:</TokenIdentifier>
+			<Abstract type="html">获取图层的透明度</Abstract>
+			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			
+			<Declaration>- (CGFloat)getPicAlphaOfLayer:(NSInteger)idx</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>idx</Name>
+					<Abstract type="html">图层的索引</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">透明度</Abstract></ReturnValue>
+			<Anchor>//api/name/getPicAlphaOfLayer:</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/clearPicOfLayer:</TokenIdentifier>
+			<Abstract type="html">清除特定图层的画面内容</Abstract>
+			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			
+			<Declaration>- (void)clearPicOfLayer:(NSInteger)index</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>index</Name>
+					<Abstract type="html">指定被清除的图层</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/clearPicOfLayer:</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>
