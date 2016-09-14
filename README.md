@@ -1,4 +1,4 @@
-# [KSY Live iOS SDK](http://ksvc.github.io/KSYLive_iOS/index.html)
+# [KSY Live iOS SDK](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
 ## 一. 功能特性
 ### 1.1 推流功能
 - [x] AAC 音频编码
@@ -16,7 +16,7 @@
 - [x] 支持[混音](https://github.com/ksvc/KSYLive_iOS/wiki/mixer)
 - [x] 支持[视频动态推流开关/纯音频推流](https://github.com/ksvc/KSYLive_iOS/wiki/pureAudioStream)
 - [x] 支持[后台推流](https://github.com/ksvc/KSYLive_iOS/wiki/backgroupStream)
-- [x] [在线API 文档支持](http://ksvc.github.io/KSYLive_iOS/html/index.html)
+- [x] [在线API 文档支持](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
 - [x] 支持[耳返](https://github.com/ksvc/KSYLive_iOS/wiki/micMonitor)
 - [x] 支持[画中画](https://github.com/ksvc/KSYLive_iOS/wiki/pip)推流
 - [x] 支持[预览和采集分辨率分别设置](https://github.com/ksvc/KSYLive_iOS/wiki/customOutputSize)
@@ -69,7 +69,7 @@
 目录结构如下所示:  
 - demo        : demo工程为KSYLive ，演示本SDK的主要接口的使用
 - doc/docset  : appleDoc风格的接口文档，安装后可在xcode中直接看到方法和属性的文档
-- doc/html    : appleDoc风格的网页版接口文档，也可查看[在线版](http://ksvc.github.io/KSYLive_iOS/html/index.html)
+- doc/html    : appleDoc风格的网页版接口文档，也可查看[在线版](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
 - prebuilt    : 预编译库的头文件和库文件
 - source      : 顶层kit类的源代码
 - releaseFramework: 用于将预编译库打包为方便集成的framework的脚本和工程
