@@ -1,7 +1,0 @@
-
-#pod 'KSYLive', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
-#pod 'KSYLive_iOS', :path => '../'
-
-#pod 'KSYGPULive_iOS', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
-
-pod 'KSYGPULive_iOS', :path => '/Users/qianyi/Documents/KSYLive_iOS'
