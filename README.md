@@ -101,7 +101,7 @@ pod 'libksygpulive/libksygpulive'
 执行 pod install即可.    
 注意: 不能将以上三条语句都加入Podfile, 他们作用是一样的, 只是Podspec读取位置不同.
 
-其中, KSYMediaPlayer为libksygpulive的子模块, 为了满足不同用户的需求, libksygpulive中提供了4个不同的子模块:    
+其中, libksygpulive为libksygpulive的子模块, 为了满足不同用户的需求, libksygpulive中提供了4个不同的子模块:    
 * KSYMediaPlayer     : 用于直播的播放内核(支持格式精简)
 * KSYMediaPlayer_vod : 用于点播的播放内核(支持格式丰富)
 * libksygpulive      : 用于直播推流和播放的SDK
