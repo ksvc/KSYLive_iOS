@@ -89,13 +89,13 @@ $ git clone https://git.oschina.net/ksvc/KSYLive_iOS.git
 通过Cocoapods 能将本SDK的静态库和代码下载到本地，只需要将类似如下语句中的一句加入你的Podfile：   
 ```
 // 本地开发版 (sdk clone或下载到本地后)
-pod 'libksygpulive/KSYMediaPlayer', :path => '../'
+pod 'libksygpulive/libksygpulive', :path => '../'
 
 // 私有库 (直接指定SDK的github仓库地址)
-pod 'libksygpulive/KSYMediaPlayer', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
+pod 'libksygpulive/libksygpulive', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 
 // cocoapod官方库
-pod 'libksygpulive/KSYMediaPlayer'
+pod 'libksygpulive/libksygpulive'
 ```
 
 执行 pod install即可.    
