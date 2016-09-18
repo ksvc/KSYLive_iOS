@@ -119,7 +119,7 @@ $ open KSYLiveDemo.xcworkspace
 ```
 
 注意:
-1. 如果遇到图中的提示：
+1. 在pod install的时候，如果遇到图中的提示：
 ![waring](https://github.com/ksvc/KSYLive_iOS/wiki/images/waring.png)
 修改方法如下图：
 ![fix](https://github.com/ksvc/KSYLive_iOS/wiki/images/fix.png)
