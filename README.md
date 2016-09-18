@@ -118,7 +118,12 @@ $ pod install
 $ open KSYLiveDemo.xcworkspace
 ```
 
-注意: 更新pod之后, 需要打开 xcwrokspace, 而不是xcodeproj
+注意:
+1. 如果遇到图中的提示：
+![waring](https://github.com/ksvc/KSYLive_iOS/wiki/images/waring.png)
+修改方法如下图：
+![fix](https://github.com/ksvc/KSYLive_iOS/wiki/images/fix.png)
+2. 更新pod之后, 需要打开 xcwrokspace, 而不是xcodeproj
 
 #### 3.3.2 使用framework的demo
 * 将SDK 打包为framework
