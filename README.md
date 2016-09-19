@@ -1,4 +1,4 @@
-# [KSY Live iOS SDK](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
+#[KSY Live iOS SDK](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
 ## 一. 功能特性
 ### 1.1 推流功能
 - [x] AAC 音频编码
@@ -143,7 +143,7 @@ $ ls ../framework
 Bugly.framework  GPUImage.framework  libksygpulive.framework
 ```
 
-参数的详细说明请参考脚本release-libKSYLive.sh的[帮组](https://github.com/ksvc/KSYLive_iOS/wiki/dylib).
+参数的详细说明请参考脚本release-libKSYLive.sh的[帮助](https://github.com/ksvc/KSYLive_iOS/wiki/dylib).
 
 * 给demo添加库依赖选项
 打开demo目录下的KSYLiveDemo.xcodeproj, 修改KSYLiveDemo项目的配置文件:    选中KSYLiveDemo工程->选中Project KSYLiveDemo->选中 Info 标签->选择Configurations->Debug或Release->给KSYPlayerDemo和KSYLiveDemo分别选择对应的xxx-framework.xcconfig文件
