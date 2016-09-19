@@ -143,7 +143,7 @@ $ ls ../framework
 Bugly.framework  GPUImage.framework  libksygpulive.framework
 ```
 
-参数的详细说明请参考脚本release-libKSYLive.sh的帮助.
+参数的详细说明请参考脚本release-libKSYLive.sh的[帮组](https://github.com/ksvc/KSYLive_iOS/wiki/dylib).
 
 * 给demo添加库依赖选项
 打开demo目录下的KSYLiveDemo.xcodeproj, 修改KSYLiveDemo项目的配置文件:    选中KSYLiveDemo工程->选中Project KSYLiveDemo->选中 Info 标签->选择Configurations->Debug或Release->给KSYPlayerDemo和KSYLiveDemo分别选择对应的xxx-framework.xcconfig文件
