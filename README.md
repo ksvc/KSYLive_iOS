@@ -1,4 +1,4 @@
-#KSY Live iOS SDK](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
+#[KSY Live iOS SDK](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
 ## 一. 功能特性
 ### 1.1 推流功能
 - [x] AAC 音频编码
