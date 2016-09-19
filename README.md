@@ -109,7 +109,7 @@ pod 'libksygpulive/libksygpulive'
 
 ### 3.3 开始运行demo工程
 !!!!!注意: 这里提供以下两种方法运行demo, 但是只能二选一; 如果要换另一种方法请重新下载解压, 或恢复git仓库的原状后再尝试.!!!!!
-#### 3.3.1 使用Cocoapod的demo   
+#### 3.3.1 使用Cocoapod的的方式来运行demo 
 demo 目录中已经有一个Podfile, 指定了本地开发版的pod    
 在demo目录下执行如下命令, 即可开始编译运行demo  
 ```
@@ -125,7 +125,7 @@ $ open KSYLiveDemo.xcworkspace
 ![fix](https://github.com/ksvc/KSYLive_iOS/wiki/images/fix.png)
 2. 更新pod之后, 需要打开 xcwrokspace, 而不是xcodeproj
 
-#### 3.3.2 使用framework的demo
+#### 3.3.2 手动编译framework生成依赖项运行示例demo
 * 将SDK 打包为framework
 将压缩包解压后, 进入 releaseFramework 目录, 通过 release-libKSYLive.sh 下载依赖项并打包出framework.    
 比如需要测试直播功能, 可以使用如下参数输出libksygpulive.framework:     
