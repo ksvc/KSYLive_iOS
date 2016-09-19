@@ -1,4 +1,4 @@
-#[KSY Live iOS SDK](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
+#KSY Live iOS SDK](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
 ## 一. 功能特性
 ### 1.1 推流功能
 - [x] AAC 音频编码
@@ -108,7 +108,7 @@ pod 'libksygpulive/libksygpulive'
 * libksygpulive_265  : 用于直播推流和播放的SDK (支持265推流和播放)
 
 ### 3.3 开始运行demo工程
-注意: 这里提供以下两种方法运行demo, 但是只能二选一; 如果要换另一种方法请重新下载解压, 或恢复git仓库的原状后再尝试.
+!!!!!注意: 这里提供以下两种方法运行demo, 但是只能二选一; 如果要换另一种方法请重新下载解压, 或恢复git仓库的原状后再尝试.!!!!!
 #### 3.3.1 使用Cocoapod的demo   
 demo 目录中已经有一个Podfile, 指定了本地开发版的pod    
 在demo目录下执行如下命令, 即可开始编译运行demo  
