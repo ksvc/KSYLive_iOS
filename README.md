@@ -87,12 +87,16 @@ $ git clone https://git.oschina.net/ksvc/KSYLive_iOS.git
 
 #### 3.2.3 使用Cocoapods 进行安装    
 通过Cocoapods 能将本SDK的静态库和代码下载到本地，只需要将类似如下语句中的一句加入你的Podfile：   
+
 ```
 // 本地开发版 (sdk clone或下载到本地后)
 pod 'libksygpulive/libksygpulive', :path => '../'
 
 // 私有库 (直接指定SDK的github仓库地址)
 pod 'libksygpulive/libksygpulive', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
+
+// 私有库 (直接指定SDK的github仓库地址和版本号)
+pod 'libksygpulive/libksygpulive', :git => 'https://github.com/ksvc/KSYLive_iOS.git', :tag => 'v1.8.0'
 
 // cocoapod官方库
 pod 'libksygpulive/libksygpulive'
@@ -109,6 +113,7 @@ pod 'libksygpulive/libksygpulive'
 
 ### 3.3 开始运行demo工程
 !!!!!注意: 这里提供以下两种方法运行demo, 但是只能二选一; 如果要换另一种方法请重新下载解压, 或恢复git仓库的原状后再尝试.!!!!!
+
 #### 3.3.1 使用Cocoapod的的方式来运行demo 
 demo 目录中已经有一个Podfile, 指定了本地开发版的pod    
 在demo目录下执行如下命令, 即可开始编译运行demo  
