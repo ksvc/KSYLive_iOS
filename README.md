@@ -48,12 +48,12 @@
 8. 2016.08.24 支持[纯音频](https://github.com/ksvc/KSYLive_iOS/wiki/pureAudioStream)推流，支持[后台推流](https://github.com/ksvc/KSYLive_iOS/wiki/backgroupStream)，支持视频动态发送开关；
 9. 2016.08.31 [场景编码](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)，有效提升直播画质；
 10. 2016.09.07 内建[新美颜](https://github.com/ksvc/KSYLive_iOS/wiki/filter)上线； 
-11. 2016.09.12 kit类顶层代码开放, podspec 中将集成framework改为集成静态库
+11. 2016.09.12 [kit类顶层代码开源](https://github.com/ksvc/KSYLive_iOS/tree/master/source), podspec 中将集成framework改为集成静态库
 
 ### 2.2 近期工作  
-1. 2016.09.xx kit顶层库代码开源；
-2. 2016.09.xx 横竖屏推流功能上线；
-
+1. 2016.09.xx 横竖屏推流功能上线；
+2. 2016.09.xx AAC硬编上线;
+3. 2016.09.xx 录屏推流上线;
 
 ## 三. SDK集成方法介绍   
 ### 3.1 系统要求    
