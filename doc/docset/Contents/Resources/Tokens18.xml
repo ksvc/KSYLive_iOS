@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUPipBlendFilter.html">
+	<File path="Classes/KSYGPUPicOutput.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUPipBlendFilter</TokenIdentifier>
-			<Abstract type="html">画中画中画 混合filter  （pip）
-三输入filter，将两个视频和一个图片叠加到一起，三个依次叠加
-两个输入中，按照添加顺序：
-首先被添加的为firstTexture （视频）
-中间添加的为secondTexture  （视频）
-最后添加的为thirdTexture   （图片）
-本filter的输出纹理大小与 firstTexture 一致
-叠加方式只支持将firstTexture缩小后 叠加到 secondTexture上，再叠加 到thirdTexture上
-其中，firstTexture 保持宽高比缩小
-secondTexture 保持宽高比缩放来适应firstTexture的原始大小
-thirdTexture 不保持宽高比，填充firstTexture的原始大小</Abstract>
-			<DeclaredIn>KSYGPUPipBlendFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUPicOutput</TokenIdentifier>
+			<Abstract type="html">GPU图像输出</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
             
 			
 			<NodeRef refid="18"/>
@@ -23,48 +13,209 @@ thirdTexture 不保持宽高比，填充firstTexture的原始大小</Abstract>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipBlendFilter/initWithPipRect:</TokenIdentifier>
-			<Abstract type="html">初始化，并设置画中画左上角点的坐标（位置和大小）</Abstract>
-			<DeclaredIn>KSYGPUPipBlendFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/init</TokenIdentifier>
+			<Abstract type="html">初始化方法</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithPipRect:(CGRect)rect</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>rect</Name>
-					<Abstract type="html">位置</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>- (id)init</Declaration>
 			
-			<Anchor>//api/name/initWithPipRect:</Anchor>
+			
+			<Anchor>//api/name/init</Anchor>
             <NodeRef refid="18"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipBlendFilter/setPipRect:</TokenIdentifier>
-			<Abstract type="html">设置画中画左上角点的坐标（位置和大小）</Abstract>
-			<DeclaredIn>KSYGPUPipBlendFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setEnabled:</TokenIdentifier>
+			<Abstract type="html">GPUImageInput - (BOOL)enabled;</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
 			
-			<Declaration>- (void)setPipRect:(CGRect)rect</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>rect</Name>
-					<Abstract type="html">位置</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic) BOOL enabled</Declaration>
 			
-			<Anchor>//api/name/setPipRect:</Anchor>
+			
+			<Anchor>//api/name/enabled</Anchor>
             <NodeRef refid="18"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipBlendFilter/clearSecondTexture</TokenIdentifier>
-			<Abstract type="html">当secondTexture 需要刷新时调用</Abstract>
-			<DeclaredIn>KSYGPUPipBlendFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/enabled</TokenIdentifier>
+			<Abstract type="html">GPUImageInput - (BOOL)enabled;</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
 			
-			<Declaration>- (void)clearSecondTexture</Declaration>
+			<Declaration>@property (nonatomic) BOOL enabled</Declaration>
 			
 			
-			<Anchor>//api/name/clearSecondTexture</Anchor>
+			<Anchor>//api/name/enabled</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/enabled</TokenIdentifier>
+			<Abstract type="html">GPUImageInput - (BOOL)enabled;</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL enabled</Declaration>
+			
+			
+			<Anchor>//api/name/enabled</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setBCustomOutputSize:</TokenIdentifier>
+			<Abstract type="html">是否使用自定义输出尺寸 (默认为NO)</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bCustomOutputSize</Declaration>
+			
+			
+			<Anchor>//api/name/bCustomOutputSize</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/bCustomOutputSize</TokenIdentifier>
+			<Abstract type="html">是否使用自定义输出尺寸 (默认为NO)</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bCustomOutputSize</Declaration>
+			
+			
+			<Anchor>//api/name/bCustomOutputSize</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/bCustomOutputSize</TokenIdentifier>
+			<Abstract type="html">是否使用自定义输出尺寸 (默认为NO)</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bCustomOutputSize</Declaration>
+			
+			
+			<Anchor>//api/name/bCustomOutputSize</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setOutputSize:</TokenIdentifier>
+			<Abstract type="html">output picture size</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/bCustomOutputSize</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, assign) CGSize outputSize</Declaration>
+			
+			
+			<Anchor>//api/name/outputSize</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/outputSize</TokenIdentifier>
+			<Abstract type="html">output picture size</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/bCustomOutputSize</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, assign) CGSize outputSize</Declaration>
+			
+			
+			<Anchor>//api/name/outputSize</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/outputSize</TokenIdentifier>
+			<Abstract type="html">output picture size</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/bCustomOutputSize</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, assign) CGSize outputSize</Declaration>
+			
+			
+			<Anchor>//api/name/outputSize</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setInputSize:</TokenIdentifier>
+			<Abstract type="html">input picture size</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) CGSize inputSize</Declaration>
+			
+			
+			<Anchor>//api/name/inputSize</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/inputSize</TokenIdentifier>
+			<Abstract type="html">input picture size</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) CGSize inputSize</Declaration>
+			
+			
+			<Anchor>//api/name/inputSize</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/inputSize</TokenIdentifier>
+			<Abstract type="html">input picture size</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) CGSize inputSize</Declaration>
+			
+			
+			<Anchor>//api/name/inputSize</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setVideoProcessingCallback:</TokenIdentifier>
+			<Abstract type="html">视频处理回调接口</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CVPixelBufferRef pixelBuffer , CMTime timeInfo ) videoProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/videoProcessingCallback</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/videoProcessingCallback</TokenIdentifier>
+			<Abstract type="html">视频处理回调接口</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CVPixelBufferRef pixelBuffer , CMTime timeInfo ) videoProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/videoProcessingCallback</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/videoProcessingCallback</TokenIdentifier>
+			<Abstract type="html">视频处理回调接口</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CVPixelBufferRef pixelBuffer , CMTime timeInfo ) videoProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/videoProcessingCallback</Anchor>
             <NodeRef refid="18"/>
 		</Token>
 		

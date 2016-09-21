@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYDevAuthStatus.html">
+	<File path="Constants/KSYBgmPlayerState.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYDevAuthStatus</TokenIdentifier>
-			<Abstract type="html">设备授权状态</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYBgmPlayerState</TokenIdentifier>
+			<Abstract type="html">音频播放状态</Abstract>
 			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYDevAuthStatusNotDetermined</TokenIdentifier>
-            <Abstract type="html">还没有确定是否授权</Abstract>
-            <Declaration>KSYDevAuthStatusNotDetermined</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateInit</TokenIdentifier>
+            <Abstract type="html">初始状态</Abstract>
+            <Declaration>KSYBgmPlayerStateInit</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -24,9 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYDevAuthStatusRestricted</TokenIdentifier>
-            <Abstract type="html">设备受限，一般在家长模式下设备会受限</Abstract>
-            <Declaration>KSYDevAuthStatusRestricted</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateStarting</TokenIdentifier>
+            <Abstract type="html">背景音正在播放</Abstract>
+            <Declaration>KSYBgmPlayerStateStarting</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -34,9 +34,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYDevAuthStatusDenied</TokenIdentifier>
-            <Abstract type="html">拒绝授权</Abstract>
-            <Declaration>KSYDevAuthStatusDenied</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateStopped</TokenIdentifier>
+            <Abstract type="html">背景音停止</Abstract>
+            <Declaration>KSYBgmPlayerStateStopped</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -44,9 +44,39 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYDevAuthStatusAuthorized</TokenIdentifier>
-            <Abstract type="html">已授权</Abstract>
-            <Declaration>KSYDevAuthStatusAuthorized</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStatePlaying</TokenIdentifier>
+            <Abstract type="html">背景音正在播放</Abstract>
+            <Declaration>KSYBgmPlayerStatePlaying</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="34"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStatePaused</TokenIdentifier>
+            <Abstract type="html">背景音暂停</Abstract>
+            <Declaration>KSYBgmPlayerStatePaused</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="34"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateError</TokenIdentifier>
+            <Abstract type="html">背景音播放出错</Abstract>
+            <Declaration>KSYBgmPlayerStateError</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="34"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateInterrupted</TokenIdentifier>
+            <Abstract type="html">背景音被打断</Abstract>
+            <Declaration>KSYBgmPlayerStateInterrupted</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             

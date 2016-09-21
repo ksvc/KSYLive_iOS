@@ -22,6 +22,8 @@
 #import <libksygpulive/KSYGPUBeautifyPlusFilter.h>
 #import <libksygpulive/KSYGPUDnoiseFilter.h>
 #import <libksygpulive/KSYBeautifyFaceFilter.h>
+#import <libksygpulive/KSYSpecialEffects.h>
+#import <libksygpulive/KSYBuildInSpecialEffects.h>
 #import <libksygpulive/KSYGPULogoFilter.h>
 
 // mixer

@@ -89,4 +89,14 @@ typedef NS_ENUM(NSUInteger, MPMovieReloadMode) {
     MPMovieReloadMode_Accurate,
 };
 
+/**
+ * 视频反交错模式
+ */
+typedef NS_ENUM(NSUInteger, MPMovieVideoDeinterlaceMode) {
+    ///关闭反交错
+    MPMovieVideoDeinterlaceMode_None = 0,
+    ///自动判断是否打开反交错
+    MPMovieVideoDeinterlaceMode_Auto,
+};
+
 //----------------------------------------------

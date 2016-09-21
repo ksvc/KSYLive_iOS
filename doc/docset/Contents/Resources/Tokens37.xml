@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYMicType.html">
+	<File path="Constants/KSYLiveScene.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYMicType</TokenIdentifier>
-			<Abstract type="html">音频输入设备类型</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYLiveScene</TokenIdentifier>
+			<Abstract type="html">直播场景 (KSY内部会根据场景的特征进行参数调优)</Abstract>
 			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMicType_builtinMic</TokenIdentifier>
-            <Abstract type="html">Built-in microphone on an iOS device</Abstract>
-            <Declaration>KSYMicType_builtinMic</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYLiveScene_Default</TokenIdentifier>
+            <Abstract type="html">默认通用场景(不确定场景时使用)</Abstract>
+            <Declaration>KSYLiveScene_Default</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -24,29 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMicType_headsetMic</TokenIdentifier>
-            <Abstract type="html">Microphone on a wired headset</Abstract>
-            <Declaration>KSYMicType_headsetMic</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="37"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMicType_bluetoothMic</TokenIdentifier>
-            <Abstract type="html">蓝牙设备</Abstract>
-            <Declaration>KSYMicType_bluetoothMic</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="37"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMicType_unknow</TokenIdentifier>
-            <Abstract type="html">未知设备</Abstract>
-            <Declaration>KSYMicType_unknow</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYLiveScene_Showself</TokenIdentifier>
+            <Abstract type="html">秀场场景, 主播上半身为主</Abstract>
+            <Declaration>KSYLiveScene_Showself</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             

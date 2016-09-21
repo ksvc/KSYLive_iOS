@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYVideoInfo.html">
+	<File path="Classes/KSYSpecialEffects.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYVideoInfo</TokenIdentifier>
-			<Abstract type="html">视频信息</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYSpecialEffects</TokenIdentifier>
+			<Abstract type="html">金山云特效滤镜</Abstract>
+			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
             
 			
 			<NodeRef refid="28"/>
@@ -13,110 +13,84 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/setVcodec:</TokenIdentifier>
-			<Abstract type="html">视频编码格式, 具体类型为MEDIAINFOCODECID</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/clm/KSYSpecialEffects/showVersion</TokenIdentifier>
+			<Abstract type="html">show version of this filter</Abstract>
+			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID vcodec</Declaration>
+			<Declaration>+ (void)showVersion</Declaration>
 			
 			
-			<Anchor>//api/name/vcodec</Anchor>
+			<Anchor>//api/name/showVersion</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/vcodec</TokenIdentifier>
-			<Abstract type="html">视频编码格式, 具体类型为MEDIAINFOCODECID</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYSpecialEffects/initWithUIImage:</TokenIdentifier>
+			<Abstract type="html">初始化并指定特效素材</Abstract>
+			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID vcodec</Declaration>
-			
-			
-			<Anchor>//api/name/vcodec</Anchor>
+			<Declaration>- (id)initWithUIImage:(UIImage *)image</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>image</Name>
+					<Abstract type="html">特效素材</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">构造的滤镜</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithUIImage:</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYVideoInfo/vcodec</TokenIdentifier>
-			<Abstract type="html">视频编码格式, 具体类型为MEDIAINFOCODECID</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYSpecialEffects/setSpecialEffectsUIImage:</TokenIdentifier>
+			<Abstract type="html">指定特效素材</Abstract>
+			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID vcodec</Declaration>
+			<Declaration>- (void)setSpecialEffectsUIImage:(UIImage *)image</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>image</Name>
+					<Abstract type="html">特效素材</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/vcodec</Anchor>
+			<Anchor>//api/name/setSpecialEffectsUIImage:</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/setFrame_width:</TokenIdentifier>
-			<Abstract type="html">视频帧宽度</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYSpecialEffects/setIntensity:</TokenIdentifier>
+			<Abstract type="html">特效参数</Abstract>
+			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int32_t frame_width</Declaration>
+			<Declaration>@property (readwrite, nonatomic) CGFloat intensity</Declaration>
 			
 			
-			<Anchor>//api/name/frame_width</Anchor>
+			<Anchor>//api/name/intensity</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/frame_width</TokenIdentifier>
-			<Abstract type="html">视频帧宽度</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYSpecialEffects/intensity</TokenIdentifier>
+			<Abstract type="html">特效参数</Abstract>
+			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int32_t frame_width</Declaration>
+			<Declaration>@property (readwrite, nonatomic) CGFloat intensity</Declaration>
 			
 			
-			<Anchor>//api/name/frame_width</Anchor>
+			<Anchor>//api/name/intensity</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYVideoInfo/frame_width</TokenIdentifier>
-			<Abstract type="html">视频帧宽度</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYSpecialEffects/intensity</TokenIdentifier>
+			<Abstract type="html">特效参数</Abstract>
+			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int32_t frame_width</Declaration>
-			
-			
-			<Anchor>//api/name/frame_width</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/setFrame_height:</TokenIdentifier>
-			<Abstract type="html">视频帧高度</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int32_t frame_height</Declaration>
+			<Declaration>@property (readwrite, nonatomic) CGFloat intensity</Declaration>
 			
 			
-			<Anchor>//api/name/frame_height</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/frame_height</TokenIdentifier>
-			<Abstract type="html">视频帧高度</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int32_t frame_height</Declaration>
-			
-			
-			<Anchor>//api/name/frame_height</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYVideoInfo/frame_height</TokenIdentifier>
-			<Abstract type="html">视频帧高度</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int32_t frame_height</Declaration>
-			
-			
-			<Anchor>//api/name/frame_height</Anchor>
+			<Anchor>//api/name/intensity</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
