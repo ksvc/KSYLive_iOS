@@ -49,7 +49,7 @@
 9. 2016.08.31 [场景编码](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)，有效提升直播画质；
 10. 2016.09.07 内建[新美颜](https://github.com/ksvc/KSYLive_iOS/wiki/filter)上线； 
 11. 2016.09.12 [kit类顶层代码开源](https://github.com/ksvc/KSYLive_iOS/tree/master/source), podspec 中将集成framework改为集成静态库
-
+12. 2016.09.21 特效滤镜上线;
 ### 2.2 近期工作  
 1. 2016.09.xx 横竖屏推流功能上线；
 2. 2016.09.xx AAC硬编上线;
