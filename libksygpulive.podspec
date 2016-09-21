@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'libksygpulive'
-  s.version      = '1.8.0'
+  s.version      = '1.8.1'
   s.license      = {
 :type => 'Proprietary',
 :text => <<-LICENSE
@@ -69,5 +69,8 @@ Pod::Spec.new do |s|
       'prebuilt/libs/libksystreamer.a'
     ]
     sub.dependency 'GPUImage'
+  end
+  s.subspec 'KSYGPUResource' do |sub|
+    sub.resource = 'resource/KSYGPUResource.bundle'
   end
 end

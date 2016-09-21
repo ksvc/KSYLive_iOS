@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUPicMixer.html">
+	<File path="Classes/KSYGPULogoFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUPicMixer</TokenIdentifier>
-			<Abstract type="html">  图像混合filter</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPULogoFilter</TokenIdentifier>
+			<Abstract type="html">叠加logo的滤镜</Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="16"/>
@@ -13,158 +13,196 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/init</TokenIdentifier>
-			<Abstract type="html">初始化</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/setLogoImage:</TokenIdentifier>
+			<Abstract type="html">叠加的图片</Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
 			
-			<Declaration>- (id)init</Declaration>
+			<Declaration>@property (nonatomic, readonly) UIImage *logoImage</Declaration>
 			
 			
-			<Anchor>//api/name/init</Anchor>
+			<Anchor>//api/name/logoImage</Anchor>
             <NodeRef refid="16"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/initWithOutputSize:</TokenIdentifier>
-			<Abstract type="html">初始化,并制定输出图像的大小</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/logoImage</TokenIdentifier>
+			<Abstract type="html">叠加的图片</Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithOutputSize:(CGSize)sz</Declaration>
+			<Declaration>@property (nonatomic, readonly) UIImage *logoImage</Declaration>
+			
+			
+			<Anchor>//api/name/logoImage</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPULogoFilter/logoImage</TokenIdentifier>
+			<Abstract type="html">叠加的图片</Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) UIImage *logoImage</Declaration>
+			
+			
+			<Anchor>//api/name/logoImage</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/setLogoRect:</TokenIdentifier>
+			<Abstract type="html">图片的位置和大小, 需要归一化到 0~1.0 之间</Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) CGRect logoRect</Declaration>
+			
+			
+			<Anchor>//api/name/logoRect</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/logoRect</TokenIdentifier>
+			<Abstract type="html">图片的位置和大小, 需要归一化到 0~1.0 之间</Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) CGRect logoRect</Declaration>
+			
+			
+			<Anchor>//api/name/logoRect</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPULogoFilter/logoRect</TokenIdentifier>
+			<Abstract type="html">图片的位置和大小, 需要归一化到 0~1.0 之间</Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) CGRect logoRect</Declaration>
+			
+			
+			<Anchor>//api/name/logoRect</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/setLogoAlpha:</TokenIdentifier>
+			<Abstract type="html">图片的透明度</Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) float logoAlpha</Declaration>
+			
+			
+			<Anchor>//api/name/logoAlpha</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/logoAlpha</TokenIdentifier>
+			<Abstract type="html">图片的透明度</Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) float logoAlpha</Declaration>
+			
+			
+			<Anchor>//api/name/logoAlpha</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPULogoFilter/logoAlpha</TokenIdentifier>
+			<Abstract type="html">图片的透明度</Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) float logoAlpha</Declaration>
+			
+			
+			<Anchor>//api/name/logoAlpha</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/initWithLogo:toRect:alpha:</TokenIdentifier>
+			<Abstract type="html">初始化输入的logo相关属性</Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithLogo:(UIImage *)logo toRect:(CGRect)lRect alpha:(float)alpha</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>sz</Name>
-					<Abstract type="html">输出图像的大小</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/initWithOutputSize:</Anchor>
-            <NodeRef refid="16"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/setMasterLayer:</TokenIdentifier>
-			<Abstract type="html">设置主要图层 (默认为0)</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) NSUInteger masterLayer</Declaration>
-			
-			
-			<Anchor>//api/name/masterLayer</Anchor>
-            <NodeRef refid="16"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/masterLayer</TokenIdentifier>
-			<Abstract type="html">设置主要图层 (默认为0)</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) NSUInteger masterLayer</Declaration>
-			
-			
-			<Anchor>//api/name/masterLayer</Anchor>
-            <NodeRef refid="16"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicMixer/masterLayer</TokenIdentifier>
-			<Abstract type="html">设置主要图层 (默认为0)</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) NSUInteger masterLayer</Declaration>
-			
-			
-			<Anchor>//api/name/masterLayer</Anchor>
-            <NodeRef refid="16"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/setPicRect:ofLayer:</TokenIdentifier>
-			<Abstract type="html">设置图层的位置和大小 (单位为: 像素值 或者百分比)</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
-			
-			<Declaration>- (void)setPicRect:(CGRect)rect ofLayer:(NSInteger)idx</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>rect</Name>
-					<Abstract type="html">大小和位置</Abstract>
+					<Name>logo</Name>
+					<Abstract type="html">图片</Abstract>
 				</Parameter><Parameter>
-					<Name>idx</Name>
-					<Abstract type="html">图层的索引</Abstract>
+					<Name>lRect</Name>
+					<Abstract type="html">图片的位置</Abstract>
+				</Parameter><Parameter>
+					<Name>alpha</Name>
+					<Abstract type="html">透明度</Abstract>
 				</Parameter>
 			</Parameters>
-			
-			<Anchor>//api/name/setPicRect:ofLayer:</Anchor>
+			<ReturnValue><Abstract type="html">构造出来的滤镜</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithLogo:toRect:alpha:</Anchor>
             <NodeRef refid="16"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/getPicRectOfLayer:</TokenIdentifier>
-			<Abstract type="html">获取图层的位置和大小 (单位为: 像素值 或者百分比)</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/setLogoImage:</TokenIdentifier>
+			<Abstract type="html">更新图像</Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
 			
-			<Declaration>- (CGRect)getPicRectOfLayer:(NSInteger)idx</Declaration>
+			<Declaration>- (void)setLogoImage:(UIImage *)logo</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>idx</Name>
-					<Abstract type="html">图层的索引</Abstract>
+					<Name>logo</Name>
+					<Abstract type="html">图片</Abstract>
 				</Parameter>
 			</Parameters>
-			<ReturnValue><Abstract type="html">位置和大小</Abstract></ReturnValue>
-			<Anchor>//api/name/getPicRectOfLayer:</Anchor>
+			
+			<Anchor>//api/name/setLogoImage:</Anchor>
             <NodeRef refid="16"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/setPicAlpha:ofLayer:</TokenIdentifier>
-			<Abstract type="html">设置图层的透明度 (默认为1.0)</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/setLogoAlpha:</TokenIdentifier>
+			<Abstract type="html">设置图像的透明度</Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
 			
-			<Declaration>- (void)setPicAlpha:(CGFloat)alpha ofLayer:(NSInteger)idx</Declaration>
+			<Declaration>- (void)setLogoAlpha:(float)alpha</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>alpha</Name>
-					<Abstract type="html">透明度(0~1.0), 0为全透明</Abstract>
-				</Parameter><Parameter>
-					<Name>idx</Name>
-					<Abstract type="html">图层的索引</Abstract>
+					<Abstract type="html">透明度</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/setPicAlpha:ofLayer:</Anchor>
+			<Anchor>//api/name/setLogoAlpha:</Anchor>
             <NodeRef refid="16"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/getPicAlphaOfLayer:</TokenIdentifier>
-			<Abstract type="html">获取图层的透明度</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/setLogoRect:</TokenIdentifier>
+			<Abstract type="html">设置图像的位置</Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
 			
-			<Declaration>- (CGFloat)getPicAlphaOfLayer:(NSInteger)idx</Declaration>
+			<Declaration>- (void)setLogoRect:(CGRect)rect</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>idx</Name>
-					<Abstract type="html">图层的索引</Abstract>
+					<Name>rect</Name>
+					<Abstract type="html">位置</Abstract>
 				</Parameter>
 			</Parameters>
-			<ReturnValue><Abstract type="html">透明度</Abstract></ReturnValue>
-			<Anchor>//api/name/getPicAlphaOfLayer:</Anchor>
+			
+			<Anchor>//api/name/setLogoRect:</Anchor>
             <NodeRef refid="16"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/clearPicOfLayer:</TokenIdentifier>
-			<Abstract type="html">清除特定图层的画面内容</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPULogoFilter/clearLogo</TokenIdentifier>
+			<Abstract type="html">清除图片</Abstract>
+			<DeclaredIn>KSYGPULogoFilter.h</DeclaredIn>
 			
-			<Declaration>- (void)clearPicOfLayer:(NSInteger)index</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>index</Name>
-					<Abstract type="html">指定被清除的图层</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>- (void)clearLogo</Declaration>
 			
-			<Anchor>//api/name/clearPicOfLayer:</Anchor>
+			
+			<Anchor>//api/name/clearLogo</Anchor>
             <NodeRef refid="16"/>
 		</Token>
 		

@@ -426,6 +426,15 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 @property(nonatomic) BOOL superFastPlay;
 
 /**
+ @abstract 是否进行视频反交错处理
+ @discussion 默认不进行反交错处理
+ 
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 1.7.2 and later.
+ */
+@property(nonatomic) MPMovieVideoDeinterlaceMode deinterlaceMode;
+
+/**
  @abstract 是否打断其他后台的音乐播放
  @discussion 也可以理解为是否允许和其他音频同时播放
  @discussion YES:开始播放时，会打断其他的后台播放音频，也会被其他音频播放打断

@@ -499,6 +499,7 @@
     _player.shouldMute = shouldMute;
     _player.shouldEnableKSYStatModule = TRUE;
     _player.shouldLoop = NO;
+    _player.deinterlaceMode = MPMovieVideoDeinterlaceMode_Auto;
     [_player setTimeout:10 readTimeout:60];
     
     NSKeyValueObservingOptions opts = NSKeyValueObservingOptionNew;
@@ -553,7 +554,7 @@
 
 - (IBAction)onReloadVideo:(id)sender {
     if (_player) {
-        [_player reload:_reloadUrl];
+        [_player reload:_reloadUrl flush:YES mode:MPMovieReloadMode_Accurate];
     }
 }
 

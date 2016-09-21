@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYMPErrorCode.html">
+	<File path="Constants/KSYDevAuthStatus.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYMPErrorCode</TokenIdentifier>
-			<Abstract type="html">错误码</Abstract>
-			<DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYDevAuthStatus</TokenIdentifier>
+			<Abstract type="html">设备授权状态</Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
 			<NodeRef refid="36"/>
@@ -14,191 +14,41 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMPOK</TokenIdentifier>
-            <Abstract type="html">正常</Abstract>
-            <Declaration>KSYMPOK</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYDevAuthStatusNotDetermined</TokenIdentifier>
+            <Abstract type="html">还没有确定是否授权</Abstract>
+            <Declaration>KSYDevAuthStatusNotDetermined</Declaration>
             
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="36"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMPErrorCodeUnknownError</TokenIdentifier>
-            <Abstract type="html">未知错误</Abstract>
-            <Declaration>KSYMPErrorCodeUnknownError</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="36"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMPErrorCodeFileIOError</TokenIdentifier>
-            <Abstract type="html">读写数据异常</Abstract>
-            <Declaration>KSYMPErrorCodeFileIOError</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYDevAuthStatusRestricted</TokenIdentifier>
+            <Abstract type="html">设备受限，一般在家长模式下设备会受限</Abstract>
+            <Declaration>KSYDevAuthStatusRestricted</Declaration>
             
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="36"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMPErrorCodeUnsupportProtocol</TokenIdentifier>
-            <Abstract type="html">不支持的流媒体协议</Abstract>
-            <Declaration>KSYMPErrorCodeUnsupportProtocol</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="36"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMPErrorCodeDNSParseFailed</TokenIdentifier>
-            <Abstract type="html">DNS解析失败</Abstract>
-            <Declaration>KSYMPErrorCodeDNSParseFailed</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYDevAuthStatusDenied</TokenIdentifier>
+            <Abstract type="html">拒绝授权</Abstract>
+            <Declaration>KSYDevAuthStatusDenied</Declaration>
             
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="36"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMPErrorCodeCreateSocketFailed</TokenIdentifier>
-            <Abstract type="html">创建socket失败</Abstract>
-            <Declaration>KSYMPErrorCodeCreateSocketFailed</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="36"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMPErrorCodeConnectServerFailed</TokenIdentifier>
-            <Abstract type="html">连接服务器失败</Abstract>
-            <Declaration>KSYMPErrorCodeConnectServerFailed</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYDevAuthStatusAuthorized</TokenIdentifier>
+            <Abstract type="html">已授权</Abstract>
+            <Declaration>KSYDevAuthStatusAuthorized</Declaration>
             
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="36"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMPErrorCodeBadRequest</TokenIdentifier>
-            <Abstract type="html">http请求返回400</Abstract>
-            <Declaration>KSYMPErrorCodeBadRequest</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="36"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMPErrorCodeUnauthorizedClient</TokenIdentifier>
-            <Abstract type="html">http请求返回401</Abstract>
-            <Declaration>KSYMPErrorCodeUnauthorizedClient</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="36"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMPErrorCodeAccessForbidden</TokenIdentifier>
-            <Abstract type="html">http请求返回403</Abstract>
-            <Declaration>KSYMPErrorCodeAccessForbidden</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="36"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMPErrorCodeTargetNotFound</TokenIdentifier>
-            <Abstract type="html">http请求返回404</Abstract>
-            <Declaration>KSYMPErrorCodeTargetNotFound</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="36"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMPErrorCodeOtherErrorCode</TokenIdentifier>
-            <Abstract type="html">http请求返回4xx</Abstract>
-            <Declaration>KSYMPErrorCodeOtherErrorCode</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="36"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMPErrorCodeServerException</TokenIdentifier>
-            <Abstract type="html">http请求返回5xx</Abstract>
-            <Declaration>KSYMPErrorCodeServerException</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="36"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMPErrorCodeInvalidData</TokenIdentifier>
-            <Abstract type="html">无效的媒体数据</Abstract>
-            <Declaration>KSYMPErrorCodeInvalidData</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="36"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMPErrorCodeUnsupportVideoCodec</TokenIdentifier>
-            <Abstract type="html">不支持的视频编码类型</Abstract>
-            <Declaration>KSYMPErrorCodeUnsupportVideoCodec</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="36"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMPErrorCodeUnsupportAudioCodec</TokenIdentifier>
-            <Abstract type="html">不支持的音频编码类型</Abstract>
-            <Declaration>KSYMPErrorCodeUnsupportAudioCodec</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="36"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMPErrorCodeVideoDecodeFailed</TokenIdentifier>
-            <Abstract type="html">视频解码失败</Abstract>
-            <Declaration>KSYMPErrorCodeVideoDecodeFailed</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="36"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMPErrorCodeAudioDecodeFailed</TokenIdentifier>
-            <Abstract type="html">音频解码失败</Abstract>
-            <Declaration>KSYMPErrorCodeAudioDecodeFailed</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="36"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYMPErrorCode3xxOverFlow</TokenIdentifier>
-            <Abstract type="html">次数过多的3xx跳转(8次)</Abstract>
-            <Declaration>KSYMPErrorCode3xxOverFlow</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="36"/>
         </Token>

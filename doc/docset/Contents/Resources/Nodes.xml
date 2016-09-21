@@ -39,6 +39,8 @@
 						<NodeRef refid="26"/>
 						<NodeRef refid="27"/>
 						<NodeRef refid="28"/>
+						<NodeRef refid="29"/>
+						<NodeRef refid="30"/>
 						
 					</Subnodes>
 				</Node>
@@ -49,7 +51,7 @@
 					<Name>Protocols</Name>
 					<Path>index.html</Path>
 					<Subnodes>
-						<NodeRef refid="29"/>
+						<NodeRef refid="31"/>
 						
 					</Subnodes>
 				</Node>
@@ -59,8 +61,6 @@
 					<Name>Constants</Name>
 					<Path>index.html</Path>
 					<Subnodes>
-						<NodeRef refid="30"/>
-						<NodeRef refid="31"/>
 						<NodeRef refid="32"/>
 						<NodeRef refid="33"/>
 						<NodeRef refid="34"/>
@@ -79,6 +79,9 @@
 						<NodeRef refid="47"/>
 						<NodeRef refid="48"/>
 						<NodeRef refid="49"/>
+						<NodeRef refid="50"/>
+						<NodeRef refid="51"/>
+						<NodeRef refid="52"/>
 						
 					</Subnodes>
 				</Node>
@@ -88,8 +91,8 @@
                     <Name>Blocks</Name>
                     <Path>index.html</Path>
                     <Subnodes>
-                        <NodeRef refid="50"/>
-                        <NodeRef refid="51"/>
+                        <NodeRef refid="53"/>
+                        <NodeRef refid="54"/>
                         
                     </Subnodes>
                 </Node>
@@ -320,6 +323,18 @@
                 </Node>
                 
                 
+                <Node type="section">
+                    <Path>Classes/KSYBeautifyFaceFilter.html</Path>
+                    <Name>Class Methods</Name>
+                    <Anchor>class_methods</Anchor>
+                </Node>
+                
+                
+                <Node type="section">
+                    <Path>Classes/KSYBeautifyFaceFilter.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
                 
             </Subnodes>
             
@@ -358,6 +373,33 @@
             
         </Node>
 		<Node id="9" type="file" documentType="reference">
+            <Name>KSYBuildInSpecialEffects</Name>
+            <Path>Classes/KSYBuildInSpecialEffects.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/KSYBuildInSpecialEffects.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/KSYBuildInSpecialEffects.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/KSYBuildInSpecialEffects.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="10" type="file" documentType="reference">
             <Name>KSYGPUBeautifyExtFilter</Name>
             <Path>Classes/KSYGPUBeautifyExtFilter.html</Path>
             
@@ -384,7 +426,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="10" type="file" documentType="reference">
+		<Node id="11" type="file" documentType="reference">
             <Name>KSYGPUBeautifyFilter</Name>
             <Path>Classes/KSYGPUBeautifyFilter.html</Path>
             
@@ -411,7 +453,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="11" type="file" documentType="reference">
+		<Node id="12" type="file" documentType="reference">
             <Name>KSYGPUBeautifyPlusFilter</Name>
             <Path>Classes/KSYGPUBeautifyPlusFilter.html</Path>
             
@@ -438,7 +480,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="12" type="file" documentType="reference">
+		<Node id="13" type="file" documentType="reference">
             <Name>KSYGPUCamera</Name>
             <Path>Classes/KSYGPUCamera.html</Path>
             
@@ -477,12 +519,12 @@
             </Subnodes>
             
         </Node>
-		<Node id="13" type="file" documentType="reference">
+		<Node id="14" type="file" documentType="reference">
             <Name>KSYGPUDnoiseFilter</Name>
             <Path>Classes/KSYGPUDnoiseFilter.html</Path>
             
         </Node>
-		<Node id="14" type="file" documentType="reference">
+		<Node id="15" type="file" documentType="reference">
             <Name>KSYGPUFilter</Name>
             <Path>Classes/KSYGPUFilter.html</Path>
             
@@ -509,7 +551,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="15" type="file" documentType="reference">
+		<Node id="16" type="file" documentType="reference">
             <Name>KSYGPULogoFilter</Name>
             <Path>Classes/KSYGPULogoFilter.html</Path>
             
@@ -542,7 +584,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="16" type="file" documentType="reference">
+		<Node id="17" type="file" documentType="reference">
             <Name>KSYGPUPicMixer</Name>
             <Path>Classes/KSYGPUPicMixer.html</Path>
             
@@ -575,7 +617,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="17" type="file" documentType="reference">
+		<Node id="18" type="file" documentType="reference">
             <Name>KSYGPUPicOutput</Name>
             <Path>Classes/KSYGPUPicOutput.html</Path>
             
@@ -608,7 +650,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="18" type="file" documentType="reference">
+		<Node id="19" type="file" documentType="reference">
             <Name>KSYGPUPipBlendFilter</Name>
             <Path>Classes/KSYGPUPipBlendFilter.html</Path>
             
@@ -635,7 +677,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="19" type="file" documentType="reference">
+		<Node id="20" type="file" documentType="reference">
             <Name>KSYGPUTwoPassFilter</Name>
             <Path>Classes/KSYGPUTwoPassFilter.html</Path>
             
@@ -662,7 +704,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="20" type="file" documentType="reference">
+		<Node id="21" type="file" documentType="reference">
             <Name>KSYGPUYUVInput</Name>
             <Path>Classes/KSYGPUYUVInput.html</Path>
             
@@ -689,7 +731,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="21" type="file" documentType="reference">
+		<Node id="22" type="file" documentType="reference">
             <Name>KSYMediaInfo</Name>
             <Path>Classes/KSYMediaInfo.html</Path>
             
@@ -716,7 +758,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="22" type="file" documentType="reference">
+		<Node id="23" type="file" documentType="reference">
             <Name>KSYMediaInfoProber</Name>
             <Path>Classes/KSYMediaInfoProber.html</Path>
             
@@ -749,7 +791,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="23" type="file" documentType="reference">
+		<Node id="24" type="file" documentType="reference">
             <Name>KSYMicMonitor</Name>
             <Path>Classes/KSYMicMonitor.html</Path>
             
@@ -788,7 +830,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="24" type="file" documentType="reference">
+		<Node id="25" type="file" documentType="reference">
             <Name>KSYMoviePlayerController</Name>
             <Path>Classes/KSYMoviePlayerController.html</Path>
             
@@ -821,7 +863,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="25" type="file" documentType="reference">
+		<Node id="26" type="file" documentType="reference">
             <Name>KSYMovieWriter</Name>
             <Path>Classes/KSYMovieWriter.html</Path>
             
@@ -848,7 +890,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="26" type="file" documentType="reference">
+		<Node id="27" type="file" documentType="reference">
             <Name>KSYQosInfo</Name>
             <Path>Classes/KSYQosInfo.html</Path>
             
@@ -875,7 +917,46 @@
             </Subnodes>
             
         </Node>
-		<Node id="27" type="file" documentType="reference">
+		<Node id="28" type="file" documentType="reference">
+            <Name>KSYSpecialEffects</Name>
+            <Path>Classes/KSYSpecialEffects.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/KSYSpecialEffects.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/KSYSpecialEffects.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/KSYSpecialEffects.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                <Node type="section">
+                    <Path>Classes/KSYSpecialEffects.html</Path>
+                    <Name>Class Methods</Name>
+                    <Anchor>class_methods</Anchor>
+                </Node>
+                
+                
+                <Node type="section">
+                    <Path>Classes/KSYSpecialEffects.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="29" type="file" documentType="reference">
             <Name>KSYStreamerBase</Name>
             <Path>Classes/KSYStreamerBase.html</Path>
             
@@ -908,7 +989,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="28" type="file" documentType="reference">
+		<Node id="30" type="file" documentType="reference">
             <Name>KSYVideoInfo</Name>
             <Path>Classes/KSYVideoInfo.html</Path>
             
@@ -937,7 +1018,7 @@
         </Node>
 		
 		
-        <Node id="29" type="file" documentType="reference">
+        <Node id="31" type="file" documentType="reference">
             <Name>KSYMediaPlayback</Name>
             <Path>Protocols/KSYMediaPlayback.html</Path>
             
@@ -971,113 +1052,118 @@
             
         </Node>
 		
-        <Node id="30" type="file" documentType="reference">
+        <Node id="32" type="file" documentType="reference">
             <Name>KSYAVMuxerStatus</Name>
             <Path>Constants/KSYAVMuxerStatus.html</Path>
             
         </Node>
-		<Node id="31" type="file" documentType="reference">
+		<Node id="33" type="file" documentType="reference">
             <Name>KSYAudioCodec</Name>
             <Path>Constants/KSYAudioCodec.html</Path>
             
         </Node>
-		<Node id="32" type="file" documentType="reference">
+		<Node id="34" type="file" documentType="reference">
             <Name>KSYBgmPlayerState</Name>
             <Path>Constants/KSYBgmPlayerState.html</Path>
             
         </Node>
-		<Node id="33" type="file" documentType="reference">
+		<Node id="35" type="file" documentType="reference">
             <Name>KSYCaptureState</Name>
             <Path>Constants/KSYCaptureState.html</Path>
             
         </Node>
-		<Node id="34" type="file" documentType="reference">
+		<Node id="36" type="file" documentType="reference">
             <Name>KSYDevAuthStatus</Name>
             <Path>Constants/KSYDevAuthStatus.html</Path>
             
         </Node>
-		<Node id="35" type="file" documentType="reference">
+		<Node id="37" type="file" documentType="reference">
             <Name>KSYLiveScene</Name>
             <Path>Constants/KSYLiveScene.html</Path>
             
         </Node>
-		<Node id="36" type="file" documentType="reference">
+		<Node id="38" type="file" documentType="reference">
             <Name>KSYMPErrorCode</Name>
             <Path>Constants/KSYMPErrorCode.html</Path>
             
         </Node>
-		<Node id="37" type="file" documentType="reference">
+		<Node id="39" type="file" documentType="reference">
             <Name>KSYMicType</Name>
             <Path>Constants/KSYMicType.html</Path>
             
         </Node>
-		<Node id="38" type="file" documentType="reference">
+		<Node id="40" type="file" documentType="reference">
             <Name>KSYNetStateCode</Name>
             <Path>Constants/KSYNetStateCode.html</Path>
             
         </Node>
-		<Node id="39" type="file" documentType="reference">
+		<Node id="41" type="file" documentType="reference">
             <Name>KSYStreamErrorCode</Name>
             <Path>Constants/KSYStreamErrorCode.html</Path>
             
         </Node>
-		<Node id="40" type="file" documentType="reference">
+		<Node id="42" type="file" documentType="reference">
             <Name>KSYStreamState</Name>
             <Path>Constants/KSYStreamState.html</Path>
             
         </Node>
-		<Node id="41" type="file" documentType="reference">
+		<Node id="43" type="file" documentType="reference">
             <Name>KSYVideoCodec</Name>
             <Path>Constants/KSYVideoCodec.html</Path>
             
         </Node>
-		<Node id="42" type="file" documentType="reference">
+		<Node id="44" type="file" documentType="reference">
             <Name>KSYVideoDimension</Name>
             <Path>Constants/KSYVideoDimension.html</Path>
             
         </Node>
-		<Node id="43" type="file" documentType="reference">
+		<Node id="45" type="file" documentType="reference">
             <Name>KSYVideoEncodePerformance</Name>
             <Path>Constants/KSYVideoEncodePerformance.html</Path>
             
         </Node>
-		<Node id="44" type="file" documentType="reference">
+		<Node id="46" type="file" documentType="reference">
             <Name>MEDIAINFO_CODEC_ID</Name>
             <Path>Constants/MEDIAINFO_CODEC_ID.html</Path>
             
         </Node>
-		<Node id="45" type="file" documentType="reference">
+		<Node id="47" type="file" documentType="reference">
             <Name>MEDIAINFO_MUX_TYPE</Name>
             <Path>Constants/MEDIAINFO_MUX_TYPE.html</Path>
             
         </Node>
-		<Node id="46" type="file" documentType="reference">
+		<Node id="48" type="file" documentType="reference">
             <Name>MEDIAINFO_SAMPLE_FMT</Name>
             <Path>Constants/MEDIAINFO_SAMPLE_FMT.html</Path>
             
         </Node>
-		<Node id="47" type="file" documentType="reference">
+		<Node id="49" type="file" documentType="reference">
             <Name>MPMovieReloadMode</Name>
             <Path>Constants/MPMovieReloadMode.html</Path>
             
         </Node>
-		<Node id="48" type="file" documentType="reference">
+		<Node id="50" type="file" documentType="reference">
             <Name>MPMovieStatus</Name>
             <Path>Constants/MPMovieStatus.html</Path>
             
         </Node>
-		<Node id="49" type="file" documentType="reference">
+		<Node id="51" type="file" documentType="reference">
             <Name>MPMovieVideoDecoderMode</Name>
             <Path>Constants/MPMovieVideoDecoderMode.html</Path>
             
         </Node>
+		<Node id="52" type="file" documentType="reference">
+            <Name>MPMovieVideoDeinterlaceMode</Name>
+            <Path>Constants/MPMovieVideoDeinterlaceMode.html</Path>
+            
+        </Node>
 		
-        <Node id="50" type="file" documentType="reference">
+        <Node id="53" type="file" documentType="reference">
             <Name>KSYPlyAudioDataBlock</Name>
             <Path>Blocks/KSYPlyAudioDataBlock.html</Path>
             
         </Node>
-        <Node id="51" type="file" documentType="reference">
+        <Node id="54" type="file" documentType="reference">
             <Name>KSYPlyVideoDataBlock</Name>
             <Path>Blocks/KSYPlyVideoDataBlock.html</Path>
             

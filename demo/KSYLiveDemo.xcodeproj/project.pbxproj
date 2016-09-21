@@ -40,6 +40,7 @@
 		06B2B1B51BE8F0D900E0CC85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06B2B1B31BE8F0D900E0CC85 /* Main.storyboard */; };
 		06B2B1B71BE8F0D900E0CC85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06B2B1B61BE8F0D900E0CC85 /* Images.xcassets */; };
 		06B2B1BA1BE8F0D900E0CC85 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B2B1B81BE8F0D900E0CC85 /* LaunchScreen.xib */; };
+		06E742AC1D90FFD600C3E780 /* KSYGPUResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 06E742AB1D90FFD600C3E780 /* KSYGPUResource.bundle */; };
 		06FBBD4B1D2E17E00065ED55 /* KSYAudioMixerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD291D2E17E00065ED55 /* KSYAudioMixerView.m */; };
 		06FBBD4D1D2E17E00065ED55 /* KSYBgmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD2B1D2E17E00065ED55 /* KSYBgmView.m */; };
 		06FBBD511D2E17E00065ED55 /* KSYCtrlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD2F1D2E17E00065ED55 /* KSYCtrlView.m */; };
@@ -93,6 +94,7 @@
 		06B2B1B91BE8F0D900E0CC85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		06CB3A641D813EE70017378F /* KSYStateLableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYStateLableView.m; sourceTree = "<group>"; };
 		06CB3A651D813EE70017378F /* KSYStateLableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYStateLableView.h; sourceTree = "<group>"; };
+		06E742AB1D90FFD600C3E780 /* KSYGPUResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = KSYGPUResource.bundle; path = ../resource/KSYGPUResource.bundle; sourceTree = "<group>"; };
 		06FBBD281D2E17E00065ED55 /* KSYAudioMixerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYAudioMixerView.h; sourceTree = "<group>"; };
 		06FBBD291D2E17E00065ED55 /* KSYAudioMixerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYAudioMixerView.m; sourceTree = "<group>"; };
 		06FBBD2A1D2E17E00065ED55 /* KSYBgmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYBgmView.h; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 		06B2B19A1BE8F0D900E0CC85 = {
 			isa = PBXGroup;
 			children = (
+				06E742AB1D90FFD600C3E780 /* KSYGPUResource.bundle */,
 				06A646DB1D86731E00D1C620 /* KSYPlayerDemo-framework.xcconfig */,
 				06A646DC1D86731E00D1C620 /* KSYLiveDemo-framework.xcconfig */,
 				06A646CB1D8658F600D1C620 /* libz.tbd */,
@@ -383,6 +386,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06E742AC1D90FFD600C3E780 /* KSYGPUResource.bundle in Resources */,
 				06B2B1B51BE8F0D900E0CC85 /* Main.storyboard in Resources */,
 				06B2B1BA1BE8F0D900E0CC85 /* LaunchScreen.xib in Resources */,
 				06B2B1B71BE8F0D900E0CC85 /* Images.xcassets in Resources */,

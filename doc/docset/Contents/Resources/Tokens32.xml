@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYBgmPlayerState.html">
+	<File path="Constants/KSYAVMuxerStatus.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYBgmPlayerState</TokenIdentifier>
-			<Abstract type="html">音频播放状态</Abstract>
-			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYAVMuxerStatus</TokenIdentifier>
+			<Abstract type="html">交织处理状态</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
             
 			
 			<NodeRef refid="32"/>
@@ -14,71 +14,51 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateInit</TokenIdentifier>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusIdle</TokenIdentifier>
             <Abstract type="html">初始状态</Abstract>
-            <Declaration>KSYBgmPlayerStateInit</Declaration>
+            <Declaration>KSYAVMuxerStatusIdle</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="32"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateStarting</TokenIdentifier>
-            <Abstract type="html">背景音正在播放</Abstract>
-            <Declaration>KSYBgmPlayerStateStarting</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
             
             <NodeRef refid="32"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateStopped</TokenIdentifier>
-            <Abstract type="html">背景音停止</Abstract>
-            <Declaration>KSYBgmPlayerStateStopped</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusMuxing</TokenIdentifier>
+            <Abstract type="html">处理中</Abstract>
+            <Declaration>KSYAVMuxerStatusMuxing</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="32"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStatePlaying</TokenIdentifier>
-            <Abstract type="html">背景音正在播放</Abstract>
-            <Declaration>KSYBgmPlayerStatePlaying</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
             
             <NodeRef refid="32"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStatePaused</TokenIdentifier>
-            <Abstract type="html">背景音暂停</Abstract>
-            <Declaration>KSYBgmPlayerStatePaused</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusCompleted</TokenIdentifier>
+            <Abstract type="html">处理完成</Abstract>
+            <Declaration>KSYAVMuxerStatusCompleted</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="32"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateError</TokenIdentifier>
-            <Abstract type="html">背景音播放出错</Abstract>
-            <Declaration>KSYBgmPlayerStateError</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
             
             <NodeRef refid="32"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateInterrupted</TokenIdentifier>
-            <Abstract type="html">背景音被打断</Abstract>
-            <Declaration>KSYBgmPlayerStateInterrupted</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusFailed</TokenIdentifier>
+            <Abstract type="html">处理失败</Abstract>
+            <Declaration>KSYAVMuxerStatusFailed</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+            
+            <NodeRef refid="32"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusCancelled</TokenIdentifier>
+            <Abstract type="html">处理任务被取消</Abstract>
+            <Declaration>KSYAVMuxerStatusCancelled</Declaration>
+            
+            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
             
             <NodeRef refid="32"/>
         </Token>

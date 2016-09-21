@@ -1,6 +1,5 @@
 platform :ios, '7.0'
 inhibit_all_warnings!
-install! 'cocoapods', :deterministic_uuids => false
 
 target 'KSYPlayerDemo' do
 	pod 'Bugly'
@@ -11,6 +10,7 @@ end
 target 'KSYLiveDemo' do
 	pod 'Bugly'
 	pod 'GPUImage'
+	pod 'libksygpulive/KSYGPUResource', :path => '../'
 	pod 'libksygpulive/libksygpulive', :path => '../'
  	#pod 'libksygpulive/libksygpulive_265', :path => '../'
 end

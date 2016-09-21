@@ -79,13 +79,13 @@ if [ $FRAMEWORKNAME = "libksygpulive" ]; then
 	GPUPACK=GPUImage.zip
 	if [ ! -d "$GPUIMAGE_DIR/GPUImage.framework" ]; then
 		echo "download GPUImage.framework"	
-		wget ${IOS_URL}/${GPUPACK} -O $GPUIMAGE_DIR/$GPUPACK
+		curl ${IOS_URL}/${GPUPACK} -o $GPUIMAGE_DIR/$GPUPACK
 		unzip -q $GPUIMAGE_DIR/$GPUPACK -d $GPUIMAGE_DIR
 		rm $GPUIMAGE_DIR/$GPUPACK
 	fi
 	if [ ! -d "$GPUIMAGE_DIR/Bugly.framework" ]; then
 		echo "download Bugly.framework for demo"
-		wget ${IOS_URL}/Bugly.framework.zip -O $GPUIMAGE_DIR/Bugly.framework.zip
+		curl ${IOS_URL}/Bugly.framework.zip -o $GPUIMAGE_DIR/Bugly.framework.zip
 		unzip -q $GPUIMAGE_DIR/Bugly.framework.zip -d $GPUIMAGE_DIR
 		rm $GPUIMAGE_DIR/Bugly.framework.zip
 	fi

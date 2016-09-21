@@ -14,7 +14,8 @@
 @interface KSYFilterView() {
     UILabel * _lblSeg;
     NSInteger _curIdx;
-    
+    NSArray * _effectNames;
+    NSInteger _curEffectIdx;
 }
 
 @property (nonatomic) UILabel * lbPrevewFlip;
@@ -25,17 +26,23 @@
 
 - (id)init{
     self = [super init];
+    _effectNames = [NSArray arrayWithObjects: @"1 小清新",  @"2 靓丽",
+                    @"3 甜美可人",  @"4 怀旧",  @"5 蓝调",  @"6 老照片" , nil];
+    _curEffectIdx = 1;
     // 修改美颜参数
-    _filterLevel = [self addSliderName:@"参数" From:0 To:100 Init:50];
-    _filterParam = [self addSliderName:@"美白" From:0 To:100 Init:50];
-    _filterParam.hidden = YES;
+    _filterParam1 = [self addSliderName:@"参数" From:0 To:100 Init:50];
+    _filterParam2 = [self addSliderName:@"美白" From:0 To:100 Init:50];
+    _filterParam3 = [self addSliderName:@"红润" From:0 To:100 Init:50];
+    _filterParam2.hidden = YES;
+    _filterParam3.hidden = YES;
     
     _lblSeg = [self addLable:@"滤镜"];
     _filterGroupType = [self addSegCtrlWithItems:
-  @[ @"关闭",
-     @"美颜",
-     @"组合",
-     @"金山",
+  @[ @"关",
+     @"旧美颜",
+     @"金山美颜",
+     @"红润美颜",
+     @"美颜特效",
      ]];
     _filterGroupType.selectedSegmentIndex = 1;
     [self selectFilter:1];
@@ -44,16 +51,27 @@
     _lbStreamFlip = [self addLable:@"推流镜像"];
     _swPrevewFlip = [self addSwitch:NO];
     _swStreamFlip = [self addSwitch:NO];
+    
+    _effectPicker = [[UIPickerView alloc] init];
+    [self addSubview: _effectPicker];
+    _effectPicker.hidden     = YES;
+    _effectPicker.delegate   = self;
+    _effectPicker.dataSource = self;
+    _effectPicker.showsSelectionIndicator= YES;
     return self;
 }
 - (void)layoutUI{
     [super layoutUI];
-    [self putRow1:_filterLevel];
-    [self putRow1:_filterParam];
+    self.yPos = 0;
+    [self putRow1:_filterParam1];
+    [self putRow1:_filterParam2];
+    [self putRow1:_filterParam3];
     self.btnH = 30;
     [self putLable:_lblSeg andView: _filterGroupType];
     [self putRow: @[_lbPrevewFlip, _swPrevewFlip,
                     _lbStreamFlip, _swStreamFlip ]];
+    self.btnH = 162;
+    [self putRow1:_effectPicker];
 }
 - (IBAction)onSegCtrl:(id)sender {
     if (_filterGroupType == sender){
@@ -66,65 +84,151 @@
         return;
     }
     _curIdx = idx;
-    _filterLevel.nameL.text = @"参数";
-    _filterParam.hidden = YES;
+    _filterParam1.hidden = YES;
+    _filterParam2.hidden = YES;
+    _filterParam3.hidden = YES;
+    _effectPicker.hidden = YES;
     // 标识当前被选择的滤镜
     if (idx == 0){
         _curFilter  = nil;
     }
     else if (idx == 1){
+        _filterParam1.nameL.text = @"参数";
+        _filterParam1.hidden = NO;
         _curFilter = [[KSYGPUBeautifyExtFilter alloc] init];
     }
-    else if (idx == 2){
-        KSYGPUBeautifyExtFilter * bf = [[KSYGPUBeautifyExtFilter alloc] init];
-        GPUImageSepiaFilter * pf =[[GPUImageSepiaFilter alloc] init];
-        [bf addTarget:pf];
+    else if (idx == 2){ // 美颜
+        KSYBeautifyFaceFilter * f = [[KSYBeautifyFaceFilter alloc] init];
+        _filterParam1.hidden = NO;
+        _filterParam2.hidden = NO;
+        _filterParam1.nameL.text = @"磨皮";
+        f.grindRatio  = _filterParam1.normalValue;
+        f.whitenRatio = _filterParam2.normalValue;
+        _curFilter    = f;
+    }
+    else if (idx == 3){ // 红润 + 美颜
+        _filterParam1.nameL.text = @"磨皮";
+        _filterParam3.nameL.text = @"红润";
+        _filterParam1.hidden = NO;
+        _filterParam2.hidden = NO;
+        _filterParam3.hidden = NO;
+        UIImage * rubbyMat = [[self class] KSYGPUImageNamed:@"3_tianmeikeren.png"];
+        KSYBeautifyFaceFilter * bf = [[KSYBeautifyFaceFilter alloc] initWithRubbyMaterial:rubbyMat];
+        bf.grindRatio  = _filterParam1.normalValue;
+        bf.whitenRatio = _filterParam2.normalValue;
+        bf.ruddyRatio  = _filterParam3.normalValue;
+        _curFilter = bf;
+    }
+    else if (idx == 4){ // 美颜 + 特效 滤镜组合
+        _filterParam1.nameL.text = @"磨皮";
+        _filterParam3.nameL.text = @"特效";
+        _filterParam1.hidden = NO;
+        _filterParam2.hidden = NO;
+        _filterParam3.hidden = NO;
+        _effectPicker.hidden = NO;
+        // 构造美颜滤镜 和  特效滤镜
+        KSYBeautifyFaceFilter    * bf = [[KSYBeautifyFaceFilter alloc] init];
+        KSYBuildInSpecialEffects * sf = [[KSYBuildInSpecialEffects alloc] initWithIdx:_curEffectIdx];
+        bf.grindRatio  = _filterParam1.normalValue;
+        bf.whitenRatio = _filterParam2.normalValue;
+        sf.intensity   = _filterParam3.normalValue;
+        [bf addTarget:sf];
         
+        // 用滤镜组 将 滤镜 串联成整体
         GPUImageFilterGroup * fg = [[GPUImageFilterGroup alloc] init];
         [fg addFilter:bf];
-        [fg addFilter:pf];
+        [fg addFilter:sf];
+        
         [fg setInitialFilters:[NSArray arrayWithObject:bf]];
-        [fg setTerminalFilter:pf];
+        [fg setTerminalFilter:sf];
         _curFilter = fg;
     }
-    else if (idx == 3){
-        KSYBeautifyFaceFilter * f = [[KSYBeautifyFaceFilter alloc] init];
-        _filterParam.hidden = NO;
-        _filterLevel.nameL.text = @"磨皮";
-        f.grindRatio = _filterLevel.normalValue;;
-        f.whitenRatio = _filterParam.normalValue;
-        _curFilter = f;
-    }
-    else { // 关闭
-        _curFilter  = nil;
+    else {
+        _curFilter = nil;
     }
 }
 
 - (IBAction)onSlider:(id)sender {
-    if (sender != _filterLevel &&
-        sender != _filterParam ) {
+    if (sender != _filterParam1 &&
+        sender != _filterParam2 &&
+        sender != _filterParam3 ) {
         return;
     }
-    float nalVal = _filterLevel.normalValue;
+    float nalVal = _filterParam1.normalValue;
     if (_curIdx == 1){
         int val = (nalVal*5) + 1; // level 1~5
         [(KSYGPUBeautifyExtFilter *)_curFilter setBeautylevel: val];
     }
-    if (_curIdx == 2){
-        int val = (nalVal*5) + 1; // level 1~5
-        GPUImageFilterGroup * fg = (GPUImageFilterGroup *)_curFilter;
-        KSYGPUBeautifyExtFilter * cf = (KSYGPUBeautifyExtFilter *)[fg filterAtIndex:0];
-        [cf setBeautylevel: val];
-    }
-    else if (_curIdx == 3){
+    else if (_curIdx == 2 || _curIdx == 3 ){ // 美颜
         KSYBeautifyFaceFilter * f =(KSYBeautifyFaceFilter*)_curFilter;
-        if (sender == _filterLevel){
-            f.grindRatio = _filterLevel.normalValue;
+        if (sender == _filterParam1 ){
+            f.grindRatio = _filterParam1.normalValue;
         }
-        if (sender == _filterParam ) {
-            f.whitenRatio = _filterParam.normalValue;
+        if (sender == _filterParam2 ) {
+            f.whitenRatio = _filterParam2.normalValue;
+        }
+        if (sender == _filterParam3 ) {  // 红润参数
+            f.ruddyRatio = _filterParam3.normalValue;
+        }
+    }
+    else if ( _curIdx == 4 ){
+        GPUImageFilterGroup * fg = (GPUImageFilterGroup *)_curFilter;
+        KSYBeautifyFaceFilter    * bf = (KSYBeautifyFaceFilter *)[fg filterAtIndex:0];
+        KSYBuildInSpecialEffects * sf = (KSYBuildInSpecialEffects *)[fg filterAtIndex:1];
+        if (sender == _filterParam1 ){
+            bf.grindRatio = _filterParam1.normalValue;
+        }
+        if (sender == _filterParam2 ) {
+            bf.whitenRatio = _filterParam2.normalValue;
+        }
+        if (sender == _filterParam3 ) {  // 特效参数
+            [sf setIntensity:_filterParam3.normalValue];
         }
     }
     [super onSlider:sender];
 }
+
+#pragma mark - effect picker
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView*)pickerView {
+    return 1; // 单列
+}
+- (NSInteger)pickerView:(UIPickerView *)pickerView
+numberOfRowsInComponent:(NSInteger)component {
+    return _effectNames.count;//
+}
+- (NSString *)pickerView:(UIPickerView *)pickerView
+             titleForRow:(NSInteger)row
+            forComponent:(NSInteger)component{
+    return [_effectNames objectAtIndex:row];
+}
+- (void)pickerView:(UIPickerView *)pickerView
+      didSelectRow:(NSInteger)row
+       inComponent:(NSInteger)component {
+    _curEffectIdx = row+1;
+    if ( [_curFilter isKindOfClass:[GPUImageFilterGroup class]]){
+        GPUImageFilterGroup * fg = (GPUImageFilterGroup *)_curFilter;
+        KSYBuildInSpecialEffects * sf = (KSYBuildInSpecialEffects *)[fg filterAtIndex:1];
+        [sf setSpecialEffectsIdx: _curEffectIdx];
+    }
+}
+
+#pragma mark - load resource from resource bundle
++ (NSBundle*)KSYGPUResourceBundle {
+    static dispatch_once_t onceToken;
+    static NSBundle *resBundle = nil;
+    dispatch_once(&onceToken, ^{
+        resBundle = [NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:@"KSYGPUResource" withExtension:@"bundle"]];
+    });
+    return resBundle;
+}
+
++ (UIImage*)KSYGPUImageNamed:(NSString*)name {
+    UIImage *imageFromMainBundle = [UIImage imageNamed:name];
+    if (imageFromMainBundle) {
+        return imageFromMainBundle;
+    }
+    UIImage *imageFromKSYBundle = [UIImage imageWithContentsOfFile:[[[KSYFilterView KSYGPUResourceBundle] resourcePath] stringByAppendingPathComponent:name]];
+    return imageFromKSYBundle;
+}
+
 @end

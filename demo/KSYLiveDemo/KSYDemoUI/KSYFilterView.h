@@ -14,16 +14,21 @@
 @class GPUImageOutput;
 @protocol GPUImageInput;
 
-@interface KSYFilterView : KSYUIView
+@interface KSYFilterView : KSYUIView <
+                UIPickerViewDataSource,
+                UIPickerViewDelegate >
 
 // 参数调节
-@property (nonatomic, readonly) KSYNameSlider * filterLevel; // 参数1
-@property (nonatomic, readonly) KSYNameSlider * filterParam; // 参数2
+@property (nonatomic, readonly) KSYNameSlider * filterParam1; // 参数1
+@property (nonatomic, readonly) KSYNameSlider * filterParam2; // 参数2
+@property (nonatomic, readonly) KSYNameSlider * filterParam3; // 参数3
 
 // 选择滤镜
 @property (nonatomic, readonly) GPUImageOutput<GPUImageInput>* curFilter;
 // 滤镜组合
 @property (nonatomic, readonly) UISegmentedControl  * filterGroupType;
+// 特效滤镜
+@property (nonatomic, readonly) UIPickerView  * effectPicker;
 
 // 镜像翻转按钮
 @property (nonatomic) UISwitch * swPrevewFlip;

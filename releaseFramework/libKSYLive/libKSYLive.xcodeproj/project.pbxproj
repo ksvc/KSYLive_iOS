@@ -15,6 +15,12 @@
 		06A646D81D865D2A00D1C620 /* KSYGPUStreamerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A646CF1D865B2C00D1C620 /* KSYGPUStreamerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06A646D91D865D2A00D1C620 /* KSYGPULogoFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A646D51D865D0900D1C620 /* KSYGPULogoFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06A646DA1D865D3200D1C620 /* KSYGPUStreamerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A646CF1D865B2C00D1C620 /* KSYGPUStreamerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06E742A51D90FEB700C3E780 /* KSYSpecialEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E742A31D90FEB700C3E780 /* KSYSpecialEffects.h */; };
+		06E742A61D90FEB700C3E780 /* KSYBuildInSpecialEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E742A41D90FEB700C3E780 /* KSYBuildInSpecialEffects.h */; };
+		06E742A71D90FEC300C3E780 /* KSYSpecialEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E742A31D90FEB700C3E780 /* KSYSpecialEffects.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06E742A81D90FEC300C3E780 /* KSYBuildInSpecialEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E742A41D90FEB700C3E780 /* KSYBuildInSpecialEffects.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06E742A91D90FEFA00C3E780 /* KSYSpecialEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E742A31D90FEB700C3E780 /* KSYSpecialEffects.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06E742AA1D90FEFA00C3E780 /* KSYBuildInSpecialEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E742A41D90FEB700C3E780 /* KSYBuildInSpecialEffects.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5800A0591D76E50100AB55F7 /* KSYMediaPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800A0181D76BFA600AB55F7 /* KSYMediaPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5800A05A1D76E50E00AB55F7 /* KSYMediaPlayerDy.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800A0321D76C2D700AB55F7 /* KSYMediaPlayerDy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5800DC851D82B9AA00B1A884 /* KSYMediaInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC7F1D82B9AA00B1A884 /* KSYMediaInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -100,6 +106,8 @@
 		06A646CE1D865B2C00D1C620 /* KSYGPUStreamerKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYGPUStreamerKit.m; path = ../../source/KSYGPUStreamerKit.m; sourceTree = "<group>"; };
 		06A646CF1D865B2C00D1C620 /* KSYGPUStreamerKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUStreamerKit.h; path = ../../source/KSYGPUStreamerKit.h; sourceTree = "<group>"; };
 		06A646D51D865D0900D1C620 /* KSYGPULogoFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPULogoFilter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPULogoFilter.h; sourceTree = "<group>"; };
+		06E742A31D90FEB700C3E780 /* KSYSpecialEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYSpecialEffects.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYSpecialEffects.h; sourceTree = "<group>"; };
+		06E742A41D90FEB700C3E780 /* KSYBuildInSpecialEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYBuildInSpecialEffects.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYBuildInSpecialEffects.h; sourceTree = "<group>"; };
 		5800A0161D76BFA600AB55F7 /* KSYMediaPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KSYMediaPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5800A0181D76BFA600AB55F7 /* KSYMediaPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSYMediaPlayer.h; sourceTree = "<group>"; };
 		5800A01A1D76BFA600AB55F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -334,6 +342,8 @@
 		580489E11D799FF200232F6E /* include */ = {
 			isa = PBXGroup;
 			children = (
+				06E742A31D90FEB700C3E780 /* KSYSpecialEffects.h */,
+				06E742A41D90FEB700C3E780 /* KSYBuildInSpecialEffects.h */,
 				06A646BE1D8652A400D1C620 /* KSYAVAudioSession.h */,
 				5800DCA21D82BAA800B1A884 /* KSYAUAudioCapture.h */,
 				5800DCA31D82BAA800B1A884 /* KSYAudioMixer.h */,
@@ -371,6 +381,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5800A0591D76E50100AB55F7 /* KSYMediaPlayer.h in Headers */,
+				06E742A51D90FEB700C3E780 /* KSYSpecialEffects.h in Headers */,
+				06E742A61D90FEB700C3E780 /* KSYBuildInSpecialEffects.h in Headers */,
 				5800DC851D82B9AA00B1A884 /* KSYMediaInfo.h in Headers */,
 				5800DC861D82B9AA00B1A884 /* KSYMediaInfoProber.h in Headers */,
 				5800DC871D82B9AA00B1A884 /* KSYMediaPlayback.h in Headers */,
@@ -429,6 +441,8 @@
 				5800DCEC1D82BAF500B1A884 /* libksygpulive.h in Headers */,
 				06A646C01D8652C000D1C620 /* KSYAVAudioSession.h in Headers */,
 				06A646DA1D865D3200D1C620 /* KSYGPUStreamerKit.h in Headers */,
+				06E742A71D90FEC300C3E780 /* KSYSpecialEffects.h in Headers */,
+				06E742A81D90FEC300C3E780 /* KSYBuildInSpecialEffects.h in Headers */,
 				06A646D71D865D1C00D1C620 /* KSYGPULogoFilter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,6 +483,8 @@
 				06A646C11D8652CB00D1C620 /* KSYAVAudioSession.h in Headers */,
 				06A646D81D865D2A00D1C620 /* KSYGPUStreamerKit.h in Headers */,
 				06A646D91D865D2A00D1C620 /* KSYGPULogoFilter.h in Headers */,
+				06E742A91D90FEFA00C3E780 /* KSYSpecialEffects.h in Headers */,
+				06E742AA1D90FEFA00C3E780 /* KSYBuildInSpecialEffects.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
