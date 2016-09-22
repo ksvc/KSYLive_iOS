@@ -29,7 +29,7 @@
 ### 1.3 播放特点
 - [x] 与系统播放器MPMoviePlayerController接口一致，可以无缝快速切换至KSYMediaPlayer；
 - [x] 本地全媒体格式支持, 并对主流的媒体格式(mp4, avi, wmv, flv, mkv, mov, rmvb 等 )进行优化；
-- [x] 支持广泛的流式视频格式, HLS, RTMP, HTTP Rseudo-Streaming 等；
+- [x] 支持广泛的流式视频格式, HLS, RTMP, HTTP Pseudo-Streaming 等；
 - [x] 低延时直播体验，配合金山云推流sdk，可以达到全程直播稳定的4秒内延时；
 - [x] 实现快速满屏播放，为用户带来更快捷优质的播放体验；
 - [x] 版本适配支持iOS 7.0以上版本；
@@ -103,7 +103,7 @@ pod 'libksygpulive/libksygpulive'
 ```
 
 执行 pod install即可.    
-注意: 不能将以上si条语句都加入Podfile, 他们作用是一样的, 只是Podspec读取位置不同.
+注意: 不能将以上四条语句都加入Podfile, 他们作用是一样的, 只是Podspec读取位置不同.
 
 其中, libksygpulive为libksygpulive的子模块, 为了满足不同用户的需求, libksygpulive中提供了4个不同的子模块:    
 * KSYMediaPlayer     : 用于直播的播放内核(支持格式精简)
