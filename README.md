@@ -75,14 +75,14 @@
 - releaseFramework: 用于将预编译库打包为方便集成的framework的脚本和工程
 
 ```
-$ git clone https://github.com/ksvc/KSYLive_iOS.git KSYLive_iOS
+$ git clone https://github.com/ksvc/KSYLive_iOS.git KSYLive_iOS --depth 1
 ```
 
 #### 3.2.2 从[oschina](http://git.oschina.net/ksvc/KSYLive_iOS) clone
 
 对于部分地方访问github比较慢的情况，可以从oschina clone，获取的库内容和github一致。
 ```
-$ git clone https://git.oschina.net/ksvc/KSYLive_iOS.git
+$ git clone https://git.oschina.net/ksvc/KSYLive_iOS.git  --depth 1
 ```
 
 #### 3.2.3 使用Cocoapods 进行安装    
@@ -103,7 +103,7 @@ pod 'libksygpulive/libksygpulive'
 ```
 
 执行 pod install即可.    
-注意: 不能将以上三条语句都加入Podfile, 他们作用是一样的, 只是Podspec读取位置不同.
+注意: 不能将以上si条语句都加入Podfile, 他们作用是一样的, 只是Podspec读取位置不同.
 
 其中, libksygpulive为libksygpulive的子模块, 为了满足不同用户的需求, libksygpulive中提供了4个不同的子模块:    
 * KSYMediaPlayer     : 用于直播的播放内核(支持格式精简)
