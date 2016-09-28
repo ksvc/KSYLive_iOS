@@ -91,6 +91,13 @@
  @discussion 自动根据网络状况调整码率,开始推流前设置有效
  */
 @property (nonatomic, assign) BOOL         enAutoApplyEstimateBW;
+
+/**
+@abstract   带宽估计模式
+@discussion 带宽估计的策略选择 (开始推流前设置有效)
+*/
+@property (nonatomic, assign) KSYBWEstimateMode bwEstimateMode;
+
 /**
  @abstract   本次直播的目标场景 (默认为KSYLiveScene_Default)
  @discussion KSY内部会根据场景的特征进行参数调优,开始推流前设置有效

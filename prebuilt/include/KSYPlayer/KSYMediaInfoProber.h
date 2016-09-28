@@ -9,6 +9,7 @@
 #ifndef KSYMediaInfoProber_h
 #define KSYMediaInfoProber_h
 
+#import <AVFoundation/AVFoundation.h>
 #import "KSYMediaInfo.h"
 
 /**
@@ -65,6 +66,15 @@
  @discussion 未探测到文件格式时为nil
  */
 @property (nonatomic, strong) KSYMediaInfo *ksyMediaInfo;
+
+/**
+ @abstract 获取视频缩略图
+ @param seekTime 指定的时间位置，单位为s
+ @param width 缩略图的宽度
+ @param height 缩略图的高度
+ @return 返回UIImage对象，即为缩略图
+ */
+- (UIImage *)getVideoThumbnailImageAtTime:(NSTimeInterval)seekTime width:(int)width height:(int)height;
 
 @end
 

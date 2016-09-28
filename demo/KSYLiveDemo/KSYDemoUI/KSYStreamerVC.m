@@ -198,6 +198,7 @@
     _kit.streamDimension  = [self.presetCfgView strResolutionSize ];
     _kit.videoFPS       = [self.presetCfgView frameRate];
     _kit.cameraPosition = [self.presetCfgView cameraPos];
+    _kit.gpuOutputPixelFormat = [self.presetCfgView gpuOutputPixelFmt];
     _kit.videoProcessingCallback = ^(CMSampleBufferRef buf){
     };
 }
@@ -216,10 +217,10 @@
     _dateFormatter = [[NSDateFormatter alloc] init];
     _dateFormatter.dateFormat = @"HH:mm:ss";
     NSDate *now = [[NSDate alloc] init];
-    _kit.textLable.text = [_dateFormatter stringFromDate:now];
+    _kit.textLabel.text = [_dateFormatter stringFromDate:now];
     hgt = 20.0 / 640;
     _kit.textRect = CGRectMake(0.05, yPos, 0, hgt);
-    [_kit updateTextLable];
+    [_kit updateTextLabel];
 }
 
 - (void) defaultStramCfg{
@@ -246,8 +247,10 @@
         _kit.streamerBase.videoInitBitrate = [_presetCfgView videoKbps]*6/10;//60%
         _kit.streamerBase.videoMaxBitrate  = [_presetCfgView videoKbps];
         _kit.streamerBase.videoMinBitrate  = 0; //
+        _kit.streamerBase.audioCodec       = [_presetCfgView audioCodec];
         _kit.streamerBase.audiokBPS        = [_presetCfgView audioKbps];
         _kit.streamerBase.videoFPS         = [_presetCfgView frameRate];
+        _kit.streamerBase.bwEstimateMode   = [_presetCfgView bwEstMode];
         _kit.streamerBase.enAutoApplyEstimateBW = YES;
         _kit.streamerBase.shouldEnableKSYStatModule = YES;
         _kit.streamerBase.logBlock = ^(NSString* str){ };
@@ -322,6 +325,15 @@
             [_kit.streamerBase startStream:self.hostURL];
         });
     }
+    else if (errCode == KSYStreamErrorCode_AV_SYNC_ERROR) {
+        NSLog(@"audio video is not synced, please check timestamp");
+        dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
+        dispatch_after(delay, dispatch_get_main_queue(), ^{
+            NSLog(@"try again");
+            _kit.streamerBase.bWithVideo = YES;
+            [_kit.streamerBase startStream:self.hostURL];
+        });
+    }
 }
 #pragma mark - timer respond per second
 - (void)onTimer:(NSTimer *)theTimer{
@@ -336,8 +348,8 @@
     if (_seconds%5 == 0 && // update label every 5 second
         appState == UIApplicationStateActive){
         NSDate *now = [[NSDate alloc] init];
-        _kit.textLable.text = [_dateFormatter stringFromDate:now];
-        [_kit updateTextLable];
+        _kit.textLabel.text = [_dateFormatter stringFromDate:now];
+        [_kit updateTextLabel];
     }
 }
 

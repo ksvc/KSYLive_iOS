@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>MPMovieReloadMode Constants Reference</title>
+	<title>KSYBWEstimateMode Constants Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -59,13 +59,13 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">MPMovieReloadMode Constants Reference</h1>
+					<h1 class="title">KSYBWEstimateMode Constants Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<th>Declared in</th>
-	<td>KSYMoviePlayerDefines.h</td>
+	<td>KSYTypeDef.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -75,23 +75,19 @@
 					
 
                     
-                    <h3 class="subsubtitle method-title">MPMovieReloadMode</h3>
+                    <h3 class="subsubtitle method-title">KSYBWEstimateMode</h3>
                     
-					
-					<div class="section section-overview">
-                        <p>reload模式</p>
-					</div>
 					
 					
                     <div class="section">
                         <!-- display enum values -->
                         
                         <h4 class="method-subtitle">Definition</h4>
-                        <code>typedef NS_ENUM(NSUInteger, MPMovieReloadMode ) {<br>
+                        <code>typedef NS_ENUM(NSUInteger, KSYBWEstimateMode ) {<br>
                             
-                            &nbsp;&nbsp; <a href="">MPMovieReloadMode_Fast</a>,<br>
+                            &nbsp;&nbsp; <a href="">KSYBWEstMode_Default</a> = 0,<br>
                             
-                            &nbsp;&nbsp; <a href="">MPMovieReloadMode_Accurate</a>,<br>
+                            &nbsp;&nbsp; <a href="">KSYBWEstMode_Negtive</a>,<br>
                             
                             };</code>
                     
@@ -101,11 +97,11 @@
                         <h4 class="method-subtitle">Constants</h4>
                         <dl class="termdef">
                             
-                            <dt><a name="" title="MPMovieReloadMode_Fast"></a><code>MPMovieReloadMode_Fast</code></dt>
+                            <dt><a name="" title="KSYBWEstMode_Default"></a><code>KSYBWEstMode_Default</code></dt>
 <dd>
 
 
-<p>加速播放模式</p>
+<p>默认模式 (综合模式,比较平稳)</p>
 
 
 
@@ -113,16 +109,16 @@
 
     
 	<p>
-		Declared In <code class="declared-in-ref">KSYMoviePlayerDefines.h</code>.
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
 	</p>
 	
 </dd>
                             
-                            <dt><a name="" title="MPMovieReloadMode_Accurate"></a><code>MPMovieReloadMode_Accurate</code></dt>
+                            <dt><a name="" title="KSYBWEstMode_Negtive"></a><code>KSYBWEstMode_Negtive</code></dt>
 <dd>
 
 
-<p>精确检测模式</p>
+<p>流畅优先模式(消极上调, 极速下调)</p>
 
 
 
@@ -130,7 +126,7 @@
 
     
 	<p>
-		Declared In <code class="declared-in-ref">KSYMoviePlayerDefines.h</code>.
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
 	</p>
 	
 </dd>
@@ -147,7 +143,7 @@
                     
                     <div class="method-subsection declared-in-section">
                         <h4 class="method-subtitle">Declared In</h4>
-                        <p><code class="declared-in-ref">KSYMoviePlayerDefines.h</code></p>
+                        <p><code class="declared-in-ref">KSYTypeDef.h</code></p>
                     </div>
                     
                     

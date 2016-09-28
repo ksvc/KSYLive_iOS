@@ -10,11 +10,11 @@
 #import "QRViewController.h"
 #import "KSYPlayerVC.h"
 #import "KSYProberVC.h"
+#import "MonkeyTestViewController.h"
 #import "KSYSQLite.h"
 #import "KSYDBCreater.h"
-#ifdef KSYLIVE_DEMO
 #import "KSYPresetCfgVC.h"
-#endif
+
 @interface KSYLiveVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>{
     UITextField     *_textFiled;
     UIButton        *_buttonQR;
@@ -97,11 +97,10 @@
     _width  = self.view.frame.size.width;
     _height = self.view.frame.size.height;
     _controllers = [NSArray arrayWithObjects:
-                    @"KSYPlayerVC",
-#ifdef KSYLIVE_DEMO
-                    @"推流demo",
-#endif
+                    @"播放demo",
                     @"文件格式探测",
+                    @"播放自动化测试 ",
+                    @"推流demo",
                     nil];
 }
 
@@ -191,12 +190,14 @@
             if (indexPath.row == 0) {
                 vc = [[KSYPlayerVC alloc]initWithURL:url];
             }else if (indexPath.row == 1){
-#ifdef KSYLIVE_DEMO
-                vc = [[KSYPresetCfgVC alloc]initWithURL:_textFiled.text];
-#endif
-            }else if (indexPath.row == 2){
                 vc = [[KSYProberVC alloc]initWithURL:url];
+            }else if(indexPath.row == 2){
+                vc = [[MonkeyTestViewController alloc] init];
             }
+            else if (indexPath.row == 3){
+                vc = [[KSYPresetCfgVC alloc]initWithURL:_textFiled.text];
+            }
+            
             if (vc){
                 [self presentViewController:vc animated:YES completion:nil];
             }

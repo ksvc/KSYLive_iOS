@@ -9,27 +9,28 @@
 
 #import <GPUImage/GPUImage.h>
 
-#import <libksygpulive/libksygpulive.h>
+#import "libksygpulive.h"
 
 // sources (player & capture)
-#import <libksygpulive/KSYGPUYUVInput.h>
-#import <libksygpulive/KSYGPUCamera.h>
+#import "KSYGPUYUVInput.h"
+#import "KSYGPUCamera.h"
 
 // filters (for video and audio)
-#import <libksygpulive/KSYGPUFilter.h>
-#import <libksygpulive/KSYGPUBeautifyExtFilter.h>
-#import <libksygpulive/KSYGPUBeautifyFilter.h>
-#import <libksygpulive/KSYGPUBeautifyPlusFilter.h>
-#import <libksygpulive/KSYGPUDnoiseFilter.h>
-#import <libksygpulive/KSYBeautifyFaceFilter.h>
-#import <libksygpulive/KSYSpecialEffects.h>
-#import <libksygpulive/KSYBuildInSpecialEffects.h>
-#import <libksygpulive/KSYGPULogoFilter.h>
+#import "KSYGPUFilter.h"
+#import "KSYGPUBeautifyExtFilter.h"
+#import "KSYGPUBeautifyFilter.h"
+#import "KSYGPUBeautifyPlusFilter.h"
+#import "KSYGPUDnoiseFilter.h"
+#import "KSYBeautifyFaceFilter.h"
+#import "KSYSpecialEffects.h"
+#import "KSYBuildInSpecialEffects.h"
+#import "KSYBeautifyFaceFilter.h"
+#import "KSYGPULogoFilter.h"
 
 // mixer
-#import <libksygpulive/KSYGPUPipBlendFilter.h>
-#import <libksygpulive/KSYGPUPicMixer.h>
+#import "KSYGPUPipBlendFilter.h"
+#import "KSYGPUPicMixer.h"
 
 // streamer
-#import <libksygpulive/KSYGPUPicOutput.h>
+#import "KSYGPUPicOutput.h"
 

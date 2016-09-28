@@ -57,6 +57,7 @@
     _streamerMirrored = NO;
     _previewMirrored  = NO;
     _videoProcessingCallback = nil;
+    _gpuOutputPixelFormat = kCVPixelFormatType_32BGRA;
     
     // 图层和音轨的初始化
     _cameraLayer  = 0;
@@ -70,7 +71,6 @@
     _vCapDev = [[KSYGPUCamera alloc] initWithSessionPreset:_capPreset
                                             cameraPosition:_cameraPosition];
     _vCapDev.outputImageOrientation = UIInterfaceOrientationPortrait;
-    _vCapDev.bPauseCaptureOnNotice = NO;
     //Session模块
     _avAudioSession = [[KSYAVAudioSession alloc] init];
     _avAudioSession.bInterruptOtherAudio = bInter;
@@ -84,11 +84,11 @@
     // 各种图片
     _logoPic = nil;
     _textPic = nil;
-    _textLable = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 360, 640)];
-    _textLable.textColor = [UIColor whiteColor];
-    _textLable.font = [UIFont fontWithName:@"Courier-Bold" size:20.0];
-    _textLable.backgroundColor = [UIColor clearColor];
-    _textLable.alpha = 0.9;
+    _textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 360, 640)];
+    _textLabel.textColor = [UIColor whiteColor];
+    _textLabel.font = [UIFont fontWithName:@"Courier-Bold" size:20.0];
+    _textLabel.backgroundColor = [UIColor clearColor];
+    _textLabel.alpha = 0.9;
     
     /////2. 数据出口 ///////////
     // get pic data from gpu filter
@@ -612,16 +612,30 @@
  @discussion 先修改文字的内容或格式,调用该方法后生效
  @see textLable
  */
-- (void) updateTextLable{
-    if ( [_textLable.text length] <= 0 ){
+- (void) updateTextLabel{
+    if ( [_textLabel.text length] <= 0 ){
         _textPic = nil;
         [_vMixer  clearPicOfLayer:_logoPicLayer];
         return;
     }
-    UIImage * img = [self imageFromUILable:_textLable];
+    UIImage * img = [self imageFromUILable:_textLabel];
     _textPic = [[GPUImagePicture alloc] initWithImage:img];
     [self addPic:_textPic ToMixerAt:_logoTxtLayer];
     [_textPic processImage];
+}
+/// 设置gpu输出的图像像素格式
+@synthesize gpuOutputPixelFormat = _gpuOutputPixelFormat;
+- (void)setGpuOutputPixelFormat: (OSType) fmt {
+    if ([_streamerBase isStreaming]){
+        return;
+    }
+    if( fmt !=  kCVPixelFormatType_4444AYpCbCr8){
+        fmt = kCVPixelFormatType_32BGRA;
+    }
+    _gpuOutputPixelFormat = fmt;
+    _gpuToStr =[[KSYGPUPicOutput alloc] initWithOutFmt:_gpuOutputPixelFormat];
+    _gpuToStr.bCustomOutputSize = YES;
+    [self setupVideoPath];
 }
 
 @end

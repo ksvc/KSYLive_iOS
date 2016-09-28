@@ -8,7 +8,11 @@
 
 #import "KSYUIVC.h"
 #import "KSYStateLableView.h"
+#if USING_DYNAMIC_FRAMEWORK
+#import <libksygpuliveDy/libksygpuimage.h>
+#else
 #import <libksygpulive/libksygpuimage.h>
+#endif
 
 @interface KSYStateLableView ()
 
@@ -58,7 +62,7 @@
     NSString* statekbps = [NSString stringWithFormat:@"实时码率(kbps)%4.1f\tA%4.1f\tV%4.1f\n", realTKbps, [str encodeAKbps], [str encodeVKbps] ];
     NSString* statefps  = [NSString stringWithFormat:@"实时帧率(fps)%2.1f\t总上传:%@\n", encFps, uploadDateSize ];
     NSString* statedrop = [NSString stringWithFormat:@"视频丢帧 %4d\t %2.1f%% \n", curState.droppedVFrames, dropPercent ];
-    NSString* netEvent = [NSString stringWithFormat:@"网络事件计数 %d bad\t %dbw Raise\t %d drop\n", _notGoodCnt, _bwRaiseCnt, _bwDropCnt];
+    NSString* netEvent = [NSString stringWithFormat:@"网络事件计数 %d bad\t bw %d Raise\t %d drop\n", _notGoodCnt, _bwRaiseCnt, _bwDropCnt];
     NSString *cpu_use = [NSString stringWithFormat:@"cpu: %3.2f \t%@",[KSYUIVC cpu_usage], liveTime];
     
     self.text = [ stateurl   stringByAppendingString:statekbps ];
