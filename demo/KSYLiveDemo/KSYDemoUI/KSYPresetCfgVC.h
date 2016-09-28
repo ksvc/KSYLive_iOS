@@ -12,8 +12,8 @@
 #import <GPUImage/GPUImage.h>
 
 #if USING_DYNAMIC_FRAMEWORK
-#import <libksygpulivedylib/libksygpulivedylib.h>
-#import <libksygpulivedylib/libksygpuimage.h>
+#import <libksygpuliveDy/libksygpulive.h>
+#import <libksygpuliveDy/libksygpuimage.h>
 #else
 #import <libksygpulive/libksygpuimage.h>
 #endif

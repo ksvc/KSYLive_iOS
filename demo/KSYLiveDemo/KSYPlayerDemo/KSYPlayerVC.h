@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #if USING_DYNAMIC_FRAMEWORK
-#import <libksygpulivedylib/libksygpulivedylib.h>
+#import <libksygpuliveDy/libksygpulive.h>
 #else
 #import <libksygpulive/libksygpulive.h>
 #endif
+
 @interface KSYPlayerVC : UIViewController
 - (instancetype)initWithURL:(NSURL *)url;
 @end

@@ -597,6 +597,9 @@
 
 - (void)StartTimer
 {
+    if(timer != nil){
+        return;
+    }
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateStat:) userInfo:nil repeats:YES];
     progressView.totalTimeInSeconds = _player.duration;
 }
@@ -696,6 +699,7 @@
         self.player = nil;
     }
     
+    [self StopTimer];
     [self dismissViewControllerAnimated:FALSE completion:nil];
     stat.text = nil;
 }

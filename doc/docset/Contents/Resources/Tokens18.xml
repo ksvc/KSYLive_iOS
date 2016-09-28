@@ -25,6 +25,59 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/initWithOutFmt:</TokenIdentifier>
+			<Abstract type="html">指定输出格式的初始化</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/outputPixelFormat</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>- (id)initWithOutFmt:(OSType)fmt</Declaration>
+			
+			
+			<Anchor>//api/name/initWithOutFmt:</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setOutputPixelFormat:</TokenIdentifier>
+			<Abstract type="html">output format (默认:kCVPixelFormatType_32BGRA)</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) OSType outputPixelFormat</Declaration>
+			
+			
+			<Anchor>//api/name/outputPixelFormat</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/outputPixelFormat</TokenIdentifier>
+			<Abstract type="html">output format (默认:kCVPixelFormatType_32BGRA)</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) OSType outputPixelFormat</Declaration>
+			
+			
+			<Anchor>//api/name/outputPixelFormat</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/outputPixelFormat</TokenIdentifier>
+			<Abstract type="html">output format (默认:kCVPixelFormatType_32BGRA)</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) OSType outputPixelFormat</Declaration>
+			
+			
+			<Anchor>//api/name/outputPixelFormat</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setEnabled:</TokenIdentifier>
 			<Abstract type="html">GPUImageInput - (BOOL)enabled;</Abstract>
 			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>

@@ -1,0 +1,2 @@
+OTHER_LDFLAGS = $(inherited) -ObjC -all_load -framework libksygpulivedy -framework GPUImage -framework Bugly -lstdc++.6 -lz
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) USING_DYNAMIC_FRAMEWORK

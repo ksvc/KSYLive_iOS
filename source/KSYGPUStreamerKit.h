@@ -215,6 +215,15 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 @property (nonatomic, assign)   CGSize streamDimension;
 
 /**
+ @abstract  gpu output pixel format (默认:kCVPixelFormatType_32BGRA)
+ @discussion 目前只支持 kCVPixelFormatType_32BGRA 和 kCVPixelFormatType_4444AYpCbCr8
+ @discussion kCVPixelFormatType_4444AYpCbCr8 的排列顺序为 (A Y' Cb Cr)
+ @discussion 其他非法都会被当做 kCVPixelFormatType_32BGRA 处理
+ @discussion 仅在开始推流前设置有效
+ */
+@property(nonatomic, assign) OSType gpuOutputPixelFormat;
+
+/**
  @abstract   采集视频帧率 (开始采集前设置有效)
  @discussion video frame per seconds 有效范围[1~30], 超出范围会取边界有效值
  @discussion 默认值为15
@@ -353,9 +362,9 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  @discussion 借用UILable来指定文字的颜色,字体, 透明度等属性
  @discussion 请注意保证背景图片的尺寸, 太大的图片会导致内存占用过高
  @warning    如果使用非等宽字体, 可能导致闪烁(默认为Courier-Bold)
- @see updateTextLable
+ @see updateTextLabel
  */
-@property (nonatomic, readwrite) UILabel             *textLable;
+@property (nonatomic, readwrite) UILabel             *textLabel;
 
 /**
  @abstract   水印文字的图片的位置和大小
@@ -370,6 +379,6 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  @discussion 先修改文字的内容或格式,调用该方法后生效
  @see textLable
  */
-- (void) updateTextLable;
+- (void) updateTextLabel;
 
 @end

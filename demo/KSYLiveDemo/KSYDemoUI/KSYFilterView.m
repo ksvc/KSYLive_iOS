@@ -9,7 +9,11 @@
 #import "KSYFilterView.h"
 #import "KSYNameSlider.h"
 #import <GPUImage/GPUImage.h>
+#if USING_DYNAMIC_FRAMEWORK
+#import <libksygpuliveDy/libksygpuimage.h>
+#else
 #import <libksygpulive/libksygpuimage.h>
+#endif
 
 @interface KSYFilterView() {
     UILabel * _lblSeg;

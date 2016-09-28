@@ -18,6 +18,20 @@
 - (id) init;
 
 /**
+ @abstract 指定输出格式的初始化
+ @see outputPixelFormat
+ */
+- (id) initWithOutFmt:(OSType) fmt;
+
+/**
+ @abstract output format (默认:kCVPixelFormatType_32BGRA)
+ @discussion 目前只支持 kCVPixelFormatType_32BGRA 和 kCVPixelFormatType_4444AYpCbCr8 
+ @discussion kCVPixelFormatType_4444AYpCbCr8 的排列顺序为 (A Y' Cb Cr)
+ @discussion 其他非法都会被当做 kCVPixelFormatType_32BGRA 处理
+ */
+@property(nonatomic, readonly) OSType outputPixelFormat;
+
+/**
  @abstract   GPUImageInput - (BOOL)enabled;
  */
 @property(nonatomic) BOOL enabled;

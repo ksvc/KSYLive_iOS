@@ -34,17 +34,6 @@
  */
 - (id)initWithSessionPreset:(NSString *)sessionPreset cameraPosition:(AVCaptureDevicePosition)cameraPosition;
 
-#pragma mark - KSYGPUCamera config
-
-/**
- @abstract 收到通知事件时是否暂停采集 (默认为NO)
- @discussion 通知事件也包括下拉通知栏、上拉控制台和切后台
- @discussion YES: 类似事件发生时 视频主动暂停采集，音频继续采集
- @discussion NO: 下拉通知栏和上拉控制台发生时，音视频继续采集；但是切后台，视频暂停采集，音频继续采集
- @discussion UIApplicationWillResignActiveNotification
- */
-@property BOOL  bPauseCaptureOnNotice;
-
 #pragma mark - Torch
 /**
  @abstract   当前采集设备是否支持闪光灯

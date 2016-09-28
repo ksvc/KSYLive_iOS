@@ -33,42 +33,6 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/setBPauseCaptureOnNotice:</TokenIdentifier>
-			<Abstract type="html">收到通知事件时是否暂停采集 (默认为NO)</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
-			
-			<Declaration>@property BOOL bPauseCaptureOnNotice</Declaration>
-			
-			
-			<Anchor>//api/name/bPauseCaptureOnNotice</Anchor>
-            <NodeRef refid="13"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/bPauseCaptureOnNotice</TokenIdentifier>
-			<Abstract type="html">收到通知事件时是否暂停采集 (默认为NO)</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
-			
-			<Declaration>@property BOOL bPauseCaptureOnNotice</Declaration>
-			
-			
-			<Anchor>//api/name/bPauseCaptureOnNotice</Anchor>
-            <NodeRef refid="13"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUCamera/bPauseCaptureOnNotice</TokenIdentifier>
-			<Abstract type="html">收到通知事件时是否暂停采集 (默认为NO)</Abstract>
-			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
-			
-			<Declaration>@property BOOL bPauseCaptureOnNotice</Declaration>
-			
-			
-			<Anchor>//api/name/bPauseCaptureOnNotice</Anchor>
-            <NodeRef refid="13"/>
-		</Token>
-		
-		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/isTorchSupported</TokenIdentifier>
 			<Abstract type="html">当前采集设备是否支持闪光灯</Abstract>
 			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>

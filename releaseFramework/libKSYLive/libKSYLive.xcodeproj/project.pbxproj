@@ -873,6 +873,7 @@
 				);
 				INFOPLIST_FILE = libksygpulive/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = ../../prebuilt/libs;
 				MACH_O_TYPE = staticlib;
@@ -900,6 +901,7 @@
 				);
 				INFOPLIST_FILE = libksygpulive/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = ../../prebuilt/libs;
 				MACH_O_TYPE = staticlib;
@@ -927,6 +929,7 @@
 				);
 				INFOPLIST_FILE = libksygpuliveDy/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = ../../prebuilt/libs;
 				OTHER_CFLAGS = "-fembed-bitcode-marker";
@@ -959,6 +962,7 @@
 				);
 				INFOPLIST_FILE = libksygpuliveDy/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = ../../prebuilt/libs;
 				OTHER_CFLAGS = "-fembed-bitcode";

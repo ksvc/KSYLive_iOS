@@ -19,6 +19,7 @@
         UILabel *stat;
     
         UIButton *btnProbe;
+        UIButton *btnThumbnail;
         UIButton *btnQuit;
 }
 
@@ -39,6 +40,9 @@
 - (void) initUI {
     //add play button
     btnProbe= [self addButtonWithTitle:@"probe" action:@selector(onProbeMediaInfo:)];
+    
+    //add Thumbnail button
+    btnThumbnail = [self addButtonWithTitle:@"Thumbnail" action:@selector(onThumbnail:)];
     
     //add quit button
     btnQuit = [self addButtonWithTitle:@"quit" action:@selector(onQuit:)];
@@ -75,13 +79,16 @@
     CGFloat hgt = self.view.bounds.size.height;
     
     CGFloat gap = 20;
-    CGFloat btnWdt = ( (wdt-gap) / 2) - gap;
+    CGFloat btnWdt = ( (wdt-gap) / 3) - gap;
     CGFloat btnHgt = 30;
     
     CGFloat xPos = gap;
     CGFloat yPos = hgt - btnHgt - gap;
 
     btnProbe.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
+    
+    xPos += gap + btnWdt;
+    btnThumbnail.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     
     xPos += gap + btnWdt;
     btnQuit.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
@@ -130,6 +137,46 @@
         [result appendFormat:@"\nprobe mediainfo failed!"];
     
     stat.text = [NSString stringWithFormat:@"%@", result];
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
+    if (error == nil) {
+        UIAlertView *toast = [[UIAlertView alloc] initWithTitle:@"O(∩_∩)O~~"
+                                                        message:@"缩略图已保存至手机相册"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil, nil];
+        [toast show];
+        
+    }else{
+        
+        UIAlertView *toast = [[UIAlertView alloc] initWithTitle:@"￣へ￣"
+                                                        message:@"缩略图截取失败！"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil, nil];
+        [toast show];
+    }
+
+}
+
+- (IBAction)onThumbnail:(id)sender {
+    
+    if(nil == _prober)
+        return ;
+    
+    UIImage *thumbnailImage = [_prober getVideoThumbnailImageAtTime:0 width:640 height:480];
+    if(thumbnailImage)
+        UIImageWriteToSavedPhotosAlbum(thumbnailImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    else
+    {
+        UIAlertView *toast = [[UIAlertView alloc] initWithTitle:@"￣へ￣"
+                                                        message:@"缩略图截取失败！"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil, nil];
+        [toast show];
+    }
 }
 
 - (IBAction)onQuit:(id)sender {

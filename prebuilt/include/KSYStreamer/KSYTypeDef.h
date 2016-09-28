@@ -88,10 +88,14 @@ typedef NS_ENUM(NSUInteger, KSYVideoCodec) {
  * @abstract  音频编码器类型
  */
 typedef NS_ENUM(NSUInteger, KSYAudioCodec) {
-    /// 音频编码器 - AAC
-    KSYAudioCodec_AAC = 0,
-    /// 音频编码器 - AAC_HE
-    KSYAudioCodec_AAC_HE,
+    /// 音频软件编码器 - AAC_HE
+    KSYAudioCodec_AAC_HE = 0,
+    /// 音频软件编码器 - AAC_LC
+    KSYAudioCodec_AAC,
+    /// 音频AT编码器 - AAC_HE
+    KSYAudioCodec_AT_AAC_HE,
+    /// 音频AT编码器 - AAC_LC
+    KSYAudioCodec_AT_AAC,
 };
 
 #pragma mark - QYPublisher State
@@ -136,7 +140,7 @@ typedef NS_ENUM(NSUInteger, KSYStreamState) {
 typedef NS_ENUM(NSUInteger, KSYStreamErrorCode) {
     /// 正常无错误
     KSYStreamErrorCode_NONE = 0,
-    /// SDK 鉴权失败 (暂时正常推流5~8分钟后终止推流)
+    /// (obsolete)
     KSYStreamErrorCode_KSYAUTHFAILED,
     /// 当前帧编码失败
     KSYStreamErrorCode_ENCODE_FRAMES_FAILED,
@@ -166,9 +170,9 @@ typedef NS_ENUM(NSUInteger, KSYStreamErrorCode) {
     KSYStreamErrorCode_RTMP_BadParams,
     /// rtmp URL 中的推流不在发布点内（KSY 自定义）
     KSYStreamErrorCode_RTMP_ForbiddenByRegion,
-    /// SDK 因为鉴权失败停止推流
+    /// (obsolete)
     KSYStreamErrorCode_FRAMES_THRESHOLD,
-    /// 没有输入的数据，无法开始推流
+    /// (obsolete)
     KSYStreamErrorCode_NO_INPUT_SAMPLE,
     /// 对于URL中的域名解析失败
     KSYStreamErrorCode_DNS_Parse_failed,
@@ -176,6 +180,8 @@ typedef NS_ENUM(NSUInteger, KSYStreamErrorCode) {
     KSYStreamErrorCode_Connect_Server_failed,
     /// 跟RTMP服务器完成握手后,向{appname}/{streamname} 推流失败
     KSYStreamErrorCode_RTMP_Publish_failed,
+    /// 音视频同步失败 (输入的音频和视频的时间戳的差值超过5s)
+    KSYStreamErrorCode_AV_SYNC_ERROR,
 };
 
 /*!
@@ -231,6 +237,16 @@ typedef NS_ENUM(NSUInteger, KSYMicType) {
     
     /// 未知设备
     KSYMicType_unknow = 1000,
+};
+
+ /*!
+  * @abstract  网络自适应模式类型
+  */
+typedef NS_ENUM(NSUInteger, KSYBWEstimateMode) {
+    /// 默认模式 (综合模式,比较平稳)
+    KSYBWEstMode_Default = 0,
+    /// 流畅优先模式(消极上调, 极速下调)
+    KSYBWEstMode_Negtive,
 };
 
 #pragma mark - KSY_EXTERN

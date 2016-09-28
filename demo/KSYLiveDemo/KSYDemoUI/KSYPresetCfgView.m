@@ -9,8 +9,8 @@
 #import <GPUImage/GPUImage.h>
 
 #if USING_DYNAMIC_FRAMEWORK
-#import <libksygpulivedylib/libksygpulivedylib.h>
-#import <libksygpulivedylib/libksygpuimage.h>
+#import <libksygpuliveDy/libksygpulive.h>
+#import <libksygpuliveDy/libksygpuimage.h>
 #else
 #import <libksygpulive/libksygpuimage.h>
 #endif
@@ -21,7 +21,7 @@
 @interface KSYPresetCfgView(){
     
 }
-@property UILabel* configLable;
+@property UIButton * doneBtn;
 @property UILabel* demoLable;
 @end
 
@@ -31,15 +31,12 @@
 - (id) init {
     self = [super init];
     self.backgroundColor = [UIColor whiteColor];
-    _configLable =[self addLable:@"settings"];
-    _configLable.textAlignment = NSTextAlignmentCenter;
     // hostURL = rtmpSrv + streamName(随机数,避免多个demo推向同一个流
-//    NSString *rtmpSrv = @"rtmp://test.uplive.ksyun.com/live";
-    NSString *rtmpSrv = @"rtmp://192.168.1.115/live";
+    NSString *rtmpSrv = @"rtmp://test.uplive.ksyun.com/live";
     NSString *devCode = [ [KSYUIView getUuid] substringToIndex:3];
     NSString *url     = [  NSString stringWithFormat:@"%@/%@", rtmpSrv, devCode];
     _hostUrlUI = [self addTextField:url ];
-    
+    _doneBtn =  [self addButton:@"ok"];
     _btn0 =  [self addButton:@"开始直播"  ];
 #ifdef KSYSTREAMER_DEMO
     _btn2 =  [self addButton:@"forTest"  ];
@@ -64,16 +61,20 @@
         _streamResoUI.selectedSegmentIndex = 3; // default to 480
     }
     _lblCameraPosUI = [self addLable:@"选取摄像头"];
-    _cameraPosUI  = [self addSegCtrlWithItems:@[@"前置摄像头",@"后置摄像头"]];
+    _cameraPosUI    = [self addSegCtrlWithItems:@[@"前置",@"后置"]];
+    _lblGpuPixFmtUI = [self addLable:@"像素格式"];
+    _gpuPixFmtUI  = [self addSegCtrlWithItems:@[@"rgba",@"yuva"]];
     _frameRateUI  = [self addSliderName:@"视频帧率fps" From:1.0 To:30.0 Init:15.0];
     _lblVideoCodecUI = [self addLable:@"视频编码器"];
     _videoCodecUI = [self addSegCtrlWithItems:@[@"自动",@"软264",@"硬264",@"软265"]];
     _lblAudioCodecUI = [self addLable:@"音频编码器"];
-    _audioCodecUI = [self addSegCtrlWithItems:@[@"AAC-HE",@"AAC-LC"]];
+    _audioCodecUI = [self addSegCtrlWithItems:@[@"软AAC-HE",@"软AAC-LC",@"硬AAC-HE",@"硬AAC-LC"]];
     _videoKbpsUI  = [self addSliderName:@"视频码率kbps" From:100.0 To:1500.0 Init:800.0];
     _lblAudioKbpsUI= [self addLable:@"音频kbps"];
     _audioKbpsUI  = [self addSegCtrlWithItems:@[@"12",@"24",@"32", @"48", @"64", @"128"]];
     _audioKbpsUI.selectedSegmentIndex = 2;
+    _lblBwEstMode = [self addLable:@"带宽估计模式"];
+    _bwEstModeUI = [self addSegCtrlWithItems:@[@"默认", @"流畅"]];
     _demoLable    = [self addLable:@"选择demo开始"];
     _demoLable.textAlignment = NSTextAlignmentCenter;
     return self;
@@ -84,19 +85,20 @@
     if (self.width > self.height){
         self.winWdt = self.width/2;
     }
-    [self putRow1:_configLable];
     self.btnH = 35*2;
-    [self putRow1:_hostUrlUI];
+    [self putSlider: _hostUrlUI andSwitch: _doneBtn];
     self.btnH=35;
     [self putLable:_lblResolutionUI andView:_resolutionUI];
     [self putLable:_lblStreamResoUI andView:_streamResoUI];
-    [self putLable:_lblCameraPosUI  andView:_cameraPosUI];
-
+    //[self putLable:_lblCameraPosUI  andView:_cameraPosUI];
+    [self putRow:@[_lblCameraPosUI,_cameraPosUI,
+                   _lblGpuPixFmtUI,_gpuPixFmtUI] ];
     [self putRow1:_frameRateUI];
     [self putLable:_lblVideoCodecUI andView:_videoCodecUI];
     [self putLable:_lblAudioCodecUI andView:_audioCodecUI];
     [self putRow1:_videoKbpsUI];
     [self putLable:_lblAudioKbpsUI  andView:_audioKbpsUI];
+    [self putLable:_lblBwEstMode andView:_bwEstModeUI];
     
     [self putRow1:_demoLable];
     
@@ -181,6 +183,10 @@
             return  KSYAudioCodec_AAC_HE;
         case 1:
             return  KSYAudioCodec_AAC;
+        case 2:
+            return  KSYAudioCodec_AT_AAC_HE;
+        case 3:
+            return  KSYAudioCodec_AT_AAC;
         default:
             return  KSYAudioCodec_AAC_HE;
     }
@@ -198,5 +204,32 @@
     }
     return aKbps;
 }
+- (OSType) gpuOutputPixelFmt {
+    if(_gpuPixFmtUI.selectedSegmentIndex == 0) {
+        return kCVPixelFormatType_32BGRA;
+    }
+    else if(_gpuPixFmtUI.selectedSegmentIndex == 1) {
+        return kCVPixelFormatType_4444AYpCbCr8;
+    }
+    return kCVPixelFormatType_32BGRA;
+}
 
+- (KSYBWEstimateMode) bwEstMode{
+    switch ( _bwEstModeUI.selectedSegmentIndex) {
+        case 0:
+            return  KSYBWEstMode_Default;
+        case 1:
+            return  KSYBWEstMode_Negtive;
+        default:
+            return  KSYBWEstMode_Default;
+    }
+}
+//UIControlEventTouchUpInside
+- (IBAction)onBtn:(id)sender{
+    if (sender == _doneBtn){
+        [_hostUrlUI resignFirstResponder];
+        return;
+    }
+    [super onBtn:sender];
+}
 @end

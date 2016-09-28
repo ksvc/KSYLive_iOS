@@ -29,7 +29,7 @@
     _playBtn    = [self addButton:@"播放"];
     _pauseBtn   = [self addButton:@"暂停"];
     _stopBtn    = [self addButton:@"停止"];
-    _volumSl    = [self addSliderName:@"音量" From:0 To:100 Init:50];
+    _volumSl    = [self addSliderName:@"主播端音量" From:0 To:100 Init:50];
     _volumSl.slider.value = 50;
     _nextBtn    = [self addButton:@"下一首"];
     _bgmStatus  = @"idle";

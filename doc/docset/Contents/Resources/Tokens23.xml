@@ -281,6 +281,29 @@
             <NodeRef refid="23"/>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/getVideoThumbnailImageAtTime:width:height:</TokenIdentifier>
+			<Abstract type="html">获取视频缩略图</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>- (UIImage *)getVideoThumbnailImageAtTime:(NSTimeInterval)seekTime width:(int)width height:(int)height</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>seekTime</Name>
+					<Abstract type="html">指定的时间位置，单位为s</Abstract>
+				</Parameter><Parameter>
+					<Name>width</Name>
+					<Abstract type="html">缩略图的宽度</Abstract>
+				</Parameter><Parameter>
+					<Name>height</Name>
+					<Abstract type="html">缩略图的高度</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">返回UIImage对象，即为缩略图</Abstract></ReturnValue>
+			<Anchor>//api/name/getVideoThumbnailImageAtTime:width:height:</Anchor>
+            <NodeRef refid="23"/>
+		</Token>
+		
         
         
 	</File>
