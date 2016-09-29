@@ -156,7 +156,7 @@ Bugly.framework  GPUImage.framework  libksygpulive.framework
 ```
 OTHER_LDFLAGS = $(inherited) -ObjC -all_load -framework libksygpulive -framework GPUImage -framework Bugly -lstdc++.6 -lz
 ```
-
+以上为静态库的集成方法，动态库的配置使用方法请参考Wiki中[动态库](https://github.com/ksvc/KSYLive_iOS/wiki/dylib)相关内容。
 ### 3.4 添加头文件到需要使用本SDK的文件中
 ```
 #import <GPUImage/GPUImage.h>
