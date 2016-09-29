@@ -1,27 +1,29 @@
 #[KSY Live iOS SDK](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
 ## 一. 功能特性
 ### 1.1 推流功能
-- [x] AAC 音频编码
-- [x] H.264 视频编码（软硬编同时支持）
+- [x] AAC 音频编码（支持软、硬编）
+- [x] H.264 视频编码（支持软编H.264/H.265 支持H.264硬编(支持baseline/main/high profile)）
 - [x] 多分辨率编码支持
 - [x] 摄像头控制（朝向,闪光灯,前后摄像头）
 - [x] 摄像头控制（可以调用原生的系统api）
 - [x] 用户可自由设定音视频码率
-- [x] 根据网络带宽自适应调整视频的码率
+- [x] 根据网络带宽自适应调整视频的码率，网络自适应模式可配置
 - [x] 支持 RTMP 协议直播推流
-- [x] 提供两种层次的API：简单易用的的kit类API 和 灵活的组件化API
+- [x] 提供两种层次的API：简单易用的的kit类API 和 灵活的组件化API，提供开源的kit类代码
 - [x] 能够与GPUImage无缝集成
 - [x] 提供GPU实现的[内置美颜滤镜](https://github.com/ksvc/KSYLive_iOS/wiki/filter)
 - [x] 支持[背景音乐播放](https://github.com/ksvc/KSYLive_iOS/wiki/BGM)
 - [x] 支持[混音](https://github.com/ksvc/KSYLive_iOS/wiki/mixer)
 - [x] 支持[视频动态推流开关/纯音频推流](https://github.com/ksvc/KSYLive_iOS/wiki/pureAudioStream)
 - [x] 支持[后台推流](https://github.com/ksvc/KSYLive_iOS/wiki/backgroupStream)
-- [x] [在线API 文档支持](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
 - [x] 支持[耳返](https://github.com/ksvc/KSYLive_iOS/wiki/micMonitor)
 - [x] 支持[画中画](https://github.com/ksvc/KSYLive_iOS/wiki/pip)推流
 - [x] 支持[预览和采集分辨率分别设置](https://github.com/ksvc/KSYLive_iOS/wiki/customOutputSize)
 - [x] 支持一对一[连麦](https://github.com/ksvc/KSYLive_iOS/wiki/rtc)
 - [x] [场景编码](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)
+- [x] 支持软编、硬编的[性能编码模式](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)
+- [x] [在线API 文档支持](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
+
 
 ### 1.2 文档
 [详情请见wiki](https://github.com/ksvc/KSYLive_iOS/wiki)
