@@ -8,11 +8,7 @@
 
 #import "KSYUIVC.h"
 #import "KSYStateLableView.h"
-#if USING_DYNAMIC_FRAMEWORK
-#import <libksygpuliveDy/libksygpuimage.h>
-#else
-#import <libksygpulive/libksygpuimage.h>
-#endif
+#import "KSYPresetCfgView.h"
 
 @interface KSYStateLableView ()
 

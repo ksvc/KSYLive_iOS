@@ -7,14 +7,6 @@
 //
 
 #import <GPUImage/GPUImage.h>
-
-#if USING_DYNAMIC_FRAMEWORK
-#import <libksygpuliveDy/libksygpulive.h>
-#import <libksygpuliveDy/libksygpuimage.h>
-#else
-#import <libksygpulive/libksygpuimage.h>
-#endif
-
 #import "KSYUIView.h"
 #import "KSYPresetCfgView.h"
 
@@ -32,7 +24,7 @@
     self = [super init];
     self.backgroundColor = [UIColor whiteColor];
     // hostURL = rtmpSrv + streamName(随机数,避免多个demo推向同一个流
-    NSString *rtmpSrv = @"rtmp://test.uplive.ksyun.com/live";
+    NSString *rtmpSrv = @"rtmp://test.uplive.ks-cdn.com/live";
     NSString *devCode = [ [KSYUIView getUuid] substringToIndex:3];
     NSString *url     = [  NSString stringWithFormat:@"%@/%@", rtmpSrv, devCode];
     _hostUrlUI = [self addTextField:url ];

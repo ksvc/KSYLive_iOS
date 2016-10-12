@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'libksygpulive'
-  s.version      = '1.8.2'
+  s.version      = '1.8.3'
   s.license      = {
 :type => 'Proprietary',
 :text => <<-LICENSE

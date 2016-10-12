@@ -107,7 +107,8 @@
     // 核心部件:图像处理滤镜
     _filter     = [[KSYGPUDnoiseFilter alloc] init];
     // 核心部件:视频叠加混合
-    _vMixer = [[KSYGPUPicMixer alloc] init];
+    _vPreviewMixer = [[KSYGPUPicMixer alloc] init];
+    _vStreamMixer = [[KSYGPUPicMixer alloc] init];
     // 组装视频通道
     [self setupVideoPath];
     // 初始化图层的位置
@@ -147,7 +148,8 @@
     [_filter      removeAllTargets];
     [_logoPic     removeAllTargets];
     [_textPic     removeAllTargets];
-    [_vMixer      removeAllTargets];
+    [_vPreviewMixer  removeAllTargets];
+    [_vStreamMixer   removeAllTargets];
 }
 
 /**
@@ -177,26 +179,32 @@
         src = _filter;
     }
     // 组装图层
-    _vMixer.masterLayer = _cameraLayer;
+    _vPreviewMixer.masterLayer = _cameraLayer;
+    _vStreamMixer.masterLayer = _cameraLayer;
     [self addPic:src       ToMixerAt:_cameraLayer];
     [self addPic:_logoPic  ToMixerAt:_logoPicLayer];
     [self addPic:_textPic  ToMixerAt:_logoTxtLayer];
     // 混合后的图像输出到预览和推流
-    [_vMixer removeAllTargets];
-    [_vMixer addTarget:_preview];
-    [_vMixer addTarget:_gpuToStr];
+    [_vPreviewMixer removeAllTargets];
+    [_vPreviewMixer addTarget:_preview];
+    
+    [_vStreamMixer  removeAllTargets];
+    [_vStreamMixer  addTarget:_gpuToStr];
     // 设置镜像
     [self    setPreviewMirrored:_previewMirrored];
     [self    setStreamerMirrored:_streamerMirrored];
 }
 // 添加图层到 vMixer 中
 - (void) addPic:(GPUImageOutput*)pic ToMixerAt: (NSInteger)idx{
-    [_vMixer  clearPicOfLayer:idx];
     if (pic == nil){
         return;
     }
     [pic removeAllTargets];
-    [pic addTarget:_vMixer atTextureLocation:idx];
+    KSYGPUPicMixer * vMixer[2] = {_vPreviewMixer, _vStreamMixer};
+    for (int i = 0; i<2; ++i) {
+        [vMixer[i]  clearPicOfLayer:idx];
+        [pic addTarget:vMixer[i] atTextureLocation:idx];
+    }
 }
 // 组装视频通道
 - (void) setupVideoPath {
@@ -404,8 +412,8 @@
     _previewDimension = [self updateDimensionOriention:_previewDimension];
     _streamDimension  = [self updateDimensionOriention:_streamDimension];
     [self setupCropfilter];
-    [_vMixer forceProcessingAtSize:_previewDimension];
-    _gpuToStr.outputSize = _streamDimension;
+    [_vPreviewMixer forceProcessingAtSize:_previewDimension];
+    [_vStreamMixer forceProcessingAtSize:_streamDimension];
 }
 
 // 分辨率有效范围检查
@@ -520,25 +528,24 @@
     }
     return nil;
 }
-
-#pragma mark - mirror
 - (void) customAudioProcessing: (CMSampleBufferRef) buf{
     
 }
 
+#pragma mark - mirror
 - (void) setPreviewMirrored:(BOOL)bMirrored {
-    if(_preview){
+    if(_vPreviewMixer){
         GPUImageRotationMode ro = bMirrored ? kGPUImageFlipHorizonal :kGPUImageNoRotation;
-        [_preview setInputRotation:ro atIndex:0];
+        [_vPreviewMixer setPicRotation:ro ofLayer:_cameraLayer];
     }
     _previewMirrored = bMirrored;
     return ;
 }
 
 - (void) setStreamerMirrored:(BOOL)bMirrored {
-    if (_gpuToStr){
+    if (_vStreamMixer){
         GPUImageRotationMode ro = bMirrored ? kGPUImageFlipHorizonal :kGPUImageNoRotation;
-        [_gpuToStr setInputRotation:ro atIndex:0];
+        [_vStreamMixer setPicRotation:ro ofLayer:_cameraLayer];
     }
     _streamerMirrored = bMirrored;
 }
@@ -584,28 +591,33 @@
 // 水印logo的图片的位置和大小
 @synthesize logoRect = _logoRect;
 - (CGRect) logoRect {
-    return [_vMixer getPicRectOfLayer:_logoPicLayer];
+    return [_vPreviewMixer getPicRectOfLayer:_logoPicLayer];
 }
 - (void) setLogoRect:(CGRect)logoRect{
-    [_vMixer setPicRect:logoRect
-                ofLayer:_logoPicLayer];
+    [_vPreviewMixer setPicRect:logoRect
+                       ofLayer:_logoPicLayer];
+    [_vStreamMixer setPicRect:logoRect
+                      ofLayer:_logoPicLayer];
 }
 // 水印logo的图片的透明度
 @synthesize logoAlpha = _logoAlpha;
 - (CGFloat)logoAlpha{
-    return [_vMixer getPicAlphaOfLayer:_logoPicLayer];
+    return [_vPreviewMixer getPicAlphaOfLayer:_logoPicLayer];
 }
 - (void)setLogoAlpha:(CGFloat)alpha{
-    return [_vMixer setPicAlpha:alpha ofLayer:_logoPicLayer];
+    [_vPreviewMixer setPicAlpha:alpha ofLayer:_logoPicLayer];
+    [_vStreamMixer setPicAlpha:alpha ofLayer:_logoPicLayer];
 }
 // 水印文字的位置
 @synthesize textRect = _textRect;
 - (CGRect) textRect {
-    return [_vMixer getPicRectOfLayer:_logoTxtLayer];
+    return [_vPreviewMixer getPicRectOfLayer:_logoTxtLayer];
 }
 - (void) setTextRect:(CGRect)rect{
-    [_vMixer setPicRect:rect
-                ofLayer:_logoTxtLayer];
+    [_vPreviewMixer setPicRect:rect
+                       ofLayer:_logoTxtLayer];
+    [_vStreamMixer setPicRect:rect
+                      ofLayer:_logoTxtLayer];
 }
 /**
  @abstract   刷新水印文字的内容
@@ -615,7 +627,8 @@
 - (void) updateTextLabel{
     if ( [_textLabel.text length] <= 0 ){
         _textPic = nil;
-        [_vMixer  clearPicOfLayer:_logoPicLayer];
+        [_vPreviewMixer  clearPicOfLayer:_logoPicLayer];
+        [_vStreamMixer  clearPicOfLayer:_logoPicLayer];
         return;
     }
     UIImage * img = [self imageFromUILable:_textLabel];

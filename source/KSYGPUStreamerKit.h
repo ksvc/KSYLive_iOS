@@ -20,9 +20,9 @@
  
  * 本 kit 类中, 演示了3个图层内容和2个音频通道的叠加直播
  * 图像通道: ([]中的数字为图层编号)
- vCapDev --> cropFilter --> filters[0] -->|        |-> preview
-                       logo picture[1] -->| vMixer |-> picOutput --> streamer
-                    logo text label[2] -->|
+ vCapDev --> cropFilter --> filters[0] -->| vPreMixer |-> preview
+                       logo picture[1] -->|
+                    logo text label[2] -->| vStrMixer |-> picOutput --> streamer
  
  * 音频通道: ([]中的数字为音轨编号)
    aCapDev [0] -->|
@@ -73,10 +73,16 @@
 @property (nonatomic, readonly) GPUImageOutput<GPUImageInput>* filter;
 
 /**
- @abstract   图像混合器
+ @abstract   图像混合器 for 预览
  @discussion 将多图层的内容叠加
  */
-@property (nonatomic, readonly) KSYGPUPicMixer        *vMixer;
+@property (nonatomic, readonly) KSYGPUPicMixer        *vPreviewMixer;
+
+/**
+ @abstract   图像混合器 for 推流
+ @discussion 将多图层的内容叠加
+ */
+@property (nonatomic, readonly) KSYGPUPicMixer        *vStreamMixer;
 
 /**
  @abstract   预览视图

@@ -1,8 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="">
+	<File path="Constants/MPMovieVideoDeinterlaceMode.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/MPMovieVideoDeinterlaceMode</TokenIdentifier>
+			<Abstract type="html">视频反交错模式</Abstract>
+			<DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+			
+			<NodeRef refid="54"/>
+		</Token>
 		
 		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDeinterlaceMode_None</TokenIdentifier>
+            <Abstract type="html">关闭反交错</Abstract>
+            <Declaration>MPMovieVideoDeinterlaceMode_None</Declaration>
+            
+            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+            <NodeRef refid="54"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDeinterlaceMode_Auto</TokenIdentifier>
+            <Abstract type="html">自动判断是否打开反交错</Abstract>
+            <Declaration>MPMovieVideoDeinterlaceMode_Auto</Declaration>
+            
+            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+            <NodeRef refid="54"/>
+        </Token>
         
         
 	</File>
