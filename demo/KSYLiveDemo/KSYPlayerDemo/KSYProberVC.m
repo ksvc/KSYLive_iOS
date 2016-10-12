@@ -165,7 +165,7 @@
     if(nil == _prober)
         return ;
     
-    UIImage *thumbnailImage = [_prober getVideoThumbnailImageAtTime:0 width:640 height:480];
+    UIImage *thumbnailImage = [_prober getVideoThumbnailImageAtTime:0 width:0 height:0];
     if(thumbnailImage)
         UIImageWriteToSavedPhotosAlbum(thumbnailImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
     else

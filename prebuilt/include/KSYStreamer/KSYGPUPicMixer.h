@@ -15,9 +15,6 @@
    * 可以动态交换图层
    * 可以动态刷新图层内容(支持视频)
    * 输出的刷新率 与 masterLayer 保持一致
-
- 
-   不支持动态删减图层, 如果需要改变, 请重新构造实例
  */
 @interface KSYGPUPicMixer : GPUImageFilter {
 };
@@ -45,7 +42,7 @@
  @param      rect 大小和位置
  @param      idx 图层的索引
  @discussion 缩放变形到对应的位置, 数值有如下两种表示方式
-  - 像素值: rect中宽度或高度的值必须大于1.0, 则认为是像素值
+  - 像素值:rect中宽度或高度的值必须大于1.0, 则认为是像素值
   - 百分比:rect中宽度或高度的值必须小于等于1.0, 则认为是对应输出图像大小的百分比
  @discussion 保持宽高比的设置方法
   - 宽为0, 则按照高度和输入图像的宽高比计算出宽度
@@ -74,6 +71,21 @@
  @return     透明度
  */
 -(CGFloat) getPicAlphaOfLayer:(NSInteger) idx;
+
+/**
+ @abstract   设置图层的旋转 (默认为norotation)
+ @param      rotation 透明度(0~1.0), 0为全透明
+ @param      idx 图层的索引
+ @discussion 可用于设置镜像 (kGPUImageFlipHorizonal)
+ */
+-(void)setPicRotation: (GPUImageRotationMode) rotation
+              ofLayer: (NSInteger) idx;
+/**
+ @abstract   获取图层的旋转模式
+ @param      idx 图层的索引
+ @return     旋转模式
+ */
+-(GPUImageRotationMode) getPicRotationOfLayer:(NSInteger) idx;
 
 /**
  @abstract   清除特定图层的画面内容

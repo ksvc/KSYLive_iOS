@@ -160,7 +160,8 @@
 
 - (void)enterBg:(NSNotification *)not{  //app will resigned
     // 进入后台时, 将预览从图像混合器中脱离, 避免后台OpenGL渲染崩溃
-    [_kit.vMixer removeAllTargets];
+    [_kit.vPreviewMixer removeAllTargets];
+    [_kit.vStreamMixer removeAllTargets];
 }
 
 - (void) becameActive:(NSNotification *)not{ //app becameAction
@@ -236,7 +237,7 @@
     _kit.streamerBase.logBlock = ^(NSString* str){
         NSLog(@"%@", str);
     };
-    _hostURL = [NSURL URLWithString:@"rtmp://test.uplive.ksyun.com/live/123"];
+    _hostURL = [NSURL URLWithString:@"rtmp://test.uplive.ks-cdn.com/live/123"];
 }
 - (void) setStreamerCfg { // must set after capture
     if (_kit.streamerBase == nil) {

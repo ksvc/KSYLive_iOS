@@ -286,6 +286,7 @@
         serverIp = [_player serverAddress];
         NSLog(@"KSYPlayerVC: %@ -- ip:%@", [[_player contentURL] absoluteString], serverIp);
         [self StartTimer];
+        prepared_time = (long long int)([self getCurrentTime] * 1000);
     }
     if (MPMoviePlayerPlaybackStateDidChangeNotification ==  notify.name) {
         NSLog(@"------------------------");
@@ -497,6 +498,7 @@
     
     _player.videoDecoderMode = switchHwCodec.isOn? MPMovieVideoDecoderMode_Hardware : MPMovieVideoDecoderMode_Software;
     _player.shouldMute = shouldMute;
+//    _player.rotateDegress = 90;
     _player.shouldEnableKSYStatModule = TRUE;
     _player.shouldLoop = NO;
     _player.deinterlaceMode = MPMovieVideoDeinterlaceMode_Auto;
@@ -587,6 +589,8 @@
             [_player removeObserver:self forKeyPath:@"currentPlaybackTime" context:nil];
             [_player removeObserver:self forKeyPath:@"clientIP" context:nil];
             [_player removeObserver:self forKeyPath:@"localDNSIP" context:nil];
+            
+            [self releaseObservers];
             
             [_player.view removeFromSuperview];
             self.player = nil;
@@ -695,6 +699,8 @@
         [_player removeObserver:self forKeyPath:@"clientIP" context:nil];
         [_player removeObserver:self forKeyPath:@"localDNSIP" context:nil];
         
+        [self releaseObservers];
+        
         [_player.view removeFromSuperview];
         self.player = nil;
     }
@@ -705,12 +711,12 @@
 }
 
 - (IBAction)onRotate:(id)sender {
-	
-	rotate_degress += 90;
-	if(rotate_degress >= 360)
-		rotate_degress = 0;
-
     if (_player) {
+        rotate_degress = _player.rotateDegress;
+        rotate_degress += 90;
+        if(rotate_degress >= 360)
+            rotate_degress = 0;
+
         _player.rotateDegress = rotate_degress;
     }
 }
