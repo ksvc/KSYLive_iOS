@@ -52,14 +52,17 @@
 10. 2016.09.07 内建[新美颜](https://github.com/ksvc/KSYLive_iOS/wiki/filter)上线； 
 11. 2016.09.12 [kit类顶层代码开源](https://github.com/ksvc/KSYLive_iOS/tree/master/source), podspec 中将集成framework改为集成静态库
 12. 2016.09.21 特效滤镜上线;
-13. 2016.09.28 视频硬编[性能编码模式](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)上线。音频AAC硬编功能上线。网络自适应场景上线；
+13. 2016.09.26 [双人连麦](https://github.com/ksvc/KSYRTCLive_iOS/releases/tag/v1.8.5)稳定版本上线;
+14. 2016.09.28 视频硬编[性能编码模式](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)上线。音频AAC硬编功能上线。网络自适应场景上线；
 
 ### 2.2 近期工作  
 1. 2016.10.xx 横竖屏推流功能上线；
 2. 2016.10.xx 录屏推流上线;
 3. 2016.10.xx 人脸贴纸功能上线;
 4. 2016.10.xx AR直播上线;
-5. 2016.10.xx 连麦功能完成内测，提供公开接入；
+5. 2016.10.xx 应用内录屏推流；
+6. 2016.10.xx 支持录屏、美颜、动态贴纸的短视频(mp4格式)录制上线；
+7. 2016.10.xx 无人机直播上线；
 
 ## 三. SDK集成方法介绍   
 ### 3.1 系统要求    
