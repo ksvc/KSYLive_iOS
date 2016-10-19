@@ -1,5 +1,5 @@
 //
-//  KSYFilterView.m
+//  KSYAudioCtrlView.m
 //  KSYGPUStreamerDemo
 //
 //  Created by 孙健 on 16/6/24.
@@ -7,31 +7,41 @@
 //
 
 #import <GPUImage/GPUImage.h>
-
-#if USING_DYNAMIC_FRAMEWORK
-#import <libksygpuliveDy/libksygpuimage.h>
-#else
-#import <libksygpulive/libksygpuimage.h>
-#endif
-
-#import "KSYAudioMixerView.h"
+#import "KSYPresetCfgView.h"
+#import "KSYAudioCtrlView.h"
 #import "KSYNameSlider.h"
+@interface KSYAudioCtrlView() {
+    
+}
 
-@implementation KSYAudioMixerView
+@property UILabel       * lblPlayCapture;
+@property UILabel       * lblAudioOnly;
+@property UILabel       * lblMuteSt;
+@property UILabel       * lblReverb;
+@end
+@implementation KSYAudioCtrlView
 
 - (id)init{
     self = [super init];
-    //_lblTitle = [self addLable:@"混音相关设置"];;  // 标题
-    //_lblTitle.textAlignment = NSTextAlignmentCenter;
+    // 混音音量
     _micVol = [self addSliderName:@"麦克风音量" From:0.0 To:1.0 Init:1.0];
     _bgmVol = [self addSliderName:@"背景乐音量"  From:0.0 To:1.0 Init:0.5];
-
     _bgmMix = [self addSwitch:YES];
 
     _micInput = [self addSegCtrlWithItems:@[ @"内置mic", @"耳麦", @"蓝牙mic"]];
     [self initMicInput];
+    
+    _lblAudioOnly    = [self addLable:@"纯音频推流"]; // 关闭视频
+    _swAudioOnly     = [self addSwitch:NO]; // 关闭视频
     _lblMuteSt       = [self addLable:@"静音推流"];
     _muteStream      = [self addSwitch:NO];
+    
+    _lblReverb  = [self addLable:@"混响"];
+    _reverbType = [self addSegCtrlWithItems:@[@"关闭", @"录影棚",
+                                              @"演唱会",@"KTV",@"小舞台"]];
+    _lblPlayCapture = [self addLable:@"耳返"];
+    _swPlayCapture  = [self addSwitch:NO];
+    _playCapVol= [self addSliderName:@"耳返音量"  From:0.0 To:1.0 Init:0.5];
     return self;
 }
 - (void)layoutUI{
@@ -41,10 +51,13 @@
     [self putRow1:_micVol];
     [self putSlider:_bgmVol
           andSwitch:_bgmMix];
-    
     [self putRow1:_micInput];
+    [self putRow:@[_lblAudioOnly,_swAudioOnly,
+                   _lblMuteSt,_muteStream] ];
+    [self putLable:_lblReverb andView:_reverbType];
     id nu = [NSNull null];
-    [self putRow:@[nu,nu, _lblMuteSt,_muteStream] ];
+    [self putRow:@[nu,nu,_lblPlayCapture,_swPlayCapture]];
+    [self putRow1:_playCapVol];
 }
 - (void) initMicInput {
     BOOL bHS = [KSYAVAudioSession isHeadsetInputAvaible];

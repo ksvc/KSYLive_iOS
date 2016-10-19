@@ -85,6 +85,9 @@
     [self layoutUI];
     return YES;
 }
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    [self layoutUI];
+}
 
 - (IBAction)btnFunc:(id)sender {
     UIViewController *vc = nil;

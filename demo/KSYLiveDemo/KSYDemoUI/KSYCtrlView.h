@@ -26,16 +26,15 @@
 #pragma mark - menu buttons
 //背景音乐
 @property UIButton *bgmBtn;
-//美颜
+//图像和美颜相关
 @property UIButton *filterBtn;
+//声音相关: 混音 / 混响 / 耳返等
+@property UIButton *mixBtn;
 //其他功能: 比如截屏
 @property UIButton *miscBtn;
-//混音
-@property UIButton *mixBtn;
-//混响
-@property UIButton *reverbBtn;
-//返回
+//返回菜单页面
 @property UIButton *backBtn;
+
 
 - (void) showSubMenuView: (UIView*) view;
 

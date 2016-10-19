@@ -411,6 +411,13 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 @property (nonatomic) int rotateDegress;
 
 /**
+ @abstract 指定视频是否镜像显示
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 1.8.4 and later.
+ */
+@property (nonatomic) BOOL mirror;
+
+/**
  @abstract 快速播放
  @discussion 默认不快速播放
  

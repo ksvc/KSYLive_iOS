@@ -14,7 +14,6 @@
 #import "KSYBgmView.h"
 #import "KSYPipView.h"
 #import "KSYNameSlider.h"
-#import "KSYReverbView.h"
 #import "KSYGPUStreamerKit.h"
 
 @interface KSYStreamerVC () {
@@ -69,8 +68,7 @@
     _ctrlView.frame = self.view.frame;
     _ksyFilterView  = [[KSYFilterView alloc]initWithParent:_ctrlView];
     _ksyBgmView     = [[KSYBgmView alloc]initWithParent:_ctrlView];
-    _audioMixerView = [[KSYAudioMixerView alloc]initWithParent:_ctrlView];
-    _reverbView     = [[KSYReverbView alloc]initWithParent:_ctrlView];
+    _audioView = [[KSYAudioCtrlView alloc]initWithParent:_ctrlView];
     _miscView       = [[KSYMiscView alloc]initWithParent:_ctrlView];
 
     // connect UI
@@ -99,18 +97,13 @@
         [weakself onFilterSwitch:sender];
     };
     // 混音相关参数改变
-    _audioMixerView.onSwitchBlock=^(id sender){
+    _audioView.onSwitchBlock=^(id sender){
         [weakself onAMixerSwitch:sender];
     };
-    _audioMixerView.onSliderBlock=^(id sender){
+    _audioView.onSliderBlock=^(id sender){
         [weakself onAMixerSlider:sender];
     };
-    //混响的实现
-    _reverbView.onSegCtrlBlock = ^(id sender){
-        [weakself onReverbType:sender];
-    };
-    //混音实现
-    _audioMixerView.onSegCtrlBlock=^(id sender){
+    _audioView.onSegCtrlBlock=^(id sender){
         [weakself onAMixerSegCtrl:sender];
     };
     // 其他杂项
@@ -179,7 +172,9 @@
 }
 
 - (BOOL)shouldAutorotate {
-    [self layoutUI];
+    if (_ksyFilterView){
+        return _ksyFilterView.swUiRotate.on;
+    }
     return NO;
 }
 
@@ -189,6 +184,7 @@
 
 - (void) layoutUI {
     if(_ctrlView){
+        _ctrlView.frame = self.view.frame;
         [_ctrlView layoutUI];
     }
 }
@@ -265,7 +261,7 @@
 - (void) updateStreamCfg: (BOOL) bStart {
     _kit.streamerBase.liveScene       =  self.miscView.liveScene;
     _kit.streamerBase.videoEncodePerf =  self.miscView.vEncPerf;
-    _kit.streamerBase.bWithVideo      = !self.miscView.swAudioOnly.on;
+    _kit.streamerBase.bWithVideo      = !self.audioView.swAudioOnly.on;
     _seconds = 0;
     self.miscView.liveSceneSeg.enabled = !bStart;
     self.miscView.vEncPerfSeg.enabled = !bStart;
@@ -310,7 +306,7 @@
         [_ctrlView.lblStat initStreamStat]; // 尝试开始连接时,重置统计数据
     }
     else if (_kit.streamerBase.streamState == KSYStreamStateConnected) {
-        if ([self.miscView.swAudioOnly isOn] ){
+        if ([self.audioView.swAudioOnly isOn] ){
             _kit.streamerBase.bWithVideo = NO;
         }
     }
@@ -387,16 +383,12 @@
         view = _ksyFilterView; // 美颜滤镜相关
     }
     else if (btn == _ctrlView.mixBtn ){
-        view = _audioMixerView;    // 混音控制台
-        _audioMixerView.micType = _kit.avAudioSession.currentMicType;
-        [_audioMixerView initMicInput];
+        view = _audioView;    // 混音控制台
+        _audioView.micType = _kit.avAudioSession.currentMicType;
+        [_audioView initMicInput];
     }
     else if (btn == _ctrlView.miscBtn ){
         view = _miscView;
-        //[_miscView initMicmOutput];
-    }
-    else if (btn == _ctrlView.reverbBtn ){
-        view = _reverbView;
     }
     // 将菜单的按钮隐藏, 将触发二级菜单的view显示
     if (view){
@@ -433,7 +425,6 @@
 }
 //bgmView Control
 - (void)onBgmBtnPress:(UIButton *)btn{
-    __weak KSYStreamerVC *weakself = self;
     if (btn == _ksyBgmView.playBtn){
         [self onBgmPlay];
     }
@@ -546,20 +537,45 @@
         [_kit setStreamerMirrored:sw.on];
     }
 }
-#pragma mark - UI respond : audio mixer
+#pragma mark - UI respond : audio ctrl
 - (void)onAMixerSwitch:(UISwitch *)sw{
-    if (sw == _audioMixerView.muteStream){
-        BOOL mute = _audioMixerView.muteStream.isOn;
+    if (sw == _audioView.muteStream){
+        // 静音推流(发送音量为0的数据)
+        BOOL mute = _audioView.muteStream.isOn;
         [_kit.streamerBase muteStreame:mute];
     }
-    else if (sw == _audioMixerView.bgmMix){
+    else if (sw == _audioView.bgmMix){
         // 背景音乐 是否 参与混音
         [_kit.aMixer setTrack:_kit.bgmTrack enable: sw.isOn];
     }
+    else if (sw == _audioView.swAudioOnly && _kit.streamerBase) {
+        if (sw.on == YES) {
+            // disable video, only stream with audio
+            _kit.streamerBase.bWithVideo = NO;
+        }else{
+            _kit.streamerBase.bWithVideo = YES;
+        }
+        // 如果修改bWithVideo属性失败, 开关状态恢复真实结果
+        sw.on = !_kit.streamerBase.bWithVideo;
+    }
+    else if (sw == _audioView.swPlayCapture){
+        if ( ![KSYAUAudioCapture isHeadsetPluggedIn] ) {
+            [KSYUIVC toast:@"没有耳机, 开启耳返会有刺耳的声音"];
+            sw.on = NO;
+            _kit.aCapDev.bPlayCapturedAudio = NO;
+            return;
+        }
+        _kit.aCapDev.bPlayCapturedAudio = sw.isOn;
+    }
 }
 - (void)onAMixerSegCtrl:(UISegmentedControl *)seg{
-    if (_kit && seg == _audioMixerView.micInput) {
-        _kit.avAudioSession.currentMicType = _audioMixerView.micType;
+    if (_kit && seg == _audioView.micInput) {
+        _kit.avAudioSession.currentMicType = _audioView.micType;
+    }
+    else if (seg == _audioView.reverbType){
+        int t = (int)seg.selectedSegmentIndex;
+        _kit.aCapDev.reverbType = t;
+        return;
     }
 }
 - (void)onAMixerSlider:(KSYNameSlider *)slider{
@@ -570,20 +586,16 @@
     else {
         return;
     }
-    if ( slider == self.audioMixerView.bgmVol){
+    if ( slider == self.audioView.bgmVol){
         [_kit.aMixer setMixVolume:val of: _kit.bgmTrack];
     }
-    else if ( slider == self.audioMixerView.micVol){
+    else if ( slider == self.audioView.micVol){
         [_kit.aMixer setMixVolume:val of: _kit.micTrack];
     }
-}
-
-#pragma mark - reverb action
-- (void)onReverbType:(UISegmentedControl *)seg{
-    if (seg == self.reverbView.reverbType){
-        int t = (int)seg.selectedSegmentIndex;
-        _kit.aCapDev.reverbType = t;
-        return;
+    else if (slider == self.audioView.playCapVol){
+        if (_kit.aCapDev){
+            _kit.aCapDev.micVolume = slider.normalValue;
+        }
     }
 }
 
@@ -615,31 +627,20 @@
 }
 #pragma mark - misc features
 - (void)onMiscSwitch:(UISwitch *)sw{  // see kit & block
-    if (sw == _miscView.swAudioOnly && _kit.streamerBase) {
-        if (sw.on == YES) {
-            // disable video, only stream with audio
-            _kit.streamerBase.bWithVideo = NO;
-        }else{
-            _kit.streamerBase.bWithVideo = YES;
-        }
-        // 如果修改bWithVideo属性失败, 开关状态恢复真实结果
-        sw.on = !_kit.streamerBase.bWithVideo;
-    }
-    else if (sw == self.miscView.swPlayCapture){
-        if ( ![KSYAUAudioCapture isHeadsetPluggedIn] ) {
-            [KSYUIVC toast:@"没有耳机, 开启耳返会有刺耳的声音"];
-            sw.on = NO;
-            _kit.aCapDev.bPlayCapturedAudio = NO;
-            return;
-        }
-        _kit.aCapDev.bPlayCapturedAudio = sw.isOn;
-    }
+    
 }
 - (void)onMiscSlider:(KSYNameSlider *)slider {
-    if (slider == self.miscView.micmVol){
-        if (_kit.aCapDev){
-            _kit.aCapDev.micVolume = slider.normalValue;
-        }
+}
+
+#pragma mark - ui rotate
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    [self layoutUI];
+    if (_kit == nil || !_ksyFilterView.swUiRotate.on) {
+        return;
+    }
+    [_kit rotatePreview];
+    if (_ksyFilterView.swStrRotate.on) {
+        [_kit rotateStream];
     }
 }
 @end

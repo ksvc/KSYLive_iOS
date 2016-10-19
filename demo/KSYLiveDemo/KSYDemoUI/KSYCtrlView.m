@@ -32,11 +32,10 @@
     
     // add menu
     _bgmBtn   = [self addButton:@"背景音乐"];
-    _filterBtn = [self addButton:@"滤镜/美颜"];
+    _filterBtn = [self addButton:@"图像/美颜"];
+    _mixBtn    = [self addButton:@"声音"];
     _miscBtn   = [self addButton:@"其他"];
-    _mixBtn    = [self addButton:@"混音"];
-    _reverbBtn = [self addButton:@"混响"];
-    _backBtn   = [self addButton:@"返回菜单"
+    _backBtn   = [self addButton:@"菜单"
                           action:@selector(onBack:)];
     _backBtn.hidden = YES;
     _curSubMenuView = nil;
@@ -48,20 +47,17 @@
     if ( self.width <self.height ){
         self.yPos =self.gap*5; // skip status bar
     }
-    [self putRow3: _btnFlash
-              and:_btnCameraToggle
-              and: _btnQuit];
+    [self putRow: @[_backBtn, _btnFlash, _btnCameraToggle,_btnQuit] ];
     
-    [self putRow: @[_bgmBtn, _reverbBtn, _mixBtn,_backBtn] ];
-    [self putRow: @[_filterBtn,  _miscBtn, [NSNull null], [NSNull null] ] ];
+    [self putRow: @[_bgmBtn, _filterBtn, _mixBtn,_miscBtn ] ];
     [self hideMenuBtn:!_backBtn.hidden];
     
-    CGFloat normalBtnH = self.btnH;
-    self.btnH = self.height - self.yPos - self.btnH - self.gap;
-    [self putRow1:_lblStat];
+    self.yPos -= self.btnH;
+    CGFloat freeHgt = self.height - self.yPos - self.btnH - self.gap;
+    _lblStat.frame = CGRectMake( self.gap, self.yPos, self.winWdt - self.gap*2, freeHgt);
+    self.yPos += freeHgt;
     
     // put at bottom
-    self.btnH = normalBtnH;
     [self putRow3:_btnCapture
               and:_lblNetwork
               and:_btnStream];
@@ -74,7 +70,6 @@
     _filterBtn.hidden = bHide;
     _miscBtn.hidden   = bHide;
     _mixBtn.hidden    = bHide;
-    _reverbBtn.hidden = bHide;
 }
 
 - (IBAction)onBack:(id)sender {

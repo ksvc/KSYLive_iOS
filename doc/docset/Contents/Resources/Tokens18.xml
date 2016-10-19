@@ -237,6 +237,18 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/getInputRotation</TokenIdentifier>
+			<Abstract type="html">input roation mode</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>- (GPUImageRotationMode)getInputRotation</Declaration>
+			
+			
+			<Anchor>//api/name/getInputRotation</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setVideoProcessingCallback:</TokenIdentifier>
 			<Abstract type="html">视频处理回调接口</Abstract>
 			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>

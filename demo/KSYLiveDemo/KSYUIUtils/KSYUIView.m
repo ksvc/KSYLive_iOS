@@ -243,6 +243,7 @@
     UILabel *  lbl = [[UILabel alloc] init];
     lbl.text = title;
     [self addSubview:lbl];
+    lbl.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.3]; 
     return lbl;
 }
 

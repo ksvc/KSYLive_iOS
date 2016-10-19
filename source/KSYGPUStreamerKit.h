@@ -328,7 +328,7 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  */
 - (void) setupFilter:(GPUImageOutput<GPUImageInput>*) filter;
 
-#pragma mark -  mirror
+#pragma mark -  mirror & rotate
 /**
  @abstract 预览设置成镜像模式，默认为NO
 */
@@ -338,6 +338,17 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
   @abstract 推流设置成镜像模式,默认为NO
 */
 @property (nonatomic, assign) BOOL streamerMirrored;
+
+/**
+ @abstract 根据UI的朝向旋转预览视图, 保证预览视图全屏铺满窗口
+ @discussion 采集到的图像的朝向还是和启动时的朝向一致
+ */
+- (void) rotatePreview;
+
+/**
+ @abstract 根据UI的朝向旋转推流画面
+ */
+- (void) rotateStream;
 
 #pragma mark - pictures & logo
 /**
