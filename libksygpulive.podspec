@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'libksygpulive'
-  s.version      = '1.8.3'
+  s.version      = '1.8.4'
   s.license      = {
 :type => 'Proprietary',
 :text => <<-LICENSE
@@ -24,6 +24,9 @@ Pod::Spec.new do |s|
   }
   s.requires_arc = true
   s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC -all_load' }
+
+  # Exclude optional Search and Testing modules
+  s.default_subspec = 'libksygpulive'
 
   s.subspec 'KSYMediaPlayer' do |sub|
     libName = sub.name.split("/").last

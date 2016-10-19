@@ -1104,6 +1104,42 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setMirror:</TokenIdentifier>
+			<Abstract type="html">指定视频是否镜像显示</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL mirror</Declaration>
+			
+			
+			<Anchor>//api/name/mirror</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/mirror</TokenIdentifier>
+			<Abstract type="html">指定视频是否镜像显示</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL mirror</Declaration>
+			
+			
+			<Anchor>//api/name/mirror</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/mirror</TokenIdentifier>
+			<Abstract type="html">指定视频是否镜像显示</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL mirror</Declaration>
+			
+			
+			<Anchor>//api/name/mirror</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setSuperFastPlay:</TokenIdentifier>
 			<Abstract type="html">快速播放</Abstract>
 			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>

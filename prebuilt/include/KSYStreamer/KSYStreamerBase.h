@@ -39,6 +39,7 @@
 /**
  @abstract   视频帧率 默认:15
  @discussion 请保持调用 processVideoSampleBuffer 或 processVideoPixelBuffer 的频率与此设置的帧率一致
+ @discussion 当实际送入的视频帧率过高时会主动丢帧
  @discussion video frame per seconds 有效范围[1~30], 超出会提示参数错误
  */
 @property (nonatomic, assign) int           videoFPS;

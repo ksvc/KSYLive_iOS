@@ -8,7 +8,6 @@
 
 #import "KSYUIView.h"
 @class KSYNameSlider;
-@class GPUImageFilter;
 
 @interface KSYMiscView : KSYUIView {
     
@@ -20,12 +19,7 @@
 @property UIButton* btn3;
 @property UIButton* btn4;
 
-@property KSYNameSlider * micmVol;
-@property UILabel       * lblAudioOnly;
-@property UISwitch      * swAudioOnly;
-@property UILabel       * lblPlayCapture;
-@property UISwitch      * swPlayCapture;
-
+/// 直播场景配置
 @property UISegmentedControl  * liveSceneSeg;
 @property UISegmentedControl  * vEncPerfSeg;
 

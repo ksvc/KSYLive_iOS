@@ -33,4 +33,9 @@
 // 镜像翻转按钮
 @property (nonatomic) UISwitch * swPrevewFlip;
 @property (nonatomic) UISwitch * swStreamFlip;
+
+// 界面旋转 和推流画面动态旋转
+@property (nonatomic) UISwitch * swUiRotate; // 只在iphone上能锁定
+@property (nonatomic) UISwitch * swStrRotate;
+
 @end

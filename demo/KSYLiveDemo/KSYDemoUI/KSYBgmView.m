@@ -10,8 +10,6 @@
 #import "KSYNameSlider.h"
 #import "KSYFileSelector.h"
 
-
-
 @interface KSYBgmView(){
     UILabel * _bgmTitle;
     KSYFileSelector *_bgmSel;

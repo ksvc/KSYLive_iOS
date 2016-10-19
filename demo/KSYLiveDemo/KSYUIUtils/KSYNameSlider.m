@@ -5,8 +5,11 @@
 
 - (id) init {
     self = [super init];
+    UIColor* bgColor = [UIColor colorWithWhite:0.8 alpha:0.3];
     self.nameL  = [[UILabel alloc] init];
     self.valueL = [[UILabel alloc] init];
+    self.nameL.backgroundColor  = bgColor;
+    self.valueL.backgroundColor = bgColor;
     self.slider = [[UISlider alloc] init];
     self.slider.minimumValue = 0;
     self.slider.maximumValue = 100;

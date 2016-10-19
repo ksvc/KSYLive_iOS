@@ -32,10 +32,9 @@
     UIButton *btnRotate;
     UIButton *btnContentMode;
     UIButton *btnReload;
-    
     UIButton *btnMute;
-    
     UIButton *btnShotScreen;
+    UIButton *btnMirror;
     
     UILabel  *lableHWCodec;
     UISwitch  *switchHwCodec;
@@ -123,6 +122,8 @@
     btnShotScreen = [self addButtonWithTitle:@"截图" action:@selector(onShotScreen:)];
     
     btnMute = [self addButtonWithTitle:@"mute" action:@selector(onMute:)];
+    
+    btnMirror = [self addButtonWithTitle:@"镜像" action:@selector(onMirror:)];
 
 	stat = [[UILabel alloc] init];
     stat.backgroundColor = [UIColor clearColor];
@@ -219,7 +220,11 @@
     btnMute.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     
     xPos = gap;
-    yPos = btnRotate.frame.origin.y - btnHgt - gap;
+    yPos -= (btnHgt + gap);
+    btnMirror.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
+    
+    xPos = gap;
+    yPos = btnMirror.frame.origin.y - btnHgt - gap;
     progressView.frame = CGRectMake(xPos, yPos, wdt - 2 * gap, btnHgt);
 }
 
@@ -499,6 +504,7 @@
     _player.videoDecoderMode = switchHwCodec.isOn? MPMovieVideoDecoderMode_Hardware : MPMovieVideoDecoderMode_Software;
     _player.shouldMute = shouldMute;
 //    _player.rotateDegress = 90;
+//    _player.mirror = YES;
     _player.shouldEnableKSYStatModule = TRUE;
     _player.shouldLoop = NO;
     _player.deinterlaceMode = MPMovieVideoDeinterlaceMode_Auto;
@@ -725,6 +731,12 @@
     if (_player) {
         shouldMute = shouldMute ? NO : YES;
         _player.shouldMute = shouldMute;
+    }
+}
+
+- (IBAction)onMirror:(id)sender {
+    if (_player) {
+        _player.mirror = (!_player.mirror);
     }
 }
 

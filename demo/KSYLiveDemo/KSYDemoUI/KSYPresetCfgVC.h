@@ -11,12 +11,6 @@
 
 #import <GPUImage/GPUImage.h>
 
-#if USING_DYNAMIC_FRAMEWORK
-#import <libksygpuliveDy/libksygpuimage.h>
-#else
-#import <libksygpulive/libksygpuimage.h>
-#endif
-
 /**
  KSY 预设参数配置视图控制器
  

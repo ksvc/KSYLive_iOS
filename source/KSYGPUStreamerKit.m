@@ -9,6 +9,7 @@
     dispatch_queue_t _capDev_q;
     NSLock   *       _quitLock;  // ensure capDev closed before dealloc
     GPUImagePicture *_textPic;
+    CGFloat _previewRotateAng;
 }
 @end
 
@@ -56,6 +57,7 @@
     _cameraPosition   = AVCaptureDevicePositionFront;
     _streamerMirrored = NO;
     _previewMirrored  = NO;
+    _previewRotateAng = 0;
     _videoProcessingCallback = nil;
     _gpuOutputPixelFormat = kCVPixelFormatType_32BGRA;
     
@@ -70,6 +72,9 @@
     // 采集模块
     _vCapDev = [[KSYGPUCamera alloc] initWithSessionPreset:_capPreset
                                             cameraPosition:_cameraPosition];
+    if(_vCapDev == nil) {
+        return nil;
+    }
     _vCapDev.outputImageOrientation = UIInterfaceOrientationPortrait;
     //Session模块
     _avAudioSession = [[KSYAVAudioSession alloc] init];
@@ -93,7 +98,6 @@
     /////2. 数据出口 ///////////
     // get pic data from gpu filter
     _gpuToStr =[[KSYGPUPicOutput alloc] init];
-    _gpuToStr.bCustomOutputSize = YES;
     // 创建 推流模块
     _streamerBase = [[KSYStreamerBase alloc] initWithDefaultCfg];
     // 创建 预览模块, 并放到视图底部
@@ -191,8 +195,8 @@
     [_vStreamMixer  removeAllTargets];
     [_vStreamMixer  addTarget:_gpuToStr];
     // 设置镜像
-    [self    setPreviewMirrored:_previewMirrored];
-    [self    setStreamerMirrored:_streamerMirrored];
+    [self setPreviewMirrored:_previewMirrored];
+    [self setStreamerMirrored:_streamerMirrored];
 }
 // 添加图层到 vMixer 中
 - (void) addPic:(GPUImageOutput*)pic ToMixerAt: (NSInteger)idx{
@@ -320,12 +324,13 @@
             return;
         }
         [_quitLock lock];
-        _vCapDev.captureSessionPreset = _capPreset;
-        _vCapDev.frameRate = _videoFPS;
-        
         if ( _cameraPosition != [_vCapDev cameraPosition] ){
             [_vCapDev rotateCamera];
         }
+        _vCapDev.captureSessionPreset = _capPreset;
+        _vCapDev.frameRate = _videoFPS;
+        // check if preset ok
+        _capPreset = _vCapDev.captureSessionPreset;
         [self  updateDimension];
         //连接
         [self setupFilter:_filter];
@@ -374,15 +379,19 @@
     return CGSizeZero;
 }
 // 根据朝向, 判断是否需要交换宽和高
--(CGSize) updateDimensionOriention : (CGSize) sz{
-    if ( ( self.videoOrientation == UIInterfaceOrientationPortraitUpsideDown ||
-           self.videoOrientation == UIInterfaceOrientationPortrait ) &&
-        (sz.width > sz.height) ) {
-        float temp = sz.width;
-        sz.width   = sz.height;
-        sz.height  = temp;
+-(CGSize) getDimension: (CGSize) sz
+           byOriention: (UIInterfaceOrientation) ori {
+    CGSize outSz = sz;
+    if ( ( ori == UIInterfaceOrientationPortraitUpsideDown ||
+           ori == UIInterfaceOrientationPortrait )) {
+        outSz.height = MAX(sz.width, sz.height);
+        outSz.width  = MIN(sz.width, sz.height);
     }
-    return sz;
+    else  {
+        outSz.height = MIN(sz.width, sz.height);
+        outSz.width  = MAX(sz.width, sz.height);
+    }
+    return outSz;
 }
 // 居中裁剪
 -(CGRect) calcCropRect: (CGSize) camSz to: (CGSize) outSz {
@@ -396,7 +405,7 @@
 // 根据宽高比计算需要裁剪掉的区域
 - (void) setupCropfilter {
     CGSize  inSz     =  [self captureDimension];
-    inSz = [self updateDimensionOriention:inSz];
+    inSz = [self getDimension:inSz byOriention:self.videoOrientation];
     CGFloat preRatio = _previewDimension.width / _previewDimension.height;
     CGSize cropSz = inSz; // set width
     cropSz.height = cropSz.width / preRatio;
@@ -409,8 +418,8 @@
 
 // 更新分辨率相关设置
 - (void) updateDimension {
-    _previewDimension = [self updateDimensionOriention:_previewDimension];
-    _streamDimension  = [self updateDimensionOriention:_streamDimension];
+    _previewDimension = [self getDimension:_previewDimension byOriention:self.videoOrientation];
+    _streamDimension  = [self getDimension:_streamDimension  byOriention:self.videoOrientation];
     [self setupCropfilter];
     [_vPreviewMixer forceProcessingAtSize:_previewDimension];
     [_vStreamMixer forceProcessingAtSize:_streamDimension];
@@ -532,24 +541,6 @@
     
 }
 
-#pragma mark - mirror
-- (void) setPreviewMirrored:(BOOL)bMirrored {
-    if(_vPreviewMixer){
-        GPUImageRotationMode ro = bMirrored ? kGPUImageFlipHorizonal :kGPUImageNoRotation;
-        [_vPreviewMixer setPicRotation:ro ofLayer:_cameraLayer];
-    }
-    _previewMirrored = bMirrored;
-    return ;
-}
-
-- (void) setStreamerMirrored:(BOOL)bMirrored {
-    if (_vStreamMixer){
-        GPUImageRotationMode ro = bMirrored ? kGPUImageFlipHorizonal :kGPUImageNoRotation;
-        [_vStreamMixer setPicRotation:ro ofLayer:_cameraLayer];
-    }
-    _streamerMirrored = bMirrored;
-}
-
 #pragma mark - utils
 -(UIImage *)imageFromUILable:(UILabel *)labal {
     UIFont *font =labal.font;
@@ -647,8 +638,113 @@
     }
     _gpuOutputPixelFormat = fmt;
     _gpuToStr =[[KSYGPUPicOutput alloc] initWithOutFmt:_gpuOutputPixelFormat];
-    _gpuToStr.bCustomOutputSize = YES;
     [self setupVideoPath];
 }
 
+#pragma mark - rotate & mirror
+
+- (void) setPreviewMirrored:(BOOL)bMirrored {
+    if(_vPreviewMixer){
+        GPUImageRotationMode ro = kGPUImageNoRotation;
+        if (bMirrored) {
+            if (FLOAT_EQ(_previewRotateAng, M_PI_2*1) ||
+                FLOAT_EQ(_previewRotateAng, M_PI_2*3)) {
+                ro = kGPUImageFlipVertical;
+            }
+            else {
+                ro = kGPUImageFlipHorizonal;
+            }
+        }
+        [_vPreviewMixer setPicRotation:ro ofLayer:_cameraLayer];
+    }
+    _previewMirrored = bMirrored;
+    return ;
+}
+
+- (void) setStreamerMirrored:(BOOL)bMirrored {
+    if (_vStreamMixer){
+        GPUImageRotationMode ro = kGPUImageNoRotation;
+        if( bMirrored ) {
+            GPUImageRotationMode inRo = [_gpuToStr getInputRotation];
+            if (inRo == kGPUImageRotateLeft ||
+                inRo == kGPUImageRotateRight ) {
+                ro = kGPUImageFlipVertical;
+            }
+            else {
+                ro = kGPUImageFlipHorizonal;
+            }
+        }
+        [_vStreamMixer setPicRotation:ro ofLayer:_cameraLayer];
+    }
+    _streamerMirrored = bMirrored;
+}
+
+int UIOrienToIdx (UIInterfaceOrientation orien) {
+    switch (orien) {
+        case UIInterfaceOrientationPortrait:
+            return 0;
+        case UIInterfaceOrientationPortraitUpsideDown:
+            return 1;
+        case UIInterfaceOrientationLandscapeLeft:
+            return 2;
+        case UIInterfaceOrientationLandscapeRight:
+            return 3;
+        case UIInterfaceOrientationUnknown:
+        default:
+            return 0;
+    }
+    
+}
+const static CGFloat KSYRotateAngles [4] [4] = {
+M_PI_2*0,M_PI_2*2, M_PI_2*1, M_PI_2*3,
+M_PI_2*2,M_PI_2*0, M_PI_2*3, M_PI_2*1,
+M_PI_2*3,M_PI_2*1, M_PI_2*0, M_PI_2*2,
+M_PI_2*1,M_PI_2*3, M_PI_2*2, M_PI_2*0,
+};
+
+/**
+ @abstract 根据UI的朝向旋转预览视图, 保证预览视图全屏铺满窗口
+ @discussion 采集到的图像的朝向还是和启动时的朝向一致
+ */
+- (void) rotatePreview {
+    UIView* view = [_preview superview];
+    UIInterfaceOrientation ori = [[UIApplication sharedApplication] statusBarOrientation];
+    if (_videoOrientation == ori) {
+        _preview.transform = CGAffineTransformIdentity;
+        _previewRotateAng = 0;
+    }
+    else {
+        int capOri = UIOrienToIdx(_videoOrientation);
+        int appOri = UIOrienToIdx(ori);
+        _previewRotateAng = KSYRotateAngles[ capOri ][ appOri ];
+        _preview.transform = CGAffineTransformMakeRotation(_previewRotateAng);
+    }
+    _preview.center = view.center;
+}
+
+const static GPUImageRotationMode KSYRotateMode [4] [4] = {
+ kGPUImageNoRotation,  kGPUImageRotate180,kGPUImageRotateRight,  kGPUImageRotateLeft,
+  kGPUImageRotate180, kGPUImageNoRotation, kGPUImageRotateLeft, kGPUImageRotateRight,
+ kGPUImageRotateLeft,kGPUImageRotateRight, kGPUImageNoRotation,   kGPUImageRotate180,
+kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRotation,
+};
+/**
+ @abstract 根据UI的朝向旋转推流画面
+ */
+- (void) rotateStream {
+    UIInterfaceOrientation ori = [[UIApplication sharedApplication] statusBarOrientation];
+    if (_videoOrientation == ori) {
+        [_gpuToStr setInputRotation:kGPUImageNoRotation atIndex:0];
+        _gpuToStr.outputSize = _streamDimension;
+        _gpuToStr.bCustomOutputSize = NO;
+    }
+    else {
+        int capOri = UIOrienToIdx(_videoOrientation);
+        int appOri = UIOrienToIdx(ori);
+        GPUImageRotationMode mode = KSYRotateMode[capOri][appOri];
+        [_gpuToStr setInputRotation: mode  atIndex:0];
+        _gpuToStr.bCustomOutputSize = YES;
+        _gpuToStr.outputSize = [self getDimension:_streamDimension byOriention:ori];
+    }
+}
 @end

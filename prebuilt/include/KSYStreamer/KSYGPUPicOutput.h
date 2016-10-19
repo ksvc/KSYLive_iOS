@@ -55,6 +55,11 @@
  */
 @property(nonatomic, readonly) CGSize inputSize;
 
+/**
+ @abstract input roation mode
+ */
+- (GPUImageRotationMode)  getInputRotation;
+
 #pragma mark - raw data
 /**
  @abstract   视频处理回调接口

@@ -5,15 +5,11 @@
 //  Created by 孙健 on 16/6/24.
 //  Copyright © 2016年 ksyun. All rights reserved.
 //
-
+#import <GPUImage/GPUImage.h>
 #import "KSYFilterView.h"
 #import "KSYNameSlider.h"
-#import <GPUImage/GPUImage.h>
-#if USING_DYNAMIC_FRAMEWORK
-#import <libksygpuliveDy/libksygpuimage.h>
-#else
-#import <libksygpulive/libksygpuimage.h>
-#endif
+#import "KSYPresetCfgView.h"
+
 
 @interface KSYFilterView() {
     UILabel * _lblSeg;
@@ -24,6 +20,9 @@
 
 @property (nonatomic) UILabel * lbPrevewFlip;
 @property (nonatomic) UILabel * lbStreamFlip;
+
+@property (nonatomic) UILabel * lbUiRotate;
+@property (nonatomic) UILabel * lbStrRotate;
 @end
 
 @implementation KSYFilterView
@@ -56,27 +55,49 @@
     _swPrevewFlip = [self addSwitch:NO];
     _swStreamFlip = [self addSwitch:NO];
     
+    _lbUiRotate   = [self addLable:@"UI旋转"];
+    _lbStrRotate  = [self addLable:@"推流旋转"];
+    _swUiRotate   = [self addSwitch:NO];
+    _swStrRotate  = [self addSwitch:NO];
+    _swStrRotate.enabled = NO;
+    
     _effectPicker = [[UIPickerView alloc] init];
     [self addSubview: _effectPicker];
     _effectPicker.hidden     = YES;
     _effectPicker.delegate   = self;
     _effectPicker.dataSource = self;
     _effectPicker.showsSelectionIndicator= YES;
+    _effectPicker.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.3];
     return self;
 }
 - (void)layoutUI{
     [super layoutUI];
     self.yPos = 0;
+    self.btnH = 30;
+    [self putRow: @[_lbPrevewFlip, _swPrevewFlip,
+                    _lbStreamFlip, _swStreamFlip ]];
+    [self putRow: @[_lbUiRotate, _swUiRotate,
+                    _lbStrRotate, _swStrRotate ]];
+    [self putLable:_lblSeg andView: _filterGroupType];
     [self putRow1:_filterParam1];
     [self putRow1:_filterParam2];
     [self putRow1:_filterParam3];
-    self.btnH = 30;
-    [self putLable:_lblSeg andView: _filterGroupType];
-    [self putRow: @[_lbPrevewFlip, _swPrevewFlip,
-                    _lbStreamFlip, _swStreamFlip ]];
+    
     self.btnH = 162;
     [self putRow1:_effectPicker];
 }
+
+- (IBAction)onSwitch:(id)sender {
+    if (sender == _swUiRotate){
+        // 只有界面跟随设备旋转, 推流才能旋转
+        _swStrRotate.enabled = _swUiRotate.on;
+        if (!_swUiRotate.on) {
+            _swStrRotate.on = NO;
+        }
+    }
+    [super onSwitch:sender];
+}
+
 - (IBAction)onSegCtrl:(id)sender {
     if (_filterGroupType == sender){
         [self selectFilter: _filterGroupType.selectedSegmentIndex];

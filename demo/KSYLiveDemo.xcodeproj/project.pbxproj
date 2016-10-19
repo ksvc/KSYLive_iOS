@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		060AE9C51D4653010064DD65 /* KSYFileSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 060AE9C41D4653010064DD65 /* KSYFileSelector.m */; };
+		064980251DAFB8AB00AA5A0A /* KSYAudioCtrlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 064980231DAFB8AB00AA5A0A /* KSYAudioCtrlView.m */; };
 		065E7CF51D66E60F00EC8D45 /* KSYReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 065E7CF31D66E60F00EC8D45 /* KSYReachability.m */; };
 		069E428A1C10357D00392B5E /* KSYLiveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 069E42881C10357D00392B5E /* KSYLiveVC.m */; };
 		06A646591D81500000D1C620 /* KSYStateLableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CB3A641D813EE70017378F /* KSYStateLableView.m */; };
@@ -23,14 +24,12 @@
 		06B2B1BA1BE8F0D900E0CC85 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B2B1B81BE8F0D900E0CC85 /* LaunchScreen.xib */; };
 		06CA4B081D9BD0E8006F3AD3 /* KSYLiveDemo-dy-framework.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 06CA4B071D9BD0E8006F3AD3 /* KSYLiveDemo-dy-framework.xcconfig */; };
 		06E742AC1D90FFD600C3E780 /* KSYGPUResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 06E742AB1D90FFD600C3E780 /* KSYGPUResource.bundle */; };
-		06FBBD4B1D2E17E00065ED55 /* KSYAudioMixerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD291D2E17E00065ED55 /* KSYAudioMixerView.m */; };
 		06FBBD4D1D2E17E00065ED55 /* KSYBgmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD2B1D2E17E00065ED55 /* KSYBgmView.m */; };
 		06FBBD511D2E17E00065ED55 /* KSYCtrlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD2F1D2E17E00065ED55 /* KSYCtrlView.m */; };
 		06FBBD531D2E17E00065ED55 /* KSYFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD311D2E17E00065ED55 /* KSYFilterView.m */; };
 		06FBBD5B1D2E17E00065ED55 /* KSYPipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD391D2E17E00065ED55 /* KSYPipView.m */; };
 		06FBBD5D1D2E17E00065ED55 /* KSYPresetCfgVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD3B1D2E17E00065ED55 /* KSYPresetCfgVC.m */; };
 		06FBBD5F1D2E17E00065ED55 /* KSYPresetCfgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD3D1D2E17E00065ED55 /* KSYPresetCfgView.m */; };
-		06FBBD611D2E17E00065ED55 /* KSYReverbView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD3F1D2E17E00065ED55 /* KSYReverbView.m */; };
 		06FBBD651D2E17E00065ED55 /* KSYStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD431D2E17E00065ED55 /* KSYStreamerVC.m */; };
 		06FBBD671D2E17E00065ED55 /* KSYNameSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD461D2E17E00065ED55 /* KSYNameSlider.m */; };
 		06FBBD691D2E17E00065ED55 /* KSYUIVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD481D2E17E00065ED55 /* KSYUIVC.m */; };
@@ -47,6 +46,8 @@
 /* Begin PBXFileReference section */
 		060AE9C31D4653010064DD65 /* KSYFileSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYFileSelector.h; sourceTree = "<group>"; };
 		060AE9C41D4653010064DD65 /* KSYFileSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYFileSelector.m; sourceTree = "<group>"; };
+		064980231DAFB8AB00AA5A0A /* KSYAudioCtrlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYAudioCtrlView.m; sourceTree = "<group>"; };
+		064980241DAFB8AB00AA5A0A /* KSYAudioCtrlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYAudioCtrlView.h; sourceTree = "<group>"; };
 		065E7CF31D66E60F00EC8D45 /* KSYReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYReachability.m; sourceTree = "<group>"; };
 		065E7CF41D66E60F00EC8D45 /* KSYReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYReachability.h; sourceTree = "<group>"; };
 		069E42881C10357D00392B5E /* KSYLiveVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYLiveVC.m; sourceTree = "<group>"; };
@@ -76,8 +77,6 @@
 		06CB3A641D813EE70017378F /* KSYStateLableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYStateLableView.m; sourceTree = "<group>"; };
 		06CB3A651D813EE70017378F /* KSYStateLableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYStateLableView.h; sourceTree = "<group>"; };
 		06E742AB1D90FFD600C3E780 /* KSYGPUResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = KSYGPUResource.bundle; path = ../resource/KSYGPUResource.bundle; sourceTree = "<group>"; };
-		06FBBD281D2E17E00065ED55 /* KSYAudioMixerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYAudioMixerView.h; sourceTree = "<group>"; };
-		06FBBD291D2E17E00065ED55 /* KSYAudioMixerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYAudioMixerView.m; sourceTree = "<group>"; };
 		06FBBD2A1D2E17E00065ED55 /* KSYBgmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYBgmView.h; sourceTree = "<group>"; };
 		06FBBD2B1D2E17E00065ED55 /* KSYBgmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYBgmView.m; sourceTree = "<group>"; };
 		06FBBD2E1D2E17E00065ED55 /* KSYCtrlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYCtrlView.h; sourceTree = "<group>"; };
@@ -90,8 +89,6 @@
 		06FBBD3B1D2E17E00065ED55 /* KSYPresetCfgVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYPresetCfgVC.m; sourceTree = "<group>"; };
 		06FBBD3C1D2E17E00065ED55 /* KSYPresetCfgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYPresetCfgView.h; sourceTree = "<group>"; };
 		06FBBD3D1D2E17E00065ED55 /* KSYPresetCfgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYPresetCfgView.m; sourceTree = "<group>"; };
-		06FBBD3E1D2E17E00065ED55 /* KSYReverbView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYReverbView.h; sourceTree = "<group>"; };
-		06FBBD3F1D2E17E00065ED55 /* KSYReverbView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYReverbView.m; sourceTree = "<group>"; };
 		06FBBD421D2E17E00065ED55 /* KSYStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYStreamerVC.h; sourceTree = "<group>"; };
 		06FBBD431D2E17E00065ED55 /* KSYStreamerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYStreamerVC.m; sourceTree = "<group>"; };
 		06FBBD451D2E17E00065ED55 /* KSYNameSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYNameSlider.h; sourceTree = "<group>"; };
@@ -245,6 +242,8 @@
 		06FBBD8E1D2E23110065ED55 /* subviews */ = {
 			isa = PBXGroup;
 			children = (
+				064980231DAFB8AB00AA5A0A /* KSYAudioCtrlView.m */,
+				064980241DAFB8AB00AA5A0A /* KSYAudioCtrlView.h */,
 				06CB3A651D813EE70017378F /* KSYStateLableView.h */,
 				06CB3A641D813EE70017378F /* KSYStateLableView.m */,
 				F296EBFE1D3527FF001C4120 /* KSYMiscView.h */,
@@ -253,14 +252,10 @@
 				06FBBD391D2E17E00065ED55 /* KSYPipView.m */,
 				06FBBD2E1D2E17E00065ED55 /* KSYCtrlView.h */,
 				06FBBD2F1D2E17E00065ED55 /* KSYCtrlView.m */,
-				06FBBD281D2E17E00065ED55 /* KSYAudioMixerView.h */,
-				06FBBD291D2E17E00065ED55 /* KSYAudioMixerView.m */,
 				06FBBD2A1D2E17E00065ED55 /* KSYBgmView.h */,
 				06FBBD2B1D2E17E00065ED55 /* KSYBgmView.m */,
 				06FBBD301D2E17E00065ED55 /* KSYFilterView.h */,
 				06FBBD311D2E17E00065ED55 /* KSYFilterView.m */,
-				06FBBD3E1D2E17E00065ED55 /* KSYReverbView.h */,
-				06FBBD3F1D2E17E00065ED55 /* KSYReverbView.m */,
 			);
 			name = subviews;
 			sourceTree = "<group>";
@@ -348,6 +343,7 @@
 				06B2B1AC1BE8F0D900E0CC85 /* AppDelegate.m in Sources */,
 				06FBBD691D2E17E00065ED55 /* KSYUIVC.m in Sources */,
 				069E428A1C10357D00392B5E /* KSYLiveVC.m in Sources */,
+				064980251DAFB8AB00AA5A0A /* KSYAudioCtrlView.m in Sources */,
 				06FBBD511D2E17E00065ED55 /* KSYCtrlView.m in Sources */,
 				95B4A3F11CBF6CC700CB6804 /* QRViewController.m in Sources */,
 				06FBBD531D2E17E00065ED55 /* KSYFilterView.m in Sources */,
@@ -360,8 +356,6 @@
 				06FBBD671D2E17E00065ED55 /* KSYNameSlider.m in Sources */,
 				06B2B1A91BE8F0D900E0CC85 /* main.m in Sources */,
 				95B4A3EF1CBF6CC700CB6804 /* KSYSQLite.m in Sources */,
-				06FBBD4B1D2E17E00065ED55 /* KSYAudioMixerView.m in Sources */,
-				06FBBD611D2E17E00065ED55 /* KSYReverbView.m in Sources */,
 				065E7CF51D66E60F00EC8D45 /* KSYReachability.m in Sources */,
 				06FBBD5D1D2E17E00065ED55 /* KSYPresetCfgVC.m in Sources */,
 				060AE9C51D4653010064DD65 /* KSYFileSelector.m in Sources */,

@@ -16,8 +16,7 @@
 #import "KSYFilterView.h"
 #import "KSYBgmView.h"
 #import "KSYPipView.h"
-#import "KSYAudioMixerView.h"
-#import "KSYReverbView.h"
+#import "KSYAudioCtrlView.h"
 #import "KSYMiscView.h"
 #import "KSYStateLableView.h"
 #import "KSYGPUStreamerKit.h"
@@ -46,13 +45,12 @@
 #pragma mark - sub views
 /// 摄像头的基本控制视图
 @property (nonatomic, readonly) KSYCtrlView   * ctrlView;
-/// 视频滤镜相关参数配置页面
-@property (nonatomic, readonly) KSYFilterView * ksyFilterView;
 /// 背景音乐配置页面
 @property (nonatomic, readonly) KSYBgmView    * ksyBgmView;
-/// 混音配置页面
-@property (nonatomic, readonly) KSYAudioMixerView * audioMixerView;
-@property (nonatomic, readonly) KSYReverbView *reverbView;
+/// 视频滤镜相关参数配置页面
+@property (nonatomic, readonly) KSYFilterView * ksyFilterView;
+/// 声音配置页面
+@property (nonatomic, readonly) KSYAudioCtrlView * audioView;
 /// 其他功能配置页面
 @property (nonatomic, readonly) KSYMiscView   *miscView;
 
