@@ -41,28 +41,28 @@
 ## 二. 推流端大事记  
 ### 2.1 2016年发布大事记  
 1. 2016.02.25 上行网络自适应上线；
-2. 2016.03.26 [内建美颜](https://github.com/ksvc/KSYLive_iOS/wiki/filter)上线；
-3. 2016.04.11 支持四种混响模式的[美声](https://github.com/ksvc/KSYLive_iOS/wiki/reverb)上线；
-4. 2016.05.18 [耳返](https://github.com/ksvc/KSYLive_iOS/wiki/micMonitor)上线；
-5. 2016.06.12 [画中画](https://github.com/ksvc/KSYLive_iOS/wiki/pip)推流上线；
-6. 2016.06.27 支持短视频录制；
-7. 2016.08.04 [两人连麦](https://github.com/ksvc/KSYLive_iOS/wiki/rtc)内测；
-8. 2016.08.24 支持[纯音频](https://github.com/ksvc/KSYLive_iOS/wiki/pureAudioStream)推流，支持[后台推流](https://github.com/ksvc/KSYLive_iOS/wiki/backgroupStream)，支持视频动态发送开关；
-9. 2016.08.31 [场景编码](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)，有效提升直播画质；
-10. 2016.09.07 内建[新美颜](https://github.com/ksvc/KSYLive_iOS/wiki/filter)上线； 
-11. 2016.09.12 [kit类顶层代码开源](https://github.com/ksvc/KSYLive_iOS/tree/master/source), podspec 中将集成framework改为集成静态库
-12. 2016.09.21 特效滤镜上线;
-13. 2016.09.26 [双人连麦](https://github.com/ksvc/KSYRTCLive_iOS/releases/tag/v1.8.5)稳定版本上线;
-14. 2016.09.28 视频硬编[性能编码模式](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)上线。音频AAC硬编功能上线。网络自适应场景上线；
+1. 2016.03.26 [内建美颜](https://github.com/ksvc/KSYLive_iOS/wiki/filter)上线；
+1. 2016.04.11 支持四种混响模式的[美声](https://github.com/ksvc/KSYLive_iOS/wiki/reverb)上线；
+1. 2016.05.18 [耳返](https://github.com/ksvc/KSYLive_iOS/wiki/micMonitor)上线；
+1. 2016.06.12 [画中画](https://github.com/ksvc/KSYLive_iOS/wiki/pip)推流上线；
+1. 2016.06.27 支持短视频录制；
+1. 2016.08.04 [两人连麦](https://github.com/ksvc/KSYLive_iOS/wiki/rtc)内测；
+1. 2016.08.24 支持[纯音频](https://github.com/ksvc/KSYLive_iOS/wiki/pureAudioStream)推流，支持[后台推流](https://github.com/ksvc/KSYLive_iOS/wiki/backgroupStream)，支持视频动态发送开关；
+1. 2016.08.31 [场景编码](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)，有效提升直播画质；
+1. 2016.09.07 内建[新美颜](https://github.com/ksvc/KSYLive_iOS/wiki/filter)上线； 
+1. 2016.09.12 [kit类顶层代码开源](https://github.com/ksvc/KSYLive_iOS/tree/master/source), podspec 中将集成framework改为集成静态库
+1. 2016.09.21 特效滤镜上线;
+1. 2016.09.26 [双人连麦](https://github.com/ksvc/KSYRTCLive_iOS/releases/tag/v1.8.5)稳定版本上线;
+1. 2016.09.28 视频硬编[性能编码模式](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)上线。音频AAC硬编功能上线。网络自适应场景上线；
+1. 2016.10.19 视频采集支持横竖屏动态变化；
+1. 2016.10.20 支持replaykit录屏推流；
 
 ### 2.2 近期工作  
-1. 2016.10.xx 横竖屏推流功能上线；
-2. 2016.10.xx 录屏推流上线;
-3. 2016.10.xx 人脸贴纸功能上线;
-4. 2016.10.xx AR直播上线;
-5. 2016.10.xx 应用内录屏推流；
-6. 2016.10.xx 支持录屏、美颜、动态贴纸的短视频(mp4格式)录制上线；
-7. 2016.10.xx 无人机直播上线；
+1. 2016.10.xx 人脸贴纸功能上线;
+1. 2016.10.xx AR直播上线;
+1. 2016.10.xx 应用内录屏推流；
+1. 2016.10.xx 支持录屏、美颜、动态贴纸的短视频(mp4格式)录制上线；
+1. 2016.10.xx 无人机直播上线；
 
 ## 三. SDK集成方法介绍   
 ### 3.1 系统要求    
