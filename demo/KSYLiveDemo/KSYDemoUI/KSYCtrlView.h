@@ -36,6 +36,6 @@
 @property UIButton *backBtn;
 
 
-- (void) showSubMenuView: (UIView*) view;
+- (void) showSubMenuView: (KSYUIView*) view;
 
 @end

@@ -18,6 +18,7 @@
 @interface KSYLiveVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>{
     UITextField     *_textFiled;
     UIButton        *_buttonQR;
+    UIButton        *_buttonClose;
     UITableView     *_ctrTableView;
     UITableView     *_addressTable;
     NSArray         *_controllers;
@@ -57,32 +58,6 @@
     text.layer.cornerRadius  = 2;
     return text;
 }
-- (UITableView *)addAddressTable{
-    UITableView *table      = [self addTableView];
-    return table;
-}
-- (UIBarButtonItem *)addBarButtonItemWithTitle:(NSString *)title action:(SEL)action{
-    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 80, 30)];
-    [button setTitle:title forState:UIControlStateNormal];
-    [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
-    button.titleLabel.font = [UIFont systemFontOfSize:14];
-    button.layer.masksToBounds = YES;
-    [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    button.layer.masksToBounds = YES;
-    button.layer.borderColor   = [UIColor blackColor].CGColor;
-    button.layer.borderWidth   = 1;
-    button.layer.cornerRadius  = 5;
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithCustomView:button];
-    return barButton;
-}
-- (void)addLeftNavigationBarButton{
-    self.navigationItem.leftBarButtonItem = [self addBarButtonItemWithTitle:@"关闭键盘" action:@selector(closeKeyBoard)];
-}
-- (void)addRightNavigationBarButton{
-    
-    self.navigationItem.rightBarButtonItem = [self addBarButtonItemWithTitle:@"扫描二维码" action:@selector(scanQR)];
-    
-}
 - (UITableView *)addTableView{
     UITableView *teble = [[UITableView alloc]init];
     teble.layer.masksToBounds = YES;
@@ -93,6 +68,19 @@
     [self.view addSubview:teble];
     return teble;
 }
+
+- (UIButton*)addButton:(NSString*)title{
+    UIButton * button;
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button setTitle: title forState: UIControlStateNormal];
+    button.backgroundColor = [UIColor lightGrayColor];
+    [self.view addSubview:button];
+    [button addTarget:self
+               action:@selector(onBtn:)
+     forControlEvents:UIControlEventTouchUpInside];
+    return button;
+}
+
 - (void)initVariable{
     _width  = self.view.frame.size.width;
     _height = self.view.frame.size.height;
@@ -106,9 +94,15 @@
 
 
 - (void)initFrame{
+    CGFloat textY   = [[UIApplication sharedApplication] statusBarFrame].size.height;
+    CGFloat btnH    = 30;
+    CGFloat btnW    = 80;
+    _buttonQR.frame = CGRectMake(20, textY+5, btnW, btnH);
+    _buttonClose.frame = CGRectMake(_width-20-btnW, textY+5, btnW, btnH);
+    
+    textY += (btnH+10);
     
     CGFloat textX   = 1;
-    CGFloat textY   = CGRectGetMaxY(self.navigationController.navigationBar.frame);
     CGFloat textWdh = _width-2;
     CGFloat textHgh = 30;
     CGRect textRect = CGRectMake(textX, textY, textWdh, textHgh);
@@ -128,14 +122,21 @@
 }
 - (void)initLiveVCUI{
     _textFiled    = [self addTextField];
-    _addressTable = [self addAddressTable];
+    _addressTable = [self addTableView];
     _ctrTableView = [self addTableView];
-    [self addLeftNavigationBarButton];
-    [self addRightNavigationBarButton];
+    _buttonQR     = [self addButton:@"扫描二维码"];
+    _buttonClose  = [self addButton:@"关闭键盘"];
     [self initFrame];
-    //    [self myReloadData];
 }
 
+- (IBAction)onBtn:(id)sender {
+    if (sender == _buttonQR){
+        [self scanQR];
+    }
+    else if (sender == _buttonClose){
+        [self closeKeyBoard];
+    }
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     if (tableView == _ctrTableView) {
@@ -231,18 +232,14 @@
 }
 - (void)closeKeyBoard{
     [_textFiled resignFirstResponder];
-    //    [[KSYSQLite sharedInstance] insertAddress:_textFiled.text];
 }
 - (void)scanQR{
-    
     __weak __typeof(self)wself = self;
-    
     QRViewController *QRview = [[QRViewController alloc]init];
     QRview.getQrCode = ^(NSString *stringQR){
         [wself showAddress:stringQR];
     };
-    
-    [self.navigationController pushViewController:QRview animated:YES];
+    [self presentViewController:QRview animated:YES completion:nil];
 }
 
 - (void)showAddress:(NSString *)str{

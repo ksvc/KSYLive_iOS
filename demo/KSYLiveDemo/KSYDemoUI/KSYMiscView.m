@@ -23,6 +23,12 @@
     _btn0  = [self addButton:@"str截图为文件"];
     _btn1  = [self addButton:@"str截图为UIImage"];
     _btn2  = [self addButton:@"filter截图"];
+    
+    _btn3    = [self addButton:@"选择Logo图片"];
+    
+    _layerSeg = [self addSegCtrlWithItems:@[ @"logo", @"文字"]];
+    _alphaSl  = [self addSliderName:@"alpha" From:0.0 To:1.0 Init:1.0];
+    
     _lblScene      = [self addLable:@"直播场景"];
     _liveSceneSeg  = [self addSegCtrlWithItems:@[ @"默认", @"秀场"]];
     _lblPerf       = [self addLable:@"编码性能"];
@@ -40,6 +46,8 @@
            andView:_liveSceneSeg];
     [self putLable:_lblPerf
            andView:_vEncPerfSeg];
+    [self putRow1:_btn3];
+    [self putNarrow:_layerSeg andWide:_alphaSl];
 }
 
 @synthesize liveScene = _liveScene;

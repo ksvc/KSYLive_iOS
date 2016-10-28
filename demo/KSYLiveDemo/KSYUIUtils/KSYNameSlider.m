@@ -41,21 +41,33 @@
     _slider.frame = CGRectMake(wdtN, 0, wdtS, hgt);
     _valueL.frame = CGRectMake(wdtN+wdtS, 0,wdtV, hgt);
 }
-
-//UIControlEventValueChanged
-- (IBAction)onSlider:(id)sender {
+- (void) updateValue {
     if (_slider.maximumValue > 1){
         int val = (int)_slider.value;
         _valueL.text = [NSString stringWithFormat:@"%d", val];
     }
-    if (_slider.maximumValue <= 1.0){
+    else if (_slider.maximumValue <= 1.0){
         float val = _slider.value;
         _valueL.text = [NSString stringWithFormat:@"%0.2f", val];
     }
     [self layoutSlider];
+    _normalValue = (_slider.value - _slider.minimumValue) / _slider.maximumValue;
+}
+
+//UIControlEventValueChanged
+- (IBAction)onSlider:(id)sender {
+    [self updateValue];
     if (_onSliderBlock) {
         _onSliderBlock(self);
     }
-    _normalValue = (_slider.value - _slider.minimumValue) / _slider.maximumValue;
+}
+
+@synthesize normalValue = _normalValue;
+- (float)normalValue{
+    return _normalValue;
+}
+- (void)setNormalValue:(float )val{
+    _slider.value = val * _slider.maximumValue + _slider.minimumValue;
+    [self updateValue];
 }
 @end

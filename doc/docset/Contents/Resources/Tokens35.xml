@@ -34,6 +34,16 @@
             <NodeRef refid="35"/>
         </Token>
         
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBWEstMode_Disable</TokenIdentifier>
+            <Abstract type="html">禁用网络自适应网络调整</Abstract>
+            <Declaration>KSYBWEstMode_Disable</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="35"/>
+        </Token>
+        
         
 	</File>
 </Tokens>

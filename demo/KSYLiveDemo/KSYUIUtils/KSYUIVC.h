@@ -14,6 +14,9 @@
  主要增加一些工具函数
  */
 
+#define SYSTEM_VERSION_GE_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
+
 @interface KSYUIVC : UIViewController
 
 // 定时更新调试信息 // 每秒重复调用

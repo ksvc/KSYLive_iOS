@@ -87,11 +87,6 @@
  @discussion 音频目标编码码率 (比如48,96,128等)
  */
 @property (nonatomic, assign) int          audiokBPS;   // kbit/s of audio
-/**
- @abstract   启用自动调整码率 默认开启
- @discussion 自动根据网络状况调整码率,开始推流前设置有效
- */
-@property (nonatomic, assign) BOOL         enAutoApplyEstimateBW;
 
 /**
 @abstract   带宽估计模式
@@ -252,7 +247,7 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 
 #pragma mark - Status property
 /**
- @abstract   当前推流的事件ID
+ @abstract   查询当前推流的事件ID
  @discussion md5(hostURL+timestamp) 对本次推流活动的标识
  @discussion timestamp 为建立连接时的事件戳
  
@@ -264,10 +259,10 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
  @abstract   查询当前是否处于推流状态 (建立连接中, 或连接中)
  @see
  */
--(BOOL) isStreaming;
+- (BOOL) isStreaming;
 
 /**
- @abstract   当前编码的视频码率大小（每秒更新）
+ @abstract   查询当前编码的视频码率大小（每秒更新）
  @discussion 该码率为编码器产生的视频码率大小，单位为kbps
  
  @see videoMaxBitrate
@@ -275,7 +270,7 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 @property (nonatomic, readonly) double encodeVKbps;
 
 /**
- @abstract   当前编码的音频码率大小（每秒更新）
+ @abstract   查询当前编码的音频码率大小（每秒更新）
  @discussion 该码率为编码器产生的音频码率大小，单位为kbps
  
  @see audiokBPS
@@ -283,13 +278,13 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 @property (nonatomic, readonly) double encodeAKbps;
 
 /**
- @abstract   获取本次推流发送的流量大小
+ @abstract   查询本次推流发送的流量大小
  @discussion 从开始推流到现在，发送出去的数据字节数，单位为KByte
  */
 @property (nonatomic, readonly) int uploadedKByte;
 
 /**
- @abstract   获取当前编码的平均视频帧率
+ @abstract   查询当前编码的平均视频帧率
  @discussion 采集设备的输出帧率为videoFPS，约等于编码的目标帧率
  @discussion 编码的视频帧率不会高于采集帧率，但是当CPU资源不足时，编码帧率会低于采集帧率
  
@@ -298,25 +293,26 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 @property (nonatomic, readonly) double encodingFPS;
 
 /**
- @abstract   获取本次推流编码的视频总帧数
+ @abstract   查询本次推流编码的视频总帧数
  @discussion 从开始推流到现在，编码过的视频总帧数
  
  */
 @property (nonatomic, readonly) int encodedFrames;
 
 /**
- @abstract   获取本次推流发送的丢帧数量
+ @abstract   查询本次推流发送的丢帧数量
  @discussion 这里是指编码后，由于网络发送阻塞导致丢弃的帧数
  
  */
 @property (nonatomic, readonly) int droppedVideoFrames;
 
 /**
- @abstract 当前推流的rtmp服务器的主机IP
+ @abstract 查询当前推流的rtmp服务器的主机IP
  @discussion 开始推流之后获取才为有效IP, 之前为空字符串
  
  */
 @property (atomic, readonly) NSString* rtmpHostIP;
+
 
 #pragma mark - logblock
 /**

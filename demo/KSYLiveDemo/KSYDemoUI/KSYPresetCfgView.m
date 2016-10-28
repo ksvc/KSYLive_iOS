@@ -52,7 +52,7 @@
         _streamResoUI = [self addSegCtrlWithItems:@[@"360p",@"540p",@"720p",@"480p"]];
         _streamResoUI.selectedSegmentIndex = 3; // default to 480
     }
-    _lblCameraPosUI = [self addLable:@"选取摄像头"];
+    _lblCameraPosUI = [self addLable:@"摄像头"];
     _cameraPosUI    = [self addSegCtrlWithItems:@[@"前置",@"后置"]];
     _lblGpuPixFmtUI = [self addLable:@"像素格式"];
     _gpuPixFmtUI  = [self addSegCtrlWithItems:@[@"rgba",@"yuva"]];
@@ -62,11 +62,11 @@
     _lblAudioCodecUI = [self addLable:@"音频编码器"];
     _audioCodecUI = [self addSegCtrlWithItems:@[@"软AAC-HE",@"软AAC-LC",@"硬AAC-HE",@"硬AAC-LC"]];
     _videoKbpsUI  = [self addSliderName:@"视频码率kbps" From:100.0 To:1500.0 Init:800.0];
-    _lblAudioKbpsUI= [self addLable:@"音频kbps"];
+    _lblAudioKbpsUI= [self addLable:@"音频码率kbps"];
     _audioKbpsUI  = [self addSegCtrlWithItems:@[@"12",@"24",@"32", @"48", @"64", @"128"]];
     _audioKbpsUI.selectedSegmentIndex = 2;
     _lblBwEstMode = [self addLable:@"带宽估计模式"];
-    _bwEstModeUI = [self addSegCtrlWithItems:@[@"默认", @"流畅"]];
+    _bwEstModeUI = [self addSegCtrlWithItems:@[@"默认", @"流畅", @"关闭"]];
     _demoLable    = [self addLable:@"选择demo开始"];
     _demoLable.textAlignment = NSTextAlignmentCenter;
     return self;
@@ -77,9 +77,11 @@
     if (self.width > self.height){
         self.winWdt = self.width/2;
     }
-    self.btnH = 35*2;
+    int rowHight = MIN(30, self.height/14 );
+    rowHight  = MAX(rowHight, 20);
+    self.btnH = rowHight*2;
     [self putSlider: _hostUrlUI andSwitch: _doneBtn];
-    self.btnH=35;
+    self.btnH = rowHight;
     [self putLable:_lblResolutionUI andView:_resolutionUI];
     [self putLable:_lblStreamResoUI andView:_streamResoUI];
     //[self putLable:_lblCameraPosUI  andView:_cameraPosUI];
@@ -212,6 +214,8 @@
             return  KSYBWEstMode_Default;
         case 1:
             return  KSYBWEstMode_Negtive;
+        case 2:
+            return  KSYBWEstMode_Disable;
         default:
             return  KSYBWEstMode_Default;
     }

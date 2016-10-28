@@ -10,7 +10,7 @@
 #import "KSYStateLableView.h"
 
 @interface KSYCtrlView () {
-    UIView * _curSubMenuView;
+    KSYUIView * _curSubMenuView;
 }
 
 @end
@@ -61,6 +61,10 @@
     [self putRow3:_btnCapture
               and:_lblNetwork
               and:_btnStream];
+    if (_curSubMenuView) {
+        _curSubMenuView.frame = _lblStat.frame;
+        [_curSubMenuView layoutUI];
+    }
 }
 
 - (void)hideMenuBtn: (BOOL) bHide {
@@ -78,10 +82,11 @@
     }
     [self hideMenuBtn:NO];
 }
-- (void) showSubMenuView: (UIView*) view {
+- (void) showSubMenuView: (KSYUIView*) view {
     _curSubMenuView = view;
     [self hideMenuBtn:YES];
     view.hidden = NO;
     view.frame = _lblStat.frame;
+    [view layoutUI];
 }
 @end

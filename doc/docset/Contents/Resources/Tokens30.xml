@@ -424,42 +424,6 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setEnAutoApplyEstimateBW:</TokenIdentifier>
-			<Abstract type="html">启用自动调整码率 默认开启</Abstract>
-			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL enAutoApplyEstimateBW</Declaration>
-			
-			
-			<Anchor>//api/name/enAutoApplyEstimateBW</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/enAutoApplyEstimateBW</TokenIdentifier>
-			<Abstract type="html">启用自动调整码率 默认开启</Abstract>
-			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL enAutoApplyEstimateBW</Declaration>
-			
-			
-			<Anchor>//api/name/enAutoApplyEstimateBW</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/enAutoApplyEstimateBW</TokenIdentifier>
-			<Abstract type="html">启用自动调整码率 默认开启</Abstract>
-			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL enAutoApplyEstimateBW</Declaration>
-			
-			
-			<Anchor>//api/name/enAutoApplyEstimateBW</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setBwEstimateMode:</TokenIdentifier>
 			<Abstract type="html">带宽估计模式</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
@@ -939,7 +903,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setStreamID:</TokenIdentifier>
-			<Abstract type="html">当前推流的事件ID</Abstract>
+			<Abstract type="html">查询当前推流的事件ID</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 	<RelatedTokens>
@@ -956,7 +920,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/streamID</TokenIdentifier>
-			<Abstract type="html">当前推流的事件ID</Abstract>
+			<Abstract type="html">查询当前推流的事件ID</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 	<RelatedTokens>
@@ -973,7 +937,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/streamID</TokenIdentifier>
-			<Abstract type="html">当前推流的事件ID</Abstract>
+			<Abstract type="html">查询当前推流的事件ID</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 	<RelatedTokens>
@@ -1003,7 +967,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setEncodeVKbps:</TokenIdentifier>
-			<Abstract type="html">当前编码的视频码率大小（每秒更新）</Abstract>
+			<Abstract type="html">查询当前编码的视频码率大小（每秒更新）</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 	<RelatedTokens>
@@ -1020,7 +984,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/encodeVKbps</TokenIdentifier>
-			<Abstract type="html">当前编码的视频码率大小（每秒更新）</Abstract>
+			<Abstract type="html">查询当前编码的视频码率大小（每秒更新）</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 	<RelatedTokens>
@@ -1037,7 +1001,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/encodeVKbps</TokenIdentifier>
-			<Abstract type="html">当前编码的视频码率大小（每秒更新）</Abstract>
+			<Abstract type="html">查询当前编码的视频码率大小（每秒更新）</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 	<RelatedTokens>
@@ -1054,7 +1018,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setEncodeAKbps:</TokenIdentifier>
-			<Abstract type="html">当前编码的音频码率大小（每秒更新）</Abstract>
+			<Abstract type="html">查询当前编码的音频码率大小（每秒更新）</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 	<RelatedTokens>
@@ -1071,7 +1035,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/encodeAKbps</TokenIdentifier>
-			<Abstract type="html">当前编码的音频码率大小（每秒更新）</Abstract>
+			<Abstract type="html">查询当前编码的音频码率大小（每秒更新）</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 	<RelatedTokens>
@@ -1088,7 +1052,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/encodeAKbps</TokenIdentifier>
-			<Abstract type="html">当前编码的音频码率大小（每秒更新）</Abstract>
+			<Abstract type="html">查询当前编码的音频码率大小（每秒更新）</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 	<RelatedTokens>
@@ -1105,7 +1069,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setUploadedKByte:</TokenIdentifier>
-			<Abstract type="html">获取本次推流发送的流量大小</Abstract>
+			<Abstract type="html">查询本次推流发送的流量大小</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) int uploadedKByte</Declaration>
@@ -1117,7 +1081,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/uploadedKByte</TokenIdentifier>
-			<Abstract type="html">获取本次推流发送的流量大小</Abstract>
+			<Abstract type="html">查询本次推流发送的流量大小</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) int uploadedKByte</Declaration>
@@ -1129,7 +1093,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/uploadedKByte</TokenIdentifier>
-			<Abstract type="html">获取本次推流发送的流量大小</Abstract>
+			<Abstract type="html">查询本次推流发送的流量大小</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) int uploadedKByte</Declaration>
@@ -1141,7 +1105,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setEncodingFPS:</TokenIdentifier>
-			<Abstract type="html">获取当前编码的平均视频帧率</Abstract>
+			<Abstract type="html">查询当前编码的平均视频帧率</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 	<RelatedTokens>
@@ -1158,7 +1122,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/encodingFPS</TokenIdentifier>
-			<Abstract type="html">获取当前编码的平均视频帧率</Abstract>
+			<Abstract type="html">查询当前编码的平均视频帧率</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 	<RelatedTokens>
@@ -1175,7 +1139,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/encodingFPS</TokenIdentifier>
-			<Abstract type="html">获取当前编码的平均视频帧率</Abstract>
+			<Abstract type="html">查询当前编码的平均视频帧率</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 	<RelatedTokens>
@@ -1192,7 +1156,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setEncodedFrames:</TokenIdentifier>
-			<Abstract type="html">获取本次推流编码的视频总帧数</Abstract>
+			<Abstract type="html">查询本次推流编码的视频总帧数</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) int encodedFrames</Declaration>
@@ -1204,7 +1168,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/encodedFrames</TokenIdentifier>
-			<Abstract type="html">获取本次推流编码的视频总帧数</Abstract>
+			<Abstract type="html">查询本次推流编码的视频总帧数</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) int encodedFrames</Declaration>
@@ -1216,7 +1180,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/encodedFrames</TokenIdentifier>
-			<Abstract type="html">获取本次推流编码的视频总帧数</Abstract>
+			<Abstract type="html">查询本次推流编码的视频总帧数</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) int encodedFrames</Declaration>
@@ -1228,7 +1192,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setDroppedVideoFrames:</TokenIdentifier>
-			<Abstract type="html">获取本次推流发送的丢帧数量</Abstract>
+			<Abstract type="html">查询本次推流发送的丢帧数量</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) int droppedVideoFrames</Declaration>
@@ -1240,7 +1204,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/droppedVideoFrames</TokenIdentifier>
-			<Abstract type="html">获取本次推流发送的丢帧数量</Abstract>
+			<Abstract type="html">查询本次推流发送的丢帧数量</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) int droppedVideoFrames</Declaration>
@@ -1252,7 +1216,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/droppedVideoFrames</TokenIdentifier>
-			<Abstract type="html">获取本次推流发送的丢帧数量</Abstract>
+			<Abstract type="html">查询本次推流发送的丢帧数量</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) int droppedVideoFrames</Declaration>
@@ -1264,7 +1228,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setRtmpHostIP:</TokenIdentifier>
-			<Abstract type="html">当前推流的rtmp服务器的主机IP</Abstract>
+			<Abstract type="html">查询当前推流的rtmp服务器的主机IP</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 			<Declaration>@property (atomic, readonly) NSString *rtmpHostIP</Declaration>
@@ -1276,7 +1240,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/rtmpHostIP</TokenIdentifier>
-			<Abstract type="html">当前推流的rtmp服务器的主机IP</Abstract>
+			<Abstract type="html">查询当前推流的rtmp服务器的主机IP</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 			<Declaration>@property (atomic, readonly) NSString *rtmpHostIP</Declaration>
@@ -1288,7 +1252,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/rtmpHostIP</TokenIdentifier>
-			<Abstract type="html">当前推流的rtmp服务器的主机IP</Abstract>
+			<Abstract type="html">查询当前推流的rtmp服务器的主机IP</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 			<Declaration>@property (atomic, readonly) NSString *rtmpHostIP</Declaration>

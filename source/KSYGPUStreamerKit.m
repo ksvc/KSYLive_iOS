@@ -91,9 +91,9 @@
     _textPic = nil;
     _textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 360, 640)];
     _textLabel.textColor = [UIColor whiteColor];
-    _textLabel.font = [UIFont fontWithName:@"Courier-Bold" size:20.0];
+    _textLabel.font = [UIFont fontWithName:@"Courier" size:20.0];
     _textLabel.backgroundColor = [UIColor clearColor];
-    _textLabel.alpha = 0.9;
+    _textLabel.alpha = 1.0;
     
     /////2. 数据出口 ///////////
     // get pic data from gpu filter
@@ -332,7 +332,10 @@
         // check if preset ok
         _capPreset = _vCapDev.captureSessionPreset;
         [self  updateDimension];
-        //连接
+        // 旋转
+        [self rotatePreview ];
+        [self rotateStream ];
+        // 连接
         [self setupFilter:_filter];
         // 开始预览
         [_vCapDev startCameraCapture];
@@ -542,37 +545,14 @@
 }
 
 #pragma mark - utils
--(UIImage *)imageFromUILable:(UILabel *)labal {
-    UIFont *font =labal.font;
-    NSDictionary *textAttributes =
-        @{NSFontAttributeName           : font,
-          NSForegroundColorAttributeName: labal.textColor,
-          NSBackgroundColorAttributeName: labal.backgroundColor};
-    CGSize size = [labal.text sizeWithAttributes:textAttributes];
-    UIGraphicsBeginImageContextWithOptions(size,NO,0.0);
-    CGRect drawRect = CGRectMake(0.0, 0.0, 200.0, 100.0);
-    [labal.text drawInRect:drawRect withAttributes:textAttributes];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+-(UIImage *)imageFromUIView:(UIView *)v {
+    CGSize s = v.frame.size;
+    UIGraphicsBeginImageContextWithOptions(s, NO, 0.0);
+    [v.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage*image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return image;
 }
-
-- (UIImage *)resizeImage:(UIImage*)image newSize:(CGSize)newSize {
-    CGRect newRect = CGRectIntegral(CGRectMake(0, 0, newSize.width, newSize.height));
-    CGImageRef imageRef = image.CGImage;
-    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
-    CGAffineTransform flipVertical = CGAffineTransformMake(1, 0, 0, -1, 0, newSize.height);
-    CGContextConcatCTM(context, flipVertical);
-    CGContextDrawImage(context, newRect, imageRef);
-    CGImageRef newImageRef = CGBitmapContextCreateImage(context);
-    UIImage *newImage = [UIImage imageWithCGImage:newImageRef];
-    CGImageRelease(newImageRef);
-    UIGraphicsEndImageContext();
-    return newImage;
-}
-
 #pragma mark - pictures & logo
 @synthesize logoPic = _logoPic;
 -(void) setLogoPic:(GPUImagePicture *)pic{
@@ -622,7 +602,8 @@
         [_vStreamMixer  clearPicOfLayer:_logoPicLayer];
         return;
     }
-    UIImage * img = [self imageFromUILable:_textLabel];
+    [_textLabel sizeToFit];
+    UIImage * img = [self imageFromUIView:_textLabel];
     _textPic = [[GPUImagePicture alloc] initWithImage:img];
     [self addPic:_textPic ToMixerAt:_logoTxtLayer];
     [_textPic processImage];
@@ -707,19 +688,22 @@ M_PI_2*1,M_PI_2*3, M_PI_2*2, M_PI_2*0,
  @discussion 采集到的图像的朝向还是和启动时的朝向一致
  */
 - (void) rotatePreview {
-    UIView* view = [_preview superview];
-    UIInterfaceOrientation ori = [[UIApplication sharedApplication] statusBarOrientation];
-    if (_videoOrientation == ori) {
-        _preview.transform = CGAffineTransformIdentity;
-        _previewRotateAng = 0;
-    }
-    else {
-        int capOri = UIOrienToIdx(_videoOrientation);
-        int appOri = UIOrienToIdx(ori);
-        _previewRotateAng = KSYRotateAngles[ capOri ][ appOri ];
-        _preview.transform = CGAffineTransformMakeRotation(_previewRotateAng);
-    }
-    _preview.center = view.center;
+    dispatch_async(dispatch_get_main_queue(), ^(){
+        UIView* view = [_preview superview];
+        UIInterfaceOrientation ori = [[UIApplication sharedApplication] statusBarOrientation];
+        if (_videoOrientation == ori || view == nil || _vCapDev.isRunning == NO ) {
+            _preview.transform = CGAffineTransformIdentity;
+            _previewRotateAng = 0;
+            _preview.frame = view.bounds;
+        }
+        else {
+            int capOri = UIOrienToIdx(_videoOrientation);
+            int appOri = UIOrienToIdx(ori);
+            _previewRotateAng = KSYRotateAngles[ capOri ][ appOri ];
+            _preview.transform = CGAffineTransformMakeRotation(_previewRotateAng);
+        }
+        _preview.center = view.center;
+    });
 }
 
 const static GPUImageRotationMode KSYRotateMode [4] [4] = {
@@ -733,7 +717,7 @@ kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRota
  */
 - (void) rotateStream {
     UIInterfaceOrientation ori = [[UIApplication sharedApplication] statusBarOrientation];
-    if (_videoOrientation == ori) {
+    if (_videoOrientation == ori || _vCapDev.isRunning == NO) {
         [_gpuToStr setInputRotation:kGPUImageNoRotation atIndex:0];
         _gpuToStr.outputSize = _streamDimension;
         _gpuToStr.bCustomOutputSize = NO;
