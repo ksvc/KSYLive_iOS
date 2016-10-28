@@ -137,7 +137,8 @@ $ open KSYLiveDemo.xcworkspace
 
 #### 3.3.2 手动编译framework生成依赖项运行示例demo
 * 将SDK 打包为framework
-将压缩包解压后, 进入 releaseFramework 目录, 通过 release-libKSYLive.sh 下载依赖项并打包出framework，生成到KSYLive_iOS/framework目录下。      
+
+将压缩包解压(或者clone成功)后, 进入 releaseFramework 目录, 通过 release-libKSYLive.sh 下载依赖项并打包出framework，生成到KSYLive_iOS/framework目录下。      
 ```
 $ cd releaseFramework
 $ ./release-libKSYLive.sh libksygpulive lite
@@ -147,7 +148,9 @@ Bugly.framework  GPUImage.framework  libksygpulive.framework
 参数的详细说明请参考脚本release-libKSYLive.sh的[帮助](https://github.com/ksvc/KSYLive_iOS/wiki/dylib).
 
 * 给demo添加库依赖选项
-打开demo目录下的KSYLiveDemo.xcodeproj, 修改KSYLiveDemo项目的配置文件:    选中KSYLiveDemo工程->选中Project KSYLiveDemo->选中 Info 标签->选择Configurations->Debug或Release->给KSYLiveDemo分别选择对应的KSYLiveDemo-framework.xcconfig文件。注意，如果使用动态库则选择KSYLiveDemo-dy-framework.xcconfig。
+
+打开demo目录下的KSYLiveDemo.xcodeproj, 修改KSYLiveDemo项目的配置文件:  
+选中KSYLiveDemo工程->选中Project KSYLiveDemo->选中 Info 标签->选择Configurations->Debug或Release->给KSYLiveDemo分别选择对应的KSYLiveDemo-framework.xcconfig文件。注意，如果使用动态库则选择KSYLiveDemo-dy-framework.xcconfig。
 
 ![xcode_configs](https://github.com/ksvc/KSYLive_iOS/wiki/images/xcode_configs.png)
 
