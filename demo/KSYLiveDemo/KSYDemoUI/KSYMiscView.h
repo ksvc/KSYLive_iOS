@@ -19,6 +19,9 @@
 @property UIButton* btn3;
 @property UIButton* btn4;
 
+@property UISegmentedControl  * layerSeg;
+@property KSYNameSlider       * alphaSl;
+
 /// 直播场景配置
 @property UISegmentedControl  * liveSceneSeg;
 @property UISegmentedControl  * vEncPerfSeg;

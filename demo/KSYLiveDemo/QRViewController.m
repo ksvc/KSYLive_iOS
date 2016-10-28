@@ -12,6 +12,7 @@
     UIView      *_viewPreview;          //预览视图
     UILabel     *_QRLabel;              //地址栏
     UIButton    *_scanBtn;              //扫描按钮
+    UIButton    *_backBtn;              //返回按钮
     UIView      *_boxView;              //扫面框
     BOOL        _isReading;             //正在扫描
     CALayer     *_scanLayer;            //扫描图层
@@ -48,7 +49,10 @@
 - (void)addViews{
     _viewPreview = [self addViewPreview];
     _QRLabel     = [self addLable];
-    _scanBtn     = [self addButton];
+    _scanBtn     = [self addButton:@"正在扫描..."];
+    _backBtn     = [self addButton:@"返回"];
+    _scanBtn.frame = CGRectMake(0, _height - 30, _width, 30);
+    _backBtn.frame = CGRectMake(20, 30, 80, 30);
 }
 - (UIView *)addViewPreview{
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 64, _width, _height - 94)];
@@ -66,60 +70,59 @@
     [self.view addSubview:label];
     return label;
 }
-- (UIButton *)addButton{
-    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, _height - 30, _width, 30)];
+
+- (UIButton*)addButton:(NSString*)title{
+    UIButton * button;
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button setTitle: title forState: UIControlStateNormal];
+    button.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:button];
-    [button setTitle:@"正在扫描..." forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(reScan) forControlEvents:UIControlEventTouchUpInside];
-    button.layer.masksToBounds = YES;
-    [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    button.layer.masksToBounds = YES;
-    button.layer.borderColor   = [UIColor blackColor].CGColor;
-    button.layer.borderWidth   = 1;
-    button.layer.cornerRadius  = 5;
+    [button addTarget:self
+               action:@selector(onBtn:)
+     forControlEvents:UIControlEventTouchUpInside];
     return button;
+}
+- (IBAction)onBtn:(id)sender {
+    
+    if (sender == _scanBtn){
+        [self reScan];
+    }
+    else if (sender == _backBtn){
+        [self dismissViewControllerAnimated:FALSE completion:nil];
+    }
 }
 - (void)reScan{
     if (!_isReading) {
         if ([self startReading]) {
             [_scanBtn setTitle:@"正在扫描..." forState:UIControlStateNormal];
             [_QRLabel setText:@"Scanning for QR Code"];
-            
         }
     }
     else{
         [self stopReading];
         [_scanBtn setTitle:@"重新扫描" forState:UIControlStateNormal];
     }
-    
     _isReading = !_isReading;
 }
 // start reading
 - (BOOL)startReading{
     NSError *error;
-    
     //1.初始化捕捉设备（AVCaptureDevice），类型为AVMediaTypeVideo
     AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    
     //2.用captureDevice创建输入流
     AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:captureDevice error:&error];
     if (!input) {
         NSLog(@"%@", [error localizedDescription]);
         return NO;
     }
-    
     //3.创建媒体数据输出流
     AVCaptureMetadataOutput *captureMetadataOutput = [[AVCaptureMetadataOutput alloc] init];
-    
     //4.实例化捕捉会话
     _captureSeesion = [[AVCaptureSession alloc] init];
-    
     //4.1.将输入流添加到会话
     [_captureSeesion addInput:input];
-    
     //4.2.将媒体输出流添加到会话中
     [_captureSeesion addOutput:captureMetadataOutput];
-    
     //5.创建串行队列，并加媒体输出流添加到队列当中
     dispatch_queue_t dispatchQueue;
     dispatchQueue = dispatch_queue_create("myQueue", NULL);

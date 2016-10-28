@@ -16,7 +16,7 @@
 #import "KSYNameSlider.h"
 #import "KSYGPUStreamerKit.h"
 
-@interface KSYStreamerVC () {
+@interface KSYStreamerVC () <UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
     UISwipeGestureRecognizer *_swipeGest;
     NSDateFormatter * _dateFormatter;
     int64_t _seconds;
@@ -46,12 +46,12 @@
     [self setStreamerCfg];
     // 打印版本号信息
     NSLog(@"version: %@", [_kit getKSYVersion]);
-    [self setupLogo];
     if (_kit) { // init with default filter
         _kit.videoOrientation = [[UIApplication sharedApplication] statusBarOrientation];
         [_kit setupFilter:self.ksyFilterView.curFilter];
         [_kit startPreview:self.view];
     }
+    [self setupLogo];
 }
 
 - (void) addSwipeGesture{
@@ -115,6 +115,9 @@
     };
     _miscView.onSliderBlock = ^(id sender) {
         [weakself onMiscSlider: sender];
+    };
+    _miscView.onSegCtrlBlock=^(id sender){
+        [weakself onMisxSegCtrl:sender];
     };
     self.onNetworkChange = ^(NSString * msg){
         weakself.ctrlView.lblNetwork.text = msg;
@@ -210,12 +213,20 @@
         _kit.logoRect = CGRectMake(0.05, yPos, 0, hgt);
         _kit.logoAlpha= 0.5;
         yPos += hgt;
+        _miscView.alphaSl.normalValue = _kit.logoAlpha;
     }
+    _kit.textLabel.numberOfLines = 2;
+    _kit.textLabel.textAlignment = NSTextAlignmentCenter;
+    
     _dateFormatter = [[NSDateFormatter alloc] init];
     _dateFormatter.dateFormat = @"HH:mm:ss";
     NSDate *now = [[NSDate alloc] init];
-    _kit.textLabel.text = [_dateFormatter stringFromDate:now];
-    hgt = 20.0 / 640;
+    NSString * timeStr = [_dateFormatter stringFromDate:now];
+    _kit.textLabel.text = [NSString stringWithFormat:@"ksyun\n%@", timeStr];
+    [_kit.textLabel sizeToFit];
+    CGFloat h1 = _kit.textLabel.frame.size.height;
+    CGFloat h2 = _kit.previewDimension.height;
+    hgt = h1 / h2;
     _kit.textRect = CGRectMake(0.05, yPos, 0, hgt);
     [_kit updateTextLabel];
 }
@@ -227,7 +238,6 @@
     _kit.streamerBase.videoMaxBitrate  = 1000;
     _kit.streamerBase.videoMinBitrate  =    0;
     _kit.streamerBase.audiokBPS        =   48;
-    _kit.streamerBase.enAutoApplyEstimateBW     = YES;
     _kit.streamerBase.shouldEnableKSYStatModule = YES;
     _kit.streamerBase.videoFPS = 15;
     _kit.streamerBase.logBlock = ^(NSString* str){
@@ -248,9 +258,10 @@
         _kit.streamerBase.audiokBPS        = [_presetCfgView audioKbps];
         _kit.streamerBase.videoFPS         = [_presetCfgView frameRate];
         _kit.streamerBase.bwEstimateMode   = [_presetCfgView bwEstMode];
-        _kit.streamerBase.enAutoApplyEstimateBW = YES;
         _kit.streamerBase.shouldEnableKSYStatModule = YES;
-        _kit.streamerBase.logBlock = ^(NSString* str){ };
+        _kit.streamerBase.logBlock = ^(NSString* str){
+            //NSLog(@"%@", str);
+        };
         _hostURL = [NSURL URLWithString:[_presetCfgView hostUrl]];
     }
     else {
@@ -316,21 +327,25 @@
     _ctrlView.lblStat.text  = [_kit.streamerBase getCurKSYStreamErrorCodeName];
     if (errCode == KSYStreamErrorCode_CONNECT_BREAK) {
         // Reconnect
-        dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
-        dispatch_after(delay, dispatch_get_main_queue(), ^{
-            _kit.streamerBase.bWithVideo = YES;
-            [_kit.streamerBase startStream:self.hostURL];
-        });
+        [self tryReconnect];
     }
     else if (errCode == KSYStreamErrorCode_AV_SYNC_ERROR) {
         NSLog(@"audio video is not synced, please check timestamp");
-        dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
-        dispatch_after(delay, dispatch_get_main_queue(), ^{
-            NSLog(@"try again");
-            _kit.streamerBase.bWithVideo = YES;
-            [_kit.streamerBase startStream:self.hostURL];
-        });
+        [self tryReconnect];
     }
+    else if (errCode == KSYStreamErrorCode_CODEC_OPEN_FAILED) {
+        NSLog(@"video codec open failed, try software codec");
+        _kit.streamerBase.videoCodec = KSYVideoCodec_X264;
+        [self tryReconnect];
+    }
+}
+- (void) tryReconnect {
+    dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
+    dispatch_after(delay, dispatch_get_main_queue(), ^{
+        NSLog(@"try again");
+        _kit.streamerBase.bWithVideo = YES;
+        [_kit.streamerBase startStream:self.hostURL];
+    });
 }
 #pragma mark - timer respond per second
 - (void)onTimer:(NSTimer *)theTimer{
@@ -345,7 +360,8 @@
     if (_seconds%5 == 0 && // update label every 5 second
         appState == UIApplicationStateActive){
         NSDate *now = [[NSDate alloc] init];
-        _kit.textLabel.text = [_dateFormatter stringFromDate:now];
+        NSString * timeStr = [_dateFormatter stringFromDate:now];
+        _kit.textLabel.text = [NSString stringWithFormat:@"ksyun\n%@", timeStr];
         [_kit updateTextLabel];
     }
 }
@@ -393,7 +409,6 @@
     // 将菜单的按钮隐藏, 将触发二级菜单的view显示
     if (view){
         [_ctrlView showSubMenuView:view];
-        [view     layoutUI];
     }
 }
 
@@ -624,16 +639,54 @@
                             to: @"snap2.png" ];
         }
     }
+    else if (sender == _miscView.btn3) {
+        UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+        picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        picker.delegate = self;
+        [self presentViewController:picker animated:YES completion:nil];
+    }
 }
-#pragma mark - misc features
 - (void)onMiscSwitch:(UISwitch *)sw{  // see kit & block
-    
 }
 - (void)onMiscSlider:(KSYNameSlider *)slider {
+    NSInteger layerIdx = _miscView.layerSeg.selectedSegmentIndex + 1;
+    if (slider == _miscView.alphaSl){
+        float flt = slider.normalValue;
+        if (layerIdx == _kit.logoPicLayer) {
+            _kit.logoAlpha = flt;
+        }
+        else {
+            _kit.textLabel.alpha = flt;
+            [_kit updateTextLabel];
+        }
+    }
+}
+- (void)onMisxSegCtrl:(UISegmentedControl *)seg {
+    NSInteger layerIdx = _miscView.layerSeg.selectedSegmentIndex + 1;
+    if (seg == _miscView.layerSeg) {
+        if (layerIdx == _kit.logoPicLayer) {
+            _miscView.alphaSl.normalValue = [_kit logoAlpha];
+        }
+        else {
+            _miscView.alphaSl.normalValue =_kit.textLabel.alpha;
+        }
+    }
+}
+
+#pragma mark - UIImagePickerControllerDelegate methods
+-(void)imagePickerController:(UIImagePickerController *)picker
+       didFinishPickingImage:(UIImage *)image
+                 editingInfo:(NSDictionary *)editingInfo {
+    _kit.logoPic  = [[GPUImagePicture alloc] initWithImage:image
+                                       smoothlyScaleOutput:YES];
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - ui rotate
-- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+- (void) onViewRotate { // 重写父类的方法, 参考父类 KSYUIView.m 中对UI旋转的响应
     [self layoutUI];
     if (_kit == nil || !_ksyFilterView.swUiRotate.on) {
         return;

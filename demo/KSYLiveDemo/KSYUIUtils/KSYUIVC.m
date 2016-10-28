@@ -94,6 +94,28 @@
     
 }
 
+#pragma mark - ui rotate
+- (void)viewWillTransitionToSize:(CGSize)size
+       withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) { }
+                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+                                     if(SYSTEM_VERSION_GE_TO(@"8.0")) {
+                                         [self onViewRotate];
+                                     }
+                                 }];
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+}
+
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    if(SYSTEM_VERSION_GE_TO(@"8.0")) {
+        return;
+    }
+    [self onViewRotate];
+}
+- (void) onViewRotate {
+    // 子类 重新该方法来响应屏幕旋转
+}
+
 #pragma mark - string format
 + (NSString*) sizeFormatted : (int )KB {
     if ( KB > 1000 ) {

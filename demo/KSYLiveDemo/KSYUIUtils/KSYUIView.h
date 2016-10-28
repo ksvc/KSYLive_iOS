@@ -48,14 +48,20 @@
 - (void) putRow3:(UIView*)subV0
              and:(UIView*)subV1
              and:(UIView*)subV2;
-// 添加任意数量的视图数组
+// 均匀添加任意数量的视图数组
 - (void) putRow:(NSArray *) subV;
 
+//(firstV 使用内容宽度, 剩余宽度全部分配给secondV)
+- (void) putNarrow:(UIView*)firstV
+           andWide:(UIView*)secondV;
+//(secondV 使用内容宽度, 剩余宽度全部分配给firstV)
+- (void) putWide:(UIView*)firstV
+       andNarrow:(UIView*)secondV;
+
 // 不均匀的放置一行中lable + subview
-//(lable 使用内容宽度, 剩余宽度全部分配给subview)
 - (void) putLable:(UIView*)lbl
           andView:(UIView*)subV;
-// slider和switch放一行
+// 不均匀的将slider和switch放一行
 - (void) putSlider:(UIView*)sl
          andSwitch:(UIView*)sw;
 

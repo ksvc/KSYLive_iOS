@@ -15,7 +15,7 @@
         
         <Token>
             <TokenIdentifier>//apple_ref/c/econst/KSYAudioCodec_AAC_HE</TokenIdentifier>
-            <Abstract type="html">音频软件编码器 - AAC_HE</Abstract>
+            <Abstract type="html">faac音频软件编码器 - AAC_HE</Abstract>
             <Declaration>KSYAudioCodec_AAC_HE</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
@@ -25,7 +25,7 @@
         
         <Token>
             <TokenIdentifier>//apple_ref/c/econst/KSYAudioCodec_AAC</TokenIdentifier>
-            <Abstract type="html">音频软件编码器 - AAC_LC</Abstract>
+            <Abstract type="html">faac音频软件编码器 - AAC_LC</Abstract>
             <Declaration>KSYAudioCodec_AAC</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
@@ -35,7 +35,7 @@
         
         <Token>
             <TokenIdentifier>//apple_ref/c/econst/KSYAudioCodec_AT_AAC_HE</TokenIdentifier>
-            <Abstract type="html">音频AT编码器 - AAC_HE</Abstract>
+            <Abstract type="html">iOS自带的audiotoolbox音频编码器 - AAC_HE</Abstract>
             <Declaration>KSYAudioCodec_AT_AAC_HE</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
@@ -45,7 +45,7 @@
         
         <Token>
             <TokenIdentifier>//apple_ref/c/econst/KSYAudioCodec_AT_AAC</TokenIdentifier>
-            <Abstract type="html">音频AT编码器 - AAC_LC</Abstract>
+            <Abstract type="html">iOS自带的audiotoolbox音频编码器 - AAC_LC</Abstract>
             <Declaration>KSYAudioCodec_AT_AAC</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>

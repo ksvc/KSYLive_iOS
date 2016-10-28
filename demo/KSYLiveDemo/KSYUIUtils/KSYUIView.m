@@ -83,7 +83,7 @@
 #pragma mark - UI elements layout
 // 每次布局前,设置默认值
 - (void) layoutUI {
-    self.btnH = 35;
+    self.btnH = 30;
     self.winWdt = self.width;
     self.yPos = [[UIApplication sharedApplication] statusBarFrame].size.height;
 }
@@ -150,39 +150,51 @@
     _yPos += (_btnH + _gap);
 }
 
-- (void) putLable:(UIView*)lbl
-          andView:(UIView*)subV{
+
+//(firstV 使用内容宽度, 剩余宽度全部分配给secondV)
+- (void) putNarrow:(UIView*)firstV
+           andWide:(UIView*)secondV {
     CGFloat x = [self getXStart]+_gap;
     CGFloat y = _yPos > self.height ? _yPos - self.height : _yPos;
-    [lbl sizeToFit];
-    CGRect rect = lbl.frame;
+    [firstV sizeToFit];
+    CGRect rect = firstV.frame;
     rect.origin = CGPointMake(x, y);
     rect.size.height = _btnH;
-    lbl.frame = rect;
+    firstV.frame = rect;
     
     CGFloat btnW = (_winWdt) - _gap*3 - rect.size.width;
     CGFloat xPos = rect.origin.x + rect.size.width + _gap;
-    subV.frame = CGRectMake( xPos, y, btnW, _btnH);
+    secondV.frame = CGRectMake( xPos, y, btnW, _btnH);
     _yPos += (_btnH + _gap);
 }
-
-- (void)  putSlider:(UIView*)sl
-          andSwitch:(UIView*)sw{
+//(secondV 使用内容宽度, 剩余宽度全部分配给firstV)
+- (void) putWide:(UIView*)firstV
+       andNarrow:(UIView*)secondV {
     CGFloat x = [self getXStart]+_gap;
     CGFloat y = _yPos > self.height ? _yPos - self.height : _yPos;
     
-    [sw sizeToFit];
-    CGRect rect = sw.frame;
+    [secondV sizeToFit];
+    CGRect rect = secondV.frame;
     rect.size.height = _btnH;
     
     CGFloat slW = (_winWdt) - _gap*3 - rect.size.width;
     rect.origin = CGPointMake(slW+x, y);
-    sw.frame = rect;
+    secondV.frame = rect;
     
     rect.origin = CGPointMake(x, y);
     rect.size.width = slW;
-    sl.frame = rect;
+    firstV.frame = rect;
     _yPos += (_btnH + _gap);
+}
+
+- (void) putLable:(UIView*)lbl
+          andView:(UIView*)subV{
+    [self putNarrow:lbl andWide:subV];
+}
+
+- (void)  putSlider:(UIView*)sl
+          andSwitch:(UIView*)sw{
+    [self putWide:sl andNarrow:sw];
 }
 
 #pragma mark - new and add UI elements

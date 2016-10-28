@@ -73,18 +73,26 @@
 - (void)layoutUI{
     [super layoutUI];
     self.yPos = 0;
-    self.btnH = 30;
     [self putRow: @[_lbPrevewFlip, _swPrevewFlip,
                     _lbStreamFlip, _swStreamFlip ]];
     [self putRow: @[_lbUiRotate, _swUiRotate,
                     _lbStrRotate, _swStrRotate ]];
     [self putLable:_lblSeg andView: _filterGroupType];
+    CGFloat paramYPos = self.yPos;
+    if ( self.width > self.height){
+        self.winWdt /= 2;
+    }
     [self putRow1:_filterParam1];
     [self putRow1:_filterParam2];
     [self putRow1:_filterParam3];
     
-    self.btnH = 162;
-    [self putRow1:_effectPicker];
+    if ( self.width > self.height){
+        _effectPicker.frame = CGRectMake( self.winWdt, paramYPos, self.winWdt, 162);
+    }
+    else {
+        self.btnH = 162;
+        [self putRow1:_effectPicker];
+    }
 }
 
 - (IBAction)onSwitch:(id)sender {

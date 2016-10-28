@@ -1264,7 +1264,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setLogoPic:</TokenIdentifier>
-			<Abstract type="html">水印logo的图片 (KSYPicLogoLayer = 3)</Abstract>
+			<Abstract type="html">水印logo的图片</Abstract>
 			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readwrite) GPUImagePicture *logoPic</Declaration>
@@ -1276,7 +1276,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/logoPic</TokenIdentifier>
-			<Abstract type="html">水印logo的图片 (KSYPicLogoLayer = 3)</Abstract>
+			<Abstract type="html">水印logo的图片</Abstract>
 			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readwrite) GPUImagePicture *logoPic</Declaration>
@@ -1288,7 +1288,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/logoPic</TokenIdentifier>
-			<Abstract type="html">水印logo的图片 (KSYPicLogoLayer = 3)</Abstract>
+			<Abstract type="html">水印logo的图片</Abstract>
 			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readwrite) GPUImagePicture *logoPic</Declaration>
@@ -1372,7 +1372,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setTextLabel:</TokenIdentifier>
-			<Abstract type="html">水印文字的label (KSYPicTextLayer = 4)</Abstract>
+			<Abstract type="html">水印文字的label</Abstract>
 			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
 			
 	<RelatedTokens>
@@ -1389,7 +1389,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/textLabel</TokenIdentifier>
-			<Abstract type="html">水印文字的label (KSYPicTextLayer = 4)</Abstract>
+			<Abstract type="html">水印文字的label</Abstract>
 			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
 			
 	<RelatedTokens>
@@ -1406,7 +1406,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/textLabel</TokenIdentifier>
-			<Abstract type="html">水印文字的label (KSYPicTextLayer = 4)</Abstract>
+			<Abstract type="html">水印文字的label</Abstract>
 			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
 			
 	<RelatedTokens>

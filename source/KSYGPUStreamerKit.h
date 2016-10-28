@@ -352,7 +352,7 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 
 #pragma mark - pictures & logo
 /**
- @abstract 水印logo的图片 (KSYPicLogoLayer = 3)
+ @abstract   水印logo的图片
  @discussion 设置为nil为清除水印图片
  @discussion 请注意背景图片的尺寸, 太大的图片会导致内存占用过高
  @see
@@ -375,10 +375,13 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 @property (nonatomic, readwrite) CGFloat              logoAlpha;
 
 /**
- @abstract 水印文字的label (KSYPicTextLayer = 4)
- @discussion 借用UILable来指定文字的颜色,字体, 透明度等属性
+ @abstract   水印文字的label
+ @discussion 借用UILabel来指定文字的颜色,字体, 透明度, 对齐方式等属性
  @discussion 请注意保证背景图片的尺寸, 太大的图片会导致内存占用过高
- @warning    如果使用非等宽字体, 可能导致闪烁(默认为Courier-Bold)
+ @warning    如果使用非等宽字体, 可能导致闪烁(默认为Courier)
+ @warning    picMixer和UILabel都有alpha属性, 建议只选用其中一个, 固定另一个为1.0,
+             为了减少接口, 建议直接使用UILabel的属性, 
+             如果两者同时使用, 最终图层的alpha为两者乘积
  @see updateTextLabel
  */
 @property (nonatomic, readwrite) UILabel             *textLabel;

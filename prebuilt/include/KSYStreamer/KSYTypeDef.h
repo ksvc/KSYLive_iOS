@@ -88,13 +88,13 @@ typedef NS_ENUM(NSUInteger, KSYVideoCodec) {
  * @abstract  音频编码器类型
  */
 typedef NS_ENUM(NSUInteger, KSYAudioCodec) {
-    /// 音频软件编码器 - AAC_HE
+    /// faac音频软件编码器 - AAC_HE
     KSYAudioCodec_AAC_HE = 0,
-    /// 音频软件编码器 - AAC_LC
+    /// faac音频软件编码器 - AAC_LC
     KSYAudioCodec_AAC,
-    /// 音频AT编码器 - AAC_HE
+    /// iOS自带的audiotoolbox音频编码器 - AAC_HE
     KSYAudioCodec_AT_AAC_HE,
-    /// 音频AT编码器 - AAC_LC
+    /// iOS自带的audiotoolbox音频编码器 - AAC_LC
     KSYAudioCodec_AT_AAC,
 };
 
@@ -247,6 +247,9 @@ typedef NS_ENUM(NSUInteger, KSYBWEstimateMode) {
     KSYBWEstMode_Default = 0,
     /// 流畅优先模式(消极上调, 极速下调)
     KSYBWEstMode_Negtive,
+    
+    /// 禁用网络自适应网络调整
+    KSYBWEstMode_Disable = 1000,
 };
 
 #pragma mark - KSY_EXTERN
