@@ -148,7 +148,7 @@
 			<Abstract type="html">输入音频PCM</Abstract>
 			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)processAudioData:(uint8_t **)pData nbSample:(int)len withFormat:(KSYAudioFormat *)fmt timeinfo:(CMTime)pts of:(int)trackId</Declaration>
+			<Declaration>- (BOOL)processAudioData:(uint8_t **)pData nbSample:(int)len withFormat:(const AudioStreamBasicDescription *)fmt timeinfo:(CMTime)pts of:(int)trackId</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>pData</Name>
@@ -245,38 +245,38 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/setOutFmt:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/setOutFmtDes:</TokenIdentifier>
 			<Abstract type="html">混音后输出PCM的格式</Abstract>
 			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYAudioFormat outFmt</Declaration>
+			<Declaration>@property (nonatomic, readonly) AudioStreamBasicDescription *outFmtDes</Declaration>
 			
 			
-			<Anchor>//api/name/outFmt</Anchor>
+			<Anchor>//api/name/outFmtDes</Anchor>
             <NodeRef refid="5"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/outFmt</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/outFmtDes</TokenIdentifier>
 			<Abstract type="html">混音后输出PCM的格式</Abstract>
 			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYAudioFormat outFmt</Declaration>
+			<Declaration>@property (nonatomic, readonly) AudioStreamBasicDescription *outFmtDes</Declaration>
 			
 			
-			<Anchor>//api/name/outFmt</Anchor>
+			<Anchor>//api/name/outFmtDes</Anchor>
             <NodeRef refid="5"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioMixer/outFmt</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioMixer/outFmtDes</TokenIdentifier>
 			<Abstract type="html">混音后输出PCM的格式</Abstract>
 			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYAudioFormat outFmt</Declaration>
+			<Declaration>@property (nonatomic, readonly) AudioStreamBasicDescription *outFmtDes</Declaration>
 			
 			
-			<Anchor>//api/name/outFmt</Anchor>
+			<Anchor>//api/name/outFmtDes</Anchor>
             <NodeRef refid="5"/>
 		</Token>
 		

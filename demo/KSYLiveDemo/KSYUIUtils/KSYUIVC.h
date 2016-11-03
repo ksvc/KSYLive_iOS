@@ -40,6 +40,7 @@
 + (void) toast:(NSString*)message;
 //cpu use rate
 + (float) cpu_usage;
++ (float) memory_usage;
 // 网络状态
 @property NSString* networkStatus;
 @property(nonatomic, copy) void(^onNetworkChange)(NSString* msg);

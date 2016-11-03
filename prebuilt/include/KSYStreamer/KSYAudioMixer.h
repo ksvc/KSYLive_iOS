@@ -11,15 +11,6 @@
 
 
 #pragma mark - audio format
-typedef struct  _KSYAudioFormat {
-    int      sampleFmt; // enum AVSampleFormat
-    int      sampleSize;// size of each sample in byte
-    int      chCnt;     // channle number
-    int64_t  chLayout;
-    int      sampleRate;
-} KSYAudioFormat;
-
-
 /** 多路pcm混音
  
  1. 用trackId来表示某一路音频，从0开始编号
@@ -97,7 +88,7 @@ typedef struct  _KSYAudioFormat {
  */
 - (BOOL)processAudioData:(uint8_t**)pData
                 nbSample:(int)len
-              withFormat:(KSYAudioFormat*)fmt
+              withFormat:(const AudioStreamBasicDescription*)fmt
                 timeinfo:(CMTime)pts
                       of:(int) trackId;
 
@@ -117,7 +108,7 @@ typedef struct  _KSYAudioFormat {
 
 /**
  @abstract   混音后输出PCM的格式
- @discussion 暂时为固定一种格式
+ @discussion 暂时为固定一种格式 (44.1KHz, 单声道， S16)
  */
-@property (nonatomic, readonly) KSYAudioFormat  outFmt;
+@property (nonatomic, readonly) AudioStreamBasicDescription* outFmtDes;
 @end

@@ -60,7 +60,7 @@
     _lblVideoCodecUI = [self addLable:@"视频编码器"];
     _videoCodecUI = [self addSegCtrlWithItems:@[@"自动",@"软264",@"硬264",@"软265"]];
     _lblAudioCodecUI = [self addLable:@"音频编码器"];
-    _audioCodecUI = [self addSegCtrlWithItems:@[@"软AAC-HE",@"软AAC-LC",@"硬AAC-HE",@"硬AAC-LC"]];
+    _audioCodecUI = [self addSegCtrlWithItems:@[@"软AAC-HE",@"软AAC-LC",@"硬AAC-LC"]];
     _videoKbpsUI  = [self addSliderName:@"视频码率kbps" From:100.0 To:1500.0 Init:800.0];
     _lblAudioKbpsUI= [self addLable:@"音频码率kbps"];
     _audioKbpsUI  = [self addSegCtrlWithItems:@[@"12",@"24",@"32", @"48", @"64", @"128"]];
@@ -178,8 +178,6 @@
         case 1:
             return  KSYAudioCodec_AAC;
         case 2:
-            return  KSYAudioCodec_AT_AAC_HE;
-        case 3:
             return  KSYAudioCodec_AT_AAC;
         default:
             return  KSYAudioCodec_AAC_HE;
@@ -228,4 +226,17 @@
     }
     [super onBtn:sender];
 }
+
+- (IBAction)onSegCtrl:(id)sender {
+    if ( sender == _audioCodecUI) {
+        NSInteger idx = _audioCodecUI.selectedSegmentIndex;
+        if (idx == 2) {
+            _audioKbpsUI.selectedSegmentIndex = 4;
+        }
+        else {
+            _audioKbpsUI.selectedSegmentIndex = 2;
+        }
+    }
+}
+
 @end

@@ -70,8 +70,14 @@
         _timer = nil;
     }
 }
+
 - (void)viewDidAppear:(BOOL)animated {
     [self layoutUI];
+    [UIApplication sharedApplication].idleTimerDisabled=YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [UIApplication sharedApplication].idleTimerDisabled=NO;
 }
 
 - (BOOL)shouldAutorotate {
@@ -209,6 +215,18 @@
     return tot_cpu;
 }
 
++ (float)memory_usage {
+    task_basic_info_data_t taskInfo;
+    mach_msg_type_number_t infoCount = TASK_BASIC_INFO_COUNT;
+    kern_return_t kernReturn = task_info(mach_task_self(),
+                                         TASK_BASIC_INFO,
+                                         (task_info_t)&taskInfo,
+                                         &infoCount);
+    if(kernReturn != KERN_SUCCESS) {
+        return 0.0;
+    }
+    return taskInfo.resident_size / 1024.0 / 1024.0;
+}
 // 将UIImage 保存到path对应的文件
 + (void)saveImage: (UIImage *)image
                to: (NSString*)path {

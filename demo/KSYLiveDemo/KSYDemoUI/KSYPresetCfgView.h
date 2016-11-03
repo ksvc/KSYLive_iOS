@@ -26,6 +26,7 @@
 
 // UI elements
 @property UIButton* btn0;
+@property UIButton* btn1;
 @property UIButton* btn2;
 @property UIButton* btn3;
 @property UIButton* btn4;
