@@ -165,15 +165,6 @@
     [_kit setupFilter:self.ksyFilterView.curFilter];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [self layoutUI];
-    [UIApplication sharedApplication].idleTimerDisabled=YES;
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [UIApplication sharedApplication].idleTimerDisabled=NO;
-}
-
 - (BOOL)shouldAutorotate {
     if (_ksyFilterView){
         return _ksyFilterView.swUiRotate.on;
