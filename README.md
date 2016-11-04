@@ -55,7 +55,7 @@
 1. 2016.09.26 [双人连麦](https://github.com/ksvc/KSYRTCLive_iOS/releases/tag/v1.8.5)稳定版本上线;
 1. 2016.09.28 视频硬编[性能编码模式](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)上线。音频AAC硬编功能上线。网络自适应场景上线；
 1. 2016.10.19 支持[推流横竖屏动态变化](https://github.com/ksvc/KSYLive_iOS/wiki/dynamicOrientation)；
-1. 2016.10.20 支持replaykit录屏推流；
+1. 2016.10.20 支持[replaykit录屏推流](https://github.com/ksvc/KSYDiversityLive_iOS/tree/master/KSYReplayKitDemo)；
 
 ### 2.2 近期工作  
 1. 2016.10.xx 人脸贴纸功能上线;
