@@ -39,52 +39,52 @@ Pod::Spec.new do |s|
       sub.vendored_library = 'prebuilt/libs/libksy%s.a' % subName
     end
   end
-  s.subspec 'player' do |sub|
-    sub.source_files =  'prebuilt/include/KSYPlayer/*.h'
-    sub.vendored_library = 'prebuilt/libs/libksyplayer.a'
-  end
-  s.subspec 'streamer' do |sub|
-    sub.source_files =  'prebuilt/include/KSYStreamer/*.h'
-    sub.vendored_library = 'prebuilt/libs/libksystreamer.a'
-  end
-
   # lite version of KSYMediaPlayer (less decoders)
   s.subspec 'KSYMediaPlayer' do |sub|
     sub.source_files =  'prebuilt/include/KSYPlayer/*.h'
+    sub.vendored_library = 'prebuilt/libs/libksyplayer.a'
     sub.dependency 'libksygpulive/base'
     sub.dependency 'libksygpulive/mediacore_dec_lite'
-    sub.dependency 'libksygpulive/player'
   end
   # vod version of KSYMediaPlayer (more decoders)
   s.subspec 'KSYMediaPlayer_vod' do |sub|
     sub.source_files =  'prebuilt/include/KSYPlayer/*.h'
+    sub.vendored_library = 'prebuilt/libs/libksyplayer.a'
     sub.dependency 'libksygpulive/base'
     sub.dependency 'libksygpulive/mediacore_dec_vod'
-    sub.dependency 'libksygpulive/player'
   end
   s.subspec 'libksygpulive' do |sub|
     sub.source_files =  ['prebuilt/include/**/*.h',
                          'source/*.{h,m}']
+    sub.vendored_library = ['prebuilt/libs/libksyplayer.a',
+                            'prebuilt/libs/libksystreamer.a'];
     sub.dependency 'GPUImage'
     sub.dependency 'libksygpulive/base'
-    sub.dependency 'libksygpulive/player'
     sub.dependency 'libksygpulive/yuv'
     sub.dependency 'libksygpulive/mediacodec'
     sub.dependency 'libksygpulive/mediacore_enc_lite'
-    sub.dependency 'libksygpulive/streamer'
   end
   s.subspec 'libksygpulive_265' do |sub|
     sub.source_files =  ['prebuilt/include/**/*.h',
                          'source/*.{h,m}']
+    sub.vendored_library = ['prebuilt/libs/libksyplayer.a',
+                            'prebuilt/libs/libksystreamer.a'];
     sub.dependency 'GPUImage'
     sub.dependency 'libksygpulive/base'
-    sub.dependency 'libksygpulive/player'
     sub.dependency 'libksygpulive/yuv'
     sub.dependency 'libksygpulive/mediacodec'
     sub.dependency 'libksygpulive/mediacore_enc_265'
-    sub.dependency 'libksygpulive/streamer'
   end
   s.subspec 'KSYGPUResource' do |sub|
     sub.resource = 'resource/KSYGPUResource.bundle'
+  end
+  s.subspec 'ksyplayer_d' do |sub|
+    sub.source_files =  'prebuilt/include/**/*.h';
+    sub.vendored_library = 'prebuilt/libs/libksyplayer.a';
+    sub.dependency 'GPUImage'
+    sub.dependency 'libksygpulive/base'
+    sub.dependency 'libksygpulive/yuv'
+    sub.dependency 'libksygpulive/mediacodec'
+    sub.dependency 'libksygpulive/mediacore_enc_lite'
   end
 end
