@@ -45,6 +45,7 @@
 #pragma mark - sub views
 /// 摄像头的基本控制视图
 @property (nonatomic, readonly) KSYCtrlView   * ctrlView;
+@property (nonatomic, readwrite) NSArray       * menuNames;
 /// 背景音乐配置页面
 @property (nonatomic, readonly) KSYBgmView    * ksyBgmView;
 /// 视频滤镜相关参数配置页面
@@ -65,7 +66,10 @@
 // 推流的参数设置
 - (void) setStreamerCfg;
 
+- (void) initObservers;
 - (void) addObservers;
 - (void) rmObservers;
 
+- (void) addSubViews;
+- (void) onMenuBtnPress:(UIButton *)btn;
 @end

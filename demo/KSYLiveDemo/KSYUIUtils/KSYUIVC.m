@@ -141,14 +141,15 @@
     return [NSString stringWithFormat:@"%02d:%02d:%02d",hours, minutes, seconds];
 }
 
-+ (void) toast:(NSString*)message{
++ (void) toast:(NSString*)message
+          time:(double)duration
+{
     UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
                                                     message:message
                                                    delegate:nil
                                           cancelButtonTitle:nil
                                           otherButtonTitles:nil, nil];
     [toast show];
-    double duration = 0.3; // duration in seconds
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [toast dismissWithClickedButtonIndex:0 animated:YES];
     });

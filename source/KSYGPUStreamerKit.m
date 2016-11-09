@@ -333,8 +333,8 @@
         _capPreset = _vCapDev.captureSessionPreset;
         [self  updateDimension];
         // 旋转
-        [self rotatePreview ];
-        [self rotateStream ];
+        [self rotatePreviewTo:_videoOrientation ];
+        [self rotateStreamTo: _videoOrientation ];
         // 连接
         [self setupFilter:_filter];
         // 开始预览
@@ -687,18 +687,17 @@ M_PI_2*1,M_PI_2*3, M_PI_2*2, M_PI_2*0,
  @abstract 根据UI的朝向旋转预览视图, 保证预览视图全屏铺满窗口
  @discussion 采集到的图像的朝向还是和启动时的朝向一致
  */
-- (void) rotatePreview {
+- (void) rotatePreviewTo: (UIInterfaceOrientation) orie {
     dispatch_async(dispatch_get_main_queue(), ^(){
         UIView* view = [_preview superview];
-        UIInterfaceOrientation ori = [[UIApplication sharedApplication] statusBarOrientation];
-        if (_videoOrientation == ori || view == nil || _vCapDev.isRunning == NO ) {
+        if (_videoOrientation == orie || view == nil || _vCapDev.isRunning == NO ) {
             _preview.transform = CGAffineTransformIdentity;
             _previewRotateAng = 0;
             _preview.frame = view.bounds;
         }
         else {
             int capOri = UIOrienToIdx(_videoOrientation);
-            int appOri = UIOrienToIdx(ori);
+            int appOri = UIOrienToIdx(orie);
             _previewRotateAng = KSYRotateAngles[ capOri ][ appOri ];
             _preview.transform = CGAffineTransformMakeRotation(_previewRotateAng);
         }
@@ -715,20 +714,19 @@ kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRota
 /**
  @abstract 根据UI的朝向旋转推流画面
  */
-- (void) rotateStream {
-    UIInterfaceOrientation ori = [[UIApplication sharedApplication] statusBarOrientation];
-    if (_videoOrientation == ori || _vCapDev.isRunning == NO) {
+- (void) rotateStreamTo: (UIInterfaceOrientation) orie {
+    if (_videoOrientation == orie || _vCapDev.isRunning == NO) {
         [_gpuToStr setInputRotation:kGPUImageNoRotation atIndex:0];
         _gpuToStr.outputSize = _streamDimension;
         _gpuToStr.bCustomOutputSize = NO;
     }
     else {
         int capOri = UIOrienToIdx(_videoOrientation);
-        int appOri = UIOrienToIdx(ori);
+        int appOri = UIOrienToIdx(orie);
         GPUImageRotationMode mode = KSYRotateMode[capOri][appOri];
         [_gpuToStr setInputRotation: mode  atIndex:0];
         _gpuToStr.bCustomOutputSize = YES;
-        _gpuToStr.outputSize = [self getDimension:_streamDimension byOriention:ori];
+        _gpuToStr.outputSize = [self getDimension:_streamDimension byOriention:orie];
     }
 }
 @end

@@ -20,6 +20,8 @@
     UISwipeGestureRecognizer *_swipeGest;
     NSDateFormatter * _dateFormatter;
     int64_t _seconds;
+    int16_t _recordMaxTime;//录制视频的最大时间，单位s
+    BOOL _bRecord;//是否需要录制
     NSMutableDictionary *_obsDict;
 }
 @end
@@ -38,6 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _kit = [[KSYGPUStreamerKit alloc] initWithDefaultCfg];
+    _menuNames = @[@"背景音乐", @"图像/美颜",@"声音",@"其他"];
     [self addSubViews];
     [self addSwipeGesture];
     // 采集相关设置初始化
@@ -63,14 +66,14 @@
 }
 
 - (void)addSubViews{
-    _ctrlView  = [[KSYCtrlView alloc] init];
+    _ctrlView  = [[KSYCtrlView alloc] initWithMenu:_menuNames];
     [self.view addSubview:_ctrlView];
     _ctrlView.frame = self.view.frame;
     _ksyFilterView  = [[KSYFilterView alloc]initWithParent:_ctrlView];
     _ksyBgmView     = [[KSYBgmView alloc]initWithParent:_ctrlView];
-    _audioView = [[KSYAudioCtrlView alloc]initWithParent:_ctrlView];
+    _audioView      = [[KSYAudioCtrlView alloc]initWithParent:_ctrlView];
     _miscView       = [[KSYMiscView alloc]initWithParent:_ctrlView];
-
+    
     // connect UI
     __weak KSYStreamerVC *weakself = self;
     _ctrlView.onBtnBlock = ^(id btn){
@@ -127,13 +130,13 @@
 
 - (void) initObservers{
     _obsDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-    SEL_VALUE(onCaptureStateChange:) ,  KSYCaptureStateDidChangeNotification,
-    SEL_VALUE(onStreamStateChange:) ,   KSYStreamStateDidChangeNotification,
-    SEL_VALUE(onNetStateEvent:) ,       KSYNetStateEventNotification,
-    SEL_VALUE(onBgmPlayerStateChange:) ,KSYAudioStateDidChangeNotification,
-    SEL_VALUE(enterBg:) ,           UIApplicationDidEnterBackgroundNotification,
-    SEL_VALUE(becameActive:) ,      UIApplicationDidBecomeActiveNotification,
-    nil];
+                SEL_VALUE(onCaptureStateChange:) ,  KSYCaptureStateDidChangeNotification,
+                SEL_VALUE(onStreamStateChange:) ,   KSYStreamStateDidChangeNotification,
+                SEL_VALUE(onNetStateEvent:) ,       KSYNetStateEventNotification,
+                SEL_VALUE(onBgmPlayerStateChange:) ,KSYAudioStateDidChangeNotification,
+                SEL_VALUE(enterBg:) ,           UIApplicationDidEnterBackgroundNotification,
+                SEL_VALUE(becameActive:) ,      UIApplicationDidBecomeActiveNotification,
+                nil];
 }
 
 - (void) addObservers {
@@ -265,8 +268,17 @@
     _kit.streamerBase.videoEncodePerf =  self.miscView.vEncPerf;
     _kit.streamerBase.bWithVideo      = !self.audioView.swAudioOnly.on;
     _seconds = 0;
+    _recordMaxTime = 30;
     self.miscView.liveSceneSeg.enabled = !bStart;
     self.miscView.vEncPerfSeg.enabled = !bStart;
+    
+    //判断是直播还是录制
+    if ([_ctrlView.btnStream.currentTitle isEqualToString:@"开始录制"]){
+        _bRecord = true;
+    }
+    else{
+        _bRecord = false;
+    }
 }
 
 #pragma mark -  state change
@@ -312,6 +324,26 @@
             _kit.streamerBase.bWithVideo = NO;
         }
     }
+    //状态为KSYStreamStateIdle且_bRecord为ture时，录制视频
+    if (_kit.streamerBase.streamState == KSYStreamStateIdle && _bRecord){
+        if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum([_presetCfgView hostUrl])) {
+            //保存视频到相簿
+            UISaveVideoAtPathToSavedPhotosAlbum([_presetCfgView hostUrl], self,
+                                                @selector(video:didFinishSavingWithError:contextInfo:), nil);
+        }
+    }
+}
+
+//保存mp4文件回调
+- (void)video:(NSString *)videoPath didFinishSavingWithError:(NSError *)error
+  contextInfo:(void *)contextInfo {
+    NSString *message;
+    if (!error) {
+        message = @"Save album success!";
+    } else {
+        message = @"Failed to save the album!";
+    }
+    [KSYUIVC toast:message time:3];
 }
 
 - (void) onStreamError:(KSYStreamErrorCode) errCode{
@@ -355,6 +387,20 @@
         _kit.textLabel.text = [NSString stringWithFormat:@"ksyun\n%@", timeStr];
         [_kit updateTextLabel];
     }
+    if (_bRecord){
+        int64_t diff = _recordMaxTime - _seconds;
+        //保持连接和限制短视频长度
+        if (_kit.streamerBase.streamState == KSYStreamStateConnected && diff < 0){
+            [self onStream];//结束录制
+        }
+        if (_kit.streamerBase.streamState == KSYStreamStateConnected){//录制时的倒计时时间
+            _ctrlView.lblNetwork.text = [NSString stringWithFormat:@"%lld\n",diff];
+        }
+        else{//没有录制时显示最大时间
+            diff = _recordMaxTime;
+            _ctrlView.lblNetwork.text = [NSString stringWithFormat:@"%lld\n",diff];
+        }
+    }
 }
 
 #pragma mark - UI respond
@@ -383,18 +429,18 @@
 //menuView control
 - (void)onMenuBtnPress:(UIButton *)btn{
     KSYUIView * view = nil;
-    if (btn == _ctrlView.bgmBtn ){
+    if (btn == _ctrlView.menuBtns[0] ){
         view = _ksyBgmView; // 背景音乐播放相关
     }
-    else if (btn == _ctrlView.filterBtn ){
+    else if (btn == _ctrlView.menuBtns[1] ){
         view = _ksyFilterView; // 美颜滤镜相关
     }
-    else if (btn == _ctrlView.mixBtn ){
+    else if (btn == _ctrlView.menuBtns[2] ){
         view = _audioView;    // 混音控制台
         _audioView.micType = _kit.avAudioSession.currentMicType;
         [_audioView initMicInput];
     }
-    else if (btn == _ctrlView.miscBtn ){
+    else if (btn == _ctrlView.menuBtns[3] ){
         view = _miscView;
     }
     // 将菜单的按钮隐藏, 将触发二级菜单的view显示
@@ -518,6 +564,7 @@
         [_kit.streamerBase stopStream];
     }
 }
+
 - (void) onQuit{
     [_kit stopPreview];
     _kit = nil;
@@ -566,7 +613,7 @@
     }
     else if (sw == _audioView.swPlayCapture){
         if ( ![KSYAUAudioCapture isHeadsetPluggedIn] ) {
-            [KSYUIVC toast:@"没有耳机, 开启耳返会有刺耳的声音"];
+            [KSYUIVC toast:@"没有耳机, 开启耳返会有刺耳的声音" time:0.3];
             sw.on = NO;
             _kit.aCapDev.bPlayCapturedAudio = NO;
             return;
@@ -682,9 +729,10 @@
     if (_kit == nil || !_ksyFilterView.swUiRotate.on) {
         return;
     }
-    [_kit rotatePreview];
+    UIInterfaceOrientation orie = [[UIApplication sharedApplication] statusBarOrientation];
+    [_kit rotatePreviewTo:orie];
     if (_ksyFilterView.swStrRotate.on) {
-        [_kit rotateStream];
+        [_kit rotateStreamTo:orie];
     }
 }
 @end

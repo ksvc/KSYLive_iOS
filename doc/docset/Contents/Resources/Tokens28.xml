@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYQosInfo.html">
+	<File path="Classes/KSYSpecialEffects.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYQosInfo</TokenIdentifier>
-			<Abstract type="html">Qos信息</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYSpecialEffects</TokenIdentifier>
+			<Abstract type="html">金山云特效滤镜</Abstract>
+			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
             
 			
 			<NodeRef refid="28"/>
@@ -13,326 +13,84 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setAudioBufferByteLength:</TokenIdentifier>
-			<Abstract type="html">    audio queue size in bytes</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/clm/KSYSpecialEffects/showVersion</TokenIdentifier>
+			<Abstract type="html">show version of this filter</Abstract>
+			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int audioBufferByteLength</Declaration>
+			<Declaration>+ (void)showVersion</Declaration>
 			
 			
-			<Anchor>//api/name/audioBufferByteLength</Anchor>
+			<Anchor>//api/name/showVersion</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/audioBufferByteLength</TokenIdentifier>
-			<Abstract type="html">    audio queue size in bytes</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYSpecialEffects/initWithUIImage:</TokenIdentifier>
+			<Abstract type="html">初始化并指定特效素材</Abstract>
+			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int audioBufferByteLength</Declaration>
-			
-			
-			<Anchor>//api/name/audioBufferByteLength</Anchor>
+			<Declaration>- (id)initWithUIImage:(UIImage *)image</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>image</Name>
+					<Abstract type="html">特效素材</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">构造的滤镜</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithUIImage:</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/audioBufferByteLength</TokenIdentifier>
-			<Abstract type="html">    audio queue size in bytes</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYSpecialEffects/setSpecialEffectsUIImage:</TokenIdentifier>
+			<Abstract type="html">指定特效素材</Abstract>
+			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int audioBufferByteLength</Declaration>
+			<Declaration>- (void)setSpecialEffectsUIImage:(UIImage *)image</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>image</Name>
+					<Abstract type="html">特效素材</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/audioBufferByteLength</Anchor>
+			<Anchor>//api/name/setSpecialEffectsUIImage:</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setAudioBufferTimeLength:</TokenIdentifier>
-			<Abstract type="html">    audio queue time length in ms</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYSpecialEffects/setIntensity:</TokenIdentifier>
+			<Abstract type="html">特效参数</Abstract>
+			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int audioBufferTimeLength</Declaration>
+			<Declaration>@property (readwrite, nonatomic) CGFloat intensity</Declaration>
 			
 			
-			<Anchor>//api/name/audioBufferTimeLength</Anchor>
+			<Anchor>//api/name/intensity</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/audioBufferTimeLength</TokenIdentifier>
-			<Abstract type="html">    audio queue time length in ms</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYSpecialEffects/intensity</TokenIdentifier>
+			<Abstract type="html">特效参数</Abstract>
+			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int audioBufferTimeLength</Declaration>
+			<Declaration>@property (readwrite, nonatomic) CGFloat intensity</Declaration>
 			
 			
-			<Anchor>//api/name/audioBufferTimeLength</Anchor>
+			<Anchor>//api/name/intensity</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/audioBufferTimeLength</TokenIdentifier>
-			<Abstract type="html">    audio queue time length in ms</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYSpecialEffects/intensity</TokenIdentifier>
+			<Abstract type="html">特效参数</Abstract>
+			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int audioBufferTimeLength</Declaration>
+			<Declaration>@property (readwrite, nonatomic) CGFloat intensity</Declaration>
 			
 			
-			<Anchor>//api/name/audioBufferTimeLength</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setAudioTotalDataSize:</TokenIdentifier>
-			<Abstract type="html">    size of data have arrived at audio queue since playing. unit:byte</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int64_t audioTotalDataSize</Declaration>
-			
-			
-			<Anchor>//api/name/audioTotalDataSize</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/audioTotalDataSize</TokenIdentifier>
-			<Abstract type="html">    size of data have arrived at audio queue since playing. unit:byte</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int64_t audioTotalDataSize</Declaration>
-			
-			
-			<Anchor>//api/name/audioTotalDataSize</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/audioTotalDataSize</TokenIdentifier>
-			<Abstract type="html">    size of data have arrived at audio queue since playing. unit:byte</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int64_t audioTotalDataSize</Declaration>
-			
-			
-			<Anchor>//api/name/audioTotalDataSize</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setVideoBufferByteLength:</TokenIdentifier>
-			<Abstract type="html">    video queue size in bytes</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int videoBufferByteLength</Declaration>
-			
-			
-			<Anchor>//api/name/videoBufferByteLength</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/videoBufferByteLength</TokenIdentifier>
-			<Abstract type="html">    video queue size in bytes</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int videoBufferByteLength</Declaration>
-			
-			
-			<Anchor>//api/name/videoBufferByteLength</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/videoBufferByteLength</TokenIdentifier>
-			<Abstract type="html">    video queue size in bytes</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int videoBufferByteLength</Declaration>
-			
-			
-			<Anchor>//api/name/videoBufferByteLength</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setVideoBufferTimeLength:</TokenIdentifier>
-			<Abstract type="html">    video queue time length in ms</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int videoBufferTimeLength</Declaration>
-			
-			
-			<Anchor>//api/name/videoBufferTimeLength</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/videoBufferTimeLength</TokenIdentifier>
-			<Abstract type="html">    video queue time length in ms</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int videoBufferTimeLength</Declaration>
-			
-			
-			<Anchor>//api/name/videoBufferTimeLength</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/videoBufferTimeLength</TokenIdentifier>
-			<Abstract type="html">    video queue time length in ms</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int videoBufferTimeLength</Declaration>
-			
-			
-			<Anchor>//api/name/videoBufferTimeLength</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setVideoTotalDataSize:</TokenIdentifier>
-			<Abstract type="html">    size of data have arrived at video queue since playing. unit:byte</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int64_t videoTotalDataSize</Declaration>
-			
-			
-			<Anchor>//api/name/videoTotalDataSize</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/videoTotalDataSize</TokenIdentifier>
-			<Abstract type="html">    size of data have arrived at video queue since playing. unit:byte</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int64_t videoTotalDataSize</Declaration>
-			
-			
-			<Anchor>//api/name/videoTotalDataSize</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/videoTotalDataSize</TokenIdentifier>
-			<Abstract type="html">    size of data have arrived at video queue since playing. unit:byte</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int64_t videoTotalDataSize</Declaration>
-			
-			
-			<Anchor>//api/name/videoTotalDataSize</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setTotalDataSize:</TokenIdentifier>
-			<Abstract type="html">    size of total audio and video data since playing. unit: byte</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int64_t totalDataSize</Declaration>
-			
-			
-			<Anchor>//api/name/totalDataSize</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/totalDataSize</TokenIdentifier>
-			<Abstract type="html">    size of total audio and video data since playing. unit: byte</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int64_t totalDataSize</Declaration>
-			
-			
-			<Anchor>//api/name/totalDataSize</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/totalDataSize</TokenIdentifier>
-			<Abstract type="html">    size of total audio and video data since playing. unit: byte</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int64_t totalDataSize</Declaration>
-			
-			
-			<Anchor>//api/name/totalDataSize</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setVideoDecodeFPS:</TokenIdentifier>
-			<Abstract type="html">    video decode frame count per second</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) float videoDecodeFPS</Declaration>
-			
-			
-			<Anchor>//api/name/videoDecodeFPS</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/videoDecodeFPS</TokenIdentifier>
-			<Abstract type="html">    video decode frame count per second</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) float videoDecodeFPS</Declaration>
-			
-			
-			<Anchor>//api/name/videoDecodeFPS</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/videoDecodeFPS</TokenIdentifier>
-			<Abstract type="html">    video decode frame count per second</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) float videoDecodeFPS</Declaration>
-			
-			
-			<Anchor>//api/name/videoDecodeFPS</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setVideoRefreshFPS:</TokenIdentifier>
-			<Abstract type="html">    video refresh frame count per second</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) float videoRefreshFPS</Declaration>
-			
-			
-			<Anchor>//api/name/videoRefreshFPS</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/videoRefreshFPS</TokenIdentifier>
-			<Abstract type="html">    video refresh frame count per second</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) float videoRefreshFPS</Declaration>
-			
-			
-			<Anchor>//api/name/videoRefreshFPS</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/videoRefreshFPS</TokenIdentifier>
-			<Abstract type="html">    video refresh frame count per second</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) float videoRefreshFPS</Declaration>
-			
-			
-			<Anchor>//api/name/videoRefreshFPS</Anchor>
+			<Anchor>//api/name/intensity</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		

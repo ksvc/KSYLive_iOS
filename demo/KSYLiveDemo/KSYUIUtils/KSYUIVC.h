@@ -37,7 +37,8 @@
 // ksy util functions
 + (NSString*) sizeFormatted : (int )KB;
 + (NSString *)timeFormatted:(int)totalSeconds;
-+ (void) toast:(NSString*)message;
++ (void) toast:(NSString*)message
+          time:(double)duration;
 //cpu use rate
 + (float) cpu_usage;
 + (float) memory_usage;

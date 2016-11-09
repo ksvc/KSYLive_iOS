@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYAVMuxerStatus.html">
+	<File path="Constants/KSYAudioCodec.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYAVMuxerStatus</TokenIdentifier>
-			<Abstract type="html">交织处理状态</Abstract>
-			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYAudioCodec</TokenIdentifier>
+			<Abstract type="html">音频编码器类型</Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
 			<NodeRef refid="33"/>
@@ -14,51 +14,31 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusIdle</TokenIdentifier>
-            <Abstract type="html">初始状态</Abstract>
-            <Declaration>KSYAVMuxerStatusIdle</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioCodec_AAC_HE</TokenIdentifier>
+            <Abstract type="html">faac音频软件编码器 - AAC_HE</Abstract>
+            <Declaration>KSYAudioCodec_AAC_HE</Declaration>
             
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
-            
-            <NodeRef refid="33"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusMuxing</TokenIdentifier>
-            <Abstract type="html">处理中</Abstract>
-            <Declaration>KSYAVMuxerStatusMuxing</Declaration>
-            
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="33"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusCompleted</TokenIdentifier>
-            <Abstract type="html">处理完成</Abstract>
-            <Declaration>KSYAVMuxerStatusCompleted</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioCodec_AAC</TokenIdentifier>
+            <Abstract type="html">faac音频软件编码器 - AAC_LC</Abstract>
+            <Declaration>KSYAudioCodec_AAC</Declaration>
             
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
-            
-            <NodeRef refid="33"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusFailed</TokenIdentifier>
-            <Abstract type="html">处理失败</Abstract>
-            <Declaration>KSYAVMuxerStatusFailed</Declaration>
-            
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="33"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusCancelled</TokenIdentifier>
-            <Abstract type="html">处理任务被取消</Abstract>
-            <Declaration>KSYAVMuxerStatusCancelled</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioCodec_AT_AAC</TokenIdentifier>
+            <Abstract type="html">iOS自带的audiotoolbox音频编码器 - AAC_LC</Abstract>
+            <Declaration>KSYAudioCodec_AT_AAC</Declaration>
             
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="33"/>
         </Token>

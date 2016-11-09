@@ -39,10 +39,11 @@
     NSString *devCode  = [ [[[UIDevice currentDevice] identifierForVendor] UUIDString] substringToIndex:3];
     NSString *streamSrv  = @"rtmp://test.uplive.ksyun.com/live";
     NSString *streamUrl      = [ NSString stringWithFormat:@"%@/%@", streamSrv, devCode];
-    
     NSString *playUrl  = @"rtmp://live.hkstv.hk.lxdns.com/live/hks";
+    NSString *recordFile = @"RecordAv.mp4";
     [_addressMulArray addObject:streamUrl];
     [_addressMulArray addObject:playUrl];
+    [_addressMulArray addObject:recordFile];
     [self initVariable];
     [self initLiveVCUI];
     [KSYDBCreater initDatabase];
@@ -58,6 +59,7 @@
     text.layer.cornerRadius  = 2;
     return text;
 }
+
 - (UITableView *)addTableView{
     UITableView *teble = [[UITableView alloc]init];
     teble.layer.masksToBounds = YES;
@@ -89,6 +91,7 @@
                     @"文件格式探测",
                     @"播放自动化测试 ",
                     @"推流demo",
+                    @"录制短视频",
                     nil];
 }
 
@@ -142,7 +145,7 @@
     if (tableView == _ctrTableView) {
         return 1;
     }else if(tableView == _addressTable){
-        return 2;
+        return 3;
     }else{
         return 0;
     }
@@ -173,6 +176,9 @@
         else if (indexPath.section == 1){
             cell.textLabel.text = _addressMulArray[indexPath.section];
         }
+        else if (indexPath.section == 2){
+            cell.textLabel.text = _addressMulArray[indexPath.section];
+        }
         cell.textLabel.font = [UIFont systemFontOfSize:14];
         UIView *cellView = [[UIView alloc]initWithFrame:cell.frame];
         cellView.backgroundColor = [UIColor grayColor];
@@ -186,7 +192,13 @@
     if (tableView == _ctrTableView) {
         if (_textFiled.text.length > 0) {
             NSLog(@"url:%@",_textFiled.text);
+            NSString *dir;
             NSURL *url = [NSURL URLWithString:_textFiled.text];
+            NSString *scheme = [url scheme];
+            if(![scheme isEqualToString:@"rtmp"] && ![scheme isEqualToString:@"http"]){
+                dir = [NSHomeDirectory() stringByAppendingString:@"/Documents/"];
+                url = [NSURL URLWithString:[dir stringByAppendingPathComponent:_textFiled.text]];
+            }
             UIViewController* vc = nil;
             if (indexPath.row == 0) {
                 vc = [[KSYPlayerVC alloc]initWithURL:url];
@@ -198,6 +210,11 @@
             else if (indexPath.row == 3){
                 vc = [[KSYPresetCfgVC alloc]initWithURL:_textFiled.text];
             }
+            else if (indexPath.row == 4){
+                KSYPresetCfgVC *preVC = [[KSYPresetCfgVC alloc]initWithURL:[dir stringByAppendingPathComponent:_textFiled.text]];
+                [preVC.cfgView.btn0 setTitle:@"开始录制" forState:UIControlStateNormal];
+                vc = preVC;
+            }
             
             if (vc){
                 [self presentViewController:vc animated:YES completion:nil];
@@ -208,6 +225,9 @@
             _textFiled.text = _addressMulArray[indexPath.section];
         }
         else if (indexPath.section == 1){
+            _textFiled.text = _addressMulArray[indexPath.section];
+        }
+        else if (indexPath.section == 2){
             _textFiled.text = _addressMulArray[indexPath.section];
         }
         [_textFiled resignFirstResponder];
@@ -222,6 +242,8 @@
             return @"推流地址";
         }else if (section == 1){
             return @"拉流地址";
+        }else if (section == 2){
+            return @"录制文件";
         }
         
     }

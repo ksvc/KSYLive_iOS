@@ -17,7 +17,7 @@
 
 @implementation KSYCtrlView
 
-- (id) init {
+- (id) initWithMenu:(NSArray *) menuNames {
     self = [super init];
     _btnFlash  =  [self addButton:@"闪光灯" ];
     _btnCameraToggle =  [self addButton:@"前后摄像头" ];
@@ -31,10 +31,12 @@
     _lblNetwork.textAlignment = NSTextAlignmentCenter;
     
     // add menu
-    _bgmBtn   = [self addButton:@"背景音乐"];
-    _filterBtn = [self addButton:@"图像/美颜"];
-    _mixBtn    = [self addButton:@"声音"];
-    _miscBtn   = [self addButton:@"其他"];
+    NSMutableArray * btnArray = [[NSMutableArray alloc] init];
+    for (NSString * name in menuNames){
+        [btnArray addObject: [self addButton:name] ];
+    }
+    _menuBtns = [NSArray arrayWithArray:btnArray];
+    
     _backBtn   = [self addButton:@"菜单"
                           action:@selector(onBack:)];
     _backBtn.hidden = YES;
@@ -49,7 +51,7 @@
     }
     [self putRow: @[_backBtn, _btnFlash, _btnCameraToggle,_btnQuit] ];
     
-    [self putRow: @[_bgmBtn, _filterBtn, _mixBtn,_miscBtn ] ];
+    [self putRow: _menuBtns ];
     [self hideMenuBtn:!_backBtn.hidden];
     
     self.yPos -= self.btnH;
@@ -70,10 +72,9 @@
 - (void)hideMenuBtn: (BOOL) bHide {
     _backBtn.hidden   = !bHide; // 返回
     // hide menu
-    _bgmBtn.hidden    = bHide;
-    _filterBtn.hidden = bHide;
-    _miscBtn.hidden   = bHide;
-    _mixBtn.hidden    = bHide;
+    for (UIButton * btn in _menuBtns){
+        btn.hidden = bHide;
+    }
 }
 
 - (IBAction)onBack:(id)sender {

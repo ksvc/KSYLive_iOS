@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "KSYUIVC.h"
+#import "KSYPresetCfgView.h"
 
 #import <GPUImage/GPUImage.h>
 
@@ -21,6 +22,8 @@
 - (instancetype)initWithURL:(NSString *)url;
 // 初始传入的 rtmpserver 地址
 @property NSString * rtmpURL;
+
+@property (nonatomic, retain) KSYPresetCfgView * cfgView;
 
 @end
 

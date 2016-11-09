@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYAudioCodec.html">
+	<File path="Constants/KSYBWEstimateMode.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYAudioCodec</TokenIdentifier>
-			<Abstract type="html">音频编码器类型</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYBWEstimateMode</TokenIdentifier>
+			<Abstract type="html">网络自适应模式类型
+  </Abstract>
 			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
@@ -14,9 +15,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioCodec_AAC_HE</TokenIdentifier>
-            <Abstract type="html">faac音频软件编码器 - AAC_HE</Abstract>
-            <Declaration>KSYAudioCodec_AAC_HE</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBWEstMode_Default</TokenIdentifier>
+            <Abstract type="html">默认模式 (综合模式,比较平稳)</Abstract>
+            <Declaration>KSYBWEstMode_Default</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -24,9 +25,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioCodec_AAC</TokenIdentifier>
-            <Abstract type="html">faac音频软件编码器 - AAC_LC</Abstract>
-            <Declaration>KSYAudioCodec_AAC</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBWEstMode_Negtive</TokenIdentifier>
+            <Abstract type="html">流畅优先模式(消极上调, 极速下调)</Abstract>
+            <Declaration>KSYBWEstMode_Negtive</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -34,19 +35,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioCodec_AT_AAC_HE</TokenIdentifier>
-            <Abstract type="html">iOS自带的audiotoolbox音频编码器 - AAC_HE</Abstract>
-            <Declaration>KSYAudioCodec_AT_AAC_HE</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="34"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioCodec_AT_AAC</TokenIdentifier>
-            <Abstract type="html">iOS自带的audiotoolbox音频编码器 - AAC_LC</Abstract>
-            <Declaration>KSYAudioCodec_AT_AAC</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBWEstMode_Disable</TokenIdentifier>
+            <Abstract type="html">禁用网络自适应网络调整</Abstract>
+            <Declaration>KSYBWEstMode_Disable</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             

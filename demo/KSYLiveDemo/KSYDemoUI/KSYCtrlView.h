@@ -13,28 +13,29 @@
 
 @interface KSYCtrlView : KSYUIView
 
+// init with menu items
+- (id) initWithMenu:(NSArray *) menuNames;
+
 #pragma mark - basic ctrl buttons
 @property UIButton * btnFlash;
 @property UIButton * btnCameraToggle;
 @property UIButton * btnQuit;
 @property UIButton * btnStream;
 @property UIButton * btnCapture;
+
 @property KSYStateLableView  * lblStat;
 @property UILabel  * lblNetwork;
 
 
 #pragma mark - menu buttons
 //背景音乐
-@property UIButton *bgmBtn;
 //图像和美颜相关
-@property UIButton *filterBtn;
 //声音相关: 混音 / 混响 / 耳返等
-@property UIButton *mixBtn;
 //其他功能: 比如截屏
-@property UIButton *miscBtn;
+@property NSArray * menuBtns;
+
 //返回菜单页面
 @property UIButton *backBtn;
-
 
 - (void) showSubMenuView: (KSYUIView*) view;
 

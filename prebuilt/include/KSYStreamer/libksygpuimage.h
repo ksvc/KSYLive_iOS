@@ -24,7 +24,6 @@
 #import "KSYBeautifyFaceFilter.h"
 #import "KSYSpecialEffects.h"
 #import "KSYBuildInSpecialEffects.h"
-#import "KSYBeautifyFaceFilter.h"
 #import "KSYGPULogoFilter.h"
 
 // mixer

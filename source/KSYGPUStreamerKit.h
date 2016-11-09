@@ -340,15 +340,17 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 @property (nonatomic, assign) BOOL streamerMirrored;
 
 /**
- @abstract 根据UI的朝向旋转预览视图, 保证预览视图全屏铺满窗口
+ @abstract   根据UI的朝向旋转预览视图, 保证预览视图全屏铺满窗口
+ @param      orie 旋转到目标朝向, 需要从demo中获取UI的朝向传入
  @discussion 采集到的图像的朝向还是和启动时的朝向一致
  */
-- (void) rotatePreview;
+- (void) rotatePreviewTo: (UIInterfaceOrientation) orie;
 
 /**
  @abstract 根据UI的朝向旋转推流画面
+ @param    orie 旋转到目标朝向, 需要从demo中获取UI的朝向传入
  */
-- (void) rotateStream;
+- (void) rotateStreamTo: (UIInterfaceOrientation) orie;
 
 #pragma mark - pictures & logo
 /**

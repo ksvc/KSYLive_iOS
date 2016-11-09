@@ -59,6 +59,11 @@ typedef void (^KSYPlyVideoDataBlock)(CMSampleBufferRef pixelBuffer);
 typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 
 /**
+ @abstract texture回调
+ */
+typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double pts);
+
+/**
  * KSYMoviePlayerController
  */
 @interface KSYMoviePlayerController : NSObject <KSYMediaPlayback>
@@ -81,7 +86,19 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
  @return 返回KSYMoviePlayerController 实例
  @warning KSYMoviePlayerController 当前版本只支持单实例的KSYMoviePlayerController对象，多实例将导致播放异常。
  */
-- (instancetype)initWithContentURL:(NSURL *)url NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithContentURL:(NSURL *)url;
+
+/**
+ @abstract 初始化播放器并设置播放地址
+ @param url 视频播放地址，该地址可以是本地地址或者服务器地址.
+ @param sharegroup opengl的sharegroup, 用于共享视频渲染texture
+ @return 返回KSYMoviePlayerController对象，该对象的视频播放地址ContentURL已经初始化。此时播放器状态为MPMoviePlaybackStateStopped.
+ 
+ @discussion 如果要获取视频渲染时的texture时(设置textureBlock属性)，需要使用此初始化函数，将EAGLSharegroup对象作为参数传入，否则texture无法在多个OpenGL的context中共享使用
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 1.8.7 and later.
+*/
+- (instancetype)initWithContentURL:(NSURL *)url sharegroup:(EAGLSharegroup*)sharegroup NS_DESIGNATED_INITIALIZER;
 
 /**
  @abstract 正在播放的视频文件的URL地址，该地址可以是本地地址或者服务器地址。
@@ -404,6 +421,15 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 @property (nonatomic, copy)KSYPlyAudioDataBlock audioDataBlock;
 
 /**
+ @abstract 视频图像texture回调
+ @discussion 调用[prepareToPlay]([KSYMediaPlayback prepareToPlay])方法之前设置生效
+ @warning 该方法由金山云引入，不是原生系统接口。使用该属性时需要在初始化时使用[initWithContentURL:sharegroup:]([initWithContentURL:sharegroup:])函数初始化播放器，否则该属性无效
+ @since Available in KSYMoviePlayerController 1.8.7 and later.
+ @see KSYPlyAudioDataBlock
+ */
+@property (nonatomic, copy)KSYPlyTextureBlock textureBlock;
+
+/**
  @abstract 指定逆时针旋转角度，只能是0/90/180/270, 不符合上述值不进行旋转
  @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.4.1 and later.
@@ -463,8 +489,8 @@ typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 
 /**
  @abstract setVolume指定播放器输出音量
- @param leftVolume  left volume scalar  [0~1.0f]
- @param rightVolume right volume scalar [0~1.0f]
+ @param leftVolume  left volume scalar  [0~2.0f]
+ @param rightVolume right volume scalar [0~2.0f]
  @discussion 使用说明
  
  * 输入参数超出范围将失效
