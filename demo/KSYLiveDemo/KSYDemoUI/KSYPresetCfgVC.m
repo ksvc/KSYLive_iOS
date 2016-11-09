@@ -9,7 +9,6 @@
 
 #import "KSYPresetCfgVC.h"
 #import "KSYUIView.h"
-#import "KSYPresetCfgView.h"
 #import "KSYStreamerVC.h"
 
 
@@ -31,7 +30,6 @@
 #endif
 
 @interface KSYPresetCfgVC () {
-    KSYPresetCfgView * _cfgView;
 }
 
 // 方便调试 可以在app启动后自动开启预览和推流
@@ -44,19 +42,22 @@
 - (instancetype)initWithURL:(NSString *)url{
     self = [super init];
     _rtmpURL = url;
+    _cfgView = [[KSYPresetCfgView alloc] init];
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _cfgView = [[KSYPresetCfgView alloc] init];
+    if (_cfgView == nil){
+        _cfgView = [[KSYPresetCfgView alloc] init];
+    }
     __weak KSYPresetCfgVC * weakSelf = self;
     _cfgView.onBtnBlock = ^(id sender){
         [weakSelf  btnFunc:sender];
     };
     _cfgView.frame = self.view.frame;
     self.view = _cfgView;
-
+    
     //  TODO: !!!! 设置是否自动启动推流
     _bAutoStart = NO;
     if (_bAutoStart) {
@@ -92,7 +93,10 @@
 - (IBAction)btnFunc:(id)sender {
     UIViewController *vc = nil;
     if ( sender == _cfgView.btn0) { // kit demo
-        vc = [[KSYStreamerVC alloc] initWithCfg:_cfgView];
+        NSString * btnName = _cfgView.btn0.currentTitle;
+        KSYStreamerVC * strVC = [[KSYStreamerVC alloc] initWithCfg:_cfgView];
+        [strVC.ctrlView.btnStream setTitle:btnName forState:UIControlStateNormal];
+        vc = strVC;
     }
     else if ( sender == _cfgView.btn2) { // tests
 #ifdef KSYSTREAMER_DEMO
@@ -102,8 +106,10 @@
         vc = [[movieWriterVC alloc] init];
         vc = [[gpuimageVC alloc] init];
 #else
+        
         [self dismissViewControllerAnimated:FALSE
                                  completion:nil];
+        
         return;
 #endif
     }

@@ -1239,26 +1239,36 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/rotatePreview</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/rotatePreviewTo:</TokenIdentifier>
 			<Abstract type="html">根据UI的朝向旋转预览视图, 保证预览视图全屏铺满窗口</Abstract>
 			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
 			
-			<Declaration>- (void)rotatePreview</Declaration>
+			<Declaration>- (void)rotatePreviewTo:(UIInterfaceOrientation)orie</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>orie</Name>
+					<Abstract type="html">旋转到目标朝向, 需要从demo中获取UI的朝向传入</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/rotatePreview</Anchor>
+			<Anchor>//api/name/rotatePreviewTo:</Anchor>
             <NodeRef refid="20"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/rotateStream</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/rotateStreamTo:</TokenIdentifier>
 			<Abstract type="html">根据UI的朝向旋转推流画面</Abstract>
 			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
 			
-			<Declaration>- (void)rotateStream</Declaration>
+			<Declaration>- (void)rotateStreamTo:(UIInterfaceOrientation)orie</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>orie</Name>
+					<Abstract type="html">旋转到目标朝向, 需要从demo中获取UI的朝向传入</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/rotateStream</Anchor>
+			<Anchor>//api/name/rotateStreamTo:</Anchor>
             <NodeRef refid="20"/>
 		</Token>
 		

@@ -114,6 +114,8 @@
 		
 		<option value="//api/name/superFastPlay">superFastPlay</option>
 		
+		<option value="//api/name/textureBlock">textureBlock</option>
+		
 		<option value="//api/name/videoDataBlock">videoDataBlock</option>
 		
 		<option value="//api/name/videoDecoderMode">videoDecoderMode</option>
@@ -135,6 +137,8 @@
 		<option value="//api/name/getVersion">- getVersion</option>
 		
 		<option value="//api/name/initWithContentURL:">- initWithContentURL:</option>
+		
+		<option value="//api/name/initWithContentURL:sharegroup:">- initWithContentURL:sharegroup:</option>
 		
 		<option value="//api/name/isPlaying">- isPlaying</option>
 		
@@ -265,6 +269,79 @@
 <li>file, 本地文件</li>
 </ul>
 <div class="warning"><p><strong>Warning:</strong> 必须调用该方法进行初始化，不能调用init方法。</p></div><div class="warning"><p><strong>Warning:</strong> KSYMoviePlayerController 当前版本只支持单实例的KSYMoviePlayerController对象，多实例将导致播放异常。</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithContentURL:sharegroup:" title="initWithContentURL:sharegroup:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithContentURL:sharegroup:">&ndash;&nbsp;initWithContentURL:sharegroup:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>初始化播放器并设置播放地址</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithContentURL:(NSURL *)<em>url</em> sharegroup:(EAGLSharegroup *)<em>sharegroup</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>url</code></th>
+						<td><p>视频播放地址，该地址可以是本地地址或者服务器地址.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>sharegroup</code></th>
+						<td><p>opengl的sharegroup, 用于共享视频渲染texture</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>返回KSYMoviePlayerController对象，该对象的视频播放地址ContentURL已经初始化。此时播放器状态为MPMoviePlaybackStateStopped.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in KSYMoviePlayerController 1.8.7 and later.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>如果要获取视频渲染时的texture时(设置textureBlock属性)，需要使用此初始化函数，将EAGLSharegroup对象作为参数传入，否则texture无法在多个OpenGL的context中共享使用</p><div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div>
 			</div>
 			
 
@@ -1831,6 +1908,66 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/textureBlock" title="textureBlock"></a>
+	<h3 class="method-title"><code><a href="#//api/name/textureBlock">&nbsp;&nbsp;textureBlock</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视频图像texture回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) KSYPlyTextureBlock textureBlock</code></div>
+
+		    
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in KSYMoviePlayerController 1.8.7 and later.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>调用<a href="../Protocols/KSYMediaPlayback.html#//api/name/prepareToPlay">prepareToPlay</a>方法之前设置生效</p><div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口。使用该属性时需要在初始化时使用<a href="[initWithContentURL:sharegroup:]">initWithContentURL:sharegroup:</a>函数初始化播放器，否则该属性无效</p></div>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Blocks/KSYPlyAudioDataBlock.html">KSYPlyAudioDataBlock</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/rotateDegress" title="rotateDegress"></a>
 	<h3 class="method-title"><code><a href="#//api/name/rotateDegress">&nbsp;&nbsp;rotateDegress</a></code>
 </h3>
@@ -2189,12 +2326,12 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>leftVolume</code></th>
-						<td><p>left volume scalar  [0~1.0f]</p></td>
+						<td><p>left volume scalar  [0~2.0f]</p></td>
 					</tr>
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>rightVolume</code></th>
-						<td><p>right volume scalar [0~1.0f]</p></td>
+						<td><p>right volume scalar [0~2.0f]</p></td>
 					</tr>
 				
 				</table>
@@ -2844,7 +2981,7 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-11-03</p>
+						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-11-09</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

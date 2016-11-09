@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/MPMovieVideoDecoderMode.html">
+	<File path="Constants/MPMovieVideoDeinterlaceMode.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/MPMovieVideoDecoderMode</TokenIdentifier>
-			<Abstract type="html">视频解码模式</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/MPMovieVideoDeinterlaceMode</TokenIdentifier>
+			<Abstract type="html">视频反交错模式</Abstract>
 			<DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDecoderMode_Software</TokenIdentifier>
-            <Abstract type="html">视频解码方式采用软解</Abstract>
-            <Declaration>MPMovieVideoDecoderMode_Software</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDeinterlaceMode_None</TokenIdentifier>
+            <Abstract type="html">关闭反交错</Abstract>
+            <Declaration>MPMovieVideoDeinterlaceMode_None</Declaration>
             
             <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
@@ -24,19 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDecoderMode_Hardware</TokenIdentifier>
-            <Abstract type="html">视频解码方式采用硬解</Abstract>
-            <Declaration>MPMovieVideoDecoderMode_Hardware</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="53"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDecoderMode_AUTO</TokenIdentifier>
-            <Abstract type="html">自动选择解码方式，8.0以上的系统优先选择硬解</Abstract>
-            <Declaration>MPMovieVideoDecoderMode_AUTO</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDeinterlaceMode_Auto</TokenIdentifier>
+            <Abstract type="html">自动判断是否打开反交错</Abstract>
+            <Declaration>MPMovieVideoDeinterlaceMode_Auto</Declaration>
             
             <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             

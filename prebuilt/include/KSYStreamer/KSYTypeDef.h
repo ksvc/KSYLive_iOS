@@ -92,8 +92,6 @@ typedef NS_ENUM(NSUInteger, KSYAudioCodec) {
     KSYAudioCodec_AAC_HE = 0,
     /// faac音频软件编码器 - AAC_LC
     KSYAudioCodec_AAC,
-    /// iOS自带的audiotoolbox音频编码器 - AAC_HE
-    KSYAudioCodec_AT_AAC_HE,
     /// iOS自带的audiotoolbox音频编码器 - AAC_LC
     KSYAudioCodec_AT_AAC,
 };
