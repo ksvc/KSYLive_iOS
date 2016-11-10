@@ -3,15 +3,16 @@ osx_image: xcode8
 xcode_workspace: demo/KSYLiveDemo.xcworkspace
 xcode_scheme: KSYLiveDemo
 script:
+- echo "release to framework_${TRAVIS_TAG}.zip - $TRAVIS_TAG"
 - cd releaseFramework
 - "./release-libKSYLive.sh libksygpulive lite"
 - cd ../
-- zip --symlinks -r framework_$(TRAVIS_TAG).zip framework/*
+- zip --symlinks -r framework_${TRAVIS_TAG}.zip framework/*
 deploy:
   provider: releases
   api_key:
     secure: XQG09eVzKEnzsrRdqLZhoVz9iASDf1NvRz1XFR6ad47y6JoPIiCtUOqaptf4bE7lJIdl7KqLVAAfAHDV0RHmLZ3BpPLHd/kBcGW4UW3h+GnZOh0z2ijGTn1BkxztENeSq6bPpcDR0PrBq8uc5h1RwwyQCBZPhZHbxtVcna5httOEItjOrbywv8qtIrqNRItDWHhxrOa9oc3LKeLWXnXYuyIwryIL5tq8BVFFja0raUaDfSSq2wf1WwOM5qq5Pr+0TjKE/JA7BOFAA+X2caLE5v9GW1Q9sN/WDxsyCJ/GoJ6gr05m055NG9bPfqctFlPUUO+JIw3wiJKd/Pn5WJ0v8BZ7u8eP8f2bzZO0Yc8RBfh2RaigWHg5WnVEf5SKD9fNVyvfyJ94e4oUjpRqk+0dfhOfXoSmuObMB8yRRNQjIfCJyX8CVAfRKXK49fGHS8t8AQOB6Y8eu7Er8g5/9LHJQci+rhfK+8vl5YNEUGKWqB6yOnx89cllAblXyYPuctQfRkL4DgTGjlkuZhy1eRJPgzIEJLr+vrrRx0b4Up8/EvZY4LvF/bwU9QuQLTygE8iKbg6qfn1L8wdIelD0JgORXGsXCIVvuZFah9S6mjbIquLj/D7GP06MWtTjUGVdn9NaLY7ywgkXxznzWs6V2HvYQRFMnOqzehoGMXAcqF7NRRc=
-  file: framework_$(TRAVIS_TAG).zip
+  file: framework_${TRAVIS_TAG}.zip
   skip_cleanup: true
   on:
     repo: ksvc/KSYLive_iOS
