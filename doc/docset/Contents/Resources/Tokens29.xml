@@ -26,7 +26,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setHostURL:</TokenIdentifier>
-			<Abstract type="html">rtmp主机地址</Abstract>
+			<Abstract type="html">直播推流时为rtmp主机地址; 本地文件录制时,为输出文件路径</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) NSURL *hostURL</Declaration>
@@ -38,7 +38,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/hostURL</TokenIdentifier>
-			<Abstract type="html">rtmp主机地址</Abstract>
+			<Abstract type="html">直播推流时为rtmp主机地址; 本地文件录制时,为输出文件路径</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) NSURL *hostURL</Declaration>
@@ -50,7 +50,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/hostURL</TokenIdentifier>
-			<Abstract type="html">rtmp主机地址</Abstract>
+			<Abstract type="html">直播推流时为rtmp主机地址; 本地文件录制时,为输出文件路径</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) NSURL *hostURL</Declaration>
@@ -806,11 +806,11 @@
 		
 	</RelatedTokens>
 	
-			<Declaration>- (void)startStream:(NSURL *)hostURL</Declaration>
+			<Declaration>- (void)startStream:(NSURL *)url</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>hostURL</Name>
-					<Abstract type="html">rtmp 服务器地址 “rtmp://xxx.xxx.xxx.xxx/appname/streamKey&quot;</Abstract>
+					<Name>url</Name>
+					<Abstract type="html">目标地址</Abstract>
 				</Parameter>
 			</Parameters>
 			
@@ -954,8 +954,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/isStreaming</TokenIdentifier>
-			<Abstract type="html">查询当前是否处于推流状态 (建立连接中, 或连接中)
-@see</Abstract>
+			<Abstract type="html">查询当前是否处于推流状态 (建立连接中, 或连接中)</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 			<Declaration>- (BOOL)isStreaming</Declaration>
@@ -1069,7 +1068,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setUploadedKByte:</TokenIdentifier>
-			<Abstract type="html">查询本次推流发送的流量大小</Abstract>
+			<Abstract type="html">查询本次推流发送的流量大小 (仅推流时有效)</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) int uploadedKByte</Declaration>
@@ -1081,7 +1080,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/uploadedKByte</TokenIdentifier>
-			<Abstract type="html">查询本次推流发送的流量大小</Abstract>
+			<Abstract type="html">查询本次推流发送的流量大小 (仅推流时有效)</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) int uploadedKByte</Declaration>
@@ -1093,7 +1092,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/uploadedKByte</TokenIdentifier>
-			<Abstract type="html">查询本次推流发送的流量大小</Abstract>
+			<Abstract type="html">查询本次推流发送的流量大小 (仅推流时有效)</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readonly) int uploadedKByte</Declaration>
@@ -1368,6 +1367,271 @@
 			</Parameters>
 			
 			<Anchor>//api/name/getSnapshotWithCompletion:</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setBypassRecordURL:</TokenIdentifier>
+			<Abstract type="html">旁路录像地址</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/hostURL</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, readonly) NSURL *bypassRecordURL</Declaration>
+			
+			
+			<Anchor>//api/name/bypassRecordURL</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/bypassRecordURL</TokenIdentifier>
+			<Abstract type="html">旁路录像地址</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/hostURL</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, readonly) NSURL *bypassRecordURL</Declaration>
+			
+			
+			<Anchor>//api/name/bypassRecordURL</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/bypassRecordURL</TokenIdentifier>
+			<Abstract type="html">旁路录像地址</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/hostURL</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, readonly) NSURL *bypassRecordURL</Declaration>
+			
+			
+			<Anchor>//api/name/bypassRecordURL</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/startBypassRecord:</TokenIdentifier>
+			<Abstract type="html">启动旁路录像</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/bypassRecordState</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>- (BOOL)startBypassRecord:(NSURL *)url</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>url</Name>
+					<Abstract type="html">本地录像文件地址:/private/var/..../test.mp4</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">是否能尝试启动写入, 不能表明真正开始录像了,真正开始请确认bypassRecordState的值</Abstract></ReturnValue>
+			<Anchor>//api/name/startBypassRecord:</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/stopBypassRecord</TokenIdentifier>
+			<Abstract type="html">停止旁路录像</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>- (void)stopBypassRecord</Declaration>
+			
+			
+			<Anchor>//api/name/stopBypassRecord</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setBypassRecordDuration:</TokenIdentifier>
+			<Abstract type="html">旁路录像的文件时长</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) double bypassRecordDuration</Declaration>
+			
+			
+			<Anchor>//api/name/bypassRecordDuration</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/bypassRecordDuration</TokenIdentifier>
+			<Abstract type="html">旁路录像的文件时长</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) double bypassRecordDuration</Declaration>
+			
+			
+			<Anchor>//api/name/bypassRecordDuration</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/bypassRecordDuration</TokenIdentifier>
+			<Abstract type="html">旁路录像的文件时长</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) double bypassRecordDuration</Declaration>
+			
+			
+			<Anchor>//api/name/bypassRecordDuration</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setBypassRecordState:</TokenIdentifier>
+			<Abstract type="html">旁路录像的状态</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) KSYRecordState bypassRecordState</Declaration>
+			
+			
+			<Anchor>//api/name/bypassRecordState</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/bypassRecordState</TokenIdentifier>
+			<Abstract type="html">旁路录像的状态</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) KSYRecordState bypassRecordState</Declaration>
+			
+			
+			<Anchor>//api/name/bypassRecordState</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/bypassRecordState</TokenIdentifier>
+			<Abstract type="html">旁路录像的状态</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) KSYRecordState bypassRecordState</Declaration>
+			
+			
+			<Anchor>//api/name/bypassRecordState</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setBypassRecordErrorCode:</TokenIdentifier>
+			<Abstract type="html">旁路录像的错误码</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) KSYRecordError bypassRecordErrorCode</Declaration>
+			
+			
+			<Anchor>//api/name/bypassRecordErrorCode</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/bypassRecordErrorCode</TokenIdentifier>
+			<Abstract type="html">旁路录像的错误码</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) KSYRecordError bypassRecordErrorCode</Declaration>
+			
+			
+			<Anchor>//api/name/bypassRecordErrorCode</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/bypassRecordErrorCode</TokenIdentifier>
+			<Abstract type="html">旁路录像的错误码</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) KSYRecordError bypassRecordErrorCode</Declaration>
+			
+			
+			<Anchor>//api/name/bypassRecordErrorCode</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setBypassRecordErrorName:</TokenIdentifier>
+			<Abstract type="html">旁路录像的错误名称</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *bypassRecordErrorName</Declaration>
+			
+			
+			<Anchor>//api/name/bypassRecordErrorName</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/bypassRecordErrorName</TokenIdentifier>
+			<Abstract type="html">旁路录像的错误名称</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *bypassRecordErrorName</Declaration>
+			
+			
+			<Anchor>//api/name/bypassRecordErrorName</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/bypassRecordErrorName</TokenIdentifier>
+			<Abstract type="html">旁路录像的错误名称</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSString *bypassRecordErrorName</Declaration>
+			
+			
+			<Anchor>//api/name/bypassRecordErrorName</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setBypassRecordStateChange:</TokenIdentifier>
+			<Abstract type="html">当旁路录制的状态变化时</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( KSYRecordState recordState ) bypassRecordStateChange</Declaration>
+			
+			
+			<Anchor>//api/name/bypassRecordStateChange</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/bypassRecordStateChange</TokenIdentifier>
+			<Abstract type="html">当旁路录制的状态变化时</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( KSYRecordState recordState ) bypassRecordStateChange</Declaration>
+			
+			
+			<Anchor>//api/name/bypassRecordStateChange</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/bypassRecordStateChange</TokenIdentifier>
+			<Abstract type="html">当旁路录制的状态变化时</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( KSYRecordState recordState ) bypassRecordStateChange</Declaration>
+			
+			
+			<Anchor>//api/name/bypassRecordStateChange</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		

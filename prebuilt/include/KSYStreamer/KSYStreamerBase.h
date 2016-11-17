@@ -3,12 +3,11 @@
 //  KSYStreamer
 //
 //  Created by pengbin on 10/15/15.
-//  Copyright © 2015 ksy. All rights reserved.
+//  Copyright © 2015 ksyun. All rights reserved.
 //
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
 #import "KSYTypeDef.h"
-
 
 /**
  金山云直播推流SDK iOS版提供了iOS移动设备上的推流功能
@@ -16,7 +15,8 @@
  * 音频编码采用AAC编码，码率可配置;
  * 视频频编码采用H.264编码，码率可配置;
  * 支持 RTMP 协议直播推流;
- 
+ * 支持写入本地flv和mp4文件;
+ * 支持推流同时旁路录像功能;
  
  __Found__: 2015-10-15
  
@@ -28,11 +28,12 @@
 - (NSString*) getKSYVersion;
 
 #pragma mark - configures
- /**
- @abstract   rtmp主机地址
- @discussion 将音视频流推向该主机
+/**
+ @abstract   直播推流时为rtmp主机地址; 本地文件录制时,为输出文件路径
+ @discussion 直播时将音视频流推向该主机或写入本地文件
 
 	eg: rtmp://xxx.xxx.xxx.xxx/appname/streamKey
+    eg: /var/xxxxx/xxx.mp4  /var/xxxxx/xxx.flv
  */
 @property (nonatomic, readonly) NSURL*      hostURL;
 
@@ -176,7 +177,6 @@
  */
 @property (nonatomic, readonly) KSYNetStateCode netStateCode;
 
-
 // Posted when stream state changes
 FOUNDATION_EXPORT NSString *const KSYStreamStateDidChangeNotification NS_AVAILABLE_IOS(7_0);
 // Posted when there is an net state event
@@ -200,18 +200,19 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 
 /**
  @abstract 启动推流 （step2）
- @param      hostURL    rtmp 服务器地址 “rtmp://xxx.xxx.xxx.xxx/appname/streamKey"
+ @param      url 目标地址
+ @discussion 实现直播功能时, url为 rtmp 服务器地址 “rtmp://xxx.xx/appname/streamKey"
  @discussion 设置完成推流参数之后，将媒体流推送到 publishURL 对应的地址
+ @discussion 实现本地录制功能时, url为本地文件地址 "/var/xxx/xx.mp4"
+ @discussion 本地录制支持mp4和flv两种输出格式, 通过url的文件后缀指定
  @discussion 推流参数主要是视频编码器，音视频码率的设置
- @warning    开始推流前，需要保证按照采集的频率，持续通过 processVideoSampleBuffer 和 processAudioSampleBuffer 送入音视频数据，否则推流失败
-
  @see hostURL, videoCodec,videokBPS,audiokBPS
  */
-- (void) startStream: (NSURL*)     hostURL;
+- (void) startStream: (NSURL*)     url;
 
 /**
  @abstract 停止推流 （step3）
- @discussion 断开网络连接，停止视频编码
+ @discussion 断开网络连接 或停止文件写入
  */
 - (void) stopStream;
 
@@ -250,21 +251,18 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
  @abstract   查询当前推流的事件ID
  @discussion md5(hostURL+timestamp) 对本次推流活动的标识
  @discussion timestamp 为建立连接时的事件戳
- 
  @see hostURL
  */
 @property (nonatomic, readonly) NSString *streamID;
 
 /**
  @abstract   查询当前是否处于推流状态 (建立连接中, 或连接中)
- @see
  */
 - (BOOL) isStreaming;
 
 /**
  @abstract   查询当前编码的视频码率大小（每秒更新）
  @discussion 该码率为编码器产生的视频码率大小，单位为kbps
- 
  @see videoMaxBitrate
  */
 @property (nonatomic, readonly) double encodeVKbps;
@@ -272,13 +270,12 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 /**
  @abstract   查询当前编码的音频码率大小（每秒更新）
  @discussion 该码率为编码器产生的音频码率大小，单位为kbps
- 
  @see audiokBPS
  */
 @property (nonatomic, readonly) double encodeAKbps;
 
 /**
- @abstract   查询本次推流发送的流量大小
+ @abstract   查询本次推流发送的流量大小 (仅推流时有效)
  @discussion 从开始推流到现在，发送出去的数据字节数，单位为KByte
  */
 @property (nonatomic, readonly) int uploadedKByte;
@@ -287,7 +284,6 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
  @abstract   查询当前编码的平均视频帧率
  @discussion 采集设备的输出帧率为videoFPS，约等于编码的目标帧率
  @discussion 编码的视频帧率不会高于采集帧率，但是当CPU资源不足时，编码帧率会低于采集帧率
- 
  @see videoFPS
  */
 @property (nonatomic, readonly) double encodingFPS;
@@ -295,24 +291,20 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 /**
  @abstract   查询本次推流编码的视频总帧数
  @discussion 从开始推流到现在，编码过的视频总帧数
- 
  */
 @property (nonatomic, readonly) int encodedFrames;
 
 /**
  @abstract   查询本次推流发送的丢帧数量
  @discussion 这里是指编码后，由于网络发送阻塞导致丢弃的帧数
- 
  */
 @property (nonatomic, readonly) int droppedVideoFrames;
 
 /**
  @abstract 查询当前推流的rtmp服务器的主机IP
  @discussion 开始推流之后获取才为有效IP, 之前为空字符串
- 
  */
 @property (atomic, readonly) NSString* rtmpHostIP;
-
 
 #pragma mark - logblock
 /**
@@ -342,5 +334,48 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
  @param    completion 通过完成代码块获取到截图完成的图像
  */
 - (void) getSnapshotWithCompletion:(void (^)(UIImage*))completion;
+
+#pragma mark - record
+/**
+ @abstract   旁路录像地址
+ @discussion 开始录像后, 将直播的内容同步存储一份到本地文件
+ eg: /private/var/mobile/Containers/Data/Application/APPID/tmp/test.mp4
+ @discussion 如果只要存储本地文件,请继续使用原来的startStream接口
+ @see hostURL, startStream
+ */
+@property (nonatomic, readonly) NSURL* bypassRecordURL;
+
+/**
+ @abstract 启动旁路录像
+ @param      url    本地录像文件地址:/private/var/..../test.mp4
+ @return     是否能尝试启动写入, 不能表明真正开始录像了,真正开始请确认bypassRecordState的值
+ @discussion 启动推流后才能开始写入文件
+ @discussion 文件中的内容和直播内容完全一致
+ @see bypassRecordURL,stopBypassRecord, bypassRecordState
+ */
+- (BOOL) startBypassRecord: (NSURL*) url;
+
+/**
+ @abstract 停止旁路录像
+ */
+- (void) stopBypassRecord;
+
+/** 旁路录像的文件时长 */
+@property (nonatomic, readonly) double bypassRecordDuration;
+
+/** 旁路录像的状态 */
+@property (nonatomic, readonly) KSYRecordState bypassRecordState;
+
+/** 旁路录像的错误码 */
+@property (nonatomic, readonly) KSYRecordError bypassRecordErrorCode;
+
+/** 旁路录像的错误名称 */
+@property (nonatomic, readonly) NSString* bypassRecordErrorName;
+
+/**
+ @abstract   当旁路录制的状态变化时
+ @discussion 只有设置 loop为NO时才有效, 在开始播放前设置有效
+ */
+@property(nonatomic, copy) void(^bypassRecordStateChange)(KSYRecordState recordState);
 
 @end

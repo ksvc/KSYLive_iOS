@@ -1,6 +1,10 @@
-
-#import <GPUImage/GPUImage.h>
-#import "libksygpuimage.h"
+//
+//  KSYGPUStreamerKit.m
+//  KSYStreamer
+//
+//  Created by pengbin on 09/01/16.
+//  Copyright © 2016 ksyun. All rights reserved.
+//
 #import "KSYGPUStreamerKit.h"
 
 #define FLOAT_EQ( f0, f1 ) ( (f0 - f1 < 0.0001)&& (f0 - f1 > -0.0001) )

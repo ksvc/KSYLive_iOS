@@ -14,15 +14,20 @@
 #import "KSYBgmView.h"
 #import "KSYPipView.h"
 #import "KSYNameSlider.h"
-#import "KSYGPUStreamerKit.h"
+
+// 为防止将手机存储写满,限制录像时长为30s
+#define REC_MAX_TIME 30 //录制视频的最大时间，单位s
 
 @interface KSYStreamerVC () <UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
     UISwipeGestureRecognizer *_swipeGest;
     NSDateFormatter * _dateFormatter;
-    int64_t _seconds;
-    int16_t _recordMaxTime;//录制视频的最大时间，单位s
-    BOOL _bRecord;//是否需要录制
     NSMutableDictionary *_obsDict;
+    int _strSeconds; // 推流持续的时间 , 单位s
+    
+    BOOL _bRecord;//是推流还是录制到本地
+    NSString *_bypassRecFile;// 旁路录制
+    // 旁路录制:一边推流到rtmp server, 一边录像到本地文件
+    // 本地录制:直接存储到本地
 }
 @end
 
@@ -55,6 +60,10 @@
         [_kit startPreview:self.view];
     }
     [self setupLogo];
+    _bypassRecFile =[NSHomeDirectory() stringByAppendingString:@"/Library/Caches/rec.mp4"];
+    _kit.streamerBase.bypassRecordStateChange = ^(KSYRecordState state) {
+        [self onBypassRecordStateChange:state];
+    };
 }
 
 - (void) addSwipeGesture{
@@ -185,17 +194,7 @@
         [_ctrlView layoutUI];
     }
 }
-#pragma mark - Capture & stream setup
-- (void) setCaptureCfg {
-    _kit.capPreset        = [self.presetCfgView capResolution];
-    _kit.previewDimension = [self.presetCfgView capResolutionSize];
-    _kit.streamDimension  = [self.presetCfgView strResolutionSize ];
-    _kit.videoFPS       = [self.presetCfgView frameRate];
-    _kit.cameraPosition = [self.presetCfgView cameraPos];
-    _kit.gpuOutputPixelFormat = [self.presetCfgView gpuOutputPixelFmt];
-    _kit.videoProcessingCallback = ^(CMSampleBufferRef buf){
-    };
-}
+#pragma mark - logo setup
 
 - (void) setupLogo{
     CGFloat yPos = 0.05;
@@ -223,6 +222,30 @@
     hgt = h1 / h2;
     _kit.textRect = CGRectMake(0.05, yPos, 0, hgt);
     [_kit updateTextLabel];
+}
+
+- (void) updateLogoText {
+    UIApplicationState appState = [UIApplication sharedApplication].applicationState;
+    if (_strSeconds%5 != 0 || // update label every 5 second
+        appState != UIApplicationStateActive){
+        return;
+    } // 将当前时间显示在左上角
+    NSDate *now = [[NSDate alloc] init];
+    NSString * timeStr = [_dateFormatter stringFromDate:now];
+    _kit.textLabel.text = [NSString stringWithFormat:@"ksyun\n%@", timeStr];
+    [_kit updateTextLabel];
+}
+
+#pragma mark - Capture & stream setup
+- (void) setCaptureCfg {
+    _kit.capPreset        = [self.presetCfgView capResolution];
+    _kit.previewDimension = [self.presetCfgView capResolutionSize];
+    _kit.streamDimension  = [self.presetCfgView strResolutionSize ];
+    _kit.videoFPS       = [self.presetCfgView frameRate];
+    _kit.cameraPosition = [self.presetCfgView cameraPos];
+    _kit.gpuOutputPixelFormat = [self.presetCfgView gpuOutputPixelFmt];
+    _kit.videoProcessingCallback = ^(CMSampleBufferRef buf){
+    };
 }
 
 - (void) defaultStramCfg{
@@ -267,17 +290,18 @@
     _kit.streamerBase.liveScene       =  self.miscView.liveScene;
     _kit.streamerBase.videoEncodePerf =  self.miscView.vEncPerf;
     _kit.streamerBase.bWithVideo      = !self.audioView.swAudioOnly.on;
-    _seconds = 0;
-    _recordMaxTime = 30;
+    _strSeconds = 0;
     self.miscView.liveSceneSeg.enabled = !bStart;
     self.miscView.vEncPerfSeg.enabled = !bStart;
+    _miscView.swBypassRec.on = NO;
     
     //判断是直播还是录制
-    if ([_ctrlView.btnStream.currentTitle isEqualToString:@"开始录制"]){
-        _bRecord = true;
-    }
-    else{
-        _bRecord = false;
+    NSString* title = _ctrlView.btnStream.currentTitle;
+    _bRecord = [ title isEqualToString:@"开始录制"];
+    _miscView.swBypassRec.enabled = !_bRecord; // 直接录制时, 不能旁路录制
+    
+    if (_bRecord && bStart){
+        [self deleteFile:[_presetCfgView hostUrl]];
     }
 }
 
@@ -326,21 +350,30 @@
     }
     //状态为KSYStreamStateIdle且_bRecord为ture时，录制视频
     if (_kit.streamerBase.streamState == KSYStreamStateIdle && _bRecord){
-        if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum([_presetCfgView hostUrl])) {
-            //保存视频到相簿
-            UISaveVideoAtPathToSavedPhotosAlbum([_presetCfgView hostUrl], self,
-                                                @selector(video:didFinishSavingWithError:contextInfo:), nil);
-        }
+        [self saveVideoToAlbum:[_presetCfgView hostUrl]];
     }
 }
-
-//保存mp4文件回调
+//保存视频到相簿
+- (void) saveVideoToAlbum: (NSString*) path {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:path]) {
+        return;
+    }
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path)) {
+            SEL onDone = @selector(video:didFinishSavingWithError:contextInfo:);
+            UISaveVideoAtPathToSavedPhotosAlbum(path, self, onDone, nil);
+        }
+    });
+}
+//保存mp4文件完成时的回调
 - (void)video:(NSString *)videoPath didFinishSavingWithError:(NSError *)error
   contextInfo:(void *)contextInfo {
     NSString *message;
     if (!error) {
         message = @"Save album success!";
-    } else {
+    }
+    else {
         message = @"Failed to save the album!";
     }
     [KSYUIVC toast:message time:3];
@@ -366,9 +399,21 @@
     dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
     dispatch_after(delay, dispatch_get_main_queue(), ^{
         NSLog(@"try again");
-        _kit.streamerBase.bWithVideo = YES;
+        [self updateStreamCfg:YES];
         [_kit.streamerBase startStream:self.hostURL];
     });
+}
+- (void) onBypassRecordStateChange: (KSYRecordState) newState {
+    if (newState == KSYRecordStateRecording){
+        NSLog(@"start bypass record");
+    }
+    else if (newState == KSYRecordStateStopped) {
+        NSLog(@"stop bypass record");
+        [self saveVideoToAlbum:_bypassRecFile];
+    }
+    else if (newState == KSYRecordStateError) {
+        NSLog(@"bypass record error %@", _kit.streamerBase.bypassRecordErrorName);
+    }
 }
 #pragma mark - timer respond per second
 - (void)onTimer:(NSTimer *)theTimer{
@@ -378,29 +423,10 @@
     if (_kit.bgmPlayer && _kit.bgmPlayer.bgmPlayerState ==KSYBgmPlayerStatePlaying ) {
         _ksyBgmView.progressV.progress = _kit.bgmPlayer.bgmProcess;
     }
-    _seconds++;
-    UIApplicationState appState = [UIApplication sharedApplication].applicationState;
-    if (_seconds%5 == 0 && // update label every 5 second
-        appState == UIApplicationStateActive){
-        NSDate *now = [[NSDate alloc] init];
-        NSString * timeStr = [_dateFormatter stringFromDate:now];
-        _kit.textLabel.text = [NSString stringWithFormat:@"ksyun\n%@", timeStr];
-        [_kit updateTextLabel];
-    }
-    if (_bRecord){
-        int64_t diff = _recordMaxTime - _seconds;
-        //保持连接和限制短视频长度
-        if (_kit.streamerBase.streamState == KSYStreamStateConnected && diff < 0){
-            [self onStream];//结束录制
-        }
-        if (_kit.streamerBase.streamState == KSYStreamStateConnected){//录制时的倒计时时间
-            _ctrlView.lblNetwork.text = [NSString stringWithFormat:@"%lld\n",diff];
-        }
-        else{//没有录制时显示最大时间
-            diff = _recordMaxTime;
-            _ctrlView.lblNetwork.text = [NSString stringWithFormat:@"%lld\n",diff];
-        }
-    }
+    _strSeconds++;
+    [self updateLogoText];
+    [self updateRecLabel];  // 本地录制:直接存储到本地, 不推流
+    [self updateBypassRecLable];//// 旁路录制:一边推流一边录像
 }
 
 #pragma mark - UI respond
@@ -666,6 +692,7 @@
         [_kit.streamerBase getSnapshotWithCompletion:^(UIImage * img){
             [KSYUIVC saveImage: img
                             to: @"snap1.png" ];
+            UIImageWriteToSavedPhotosAlbum(img,nil,nil,nil);
         }];
     }
     else if (sender == _miscView.btn2) {
@@ -673,8 +700,10 @@
         GPUImageOutput * filter = self.ksyFilterView.curFilter;
         if (filter){
             [filter useNextFrameForImageCapture];
-            [KSYUIVC saveImage: filter.imageFromCurrentFramebuffer
+            UIImage * img =  filter.imageFromCurrentFramebuffer;
+            [KSYUIVC saveImage: img
                             to: @"snap2.png" ];
+            UIImageWriteToSavedPhotosAlbum(img,nil,nil,nil);
         }
     }
     else if (sender == _miscView.btn3) {
@@ -684,8 +713,13 @@
         [self presentViewController:picker animated:YES completion:nil];
     }
 }
-- (void)onMiscSwitch:(UISwitch *)sw{  // see kit & block
+
+- (void)onMiscSwitch:(UISwitch *)sw{
+    if (sw == _miscView.swBypassRec) {
+        [self onBypassRecord];
+    }
 }
+
 - (void)onMiscSlider:(KSYNameSlider *)slider {
     NSInteger layerIdx = _miscView.layerSeg.selectedSegmentIndex + 1;
     if (slider == _miscView.alphaSl){
@@ -733,6 +767,67 @@
     [_kit rotatePreviewTo:orie];
     if (_ksyFilterView.swStrRotate.on) {
         [_kit rotateStreamTo:orie];
+    }
+}
+
+#pragma mark - bypass record & record
+-(void) onBypassRecord {
+    BOOL bRec = _kit.streamerBase.bypassRecordState == KSYRecordStateRecording;
+    if (_miscView.swBypassRec.on){
+        if ( _kit.streamerBase.isStreaming && !bRec){
+            // 如果启动录像时使用和上次相同的路径,则会覆盖掉上一次录像的文件内容
+            [self deleteFile:_bypassRecFile];
+            NSURL *url =[[NSURL alloc] initFileURLWithPath:_bypassRecFile];
+            [_kit.streamerBase startBypassRecord:url];
+            [self updateBypassRecLable];
+        }
+        else {
+            NSString * msg = @"推流过程中才能旁路录像";
+            [KSYUIVC toast:msg time:1];
+            _miscView.swBypassRec.on = NO;
+        }
+    }
+    else if (bRec){
+        [_kit.streamerBase stopBypassRecord];
+    }
+}
+-(void) updateBypassRecLable {
+    if (!_miscView.swBypassRec.on){
+        return;
+    }
+    double dur = _kit.streamerBase.bypassRecordDuration;
+    NSString* durStr=[NSString stringWithFormat:@"%3.0fs/%ds", dur,REC_MAX_TIME];
+    _miscView.lblRecDur.text = durStr;
+    if (dur > REC_MAX_TIME) { // 为防止将手机存储写满,限制旁路录像时长为30s
+        _miscView.swBypassRec.on = NO;
+        [_kit.streamerBase stopBypassRecord];
+    }
+    
+}
+
+- (void) updateRecLabel {
+    if (!_bRecord){ // 直接录制短视频
+        return;
+    }
+    int diff = REC_MAX_TIME - _strSeconds;
+    //保持连接和限制短视频长度
+    if (_kit.streamerBase.isStreaming && diff < 0){
+        [self onStream];//结束录制
+    }
+    if (_kit.streamerBase.isStreaming){//录制时的倒计时时间
+        NSString *durMsg = [NSString stringWithFormat:@"%ds\n",diff];
+        _ctrlView.lblNetwork.text = durMsg;
+    }
+    else{
+        _ctrlView.lblNetwork.text = @"";
+    }
+}
+
+//删除文件,保证保存到相册里面的视频时间是更新的
+-(void)deleteFile:(NSString *)file{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:file]) {
+        [fileManager removeItemAtPath:file error:nil];
     }
 }
 @end

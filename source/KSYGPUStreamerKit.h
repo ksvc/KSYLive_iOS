@@ -1,16 +1,20 @@
+//
+//  KSYGPUStreamerKit.h
+//  KSYStreamer
+//
+//  Created by pengbin on 09/01/16.
+//  Copyright © 2016 ksyun. All rights reserved.
+//
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
-@class KSYGPUCamera;
-@class KSYAUAudioCapture;
-@class KSYBgmPlayer;
-@class GPUImagePicture;
-@class GPUImageCropFilter;
-@class GPUImageFilter;
-@class GPUImageView;
-@class KSYAudioMixer;
-@class KSYGPUPicOutput;
-@class GPUImageOutput;
+#import <GPUImage/GPUImage.h>
+
+#if USING_DYNAMIC_FRAMEWORK
+#import <libksygpuliveDy/libksygpuimage.h>
+#else
+#import "libksygpuimage.h"
+#endif
 
 /** KSY 直播推流工具类
  
@@ -186,7 +190,7 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 /**
  @abstract   采集分辨率 (仅在开始采集前设置有效)
  @discussion 参见iOS的 AVCaptureSessionPresetXXX的定义
- @discussion https://developer.apple.com/library/ios/documentation/AVFoundation/Reference/AVCaptureSession_Class/#//apple_ref/doc/constant_group/Video_Input_Presets
+ @discussion https://developer.apple.com/reference/avfoundation/avcapturesession/1669314-video_input_presets?language=objc
  @discussion 透传到 KSYGPUCamera. 默认值为AVCaptureSessionPreset640x480
  @discussion 不同设备支持的预设分辨率可能不同, 请尽量与预览分辨率一致
  */
