@@ -12,6 +12,7 @@
     UIButton * _curBtn;
     UILabel  * _lblScene;
     UILabel  * _lblPerf;
+    UILabel  * _lblRec;
 }
 
 @end
@@ -25,6 +26,10 @@
     _btn2  = [self addButton:@"filter截图"];
     
     _btn3    = [self addButton:@"选择Logo图片"];
+    
+    _lblRec       = [self addLable:@"旁路录制"];
+    _swBypassRec  = [self addSwitch:NO];
+    _lblRecDur    = [self addLable:@"0s"];
     
     _layerSeg = [self addSegCtrlWithItems:@[ @"logo", @"文字"]];
     _alphaSl  = [self addSliderName:@"alpha" From:0.0 To:1.0 Init:1.0];
@@ -46,8 +51,9 @@
            andView:_liveSceneSeg];
     [self putLable:_lblPerf
            andView:_vEncPerfSeg];
-    [self putRow1:_btn3];
+    [self putRow:@[_btn3]];
     [self putNarrow:_layerSeg andWide:_alphaSl];
+    [self putRow:@[_lblRec, _swBypassRec, _lblRecDur]];
 }
 
 @synthesize liveScene = _liveScene;

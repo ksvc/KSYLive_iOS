@@ -3,7 +3,11 @@
 #######################
 ## default opt
 #######################
-XCODE_STRIP="xcrun strip"
+if [ $XCODE_STRIP ]; then
+	echo "XCODE_STRIP=$XCODE_STRIP"
+else
+	XCODE_STRIP="xcrun strip"
+fi
 #######################
 ## cmd line
 #######################

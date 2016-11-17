@@ -19,6 +19,9 @@
 @property UIButton* btn3;
 @property UIButton* btn4;
 
+@property UISwitch* swBypassRec; // 旁路录制
+@property UILabel*  lblRecDur;   // 旁路录制的时长
+
 @property UISegmentedControl  * layerSeg;
 @property KSYNameSlider       * alphaSl;
 

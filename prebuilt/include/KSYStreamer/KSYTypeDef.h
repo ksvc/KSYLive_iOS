@@ -180,6 +180,8 @@ typedef NS_ENUM(NSUInteger, KSYStreamErrorCode) {
     KSYStreamErrorCode_RTMP_Publish_failed,
     /// 音视频同步失败 (输入的音频和视频的时间戳的差值超过5s)
     KSYStreamErrorCode_AV_SYNC_ERROR,
+    /// 非法地址(地址为空或url中的协议或本地文件的后缀SDK不支持, 请检查)
+    KSYStreamErrorCode_INVALID_ADDRESS,
 };
 
 /*!
@@ -248,6 +250,34 @@ typedef NS_ENUM(NSUInteger, KSYBWEstimateMode) {
     
     /// 禁用网络自适应网络调整
     KSYBWEstMode_Disable = 1000,
+};
+
+/*!
+ * @abstract  旁路录制状态
+ */
+typedef NS_ENUM(NSInteger, KSYRecordState) {
+    /// 初始状态
+    KSYRecordStateIdle,
+    /// 录像中
+    KSYRecordStateRecording,
+    /// 录像停止
+    KSYRecordStateStopped,
+    /// 录像失败
+    KSYRecordStateError,
+};
+
+/*!
+ * @abstract  旁路录制错误码
+ */
+typedef NS_ENUM(NSInteger, KSYRecordError) {
+    /// 无错误
+    KSYRecordErrorNone,
+    /// 地址错误
+    KSYRecordErrorPathInvalid,
+    /// 格式不支持
+    KSYRecordErrorFormatNotSupport,
+    /// 内部错误
+    KSYRecordErrorInternal,
 };
 
 #pragma mark - KSY_EXTERN

@@ -66,6 +66,18 @@
 		
 		<option value="//api/name/bwEstimateMode">bwEstimateMode</option>
 		
+		<option value="//api/name/bypassRecordDuration">bypassRecordDuration</option>
+		
+		<option value="//api/name/bypassRecordErrorCode">bypassRecordErrorCode</option>
+		
+		<option value="//api/name/bypassRecordErrorName">bypassRecordErrorName</option>
+		
+		<option value="//api/name/bypassRecordState">bypassRecordState</option>
+		
+		<option value="//api/name/bypassRecordStateChange">bypassRecordStateChange</option>
+		
+		<option value="//api/name/bypassRecordURL">bypassRecordURL</option>
+		
 		<option value="//api/name/droppedVideoFrames">droppedVideoFrames</option>
 		
 		<option value="//api/name/encodeAKbps">encodeAKbps</option>
@@ -142,7 +154,11 @@
 		
 		<option value="//api/name/processVideoSampleBuffer:">- processVideoSampleBuffer:</option>
 		
+		<option value="//api/name/startBypassRecord:">- startBypassRecord:</option>
+		
 		<option value="//api/name/startStream:">- startStream:</option>
+		
+		<option value="//api/name/stopBypassRecord">- stopBypassRecord</option>
 		
 		<option value="//api/name/stopStream">- stopStream</option>
 		
@@ -188,6 +204,8 @@
 <li>音频编码采用AAC编码，码率可配置;</li>
 <li>视频频编码采用H.264编码，码率可配置;</li>
 <li>支持 RTMP 协议直播推流;</li>
+<li>支持写入本地flv和mp4文件;</li>
+<li>支持推流同时旁路录像功能;</li>
 </ul>
 
 
@@ -259,7 +277,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>rtmp主机地址</p>
+				<p>直播推流时为rtmp主机地址; 本地文件录制时,为输出文件路径</p>
 			</div>
 			
 		    
@@ -276,9 +294,10 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>将音视频流推向该主机</p>
+				<p>直播时将音视频流推向该主机或写入本地文件</p>
 
 <pre><code>eg: rtmp://xxx.xxx.xxx.xxx/appname/streamKey
+eg: /var/xxxxx/xxx.mp4  /var/xxxxx/xxx.flv
 </code></pre>
 			</div>
 			
@@ -1356,7 +1375,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)startStream:(NSURL *)<em>hostURL</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)startStream:(NSURL *)<em>url</em></code></div>
 
 		    
 			
@@ -1365,8 +1384,8 @@
 				<table class="argument-def parameter-def">
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>hostURL</code></th>
-						<td><p>rtmp 服务器地址 “rtmp://xxx.xxx.xxx.xxx/appname/streamKey"</p></td>
+						<th scope="row" class="argument-name"><code>url</code></th>
+						<td><p>目标地址</p></td>
 					</tr>
 				
 				</table>
@@ -1380,7 +1399,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>设置完成推流参数之后，将媒体流推送到 publishURL 对应的地址</p><p>推流参数主要是视频编码器，音视频码率的设置</p><div class="warning"><p><strong>Warning:</strong> 开始推流前，需要保证按照采集的频率，持续通过 processVideoSampleBuffer 和 processAudioSampleBuffer 送入音视频数据，否则推流失败</p></div>
+				<p>实现直播功能时, url为 rtmp 服务器地址 “rtmp://xxx.xx/appname/streamKey"</p><p>设置完成推流参数之后，将媒体流推送到 publishURL 对应的地址</p><p>实现本地录制功能时, url为本地文件地址 &ldquo;/var/xxx/xx.mp4&rdquo;</p><p>本地录制支持mp4和flv两种输出格式, 通过url的文件后缀指定</p><p>推流参数主要是视频编码器，音视频码率的设置</p>
 			</div>
 			
 
@@ -1435,7 +1454,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>断开网络连接，停止视频编码</p>
+				<p>断开网络连接 或停止文件写入</p>
 			</div>
 			
 
@@ -1751,8 +1770,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>查询当前是否处于推流状态 (建立连接中, 或连接中)
-@see</p>
+				<p>查询当前是否处于推流状态 (建立连接中, 或连接中)</p>
 			</div>
 			
 		    
@@ -1903,7 +1921,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>查询本次推流发送的流量大小</p>
+				<p>查询本次推流发送的流量大小 (仅推流时有效)</p>
 			</div>
 			
 		    
@@ -2333,6 +2351,385 @@
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/bypassRecordURL" title="bypassRecordURL"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bypassRecordURL">&nbsp;&nbsp;bypassRecordURL</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>旁路录像地址</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSURL *bypassRecordURL</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>开始录像后, 将直播的内容同步存储一份到本地文件
+eg: /private/var/mobile/Containers/Data/Application/APPID/tmp/test.mp4</p><p>如果只要存储本地文件,请继续使用原来的startStream接口</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/hostURL">@property hostURL</a>, startStream</p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/startBypassRecord:" title="startBypassRecord:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/startBypassRecord:">&ndash;&nbsp;startBypassRecord:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>启动旁路录像</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)startBypassRecord:(NSURL *)<em>url</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>url</code></th>
+						<td><p>本地录像文件地址:/private/var/&hellip;./test.mp4</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>是否能尝试启动写入, 不能表明真正开始录像了,真正开始请确认bypassRecordState的值</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>启动推流后才能开始写入文件</p><p>文件中的内容和直播内容完全一致</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/bypassRecordURL">@property bypassRecordURL</a>,<a href="#//api/name/stopBypassRecord">- stopBypassRecord</a>, <a href="#//api/name/bypassRecordState">@property bypassRecordState</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/stopBypassRecord" title="stopBypassRecord"></a>
+	<h3 class="method-title"><code><a href="#//api/name/stopBypassRecord">&ndash;&nbsp;stopBypassRecord</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>停止旁路录像</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)stopBypassRecord</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bypassRecordDuration" title="bypassRecordDuration"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bypassRecordDuration">&nbsp;&nbsp;bypassRecordDuration</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>旁路录像的文件时长</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) double bypassRecordDuration</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bypassRecordState" title="bypassRecordState"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bypassRecordState">&nbsp;&nbsp;bypassRecordState</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>旁路录像的状态</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) KSYRecordState bypassRecordState</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bypassRecordErrorCode" title="bypassRecordErrorCode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bypassRecordErrorCode">&nbsp;&nbsp;bypassRecordErrorCode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>旁路录像的错误码</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) KSYRecordError bypassRecordErrorCode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bypassRecordErrorName" title="bypassRecordErrorName"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bypassRecordErrorName">&nbsp;&nbsp;bypassRecordErrorName</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>旁路录像的错误名称</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *bypassRecordErrorName</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bypassRecordStateChange" title="bypassRecordStateChange"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bypassRecordStateChange">&nbsp;&nbsp;bypassRecordStateChange</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>当旁路录制的状态变化时</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) void ( ^ ) ( KSYRecordState recordState ) bypassRecordStateChange</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>只有设置 loop为NO时才有效, 在开始播放前设置有效</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -2348,7 +2745,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-11-09</p>
+						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-11-17</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

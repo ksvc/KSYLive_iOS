@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYVideoDimension.html">
+	<File path="Constants/KSYStreamState.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYVideoDimension</TokenIdentifier>
-			<Abstract type="html">采集分辨率</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYStreamState</TokenIdentifier>
+			<Abstract type="html">推流状态</Abstract>
 			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_16_9__1280x720</TokenIdentifier>
-            <Abstract type="html">16 : 9 宽高比，1280 x 720 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_16_9__1280x720</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateIdle</TokenIdentifier>
+            <Abstract type="html">初始化时状态为空闲</Abstract>
+            <Declaration>KSYStreamStateIdle</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -24,9 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_16_9__960x540</TokenIdentifier>
-            <Abstract type="html">16 : 9 宽高比，960 x 540 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_16_9__960x540</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateConnecting</TokenIdentifier>
+            <Abstract type="html">连接中</Abstract>
+            <Declaration>KSYStreamStateConnecting</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -34,9 +34,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_4_3__640x480</TokenIdentifier>
-            <Abstract type="html">4 : 3 宽高比，640 x 480 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_4_3__640x480</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateConnected</TokenIdentifier>
+            <Abstract type="html">已连接</Abstract>
+            <Declaration>KSYStreamStateConnected</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -44,9 +44,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_16_9__640x360</TokenIdentifier>
-            <Abstract type="html">16 : 9 宽高比，640 x 360 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_16_9__640x360</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateDisconnecting</TokenIdentifier>
+            <Abstract type="html">断开连接中</Abstract>
+            <Declaration>KSYStreamStateDisconnecting</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -54,39 +54,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_5_4__352x288</TokenIdentifier>
-            <Abstract type="html">4 : 3 宽高比，320 x 240 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_5_4__352x288</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="45"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_UserDefine_Scale</TokenIdentifier>
-            <Abstract type="html">缩放自定义分辨率 从设备支持的最近分辨率缩放获得, 若设备没有对应宽高比的分辨率，则裁剪后进行缩放</Abstract>
-            <Declaration>KSYVideoDimension_UserDefine_Scale</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="45"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_UserDefine_Crop</TokenIdentifier>
-            <Abstract type="html">裁剪自定义分辨率 从设备支持的最近分辨率裁剪获得</Abstract>
-            <Declaration>KSYVideoDimension_UserDefine_Crop</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="45"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_Default</TokenIdentifier>
-            <Abstract type="html">默认分辨率，默认为 4 : 3 宽高比，640 x 480 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_Default</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateError</TokenIdentifier>
+            <Abstract type="html">推流出错</Abstract>
+            <Declaration>KSYStreamStateError</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             

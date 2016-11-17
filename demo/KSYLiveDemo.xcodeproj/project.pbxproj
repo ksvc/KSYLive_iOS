@@ -127,6 +127,8 @@
 		060AE9C21D4652CC0064DD65 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				06A646CB1D8658F600D1C620 /* libz.tbd */,
+				06A646C91D8658D600D1C620 /* libstdc++.6.tbd */,
 				E3EDA85C1D17BBDA00B54437 /* Security.framework */,
 				E3EDA85A1D17BBCE00B54437 /* SystemConfiguration.framework */,
 				625EF3B41C9A95BE00DBA1CC /* libsqlite3.tbd */,
@@ -157,8 +159,6 @@
 				06CA4B071D9BD0E8006F3AD3 /* KSYLiveDemo-dy-framework.xcconfig */,
 				06E742AB1D90FFD600C3E780 /* KSYGPUResource.bundle */,
 				06A646DC1D86731E00D1C620 /* KSYLiveDemo-framework.xcconfig */,
-				06A646CB1D8658F600D1C620 /* libz.tbd */,
-				06A646C91D8658D600D1C620 /* libstdc++.6.tbd */,
 				060AE9C21D4652CC0064DD65 /* Libs */,
 				06FBBD271D2E17E00065ED55 /* KSYDemoUI */,
 				067F7E4F1D4762AC00F54FEA /* KSYPlayerDemo */,
