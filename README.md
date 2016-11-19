@@ -121,6 +121,10 @@ pod 'libksygpulive/libksygpulive'
 * libksygpulive      : 用于直播推流和播放的SDK（直播推流功能和精简版本的播放SDK）
 * libksygpulive_265  : 用于直播推流和播放的SDK (支持265推流和精简版本的播放SDK)
 
+### 3.2.4 GPUImage依赖
+
+请参考[https://github.com/ksvc/GPUImage](https://github.com/ksvc/GPUImage)
+
 ### 3.3 开始运行demo工程
 !!!!!注意: 这里提供以下两种方法运行demo, 但是只能二选一; 如果要换另一种方法请重新下载解压, 或恢复git仓库的原状后再尝试.!!!!!
 
