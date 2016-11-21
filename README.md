@@ -123,7 +123,7 @@ pod 'libksygpulive/libksygpulive'
 
 ### 3.2.4 GPUImage依赖
 
-请参考[https://github.com/ksvc/GPUImage](https://github.com/ksvc/GPUImage)
+请参考官方cocoapods提供的[GPUImage](https://github.com/BradLarson/GPUImage/releases/tag/0.1.7)，当前我们测试通过的版本是[0.1.7](https://github.com/BradLarson/GPUImage/releases/tag/0.1.7)
 
 ### 3.3 开始运行demo工程
 !!!!!注意: 这里提供以下两种方法运行demo, 但是只能二选一; 如果要换另一种方法请重新下载解压, 或恢复git仓库的原状后再尝试.!!!!!
