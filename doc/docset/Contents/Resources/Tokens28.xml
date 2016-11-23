@@ -1,99 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYSpecialEffects.html">
+	<File path="Constants/KSYAVMuxerStatus.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYSpecialEffects</TokenIdentifier>
-			<Abstract type="html">金山云特效滤镜</Abstract>
-			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYAVMuxerStatus</TokenIdentifier>
+			<Abstract type="html">交织处理状态</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
             
 			
 			<NodeRef refid="28"/>
 		</Token>
 		
 		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KSYSpecialEffects/showVersion</TokenIdentifier>
-			<Abstract type="html">show version of this filter</Abstract>
-			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
-			
-			<Declaration>+ (void)showVersion</Declaration>
-			
-			
-			<Anchor>//api/name/showVersion</Anchor>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusIdle</TokenIdentifier>
+            <Abstract type="html">初始状态</Abstract>
+            <Declaration>KSYAVMuxerStatusIdle</Declaration>
+            
+            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+            
             <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYSpecialEffects/initWithUIImage:</TokenIdentifier>
-			<Abstract type="html">初始化并指定特效素材</Abstract>
-			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
-			
-			<Declaration>- (id)initWithUIImage:(UIImage *)image</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>image</Name>
-					<Abstract type="html">特效素材</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">构造的滤镜</Abstract></ReturnValue>
-			<Anchor>//api/name/initWithUIImage:</Anchor>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusMuxing</TokenIdentifier>
+            <Abstract type="html">处理中</Abstract>
+            <Declaration>KSYAVMuxerStatusMuxing</Declaration>
+            
+            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+            
             <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYSpecialEffects/setSpecialEffectsUIImage:</TokenIdentifier>
-			<Abstract type="html">指定特效素材</Abstract>
-			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
-			
-			<Declaration>- (void)setSpecialEffectsUIImage:(UIImage *)image</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>image</Name>
-					<Abstract type="html">特效素材</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/setSpecialEffectsUIImage:</Anchor>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusCompleted</TokenIdentifier>
+            <Abstract type="html">处理完成</Abstract>
+            <Declaration>KSYAVMuxerStatusCompleted</Declaration>
+            
+            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+            
             <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYSpecialEffects/setIntensity:</TokenIdentifier>
-			<Abstract type="html">特效参数</Abstract>
-			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
-			
-			<Declaration>@property (readwrite, nonatomic) CGFloat intensity</Declaration>
-			
-			
-			<Anchor>//api/name/intensity</Anchor>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusFailed</TokenIdentifier>
+            <Abstract type="html">处理失败</Abstract>
+            <Declaration>KSYAVMuxerStatusFailed</Declaration>
+            
+            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+            
             <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYSpecialEffects/intensity</TokenIdentifier>
-			<Abstract type="html">特效参数</Abstract>
-			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
-			
-			<Declaration>@property (readwrite, nonatomic) CGFloat intensity</Declaration>
-			
-			
-			<Anchor>//api/name/intensity</Anchor>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusCancelled</TokenIdentifier>
+            <Abstract type="html">处理任务被取消</Abstract>
+            <Declaration>KSYAVMuxerStatusCancelled</Declaration>
+            
+            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+            
             <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYSpecialEffects/intensity</TokenIdentifier>
-			<Abstract type="html">特效参数</Abstract>
-			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
-			
-			<Declaration>@property (readwrite, nonatomic) CGFloat intensity</Declaration>
-			
-			
-			<Anchor>//api/name/intensity</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
+        </Token>
         
         
 	</File>

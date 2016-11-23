@@ -40,17 +40,16 @@
     CGFloat ratio = screenRect.size.width / screenRect.size.height;
     _lblResolutionUI = [self addLable:@"采集分辨率"];
     _lblStreamResoUI = [self addLable:@"推流分辨率"];
-    if ( FLOAT_EQ( ratio, 16.0/9 ) || FLOAT_EQ( ratio,  9.0/16) ){
-        _resolutionUI = [self addSegCtrlWithItems:@[@"360p",@"540p",@"720p"]];
-        _streamResoUI = [self addSegCtrlWithItems:@[@"360p",@"540p",@"720p"]];
-    }
-    else {
+    
+    _resolutionUI = [self addSegCtrlWithItems:@[@"360p",@"540p",@"720p"]];
+    _streamResoUI = [self addSegCtrlWithItems:@[@"360p",@"540p",@"720p"]];
+    _resolutionUI.selectedSegmentIndex = 2;
+    if ( !( FLOAT_EQ( ratio, 16.0/9 ) || FLOAT_EQ( ratio,  9.0/16)) ){
         // 360p: 640x360(16:9)  480p: 640x480(4:3)
-        _resolutionUI = [self addSegCtrlWithItems:@[@"360p",@"540p",@"720p",@"480p"]];
-        _resolutionUI.selectedSegmentIndex = 3; // default to
-        
-        _streamResoUI = [self addSegCtrlWithItems:@[@"360p",@"540p",@"720p",@"480p"]];
-        _streamResoUI.selectedSegmentIndex = 3; // default to 480
+        [_resolutionUI insertSegmentWithTitle:@"480p" atIndex:3 animated:NO];
+        _resolutionUI.selectedSegmentIndex = 3;
+        [_streamResoUI insertSegmentWithTitle:@"480p" atIndex:3 animated:NO];
+        _streamResoUI.selectedSegmentIndex = 3;
     }
     _lblCameraPosUI = [self addLable:@"摄像头"];
     _cameraPosUI    = [self addSegCtrlWithItems:@[@"前置",@"后置"]];

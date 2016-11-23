@@ -1,2 +1,3 @@
-OTHER_LDFLAGS = $(inherited) -ObjC -all_load -framework libksygpulivedy -framework GPUImage -framework Bugly -lstdc++.6 -lz
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) USING_DYNAMIC_FRAMEWORK
+OTHER_LDFLAGS = $(inherited) -ObjC -all_load -framework libksygpulive -framework GPUImage -framework Bugly -lstdc++.6 -lz
+IPHONEOS_DEPLOYMENT_TARGET = 8.0
+FRAMEWORK_SEARCH_PATHS = $(inherited) ../framework/ ../framework/dynamic

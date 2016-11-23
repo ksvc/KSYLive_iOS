@@ -22,7 +22,7 @@
 		06B2B1B51BE8F0D900E0CC85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06B2B1B31BE8F0D900E0CC85 /* Main.storyboard */; };
 		06B2B1B71BE8F0D900E0CC85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06B2B1B61BE8F0D900E0CC85 /* Images.xcassets */; };
 		06B2B1BA1BE8F0D900E0CC85 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B2B1B81BE8F0D900E0CC85 /* LaunchScreen.xib */; };
-		06CA4B081D9BD0E8006F3AD3 /* KSYLiveDemo-dy-framework.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 06CA4B071D9BD0E8006F3AD3 /* KSYLiveDemo-dy-framework.xcconfig */; };
+		06CF36E81DE5D14C00BCE88C /* KSYLiveDemo-dy-framework.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 06CF36E71DE5D14C00BCE88C /* KSYLiveDemo-dy-framework.xcconfig */; };
 		06E742AC1D90FFD600C3E780 /* KSYGPUResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 06E742AB1D90FFD600C3E780 /* KSYGPUResource.bundle */; };
 		06FBBD4D1D2E17E00065ED55 /* KSYBgmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD2B1D2E17E00065ED55 /* KSYBgmView.m */; };
 		06FBBD511D2E17E00065ED55 /* KSYCtrlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD2F1D2E17E00065ED55 /* KSYCtrlView.m */; };
@@ -42,6 +42,18 @@
 		E3EDA85D1D17BBDA00B54437 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3EDA85C1D17BBDA00B54437 /* Security.framework */; };
 		F296EC001D3527FF001C4120 /* KSYMiscView.m in Sources */ = {isa = PBXBuildFile; fileRef = F296EBFF1D3527FF001C4120 /* KSYMiscView.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		586A6DC71DE5860600AF56B5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		060AE9C31D4653010064DD65 /* KSYFileSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYFileSelector.h; sourceTree = "<group>"; };
@@ -73,9 +85,9 @@
 		06B2B1B41BE8F0D900E0CC85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		06B2B1B61BE8F0D900E0CC85 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		06B2B1B91BE8F0D900E0CC85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		06CA4B071D9BD0E8006F3AD3 /* KSYLiveDemo-dy-framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "KSYLiveDemo-dy-framework.xcconfig"; sourceTree = "<group>"; };
 		06CB3A641D813EE70017378F /* KSYStateLableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYStateLableView.m; sourceTree = "<group>"; };
 		06CB3A651D813EE70017378F /* KSYStateLableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYStateLableView.h; sourceTree = "<group>"; };
+		06CF36E71DE5D14C00BCE88C /* KSYLiveDemo-dy-framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "KSYLiveDemo-dy-framework.xcconfig"; sourceTree = "<group>"; };
 		06E742AB1D90FFD600C3E780 /* KSYGPUResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = KSYGPUResource.bundle; path = ../resource/KSYGPUResource.bundle; sourceTree = "<group>"; };
 		06FBBD2A1D2E17E00065ED55 /* KSYBgmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYBgmView.h; sourceTree = "<group>"; };
 		06FBBD2B1D2E17E00065ED55 /* KSYBgmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYBgmView.m; sourceTree = "<group>"; };
@@ -156,9 +168,9 @@
 		06B2B19A1BE8F0D900E0CC85 = {
 			isa = PBXGroup;
 			children = (
-				06CA4B071D9BD0E8006F3AD3 /* KSYLiveDemo-dy-framework.xcconfig */,
 				06E742AB1D90FFD600C3E780 /* KSYGPUResource.bundle */,
 				06A646DC1D86731E00D1C620 /* KSYLiveDemo-framework.xcconfig */,
+				06CF36E71DE5D14C00BCE88C /* KSYLiveDemo-dy-framework.xcconfig */,
 				060AE9C21D4652CC0064DD65 /* Libs */,
 				06FBBD271D2E17E00065ED55 /* KSYDemoUI */,
 				067F7E4F1D4762AC00F54FEA /* KSYPlayerDemo */,
@@ -270,6 +282,7 @@
 				06B2B19F1BE8F0D900E0CC85 /* Sources */,
 				06B2B1A01BE8F0D900E0CC85 /* Frameworks */,
 				06B2B1A11BE8F0D900E0CC85 /* Resources */,
+				586A6DC71DE5860600AF56B5 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -319,7 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06E742AC1D90FFD600C3E780 /* KSYGPUResource.bundle in Resources */,
-				06CA4B081D9BD0E8006F3AD3 /* KSYLiveDemo-dy-framework.xcconfig in Resources */,
+				06CF36E81DE5D14C00BCE88C /* KSYLiveDemo-dy-framework.xcconfig in Resources */,
 				06B2B1B51BE8F0D900E0CC85 /* Main.storyboard in Resources */,
 				06B2B1BA1BE8F0D900E0CC85 /* LaunchScreen.xib in Resources */,
 				06B2B1B71BE8F0D900E0CC85 /* Images.xcassets in Resources */,
@@ -484,7 +497,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					../framework,
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
@@ -520,7 +532,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					../framework,
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (

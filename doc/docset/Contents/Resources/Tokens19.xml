@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUPipBlendFilter.html">
+	<File path="Classes/KSYMediaInfo.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUPipBlendFilter</TokenIdentifier>
-			<Abstract type="html">画中画中画 混合filter  （pip）
-三输入filter，将两个视频和一个图片叠加到一起，三个依次叠加
-两个输入中，按照添加顺序：
-首先被添加的为firstTexture （视频）
-中间添加的为secondTexture  （视频）
-最后添加的为thirdTexture   （图片）
-本filter的输出纹理大小与 firstTexture 一致
-叠加方式只支持将firstTexture缩小后 叠加到 secondTexture上，再叠加 到thirdTexture上
-其中，firstTexture 保持宽高比缩小
-secondTexture 保持宽高比缩放来适应firstTexture的原始大小
-thirdTexture 不保持宽高比，填充firstTexture的原始大小</Abstract>
-			<DeclaredIn>KSYGPUPipBlendFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYMediaInfo</TokenIdentifier>
+			<Abstract type="html">媒体信息</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
 			
 			<NodeRef refid="19"/>
@@ -23,48 +13,146 @@ thirdTexture 不保持宽高比，填充firstTexture的原始大小</Abstract>
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipBlendFilter/initWithPipRect:</TokenIdentifier>
-			<Abstract type="html">初始化，并设置画中画左上角点的坐标（位置和大小）</Abstract>
-			<DeclaredIn>KSYGPUPipBlendFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/setType:</TokenIdentifier>
+			<Abstract type="html">封装格式，具体类型为MEDIAINFOMUXTYPE</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithPipRect:(CGRect)rect</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>rect</Name>
-					<Abstract type="html">位置</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic) MEDIAINFO_MUX_TYPE type</Declaration>
 			
-			<Anchor>//api/name/initWithPipRect:</Anchor>
+			
+			<Anchor>//api/name/type</Anchor>
             <NodeRef refid="19"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipBlendFilter/setPipRect:</TokenIdentifier>
-			<Abstract type="html">设置画中画左上角点的坐标（位置和大小）</Abstract>
-			<DeclaredIn>KSYGPUPipBlendFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/type</TokenIdentifier>
+			<Abstract type="html">封装格式，具体类型为MEDIAINFOMUXTYPE</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>- (void)setPipRect:(CGRect)rect</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>rect</Name>
-					<Abstract type="html">位置</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic) MEDIAINFO_MUX_TYPE type</Declaration>
 			
-			<Anchor>//api/name/setPipRect:</Anchor>
+			
+			<Anchor>//api/name/type</Anchor>
             <NodeRef refid="19"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipBlendFilter/clearSecondTexture</TokenIdentifier>
-			<Abstract type="html">当secondTexture 需要刷新时调用</Abstract>
-			<DeclaredIn>KSYGPUPipBlendFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfo/type</TokenIdentifier>
+			<Abstract type="html">封装格式，具体类型为MEDIAINFOMUXTYPE</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>- (void)clearSecondTexture</Declaration>
+			<Declaration>@property (nonatomic) MEDIAINFO_MUX_TYPE type</Declaration>
 			
 			
-			<Anchor>//api/name/clearSecondTexture</Anchor>
+			<Anchor>//api/name/type</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/setBitrate:</TokenIdentifier>
+			<Abstract type="html">码率</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int64_t bitrate</Declaration>
+			
+			
+			<Anchor>//api/name/bitrate</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/bitrate</TokenIdentifier>
+			<Abstract type="html">码率</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int64_t bitrate</Declaration>
+			
+			
+			<Anchor>//api/name/bitrate</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfo/bitrate</TokenIdentifier>
+			<Abstract type="html">码率</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int64_t bitrate</Declaration>
+			
+			
+			<Anchor>//api/name/bitrate</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/setVideos:</TokenIdentifier>
+			<Abstract type="html">所有视频流信息，具体对象类型为KSYVideoInfo</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSMutableArray *videos</Declaration>
+			
+			
+			<Anchor>//api/name/videos</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/videos</TokenIdentifier>
+			<Abstract type="html">所有视频流信息，具体对象类型为KSYVideoInfo</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSMutableArray *videos</Declaration>
+			
+			
+			<Anchor>//api/name/videos</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfo/videos</TokenIdentifier>
+			<Abstract type="html">所有视频流信息，具体对象类型为KSYVideoInfo</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSMutableArray *videos</Declaration>
+			
+			
+			<Anchor>//api/name/videos</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/setAudios:</TokenIdentifier>
+			<Abstract type="html">所有音频流信息，具体对象类型为KSYAudioInfo</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSMutableArray *audios</Declaration>
+			
+			
+			<Anchor>//api/name/audios</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/audios</TokenIdentifier>
+			<Abstract type="html">所有音频流信息，具体对象类型为KSYAudioInfo</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSMutableArray *audios</Declaration>
+			
+			
+			<Anchor>//api/name/audios</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfo/audios</TokenIdentifier>
+			<Abstract type="html">所有音频流信息，具体对象类型为KSYAudioInfo</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSMutableArray *audios</Declaration>
+			
+			
+			<Anchor>//api/name/audios</Anchor>
             <NodeRef refid="19"/>
 		</Token>
 		

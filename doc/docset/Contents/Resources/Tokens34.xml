@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYBWEstimateMode.html">
+	<File path="Constants/KSYLiveScene.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYBWEstimateMode</TokenIdentifier>
-			<Abstract type="html">网络自适应模式类型
-  </Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYLiveScene</TokenIdentifier>
+			<Abstract type="html">直播场景 (KSY内部会根据场景的特征进行参数调优)</Abstract>
 			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
@@ -15,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBWEstMode_Default</TokenIdentifier>
-            <Abstract type="html">默认模式 (综合模式,比较平稳)</Abstract>
-            <Declaration>KSYBWEstMode_Default</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYLiveScene_Default</TokenIdentifier>
+            <Abstract type="html">默认通用场景(不确定场景时使用)</Abstract>
+            <Declaration>KSYLiveScene_Default</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -25,19 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBWEstMode_Negtive</TokenIdentifier>
-            <Abstract type="html">流畅优先模式(消极上调, 极速下调)</Abstract>
-            <Declaration>KSYBWEstMode_Negtive</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="34"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBWEstMode_Disable</TokenIdentifier>
-            <Abstract type="html">禁用网络自适应网络调整</Abstract>
-            <Declaration>KSYBWEstMode_Disable</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYLiveScene_Showself</TokenIdentifier>
+            <Abstract type="html">秀场场景, 主播上半身为主</Abstract>
+            <Declaration>KSYLiveScene_Showself</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             

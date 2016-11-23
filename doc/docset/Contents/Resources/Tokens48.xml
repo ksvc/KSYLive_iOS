@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYVideoEncodePerformance.html">
+	<File path="Constants/MPMovieReloadMode.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYVideoEncodePerformance</TokenIdentifier>
-			<Abstract type="html">视频编码性能档次 (视频质量 和 设备资源之间的权衡)</Abstract>
-			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/MPMovieReloadMode</TokenIdentifier>
+			<Abstract type="html">reload模式</Abstract>
+			<DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
 			
 			<NodeRef refid="48"/>
@@ -14,31 +14,21 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoEncodePer_LowPower</TokenIdentifier>
-            <Abstract type="html">低功耗:  cpu资源消耗低一些,视频质量差一些</Abstract>
-            <Declaration>KSYVideoEncodePer_LowPower</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieReloadMode_Fast</TokenIdentifier>
+            <Abstract type="html">加速播放模式</Abstract>
+            <Declaration>MPMovieReloadMode_Fast</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="48"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoEncodePer_Balance</TokenIdentifier>
-            <Abstract type="html">均衡档次: 性价比比较高</Abstract>
-            <Declaration>KSYVideoEncodePer_Balance</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
             <NodeRef refid="48"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoEncodePer_HighPerformance</TokenIdentifier>
-            <Abstract type="html">高性能: 画面质量高</Abstract>
-            <Declaration>KSYVideoEncodePer_HighPerformance</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieReloadMode_Accurate</TokenIdentifier>
+            <Abstract type="html">精确检测模式</Abstract>
+            <Declaration>MPMovieReloadMode_Accurate</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
             <NodeRef refid="48"/>
         </Token>

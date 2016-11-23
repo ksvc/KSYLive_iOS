@@ -223,17 +223,19 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 - (void) muteStreame:(BOOL) bMute;
 
 /**
- @abstract  处理一个视频帧
+ @abstract  处理一个视频帧(只支持编码前的原始图像数据)
  @param sampleBuffer Buffer to process
  @discussion 应当在开始推流前定期调用此接口，比如按照采集帧率调用
+ @discussion 支持的图像格式包括: BGR0,NV12,YUVA444P,YUV420P
  */
 - (void)processVideoSampleBuffer:(CMSampleBufferRef)sampleBuffer;
 
 /**
- @abstract  处理一个视频帧
+ @abstract  处理一个视频帧(只支持编码前的原始图像数据)
  @param pixelBuffer 待编码的像素数据
  @param timeStamp   待编码的时间戳
  @discussion 应当在开始推流前定期调用此接口，比如按照采集帧率调用
+ @discussion 支持的图像格式包括: BGR0,NV12,YUVA444P,YUV420P
  */
 - (void)processVideoPixelBuffer:(CVPixelBufferRef)pixelBuffer
                        timeInfo:(CMTime)timeStamp;

@@ -19,12 +19,7 @@
 #import "KSYAudioCtrlView.h"
 #import "KSYMiscView.h"
 #import "KSYStateLableView.h"
-
-#if USING_DYNAMIC_FRAMEWORK
-#import <libksygpuliveDy/KSYGPUStreamerKit.h>
-#else
 #import <libksygpulive/KSYGPUStreamerKit.h>
-#endif
 
 /**
  KSY 推流SDK的主要演示视图

@@ -49,7 +49,7 @@
     if ( self.width <self.height ){
         self.yPos =self.gap*5; // skip status bar
     }
-    [self putRow: @[_backBtn, _btnFlash, _btnCameraToggle,_btnQuit] ];
+    [self putRow: @[_btnQuit, _btnFlash, _btnCameraToggle,_backBtn] ];
     
     [self putRow: _menuBtns ];
     [self hideMenuBtn:!_backBtn.hidden];

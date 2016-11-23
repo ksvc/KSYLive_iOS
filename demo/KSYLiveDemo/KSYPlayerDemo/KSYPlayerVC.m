@@ -607,11 +607,11 @@
 
 - (void)StartTimer
 {
+    progressView.totalTimeInSeconds = _player.duration;
     if(timer != nil){
         return;
     }
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateStat:) userInfo:nil repeats:YES];
-    progressView.totalTimeInSeconds = _player.duration;
 }
 - (void)StopTimer
 {
@@ -804,7 +804,11 @@
             __weak typeof(_player) weakPlayer = _player;
             progressView.dragingSliderCallback = ^(float progress){
                 typeof(weakPlayer) strongPlayer = weakPlayer;
-                strongPlayer.currentPlaybackTime = progress * strongPlayer.duration;
+                double seekPos = progress * strongPlayer.duration;
+                //strongPlayer.currentPlaybackTime = progress * strongPlayer.duration;
+                //使用currentPlaybackTime设置为依靠关键帧定位
+                //使用seekTo:accurate并且将accurate设置为YES时为精确定位
+                [strongPlayer seekTo:seekPos accurate:YES];
             };
         } else {
             progressView.hidden = YES;
