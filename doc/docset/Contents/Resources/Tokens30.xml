@@ -1,125 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYVideoInfo.html">
+	<File path="Constants/KSYBWEstimateMode.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYVideoInfo</TokenIdentifier>
-			<Abstract type="html">视频信息</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYBWEstimateMode</TokenIdentifier>
+			<Abstract type="html">网络自适应模式类型
+  </Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
 			<NodeRef refid="30"/>
 		</Token>
 		
 		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/setVcodec:</TokenIdentifier>
-			<Abstract type="html">视频编码格式, 具体类型为MEDIAINFOCODECID</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID vcodec</Declaration>
-			
-			
-			<Anchor>//api/name/vcodec</Anchor>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBWEstMode_Default</TokenIdentifier>
+            <Abstract type="html">默认模式 (综合模式,比较平稳)</Abstract>
+            <Declaration>KSYBWEstMode_Default</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
             <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/vcodec</TokenIdentifier>
-			<Abstract type="html">视频编码格式, 具体类型为MEDIAINFOCODECID</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID vcodec</Declaration>
-			
-			
-			<Anchor>//api/name/vcodec</Anchor>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBWEstMode_Negtive</TokenIdentifier>
+            <Abstract type="html">流畅优先模式(消极上调, 极速下调)</Abstract>
+            <Declaration>KSYBWEstMode_Negtive</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
             <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYVideoInfo/vcodec</TokenIdentifier>
-			<Abstract type="html">视频编码格式, 具体类型为MEDIAINFOCODECID</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID vcodec</Declaration>
-			
-			
-			<Anchor>//api/name/vcodec</Anchor>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBWEstMode_Disable</TokenIdentifier>
+            <Abstract type="html">禁用网络自适应网络调整</Abstract>
+            <Declaration>KSYBWEstMode_Disable</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
             <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/setFrame_width:</TokenIdentifier>
-			<Abstract type="html">视频帧宽度</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int32_t frame_width</Declaration>
-			
-			
-			<Anchor>//api/name/frame_width</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/frame_width</TokenIdentifier>
-			<Abstract type="html">视频帧宽度</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int32_t frame_width</Declaration>
-			
-			
-			<Anchor>//api/name/frame_width</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYVideoInfo/frame_width</TokenIdentifier>
-			<Abstract type="html">视频帧宽度</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int32_t frame_width</Declaration>
-			
-			
-			<Anchor>//api/name/frame_width</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/setFrame_height:</TokenIdentifier>
-			<Abstract type="html">视频帧高度</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int32_t frame_height</Declaration>
-			
-			
-			<Anchor>//api/name/frame_height</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/frame_height</TokenIdentifier>
-			<Abstract type="html">视频帧高度</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int32_t frame_height</Declaration>
-			
-			
-			<Anchor>//api/name/frame_height</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYVideoInfo/frame_height</TokenIdentifier>
-			<Abstract type="html">视频帧高度</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int32_t frame_height</Declaration>
-			
-			
-			<Anchor>//api/name/frame_height</Anchor>
-            <NodeRef refid="30"/>
-		</Token>
-		
+        </Token>
         
         
 	</File>

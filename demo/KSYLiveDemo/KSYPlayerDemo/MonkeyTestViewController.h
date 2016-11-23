@@ -7,12 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-#if USING_DYNAMIC_FRAMEWORK
-#import <libksygpuliveDy/libksygpulive.h>
-#else
 #import <libksygpulive/libksygpulive.h>
-#endif
+
 
 @interface MonkeyTestViewController : UIViewController
 

@@ -9,12 +9,7 @@
 #ifndef KSYProberVC_h
 #define KSYProberVC_h
 
-#import <UIKit/UIKit.h>
-#if USING_DYNAMIC_FRAMEWORK
-#import <libksygpuliveDy/libksygpulive.h>
-#else
 #import <libksygpulive/libksygpulive.h>
-#endif
 
 @interface KSYProberVC : UIViewController
 - (instancetype)initWithURL:(NSURL *)url;
