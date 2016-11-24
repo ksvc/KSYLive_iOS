@@ -113,7 +113,7 @@ pod 'libksygpulive/libksygpulive', :git => 'https://github.com/ksvc/KSYLive_iOS.
 // 私有库 (直接指定SDK的github仓库地址和版本号)
 pod 'libksygpulive/libksygpulive', :git => 'https://github.com/ksvc/KSYLive_iOS.git', :tag => 'v1.8.0'
 
-// cocoapod官方库
+// cocoapod官方库Trunk
 pod 'libksygpulive/libksygpulive'
 ```
 
@@ -194,7 +194,11 @@ NSLog(@"version: %@", [kit getKSYVersion]);
 * 本framework已经包含[播放SDK](https://github.com/ksvc/KSYMediaPlayer_iOS.git)   
 且会跟播放SDK产生冲突，在集成前，请先保证将之前集成的KSY播放SDK移除
 * 本framework可能与其他使用了FFmpeg的静态库冲突 (冲突时可以考虑使用动态库)
-* 本framework为静态库，虽然库的大小为20M+，但是最后链接后，对app的增量只有4M+
+* 本framework为静态库，虽然库的大小为20M+，但是最后链接后，对app的增量只有5M+
+* 如果使用cocoapod官方库Trunk时,发现找不到最新版本的库, 需要先执行如下命令, 更新spec库
+```
+pod repo update
+```
 
 ## 四. 参考文档
 * [iOS直播推流SDK使用指南](https://github.com/ksvc/KSYLive_iOS/wiki/KSYStreamerSDKUserManual)
