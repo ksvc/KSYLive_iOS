@@ -155,7 +155,7 @@ $ ./release-libKSYLive.sh libksygpulive lite
 $ ls ../framework/static
 Bugly.framework  GPUImage.framework  libksygpulive.framework
 ```
-参数的详细说明请参考脚本release-libKSYLive.sh的[帮助](https://github.com/ksvc/KSYLive_iOS/wiki/dylib).
+参数的详细说明请参考脚本release-libKSYLive.sh的帮助(./release-libKSYLive.sh -h)或[动态库第4点说明](https://github.com/ksvc/KSYLive_iOS/wiki/dylib).
 
 * 给demo添加库依赖选项
 
