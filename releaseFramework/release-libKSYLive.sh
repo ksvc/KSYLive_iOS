@@ -97,9 +97,9 @@ if [ $FRAMEWORKNAME = "libksygpulive" ]; then
     if [ ! -d $FRAMEWORK_DIR ]; then
         mkdir $FRAMEWORK_DIR
     fi
-    xDownload GPUImage "static"
-    xDownload GPUImage "dynamic"
-    xDownload Bugly    ""
+	
+	xDownload GPUImage $TYPE
+	xDownload Bugly    ""
 fi
 
 TARGET_NAME=$FRAMEWORKNAME
