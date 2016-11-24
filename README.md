@@ -22,7 +22,7 @@
 - [x] 支持一对一[连麦](https://github.com/ksvc/KSYLive_iOS/wiki/rtc)
 - [x] [场景编码](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)
 - [x] 支持软编、硬编的[性能编码模式](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)
-- [x] 支持[预览和推流分别镜像](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
+- [x] 支持[预览和推流分别镜像](https://github.com/ksvc/KSYLive_iOS/wiki/mirrored)
 - [x] [在线API 文档支持](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
 
 
