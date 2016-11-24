@@ -1,4 +1,7 @@
 #[KSY Live iOS SDK](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
+
+[![Build Status](https://travis-ci.org/ksvc/KSYLive_iOS.svg?branch=master)](https://travis-ci.org/ksvc/KSYLive_iOS)
+
 ## 一. 功能特性
 ### 1.1 推流功能
 - [x] AAC 音频编码（支持软、硬编）
