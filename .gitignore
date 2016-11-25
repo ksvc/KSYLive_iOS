@@ -30,3 +30,7 @@ Temporary Items
 lib/
 *.ipa
 xcuserdata
+
+framework/
+build/
+*.log
