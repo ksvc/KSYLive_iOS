@@ -21,7 +21,7 @@
 - [x] 支持[后台推流](https://github.com/ksvc/KSYLive_iOS/wiki/backgroupStream)
 - [x] 支持[耳返](https://github.com/ksvc/KSYLive_iOS/wiki/micMonitor)
 - [x] 支持[画中画](https://github.com/ksvc/KSYLive_iOS/wiki/pip)推流
-- [x] 支持[预览和采集分辨率分别设置](https://github.com/ksvc/KSYLive_iOS/wiki/customOutputSize)
+- [x] 支持[预览和采集分辨率分别设置,支持任意分辨率](https://github.com/ksvc/KSYLive_iOS/wiki/customOutputSize)
 - [x] 支持一对一[连麦](https://github.com/ksvc/KSYLive_iOS/wiki/rtc)
 - [x] [场景编码](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)
 - [x] 支持软编、硬编的[性能编码模式](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)
