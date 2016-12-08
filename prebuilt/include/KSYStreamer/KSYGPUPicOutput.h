@@ -55,6 +55,9 @@
  */
 @property(nonatomic, readonly) CGSize inputSize;
 
+/** 当视频采集被打断时是否主动提供重复图像*/
+@property(nonatomic, readwrite) BOOL bAutoRepeat;
+
 /**
  @abstract input roation mode
  */

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYAudioInfo.html">
+	<File path="Classes/KSYAVMuxer.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYAudioInfo</TokenIdentifier>
-			<Abstract type="html">音频信息</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYAVMuxer</TokenIdentifier>
+			<Abstract type="html">音视频交织工具类</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
             
 			
 			<NodeRef refid="4"/>
@@ -13,254 +13,207 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/setAcodec:</TokenIdentifier>
-			<Abstract type="html">音频编码格式,  具体类型为MEDIAINFOCODECID</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVMuxer/setBLoopVideo:</TokenIdentifier>
+			<Abstract type="html">当视频数据比音频数据短时,是否循环使用视频数据 （默认为NO）</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID acodec</Declaration>
+			<Declaration>@property (atomic, assign) BOOL bLoopVideo</Declaration>
 			
 			
-			<Anchor>//api/name/acodec</Anchor>
+			<Anchor>//api/name/bLoopVideo</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/acodec</TokenIdentifier>
-			<Abstract type="html">音频编码格式,  具体类型为MEDIAINFOCODECID</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVMuxer/bLoopVideo</TokenIdentifier>
+			<Abstract type="html">当视频数据比音频数据短时,是否循环使用视频数据 （默认为NO）</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID acodec</Declaration>
+			<Declaration>@property (atomic, assign) BOOL bLoopVideo</Declaration>
 			
 			
-			<Anchor>//api/name/acodec</Anchor>
+			<Anchor>//api/name/bLoopVideo</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioInfo/acodec</TokenIdentifier>
-			<Abstract type="html">音频编码格式,  具体类型为MEDIAINFOCODECID</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAVMuxer/bLoopVideo</TokenIdentifier>
+			<Abstract type="html">当视频数据比音频数据短时,是否循环使用视频数据 （默认为NO）</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID acodec</Declaration>
+			<Declaration>@property (atomic, assign) BOOL bLoopVideo</Declaration>
 			
 			
-			<Anchor>//api/name/acodec</Anchor>
+			<Anchor>//api/name/bLoopVideo</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/setLanguage:</TokenIdentifier>
-			<Abstract type="html">音频语言, 如chinese, english...</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVMuxer/setBLoopAudio:</TokenIdentifier>
+			<Abstract type="html">当音频数据比视频数据短时,是否循环使用音频数据 （默认为NO）</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) NSString *language</Declaration>
+			<Declaration>@property (atomic, assign) BOOL bLoopAudio</Declaration>
 			
 			
-			<Anchor>//api/name/language</Anchor>
+			<Anchor>//api/name/bLoopAudio</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/language</TokenIdentifier>
-			<Abstract type="html">音频语言, 如chinese, english...</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVMuxer/bLoopAudio</TokenIdentifier>
+			<Abstract type="html">当音频数据比视频数据短时,是否循环使用音频数据 （默认为NO）</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) NSString *language</Declaration>
+			<Declaration>@property (atomic, assign) BOOL bLoopAudio</Declaration>
 			
 			
-			<Anchor>//api/name/language</Anchor>
+			<Anchor>//api/name/bLoopAudio</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioInfo/language</TokenIdentifier>
-			<Abstract type="html">音频语言, 如chinese, english...</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAVMuxer/bLoopAudio</TokenIdentifier>
+			<Abstract type="html">当音频数据比视频数据短时,是否循环使用音频数据 （默认为NO）</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) NSString *language</Declaration>
+			<Declaration>@property (atomic, assign) BOOL bLoopAudio</Declaration>
 			
 			
-			<Anchor>//api/name/language</Anchor>
+			<Anchor>//api/name/bLoopAudio</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/setBitrate:</TokenIdentifier>
-			<Abstract type="html">音频码率</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVMuxer/setMetadata:</TokenIdentifier>
+			<Abstract type="html">最后输出视频文件时附带的metadata (默认为nil)</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int64_t bitrate</Declaration>
+			<Declaration>@property (atomic, copy) NSDictionary *metadata</Declaration>
 			
 			
-			<Anchor>//api/name/bitrate</Anchor>
+			<Anchor>//api/name/metadata</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/bitrate</TokenIdentifier>
-			<Abstract type="html">音频码率</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVMuxer/metadata</TokenIdentifier>
+			<Abstract type="html">最后输出视频文件时附带的metadata (默认为nil)</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int64_t bitrate</Declaration>
+			<Declaration>@property (atomic, copy) NSDictionary *metadata</Declaration>
 			
 			
-			<Anchor>//api/name/bitrate</Anchor>
+			<Anchor>//api/name/metadata</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioInfo/bitrate</TokenIdentifier>
-			<Abstract type="html">音频码率</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAVMuxer/metadata</TokenIdentifier>
+			<Abstract type="html">最后输出视频文件时附带的metadata (默认为nil)</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int64_t bitrate</Declaration>
+			<Declaration>@property (atomic, copy) NSDictionary *metadata</Declaration>
 			
 			
-			<Anchor>//api/name/bitrate</Anchor>
+			<Anchor>//api/name/metadata</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/setChannels:</TokenIdentifier>
-			<Abstract type="html">声道数</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVMuxer/startMuxVideo:andAudio:To:</TokenIdentifier>
+			<Abstract type="html">启动处理(同步)</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int32_t channels</Declaration>
+			<Declaration>- (void)startMuxVideo:(NSURL *)vFile andAudio:(NSURL *)aFile To:(NSURL *)oFile</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>vFile</Name>
+					<Abstract type="html">为输入的纯视频文件的路径</Abstract>
+				</Parameter><Parameter>
+					<Name>aFile</Name>
+					<Abstract type="html">为输入的音频文件的路径</Abstract>
+				</Parameter><Parameter>
+					<Name>oFile</Name>
+					<Abstract type="html">为输出文件的路径</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/channels</Anchor>
+			<Anchor>//api/name/startMuxVideo:andAudio:To:</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/channels</TokenIdentifier>
-			<Abstract type="html">声道数</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVMuxer/asyncMuxVideo:andAudio:To:</TokenIdentifier>
+			<Abstract type="html">启动处理(异步)</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int32_t channels</Declaration>
+			<Declaration>- (void)asyncMuxVideo:(NSURL *)vFile andAudio:(NSURL *)aFile To:(NSURL *)oFile</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>vFile</Name>
+					<Abstract type="html">为输入的纯视频文件的路径</Abstract>
+				</Parameter><Parameter>
+					<Name>aFile</Name>
+					<Abstract type="html">为输入的音频文件的路径</Abstract>
+				</Parameter><Parameter>
+					<Name>oFile</Name>
+					<Abstract type="html">为输出文件的路径</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/channels</Anchor>
+			<Anchor>//api/name/asyncMuxVideo:andAudio:To:</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioInfo/channels</TokenIdentifier>
-			<Abstract type="html">声道数</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVMuxer/cancelMux</TokenIdentifier>
+			<Abstract type="html">中止处理</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int32_t channels</Declaration>
+			<Declaration>- (void)cancelMux</Declaration>
 			
 			
-			<Anchor>//api/name/channels</Anchor>
+			<Anchor>//api/name/cancelMux</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/setSamplerate:</TokenIdentifier>
-			<Abstract type="html">音频采样率</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVMuxer/setMuxCompleteBlock:</TokenIdentifier>
+			<Abstract type="html">异步处理完成回调
+@param      status</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int32_t samplerate</Declaration>
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( KSYAVMuxerStatus status ) muxCompleteBlock</Declaration>
 			
 			
-			<Anchor>//api/name/samplerate</Anchor>
+			<Anchor>//api/name/muxCompleteBlock</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/samplerate</TokenIdentifier>
-			<Abstract type="html">音频采样率</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVMuxer/muxCompleteBlock</TokenIdentifier>
+			<Abstract type="html">异步处理完成回调
+@param      status</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int32_t samplerate</Declaration>
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( KSYAVMuxerStatus status ) muxCompleteBlock</Declaration>
 			
 			
-			<Anchor>//api/name/samplerate</Anchor>
+			<Anchor>//api/name/muxCompleteBlock</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioInfo/samplerate</TokenIdentifier>
-			<Abstract type="html">音频采样率</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAVMuxer/muxCompleteBlock</TokenIdentifier>
+			<Abstract type="html">异步处理完成回调
+@param      status</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int32_t samplerate</Declaration>
-			
-			
-			<Anchor>//api/name/samplerate</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/setSample_format:</TokenIdentifier>
-			<Abstract type="html">音频采样格式, 具体类型为MEDIAINFOSAMPLEFMT</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) MEDIAINFO_SAMPLE_FMT sample_format</Declaration>
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( KSYAVMuxerStatus status ) muxCompleteBlock</Declaration>
 			
 			
-			<Anchor>//api/name/sample_format</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/sample_format</TokenIdentifier>
-			<Abstract type="html">音频采样格式, 具体类型为MEDIAINFOSAMPLEFMT</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) MEDIAINFO_SAMPLE_FMT sample_format</Declaration>
-			
-			
-			<Anchor>//api/name/sample_format</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioInfo/sample_format</TokenIdentifier>
-			<Abstract type="html">音频采样格式, 具体类型为MEDIAINFOSAMPLEFMT</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) MEDIAINFO_SAMPLE_FMT sample_format</Declaration>
-			
-			
-			<Anchor>//api/name/sample_format</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/setFramesize:</TokenIdentifier>
-			<Abstract type="html">音频帧大小</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int32_t framesize</Declaration>
-			
-			
-			<Anchor>//api/name/framesize</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/framesize</TokenIdentifier>
-			<Abstract type="html">音频帧大小</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int32_t framesize</Declaration>
-			
-			
-			<Anchor>//api/name/framesize</Anchor>
-            <NodeRef refid="4"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioInfo/framesize</TokenIdentifier>
-			<Abstract type="html">音频帧大小</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int32_t framesize</Declaration>
-			
-			
-			<Anchor>//api/name/framesize</Anchor>
+			<Anchor>//api/name/muxCompleteBlock</Anchor>
             <NodeRef refid="4"/>
 		</Token>
 		

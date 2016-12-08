@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0655BF501DF593BF004B94D3 /* KSYAVFCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 0655BF4F1DF593BF004B94D3 /* KSYAVFCapture.h */; };
+		0655BF511DF595B1004B94D3 /* KSYAVFCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 0655BF4F1DF593BF004B94D3 /* KSYAVFCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06A646C01D8652C000D1C620 /* KSYAVAudioSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A646BE1D8652A400D1C620 /* KSYAVAudioSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06A646D21D865B3B00D1C620 /* KSYGPUStreamerKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A646CE1D865B2C00D1C620 /* KSYGPUStreamerKit.m */; };
 		06A646DA1D865D3200D1C620 /* KSYGPUStreamerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A646CF1D865B2C00D1C620 /* KSYGPUStreamerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06E670741DEC37570015E3BD /* KSYDummyAudioSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E670731DEC37570015E3BD /* KSYDummyAudioSource.h */; };
+		06E670751DEC376E0015E3BD /* KSYDummyAudioSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E670731DEC37570015E3BD /* KSYDummyAudioSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06E742A51D90FEB700C3E780 /* KSYSpecialEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E742A31D90FEB700C3E780 /* KSYSpecialEffects.h */; };
 		06E742A61D90FEB700C3E780 /* KSYBuildInSpecialEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E742A41D90FEB700C3E780 /* KSYBuildInSpecialEffects.h */; };
 		06E742A71D90FEC300C3E780 /* KSYSpecialEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E742A31D90FEB700C3E780 /* KSYSpecialEffects.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -49,9 +53,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0655BF4F1DF593BF004B94D3 /* KSYAVFCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYAVFCapture.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYAVFCapture.h; sourceTree = "<group>"; };
 		06A646BE1D8652A400D1C620 /* KSYAVAudioSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYAVAudioSession.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYAVAudioSession.h; sourceTree = "<group>"; };
 		06A646CE1D865B2C00D1C620 /* KSYGPUStreamerKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYGPUStreamerKit.m; path = ../../source/KSYGPUStreamerKit.m; sourceTree = "<group>"; };
 		06A646CF1D865B2C00D1C620 /* KSYGPUStreamerKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUStreamerKit.h; path = ../../source/KSYGPUStreamerKit.h; sourceTree = "<group>"; };
+		06E670731DEC37570015E3BD /* KSYDummyAudioSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYDummyAudioSource.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYDummyAudioSource.h; sourceTree = "<group>"; };
 		06E742A31D90FEB700C3E780 /* KSYSpecialEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYSpecialEffects.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYSpecialEffects.h; sourceTree = "<group>"; };
 		06E742A41D90FEB700C3E780 /* KSYBuildInSpecialEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYBuildInSpecialEffects.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYBuildInSpecialEffects.h; sourceTree = "<group>"; };
 		5800A0161D76BFA600AB55F7 /* KSYMediaPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KSYMediaPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,6 +244,8 @@
 		580489E11D799FF200232F6E /* include */ = {
 			isa = PBXGroup;
 			children = (
+				0655BF4F1DF593BF004B94D3 /* KSYAVFCapture.h */,
+				06E670731DEC37570015E3BD /* KSYDummyAudioSource.h */,
 				06E742A31D90FEB700C3E780 /* KSYSpecialEffects.h */,
 				06E742A41D90FEB700C3E780 /* KSYBuildInSpecialEffects.h */,
 				06A646BE1D8652A400D1C620 /* KSYAVAudioSession.h */,
@@ -272,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5800A0591D76E50100AB55F7 /* KSYMediaPlayer.h in Headers */,
+				06E670741DEC37570015E3BD /* KSYDummyAudioSource.h in Headers */,
 				06E742A51D90FEB700C3E780 /* KSYSpecialEffects.h in Headers */,
 				06E742A61D90FEB700C3E780 /* KSYBuildInSpecialEffects.h in Headers */,
 				5800DC851D82B9AA00B1A884 /* KSYMediaInfo.h in Headers */,
@@ -280,6 +289,7 @@
 				5800DC881D82B9AA00B1A884 /* KSYMoviePlayerController.h in Headers */,
 				5800DC891D82B9AA00B1A884 /* KSYMoviePlayerDefines.h in Headers */,
 				5800DC8A1D82B9AA00B1A884 /* KSYQosInfo.h in Headers */,
+				0655BF501DF593BF004B94D3 /* KSYAVFCapture.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +304,7 @@
 				5800DCF11D82BAFF00B1A884 /* KSYMoviePlayerDefines.h in Headers */,
 				5800DCF21D82BAFF00B1A884 /* KSYQosInfo.h in Headers */,
 				5800DCD61D82BAF500B1A884 /* KSYAUAudioCapture.h in Headers */,
+				06E670751DEC376E0015E3BD /* KSYDummyAudioSource.h in Headers */,
 				5800DCD71D82BAF500B1A884 /* KSYAudioMixer.h in Headers */,
 				5800DCD91D82BAF500B1A884 /* KSYAVMuxer.h in Headers */,
 				5800DCDA1D82BAF500B1A884 /* KSYBeautifyFaceFilter.h in Headers */,
@@ -316,6 +327,7 @@
 				06A646DA1D865D3200D1C620 /* KSYGPUStreamerKit.h in Headers */,
 				06E742A71D90FEC300C3E780 /* KSYSpecialEffects.h in Headers */,
 				06E742A81D90FEC300C3E780 /* KSYBuildInSpecialEffects.h in Headers */,
+				0655BF511DF595B1004B94D3 /* KSYAVFCapture.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

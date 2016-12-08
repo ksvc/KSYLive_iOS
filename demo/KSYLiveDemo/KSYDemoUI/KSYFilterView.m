@@ -238,7 +238,7 @@ numberOfRowsInComponent:(NSInteger)component {
       didSelectRow:(NSInteger)row
        inComponent:(NSInteger)component {
     _curEffectIdx = row+1;
-    if ( [_curFilter isKindOfClass:[GPUImageFilterGroup class]]){
+    if ( [_curFilter isMemberOfClass:[GPUImageFilterGroup class]]){
         GPUImageFilterGroup * fg = (GPUImageFilterGroup *)_curFilter;
         KSYBuildInSpecialEffects * sf = (KSYBuildInSpecialEffects *)[fg filterAtIndex:1];
         [sf setSpecialEffectsIdx: _curEffectIdx];

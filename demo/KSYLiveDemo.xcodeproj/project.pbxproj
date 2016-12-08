@@ -23,6 +23,7 @@
 		06B2B1B71BE8F0D900E0CC85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06B2B1B61BE8F0D900E0CC85 /* Images.xcassets */; };
 		06B2B1BA1BE8F0D900E0CC85 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B2B1B81BE8F0D900E0CC85 /* LaunchScreen.xib */; };
 		06CF36E81DE5D14C00BCE88C /* KSYLiveDemo-dy-framework.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 06CF36E71DE5D14C00BCE88C /* KSYLiveDemo-dy-framework.xcconfig */; };
+		06E670781DEC4DA70015E3BD /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E670771DEC4DA70015E3BD /* libc++.tbd */; };
 		06E742AC1D90FFD600C3E780 /* KSYGPUResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 06E742AB1D90FFD600C3E780 /* KSYGPUResource.bundle */; };
 		06FBBD4D1D2E17E00065ED55 /* KSYBgmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD2B1D2E17E00065ED55 /* KSYBgmView.m */; };
 		06FBBD511D2E17E00065ED55 /* KSYCtrlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD2F1D2E17E00065ED55 /* KSYCtrlView.m */; };
@@ -88,6 +89,7 @@
 		06CB3A641D813EE70017378F /* KSYStateLableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYStateLableView.m; sourceTree = "<group>"; };
 		06CB3A651D813EE70017378F /* KSYStateLableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYStateLableView.h; sourceTree = "<group>"; };
 		06CF36E71DE5D14C00BCE88C /* KSYLiveDemo-dy-framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "KSYLiveDemo-dy-framework.xcconfig"; sourceTree = "<group>"; };
+		06E670771DEC4DA70015E3BD /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		06E742AB1D90FFD600C3E780 /* KSYGPUResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = KSYGPUResource.bundle; path = ../resource/KSYGPUResource.bundle; sourceTree = "<group>"; };
 		06FBBD2A1D2E17E00065ED55 /* KSYBgmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYBgmView.h; sourceTree = "<group>"; };
 		06FBBD2B1D2E17E00065ED55 /* KSYBgmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYBgmView.m; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06E670781DEC4DA70015E3BD /* libc++.tbd in Frameworks */,
 				E3EDA85D1D17BBDA00B54437 /* Security.framework in Frameworks */,
 				E3EDA85B1D17BBCE00B54437 /* SystemConfiguration.framework in Frameworks */,
 				625EF3B51C9A95BE00DBA1CC /* libsqlite3.tbd in Frameworks */,
@@ -177,6 +180,7 @@
 				06FBBD441D2E17E00065ED55 /* KSYUIUtils */,
 				06B2B1A51BE8F0D900E0CC85 /* KSYLiveDemo */,
 				06B2B1A41BE8F0D900E0CC85 /* Products */,
+				06E670761DEC4DA70015E3BD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -216,6 +220,14 @@
 				06B2B1A81BE8F0D900E0CC85 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		06E670761DEC4DA70015E3BD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				06E670771DEC4DA70015E3BD /* libc++.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		06FBBD271D2E17E00065ED55 /* KSYDemoUI */ = {
@@ -519,6 +531,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ksyun.ios.KSYLiveDemo;
 				PRODUCT_NAME = KSYLiveDemo;
 				PROVISIONING_PROFILE = "";
+				WARNING_CFLAGS = (
+					"$(inherited)",
+					"-Wno-incomplete-umbrella",
+				);
 			};
 			name = Debug;
 		};
@@ -554,6 +570,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ksyun.ios.KSYLiveDemo;
 				PRODUCT_NAME = KSYLiveDemo;
 				PROVISIONING_PROFILE = "";
+				WARNING_CFLAGS = (
+					"$(inherited)",
+					"-Wno-incomplete-umbrella",
+				);
 			};
 			name = Release;
 		};

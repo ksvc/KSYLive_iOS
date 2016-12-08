@@ -84,7 +84,6 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
  @warning 必须调用该方法进行初始化，不能调用init方法。
  @since Available in KSYMoviePlayerController 1.0 and later.
  @return 返回KSYMoviePlayerController 实例
- @warning KSYMoviePlayerController 当前版本只支持单实例的KSYMoviePlayerController对象，多实例将导致播放异常。
  */
 - (instancetype)initWithContentURL:(NSURL *)url;
 

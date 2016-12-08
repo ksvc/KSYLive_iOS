@@ -670,7 +670,7 @@
                  _player.playableDuration,
                  _player.duration,
                  _player.bufferEmptyDuration,
-                 _player.bufferEmptyCount,
+                 (long)_player.bufferEmptyCount,
                  _player.bufferTimeMax,
                  8*1024.0*(flowSize - lastSize)/([self getCurrentTime] - lastCheckTime),
                  fvr_costtime, far_costtime,

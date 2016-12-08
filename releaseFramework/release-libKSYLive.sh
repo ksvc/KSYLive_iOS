@@ -163,7 +163,7 @@ DEV_F=${BUILD_DIR}/${CONFIGURATION}-iphoneos/${TARG}.framework
 SIM_F=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${TARG}.framework
 OUT_D=../../framework/$CTYPE
 if [ ! -d $OUT_D ]; then
-    mkdir $OUT_D
+    mkdir -p $OUT_D
 fi
 OUT_F=${OUT_D}/${TARG}.framework
 

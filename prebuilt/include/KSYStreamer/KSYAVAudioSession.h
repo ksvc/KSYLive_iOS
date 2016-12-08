@@ -1,4 +1,11 @@
-
+//
+//  KSYAVAudioSession.h
+//  KSYStreamer
+//
+//
+//  Created by pengbin on 10/15/15.
+//  Copyright © 2015 ksyun. All rights reserved.
+//
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import "KSYTypeDef.h"

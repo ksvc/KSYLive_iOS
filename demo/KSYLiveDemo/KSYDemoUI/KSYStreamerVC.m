@@ -28,6 +28,8 @@
     NSString *_bypassRecFile;// 旁路录制
     // 旁路录制:一边推流到rtmp server, 一边录像到本地文件
     // 本地录制:直接存储到本地
+    UIImageView *_foucsCursor;//对焦框
+    CGFloat _currentPinchZoomFactor;//当前触摸缩放因子
 }
 @end
 
@@ -48,6 +50,8 @@
     _menuNames = @[@"背景音乐", @"图像/美颜",@"声音",@"其他"];
     [self addSubViews];
     [self addSwipeGesture];
+    [self addfoucsCursor];
+    [self addPinchGestureRecognizer];
     // 采集相关设置初始化
     [self setCaptureCfg];
     //推流相关设置初始化
@@ -72,6 +76,14 @@
                                                           action:onSwip];
     _swipeGest.direction |= UISwipeGestureRecognizerDirectionLeft;
     [self.view addGestureRecognizer:_swipeGest];
+}
+
+- (void)addfoucsCursor{
+    _foucsCursor = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"camera_focus_red"]];
+    _foucsCursor.frame = CGRectMake(80, 80, 80, 80);
+    [self.view addSubview:_foucsCursor];
+    _foucsCursor.alpha = 0;
+    
 }
 
 - (void)addSubViews{
@@ -167,14 +179,11 @@
 }
 
 - (void)enterBg:(NSNotification *)not{  //app will resigned
-    // 进入后台时, 将预览从图像混合器中脱离, 避免后台OpenGL渲染崩溃
-    [_kit.vPreviewMixer removeAllTargets];
-    [_kit.vStreamMixer removeAllTargets];
+    [_kit appEnterBackground];
 }
 
 - (void) becameActive:(NSNotification *)not{ //app becameAction
-    // 回到前台, 重新连接预览
-    [_kit setupFilter:self.ksyFilterView.curFilter];
+    [_kit appBecomeActive];
 }
 
 - (BOOL)shouldAutorotate {
@@ -198,7 +207,7 @@
 
 - (void) setupLogo{
     CGFloat yPos = 0.05;
-    CGFloat hgt  = 0.1;
+    CGFloat hgt  = 0.1; // logo图片的高度是预览画面的十分之一
     NSString *logoFile=[NSHomeDirectory() stringByAppendingString:@"/Documents/ksvc.png"];
     if ([[NSFileManager defaultManager] fileExistsAtPath:logoFile]){
         NSURL *url =[[NSURL alloc] initFileURLWithPath:logoFile];
@@ -217,17 +226,14 @@
     NSString * timeStr = [_dateFormatter stringFromDate:now];
     _kit.textLabel.text = [NSString stringWithFormat:@"ksyun\n%@", timeStr];
     [_kit.textLabel sizeToFit];
-    CGFloat h1 = _kit.textLabel.frame.size.height;
-    CGFloat h2 = _kit.previewDimension.height;
-    hgt = h1 / h2;
+    hgt = 0.04; // 水印文字的
     _kit.textRect = CGRectMake(0.05, yPos, 0, hgt);
     [_kit updateTextLabel];
 }
 
 - (void) updateLogoText {
     UIApplicationState appState = [UIApplication sharedApplication].applicationState;
-    if (_strSeconds%5 != 0 || // update label every 5 second
-        appState != UIApplicationStateActive){
+    if (appState != UIApplicationStateActive){
         return;
     } // 将当前时间显示在左上角
     NSDate *now = [[NSDate alloc] init];
@@ -245,6 +251,15 @@
     _kit.cameraPosition = [self.presetCfgView cameraPos];
     _kit.gpuOutputPixelFormat = [self.presetCfgView gpuOutputPixelFmt];
     _kit.videoProcessingCallback = ^(CMSampleBufferRef buf){
+        // 在此处添加自定义图像处理, 直接修改buf中的图像数据会传递到观众端
+        // 或复制图像数据之后再做其他处理, 则观众端仍然看到处理前的图像
+    };
+    _kit.audioProcessingCallback = ^(CMSampleBufferRef buf){
+        // 在此处添加自定义音频处理, 直接修改buf中的pcm数据会传递到观众端
+        // 或复制音频数据之后再做其他处理, 则观众端仍然听到原始声音
+    };
+    _kit.interruptCallback = ^(BOOL bInterrupt){
+        // 在此处添加自定义图像采集被打断的处理 (比如接听电话等)
     };
 }
 
@@ -829,5 +844,77 @@
     if ([fileManager fileExistsAtPath:file]) {
         [fileManager removeItemAtPath:file error:nil];
     }
+}
+
+/**
+ @abstract 将UI的坐标转换成相机坐标
+ */
+- (CGPoint)convertToPointOfInterestFromViewCoordinates:(CGPoint)viewCoordinates
+{
+    CGPoint pointOfInterest = CGPointMake(.5f, .5f);
+    CGSize frameSize = self.view.frame.size;
+    CGSize apertureSize = [_kit captureDimension];
+    CGPoint point = viewCoordinates;
+    CGFloat apertureRatio = apertureSize.height / apertureSize.width;
+    CGFloat viewRatio = frameSize.width / frameSize.height;
+    CGFloat xc = .5f;
+    CGFloat yc = .5f;
+    
+    if (viewRatio > apertureRatio) {
+        CGFloat y2 = frameSize.height;
+        CGFloat x2 = frameSize.height * apertureRatio;
+        CGFloat x1 = frameSize.width;
+        CGFloat blackBar = (x1 - x2) / 2;
+        if (point.x >= blackBar && point.x <= blackBar + x2) {
+            xc = point.y / y2;
+            yc = 1.f - ((point.x - blackBar) / x2);
+        }
+    }else {
+        CGFloat y2 = frameSize.width / apertureRatio;
+        CGFloat y1 = frameSize.height;
+        CGFloat x2 = frameSize.width;
+        CGFloat blackBar = (y1 - y2) / 2;
+        if (point.y >= blackBar && point.y <= blackBar + y2) {
+            xc = ((point.y - blackBar) / y2);
+            yc = 1.f - (point.x / x2);
+        }
+    }
+    pointOfInterest = CGPointMake(xc, yc);
+    
+    return pointOfInterest;
+}
+
+//设置摄像头对焦位置
+-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    UITouch *touch = [touches anyObject];
+    CGPoint current = [touch locationInView:self.view];
+    CGPoint point = [self convertToPointOfInterestFromViewCoordinates:current];
+    _foucsCursor.center = current;
+    _foucsCursor.transform = CGAffineTransformMakeScale(1.5, 1.5);
+    _foucsCursor.alpha=1.0;
+    NSError __autoreleasing *error;
+    bool ret = [_kit focusAtPoint:point error:&error];
+    if (ret){
+        [UIView animateWithDuration:1.0 animations:^{
+            _foucsCursor.transform=CGAffineTransformIdentity;
+        } completion:^(BOOL finished) {
+            _foucsCursor.alpha=0;
+            
+        }];
+    }
+}
+
+//添加缩放手势，缩放时镜头放大或缩小
+- (void)addPinchGestureRecognizer{
+    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(pinchDetected:)];
+    [self.view addGestureRecognizer:pinch];
+}
+
+- (void)pinchDetected:(UIPinchGestureRecognizer *)recognizer{
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        _currentPinchZoomFactor = _kit.pinchZoomFactor;
+    }
+    CGFloat zoomFactor = _currentPinchZoomFactor * recognizer.scale;//当前触摸缩放因子*坐标比例
+    [_kit setPinchZoomFactor:zoomFactor];
 }
 @end
