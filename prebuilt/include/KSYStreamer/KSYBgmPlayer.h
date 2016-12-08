@@ -1,10 +1,10 @@
 //
-//  KSYAudioMixer.h
+//  KSYBgmPlayer.h
 //  KSYStreamer
 //
 //
 //  Created by pengbin on 10/15/15.
-//  Copyright © 2015 ksy. All rights reserved.
+//  Copyright © 2015 ksyun. All rights reserved.
 //
 #import <AVFoundation/AVFoundation.h>
 #import "KSYTypeDef.h"

@@ -106,7 +106,11 @@
  @discussion currentPlaybackTime属性更改时机：
  
  * 视频正常播放时，如果改变currentPlaybackTime的值，将导致播放行为跳转到新的currentPlaybackTime位置播放。
- * 如果在视频未播放前设置currentPlaybackTime的值，将导致播放时刻从currentPlaybackTime位置播放。
+ * 在调用[prepareToPlay]([KSYMediaPlayback prepareToPlay])之前设置该属性的值无效，若希望从指定位置开始播放，需要以下设置
+    * 将player的自动播放属性shouldAutoplay设置为NO;
+    * 监听到MPMediaPlaybackIsPreparedToPlayDidChangeNotification通知时，将currentPlaybackTime设置为期望开始播放的时间点，单位是秒
+    * 调用play方法，即可从指定位置开始播放
+
  @since Available in KSYMediaPlayback 1.0 and later.
  */
 // The current playback time of the now playing item in seconds.

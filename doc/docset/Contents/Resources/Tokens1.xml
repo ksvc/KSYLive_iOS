@@ -14,7 +14,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/startCapture</TokenIdentifier>
-			<Abstract type="html">启动音频采集</Abstract>
+			<Abstract type="html">启动音频采集, 占据麦克风资源</Abstract>
 			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
 			
 			<Declaration>- (BOOL)startCapture</Declaration>
@@ -26,13 +26,49 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/stopCapture</TokenIdentifier>
-			<Abstract type="html">Start Audio capturing</Abstract>
+			<Abstract type="html">停止音频采集, 释放麦克风资源</Abstract>
 			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
 			
 			<Declaration>- (void)stopCapture</Declaration>
 			
 			
 			<Anchor>//api/name/stopCapture</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/pauseCapture</TokenIdentifier>
+			<Abstract type="html">暂停音频采集(仍然占用麦克风资源) 停止回调音频数据</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)pauseCapture</Declaration>
+			
+			
+			<Anchor>//api/name/pauseCapture</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/pauseWithMuteData</TokenIdentifier>
+			<Abstract type="html">暂停音频采集(仍然占用麦克风资源), 回调静音音频数据</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)pauseWithMuteData</Declaration>
+			
+			
+			<Anchor>//api/name/pauseWithMuteData</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/resumeCapture</TokenIdentifier>
+			<Abstract type="html">恢复正常音频采集和回调</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)resumeCapture</Declaration>
+			
+			
+			<Anchor>//api/name/resumeCapture</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
@@ -105,6 +141,42 @@
 			
 			
 			<Anchor>//api/name/micVolume</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/setOutputPts:</TokenIdentifier>
+			<Abstract type="html">最近一次输出的音频包的时间戳</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) CMTime outputPts</Declaration>
+			
+			
+			<Anchor>//api/name/outputPts</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/outputPts</TokenIdentifier>
+			<Abstract type="html">最近一次输出的音频包的时间戳</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) CMTime outputPts</Declaration>
+			
+			
+			<Anchor>//api/name/outputPts</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAUAudioCapture/outputPts</TokenIdentifier>
+			<Abstract type="html">最近一次输出的音频包的时间戳</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) CMTime outputPts</Declaration>
+			
+			
+			<Anchor>//api/name/outputPts</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		

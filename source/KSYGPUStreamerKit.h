@@ -7,14 +7,7 @@
 //
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
-
-#import <GPUImage/GPUImage.h>
-
-#if USING_DYNAMIC_FRAMEWORK
-#import <libksygpuliveDy/libksygpuimage.h>
-#else
 #import "libksygpuimage.h"
-#endif
 
 /** KSY 直播推流工具类
  
@@ -62,7 +55,7 @@
  @abstract   视频采集设备
  @discussion 通过该指针可以对摄像头进行操作 (操作接口参见GPUImage)
  */
-@property (nonatomic, readonly) KSYGPUCamera       *vCapDev;
+@property (nonatomic, readonly) KSYAVFCapture      *vCapDev;
 
 /**
  @abstract 采集图像裁剪(用于修正宽高比)
@@ -99,6 +92,7 @@
  @discussion 用于衔接GPU和streamer
  */
 @property (nonatomic, readonly)KSYGPUPicOutput         *gpuToStr;
+@property (nonatomic, readonly)KSYGPUYUVInput          *capToGpu;
 
 #pragma mark - sub modules - audio
 /**
@@ -184,6 +178,21 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  @see stopStream
  */
 - (void) stopPreview;
+
+/**
+ @abstract   进入后台: 暂停图像采集
+ @discussion 暂停图像采集和预览
+ @discussion 如果需要释放mic资源请直接调用停止采集
+ @see aCapDev
+ */
+- (void) appEnterBackground;
+
+/**
+ @abstract   回到前台: 恢复采集
+ @discussion 恢复图像采集和预览
+ @discussion 恢复音频采集
+ */
+- (void) appBecomeActive;
 
 #pragma mark - capture & preview & stream settings
 
@@ -315,11 +324,27 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 /**
  @abstract   视频处理回调接口
  @param      sampleBuffer 原始采集到的视频数据
+ @discussion 对sampleBuffer内的图像数据的修改将传递到观众端
  @discussion 请注意本函数的执行时间，如果太长可能导致不可预知的问题
- 
- @see CMSampleBufferRef
+ @discussion 请参考 CMSampleBufferRef
  */
 @property(nonatomic, copy) void(^videoProcessingCallback)(CMSampleBufferRef sampleBuffer);
+
+/**
+ @abstract   音频处理回调接口
+ @discussion sampleBuffer 原始采集到的音频数据
+ @discussion 对sampleBuffer内的pcm数据的修改将传递到观众端
+ @discussion 请注意本函数的执行时间，如果太长可能导致不可预知的问题
+ @discussion 请参考 CMSampleBufferRef
+ */
+@property(nonatomic, copy) void(^audioProcessingCallback)(CMSampleBufferRef sampleBuffer);
+
+/**
+ @abstract   摄像头采集被打断的消息通知
+ @discussion bInterrupt 为YES, 表明被打断, 摄像头采集暂停
+ @discussion bInterrupt 为NO, 表明恢复采集
+ */
+@property(nonatomic, copy) void(^interruptCallback)(BOOL bInterrupt);
 
 #pragma mark -  filters
 /**
@@ -406,5 +431,16 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  @see textLable
  */
 - (void) updateTextLabel;
+
+/**
+ @abstract 摄像头自动变焦+自动曝光
+ @param point对焦的位置
+ */
+- (BOOL)focusAtPoint:(CGPoint )point error:(NSError *__autoreleasing* )error;
+
+/**
+ @abstract 触摸缩放因子
+ */
+@property (nonatomic, assign)   CGFloat pinchZoomFactor;
 
 @end

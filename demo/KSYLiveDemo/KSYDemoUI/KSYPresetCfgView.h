@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KSYUIView.h"
-#import <GPUImage/GPUImage.h>
 #import <libksygpulive/libksygpuimage.h>
 
+#import "KSYUIView.h"
 /**
  KSY 预设参数配置视图
  

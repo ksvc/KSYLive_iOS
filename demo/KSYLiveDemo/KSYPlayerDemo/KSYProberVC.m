@@ -111,7 +111,7 @@
         [result appendFormat:@"\nbitrate:%lld", mediaInfo.bitrate];
         
         i = 0;
-        [result appendFormat:@"\n\nvideo num is : %lu", [mediaInfo.videos count]];
+        [result appendFormat:@"\n\nvideo num is : %lu", (unsigned long)[mediaInfo.videos count]];
         for (KSYVideoInfo  *videoInfo in mediaInfo.videos) {
             [result appendFormat:@"\n\nvideo[%d] codec:%@", i, [self convertAVCodec:videoInfo.vcodec]];
             [result appendFormat:@"\nvideo[%d] frame width:%d", i, videoInfo.frame_width];
@@ -120,7 +120,7 @@
         }
         
         i = 0;
-        [result appendFormat:@"\n\naudio num is : %lu", [mediaInfo.audios count]];
+        [result appendFormat:@"\n\naudio num is : %lu", (unsigned long)[mediaInfo.audios count]];
         for(KSYAudioInfo  *audioInfo in mediaInfo.audios)
         {
             [result appendFormat:@"\n\naudio[%d] codec:%@", i, [self convertAVCodec:audioInfo.acodec]];

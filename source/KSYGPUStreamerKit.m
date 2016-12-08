@@ -63,6 +63,8 @@
     _previewMirrored  = NO;
     _previewRotateAng = 0;
     _videoProcessingCallback = nil;
+    _audioProcessingCallback = nil;
+    _interruptCallback       = nil;
     _gpuOutputPixelFormat = kCVPixelFormatType_32BGRA;
     
     // 图层和音轨的初始化
@@ -73,9 +75,10 @@
     _bgmTrack = 1;
 
     /////1. 数据来源 ///////////
+    _capToGpu = [[KSYGPUYUVInput alloc] init];
     // 采集模块
-    _vCapDev = [[KSYGPUCamera alloc] initWithSessionPreset:_capPreset
-                                            cameraPosition:_cameraPosition];
+    _vCapDev = [[KSYAVFCapture alloc] initWithSessionPreset:_capPreset
+                                             cameraPosition:_cameraPosition];
     if(_vCapDev == nil) {
         return nil;
     }
@@ -89,7 +92,6 @@
     _bgmPlayer = [[KSYBgmPlayer   alloc] init];
     // 音频采集模块
     _aCapDev = [[KSYAUAudioCapture alloc] init];
-    
     // 各种图片
     _logoPic = nil;
     _textPic = nil;
@@ -151,7 +153,7 @@
     [_aCapDev      stopCapture];
     [_vCapDev      stopCameraCapture];
     
-    [_vCapDev     removeAllTargets];
+    [_capToGpu    removeAllTargets];
     [_cropfilter  removeAllTargets];
     [_filter      removeAllTargets];
     [_logoPic     removeAllTargets];
@@ -174,8 +176,8 @@
         return;
     }
     // 采集的图像先经过前处理
-    [_vCapDev     removeAllTargets];
-    GPUImageOutput* src = _vCapDev;
+    [_capToGpu removeAllTargets];
+    GPUImageOutput* src = _capToGpu;
     if (_cropfilter) {
         [_cropfilter removeAllTargets];
         [src addTarget:_cropfilter];
@@ -219,6 +221,13 @@
     __weak KSYGPUStreamerKit * kit = self;
     // 前处理 和 图像 mixer
     [self setupFilter:_filter];
+    // 采集到的画面上传GPU
+    _vCapDev.videoProcessingCallback = ^(CMSampleBufferRef buf) {
+        [kit.capToGpu processSampleBuffer:buf];
+        if ( kit.videoProcessingCallback ){
+            kit.videoProcessingCallback(buf);
+        }
+    };
     // GPU 上的数据导出到streamer
     _gpuToStr.videoProcessingCallback = ^(CVPixelBufferRef pixelBuffer, CMTime timeInfo){
         if (![kit.streamerBase isStreaming]){
@@ -227,10 +236,13 @@
         [kit.streamerBase processVideoPixelBuffer:pixelBuffer
                                          timeInfo:timeInfo];
     };
-    //
-    _vCapDev.videoProcessingCallback = ^(CMSampleBufferRef buf){
-        if ( kit.videoProcessingCallback ){
-            kit.videoProcessingCallback(buf);
+    // 采集被打断的事件回调
+    _vCapDev.interruptCallback = ^(BOOL bInterrupt) {
+        if (bInterrupt) {
+            [kit appEnterBackground];
+        }
+        if(kit.interruptCallback) {
+            kit.interruptCallback(bInterrupt);
         }
     };
 }
@@ -247,6 +259,9 @@
     __weak KSYGPUStreamerKit * kit = self;
     //1. 音频采集, 语音数据送入混音器
     _aCapDev.audioProcessingCallback = ^(CMSampleBufferRef buf){
+        if ( kit.audioProcessingCallback ){
+            kit.audioProcessingCallback(buf);
+        }
         [kit mixAudio:buf to:kit.micTrack];
     };
     //2. 背景音乐播放,音乐数据送入混音器
@@ -371,6 +386,23 @@
         [_quitLock unlock];
         [self newCaptureState:KSYCaptureStateIdle];
     });
+}
+
+
+/**  进入后台 */
+- (void) appEnterBackground {
+    // 进入后台时, 将预览从图像混合器中脱离, 避免后台OpenGL渲染崩溃
+    [_vPreviewMixer removeAllTargets];
+    // 重复最后一帧视频图像
+    _gpuToStr.bAutoRepeat = YES;
+}
+
+/** 回到前台 */
+- (void) appBecomeActive{
+    // 回到前台, 重新连接预览
+    [self setupFilter:_filter];
+    [_aCapDev  resumeCapture];
+    _gpuToStr.bAutoRepeat = NO;
 }
 
 /**
@@ -544,10 +576,6 @@
     }
     return nil;
 }
-- (void) customAudioProcessing: (CMSampleBufferRef) buf{
-    
-}
-
 #pragma mark - utils
 -(UIImage *)imageFromUIView:(UIView *)v {
     CGSize s = v.frame.size;
@@ -733,4 +761,58 @@ kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRota
         _gpuToStr.outputSize = [self getDimension:_streamDimension byOriention:orie];
     }
 }
+
+/**
+ @abstract 摄像头自动变焦+自动曝光
+ */
+- (BOOL)focusAtPoint:(CGPoint )point error:(NSError *__autoreleasing* )error
+{
+    AVCaptureDevice *dev = _vCapDev.inputCamera;
+    
+    if ([dev isExposurePointOfInterestSupported] && [dev isExposureModeSupported:AVCaptureExposureModeAutoExpose]) {
+        if ([dev lockForConfiguration:error]) {
+            [dev setExposurePointOfInterest:point];  // 曝光点
+            [dev setExposureMode:AVCaptureExposureModeAutoExpose];
+            [dev unlockForConfiguration];
+        }
+    }
+    
+    if ([dev isFocusPointOfInterestSupported] && [dev isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
+        if ([dev lockForConfiguration:error]) {
+            [dev setFocusPointOfInterest:point];
+            [dev setFocusMode:AVCaptureFocusModeAutoFocus];
+            [dev unlockForConfiguration];
+            return YES;
+        }
+    }
+    return NO;
+}
+
+@synthesize pinchZoomFactor =_pinchZoomFactor;
+
+- (CGFloat) pinchZoomFactor {
+    
+    _pinchZoomFactor = _vCapDev.inputCamera.videoZoomFactor;
+    
+    return _pinchZoomFactor;
+}
+
+//设置新的触摸缩放因子
+- (void)setPinchZoomFactor:(CGFloat)zoomFactor{
+    AVCaptureDevice *captureDevice=_vCapDev.inputCamera;
+    NSError *error = nil;
+    [captureDevice lockForConfiguration:&error];
+    if (!error) {
+        CGFloat videoMaxZoomFactor = captureDevice.activeFormat.videoMaxZoomFactor;
+        if (zoomFactor < 1.0f)
+            zoomFactor = 1.0f;
+        if (zoomFactor > videoMaxZoomFactor)
+            zoomFactor = videoMaxZoomFactor;
+        
+        [captureDevice rampToVideoZoomFactor:zoomFactor withRate:1.0];
+        captureDevice.videoZoomFactor = zoomFactor;
+        [captureDevice unlockForConfiguration];
+    }
+}
+
 @end
