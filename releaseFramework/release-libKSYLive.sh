@@ -106,7 +106,7 @@ TARGET_NAME=$FRAMEWORKNAME
 LOG_F=${TARGET_NAME}_build.log
 
 PLAYER_DEPS="-lksybase -lksyplayer -lksymediacore_dec"
-LIVE_DEPS="-lksybase -lksyplayer -lksystreamer -lksyyuv -lksymediacore_enc "
+LIVE_DEPS="-lksybase -lksyplayer -lksystreamer -lksyyuv -lksymediacore_enc -lksymediacore_enc_base"
 LIVE_DEPS_DEV="${LIVE_DEPS} -lksymediacodec"
 LIVE_DEPS_SIM="${LIVE_DEPS}"
 

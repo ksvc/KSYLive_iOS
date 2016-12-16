@@ -320,6 +320,9 @@
     sl.nameL.text = name;
     sl.normalValue = (iniV -minV)/maxV;
     sl.valueL.text = [NSString stringWithFormat:@"%d", (int)iniV];
+    if (iniV <2){
+        sl.precision = 2;
+    }
     [sl.slider addTarget:self
                   action:@selector(onSlider:)
         forControlEvents:UIControlEventValueChanged ];

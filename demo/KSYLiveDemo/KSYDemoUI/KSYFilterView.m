@@ -43,7 +43,7 @@
     _filterGroupType = [self addSegCtrlWithItems:
   @[ @"关",
      @"旧美颜",
-     @"金山美颜",
+     @"美颜pro",
      @"红润美颜",
      @"美颜特效",
      ]];
@@ -130,13 +130,15 @@
         _filterParam1.hidden = NO;
         _curFilter = [[KSYGPUBeautifyExtFilter alloc] init];
     }
-    else if (idx == 2){ // 美颜
-        KSYBeautifyFaceFilter * f = [[KSYBeautifyFaceFilter alloc] init];
+    else if (idx == 2){ // 美颜pro
+        KSYBeautifyProFilter * f = [[KSYBeautifyProFilter alloc] init];
         _filterParam1.hidden = NO;
         _filterParam2.hidden = NO;
+        _filterParam3.hidden = NO;
         _filterParam1.nameL.text = @"磨皮";
         f.grindRatio  = _filterParam1.normalValue;
         f.whitenRatio = _filterParam2.normalValue;
+        f.ruddyRatio  = _filterParam3.normalValue;
         _curFilter    = f;
     }
     else if (idx == 3){ // 红润 + 美颜
@@ -192,7 +194,19 @@
         int val = (nalVal*5) + 1; // level 1~5
         [(KSYGPUBeautifyExtFilter *)_curFilter setBeautylevel: val];
     }
-    else if (_curIdx == 2 || _curIdx == 3 ){ // 美颜
+    else if (_curIdx == 2 ) {
+        KSYBeautifyProFilter * f =(KSYBeautifyProFilter*)_curFilter;
+        if (sender == _filterParam1 ){
+            f.grindRatio = _filterParam1.normalValue;
+        }
+        if (sender == _filterParam2 ) {
+            f.whitenRatio = _filterParam2.normalValue;
+        }
+        if (sender == _filterParam3 ) {  // 红润参数
+            f.ruddyRatio = _filterParam3.normalValue;
+        }
+    }
+    else if (_curIdx == 3 ){ // 美颜
         KSYBeautifyFaceFilter * f =(KSYBeautifyFaceFilter*)_curFilter;
         if (sender == _filterParam1 ){
             f.grindRatio = _filterParam1.normalValue;

@@ -20,4 +20,7 @@
 // normalize between 0.0~1.0 [ (value-min)/max ]
 @property (atomic, assign) float  normalValue;
 
+// 值的小数点位数[0,1,2,3]
+@property (atomic, assign) int precision;
+
 @end

@@ -14,6 +14,7 @@
  2. 能够对采集的语音添加混响音效 (目前提供了4种类型的混响场景)
  3. 能够将采集的声音低延时播放,帮助主播选择音效 (又称"耳返")
  4. 采集的声音通过回调函数提供出来
+ 
  注意: 当使用本模块时, 需要禁用KSYGPUCamera中的音频采集
 
  */
@@ -57,18 +58,20 @@
 @property(nonatomic, readonly) CMTime    outputPts;
 
 /**
- 目前提供了4种类型的混响场景， type和场景的对应关系
- * 0 关闭
- * 1 录音棚
- * 2 KTV
- * 3 小舞台
- * 4 演唱会
+ @abstract 混响类型
+ @discussion 目前提供了4种类型的混响场景, type和场景的对应关系如下
+ 
+ - 0 关闭
+ - 1 录音棚
+ - 2 KTV
+ - 3 小舞台
+ - 4 演唱会
  */
 @property(nonatomic, assign) int reverbType;
 
 /**
  @abstract   采集数据输出回调函数
- @discussion sampleBuffer 采集到的音频数据
+ @discussion sampleBuffer 为采集到的音频数据
  */
 @property(nonatomic, copy) void(^audioProcessingCallback)(CMSampleBufferRef sampleBuffer);
 

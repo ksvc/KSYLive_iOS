@@ -85,8 +85,6 @@ typedef NS_ENUM(NSInteger, KSYAVMuxerStatus) {
 /**
  @abstract   异步处理完成回调
  @param      status
- 
- @see asyncMuxVideo
  */
 @property(nonatomic, copy) void(^muxCompleteBlock)(KSYAVMuxerStatus status );
 

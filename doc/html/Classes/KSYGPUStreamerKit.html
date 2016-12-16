@@ -78,8 +78,6 @@
 		
 		<option value="//api/name/captureState">captureState</option>
 		
-		<option value="//api/name/cropfilter">cropfilter</option>
-		
 		<option value="//api/name/filter">filter</option>
 		
 		<option value="//api/name/gpuOutputPixelFormat">gpuOutputPixelFormat</option>
@@ -144,7 +142,9 @@
 		
 		<option value="//api/name/captureDimension">- captureDimension</option>
 		
-		<option value="//api/name/focusAtPoint:error:">- focusAtPoint:error:</option>
+		<option value="//api/name/exposureAtPoint:">- exposureAtPoint:</option>
+		
+		<option value="//api/name/focusAtPoint:">- focusAtPoint:</option>
 		
 		<option value="//api/name/getCaptureStateName:">- getCaptureStateName:</option>
 		
@@ -422,47 +422,6 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/cropfilter" title="cropfilter"></a>
-	<h3 class="method-title"><code><a href="#//api/name/cropfilter">&nbsp;&nbsp;cropfilter</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>采集图像裁剪(用于修正宽高比)</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) GPUImageCropFilter *cropfilter</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
 	<a name="//api/name/filter" title="filter"></a>
 	<h3 class="method-title"><code><a href="#//api/name/filter">&nbsp;&nbsp;filter</a></code>
 </h3>
@@ -648,6 +607,52 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/capToGpu" title="capToGpu"></a>
+	<h3 class="method-title"><code><a href="#//api/name/capToGpu">&nbsp;&nbsp;capToGpu</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>采集到的图像上传GPU</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) KSYGPUPicInput *capToGpu</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>用于衔接GPU和capture</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/gpuToStr" title="gpuToStr"></a>
 	<h3 class="method-title"><code><a href="#//api/name/gpuToStr">&nbsp;&nbsp;gpuToStr</a></code>
 </h3>
@@ -691,22 +696,6 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 			</div>
 			
 			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/capToGpu" title="capToGpu"></a>
-	<h3 class="method-title"><code><a href="#//api/name/capToGpu">&nbsp;&nbsp;capToGpu</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) KSYGPUYUVInput *capToGpu</code></div>
-
-		    
 		</div>
 	</div>
 </div><div class="section-method">
@@ -1650,7 +1639,7 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>有效范围: 宽度[160, 1280] 高度[ 90,  720], 超出范围会取边界有效值</p><p>其他与previewDimension限定一致,</p><p>当与previewDimension不一致时, 仅仅进行缩放</p><p>默认值为(640, 360)</p>
+				<p>有效范围: 宽度[160, 1280] 高度[ 90,  720], 超出范围会取边界有效值</p><p>其他与previewDimension限定一致,</p><p>当与previewDimension不一致时, 同样先裁剪到相同宽高比, 再进行缩放</p><p>默认值为(640, 360)</p>
 			</div>
 			
 
@@ -2811,8 +2800,8 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/focusAtPoint:error:" title="focusAtPoint:error:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/focusAtPoint:error:">&ndash;&nbsp;focusAtPoint:error:</a></code>
+	<a name="//api/name/focusAtPoint:" title="focusAtPoint:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/focusAtPoint:">&ndash;&nbsp;focusAtPoint:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -2822,21 +2811,83 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 			
 			
 			<div class="method-subsection brief-description">
-				<p>摄像头自动变焦+自动曝光
-@param point对焦的位置</p>
+				<p>当前采集设备是否支持自动变焦
+@param      point相机对焦的位置</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (BOOL)focusAtPoint:(CGPoint)<em>point</em> error:(NSError *__autoreleasing *)<em>error</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (BOOL)focusAtPoint:(CGPoint)<em>point</em></code></div>
 
 		    
 			
 
 			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>YES / NO</p>
+			</div>
+			
 
 			
 
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>通常只有后置摄像头支持自动变焦</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/exposureAtPoint:" title="exposureAtPoint:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/exposureAtPoint:">&ndash;&nbsp;exposureAtPoint:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>当前采集设备是否支持自动曝光
+@param      point相机曝光的位置</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)exposureAtPoint:(CGPoint)<em>point</em></code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>YES / NO</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>通常前后置摄像头都支持自动曝光</p>
+			</div>
 			
 
 			
@@ -2908,7 +2959,7 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-12-08</p>
+						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-12-16</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

@@ -618,6 +618,7 @@
     if (self.ksyFilterView.curFilter != _kit.filter){
         // use a new filter
         [_kit setupFilter:self.ksyFilterView.curFilter];
+        [self onViewRotate];
     }
 }
 - (void) onFilterBtn:(id)sender{
@@ -727,6 +728,12 @@
         picker.delegate = self;
         [self presentViewController:picker animated:YES completion:nil];
     }
+    else if (sender == _miscView.btn4) {
+        UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        picker.delegate = self;
+        [self presentViewController:picker animated:YES completion:nil];
+    }
 }
 
 - (void)onMiscSwitch:(UISwitch *)sw{
@@ -767,9 +774,28 @@
     _kit.logoPic  = [[GPUImagePicture alloc] initWithImage:image
                                        smoothlyScaleOutput:YES];
     [picker dismissViewControllerAnimated:YES completion:nil];
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+        [_kit.vPreviewMixer setPicRotation:kGPUImageRotateRight
+                                   ofLayer:_kit.logoPicLayer];
+        [_kit.vStreamMixer setPicRotation:kGPUImageRotateRight
+                                  ofLayer:_kit.logoPicLayer];
+        [self restartVideoCapSession];
+    }
 }
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [picker dismissViewControllerAnimated:YES completion:nil];
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+        [self restartVideoCapSession];
+    }
+}
+- (void) restartVideoCapSession {
+#if TARGET_OS_IPHONE
+    if(NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_8_4 &&
+       _kit.vCapDev.captureSession ) {
+        [_kit.vCapDev.captureSession stopRunning];
+        [_kit.vCapDev.captureSession startRunning];
+    }
+#endif
 }
 
 #pragma mark - ui rotate
@@ -817,7 +843,6 @@
         _miscView.swBypassRec.on = NO;
         [_kit.streamerBase stopBypassRecord];
     }
-    
 }
 
 - (void) updateRecLabel {
@@ -880,7 +905,6 @@
         }
     }
     pointOfInterest = CGPointMake(xc, yc);
-    
     return pointOfInterest;
 }
 
@@ -889,19 +913,16 @@
     UITouch *touch = [touches anyObject];
     CGPoint current = [touch locationInView:self.view];
     CGPoint point = [self convertToPointOfInterestFromViewCoordinates:current];
+    [_kit exposureAtPoint:point];
+    [_kit focusAtPoint:point];
     _foucsCursor.center = current;
     _foucsCursor.transform = CGAffineTransformMakeScale(1.5, 1.5);
     _foucsCursor.alpha=1.0;
-    NSError __autoreleasing *error;
-    bool ret = [_kit focusAtPoint:point error:&error];
-    if (ret){
-        [UIView animateWithDuration:1.0 animations:^{
-            _foucsCursor.transform=CGAffineTransformIdentity;
-        } completion:^(BOOL finished) {
-            _foucsCursor.alpha=0;
-            
-        }];
-    }
+    [UIView animateWithDuration:1.0 animations:^{
+        _foucsCursor.transform=CGAffineTransformIdentity;
+    } completion:^(BOOL finished) {
+        _foucsCursor.alpha=0;
+    }];
 }
 
 //添加缩放手势，缩放时镜头放大或缩小

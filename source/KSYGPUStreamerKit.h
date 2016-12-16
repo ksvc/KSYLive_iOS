@@ -58,11 +58,6 @@
 @property (nonatomic, readonly) KSYAVFCapture      *vCapDev;
 
 /**
- @abstract 采集图像裁剪(用于修正宽高比)
- */
-@property (nonatomic, readonly)GPUImageCropFilter  *cropfilter;
-
-/**
  @abstract   获取当前使用的滤镜
  @discussion 通过此指针可以对滤镜参数进行设置
  @waning     请确保外部保留了filter的真实类型的指针, 否则会出现奔溃
@@ -88,11 +83,17 @@
 @property (nonatomic, readonly) GPUImageView          *preview;
 
 /**
+ @abstract   采集到的图像上传GPU
+ @discussion 用于衔接GPU和capture
+ */
+@property (nonatomic, readonly)KSYGPUPicInput          *capToGpu;
+
+/**
  @abstract   获取渲染的图像
  @discussion 用于衔接GPU和streamer
  */
 @property (nonatomic, readonly)KSYGPUPicOutput         *gpuToStr;
-@property (nonatomic, readonly)KSYGPUYUVInput          *capToGpu;
+
 
 #pragma mark - sub modules - audio
 /**
@@ -227,7 +228,7 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  @abstract   用户定义的视频 **推流** 分辨率
  @discussion 有效范围: 宽度[160, 1280] 高度[ 90,  720], 超出范围会取边界有效值
  @discussion 其他与previewDimension限定一致,
- @discussion 当与previewDimension不一致时, 仅仅进行缩放
+ @discussion 当与previewDimension不一致时, 同样先裁剪到相同宽高比, 再进行缩放
  @discussion 默认值为(640, 360)
  @see previewDimension
  */
@@ -433,10 +434,20 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 - (void) updateTextLabel;
 
 /**
- @abstract 摄像头自动变焦+自动曝光
- @param point对焦的位置
+ @abstract   当前采集设备是否支持自动变焦
+ @param      point相机对焦的位置
+ @return     YES / NO
+ @discussion 通常只有后置摄像头支持自动变焦
+  */
+- (BOOL)focusAtPoint:(CGPoint )point;
+
+/**
+ @abstract   当前采集设备是否支持自动曝光
+ @param      point相机曝光的位置
+ @return     YES / NO
+ @discussion 通常前后置摄像头都支持自动曝光
  */
-- (BOOL)focusAtPoint:(CGPoint )point error:(NSError *__autoreleasing* )error;
+- (BOOL)exposureAtPoint:(CGPoint )point;
 
 /**
  @abstract 触摸缩放因子

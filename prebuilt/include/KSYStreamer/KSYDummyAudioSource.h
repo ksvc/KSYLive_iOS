@@ -16,7 +16,7 @@
 @interface KSYDummyAudioSource : NSObject
 
 /** 构造函数
- @param      输入的音频格式
+ @param      asbd 输入的音频格式
  @return     新实例
  */
 - (id) initWithAudioFmt:(AudioStreamBasicDescription) asbd;
@@ -28,7 +28,7 @@
 - (BOOL)start;
 
 /** 启动产生数据
- @param     initPts, 设置启动时间戳
+ @param     initPts 设置启动时间戳
  @return    是否启动采集成功
  @discussion 内部都会先将时间戳的timescale转为ns
  */

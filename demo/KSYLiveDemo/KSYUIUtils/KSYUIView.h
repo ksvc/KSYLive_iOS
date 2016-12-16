@@ -20,6 +20,7 @@
  
  演示SDK接口的各种视图都继承自此类
  */
+
 @interface KSYUIView: UIView
 #pragma mark - init 
 - (id) initWithParent:(KSYUIView*)pView;
@@ -107,3 +108,5 @@
 // 获取设备的UUID
 + (NSString *) getUuid;
 @end
+
+#define WeakObj(o) try{}@finally{} __weak typeof(o) o##Weak = o;

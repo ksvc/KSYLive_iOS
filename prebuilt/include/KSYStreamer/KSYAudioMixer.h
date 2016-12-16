@@ -30,9 +30,10 @@
 
 /**
  @abstract  设置混音音量（默认音量为1.0）
- @param     vol 音量比例（0.0~1.0）
+ @param     vol 音量比例（0.0~2.0） (<1.0 为缩小, > 1.0为放大)
  @param     trackId 设置对应track的
  @return    NO为设置失败，如track不存在，或vol超出范围
+ @warning   设置放大的音量可能会出现爆音, 请注意
  **/
 - (BOOL) setMixVolume:(float) vol
                   of:(int) trackId;

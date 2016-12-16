@@ -8,6 +8,9 @@
 
 #import "KSYStreamerBase.h"
 
+
+/** 视频文件录制类
+ */
 @interface KSYMovieWriter : KSYStreamerBase
 
 /**

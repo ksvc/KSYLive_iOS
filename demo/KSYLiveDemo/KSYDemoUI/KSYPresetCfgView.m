@@ -41,20 +41,21 @@
     _lblResolutionUI = [self addLable:@"采集分辨率"];
     _lblStreamResoUI = [self addLable:@"推流分辨率"];
     
-    _resolutionUI = [self addSegCtrlWithItems:@[@"360p",@"540p",@"720p"]];
-    _streamResoUI = [self addSegCtrlWithItems:@[@"360p",@"540p",@"720p"]];
+    _resolutionUI = [self addSegCtrlWithItems:@[@"360p",@"540p",@"720p", @"480p"]];
+    _streamResoUI = [self addSegCtrlWithItems:@[@"360p",@"540p",@"720p", @"480p", @"400"]];
     _resolutionUI.selectedSegmentIndex = 2;
     if ( !( FLOAT_EQ( ratio, 16.0/9 ) || FLOAT_EQ( ratio,  9.0/16)) ){
         // 360p: 640x360(16:9)  480p: 640x480(4:3)
-        [_resolutionUI insertSegmentWithTitle:@"480p" atIndex:3 animated:NO];
-        _resolutionUI.selectedSegmentIndex = 3;
-        [_streamResoUI insertSegmentWithTitle:@"480p" atIndex:3 animated:NO];
         _streamResoUI.selectedSegmentIndex = 3;
+    }
+    else {
+        [_resolutionUI setWidth:0.5 forSegmentAtIndex: 3];
+        [_streamResoUI setWidth:0.5 forSegmentAtIndex: 3];
     }
     _lblCameraPosUI = [self addLable:@"摄像头"];
     _cameraPosUI    = [self addSegCtrlWithItems:@[@"前置",@"后置"]];
     _lblGpuPixFmtUI = [self addLable:@"像素格式"];
-    _gpuPixFmtUI  = [self addSegCtrlWithItems:@[@"rgba",@"yuva"]];
+    _gpuPixFmtUI  = [self addSegCtrlWithItems:@[@"rgba",@"nv12"]];
     _frameRateUI  = [self addSliderName:@"视频帧率fps" From:1.0 To:30.0 Init:15.0];
     _lblVideoCodecUI = [self addLable:@"视频编码器"];
     _videoCodecUI = [self addSegCtrlWithItems:@[@"自动",@"软264",@"硬264",@"软265"]];
@@ -139,7 +140,7 @@
         case 3:
             return  CGSizeMake(640, 480);
         default:
-            return  CGSizeMake(640, 360);
+            return  CGSizeMake(400, 400);
     }
 }
 
@@ -200,7 +201,7 @@
         return kCVPixelFormatType_32BGRA;
     }
     else if(_gpuPixFmtUI.selectedSegmentIndex == 1) {
-        return kCVPixelFormatType_4444AYpCbCr8;
+        return kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange;
     }
     return kCVPixelFormatType_32BGRA;
 }

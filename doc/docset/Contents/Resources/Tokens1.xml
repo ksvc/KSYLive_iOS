@@ -182,12 +182,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/setReverbType:</TokenIdentifier>
-			<Abstract type="html">目前提供了4种类型的混响场景， type和场景的对应关系
-* 0 关闭
-* 1 录音棚
-* 2 KTV
-* 3 小舞台
-* 4 演唱会</Abstract>
+			<Abstract type="html">混响类型</Abstract>
 			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) int reverbType</Declaration>
@@ -199,12 +194,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/reverbType</TokenIdentifier>
-			<Abstract type="html">目前提供了4种类型的混响场景， type和场景的对应关系
-* 0 关闭
-* 1 录音棚
-* 2 KTV
-* 3 小舞台
-* 4 演唱会</Abstract>
+			<Abstract type="html">混响类型</Abstract>
 			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) int reverbType</Declaration>
@@ -216,12 +206,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYAUAudioCapture/reverbType</TokenIdentifier>
-			<Abstract type="html">目前提供了4种类型的混响场景， type和场景的对应关系
-* 0 关闭
-* 1 录音棚
-* 2 KTV
-* 3 小舞台
-* 4 演唱会</Abstract>
+			<Abstract type="html">混响类型</Abstract>
 			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) int reverbType</Declaration>
