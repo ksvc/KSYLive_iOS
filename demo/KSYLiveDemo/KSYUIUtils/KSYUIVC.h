@@ -13,10 +13,9 @@
  
  主要增加一些工具函数
  */
-
 #define SYSTEM_VERSION_GE_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
-
+@class  KSYUIView;
 @interface KSYUIVC : UIViewController
 
 // 定时更新调试信息 // 每秒重复调用
@@ -33,6 +32,8 @@
 
 // 重载本函数进行UI重新布局
 - (void) layoutUI;
+// 默认的控制视图
+@property KSYUIView *layoutView;
 
 // ksy util functions
 + (NSString*) sizeFormatted : (int )KB;

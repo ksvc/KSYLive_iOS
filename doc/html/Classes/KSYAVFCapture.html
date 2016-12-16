@@ -78,6 +78,8 @@
 		
 		<option value="//api/name/outputImageOrientation">outputImageOrientation</option>
 		
+		<option value="//api/name/outputPixelFmt">outputPixelFmt</option>
+		
 		<option value="//api/name/videoProcessingCallback">videoProcessingCallback</option>
 		
 	</optgroup>
@@ -86,11 +88,11 @@
 	
 	<optgroup label="Class Methods">
 		
-		<option value="//api/name/getCapOrientation:">+ getCapOrientation:</option>
-		
 		<option value="//api/name/isBackFacingCameraPresent">+ isBackFacingCameraPresent</option>
 		
 		<option value="//api/name/isFrontFacingCameraPresent">+ isFrontFacingCameraPresent</option>
+		
+		<option value="//api/name/uiOrientationToAVOrientation:">+ uiOrientationToAVOrientation:</option>
 		
 	</optgroup>
 	
@@ -101,6 +103,8 @@
 		<option value="//api/name/addAudioInputsAndOutputs">- addAudioInputsAndOutputs</option>
 		
 		<option value="//api/name/cameraPosition">- cameraPosition</option>
+		
+		<option value="//api/name/captureDimension">- captureDimension</option>
 		
 		<option value="//api/name/initWithSessionPreset:cameraPosition:">- initWithSessionPreset:cameraPosition:</option>
 		
@@ -350,6 +354,50 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/outputPixelFmt" title="outputPixelFmt"></a>
+	<h3 class="method-title"><code><a href="#//api/name/outputPixelFmt">&nbsp;&nbsp;outputPixelFmt</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>输出图像的像素格式 有效值 为 NV12 和BGRA
+  - kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange
+  - kCVPixelFormatType_420YpCbCr8BiPlanarFullRange
+  - kCVPixelFormatType_32BGRA</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (readwrite) OSType outputPixelFmt</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYAVFCapture.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/frontFacingCameraPresent" title="frontFacingCameraPresent"></a>
 	<h3 class="method-title"><code><a href="#//api/name/frontFacingCameraPresent">&nbsp;&nbsp;frontFacingCameraPresent</a></code>
 </h3>
@@ -400,10 +448,35 @@
 
 		<div class="method-info-container">
 			
+			
+			<div class="method-subsection brief-description">
+				<p>Easy way to tell which cameras are present on device</p>
+			</div>
+			
+		    
 
 			<div class="method-subsection method-declaration"><code>@property (readonly, getter=isBackFacingCameraPresent) BOOL backFacingCameraPresent</code></div>
 
 		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYAVFCapture.h</code></p>
+			</div>
+			
+			
 		</div>
 	</div>
 </div><div class="section-method">
@@ -612,8 +685,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/getCapOrientation:" title="getCapOrientation:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/getCapOrientation:">+&nbsp;getCapOrientation:</a></code>
+	<a name="//api/name/uiOrientationToAVOrientation:" title="uiOrientationToAVOrientation:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/uiOrientationToAVOrientation:">+&nbsp;uiOrientationToAVOrientation:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -628,9 +701,21 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>+ (AVCaptureVideoOrientation)getCapOrientation:(UIInterfaceOrientation)<em>orien</em></code></div>
+			<div class="method-subsection method-declaration"><code>+ (AVCaptureVideoOrientation)uiOrientationToAVOrientation:(UIInterfaceOrientation)<em>orien</em></code></div>
 
 		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>orien</code></th>
+						<td><p>UI 的朝向,比如状态栏相对Home键的位置</p></td>
+					</tr>
+				
+				</table>
+			</div>
 			
 
 			
@@ -1145,6 +1230,52 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/captureDimension" title="captureDimension"></a>
+	<h3 class="method-title"><code><a href="#//api/name/captureDimension">&ndash;&nbsp;captureDimension</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>查询实际的采集分辨率</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (CGSize)captureDimension</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>参见iOS的 AVCaptureSessionPresetXXX的定义</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYAVFCapture.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/isTorchSupported" title="isTorchSupported"></a>
 	<h3 class="method-title"><code><a href="#//api/name/isTorchSupported">&ndash;&nbsp;isTorchSupported</a></code>
 </h3>
@@ -1452,7 +1583,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-12-08</p>
+						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-12-16</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

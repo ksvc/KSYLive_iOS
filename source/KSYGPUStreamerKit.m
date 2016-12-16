@@ -56,6 +56,7 @@
     // init default property
     _captureState     = KSYCaptureStateIdle;
     _capPreset        = AVCaptureSessionPreset640x480;
+    _videoFPS         = 15;
     _previewDimension = CGSizeMake(640, 360);
     _streamDimension  = CGSizeMake(640, 360);
     _cameraPosition   = AVCaptureDevicePositionFront;
@@ -75,7 +76,7 @@
     _bgmTrack = 1;
 
     /////1. 数据来源 ///////////
-    _capToGpu = [[KSYGPUYUVInput alloc] init];
+    _capToGpu = [[KSYGPUPicInput alloc] init];
     // 采集模块
     _vCapDev = [[KSYAVFCapture alloc] initWithSessionPreset:_capPreset
                                              cameraPosition:_cameraPosition];
@@ -111,9 +112,6 @@
     
     ///// 3. 数据处理和通路 ///////////
     ///// 3.1 视频通路 ///////////
-    // 核心部件:裁剪滤镜
-    CGRect cropR = CGRectMake(0, 0, 1, 1);
-    _cropfilter = [[GPUImageCropFilter alloc] initWithCropRegion:cropR];
     // 核心部件:图像处理滤镜
     _filter     = [[KSYGPUDnoiseFilter alloc] init];
     // 核心部件:视频叠加混合
@@ -154,7 +152,6 @@
     [_vCapDev      stopCameraCapture];
     
     [_capToGpu    removeAllTargets];
-    [_cropfilter  removeAllTargets];
     [_filter      removeAllTargets];
     [_logoPic     removeAllTargets];
     [_textPic     removeAllTargets];
@@ -178,11 +175,6 @@
     // 采集的图像先经过前处理
     [_capToGpu removeAllTargets];
     GPUImageOutput* src = _capToGpu;
-    if (_cropfilter) {
-        [_cropfilter removeAllTargets];
-        [src addTarget:_cropfilter];
-        src = _cropfilter;
-    }
     if (_filter) {
         [_filter removeAllTargets];
         [src addTarget:_filter];
@@ -240,6 +232,9 @@
     _vCapDev.interruptCallback = ^(BOOL bInterrupt) {
         if (bInterrupt) {
             [kit appEnterBackground];
+        }
+        else {
+            [kit appBecomeActive];
         }
         if(kit.interruptCallback) {
             kit.interruptCallback(bInterrupt);
@@ -350,7 +345,8 @@
         _vCapDev.frameRate = _videoFPS;
         // check if preset ok
         _capPreset = _vCapDev.captureSessionPreset;
-        [self  updateDimension];
+        [self  updatePreDimension];
+        [self  updateStrDimension:self.videoOrientation];
         // 旋转
         [self rotatePreviewTo:_videoOrientation ];
         [self rotateStreamTo: _videoOrientation ];
@@ -411,12 +407,11 @@
  */
 - (CGSize) captureDimension {
     if (_vCapDev){
-        CMVideoDimensions dim;
-        dim = CMVideoFormatDescriptionGetDimensions(_vCapDev.inputCamera.activeFormat.formatDescription);
-        return CGSizeMake(dim.width, dim.height);
+        return _vCapDev.captureDimension;
     }
     return CGSizeZero;
 }
+
 // 根据朝向, 判断是否需要交换宽和高
 -(CGSize) getDimension: (CGSize) sz
            byOriention: (UIInterfaceOrientation) ori {
@@ -440,28 +435,40 @@
     double hgt = outSz.height/camSz.height;
     return CGRectMake(x, y, wdt, hgt);
 }
-
-// 根据宽高比计算需要裁剪掉的区域
-- (void) setupCropfilter {
-    CGSize  inSz     =  [self captureDimension];
-    inSz = [self getDimension:inSz byOriention:self.videoOrientation];
-    CGFloat preRatio = _previewDimension.width / _previewDimension.height;
+// 对 inSize 按照 targetSz的宽高比 进行裁剪, 得到最大的输出size
+-(CGSize) calcCropSize: (CGSize) inSz to: (CGSize) targetSz {
+    CGFloat preRatio = targetSz.width / targetSz.height;
     CGSize cropSz = inSz; // set width
     cropSz.height = cropSz.width / preRatio;
     if (cropSz.height > inSz.height){
         cropSz.height = inSz.height; // set height
         cropSz.width  = cropSz.height * preRatio;
     }
-    _cropfilter.cropRegion = [self calcCropRect:inSz to:cropSz];
+    return cropSz;
 }
 
 // 更新分辨率相关设置
-- (void) updateDimension {
-    _previewDimension = [self getDimension:_previewDimension byOriention:self.videoOrientation];
-    _streamDimension  = [self getDimension:_streamDimension  byOriention:self.videoOrientation];
-    [self setupCropfilter];
-    [_vPreviewMixer forceProcessingAtSize:_previewDimension];
-    [_vStreamMixer forceProcessingAtSize:_streamDimension];
+// 根据宽高比计算需要裁剪掉的区域
+- (void) updatePreDimension {
+    _previewDimension = [self getDimension:_previewDimension
+                               byOriention:self.videoOrientation];
+    CGSize  inSz     =  [self captureDimension];
+    inSz = [self getDimension:inSz byOriention:self.videoOrientation];
+    CGSize cropSz = [self calcCropSize:inSz to:_previewDimension];
+    _capToGpu.cropRegion = [self calcCropRect:inSz to:cropSz];
+    [_capToGpu forceProcessingAtSize:_previewDimension];
+}
+- (void) updateStrDimension:(UIInterfaceOrientation) orie {
+    _streamDimension  = [self getDimension:_streamDimension
+                               byOriention:orie];
+    _gpuToStr.bCustomOutputSize = YES;
+    _gpuToStr.outputSize = _streamDimension;
+    CGSize preSz = [self getDimension:_previewDimension
+                          byOriention:orie];
+    CGSize cropSz = [self calcCropSize:preSz
+                                    to:_streamDimension];
+    _gpuToStr.cropRegion = [self calcCropRect:preSz
+                                           to:cropSz];
 }
 
 // 分辨率有效范围检查
@@ -646,12 +653,13 @@
     if ([_streamerBase isStreaming]){
         return;
     }
-    if( fmt !=  kCVPixelFormatType_4444AYpCbCr8){
+    if( fmt !=  kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange){
         fmt = kCVPixelFormatType_32BGRA;
     }
     _gpuOutputPixelFormat = fmt;
     _gpuToStr =[[KSYGPUPicOutput alloc] initWithOutFmt:_gpuOutputPixelFormat];
     [self setupVideoPath];
+    [self updateStrDimension:self.videoOrientation];
 }
 
 #pragma mark - rotate & mirror
@@ -749,36 +757,43 @@ kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRota
 - (void) rotateStreamTo: (UIInterfaceOrientation) orie {
     if (_videoOrientation == orie || _vCapDev.isRunning == NO) {
         [_gpuToStr setInputRotation:kGPUImageNoRotation atIndex:0];
-        _gpuToStr.outputSize = _streamDimension;
-        _gpuToStr.bCustomOutputSize = NO;
     }
     else {
         int capOri = UIOrienToIdx(_videoOrientation);
         int appOri = UIOrienToIdx(orie);
         GPUImageRotationMode mode = KSYRotateMode[capOri][appOri];
         [_gpuToStr setInputRotation: mode  atIndex:0];
-        _gpuToStr.bCustomOutputSize = YES;
-        _gpuToStr.outputSize = [self getDimension:_streamDimension byOriention:orie];
     }
+    [self updateStrDimension:orie];
 }
 
 /**
- @abstract 摄像头自动变焦+自动曝光
+ @abstract 摄像头自动曝光
  */
-- (BOOL)focusAtPoint:(CGPoint )point error:(NSError *__autoreleasing* )error
-{
+- (BOOL)exposureAtPoint:(CGPoint )point{
     AVCaptureDevice *dev = _vCapDev.inputCamera;
+    NSError *error;
     
     if ([dev isExposurePointOfInterestSupported] && [dev isExposureModeSupported:AVCaptureExposureModeAutoExpose]) {
-        if ([dev lockForConfiguration:error]) {
+        if ([dev lockForConfiguration:&error]) {
             [dev setExposurePointOfInterest:point];  // 曝光点
             [dev setExposureMode:AVCaptureExposureModeAutoExpose];
             [dev unlockForConfiguration];
+            return YES;
         }
     }
-    
+    return NO;
+}
+
+/**
+ @abstract 摄像头自动变焦
+ */
+- (BOOL)focusAtPoint:(CGPoint )point{
+    AVCaptureDevice *dev = _vCapDev.inputCamera;
+    NSError *error;
+
     if ([dev isFocusPointOfInterestSupported] && [dev isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
-        if ([dev lockForConfiguration:error]) {
+        if ([dev lockForConfiguration:&error]) {
             [dev setFocusPointOfInterest:point];
             [dev setFocusMode:AVCaptureFocusModeAutoFocus];
             [dev unlockForConfiguration];
@@ -789,11 +804,8 @@ kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRota
 }
 
 @synthesize pinchZoomFactor =_pinchZoomFactor;
-
 - (CGFloat) pinchZoomFactor {
-    
     _pinchZoomFactor = _vCapDev.inputCamera.videoZoomFactor;
-    
     return _pinchZoomFactor;
 }
 

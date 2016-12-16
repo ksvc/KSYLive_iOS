@@ -194,11 +194,6 @@
             NSLog(@"url:%@",_textFiled.text);
             NSString *dir;
             NSURL *url = [NSURL URLWithString:_textFiled.text];
-            NSString *scheme = [url scheme];
-            if(![scheme isEqualToString:@"rtmp"] && ![scheme isEqualToString:@"http"]){
-                dir = [NSHomeDirectory() stringByAppendingString:@"/Documents/"];
-                url = [NSURL URLWithString:[dir stringByAppendingPathComponent:_textFiled.text]];
-            }
             UIViewController* vc = nil;
             if (indexPath.row == 0) {
                 vc = [[KSYPlayerVC alloc]initWithURL:url];
@@ -211,9 +206,19 @@
                 vc = [[KSYPresetCfgVC alloc]initWithURL:_textFiled.text];
             }
             else if (indexPath.row == 4){
-                KSYPresetCfgVC *preVC = [[KSYPresetCfgVC alloc]initWithURL:[dir stringByAppendingPathComponent:_textFiled.text]];
-                [preVC.cfgView.btn0 setTitle:@"开始录制" forState:UIControlStateNormal];
-                vc = preVC;
+                NSString *scheme = [url scheme];
+                if([scheme isEqualToString:@"rtmp"] ||
+                   [scheme isEqualToString:@"http"] ||
+                   [scheme isEqualToString:@"https"]){
+                    NSLog(@"invalid local file name");
+                }
+                else {
+                    dir = [NSHomeDirectory() stringByAppendingString:@"/Documents/"];
+                    url = [NSURL URLWithString:[dir stringByAppendingPathComponent:_textFiled.text]];
+                    KSYPresetCfgVC *preVC = [[KSYPresetCfgVC alloc]initWithURL:[dir stringByAppendingPathComponent:_textFiled.text]];
+                    [preVC.cfgView.btn0 setTitle:@"开始录制" forState:UIControlStateNormal];
+                    vc = preVC;
+                }
             }
             
             if (vc){

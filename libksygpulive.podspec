@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'libksygpulive'
-  s.version      = '1.9.2'
+  s.version      = '1.9.3'
   s.license      = {
 :type => 'Proprietary',
 :text => <<-LICENSE
@@ -33,7 +33,8 @@ Pod::Spec.new do |s|
               'mediacore_dec_lite',
               'mediacore_dec_vod',
               'mediacore_enc_lite',
-              'mediacore_enc_265']
+              'mediacore_enc_265',
+              'mediacore_enc_base']
   subLibs.each do |subName|
     s.subspec subName do |sub|
       sub.vendored_library = 'prebuilt/libs/libksy%s.a' % subName
@@ -62,6 +63,7 @@ Pod::Spec.new do |s|
     sub.dependency 'libksygpulive/base'
     sub.dependency 'libksygpulive/yuv'
     sub.dependency 'libksygpulive/mediacodec'
+    sub.dependency 'libksygpulive/mediacore_enc_base'
     sub.dependency 'libksygpulive/mediacore_enc_lite'
   end
   s.subspec 'libksygpulive_265' do |sub|
@@ -73,6 +75,7 @@ Pod::Spec.new do |s|
     sub.dependency 'libksygpulive/base'
     sub.dependency 'libksygpulive/yuv'
     sub.dependency 'libksygpulive/mediacodec'
+    sub.dependency 'libksygpulive/mediacore_enc_base'
     sub.dependency 'libksygpulive/mediacore_enc_265'
   end
   s.subspec 'KSYGPUResource' do |sub|
@@ -85,6 +88,7 @@ Pod::Spec.new do |s|
     sub.dependency 'libksygpulive/base'
     sub.dependency 'libksygpulive/yuv'
     sub.dependency 'libksygpulive/mediacodec'
+    sub.dependency 'libksygpulive/mediacore_enc_base'
     sub.dependency 'libksygpulive/mediacore_enc_lite'
   end
 end

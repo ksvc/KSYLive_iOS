@@ -9,6 +9,7 @@
 #import "KSYUIVC.h"
 #import <mach/mach.h>
 #import "KSYReachability.h"
+#import "KSYUIView.h"
 
 @interface KSYUIVC() {
     KSYReachability *_reach;
@@ -94,6 +95,10 @@
 }
 
 - (void) layoutUI {
+    if(_layoutView){
+        _layoutView.frame = self.view.frame;
+        [_layoutView layoutUI];
+    }
 }
 
 - (void)onTimer:(NSTimer *)theTimer{

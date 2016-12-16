@@ -157,6 +157,51 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVFCapture/setOutputPixelFmt:</TokenIdentifier>
+			<Abstract type="html">输出图像的像素格式 有效值 为 NV12 和BGRA
+  - kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange
+  - kCVPixelFormatType_420YpCbCr8BiPlanarFullRange
+  - kCVPixelFormatType_32BGRA</Abstract>
+			<DeclaredIn>KSYAVFCapture.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite) OSType outputPixelFmt</Declaration>
+			
+			
+			<Anchor>//api/name/outputPixelFmt</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVFCapture/outputPixelFmt</TokenIdentifier>
+			<Abstract type="html">输出图像的像素格式 有效值 为 NV12 和BGRA
+  - kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange
+  - kCVPixelFormatType_420YpCbCr8BiPlanarFullRange
+  - kCVPixelFormatType_32BGRA</Abstract>
+			<DeclaredIn>KSYAVFCapture.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite) OSType outputPixelFmt</Declaration>
+			
+			
+			<Anchor>//api/name/outputPixelFmt</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAVFCapture/outputPixelFmt</TokenIdentifier>
+			<Abstract type="html">输出图像的像素格式 有效值 为 NV12 和BGRA
+  - kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange
+  - kCVPixelFormatType_420YpCbCr8BiPlanarFullRange
+  - kCVPixelFormatType_32BGRA</Abstract>
+			<DeclaredIn>KSYAVFCapture.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite) OSType outputPixelFmt</Declaration>
+			
+			
+			<Anchor>//api/name/outputPixelFmt</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYAVFCapture/setFrontFacingCameraPresent:</TokenIdentifier>
 			<Abstract type="html">Easy way to tell which cameras are present on device</Abstract>
 			<DeclaredIn>KSYAVFCapture.h</DeclaredIn>
@@ -194,7 +239,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYAVFCapture/setBackFacingCameraPresent:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
+			<Abstract type="html">Easy way to tell which cameras are present on device</Abstract>
 			<DeclaredIn>KSYAVFCapture.h</DeclaredIn>
 			
 			<Declaration>@property (readonly, getter=isBackFacingCameraPresent) BOOL backFacingCameraPresent</Declaration>
@@ -206,7 +251,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYAVFCapture/isBackFacingCameraPresent</TokenIdentifier>
-			<Abstract type="html"></Abstract>
+			<Abstract type="html">Easy way to tell which cameras are present on device</Abstract>
 			<DeclaredIn>KSYAVFCapture.h</DeclaredIn>
 			
 			<Declaration>@property (readonly, getter=isBackFacingCameraPresent) BOOL backFacingCameraPresent</Declaration>
@@ -218,7 +263,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYAVFCapture/backFacingCameraPresent</TokenIdentifier>
-			<Abstract type="html"></Abstract>
+			<Abstract type="html">Easy way to tell which cameras are present on device</Abstract>
 			<DeclaredIn>KSYAVFCapture.h</DeclaredIn>
 			
 			<Declaration>@property (readonly, getter=isBackFacingCameraPresent) BOOL backFacingCameraPresent</Declaration>
@@ -361,14 +406,19 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KSYAVFCapture/getCapOrientation:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/clm/KSYAVFCapture/uiOrientationToAVOrientation:</TokenIdentifier>
 			<Abstract type="html">UIInterfaceOrientation 转为 AVCaptureVideoOrientation</Abstract>
 			<DeclaredIn>KSYAVFCapture.h</DeclaredIn>
 			
-			<Declaration>+ (AVCaptureVideoOrientation)getCapOrientation:(UIInterfaceOrientation)orien</Declaration>
+			<Declaration>+ (AVCaptureVideoOrientation)uiOrientationToAVOrientation:(UIInterfaceOrientation)orien</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>orien</Name>
+					<Abstract type="html">UI 的朝向,比如状态栏相对Home键的位置</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/getCapOrientation:</Anchor>
+			<Anchor>//api/name/uiOrientationToAVOrientation:</Anchor>
             <NodeRef refid="3"/>
 		</Token>
 		
@@ -512,6 +562,18 @@
 			
 			
 			<Anchor>//api/name/rotateCamera</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVFCapture/captureDimension</TokenIdentifier>
+			<Abstract type="html">查询实际的采集分辨率</Abstract>
+			<DeclaredIn>KSYAVFCapture.h</DeclaredIn>
+			
+			<Declaration>- (CGSize)captureDimension</Declaration>
+			
+			
+			<Anchor>//api/name/captureDimension</Anchor>
             <NodeRef refid="3"/>
 		</Token>
 		

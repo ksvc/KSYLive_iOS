@@ -22,6 +22,7 @@
     self.valueL.textAlignment = NSTextAlignmentCenter;
     self.onSliderBlock = nil;
     _normalValue = (_slider.value - _slider.minimumValue) / _slider.maximumValue;
+    _precision = 0;
     return self;
 }
 - (void)setFrame:(CGRect)frame{
@@ -42,13 +43,13 @@
     _valueL.frame = CGRectMake(wdtN+wdtS, 0,wdtV, hgt);
 }
 - (void) updateValue {
-    if (_slider.maximumValue > 1){
-        int val = (int)_slider.value;
-        _valueL.text = [NSString stringWithFormat:@"%d", val];
+    float val = _slider.value;
+    if (_precision == 0){
+        _valueL.text = [NSString stringWithFormat:@"%d", (int)val];
     }
-    else if (_slider.maximumValue <= 1.0){
-        float val = _slider.value;
-        _valueL.text = [NSString stringWithFormat:@"%0.2f", val];
+    else {
+        NSString *fmt =[NSString stringWithFormat:@"%%0.%df", _precision];
+        _valueL.text = [NSString stringWithFormat:fmt, val];
     }
     [self layoutSlider];
     _normalValue = (_slider.value - _slider.minimumValue) / _slider.maximumValue;

@@ -24,9 +24,10 @@
 - (id)init{
     self = [super init];
     // 混音音量
-    _micVol = [self addSliderName:@"麦克风音量" From:0.0 To:1.0 Init:1.0];
-    _bgmVol = [self addSliderName:@"背景乐音量"  From:0.0 To:1.0 Init:0.5];
+    _micVol = [self addSliderName:@"麦克风音量" From:0.0 To:2.0 Init:0.9];
+    _bgmVol = [self addSliderName:@"背景乐音量"  From:0.0 To:2.0 Init:0.5];
     _bgmMix = [self addSwitch:YES];
+
 
     _micInput = [self addSegCtrlWithItems:@[ @"内置mic", @"耳麦", @"蓝牙mic"]];
     [self initMicInput];

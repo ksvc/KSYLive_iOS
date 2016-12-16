@@ -13,28 +13,11 @@
 
 
 #ifdef KSYSTREAMER_DEMO
-@interface KSYSimpleStreamerVC : UIViewController
-@end
-@interface KSYGPUStreamerKitVC : UIViewController
-@end
-@interface imageVC : UIViewController
-@end
-@interface movieWriterVC : UIViewController
-@end
-@interface KSYSimKitVC : UIViewController
-@end
-@interface captureVC : UIViewController
-@end
-@interface gpuimageVC : UIViewController
-@end
+#import "TestVCs.h"
 #endif
 
 @interface KSYPresetCfgVC () {
 }
-
-// 方便调试 可以在app启动后自动开启预览和推流
-@property BOOL  bAutoStart;
-
 @end
 
 @implementation KSYPresetCfgVC
@@ -59,9 +42,10 @@
     self.view = _cfgView;
     
     //  TODO: !!!! 设置是否自动启动推流
-    _bAutoStart = NO;
-    if (_bAutoStart) {
-        [self pressBtnAfter:0.5];
+    UIButton * btn = nil;
+    //btn = _cfgView.btn2;
+    if (btn) {
+        [self pressBtn:btn after:0.5];
     }
     if (_rtmpURL && [_rtmpURL length] ){
         _cfgView.hostUrlUI.text = _rtmpURL;
@@ -71,10 +55,10 @@
     [self layoutUI];
 }
 
-- (void) pressBtnAfter : (double) delay {
+- (void) pressBtn:( UIButton* ) btn after : (double) delay {
     dispatch_time_t dt = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC));
     dispatch_after(dt, dispatch_get_main_queue(), ^{
-        [self btnFunc:_cfgView.btn0];
+        [self btnFunc:btn];
     });
 }
 
@@ -100,13 +84,8 @@
     }
     else if ( sender == _cfgView.btn2) { // tests
 #ifdef KSYSTREAMER_DEMO
-        vc = [[KSYSimpleStreamerVC alloc] init];
-        vc = [[imageVC alloc] init];
-        vc = [[captureVC alloc] init];
-        vc = [[movieWriterVC alloc] init];
-        vc = [[gpuimageVC alloc] init];
+        vc = [[TEST_VC alloc] init];
 #else
-        
         [self dismissViewControllerAnimated:FALSE
                                  completion:nil];
         

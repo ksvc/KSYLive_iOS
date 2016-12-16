@@ -39,8 +39,16 @@
 /** 采集帧率 有效范围为 0~30  */
 @property (readwrite) int32_t frameRate;
 
+/** 输出图像的像素格式 有效值 为 NV12 和BGRA
+  - kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange
+  - kCVPixelFormatType_420YpCbCr8BiPlanarFullRange
+  - kCVPixelFormatType_32BGRA
+ */
+@property (readwrite) OSType outputPixelFmt;
+
 /// Easy way to tell which cameras are present on device
 @property (readonly, getter = isFrontFacingCameraPresent) BOOL frontFacingCameraPresent;
+/// Easy way to tell which cameras are present on device
 @property (readonly, getter = isBackFacingCameraPresent) BOOL backFacingCameraPresent;
 
 /// Use this property to manage camera settings. Focus point, exposure point, etc.
@@ -56,8 +64,11 @@
 + (BOOL)isBackFacingCameraPresent;
 /// 前置摄像头是否存在
 + (BOOL)isFrontFacingCameraPresent;
-/// UIInterfaceOrientation 转为 AVCaptureVideoOrientation
-+ (AVCaptureVideoOrientation) getCapOrientation: (UIInterfaceOrientation) orien;
+
+/** UIInterfaceOrientation 转为 AVCaptureVideoOrientation
+ @param orien UI 的朝向,比如状态栏相对Home键的位置
+ */
++ (AVCaptureVideoOrientation) uiOrientationToAVOrientation: (UIInterfaceOrientation) orien;
 
 /// @name Initialization and teardown
 
@@ -115,6 +126,12 @@
 /** This flips between the front and rear cameras
  */
 - (void)rotateCamera;
+
+/**
+ @abstract   查询实际的采集分辨率
+ @discussion 参见iOS的 AVCaptureSessionPresetXXX的定义
+ */
+- (CGSize) captureDimension;
 
 #pragma mark - Torch
 /**

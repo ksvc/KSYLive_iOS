@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYSpecialEffects.html">
+	<File path="Classes/KSYMovieWriter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYSpecialEffects</TokenIdentifier>
-			<Abstract type="html">金山云特效滤镜</Abstract>
-			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYMovieWriter</TokenIdentifier>
+			<Abstract type="html">视频文件录制类</Abstract>
+			<DeclaredIn>KSYMovieWriter.h</DeclaredIn>
             
 			
 			<NodeRef refid="26"/>
@@ -13,84 +13,31 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KSYSpecialEffects/showVersion</TokenIdentifier>
-			<Abstract type="html">show version of this filter</Abstract>
-			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMovieWriter/startWrite:</TokenIdentifier>
+			<Abstract type="html">write video stream to local files</Abstract>
+			<DeclaredIn>KSYMovieWriter.h</DeclaredIn>
 			
-			<Declaration>+ (void)showVersion</Declaration>
-			
-			
-			<Anchor>//api/name/showVersion</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYSpecialEffects/initWithUIImage:</TokenIdentifier>
-			<Abstract type="html">初始化并指定特效素材</Abstract>
-			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
-			
-			<Declaration>- (id)initWithUIImage:(UIImage *)image</Declaration>
+			<Declaration>- (void)startWrite:(NSURL *)filePath</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>image</Name>
-					<Abstract type="html">特效素材</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">构造的滤镜</Abstract></ReturnValue>
-			<Anchor>//api/name/initWithUIImage:</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYSpecialEffects/setSpecialEffectsUIImage:</TokenIdentifier>
-			<Abstract type="html">指定特效素材</Abstract>
-			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
-			
-			<Declaration>- (void)setSpecialEffectsUIImage:(UIImage *)image</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>image</Name>
-					<Abstract type="html">特效素材</Abstract>
+					<Name>filePath</Name>
+					<Abstract type="html">is local file path</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/setSpecialEffectsUIImage:</Anchor>
+			<Anchor>//api/name/startWrite:</Anchor>
             <NodeRef refid="26"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYSpecialEffects/setIntensity:</TokenIdentifier>
-			<Abstract type="html">特效参数</Abstract>
-			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMovieWriter/stopWrite</TokenIdentifier>
+			<Abstract type="html">stop wirte file</Abstract>
+			<DeclaredIn>KSYMovieWriter.h</DeclaredIn>
 			
-			<Declaration>@property (readwrite, nonatomic) CGFloat intensity</Declaration>
-			
-			
-			<Anchor>//api/name/intensity</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYSpecialEffects/intensity</TokenIdentifier>
-			<Abstract type="html">特效参数</Abstract>
-			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
-			
-			<Declaration>@property (readwrite, nonatomic) CGFloat intensity</Declaration>
+			<Declaration>- (void)stopWrite</Declaration>
 			
 			
-			<Anchor>//api/name/intensity</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYSpecialEffects/intensity</TokenIdentifier>
-			<Abstract type="html">特效参数</Abstract>
-			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
-			
-			<Declaration>@property (readwrite, nonatomic) CGFloat intensity</Declaration>
-			
-			
-			<Anchor>//api/name/intensity</Anchor>
+			<Anchor>//api/name/stopWrite</Anchor>
             <NodeRef refid="26"/>
 		</Token>
 		

@@ -9,9 +9,18 @@
  * 本模块含有一个GPUImageInput的接口, 从其他filter接收渲染结果
  * 通过inputSize  查询输入的图像尺寸
  * 通过outputSize 设置输出的图像尺寸
- 
+ * 通过cropRegion 设置裁剪区域
+ * 初始化时可指定输出数据的像素格式
+ * 支持的输出颜色格式包括:
+   - kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange: (NV12)
+   - kCVPixelFormatType_420YpCbCr8BiPlanarFullRange:(NV12)
+   - kCVPixelFormatType_420YpCbCr8Planar:(I420)
+   - kCVPixelFormatType_420YpCbCr8PlanarFullRange:(I420)
+   - kCVPixelFormatType_32BGRA:(BGRA)
+   - kCVPixelFormatType_4444AYpCbCr8:(AYUV) 排列顺序为 (A Y' Cb Cr)
  */
 @interface KSYGPUPicOutput : NSObject <GPUImageInput>
+/// @name Initialization
 /**
  @abstract 初始化方法
  */
@@ -19,15 +28,16 @@
 
 /**
  @abstract 指定输出格式的初始化
+ @param  fmt 输出格式
  @see outputPixelFormat
  */
 - (id) initWithOutFmt:(OSType) fmt;
 
+/// @name query and settings
+
 /**
  @abstract output format (默认:kCVPixelFormatType_32BGRA)
- @discussion 目前只支持 kCVPixelFormatType_32BGRA 和 kCVPixelFormatType_4444AYpCbCr8 
- @discussion kCVPixelFormatType_4444AYpCbCr8 的排列顺序为 (A Y' Cb Cr)
- @discussion 其他非法都会被当做 kCVPixelFormatType_32BGRA 处理
+ @discussion 非法颜色格式都会被当做 kCVPixelFormatType_32BGRA 处理
  */
 @property(nonatomic, readonly) OSType outputPixelFormat;
 
@@ -46,9 +56,17 @@
 /**
  @abstract output picture size
  @discussion 当bCustomOutputSize设置为NO时,outputSize无法被修改
+ @discussion 可以对裁剪后的图像再进行缩放
+ @discussion 输出尺寸必须为4的整数倍, 内部会进行向上取整
  @see bCustomOutputSize
  */
 @property(nonatomic, assign) CGSize outputSize;
+
+/**
+ @abstract   裁剪区域 将输入的图像按照区域裁剪出中间的一块
+ @discussion cropRegion 标记了左上角的位置和宽高, 范围都是0.0 到1.0
+ */
+@property(readwrite, nonatomic) CGRect cropRegion;
 
 /**
  @abstract input picture size
@@ -60,6 +78,7 @@
 
 /**
  @abstract input roation mode
+ @return 图像的旋转模式
  */
 - (GPUImageRotationMode)  getInputRotation;
 

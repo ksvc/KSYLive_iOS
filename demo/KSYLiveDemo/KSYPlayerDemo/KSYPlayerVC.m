@@ -693,7 +693,14 @@
 }
 
 - (void)updateCacheProgress {
-    progressView.cacheProgress = _player.playableDuration / _player.duration;
+    CGFloat duration = _player.duration;
+    CGFloat playableDuration = _player.playableDuration;
+    if(duration > 0){
+        progressView.cacheProgress = playableDuration / duration;
+    }
+    else{
+        progressView.cacheProgress = 0.0;
+    }
 }
 
 - (IBAction)onQuit:(id)sender {

@@ -1,67 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYAVMuxerStatus.html">
+	<File path="Classes/KSYVideoInfo.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYAVMuxerStatus</TokenIdentifier>
-			<Abstract type="html">交织处理状态</Abstract>
-			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYVideoInfo</TokenIdentifier>
+			<Abstract type="html">视频信息</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
 			
 			<NodeRef refid="30"/>
 		</Token>
 		
 		
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusIdle</TokenIdentifier>
-            <Abstract type="html">初始状态</Abstract>
-            <Declaration>KSYAVMuxerStatusIdle</Declaration>
-            
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
-            
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/setVcodec:</TokenIdentifier>
+			<Abstract type="html">视频编码格式, 具体类型为MEDIAINFOCODECID</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID vcodec</Declaration>
+			
+			
+			<Anchor>//api/name/vcodec</Anchor>
             <NodeRef refid="30"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusMuxing</TokenIdentifier>
-            <Abstract type="html">处理中</Abstract>
-            <Declaration>KSYAVMuxerStatusMuxing</Declaration>
-            
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/vcodec</TokenIdentifier>
+			<Abstract type="html">视频编码格式, 具体类型为MEDIAINFOCODECID</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID vcodec</Declaration>
+			
+			
+			<Anchor>//api/name/vcodec</Anchor>
             <NodeRef refid="30"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusCompleted</TokenIdentifier>
-            <Abstract type="html">处理完成</Abstract>
-            <Declaration>KSYAVMuxerStatusCompleted</Declaration>
-            
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYVideoInfo/vcodec</TokenIdentifier>
+			<Abstract type="html">视频编码格式, 具体类型为MEDIAINFOCODECID</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID vcodec</Declaration>
+			
+			
+			<Anchor>//api/name/vcodec</Anchor>
             <NodeRef refid="30"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusFailed</TokenIdentifier>
-            <Abstract type="html">处理失败</Abstract>
-            <Declaration>KSYAVMuxerStatusFailed</Declaration>
-            
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/setFrame_width:</TokenIdentifier>
+			<Abstract type="html">视频帧宽度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int32_t frame_width</Declaration>
+			
+			
+			<Anchor>//api/name/frame_width</Anchor>
             <NodeRef refid="30"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusCancelled</TokenIdentifier>
-            <Abstract type="html">处理任务被取消</Abstract>
-            <Declaration>KSYAVMuxerStatusCancelled</Declaration>
-            
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/frame_width</TokenIdentifier>
+			<Abstract type="html">视频帧宽度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int32_t frame_width</Declaration>
+			
+			
+			<Anchor>//api/name/frame_width</Anchor>
             <NodeRef refid="30"/>
-        </Token>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYVideoInfo/frame_width</TokenIdentifier>
+			<Abstract type="html">视频帧宽度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int32_t frame_width</Declaration>
+			
+			
+			<Anchor>//api/name/frame_width</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/setFrame_height:</TokenIdentifier>
+			<Abstract type="html">视频帧高度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int32_t frame_height</Declaration>
+			
+			
+			<Anchor>//api/name/frame_height</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/frame_height</TokenIdentifier>
+			<Abstract type="html">视频帧高度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int32_t frame_height</Declaration>
+			
+			
+			<Anchor>//api/name/frame_height</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYVideoInfo/frame_height</TokenIdentifier>
+			<Abstract type="html">视频帧高度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int32_t frame_height</Declaration>
+			
+			
+			<Anchor>//api/name/frame_height</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
         
         
 	</File>

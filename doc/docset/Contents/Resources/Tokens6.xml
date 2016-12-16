@@ -34,14 +34,13 @@
 			<Parameters>
 				<Parameter>
 					<Name>vol</Name>
-					<Abstract type="html">音量比例（0.0~1.0）</Abstract>
+					<Abstract type="html">音量比例（0.0~2.0） (&lt;1.0 为缩小, &gt; 1.0为放大)</Abstract>
 				</Parameter><Parameter>
 					<Name>trackId</Name>
 					<Abstract type="html">设置对应track的</Abstract>
 				</Parameter>
 			</Parameters>
-			<ReturnValue><Abstract type="html">NO为设置失败，如track不存在，或vol超出范围
-*</Abstract></ReturnValue>
+			<ReturnValue><Abstract type="html">NO为设置失败，如track不存在，或vol超出范围</Abstract></ReturnValue>
 			<Anchor>//api/name/setMixVolume:of:</Anchor>
             <NodeRef refid="6"/>
 		</Token>

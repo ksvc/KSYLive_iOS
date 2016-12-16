@@ -48,8 +48,6 @@
 
 	
 	
-	<option value="tasks">Tasks</option>
-	
 	
 
 	
@@ -57,16 +55,6 @@
 
 	
 
-	
-	<optgroup label="Instance Methods">
-		
-		<option value="//api/name/init">- init</option>
-		
-		<option value="//api/name/processPixelBuffer:time:">- processPixelBuffer:time:</option>
-		
-		<option value="//api/name/processSampleBuffer:">- processSampleBuffer:</option>
-		
-	</optgroup>
 	
 	
 </select>
@@ -87,10 +75,10 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<th>Inherits from</th>
-	<td>GPUImageOutput</td>
+	<td><a href="../Classes/KSYGPUPicInput.html">KSYGPUPicInput</a> : GPUImageOutput</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>KSYGPUYUVInput.h</td>
+	<td>KSYGPUPicInput.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -100,180 +88,13 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>GPU图像输输入</p>
-
-<p>将采集到的YUV数据上传到GPU, 传递给其他filter进行处理
-本模块含有一个GPUImageOutput的接口, 向其他filter提供纹理</p>
+						<p>GPU图像输输入
+过期的类, 请使用<a href="../Classes/KSYGPUPicInput.html">KSYGPUPicInput</a></p>
 					</div>
 					
 					
 
 					
-					
-					<div class="section section-tasks">
-						<a title="Tasks" name="tasks"></a>
-						
-
-						
-						
-
-						<div class="task-list">
-							<div class="section-method">
-	<a name="//api/name/init" title="init"></a>
-	<h3 class="method-title"><code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Initialization and teardown</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (id)init</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">KSYGPUYUVInput.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/processSampleBuffer:" title="processSampleBuffer:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/processSampleBuffer:">&ndash;&nbsp;processSampleBuffer:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>输入图像数据</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)processSampleBuffer:(CMSampleBufferRef)<em>sampleBuffer</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>sampleBuffer</code></th>
-						<td><p>图像数据和时间信息</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">KSYGPUYUVInput.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/processPixelBuffer:time:" title="processPixelBuffer:time:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/processPixelBuffer:time:">&ndash;&nbsp;processPixelBuffer:time:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>输入图像数据</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)processPixelBuffer:(CVPixelBufferRef)<em>pixelBuffer</em> time:(CMTime)<em>timeInfo</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>pixelBuffer</code></th>
-						<td><p>图像数据</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>timeInfo</code></th>
-						<td><p>时间信息</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">KSYGPUYUVInput.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div>
-						</div>
-						
-					</div>
 					
 					
 
@@ -285,7 +106,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-12-08</p>
+						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-12-16</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

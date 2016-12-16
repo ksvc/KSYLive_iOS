@@ -12,16 +12,17 @@
 #import "libksygpulive.h"
 
 // sources (player & capture)
-#import "KSYGPUYUVInput.h"
+#import "KSYGPUPicInput.h"
 #import "KSYGPUCamera.h"
 
 // filters (for video and audio)
 #import "KSYGPUFilter.h"
-#import "KSYGPUBeautifyExtFilter.h"
 #import "KSYGPUBeautifyFilter.h"
+#import "KSYGPUBeautifyExtFilter.h"
 #import "KSYGPUBeautifyPlusFilter.h"
 #import "KSYGPUDnoiseFilter.h"
 #import "KSYBeautifyFaceFilter.h"
+#import "KSYBeautifyProFilter.h"
 #import "KSYSpecialEffects.h"
 #import "KSYBuildInSpecialEffects.h"
 

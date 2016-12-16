@@ -64,19 +64,17 @@
     else if (_loopType.selectedSegmentIndex == 3){
         [_bgmSel selectFileWithType:KSYSelectType_NEXT];
     }
-    _bgmTitle.text = [_bgmStatus stringByAppendingString:_bgmSel.fileInfo];
-    _bgmPath    = _bgmSel.filePath;
-    return _bgmSel.filePath;
+    return [self updateBgmPath];
 }
 - (NSString*) nextBgmPath {
     [_bgmSel selectFileWithType:KSYSelectType_NEXT];
-    _bgmTitle.text = [_bgmStatus stringByAppendingString:_bgmSel.fileInfo];
-    _bgmPath    = _bgmSel.filePath;
-    return _bgmSel.filePath;
+    return [self updateBgmPath];
 }
-
 - (NSString*) previousBgmPath{
     [_bgmSel selectFileWithType:KSYSelectType_PREVIOUS];
+    return [self updateBgmPath];
+}
+- (NSString*) updateBgmPath{
     _bgmTitle.text = [_bgmStatus stringByAppendingString:_bgmSel.fileInfo];
     _bgmPath    = _bgmSel.filePath;
     return _bgmSel.filePath;
