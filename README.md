@@ -30,8 +30,7 @@
 - [x] 支持软编、硬编的[性能编码模式](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)
 - [x] 支持[预览和推流分别镜像](https://github.com/ksvc/KSYLive_iOS/wiki/mirrored)
 - [x] [在线API 文档支持](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
-
-
+- [x] 支持[边推边录]，在直播推流过程中同时保存录像文件(https://github.com/ksvc/KSYLive_iOS/wiki/bypassRecord)
 
 ### 1.2 文档
 [详情请见wiki](https://github.com/ksvc/KSYLive_iOS/wiki)
