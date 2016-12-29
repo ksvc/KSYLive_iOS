@@ -1088,6 +1088,57 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setMessageDataBlock:</TokenIdentifier>
+			<Abstract type="html">消息数据回调</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/c/tdef/KSYPlyMessageDataBlock</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, copy) KSYPlyMessageDataBlock messageDataBlock</Declaration>
+			
+			
+			<Anchor>//api/name/messageDataBlock</Anchor>
+            <NodeRef refid="25"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/messageDataBlock</TokenIdentifier>
+			<Abstract type="html">消息数据回调</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/c/tdef/KSYPlyMessageDataBlock</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, copy) KSYPlyMessageDataBlock messageDataBlock</Declaration>
+			
+			
+			<Anchor>//api/name/messageDataBlock</Anchor>
+            <NodeRef refid="25"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/messageDataBlock</TokenIdentifier>
+			<Abstract type="html">消息数据回调</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/c/tdef/KSYPlyMessageDataBlock</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, copy) KSYPlyMessageDataBlock messageDataBlock</Declaration>
+			
+			
+			<Anchor>//api/name/messageDataBlock</Anchor>
+            <NodeRef refid="25"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setTextureBlock:</TokenIdentifier>
 			<Abstract type="html">视频图像texture回调</Abstract>
 			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>

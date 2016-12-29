@@ -481,6 +481,78 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setMaxAutoRetry:</TokenIdentifier>
+			<Abstract type="html">自动重连次数 关闭(0), 开启(&gt;0), 默认为0</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int maxAutoRetry</Declaration>
+			
+			
+			<Anchor>//api/name/maxAutoRetry</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/maxAutoRetry</TokenIdentifier>
+			<Abstract type="html">自动重连次数 关闭(0), 开启(&gt;0), 默认为0</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int maxAutoRetry</Declaration>
+			
+			
+			<Anchor>//api/name/maxAutoRetry</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/maxAutoRetry</TokenIdentifier>
+			<Abstract type="html">自动重连次数 关闭(0), 开启(&gt;0), 默认为0</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int maxAutoRetry</Declaration>
+			
+			
+			<Anchor>//api/name/maxAutoRetry</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setAutoRetryDelay:</TokenIdentifier>
+			<Abstract type="html">自动重连延时, 发现连接错误后, 重试的延时</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) double autoRetryDelay</Declaration>
+			
+			
+			<Anchor>//api/name/autoRetryDelay</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/autoRetryDelay</TokenIdentifier>
+			<Abstract type="html">自动重连延时, 发现连接错误后, 重试的延时</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) double autoRetryDelay</Declaration>
+			
+			
+			<Anchor>//api/name/autoRetryDelay</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/autoRetryDelay</TokenIdentifier>
+			<Abstract type="html">自动重连延时, 发现连接错误后, 重试的延时</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) double autoRetryDelay</Declaration>
+			
+			
+			<Anchor>//api/name/autoRetryDelay</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setCameraLayer:</TokenIdentifier>
 			<Abstract type="html">摄像头图层</Abstract>
 			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
@@ -919,6 +991,42 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setCapturePixelFormat:</TokenIdentifier>
+			<Abstract type="html">采集模块输出的像素格式 (默认:kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange)</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) OSType capturePixelFormat</Declaration>
+			
+			
+			<Anchor>//api/name/capturePixelFormat</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/capturePixelFormat</TokenIdentifier>
+			<Abstract type="html">采集模块输出的像素格式 (默认:kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange)</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) OSType capturePixelFormat</Declaration>
+			
+			
+			<Anchor>//api/name/capturePixelFormat</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/capturePixelFormat</TokenIdentifier>
+			<Abstract type="html">采集模块输出的像素格式 (默认:kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange)</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) OSType capturePixelFormat</Declaration>
+			
+			
+			<Anchor>//api/name/capturePixelFormat</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setGpuOutputPixelFormat:</TokenIdentifier>
 			<Abstract type="html">gpu output pixel format (默认:kCVPixelFormatType_32BGRA)</Abstract>
 			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
@@ -1028,7 +1136,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setVideoOrientation:</TokenIdentifier>
-			<Abstract type="html">摄像头朝向</Abstract>
+			<Abstract type="html">摄像头朝向, 只在启动采集前设置有效</Abstract>
 			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readwrite) UIInterfaceOrientation videoOrientation</Declaration>
@@ -1040,7 +1148,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/videoOrientation</TokenIdentifier>
-			<Abstract type="html">摄像头朝向</Abstract>
+			<Abstract type="html">摄像头朝向, 只在启动采集前设置有效</Abstract>
 			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readwrite) UIInterfaceOrientation videoOrientation</Declaration>
@@ -1052,7 +1160,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/videoOrientation</TokenIdentifier>
-			<Abstract type="html">摄像头朝向</Abstract>
+			<Abstract type="html">摄像头朝向, 只在启动采集前设置有效</Abstract>
 			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readwrite) UIInterfaceOrientation videoOrientation</Declaration>
@@ -1340,6 +1448,78 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setPreviewOrientation:</TokenIdentifier>
+			<Abstract type="html">预览图像朝向, 如果UI能够旋转,需要保持和UI的朝向一致</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) UIInterfaceOrientation previewOrientation</Declaration>
+			
+			
+			<Anchor>//api/name/previewOrientation</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/previewOrientation</TokenIdentifier>
+			<Abstract type="html">预览图像朝向, 如果UI能够旋转,需要保持和UI的朝向一致</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) UIInterfaceOrientation previewOrientation</Declaration>
+			
+			
+			<Anchor>//api/name/previewOrientation</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/previewOrientation</TokenIdentifier>
+			<Abstract type="html">预览图像朝向, 如果UI能够旋转,需要保持和UI的朝向一致</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) UIInterfaceOrientation previewOrientation</Declaration>
+			
+			
+			<Anchor>//api/name/previewOrientation</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setStreamOrientation:</TokenIdentifier>
+			<Abstract type="html">推流图像朝向, 如果UI能够旋转, 可以跟随旋转,也可以不修改</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) UIInterfaceOrientation streamOrientation</Declaration>
+			
+			
+			<Anchor>//api/name/streamOrientation</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/streamOrientation</TokenIdentifier>
+			<Abstract type="html">推流图像朝向, 如果UI能够旋转, 可以跟随旋转,也可以不修改</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) UIInterfaceOrientation streamOrientation</Declaration>
+			
+			
+			<Anchor>//api/name/streamOrientation</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/streamOrientation</TokenIdentifier>
+			<Abstract type="html">推流图像朝向, 如果UI能够旋转, 可以跟随旋转,也可以不修改</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) UIInterfaceOrientation streamOrientation</Declaration>
+			
+			
+			<Anchor>//api/name/streamOrientation</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/rotatePreviewTo:</TokenIdentifier>
 			<Abstract type="html">根据UI的朝向旋转预览视图, 保证预览视图全屏铺满窗口</Abstract>
 			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
@@ -1358,7 +1538,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/rotateStreamTo:</TokenIdentifier>
-			<Abstract type="html">根据UI的朝向旋转推流画面</Abstract>
+			<Abstract type="html">根据UI的朝向旋转推流画面, 这个是可以选的,可以不跟随旋转</Abstract>
 			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
 			
 			<Declaration>- (void)rotateStreamTo:(UIInterfaceOrientation)orie</Declaration>

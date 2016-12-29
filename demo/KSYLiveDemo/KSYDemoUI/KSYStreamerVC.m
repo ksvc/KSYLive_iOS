@@ -250,6 +250,8 @@
     _kit.videoFPS       = [self.presetCfgView frameRate];
     _kit.cameraPosition = [self.presetCfgView cameraPos];
     _kit.gpuOutputPixelFormat = [self.presetCfgView gpuOutputPixelFmt];
+    _kit.capturePixelFormat   = [self.presetCfgView gpuOutputPixelFmt];
+    // 以上两个像素格式可以任意组合 , 不是必须一样
     _kit.videoProcessingCallback = ^(CMSampleBufferRef buf){
         // 在此处添加自定义图像处理, 直接修改buf中的图像数据会传递到观众端
         // 或复制图像数据之后再做其他处理, 则观众端仍然看到处理前的图像
@@ -309,6 +311,8 @@
     self.miscView.liveSceneSeg.enabled = !bStart;
     self.miscView.vEncPerfSeg.enabled = !bStart;
     _miscView.swBypassRec.on = NO;
+    _miscView.autoReconnect.slider.enabled = !bStart;
+    _kit.maxAutoRetry = (int)_miscView.autoReconnect.slider.value;
     
     //判断是直播还是录制
     NSString* title = _ctrlView.btnStream.currentTitle;
@@ -411,6 +415,9 @@
     }
 }
 - (void) tryReconnect {
+    if (_kit.maxAutoRetry > 0){ // retry by kit
+        return;
+    }
     dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
     dispatch_after(delay, dispatch_get_main_queue(), ^{
         NSLog(@"try again");
@@ -418,6 +425,7 @@
         [_kit.streamerBase startStream:self.hostURL];
     });
 }
+
 - (void) onBypassRecordStateChange: (KSYRecordState) newState {
     if (newState == KSYRecordStateRecording){
         NSLog(@"start bypass record");
@@ -618,7 +626,6 @@
     if (self.ksyFilterView.curFilter != _kit.filter){
         // use a new filter
         [_kit setupFilter:self.ksyFilterView.curFilter];
-        [self onViewRotate];
     }
 }
 - (void) onFilterBtn:(id)sender{

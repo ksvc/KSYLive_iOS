@@ -118,6 +118,11 @@
  */
 @property (nonatomic, assign) BOOL          bWithAudio;
 
+/**
+ @abstract 是否处理Message (默认YES)
+ */
+@property (nonatomic, assign)BOOL           bWithMessage;
+
 #pragma mark - Status Notification
 
 /**
@@ -154,6 +159,12 @@
  @see streamState
  */
 @property (nonatomic, readonly) KSYStreamErrorCode streamErrorCode;
+
+/**
+ @abstract   发生推流状态变化时的回调函数
+ @discussion 参数为新状态
+ */
+@property (nonatomic, copy)void (^streamStateChange)(KSYStreamState newState);
 
 /**
  @abstract   获取错误码对应的字符串
@@ -247,6 +258,14 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
  @warning    目前只支持 单通道  S16 格式的PCM数据
  */
 - (void)processAudioSampleBuffer:(CMSampleBufferRef)sampleBuffer;
+
+/**
+ @abstract 处理一个消息
+ @param message message to process
+ @discussion 开始推流后发生相应事件时调用此接口
+ @warning
+ */
+- (void)processMessageData:(NSDictionary *)messageData;
 
 #pragma mark - Status property
 /**

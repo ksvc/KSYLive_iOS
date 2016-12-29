@@ -59,6 +59,11 @@ typedef void (^KSYPlyVideoDataBlock)(CMSampleBufferRef pixelBuffer);
 typedef void (^KSYPlyAudioDataBlock)(CMSampleBufferRef sampleBuffer);
 
 /**
+ @abstract message数据回调
+ */
+typedef void (^KSYPlyMessageDataBlock)(NSDictionary *message, int64_t pts, int64_t param);
+
+/**
  @abstract texture回调
  */
 typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double pts);
@@ -419,6 +424,15 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
  */
 @property (nonatomic, copy)KSYPlyAudioDataBlock audioDataBlock;
 
+/**
+ @abstract 消息数据回调
+ @discussion 调用[prepareToPlay]([KSYMediaPlayback prepareToPlay])方法之前设置生效，回调数据为同步完成后的数据
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 1.3.3 and later.
+ @see KSYPlyMessageDataBlock
+ */
+@property (nonatomic, copy)KSYPlyMessageDataBlock messageDataBlock;
+ 
 /**
  @abstract 视频图像texture回调
  @discussion 调用[prepareToPlay]([KSYMediaPlayback prepareToPlay])方法之前设置生效

@@ -39,6 +39,7 @@
     _liveSceneSeg  = [self addSegCtrlWithItems:@[ @"默认", @"秀场"]];
     _lblPerf       = [self addLable:@"编码性能"];
     _vEncPerfSeg   = [self addSegCtrlWithItems:@[ @"低功耗", @"均衡", @"高性能"]];
+    _autoReconnect = [self addSliderName:@"自动重连次数" From:0.0 To:10 Init:3];
     return self;
 }
 
@@ -55,6 +56,7 @@
     [self putRow:@[_btn4,_btn3]];
     [self putNarrow:_layerSeg andWide:_alphaSl];
     [self putRow:@[_lblRec, _swBypassRec, _lblRecDur]];
+    [self putRow1:_autoReconnect];
 }
 
 @synthesize liveScene = _liveScene;

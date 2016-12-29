@@ -124,6 +124,21 @@
  */
 @property (nonatomic, readonly) KSYStreamerBase        *streamerBase;
 
+#pragma mark - reconnect 
+/**
+ @abstract 自动重连次数 关闭(0), 开启(>0), 默认为0
+ @discussion 当内部发现推流错误后, 会在一段时间后尝试重连
+ 自动重连不会重新获取推流地址, 仍然使用上次推流的地址
+ @warning  如果在推流地址有过期时间, 请勿开启
+ */
+@property (nonatomic, assign) int          maxAutoRetry;
+
+/**
+ @abstract 自动重连延时, 发现连接错误后, 重试的延时
+ @discussion 单位为秒, 默认为2s, 最小值为0.1s
+ */
+@property (nonatomic, assign) double          autoRetryDelay;
+
 #pragma mark - layer & track ids
 /** 摄像头图层 */
 @property (nonatomic, readonly) NSInteger cameraLayer;
@@ -235,10 +250,15 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 @property (nonatomic, assign)   CGSize streamDimension;
 
 /**
+ @abstract   采集模块输出的像素格式 (默认:kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange)
+ @discussion 目前只支持 kCVPixelFormatType_32BGRA 和 kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange
+ @discussion 仅在开始推流前设置有效
+ */
+@property(nonatomic, assign) OSType capturePixelFormat;
+
+/**
  @abstract  gpu output pixel format (默认:kCVPixelFormatType_32BGRA)
- @discussion 目前只支持 kCVPixelFormatType_32BGRA 和 kCVPixelFormatType_4444AYpCbCr8
- @discussion kCVPixelFormatType_4444AYpCbCr8 的排列顺序为 (A Y' Cb Cr)
- @discussion 其他非法都会被当做 kCVPixelFormatType_32BGRA 处理
+ @discussion 目前支持 BGRA , NV12 和 I420
  @discussion 仅在开始推流前设置有效
  */
 @property(nonatomic, assign) OSType gpuOutputPixelFormat;
@@ -257,7 +277,7 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 @property (nonatomic, assign) AVCaptureDevicePosition   cameraPosition;
 
 /**
- @abstract   摄像头朝向
+ @abstract   摄像头朝向, 只在启动采集前设置有效
  @discussion 参见UIInterfaceOrientation
  @discussion 竖屏时: width < height
  @discussion 横屏时: width > height
@@ -359,26 +379,29 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 - (void) setupFilter:(GPUImageOutput<GPUImageInput>*) filter;
 
 #pragma mark -  mirror & rotate
-/**
- @abstract 预览设置成镜像模式，默认为NO
-*/
+/** 预览设置成镜像模式，默认为NO */
 @property (nonatomic, assign) BOOL previewMirrored;
 
-/**
-  @abstract 推流设置成镜像模式,默认为NO
-*/
+/** 推流设置成镜像模式,默认为NO */
 @property (nonatomic, assign) BOOL streamerMirrored;
 
+/** 预览图像朝向, 如果UI能够旋转,需要保持和UI的朝向一致 */
+@property (nonatomic, assign) UIInterfaceOrientation previewOrientation;
+
+/** 推流图像朝向, 如果UI能够旋转, 可以跟随旋转,也可以不修改 */
+@property (nonatomic, assign) UIInterfaceOrientation streamOrientation;
 /**
  @abstract   根据UI的朝向旋转预览视图, 保证预览视图全屏铺满窗口
  @param      orie 旋转到目标朝向, 需要从demo中获取UI的朝向传入
  @discussion 采集到的图像的朝向还是和启动时的朝向一致
+ @discussion 此函数与 previewOrientation的set函数功能一样
  */
 - (void) rotatePreviewTo: (UIInterfaceOrientation) orie;
 
 /**
- @abstract 根据UI的朝向旋转推流画面
+ @abstract 根据UI的朝向旋转推流画面, 这个是可以选的,可以不跟随旋转
  @param    orie 旋转到目标朝向, 需要从demo中获取UI的朝向传入
+ @discussion 此函数与 streamOrientation 的set函数功能一样
  */
 - (void) rotateStreamTo: (UIInterfaceOrientation) orie;
 

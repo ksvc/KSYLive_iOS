@@ -9,11 +9,15 @@
 
 #define FLOAT_EQ( f0, f1 ) ( (f0 - f1 < 0.0001)&& (f0 - f1 > -0.0001) )
 
+#define WeakObj(o) try{}@finally{} __weak typeof(o) o##Weak = o;
+
 @interface KSYGPUStreamerKit (){
     dispatch_queue_t _capDev_q;
     NSLock   *       _quitLock;  // ensure capDev closed before dealloc
     GPUImagePicture *_textPic;
     CGFloat _previewRotateAng;
+    int            _autoRetryCnt;
+    BOOL           _bRetry;
 }
 @end
 
@@ -67,6 +71,12 @@
     _audioProcessingCallback = nil;
     _interruptCallback       = nil;
     _gpuOutputPixelFormat = kCVPixelFormatType_32BGRA;
+    _capturePixelFormat   = kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange;
+    
+    _autoRetryCnt    = 0;
+    _maxAutoRetry    = 0;
+    _autoRetryDelay  = 2.0;
+    _bRetry          = NO;
     
     // 图层和音轨的初始化
     _cameraLayer  = 0;
@@ -83,7 +93,9 @@
     if(_vCapDev == nil) {
         return nil;
     }
-    _vCapDev.outputImageOrientation = UIInterfaceOrientationPortrait;
+    _vCapDev.outputImageOrientation =
+    _previewOrientation =
+    _streamOrientation  = UIInterfaceOrientationPortrait;
     //Session模块
     _avAudioSession = [[KSYAVAudioSession alloc] init];
     _avAudioSession.bInterruptOtherAudio = bInter;
@@ -129,6 +141,10 @@
 
     // 组装音频通道
     [self setupAudioPath];
+    @WeakObj(self);
+    _streamerBase.streamStateChange = ^(KSYStreamState state) {
+        [selfWeak onStreamState:state];
+    };
     return self;
 }
 - (instancetype)init {
@@ -186,6 +202,9 @@
     [self addPic:src       ToMixerAt:_cameraLayer];
     [self addPic:_logoPic  ToMixerAt:_logoPicLayer];
     [self addPic:_textPic  ToMixerAt:_logoTxtLayer];
+}
+
+- (void) setupVMixer {
     // 混合后的图像输出到预览和推流
     [_vPreviewMixer removeAllTargets];
     [_vPreviewMixer addTarget:_preview];
@@ -193,9 +212,12 @@
     [_vStreamMixer  removeAllTargets];
     [_vStreamMixer  addTarget:_gpuToStr];
     // 设置镜像
+    [self setPreviewOrientation:_previewOrientation];
+    [self setStreamOrientation:_streamOrientation];
     [self setPreviewMirrored:_previewMirrored];
     [self setStreamerMirrored:_streamerMirrored];
 }
+
 // 添加图层到 vMixer 中
 - (void) addPic:(GPUImageOutput*)pic ToMixerAt: (NSInteger)idx{
     if (pic == nil){
@@ -213,6 +235,7 @@
     __weak KSYGPUStreamerKit * kit = self;
     // 前处理 和 图像 mixer
     [self setupFilter:_filter];
+    [self setupVMixer];
     // 采集到的画面上传GPU
     _vCapDev.videoProcessingCallback = ^(CMSampleBufferRef buf) {
         [kit.capToGpu processSampleBuffer:buf];
@@ -352,6 +375,7 @@
         [self rotateStreamTo: _videoOrientation ];
         // 连接
         [self setupFilter:_filter];
+        [self setupVMixer];
         // 开始预览
         [_vCapDev startCameraCapture];
         [_aCapDev startCapture];
@@ -384,7 +408,6 @@
     });
 }
 
-
 /**  进入后台 */
 - (void) appEnterBackground {
     // 进入后台时, 将预览从图像混合器中脱离, 避免后台OpenGL渲染崩溃
@@ -396,11 +419,57 @@
 /** 回到前台 */
 - (void) appBecomeActive{
     // 回到前台, 重新连接预览
-    [self setupFilter:_filter];
+    [self setupVMixer];
     [_aCapDev  resumeCapture];
     _gpuToStr.bAutoRepeat = NO;
 }
+#pragma mark - try reconnect
+- (void) onStreamState : (KSYStreamState) stat {
+    if (stat == KSYStreamStateError){
+        [self onStreamError:_streamerBase.streamErrorCode];
+    }
+    else if (stat == KSYStreamStateConnected){
+        _autoRetryCnt = _maxAutoRetry;
+        _bRetry = NO;
+    }
+}
+- (void) onStreamError: (KSYStreamErrorCode) errCode {
+    if (errCode == KSYStreamErrorCode_CONNECT_BREAK ||
+        errCode == KSYStreamErrorCode_AV_SYNC_ERROR ||
+        errCode == KSYStreamErrorCode_Connect_Server_failed ||
+        errCode == KSYStreamErrorCode_DNS_Parse_failed ||
+        errCode == KSYStreamErrorCode_CODEC_OPEN_FAILED) {
+        if (_bRetry == NO){
+            [self tryReconnect];
+        }
+    }
+}
+- (void) tryReconnect {
+    _bRetry = YES;
+    int64_t delaySec = (int64_t)(_autoRetryDelay * NSEC_PER_SEC);
+    dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, delaySec);
+    dispatch_after(delay, dispatch_get_main_queue(), ^{
+        if (_autoRetryCnt <= 0) {
+            _bRetry = NO; // reach max retry, stop
+            return;
+        }
+        NSLog(@"retry connect %d/%d", _autoRetryCnt, _maxAutoRetry);
+        _autoRetryCnt--;
+        [_streamerBase startStream:_streamerBase.hostURL];
+        [self tryReconnect];// schedule next retry
+    });
+}
+@synthesize autoRetryDelay = _autoRetryDelay;
+-(void) setAutoRetryDelay:(double)autoRetryDelay {
+    _autoRetryDelay = MAX(0.1, autoRetryDelay);
+}
+@synthesize maxAutoRetry = _maxAutoRetry;
+-(void) setMaxAutoRetry:(int)maxAutoRetry {
+    _maxAutoRetry = MAX(0, maxAutoRetry);
+    _autoRetryCnt = _maxAutoRetry;
+}
 
+#pragma mark - Dimension
 /**
  @abstract   查询实际的采集分辨率
  @discussion 参见iOS的 AVCaptureSessionPresetXXX的定义
@@ -493,8 +562,13 @@
 
 @synthesize videoOrientation = _videoOrientation;
 - (void) setVideoOrientation: (UIInterfaceOrientation) orie {
+    if (_vCapDev.isRunning){
+        return;
+    }
+    _previewOrientation =
+    _streamOrientation  =
+    _videoOrientation   =
     _vCapDev.outputImageOrientation = orie;
-    _videoOrientation = orie;
 }
 - (UIInterfaceOrientation) videoOrientation{
     return _vCapDev.outputImageOrientation;
@@ -647,13 +721,28 @@
     [self addPic:_textPic ToMixerAt:_logoTxtLayer];
     [_textPic processImage];
 }
+@synthesize capturePixelFormat = _capturePixelFormat;
+- (void)setCapturePixelFormat: (OSType) fmt {
+    if (_vCapDev.isRunning){
+        return;
+    }
+    if(fmt != kCVPixelFormatType_32BGRA ){
+        fmt = kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange;
+    }
+    _capturePixelFormat = fmt;
+    _vCapDev.outputPixelFmt = fmt;
+    _capToGpu =[[KSYGPUPicInput alloc] initWithFmt:fmt];
+    [self setupVideoPath];
+    [self updatePreDimension];
+}
 /// 设置gpu输出的图像像素格式
 @synthesize gpuOutputPixelFormat = _gpuOutputPixelFormat;
 - (void)setGpuOutputPixelFormat: (OSType) fmt {
     if ([_streamerBase isStreaming]){
         return;
     }
-    if( fmt !=  kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange){
+    if( fmt !=  kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange ||
+        fmt !=  kCVPixelFormatType_420YpCbCr8Planar ){
         fmt = kCVPixelFormatType_32BGRA;
     }
     _gpuOutputPixelFormat = fmt;
@@ -723,12 +812,16 @@ M_PI_2*3,M_PI_2*1, M_PI_2*0, M_PI_2*2,
 M_PI_2*1,M_PI_2*3, M_PI_2*2, M_PI_2*0,
 };
 
+- (void) setPreviewOrientation:(UIInterfaceOrientation)previewOrientation {
+    [self rotateStreamTo:previewOrientation];
+}
 /**
  @abstract 根据UI的朝向旋转预览视图, 保证预览视图全屏铺满窗口
  @discussion 采集到的图像的朝向还是和启动时的朝向一致
  */
 - (void) rotatePreviewTo: (UIInterfaceOrientation) orie {
     dispatch_async(dispatch_get_main_queue(), ^(){
+        _previewOrientation = orie;
         UIView* view = [_preview superview];
         if (_videoOrientation == orie || view == nil || _vCapDev.isRunning == NO ) {
             _preview.transform = CGAffineTransformIdentity;
@@ -751,10 +844,14 @@ const static GPUImageRotationMode KSYRotateMode [4] [4] = {
  kGPUImageRotateLeft,kGPUImageRotateRight, kGPUImageNoRotation,   kGPUImageRotate180,
 kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRotation,
 };
+-(void) setStreamOrientation:(UIInterfaceOrientation)streamOrientation {
+    [self rotateStreamTo:streamOrientation];
+}
 /**
  @abstract 根据UI的朝向旋转推流画面
  */
 - (void) rotateStreamTo: (UIInterfaceOrientation) orie {
+    _streamOrientation = orie;
     if (_videoOrientation == orie || _vCapDev.isRunning == NO) {
         [_gpuToStr setInputRotation:kGPUImageNoRotation atIndex:0];
     }

@@ -97,6 +97,7 @@
                         <NodeRef refid="56"/>
                         <NodeRef refid="57"/>
                         <NodeRef refid="58"/>
+                        <NodeRef refid="59"/>
                         
                     </Subnodes>
                 </Node>
@@ -1185,11 +1186,16 @@
             
         </Node>
         <Node id="57" type="file" documentType="reference">
+            <Name>KSYPlyMessageDataBlock</Name>
+            <Path>Blocks/KSYPlyMessageDataBlock.html</Path>
+            
+        </Node>
+        <Node id="58" type="file" documentType="reference">
             <Name>KSYPlyTextureBlock</Name>
             <Path>Blocks/KSYPlyTextureBlock.html</Path>
             
         </Node>
-        <Node id="58" type="file" documentType="reference">
+        <Node id="59" type="file" documentType="reference">
             <Name>KSYPlyVideoDataBlock</Name>
             <Path>Blocks/KSYPlyVideoDataBlock.html</Path>
             
