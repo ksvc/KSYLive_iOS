@@ -62,6 +62,8 @@
 		
 		<option value="//api/name/audioProcessingCallback">audioProcessingCallback</option>
 		
+		<option value="//api/name/autoRetryDelay">autoRetryDelay</option>
+		
 		<option value="//api/name/avAudioSession">avAudioSession</option>
 		
 		<option value="//api/name/bgmPlayer">bgmPlayer</option>
@@ -75,6 +77,8 @@
 		<option value="//api/name/capPreset">capPreset</option>
 		
 		<option value="//api/name/capToGpu">capToGpu</option>
+		
+		<option value="//api/name/capturePixelFormat">capturePixelFormat</option>
 		
 		<option value="//api/name/captureState">captureState</option>
 		
@@ -96,6 +100,8 @@
 		
 		<option value="//api/name/logoTxtLayer">logoTxtLayer</option>
 		
+		<option value="//api/name/maxAutoRetry">maxAutoRetry</option>
+		
 		<option value="//api/name/micTrack">micTrack</option>
 		
 		<option value="//api/name/pinchZoomFactor">pinchZoomFactor</option>
@@ -106,7 +112,11 @@
 		
 		<option value="//api/name/previewMirrored">previewMirrored</option>
 		
+		<option value="//api/name/previewOrientation">previewOrientation</option>
+		
 		<option value="//api/name/streamDimension">streamDimension</option>
+		
+		<option value="//api/name/streamOrientation">streamOrientation</option>
 		
 		<option value="//api/name/streamerBase">streamerBase</option>
 		
@@ -920,6 +930,99 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/maxAutoRetry" title="maxAutoRetry"></a>
+	<h3 class="method-title"><code><a href="#//api/name/maxAutoRetry">&nbsp;&nbsp;maxAutoRetry</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>自动重连次数 关闭(0), 开启(>0), 默认为0</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int maxAutoRetry</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>当内部发现推流错误后, 会在一段时间后尝试重连
+自动重连不会重新获取推流地址, 仍然使用上次推流的地址</p><div class="warning"><p><strong>Warning:</strong> 如果在推流地址有过期时间, 请勿开启</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/autoRetryDelay" title="autoRetryDelay"></a>
+	<h3 class="method-title"><code><a href="#//api/name/autoRetryDelay">&nbsp;&nbsp;autoRetryDelay</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>自动重连延时, 发现连接错误后, 重试的延时</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) double autoRetryDelay</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>单位为秒, 默认为2s, 最小值为0.1s</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/cameraLayer" title="cameraLayer"></a>
 	<h3 class="method-title"><code><a href="#//api/name/cameraLayer">&nbsp;&nbsp;cameraLayer</a></code>
 </h3>
@@ -1666,6 +1769,52 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/capturePixelFormat" title="capturePixelFormat"></a>
+	<h3 class="method-title"><code><a href="#//api/name/capturePixelFormat">&nbsp;&nbsp;capturePixelFormat</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>采集模块输出的像素格式 (默认:kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) OSType capturePixelFormat</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>目前只支持 kCVPixelFormatType_32BGRA 和 kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange</p><p>仅在开始推流前设置有效</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/gpuOutputPixelFormat" title="gpuOutputPixelFormat"></a>
 	<h3 class="method-title"><code><a href="#//api/name/gpuOutputPixelFormat">&nbsp;&nbsp;gpuOutputPixelFormat</a></code>
 </h3>
@@ -1694,7 +1843,7 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>目前只支持 kCVPixelFormatType_32BGRA 和 kCVPixelFormatType_4444AYpCbCr8</p><p>kCVPixelFormatType_4444AYpCbCr8 的排列顺序为 (A Y' Cb Cr)</p><p>其他非法都会被当做 kCVPixelFormatType_32BGRA 处理</p><p>仅在开始推流前设置有效</p>
+				<p>目前支持 BGRA , NV12 和 I420</p><p>仅在开始推流前设置有效</p>
 			</div>
 			
 
@@ -1815,7 +1964,7 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 			
 			
 			<div class="method-subsection brief-description">
-				<p>摄像头朝向</p>
+				<p>摄像头朝向, 只在启动采集前设置有效</p>
 			</div>
 			
 		    
@@ -2400,6 +2549,88 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/previewOrientation" title="previewOrientation"></a>
+	<h3 class="method-title"><code><a href="#//api/name/previewOrientation">&nbsp;&nbsp;previewOrientation</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>预览图像朝向, 如果UI能够旋转,需要保持和UI的朝向一致</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) UIInterfaceOrientation previewOrientation</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/streamOrientation" title="streamOrientation"></a>
+	<h3 class="method-title"><code><a href="#//api/name/streamOrientation">&nbsp;&nbsp;streamOrientation</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>推流图像朝向, 如果UI能够旋转, 可以跟随旋转,也可以不修改</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) UIInterfaceOrientation streamOrientation</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/rotatePreviewTo:" title="rotatePreviewTo:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/rotatePreviewTo:">&ndash;&nbsp;rotatePreviewTo:</a></code>
 </h3>
@@ -2440,7 +2671,7 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>采集到的图像的朝向还是和启动时的朝向一致</p>
+				<p>采集到的图像的朝向还是和启动时的朝向一致</p><p>此函数与 previewOrientation的set函数功能一样</p>
 			</div>
 			
 
@@ -2469,7 +2700,7 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 			
 			
 			<div class="method-subsection brief-description">
-				<p>根据UI的朝向旋转推流画面</p>
+				<p>根据UI的朝向旋转推流画面, 这个是可以选的,可以不跟随旋转</p>
 			</div>
 			
 		    
@@ -2495,6 +2726,11 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 
 			
 
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>此函数与 <a href="#//api/name/streamOrientation">streamOrientation</a> 的set函数功能一样</p>
+			</div>
 			
 
 			
@@ -2959,7 +3195,7 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-12-16</p>
+						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-12-29</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

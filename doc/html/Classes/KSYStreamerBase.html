@@ -62,6 +62,8 @@
 		
 		<option value="//api/name/bWithAudio">bWithAudio</option>
 		
+		<option value="//api/name/bWithMessage">bWithMessage</option>
+		
 		<option value="//api/name/bWithVideo">bWithVideo</option>
 		
 		<option value="//api/name/bwEstimateMode">bwEstimateMode</option>
@@ -108,6 +110,8 @@
 		
 		<option value="//api/name/streamState">streamState</option>
 		
+		<option value="//api/name/streamStateChange">streamStateChange</option>
+		
 		<option value="//api/name/uploadedKByte">uploadedKByte</option>
 		
 		<option value="//api/name/videoCodec">videoCodec</option>
@@ -149,6 +153,8 @@
 		<option value="//api/name/muteStreame:">- muteStreame:</option>
 		
 		<option value="//api/name/processAudioSampleBuffer:">- processAudioSampleBuffer:</option>
+		
+		<option value="//api/name/processMessageData:">- processMessageData:</option>
 		
 		<option value="//api/name/processVideoPixelBuffer:timeInfo:">- processVideoPixelBuffer:timeInfo:</option>
 		
@@ -954,6 +960,47 @@ eg: /var/xxxxx/xxx.mp4  /var/xxxxx/xxx.flv
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/bWithMessage" title="bWithMessage"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bWithMessage">&nbsp;&nbsp;bWithMessage</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>是否处理Message (默认YES)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL bWithMessage</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/streamState" title="streamState"></a>
 	<h3 class="method-title"><code><a href="#//api/name/streamState">&nbsp;&nbsp;streamState</a></code>
 </h3>
@@ -1149,6 +1196,52 @@ eg: /var/xxxxx/xxx.mp4  /var/xxxxx/xxx.flv
 					
 				</ul>
 			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/streamStateChange" title="streamStateChange"></a>
+	<h3 class="method-title"><code><a href="#//api/name/streamStateChange">&nbsp;&nbsp;streamStateChange</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>发生推流状态变化时的回调函数</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) void ( ^ ) ( KSYStreamState newState ) streamStateChange</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>参数为新状态</p>
+			</div>
+			
+
+			
+
 			
 
 			
@@ -1687,6 +1780,65 @@ eg: /var/xxxxx/xxx.mp4  /var/xxxxx/xxx.flv
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>应当在开始推流前定期调用此接口，与processVideoSampleBuffer 交错进行</p><div class="warning"><p><strong>Warning:</strong> 目前只支持 单通道  S16 格式的PCM数据</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/processMessageData:" title="processMessageData:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/processMessageData:">&ndash;&nbsp;processMessageData:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>处理一个消息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)processMessageData:(NSDictionary *)<em>messageData</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>message</code></th>
+						<td><p>message to process</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>开始推流后发生相应事件时调用此接口
+@warning</p>
 			</div>
 			
 
@@ -2745,7 +2897,7 @@ eg: /private/var/mobile/Containers/Data/Application/APPID/tmp/test.mp4</p><p>如
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-12-16</p>
+						<p class="copyright">Copyright &copy; 2016 Kingsoft. All rights reserved. Updated: 2016-12-29</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

@@ -19,6 +19,7 @@
 
 @implementation KSYPlayerVC{
     UILabel *stat;
+    UILabel *msg;
     NSTimer* timer;
     double lastSize;
     NSTimeInterval lastCheckTime;
@@ -47,11 +48,15 @@
     BOOL usingReset;
     BOOL shouldMute;
     
+    BOOL reloading;
+    
     long long int prepared_time;
     int fvr_costtime;
     int far_costtime;
 	int rotate_degress;
 	int content_mode;
+    
+    int msgNum;
 }
 
 - (instancetype)initWithURL:(NSURL *)url {
@@ -74,8 +79,14 @@
     leftSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
     UISwipeGestureRecognizer *rightSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
     rightSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    UISwipeGestureRecognizer *upSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
+    upSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionUp;
+    UISwipeGestureRecognizer *downSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
+    downSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionDown;
     [self.view addGestureRecognizer:leftSwipeRecognizer];
     [self.view addGestureRecognizer:rightSwipeRecognizer];
+    [self.view addGestureRecognizer:upSwipeRecognizer];
+    [self.view addGestureRecognizer:downSwipeRecognizer];
     
     // 该变量决定停止播放时使用的接口，YES时调用reset接口，NO时调用stop接口
     usingReset = YES;
@@ -132,6 +143,13 @@
     stat.textAlignment = NSTextAlignmentLeft;
     [self.view addSubview:stat];
     
+    msg = [[UILabel alloc] init];
+    msg .backgroundColor = [UIColor clearColor];
+    msg .textColor = [UIColor blueColor];
+    msg .numberOfLines = -1;
+    msg .textAlignment = NSTextAlignmentLeft;
+    [self.view addSubview:msg ];
+    
     lableHWCodec = [[UILabel alloc] init];
     lableHWCodec.text = @"硬解码";
     lableHWCodec.textColor = [UIColor lightGrayColor];
@@ -160,7 +178,11 @@
     
     [self.view bringSubviewToFront:stat];
     stat.frame = [UIScreen mainScreen].bounds;
+    
+    [self.view bringSubviewToFront:msg];
+    msg.frame = [UIScreen mainScreen].bounds;
 }
+
 - (UIButton *)addButtonWithTitle:(NSString *)title action:(SEL)action{
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button setTitle:title forState: UIControlStateNormal];
@@ -173,6 +195,7 @@
     [self.view addSubview:button];
     return button;
 }
+
 - (void) layoutUI {
     CGFloat wdt = self.view.bounds.size.width;
     CGFloat hgt = self.view.bounds.size.height;
@@ -292,6 +315,7 @@
         NSLog(@"KSYPlayerVC: %@ -- ip:%@", [[_player contentURL] absoluteString], serverIp);
         [self StartTimer];
         prepared_time = (long long int)([self getCurrentTime] * 1000);
+        reloading = NO;
     }
     if (MPMoviePlayerPlaybackStateDidChangeNotification ==  notify.name) {
         NSLog(@"------------------------");
@@ -350,6 +374,16 @@
     if (MPMoviePlayerSuggestReloadNotification == notify.name)
     {
         NSLog(@"suggest using reload function!\n");
+        if(!reloading)
+        {
+            reloading = YES;
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(){
+                if (_player) {
+                    NSLog(@"reload stream");
+                    [_player reload:_reloadUrl flush:YES mode:MPMovieReloadMode_Accurate];
+                }
+            });
+        }
 	}
     
     if(MPMoviePlayerPlaybackStatusNotification == notify.name)
@@ -487,6 +521,22 @@
         }
     };
 #endif
+        __weak KSYPlayerVC *weakSelf = self;
+        _player.messageDataBlock = ^(NSDictionary *message, int64_t pts, int64_t param){
+            if(message)
+            {
+                NSMutableString *msgString = [[NSMutableString alloc] init];
+                NSEnumerator * enumeratorKey = [message keyEnumerator];
+                //快速枚举遍历所有KEY的值
+                for (NSObject *object in enumeratorKey) {
+                    [msgString appendFormat:@"\"%@\":\"%@\"\n", object, [message objectForKey:object]];
+                }
+
+                if(weakSelf)
+                    [weakSelf updateMsg:msgString];
+            }
+        };
+        
     stat.text = [NSString stringWithFormat:@"url %@", aURL];
     _player.controlStyle = MPMovieControlStyleNone;
     [_player.view setFrame: videoView.bounds];  // player's frame must match parent's
@@ -652,11 +702,11 @@
                  "首包到达用时（连接建立后）:%ldms\n"
                  "音频缓冲队列长度:%.1fMB\n"
                  "音频缓冲队列时长:%.1fs\n"
-                 "音频缓冲区数据量:%.1fMB\n"
+                 "已下载音频数据量:%.1fMB\n"
                  "视频缓冲队列长度:%.1fMB\n"
                  "视频缓冲队列时长:%.1fs\n"
-                 "视频缓冲区数据量:%.1fMB\n"
-                 "缓冲区总数据量%.1fMB\n"
+                 "已下载视频数据量:%.1fMB\n"
+                 "已下载总数据量%.1fMB\n"
                  "解码帧率:%.2f 显示帧率:%.2f\n",
 
                  [_player getVersion],
@@ -721,6 +771,7 @@
     [self StopTimer];
     [self dismissViewControllerAnimated:FALSE completion:nil];
     stat.text = nil;
+    msg.text = nil;
 }
 
 - (IBAction)onRotate:(id)sender {
@@ -832,6 +883,23 @@
         CGRect originalFrame = stat.frame;
         stat.frame = CGRectMake(-originalFrame.size.width, originalFrame.origin.y, originalFrame.size.width, originalFrame.size.height);
     }
+    if(swpie.direction == UISwipeGestureRecognizerDirectionDown) {
+        CGRect originalFrame = msg.frame;
+        msg.frame =  CGRectMake(0, originalFrame.origin.y, originalFrame.size.width, originalFrame.size.height);
+    }
+    if(swpie.direction == UISwipeGestureRecognizerDirectionUp) {
+        CGRect originalFrame = msg.frame;
+        msg.frame =  CGRectMake(-originalFrame.size.width, originalFrame.origin.y, originalFrame.size.width, originalFrame.size.height);
+    }
+}
+
+- (void)updateMsg : (NSString *)msgString {
+    if(msgNum == 0)
+        msg.text = @"message is : \n";
+    msg.text = [msg.text stringByAppendingString:@"\n"];
+    msg.text = [msg.text stringByAppendingString:msgString];
+    if(++msgNum >= 3)
+        msgNum  = 0;
 }
 
 @end
