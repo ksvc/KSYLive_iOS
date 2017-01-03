@@ -106,24 +106,28 @@ $ git clone https://code.csdn.net/ksvc/ksylive_ios.git  --depth 1
 
 #### 3.2.3 使用Cocoapods 进行安装    
 通过Cocoapods 能将本SDK的静态库和代码下载到本地，只需要将类似如下语句中的一句加入你的Podfile：   
-```
-// 本地开发版 (sdk clone或下载到本地后)
+```ruby
+# 本地开发版 (sdk clone或下载到本地后)
 pod 'libksygpulive/libksygpulive', :path => '../'
 
-// 私有库 (直接指定SDK的github仓库地址)
+# 私有库 (直接指定SDK的github仓库地址)
 pod 'libksygpulive/libksygpulive', :git => 'https://github.com/ksvc/KSYLive_iOS.git'
 
-// 私有库 (直接指定SDK的github仓库地址和版本号)
+# 私有库 (直接指定SDK的github仓库地址和版本号)
 pod 'libksygpulive/libksygpulive', :git => 'https://github.com/ksvc/KSYLive_iOS.git', :tag => 'v1.8.0'
 
-// 从cocoapod官方库Trunk获取spec, 从github下载sdk
+# 更新repo
+pod repo update
+
+# 从cocoapod官方库Trunk获取spec, 从github下载sdk
 pod 'libksygpulive/libksygpulive'
 
-// 从cocoapod官方库Trunk获取spec, 从金山云存储 ks3 下载sdk (国内速度较快)
+# 从cocoapod官方库Trunk获取spec, 从金山云存储 ks3 下载sdk (国内速度较快)
 pod 'libksygpulive_ks3/libksygpulive'
 ```     
-执行 pod install即可.    
-注意: 不能将以上四条语句都加入Podfile, 他们作用是一样的, 只是Podspec读取位置不同.
+执行 pod install即可.      
+* 注意1: 不能将以上语句都加入Podfile, 他们作用是一样的, 只是Podspec读取位置不同.
+* 注意2: 如果pod install 时出现无法找到specification的提示, 请先更新repo     
 
 其中, libksygpulive为子模块, 为了满足不同用户的需求, libksygpulive中提供了4个不同的子模块:    
 * KSYMediaPlayer     : 用于直播的播放内核(支持格式精简)
