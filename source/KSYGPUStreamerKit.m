@@ -238,10 +238,10 @@
     [self setupVMixer];
     // 采集到的画面上传GPU
     _vCapDev.videoProcessingCallback = ^(CMSampleBufferRef buf) {
-        [kit.capToGpu processSampleBuffer:buf];
         if ( kit.videoProcessingCallback ){
             kit.videoProcessingCallback(buf);
         }
+        [kit.capToGpu processSampleBuffer:buf];
     };
     // GPU 上的数据导出到streamer
     _gpuToStr.videoProcessingCallback = ^(CVPixelBufferRef pixelBuffer, CMTime timeInfo){
