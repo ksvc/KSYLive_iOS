@@ -167,6 +167,8 @@ Bugly.framework  GPUImage.framework  libksygpulive.framework
 ```
 参数的详细说明请参考脚本release-libKSYLive.sh的帮助(./release-libKSYLive.sh -h)或[动态库第4点说明](https://github.com/ksvc/KSYLive_iOS/wiki/dylib).
 
+其中, Bugly.framework 是为了收集demo的崩溃信息用的, 仅仅demo里用到了, 用户集成SDK到自己的项目中时, 不依赖Bugly.
+
 * 给demo添加库依赖选项
 
 打开demo目录下的KSYLiveDemo.xcodeproj, 修改KSYLiveDemo项目的配置文件:  
@@ -183,12 +185,10 @@ FRAMEWORK_SEARCH_PATHS = $(inherited) ../framework/ ../framework/static
 ### 3.4 添加头文件到需要使用本SDK的文件中
 ```
 #import <GPUImage/GPUImage.h>
-#import <libksygpulive/libksygpuimage.h>
-#import "KSYGPUStreamerKit.h"
+#import <libksygpulive/KSYGPUStreamerKit.h>
 ```
-以上三个头文件都是需要引入的：   
+以上两个头文件都是需要引入的：  
 * GPUImage.h是因为依赖第三方framework需要引入的
-* libksygpuimage.h 是SDK对外的的头文件
 * KSYGPUStreamerKit.h 为开放的顶层kit类, kit类可以直接使用, 也可以自行修改
 
 * 当需要自定义修改GPUImage时，GPUImage的版本要求是0.1.7
