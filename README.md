@@ -167,7 +167,7 @@ Bugly.framework  GPUImage.framework  libksygpulive.framework
 ```
 参数的详细说明请参考脚本release-libKSYLive.sh的帮助(./release-libKSYLive.sh -h)或[动态库第4点说明](https://github.com/ksvc/KSYLive_iOS/wiki/dylib).
 
-其中, Bugly.framework 是为了收集demo的崩溃信息用的, 仅仅demo里用到了, 用户集成SDK到自己的项目中时, 不依赖Bugly.
+> Bugly.framework 是为了收集demo的崩溃信息用的(仅仅demo里用到). 集成SDK到用户项目中时,不依赖Bugly.
 
 * 给demo添加库依赖选项
 
