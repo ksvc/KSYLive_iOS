@@ -113,6 +113,28 @@
     }
     _yPos += (_btnH + _gap);
 }
+- (void) putRowFit:(NSArray *) subV {
+    NSInteger cnt = [subV count];
+    if ( cnt < 1){
+        return ;
+    }
+    CGFloat xPos = [self getXStart];
+    CGFloat step = 0;
+    CGFloat yPos = _yPos > self.height ? _yPos - self.height : _yPos;
+    for (id item in subV) {
+        if ([item isKindOfClass:[UIView class]]){
+            UIView * v = item;
+            [v sizeToFit];
+            step = v.frame.size.width;
+            v.frame = CGRectMake(xPos, yPos, step, _btnH);
+            xPos += step;
+        }
+        else {
+            xPos += 5;
+        }
+    }
+    _yPos += (_btnH + _gap);
+}
 
 - (void) putRow1:(UIView*)subV {
     CGFloat yPos = _yPos > self.height ? _yPos - self.height : _yPos;

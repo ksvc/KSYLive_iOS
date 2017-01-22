@@ -27,6 +27,7 @@
 
 /// 纯音频推流开关 ( 纯音频 == 关闭视频 )
 @property UISwitch      * swAudioOnly;
+@property UILabel       * lblAudioOnly;
 /// 静音推流开关 ( 发送音量为0的音频数据 )
 @property UISwitch      * muteStream;
 

@@ -29,6 +29,7 @@
     [self addSubview:_lblStat];
     // format
     _lblNetwork.textAlignment = NSTextAlignmentCenter;
+    _btnStream.backgroundColor = [UIColor darkGrayColor];
     
     // add menu
     NSMutableArray * btnArray = [[NSMutableArray alloc] init];

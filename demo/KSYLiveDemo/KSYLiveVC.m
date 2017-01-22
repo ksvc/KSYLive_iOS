@@ -14,6 +14,8 @@
 #import "KSYSQLite.h"
 #import "KSYDBCreater.h"
 #import "KSYPresetCfgVC.h"
+#import "KSYRecordVC.h"
+#import "KSYNetTrackerVC.h"
 
 @interface KSYLiveVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>{
     UITextField     *_textFiled;
@@ -36,8 +38,9 @@
     self.title = @"KSYDEMO";
     self.view.backgroundColor = [UIColor whiteColor];
     _addressMulArray = [NSMutableArray new];
-    NSString *devCode  = [ [[[UIDevice currentDevice] identifierForVendor] UUIDString] substringToIndex:3];
-    NSString *streamSrv  = @"rtmp://test.uplive.ksyun.com/live";
+    NSString * uuidStr =[[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    NSString *devCode  = [[uuidStr substringToIndex:3] lowercaseString];
+    NSString *streamSrv  = @"rtmp://test.uplive.ks-cdn.com/live";
     NSString *streamUrl      = [ NSString stringWithFormat:@"%@/%@", streamSrv, devCode];
     NSString *playUrl  = @"rtmp://live.hkstv.hk.lxdns.com/live/hks";
     NSString *recordFile = @"RecordAv.mp4";
@@ -91,7 +94,9 @@
                     @"文件格式探测",
                     @"播放自动化测试 ",
                     @"推流demo",
-                    @"录制短视频",
+                    @"录制推流短视频",
+                    @"录制播放短视频",
+                    @"网络探测",
                     nil];
 }
 
@@ -219,6 +224,12 @@
                     [preVC.cfgView.btn0 setTitle:@"开始录制" forState:UIControlStateNormal];
                     vc = preVC;
                 }
+            }
+            else if(indexPath.row == 5){
+                vc = [[KSYRecordVC alloc]initWithURL:url];
+            }
+            else if(indexPath.row == 6){
+                vc = [[KSYNetTrackerVC alloc]init];
             }
             
             if (vc){

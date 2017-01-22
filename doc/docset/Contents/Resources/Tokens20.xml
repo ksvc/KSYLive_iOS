@@ -279,7 +279,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setBAutoRepeat:</TokenIdentifier>
-			<Abstract type="html">当视频采集被打断时是否主动提供重复图像</Abstract>
+			<Abstract type="html">是否冻结图像(主动提供重复图像)</Abstract>
 			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readwrite) BOOL bAutoRepeat</Declaration>
@@ -291,7 +291,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/bAutoRepeat</TokenIdentifier>
-			<Abstract type="html">当视频采集被打断时是否主动提供重复图像</Abstract>
+			<Abstract type="html">是否冻结图像(主动提供重复图像)</Abstract>
 			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readwrite) BOOL bAutoRepeat</Declaration>
@@ -303,13 +303,49 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/bAutoRepeat</TokenIdentifier>
-			<Abstract type="html">当视频采集被打断时是否主动提供重复图像</Abstract>
+			<Abstract type="html">是否冻结图像(主动提供重复图像)</Abstract>
 			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readwrite) BOOL bAutoRepeat</Declaration>
 			
 			
 			<Anchor>//api/name/bAutoRepeat</Anchor>
+            <NodeRef refid="20"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setTargetFps:</TokenIdentifier>
+			<Abstract type="html">0表示根据过去输入的图像来猜测帧率, 1~30 表示按照设定的帧率提供重复的帧, 默认为0</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) int targetFps</Declaration>
+			
+			
+			<Anchor>//api/name/targetFps</Anchor>
+            <NodeRef refid="20"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/targetFps</TokenIdentifier>
+			<Abstract type="html">0表示根据过去输入的图像来猜测帧率, 1~30 表示按照设定的帧率提供重复的帧, 默认为0</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) int targetFps</Declaration>
+			
+			
+			<Anchor>//api/name/targetFps</Anchor>
+            <NodeRef refid="20"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/targetFps</TokenIdentifier>
+			<Abstract type="html">0表示根据过去输入的图像来猜测帧率, 1~30 表示按照设定的帧率提供重复的帧, 默认为0</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) int targetFps</Declaration>
+			
+			
+			<Anchor>//api/name/targetFps</Anchor>
             <NodeRef refid="20"/>
 		</Token>
 		

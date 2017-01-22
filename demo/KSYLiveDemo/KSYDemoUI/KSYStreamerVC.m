@@ -21,7 +21,6 @@
 @interface KSYStreamerVC () <UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
     UISwipeGestureRecognizer *_swipeGest;
     NSDateFormatter * _dateFormatter;
-    NSMutableDictionary *_obsDict;
     int _strSeconds; // 推流持续的时间 , 单位s
     
     BOOL _bRecord;//是推流还是录制到本地
@@ -39,6 +38,7 @@
     self = [super init];
     _presetCfgView = presetCfgView;
     [self initObservers];
+    _menuNames = @[@"背景音乐", @"图像/美颜",@"声音",@"其他"];
     self.view.backgroundColor = [UIColor whiteColor];
     return self;
 }
@@ -46,12 +46,18 @@
 #pragma mark - UIViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _kit = [[KSYGPUStreamerKit alloc] initWithDefaultCfg];
-    _menuNames = @[@"背景音乐", @"图像/美颜",@"声音",@"其他"];
+    if (self.kit == nil){
+        _kit = [[KSYGPUStreamerKit alloc] initWithDefaultCfg];
+    }
     [self addSubViews];
     [self addSwipeGesture];
     [self addfoucsCursor];
     [self addPinchGestureRecognizer];
+    if (_presetCfgView.profileUI.selectedSegmentIndex){
+        [self setCustomizeCfg];//自定义
+    }else{
+        [_kit setStreamerProfile:_presetCfgView.curProfileIdx];//配置profile
+    }
     // 采集相关设置初始化
     [self setCaptureCfg];
     //推流相关设置初始化
@@ -147,7 +153,6 @@
         weakself.ctrlView.lblNetwork.text = msg;
     };
 }
-#define SEL_VALUE(SEL_NAME) [NSValue valueWithPointer:@selector(SEL_NAME)]
 
 - (void) initObservers{
     _obsDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -204,7 +209,6 @@
     }
 }
 #pragma mark - logo setup
-
 - (void) setupLogo{
     CGFloat yPos = 0.05;
     CGFloat hgt  = 0.1; // logo图片的高度是预览画面的十分之一
@@ -226,8 +230,7 @@
     NSString * timeStr = [_dateFormatter stringFromDate:now];
     _kit.textLabel.text = [NSString stringWithFormat:@"ksyun\n%@", timeStr];
     [_kit.textLabel sizeToFit];
-    hgt = 0.04; // 水印文字的
-    _kit.textRect = CGRectMake(0.05, yPos, 0, hgt);
+    _kit.textRect = CGRectMake(0.05, yPos, 0, 0.04); // 水印文字的高度为预览画面的 0.04倍
     [_kit updateTextLabel];
 }
 
@@ -243,15 +246,23 @@
 }
 
 #pragma mark - Capture & stream setup
-- (void) setCaptureCfg {
+- (void) setCustomizeCfg {
     _kit.capPreset        = [self.presetCfgView capResolution];
     _kit.previewDimension = [self.presetCfgView capResolutionSize];
     _kit.streamDimension  = [self.presetCfgView strResolutionSize ];
     _kit.videoFPS       = [self.presetCfgView frameRate];
+    _kit.streamerBase.videoCodec       = [_presetCfgView videoCodec];
+    _kit.streamerBase.videoMaxBitrate  = [_presetCfgView videoKbps];
+    _kit.streamerBase.audioCodec       = [_presetCfgView audioCodec];
+    _kit.streamerBase.audiokBPS        = [_presetCfgView audioKbps];
+    _kit.streamerBase.videoFPS         = [_presetCfgView frameRate];
+    _kit.streamerBase.bwEstimateMode   = [_presetCfgView bwEstMode];
+}
+
+- (void) setCaptureCfg {
     _kit.cameraPosition = [self.presetCfgView cameraPos];
     _kit.gpuOutputPixelFormat = [self.presetCfgView gpuOutputPixelFmt];
     _kit.capturePixelFormat   = [self.presetCfgView gpuOutputPixelFmt];
-    // 以上两个像素格式可以任意组合 , 不是必须一样
     _kit.videoProcessingCallback = ^(CMSampleBufferRef buf){
         // 在此处添加自定义图像处理, 直接修改buf中的图像数据会传递到观众端
         // 或复制图像数据之后再做其他处理, 则观众端仍然看到处理前的图像
@@ -284,14 +295,8 @@
         return;
     }
     if (_presetCfgView){ // cfg from presetcfgview
-        _kit.streamerBase.videoCodec       = [_presetCfgView videoCodec];
-        _kit.streamerBase.videoInitBitrate = [_presetCfgView videoKbps]*6/10;//60%
-        _kit.streamerBase.videoMaxBitrate  = [_presetCfgView videoKbps];
+        _kit.streamerBase.videoInitBitrate = _kit.streamerBase.videoMaxBitrate*6/10;//60%
         _kit.streamerBase.videoMinBitrate  = 0; //
-        _kit.streamerBase.audioCodec       = [_presetCfgView audioCodec];
-        _kit.streamerBase.audiokBPS        = [_presetCfgView audioKbps];
-        _kit.streamerBase.videoFPS         = [_presetCfgView frameRate];
-        _kit.streamerBase.bwEstimateMode   = [_presetCfgView bwEstMode];
         _kit.streamerBase.shouldEnableKSYStatModule = YES;
         _kit.streamerBase.logBlock = ^(NSString* str){
             //NSLog(@"%@", str);
@@ -307,6 +312,7 @@
     _kit.streamerBase.liveScene       =  self.miscView.liveScene;
     _kit.streamerBase.videoEncodePerf =  self.miscView.vEncPerf;
     _kit.streamerBase.bWithVideo      = !self.audioView.swAudioOnly.on;
+    _kit.gpuToStr.bAutoRepeat         = NO;
     _strSeconds = 0;
     self.miscView.liveSceneSeg.enabled = !bStart;
     self.miscView.vEncPerfSeg.enabled = !bStart;
@@ -318,9 +324,30 @@
     NSString* title = _ctrlView.btnStream.currentTitle;
     _bRecord = [ title isEqualToString:@"开始录制"];
     _miscView.swBypassRec.enabled = !_bRecord; // 直接录制时, 不能旁路录制
-    
+    [self updateSwAudioOnly:bStart];
     if (_bRecord && bStart){
         [self deleteFile:[_presetCfgView hostUrl]];
+    }
+}
+
+// 启动推流 / 停止推流
+- (void) updateSwAudioOnly : (BOOL) bStart {
+    if (bStart) {
+        if (self.audioView.swAudioOnly.on) {
+            self.audioView.swAudioOnly.enabled = NO;
+            self.audioView.lblAudioOnly.text =@"纯音频流";
+        }
+        else {
+            self.audioView.swAudioOnly.enabled = YES;
+            self.audioView.lblAudioOnly.text =@"冻结画面";
+        }
+    }
+    else {
+        if ([self.audioView.lblAudioOnly.text isEqualToString:@"冻结画面"]) {
+            self.audioView.swAudioOnly.on = NO;
+        }
+        self.audioView.lblAudioOnly.text = @"纯音频流";
+        self.audioView.swAudioOnly.enabled = YES;
     }
 }
 
@@ -328,6 +355,12 @@
 - (void) onCaptureStateChange:(NSNotification *)notification{
     NSLog(@"new capStat: %@", _kit.getCurCaptureStateName );
     self.ctrlView.lblStat.text = [_kit getCurCaptureStateName];
+    if (_kit.captureState == KSYCaptureStateIdle) {
+        self.ctrlView.btnCapture.backgroundColor = [UIColor darkGrayColor];
+    }
+    else if(_kit.captureState == KSYCaptureStateCapturing) {
+        self.ctrlView.btnCapture.backgroundColor = [UIColor lightGrayColor];
+    }
 }
 
 - (void) onNetStateEvent     :(NSNotification *)notification{
@@ -361,41 +394,20 @@
     }
     else if (_kit.streamerBase.streamState == KSYStreamStateConnecting) {
         [_ctrlView.lblStat initStreamStat]; // 尝试开始连接时,重置统计数据
+        [self updateSwAudioOnly:YES];
     }
     else if (_kit.streamerBase.streamState == KSYStreamStateConnected) {
-        if ([self.audioView.swAudioOnly isOn] ){
-            _kit.streamerBase.bWithVideo = NO;
-        }
+        [self updateSwAudioOnly:YES];
+        self.ctrlView.btnStream.backgroundColor = [UIColor lightGrayColor];
+    }
+    else if (_kit.streamerBase.streamState == KSYStreamStateIdle) {
+        [self updateSwAudioOnly:NO];
+        self.ctrlView.btnStream.backgroundColor = [UIColor darkGrayColor];
     }
     //状态为KSYStreamStateIdle且_bRecord为ture时，录制视频
     if (_kit.streamerBase.streamState == KSYStreamStateIdle && _bRecord){
         [self saveVideoToAlbum:[_presetCfgView hostUrl]];
     }
-}
-//保存视频到相簿
-- (void) saveVideoToAlbum: (NSString*) path {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if (![fileManager fileExistsAtPath:path]) {
-        return;
-    }
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path)) {
-            SEL onDone = @selector(video:didFinishSavingWithError:contextInfo:);
-            UISaveVideoAtPathToSavedPhotosAlbum(path, self, onDone, nil);
-        }
-    });
-}
-//保存mp4文件完成时的回调
-- (void)video:(NSString *)videoPath didFinishSavingWithError:(NSError *)error
-  contextInfo:(void *)contextInfo {
-    NSString *message;
-    if (!error) {
-        message = @"Save album success!";
-    }
-    else {
-        message = @"Failed to save the album!";
-    }
-    [KSYUIVC toast:message time:3];
 }
 
 - (void) onStreamError:(KSYStreamErrorCode) errCode{
@@ -651,14 +663,9 @@
         [_kit.aMixer setTrack:_kit.bgmTrack enable: sw.isOn];
     }
     else if (sw == _audioView.swAudioOnly && _kit.streamerBase) {
-        if (sw.on == YES) {
-            // disable video, only stream with audio
-            _kit.streamerBase.bWithVideo = NO;
-        }else{
-            _kit.streamerBase.bWithVideo = YES;
+        if (_kit.streamerBase.isStreaming) {
+            _kit.gpuToStr.bAutoRepeat = sw.on;
         }
-        // 如果修改bWithVideo属性失败, 开关状态恢复真实结果
-        sw.on = !_kit.streamerBase.bWithVideo;
     }
     else if (sw == _audioView.swPlayCapture){
         if ( ![KSYAUAudioCapture isHeadsetPluggedIn] ) {
@@ -719,8 +726,10 @@
         }];
     }
     else if (sender == _miscView.btn2) {
-        // 方法3: 如果有美颜滤镜, 可以从滤镜上获取截图(UIImage)
-        GPUImageOutput * filter = self.ksyFilterView.curFilter;
+        // 方法3: 如果有美颜滤镜, 可以从滤镜上获取截图(UIImage) 不带水印
+        //GPUImageOutput * filter = self.ksyFilterView.curFilter;
+        // 方法4: 直接从预览mixer上获取截图(UIImage) 带水印
+        GPUImageOutput * filter = _kit.vPreviewMixer;
         if (filter){
             [filter useNextFrameForImageCapture];
             UIImage * img =  filter.imageFromCurrentFramebuffer;
@@ -827,7 +836,6 @@
             [self deleteFile:_bypassRecFile];
             NSURL *url =[[NSURL alloc] initFileURLWithPath:_bypassRecFile];
             [_kit.streamerBase startBypassRecord:url];
-            [self updateBypassRecLable];
         }
         else {
             NSString * msg = @"推流过程中才能旁路录像";
@@ -870,6 +878,32 @@
     }
 }
 
+
+//保存视频到相簿
+- (void) saveVideoToAlbum: (NSString*) path {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:path]) {
+        return;
+    }
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path)) {
+            SEL onDone = @selector(video:didFinishSavingWithError:contextInfo:);
+            UISaveVideoAtPathToSavedPhotosAlbum(path, self, onDone, nil);
+        }
+    });
+}
+//保存mp4文件完成时的回调
+- (void)video:(NSString *)videoPath didFinishSavingWithError:(NSError *)error
+  contextInfo:(void *)contextInfo {
+    NSString *message;
+    if (!error) {
+        message = @"Save album success!";
+    }
+    else {
+        message = @"Failed to save the album!";
+    }
+    [KSYUIVC toast:message time:3];
+}
 //删除文件,保证保存到相册里面的视频时间是更新的
 -(void)deleteFile:(NSString *)file{
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -877,7 +911,7 @@
         [fileManager removeItemAtPath:file error:nil];
     }
 }
-
+#pragma mark - foucs
 /**
  @abstract 将UI的坐标转换成相机坐标
  */

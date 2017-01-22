@@ -10,6 +10,7 @@
 #import "KSYPresetCfgVC.h"
 #import "KSYUIView.h"
 #import "KSYStreamerVC.h"
+#import "KSYPipStreamerVC.h"
 
 
 #ifdef KSYSTREAMER_DEMO
@@ -81,6 +82,13 @@
         KSYStreamerVC * strVC = [[KSYStreamerVC alloc] initWithCfg:_cfgView];
         [strVC.ctrlView.btnStream setTitle:btnName forState:UIControlStateNormal];
         vc = strVC;
+    }
+    else if ( sender == _cfgView.btn1) { // pip demo
+        NSString * btnName = _cfgView.btn1.currentTitle;
+        KSYPipStreamerVC * strVC = [[KSYPipStreamerVC alloc] initWithCfg:_cfgView];
+        [strVC.ctrlView.btnStream setTitle:btnName forState:UIControlStateNormal];
+        vc = strVC;
+
     }
     else if ( sender == _cfgView.btn2) { // tests
 #ifdef KSYSTREAMER_DEMO

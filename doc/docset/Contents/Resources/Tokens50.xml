@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/MEDIAINFO_MUX_TYPE.html">
+	<File path="Constants/KSYVideoDimension.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/MEDIAINFO_MUX_TYPE</TokenIdentifier>
-			<Abstract type="html">封装格式</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYVideoDimension</TokenIdentifier>
+			<Abstract type="html">采集分辨率</Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
 			<NodeRef refid="50"/>
@@ -14,131 +14,81 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_UNKNOWN</TokenIdentifier>
-            <Abstract type="html">未知的文件封装格式</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_UNKNOWN</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_16_9__1280x720</TokenIdentifier>
+            <Abstract type="html">16 : 9 宽高比，1280 x 720 分辨率</Abstract>
+            <Declaration>KSYVideoDimension_16_9__1280x720</Declaration>
             
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-            
-            <NodeRef refid="50"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_MP2T</TokenIdentifier>
-            <Abstract type="html">封装格式为TS</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_MP2T</Declaration>
-            
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="50"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_MOV</TokenIdentifier>
-            <Abstract type="html">封装格式为MOV</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_MOV</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_16_9__960x540</TokenIdentifier>
+            <Abstract type="html">16 : 9 宽高比，960 x 540 分辨率</Abstract>
+            <Declaration>KSYVideoDimension_16_9__960x540</Declaration>
             
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-            
-            <NodeRef refid="50"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_AVI</TokenIdentifier>
-            <Abstract type="html">封装格式为AVI</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_AVI</Declaration>
-            
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="50"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_FLV</TokenIdentifier>
-            <Abstract type="html">封装格式为FLV</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_FLV</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_4_3__640x480</TokenIdentifier>
+            <Abstract type="html">4 : 3 宽高比，640 x 480 分辨率</Abstract>
+            <Declaration>KSYVideoDimension_4_3__640x480</Declaration>
             
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-            
-            <NodeRef refid="50"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_MKV</TokenIdentifier>
-            <Abstract type="html">封装格式为MKV</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_MKV</Declaration>
-            
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="50"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_ASF</TokenIdentifier>
-            <Abstract type="html">封装格式为ASF</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_ASF</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_16_9__640x360</TokenIdentifier>
+            <Abstract type="html">16 : 9 宽高比，640 x 360 分辨率</Abstract>
+            <Declaration>KSYVideoDimension_16_9__640x360</Declaration>
             
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-            
-            <NodeRef refid="50"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_RM</TokenIdentifier>
-            <Abstract type="html">封装格式为RM</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_RM</Declaration>
-            
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="50"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_WAV</TokenIdentifier>
-            <Abstract type="html">封装格式为WAV</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_WAV</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_5_4__352x288</TokenIdentifier>
+            <Abstract type="html">4 : 3 宽高比，320 x 240 分辨率</Abstract>
+            <Declaration>KSYVideoDimension_5_4__352x288</Declaration>
             
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-            
-            <NodeRef refid="50"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_OGG</TokenIdentifier>
-            <Abstract type="html">封装格式为OGG</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_OGG</Declaration>
-            
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="50"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_APE</TokenIdentifier>
-            <Abstract type="html">封装格式为APE</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_APE</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_UserDefine_Scale</TokenIdentifier>
+            <Abstract type="html">缩放自定义分辨率 从设备支持的最近分辨率缩放获得, 若设备没有对应宽高比的分辨率，则裁剪后进行缩放</Abstract>
+            <Declaration>KSYVideoDimension_UserDefine_Scale</Declaration>
             
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-            
-            <NodeRef refid="50"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_RAWVIDEO</TokenIdentifier>
-            <Abstract type="html">封装格式为RAWVIDEO</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_RAWVIDEO</Declaration>
-            
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="50"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_HLS</TokenIdentifier>
-            <Abstract type="html">封装格式为HLS</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_HLS</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_UserDefine_Crop</TokenIdentifier>
+            <Abstract type="html">裁剪自定义分辨率 从设备支持的最近分辨率裁剪获得</Abstract>
+            <Declaration>KSYVideoDimension_UserDefine_Crop</Declaration>
             
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="50"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_Default</TokenIdentifier>
+            <Abstract type="html">默认分辨率，默认为 4 : 3 宽高比，640 x 480 分辨率</Abstract>
+            <Declaration>KSYVideoDimension_Default</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="50"/>
         </Token>

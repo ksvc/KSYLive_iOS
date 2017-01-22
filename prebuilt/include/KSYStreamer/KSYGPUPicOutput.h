@@ -73,8 +73,13 @@
  */
 @property(nonatomic, readonly) CGSize inputSize;
 
-/** 当视频采集被打断时是否主动提供重复图像*/
+/** 是否冻结图像(主动提供重复图像) 
+ @discussion 比如:视频采集被打断时, bAutoRepeat为NO,则停止提供图像; 为YES, 则主动提供最后一帧图像
+ */
 @property(nonatomic, readwrite) BOOL bAutoRepeat;
+
+/** 0表示根据过去输入的图像来猜测帧率, 1~30 表示按照设定的帧率提供重复的帧, 默认为0 */
+@property(nonatomic, readwrite) int targetFps;
 
 /**
  @abstract input roation mode

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUStreamerKit.html">
+	<File path="Classes/KSYGPUPipStreamerKit.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUStreamerKit</TokenIdentifier>
-			<Abstract type="html">KSY 直播推流工具类</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUPipStreamerKit</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
             
 			
 			<NodeRef refid="21"/>
@@ -13,1812 +13,430 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/initWithDefaultCfg</TokenIdentifier>
-			<Abstract type="html">初始化方法</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/setPipTrack:</TokenIdentifier>
+			<Abstract type="html">画中画通道</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>- (instancetype)initWithDefaultCfg</Declaration>
+			<Declaration>@property (nonatomic, readonly) int pipTrack</Declaration>
 			
 			
-			<Anchor>//api/name/initWithDefaultCfg</Anchor>
+			<Anchor>//api/name/pipTrack</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/initWithInterruptCfg</TokenIdentifier>
-			<Abstract type="html">初始化方法</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/pipTrack</TokenIdentifier>
+			<Abstract type="html">画中画通道</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>- (instancetype)initWithInterruptCfg</Declaration>
+			<Declaration>@property (nonatomic, readonly) int pipTrack</Declaration>
 			
 			
-			<Anchor>//api/name/initWithInterruptCfg</Anchor>
+			<Anchor>//api/name/pipTrack</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/getKSYVersion</TokenIdentifier>
-			<Abstract type="html">获取SDK版本号</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPipStreamerKit/pipTrack</TokenIdentifier>
+			<Abstract type="html">画中画通道</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>- (NSString *)getKSYVersion</Declaration>
+			<Declaration>@property (nonatomic, readonly) int pipTrack</Declaration>
 			
 			
-			<Anchor>//api/name/getKSYVersion</Anchor>
+			<Anchor>//api/name/pipTrack</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setVCapDev:</TokenIdentifier>
-			<Abstract type="html">视频采集设备</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/setBgPicLayer:</TokenIdentifier>
+			<Abstract type="html">背景图片图层</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYAVFCapture *vCapDev</Declaration>
+			<Declaration>@property (nonatomic, readonly) NSInteger bgPicLayer</Declaration>
 			
 			
-			<Anchor>//api/name/vCapDev</Anchor>
+			<Anchor>//api/name/bgPicLayer</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/vCapDev</TokenIdentifier>
-			<Abstract type="html">视频采集设备</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/bgPicLayer</TokenIdentifier>
+			<Abstract type="html">背景图片图层</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYAVFCapture *vCapDev</Declaration>
+			<Declaration>@property (nonatomic, readonly) NSInteger bgPicLayer</Declaration>
 			
 			
-			<Anchor>//api/name/vCapDev</Anchor>
+			<Anchor>//api/name/bgPicLayer</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/vCapDev</TokenIdentifier>
-			<Abstract type="html">视频采集设备</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPipStreamerKit/bgPicLayer</TokenIdentifier>
+			<Abstract type="html">背景图片图层</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYAVFCapture *vCapDev</Declaration>
+			<Declaration>@property (nonatomic, readonly) NSInteger bgPicLayer</Declaration>
 			
 			
-			<Anchor>//api/name/vCapDev</Anchor>
+			<Anchor>//api/name/bgPicLayer</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setFilter:</TokenIdentifier>
-			<Abstract type="html">获取当前使用的滤镜</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/setPipLayer:</TokenIdentifier>
+			<Abstract type="html">画中画图层</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) GPUImageOutput&lt;GPUImageInput&gt; *filter</Declaration>
+			<Declaration>@property (nonatomic, readonly) NSInteger pipLayer</Declaration>
 			
 			
-			<Anchor>//api/name/filter</Anchor>
+			<Anchor>//api/name/pipLayer</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/filter</TokenIdentifier>
-			<Abstract type="html">获取当前使用的滤镜</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/pipLayer</TokenIdentifier>
+			<Abstract type="html">画中画图层</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) GPUImageOutput&lt;GPUImageInput&gt; *filter</Declaration>
+			<Declaration>@property (nonatomic, readonly) NSInteger pipLayer</Declaration>
 			
 			
-			<Anchor>//api/name/filter</Anchor>
+			<Anchor>//api/name/pipLayer</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/filter</TokenIdentifier>
-			<Abstract type="html">获取当前使用的滤镜</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPipStreamerKit/pipLayer</TokenIdentifier>
+			<Abstract type="html">画中画图层</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) GPUImageOutput&lt;GPUImageInput&gt; *filter</Declaration>
+			<Declaration>@property (nonatomic, readonly) NSInteger pipLayer</Declaration>
 			
 			
-			<Anchor>//api/name/filter</Anchor>
+			<Anchor>//api/name/pipLayer</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setVPreviewMixer:</TokenIdentifier>
-			<Abstract type="html">图像混合器 for 预览</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/startPipWithPlayerUrl:bgPic:</TokenIdentifier>
+			<Abstract type="html">开启画中画
+@param playerUrl:播放视频的url
+@param bgUrl:背景图片的url</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYGPUPicMixer *vPreviewMixer</Declaration>
+			<Declaration>- (void)startPipWithPlayerUrl:(NSURL *)playerUrl bgPic:(NSURL *)bgUrl</Declaration>
 			
 			
-			<Anchor>//api/name/vPreviewMixer</Anchor>
+			<Anchor>//api/name/startPipWithPlayerUrl:bgPic:</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/vPreviewMixer</TokenIdentifier>
-			<Abstract type="html">图像混合器 for 预览</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/stopPip</TokenIdentifier>
+			<Abstract type="html">停止画中画
+*</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYGPUPicMixer *vPreviewMixer</Declaration>
+			<Declaration>- (void)stopPip</Declaration>
 			
 			
-			<Anchor>//api/name/vPreviewMixer</Anchor>
+			<Anchor>//api/name/stopPip</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/vPreviewMixer</TokenIdentifier>
-			<Abstract type="html">图像混合器 for 预览</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/setPlayer:</TokenIdentifier>
+			<Abstract type="html">背景播放器</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYGPUPicMixer *vPreviewMixer</Declaration>
+			<Declaration>@property (nonatomic, strong) KSYMoviePlayerController *player</Declaration>
 			
 			
-			<Anchor>//api/name/vPreviewMixer</Anchor>
+			<Anchor>//api/name/player</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setVStreamMixer:</TokenIdentifier>
-			<Abstract type="html">图像混合器 for 推流</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/player</TokenIdentifier>
+			<Abstract type="html">背景播放器</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYGPUPicMixer *vStreamMixer</Declaration>
+			<Declaration>@property (nonatomic, strong) KSYMoviePlayerController *player</Declaration>
 			
 			
-			<Anchor>//api/name/vStreamMixer</Anchor>
+			<Anchor>//api/name/player</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/vStreamMixer</TokenIdentifier>
-			<Abstract type="html">图像混合器 for 推流</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPipStreamerKit/player</TokenIdentifier>
+			<Abstract type="html">背景播放器</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYGPUPicMixer *vStreamMixer</Declaration>
+			<Declaration>@property (nonatomic, strong) KSYMoviePlayerController *player</Declaration>
 			
 			
-			<Anchor>//api/name/vStreamMixer</Anchor>
+			<Anchor>//api/name/player</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/vStreamMixer</TokenIdentifier>
-			<Abstract type="html">图像混合器 for 推流</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/setBgPic:</TokenIdentifier>
+			<Abstract type="html">背景图片</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYGPUPicMixer *vStreamMixer</Declaration>
+			<Declaration>@property (nonatomic, strong) GPUImagePicture *bgPic</Declaration>
 			
 			
-			<Anchor>//api/name/vStreamMixer</Anchor>
+			<Anchor>//api/name/bgPic</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setPreview:</TokenIdentifier>
-			<Abstract type="html">预览视图</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/bgPic</TokenIdentifier>
+			<Abstract type="html">背景图片</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) GPUImageView *preview</Declaration>
+			<Declaration>@property (nonatomic, strong) GPUImagePicture *bgPic</Declaration>
 			
 			
-			<Anchor>//api/name/preview</Anchor>
+			<Anchor>//api/name/bgPic</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/preview</TokenIdentifier>
-			<Abstract type="html">预览视图</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPipStreamerKit/bgPic</TokenIdentifier>
+			<Abstract type="html">背景图片</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) GPUImageView *preview</Declaration>
+			<Declaration>@property (nonatomic, strong) GPUImagePicture *bgPic</Declaration>
 			
 			
-			<Anchor>//api/name/preview</Anchor>
+			<Anchor>//api/name/bgPic</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/preview</TokenIdentifier>
-			<Abstract type="html">预览视图</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/setYuvInput:</TokenIdentifier>
+			<Abstract type="html">画中画图像输入</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) GPUImageView *preview</Declaration>
+			<Declaration>@property (nonatomic, readonly) KSYGPUPicInput *yuvInput</Declaration>
 			
 			
-			<Anchor>//api/name/preview</Anchor>
+			<Anchor>//api/name/yuvInput</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setCapToGpu:</TokenIdentifier>
-			<Abstract type="html">采集到的图像上传GPU</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/yuvInput</TokenIdentifier>
+			<Abstract type="html">画中画图像输入</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYGPUPicInput *capToGpu</Declaration>
+			<Declaration>@property (nonatomic, readonly) KSYGPUPicInput *yuvInput</Declaration>
 			
 			
-			<Anchor>//api/name/capToGpu</Anchor>
+			<Anchor>//api/name/yuvInput</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/capToGpu</TokenIdentifier>
-			<Abstract type="html">采集到的图像上传GPU</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPipStreamerKit/yuvInput</TokenIdentifier>
+			<Abstract type="html">画中画图像输入</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYGPUPicInput *capToGpu</Declaration>
+			<Declaration>@property (nonatomic, readonly) KSYGPUPicInput *yuvInput</Declaration>
 			
 			
-			<Anchor>//api/name/capToGpu</Anchor>
+			<Anchor>//api/name/yuvInput</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/capToGpu</TokenIdentifier>
-			<Abstract type="html">采集到的图像上传GPU</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/setBgPicRect:</TokenIdentifier>
+			<Abstract type="html">背景图片的位置和大小</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYGPUPicInput *capToGpu</Declaration>
+			<Declaration>@property (nonatomic, readwrite) CGRect bgPicRect</Declaration>
 			
 			
-			<Anchor>//api/name/capToGpu</Anchor>
+			<Anchor>//api/name/bgPicRect</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setGpuToStr:</TokenIdentifier>
-			<Abstract type="html">获取渲染的图像</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/bgPicRect</TokenIdentifier>
+			<Abstract type="html">背景图片的位置和大小</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYGPUPicOutput *gpuToStr</Declaration>
+			<Declaration>@property (nonatomic, readwrite) CGRect bgPicRect</Declaration>
 			
 			
-			<Anchor>//api/name/gpuToStr</Anchor>
+			<Anchor>//api/name/bgPicRect</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/gpuToStr</TokenIdentifier>
-			<Abstract type="html">获取渲染的图像</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPipStreamerKit/bgPicRect</TokenIdentifier>
+			<Abstract type="html">背景图片的位置和大小</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYGPUPicOutput *gpuToStr</Declaration>
+			<Declaration>@property (nonatomic, readwrite) CGRect bgPicRect</Declaration>
 			
 			
-			<Anchor>//api/name/gpuToStr</Anchor>
+			<Anchor>//api/name/bgPicRect</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/gpuToStr</TokenIdentifier>
-			<Abstract type="html">获取渲染的图像</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/setPipRect:</TokenIdentifier>
+			<Abstract type="html">画中画的位置和大小</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYGPUPicOutput *gpuToStr</Declaration>
+			<Declaration>@property (nonatomic, readwrite) CGRect pipRect</Declaration>
 			
 			
-			<Anchor>//api/name/gpuToStr</Anchor>
+			<Anchor>//api/name/pipRect</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setAvAudioSession:</TokenIdentifier>
-			<Abstract type="html">配置管理 AVAudioSession的工具类</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/pipRect</TokenIdentifier>
+			<Abstract type="html">画中画的位置和大小</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYAVAudioSession *avAudioSession</Declaration>
+			<Declaration>@property (nonatomic, readwrite) CGRect pipRect</Declaration>
 			
 			
-			<Anchor>//api/name/avAudioSession</Anchor>
+			<Anchor>//api/name/pipRect</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/avAudioSession</TokenIdentifier>
-			<Abstract type="html">配置管理 AVAudioSession的工具类</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPipStreamerKit/pipRect</TokenIdentifier>
+			<Abstract type="html">画中画的位置和大小</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYAVAudioSession *avAudioSession</Declaration>
+			<Declaration>@property (nonatomic, readwrite) CGRect pipRect</Declaration>
 			
 			
-			<Anchor>//api/name/avAudioSession</Anchor>
+			<Anchor>//api/name/pipRect</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/avAudioSession</TokenIdentifier>
-			<Abstract type="html">配置管理 AVAudioSession的工具类</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/setCameraRect:</TokenIdentifier>
+			<Abstract type="html">相机的位置和大小</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYAVAudioSession *avAudioSession</Declaration>
+			<Declaration>@property (nonatomic, readwrite) CGRect cameraRect</Declaration>
 			
 			
-			<Anchor>//api/name/avAudioSession</Anchor>
+			<Anchor>//api/name/cameraRect</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setACapDev:</TokenIdentifier>
-			<Abstract type="html">音频采集设备 Audio Unit 音频采集</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/cameraRect</TokenIdentifier>
+			<Abstract type="html">相机的位置和大小</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYAUAudioCapture *aCapDev</Declaration>
+			<Declaration>@property (nonatomic, readwrite) CGRect cameraRect</Declaration>
 			
 			
-			<Anchor>//api/name/aCapDev</Anchor>
+			<Anchor>//api/name/cameraRect</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/aCapDev</TokenIdentifier>
-			<Abstract type="html">音频采集设备 Audio Unit 音频采集</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPipStreamerKit/cameraRect</TokenIdentifier>
+			<Abstract type="html">相机的位置和大小</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYAUAudioCapture *aCapDev</Declaration>
+			<Declaration>@property (nonatomic, readwrite) CGRect cameraRect</Declaration>
 			
 			
-			<Anchor>//api/name/aCapDev</Anchor>
+			<Anchor>//api/name/cameraRect</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/aCapDev</TokenIdentifier>
-			<Abstract type="html">音频采集设备 Audio Unit 音频采集</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/getPipStateName:</TokenIdentifier>
+			<Abstract type="html">获取状态对应的字符串</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) KSYAUAudioCapture *aCapDev</Declaration>
-			
-			
-			<Anchor>//api/name/aCapDev</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setBgmPlayer:</TokenIdentifier>
-			<Abstract type="html">背景音乐播放器</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYBgmPlayer *bgmPlayer</Declaration>
-			
-			
-			<Anchor>//api/name/bgmPlayer</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/bgmPlayer</TokenIdentifier>
-			<Abstract type="html">背景音乐播放器</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYBgmPlayer *bgmPlayer</Declaration>
-			
-			
-			<Anchor>//api/name/bgmPlayer</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/bgmPlayer</TokenIdentifier>
-			<Abstract type="html">背景音乐播放器</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYBgmPlayer *bgmPlayer</Declaration>
-			
-			
-			<Anchor>//api/name/bgmPlayer</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setAMixer:</TokenIdentifier>
-			<Abstract type="html">音频混合器</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYAudioMixer *aMixer</Declaration>
-			
-			
-			<Anchor>//api/name/aMixer</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/aMixer</TokenIdentifier>
-			<Abstract type="html">音频混合器</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYAudioMixer *aMixer</Declaration>
-			
-			
-			<Anchor>//api/name/aMixer</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/aMixer</TokenIdentifier>
-			<Abstract type="html">音频混合器</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYAudioMixer *aMixer</Declaration>
-			
-			
-			<Anchor>//api/name/aMixer</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setStreamerBase:</TokenIdentifier>
-			<Abstract type="html">获取初始化时创建的底层推流工具</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYStreamerBase *streamerBase</Declaration>
-			
-			
-			<Anchor>//api/name/streamerBase</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/streamerBase</TokenIdentifier>
-			<Abstract type="html">获取初始化时创建的底层推流工具</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYStreamerBase *streamerBase</Declaration>
-			
-			
-			<Anchor>//api/name/streamerBase</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/streamerBase</TokenIdentifier>
-			<Abstract type="html">获取初始化时创建的底层推流工具</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYStreamerBase *streamerBase</Declaration>
-			
-			
-			<Anchor>//api/name/streamerBase</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setMaxAutoRetry:</TokenIdentifier>
-			<Abstract type="html">自动重连次数 关闭(0), 开启(&gt;0), 默认为0</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int maxAutoRetry</Declaration>
-			
-			
-			<Anchor>//api/name/maxAutoRetry</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/maxAutoRetry</TokenIdentifier>
-			<Abstract type="html">自动重连次数 关闭(0), 开启(&gt;0), 默认为0</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int maxAutoRetry</Declaration>
-			
-			
-			<Anchor>//api/name/maxAutoRetry</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/maxAutoRetry</TokenIdentifier>
-			<Abstract type="html">自动重连次数 关闭(0), 开启(&gt;0), 默认为0</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int maxAutoRetry</Declaration>
-			
-			
-			<Anchor>//api/name/maxAutoRetry</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setAutoRetryDelay:</TokenIdentifier>
-			<Abstract type="html">自动重连延时, 发现连接错误后, 重试的延时</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) double autoRetryDelay</Declaration>
-			
-			
-			<Anchor>//api/name/autoRetryDelay</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/autoRetryDelay</TokenIdentifier>
-			<Abstract type="html">自动重连延时, 发现连接错误后, 重试的延时</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) double autoRetryDelay</Declaration>
-			
-			
-			<Anchor>//api/name/autoRetryDelay</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/autoRetryDelay</TokenIdentifier>
-			<Abstract type="html">自动重连延时, 发现连接错误后, 重试的延时</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) double autoRetryDelay</Declaration>
-			
-			
-			<Anchor>//api/name/autoRetryDelay</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setCameraLayer:</TokenIdentifier>
-			<Abstract type="html">摄像头图层</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSInteger cameraLayer</Declaration>
-			
-			
-			<Anchor>//api/name/cameraLayer</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/cameraLayer</TokenIdentifier>
-			<Abstract type="html">摄像头图层</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSInteger cameraLayer</Declaration>
-			
-			
-			<Anchor>//api/name/cameraLayer</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/cameraLayer</TokenIdentifier>
-			<Abstract type="html">摄像头图层</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSInteger cameraLayer</Declaration>
-			
-			
-			<Anchor>//api/name/cameraLayer</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setLogoPicLayer:</TokenIdentifier>
-			<Abstract type="html">logo 图片的图层</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSInteger logoPicLayer</Declaration>
-			
-			
-			<Anchor>//api/name/logoPicLayer</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/logoPicLayer</TokenIdentifier>
-			<Abstract type="html">logo 图片的图层</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSInteger logoPicLayer</Declaration>
-			
-			
-			<Anchor>//api/name/logoPicLayer</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/logoPicLayer</TokenIdentifier>
-			<Abstract type="html">logo 图片的图层</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSInteger logoPicLayer</Declaration>
-			
-			
-			<Anchor>//api/name/logoPicLayer</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setLogoTxtLayer:</TokenIdentifier>
-			<Abstract type="html">logo 文字的图层</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSInteger logoTxtLayer</Declaration>
-			
-			
-			<Anchor>//api/name/logoTxtLayer</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/logoTxtLayer</TokenIdentifier>
-			<Abstract type="html">logo 文字的图层</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSInteger logoTxtLayer</Declaration>
-			
-			
-			<Anchor>//api/name/logoTxtLayer</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/logoTxtLayer</TokenIdentifier>
-			<Abstract type="html">logo 文字的图层</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSInteger logoTxtLayer</Declaration>
-			
-			
-			<Anchor>//api/name/logoTxtLayer</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setMicTrack:</TokenIdentifier>
-			<Abstract type="html">麦克风通道</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) int micTrack</Declaration>
-			
-			
-			<Anchor>//api/name/micTrack</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/micTrack</TokenIdentifier>
-			<Abstract type="html">麦克风通道</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) int micTrack</Declaration>
-			
-			
-			<Anchor>//api/name/micTrack</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/micTrack</TokenIdentifier>
-			<Abstract type="html">麦克风通道</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) int micTrack</Declaration>
-			
-			
-			<Anchor>//api/name/micTrack</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setBgmTrack:</TokenIdentifier>
-			<Abstract type="html">背景音乐通道</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) int bgmTrack</Declaration>
-			
-			
-			<Anchor>//api/name/bgmTrack</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/bgmTrack</TokenIdentifier>
-			<Abstract type="html">背景音乐通道</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) int bgmTrack</Declaration>
-			
-			
-			<Anchor>//api/name/bgmTrack</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/bgmTrack</TokenIdentifier>
-			<Abstract type="html">背景音乐通道</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) int bgmTrack</Declaration>
-			
-			
-			<Anchor>//api/name/bgmTrack</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setCaptureState:</TokenIdentifier>
-			<Abstract type="html">当前采集设备状况</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYCaptureState captureState</Declaration>
-			
-			
-			<Anchor>//api/name/captureState</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/captureState</TokenIdentifier>
-			<Abstract type="html">当前采集设备状况</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYCaptureState captureState</Declaration>
-			
-			
-			<Anchor>//api/name/captureState</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/captureState</TokenIdentifier>
-			<Abstract type="html">当前采集设备状况</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYCaptureState captureState</Declaration>
-			
-			
-			<Anchor>//api/name/captureState</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/getCaptureStateName:</TokenIdentifier>
-			<Abstract type="html">获取采集状态对应的字符串</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>- (NSString *)getCaptureStateName:(KSYCaptureState)stat</Declaration>
-			
-			
-			<Anchor>//api/name/getCaptureStateName:</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/getCurCaptureStateName</TokenIdentifier>
-			<Abstract type="html">获取当前采集状态对应的字符串</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>- (NSString *)getCurCaptureStateName</Declaration>
-			
-			
-			<Anchor>//api/name/getCurCaptureStateName</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/startPreview:</TokenIdentifier>
-			<Abstract type="html">启动预览</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/videoFPS</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>- (void)startPreview:(UIView *)view</Declaration>
+			<Declaration>- (NSString *)getPipStateName:(MPMoviePlaybackState)stat</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>view</Name>
-					<Abstract type="html">预览画面作为subview，插入到 view 的最底层</Abstract>
+					<Name>stat</Name>
+					<Abstract type="html">状态</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/startPreview:</Anchor>
+			<Anchor>//api/name/getPipStateName:</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/stopPreview</TokenIdentifier>
-			<Abstract type="html">停止预览，停止采集设备，并清理会话</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/getCurPipStateName</TokenIdentifier>
+			<Abstract type="html">获取当前状态对应的字符串</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>- (void)stopPreview</Declaration>
+			<Declaration>- (NSString *)getCurPipStateName</Declaration>
 			
 			
-			<Anchor>//api/name/stopPreview</Anchor>
+			<Anchor>//api/name/getCurPipStateName</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/appEnterBackground</TokenIdentifier>
-			<Abstract type="html">进入后台: 暂停图像采集</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/newPipState:</TokenIdentifier>
+			<Abstract type="html">设置当前的播放状态</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/aCapDev</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>- (void)appEnterBackground</Declaration>
-			
-			
-			<Anchor>//api/name/appEnterBackground</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/appBecomeActive</TokenIdentifier>
-			<Abstract type="html">回到前台: 恢复采集</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>- (void)appBecomeActive</Declaration>
-			
-			
-			<Anchor>//api/name/appBecomeActive</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setCapPreset:</TokenIdentifier>
-			<Abstract type="html">采集分辨率 (仅在开始采集前设置有效)</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) NSString *capPreset</Declaration>
-			
-			
-			<Anchor>//api/name/capPreset</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/capPreset</TokenIdentifier>
-			<Abstract type="html">采集分辨率 (仅在开始采集前设置有效)</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) NSString *capPreset</Declaration>
-			
-			
-			<Anchor>//api/name/capPreset</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/capPreset</TokenIdentifier>
-			<Abstract type="html">采集分辨率 (仅在开始采集前设置有效)</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) NSString *capPreset</Declaration>
-			
-			
-			<Anchor>//api/name/capPreset</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/captureDimension</TokenIdentifier>
-			<Abstract type="html">查询实际的采集分辨率</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>- (CGSize)captureDimension</Declaration>
-			
-			
-			<Anchor>//api/name/captureDimension</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setPreviewDimension:</TokenIdentifier>
-			<Abstract type="html">预览分辨率 (仅在开始采集前设置有效)</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) CGSize previewDimension</Declaration>
-			
-			
-			<Anchor>//api/name/previewDimension</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/previewDimension</TokenIdentifier>
-			<Abstract type="html">预览分辨率 (仅在开始采集前设置有效)</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) CGSize previewDimension</Declaration>
-			
-			
-			<Anchor>//api/name/previewDimension</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/previewDimension</TokenIdentifier>
-			<Abstract type="html">预览分辨率 (仅在开始采集前设置有效)</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) CGSize previewDimension</Declaration>
-			
-			
-			<Anchor>//api/name/previewDimension</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setStreamDimension:</TokenIdentifier>
-			<Abstract type="html">用户定义的视频 推流 分辨率</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/previewDimension</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) CGSize streamDimension</Declaration>
-			
-			
-			<Anchor>//api/name/streamDimension</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/streamDimension</TokenIdentifier>
-			<Abstract type="html">用户定义的视频 推流 分辨率</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/previewDimension</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) CGSize streamDimension</Declaration>
-			
-			
-			<Anchor>//api/name/streamDimension</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/streamDimension</TokenIdentifier>
-			<Abstract type="html">用户定义的视频 推流 分辨率</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/previewDimension</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, assign) CGSize streamDimension</Declaration>
-			
-			
-			<Anchor>//api/name/streamDimension</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setCapturePixelFormat:</TokenIdentifier>
-			<Abstract type="html">采集模块输出的像素格式 (默认:kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange)</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) OSType capturePixelFormat</Declaration>
-			
-			
-			<Anchor>//api/name/capturePixelFormat</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/capturePixelFormat</TokenIdentifier>
-			<Abstract type="html">采集模块输出的像素格式 (默认:kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange)</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) OSType capturePixelFormat</Declaration>
-			
-			
-			<Anchor>//api/name/capturePixelFormat</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/capturePixelFormat</TokenIdentifier>
-			<Abstract type="html">采集模块输出的像素格式 (默认:kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange)</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) OSType capturePixelFormat</Declaration>
-			
-			
-			<Anchor>//api/name/capturePixelFormat</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setGpuOutputPixelFormat:</TokenIdentifier>
-			<Abstract type="html">gpu output pixel format (默认:kCVPixelFormatType_32BGRA)</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) OSType gpuOutputPixelFormat</Declaration>
-			
-			
-			<Anchor>//api/name/gpuOutputPixelFormat</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/gpuOutputPixelFormat</TokenIdentifier>
-			<Abstract type="html">gpu output pixel format (默认:kCVPixelFormatType_32BGRA)</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) OSType gpuOutputPixelFormat</Declaration>
-			
-			
-			<Anchor>//api/name/gpuOutputPixelFormat</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/gpuOutputPixelFormat</TokenIdentifier>
-			<Abstract type="html">gpu output pixel format (默认:kCVPixelFormatType_32BGRA)</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) OSType gpuOutputPixelFormat</Declaration>
-			
-			
-			<Anchor>//api/name/gpuOutputPixelFormat</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setVideoFPS:</TokenIdentifier>
-			<Abstract type="html">采集视频帧率 (开始采集前设置有效)</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int videoFPS</Declaration>
-			
-			
-			<Anchor>//api/name/videoFPS</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/videoFPS</TokenIdentifier>
-			<Abstract type="html">采集视频帧率 (开始采集前设置有效)</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int videoFPS</Declaration>
-			
-			
-			<Anchor>//api/name/videoFPS</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/videoFPS</TokenIdentifier>
-			<Abstract type="html">采集视频帧率 (开始采集前设置有效)</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int videoFPS</Declaration>
-			
-			
-			<Anchor>//api/name/videoFPS</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setCameraPosition:</TokenIdentifier>
-			<Abstract type="html">摄像头位置  (仅在开始采集前设置有效)</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) AVCaptureDevicePosition cameraPosition</Declaration>
-			
-			
-			<Anchor>//api/name/cameraPosition</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/cameraPosition</TokenIdentifier>
-			<Abstract type="html">摄像头位置  (仅在开始采集前设置有效)</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) AVCaptureDevicePosition cameraPosition</Declaration>
-			
-			
-			<Anchor>//api/name/cameraPosition</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/cameraPosition</TokenIdentifier>
-			<Abstract type="html">摄像头位置  (仅在开始采集前设置有效)</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) AVCaptureDevicePosition cameraPosition</Declaration>
-			
-			
-			<Anchor>//api/name/cameraPosition</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setVideoOrientation:</TokenIdentifier>
-			<Abstract type="html">摄像头朝向, 只在启动采集前设置有效</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) UIInterfaceOrientation videoOrientation</Declaration>
-			
-			
-			<Anchor>//api/name/videoOrientation</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/videoOrientation</TokenIdentifier>
-			<Abstract type="html">摄像头朝向, 只在启动采集前设置有效</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) UIInterfaceOrientation videoOrientation</Declaration>
-			
-			
-			<Anchor>//api/name/videoOrientation</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/videoOrientation</TokenIdentifier>
-			<Abstract type="html">摄像头朝向, 只在启动采集前设置有效</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) UIInterfaceOrientation videoOrientation</Declaration>
-			
-			
-			<Anchor>//api/name/videoOrientation</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/switchCamera</TokenIdentifier>
-			<Abstract type="html">切换摄像头</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/cameraPosition</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>- (BOOL)switchCamera</Declaration>
-			
-			<ReturnValue><Abstract type="html">TRUE: 成功切换摄像头， FALSE：当前参数，下一个摄像头不支持，切换失败</Abstract></ReturnValue>
-			<Anchor>//api/name/switchCamera</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/isTorchSupported</TokenIdentifier>
-			<Abstract type="html">当前采集设备是否支持闪光灯</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>- (BOOL)isTorchSupported</Declaration>
-			
-			<ReturnValue><Abstract type="html">YES / NO</Abstract></ReturnValue>
-			<Anchor>//api/name/isTorchSupported</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/toggleTorch</TokenIdentifier>
-			<Abstract type="html">开关闪光灯</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>- (void)toggleTorch</Declaration>
-			
-			
-			<Anchor>//api/name/toggleTorch</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setTorchMode:</TokenIdentifier>
-			<Abstract type="html">设置闪光灯</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>- (void)setTorchMode:(AVCaptureTorchMode)mode</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>mode</Name>
-					<Abstract type="html">AVCaptureTorchModeOn/Off</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/setTorchMode:</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/getCurrentCameraDevices</TokenIdentifier>
-			<Abstract type="html">获取当前采集设备的指针</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>- (AVCaptureDevice *)getCurrentCameraDevices</Declaration>
-			
-			<ReturnValue><Abstract type="html">AVCaptureDevice* 预览开始前调用返回为nil，开始预览后，返回当前正在使用的摄像头</Abstract></ReturnValue>
-			<Anchor>//api/name/getCurrentCameraDevices</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setVideoProcessingCallback:</TokenIdentifier>
-			<Abstract type="html">视频处理回调接口</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) videoProcessingCallback</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>sampleBuffer</Name>
-					<Abstract type="html">原始采集到的视频数据</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/videoProcessingCallback</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/videoProcessingCallback</TokenIdentifier>
-			<Abstract type="html">视频处理回调接口</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) videoProcessingCallback</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>sampleBuffer</Name>
-					<Abstract type="html">原始采集到的视频数据</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/videoProcessingCallback</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/videoProcessingCallback</TokenIdentifier>
-			<Abstract type="html">视频处理回调接口</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) videoProcessingCallback</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>sampleBuffer</Name>
-					<Abstract type="html">原始采集到的视频数据</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/videoProcessingCallback</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setAudioProcessingCallback:</TokenIdentifier>
-			<Abstract type="html">音频处理回调接口</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
-			
-			
-			<Anchor>//api/name/audioProcessingCallback</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/audioProcessingCallback</TokenIdentifier>
-			<Abstract type="html">音频处理回调接口</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
-			
-			
-			<Anchor>//api/name/audioProcessingCallback</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/audioProcessingCallback</TokenIdentifier>
-			<Abstract type="html">音频处理回调接口</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
-			
-			
-			<Anchor>//api/name/audioProcessingCallback</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setInterruptCallback:</TokenIdentifier>
-			<Abstract type="html">摄像头采集被打断的消息通知</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( BOOL bInterrupt ) interruptCallback</Declaration>
-			
-			
-			<Anchor>//api/name/interruptCallback</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/interruptCallback</TokenIdentifier>
-			<Abstract type="html">摄像头采集被打断的消息通知</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( BOOL bInterrupt ) interruptCallback</Declaration>
-			
-			
-			<Anchor>//api/name/interruptCallback</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/interruptCallback</TokenIdentifier>
-			<Abstract type="html">摄像头采集被打断的消息通知</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( BOOL bInterrupt ) interruptCallback</Declaration>
-			
-			
-			<Anchor>//api/name/interruptCallback</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setupFilter:</TokenIdentifier>
-			<Abstract type="html">设置当前使用的滤镜</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>- (void)setupFilter:(GPUImageOutput&lt;GPUImageInput&gt; *)filter</Declaration>
-			
-			
-			<Anchor>//api/name/setupFilter:</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setPreviewMirrored:</TokenIdentifier>
-			<Abstract type="html">预览设置成镜像模式，默认为NO</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL previewMirrored</Declaration>
-			
-			
-			<Anchor>//api/name/previewMirrored</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/previewMirrored</TokenIdentifier>
-			<Abstract type="html">预览设置成镜像模式，默认为NO</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL previewMirrored</Declaration>
-			
-			
-			<Anchor>//api/name/previewMirrored</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/previewMirrored</TokenIdentifier>
-			<Abstract type="html">预览设置成镜像模式，默认为NO</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL previewMirrored</Declaration>
-			
-			
-			<Anchor>//api/name/previewMirrored</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setStreamerMirrored:</TokenIdentifier>
-			<Abstract type="html">推流设置成镜像模式,默认为NO</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL streamerMirrored</Declaration>
-			
-			
-			<Anchor>//api/name/streamerMirrored</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/streamerMirrored</TokenIdentifier>
-			<Abstract type="html">推流设置成镜像模式,默认为NO</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL streamerMirrored</Declaration>
-			
-			
-			<Anchor>//api/name/streamerMirrored</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/streamerMirrored</TokenIdentifier>
-			<Abstract type="html">推流设置成镜像模式,默认为NO</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL streamerMirrored</Declaration>
-			
-			
-			<Anchor>//api/name/streamerMirrored</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setPreviewOrientation:</TokenIdentifier>
-			<Abstract type="html">预览图像朝向, 如果UI能够旋转,需要保持和UI的朝向一致</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) UIInterfaceOrientation previewOrientation</Declaration>
-			
-			
-			<Anchor>//api/name/previewOrientation</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/previewOrientation</TokenIdentifier>
-			<Abstract type="html">预览图像朝向, 如果UI能够旋转,需要保持和UI的朝向一致</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) UIInterfaceOrientation previewOrientation</Declaration>
-			
-			
-			<Anchor>//api/name/previewOrientation</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/previewOrientation</TokenIdentifier>
-			<Abstract type="html">预览图像朝向, 如果UI能够旋转,需要保持和UI的朝向一致</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) UIInterfaceOrientation previewOrientation</Declaration>
-			
-			
-			<Anchor>//api/name/previewOrientation</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setStreamOrientation:</TokenIdentifier>
-			<Abstract type="html">推流图像朝向, 如果UI能够旋转, 可以跟随旋转,也可以不修改</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) UIInterfaceOrientation streamOrientation</Declaration>
-			
-			
-			<Anchor>//api/name/streamOrientation</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/streamOrientation</TokenIdentifier>
-			<Abstract type="html">推流图像朝向, 如果UI能够旋转, 可以跟随旋转,也可以不修改</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) UIInterfaceOrientation streamOrientation</Declaration>
-			
-			
-			<Anchor>//api/name/streamOrientation</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/streamOrientation</TokenIdentifier>
-			<Abstract type="html">推流图像朝向, 如果UI能够旋转, 可以跟随旋转,也可以不修改</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) UIInterfaceOrientation streamOrientation</Declaration>
-			
-			
-			<Anchor>//api/name/streamOrientation</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/rotatePreviewTo:</TokenIdentifier>
-			<Abstract type="html">根据UI的朝向旋转预览视图, 保证预览视图全屏铺满窗口</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>- (void)rotatePreviewTo:(UIInterfaceOrientation)orie</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>orie</Name>
-					<Abstract type="html">旋转到目标朝向, 需要从demo中获取UI的朝向传入</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/rotatePreviewTo:</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/rotateStreamTo:</TokenIdentifier>
-			<Abstract type="html">根据UI的朝向旋转推流画面, 这个是可以选的,可以不跟随旋转</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>- (void)rotateStreamTo:(UIInterfaceOrientation)orie</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>orie</Name>
-					<Abstract type="html">旋转到目标朝向, 需要从demo中获取UI的朝向传入</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/rotateStreamTo:</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setLogoPic:</TokenIdentifier>
-			<Abstract type="html">水印logo的图片</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) GPUImagePicture *logoPic</Declaration>
-			
-			
-			<Anchor>//api/name/logoPic</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/logoPic</TokenIdentifier>
-			<Abstract type="html">水印logo的图片</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) GPUImagePicture *logoPic</Declaration>
-			
-			
-			<Anchor>//api/name/logoPic</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/logoPic</TokenIdentifier>
-			<Abstract type="html">水印logo的图片</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) GPUImagePicture *logoPic</Declaration>
-			
-			
-			<Anchor>//api/name/logoPic</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setLogoRect:</TokenIdentifier>
-			<Abstract type="html">水印logo的图片的位置和大小</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) CGRect logoRect</Declaration>
-			
-			
-			<Anchor>//api/name/logoRect</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/logoRect</TokenIdentifier>
-			<Abstract type="html">水印logo的图片的位置和大小</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) CGRect logoRect</Declaration>
-			
-			
-			<Anchor>//api/name/logoRect</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/logoRect</TokenIdentifier>
-			<Abstract type="html">水印logo的图片的位置和大小</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) CGRect logoRect</Declaration>
-			
-			
-			<Anchor>//api/name/logoRect</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setLogoAlpha:</TokenIdentifier>
-			<Abstract type="html">水印logo的图片的位置</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) CGFloat logoAlpha</Declaration>
-			
-			
-			<Anchor>//api/name/logoAlpha</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/logoAlpha</TokenIdentifier>
-			<Abstract type="html">水印logo的图片的位置</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) CGFloat logoAlpha</Declaration>
-			
-			
-			<Anchor>//api/name/logoAlpha</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/logoAlpha</TokenIdentifier>
-			<Abstract type="html">水印logo的图片的位置</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) CGFloat logoAlpha</Declaration>
-			
-			
-			<Anchor>//api/name/logoAlpha</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setTextLabel:</TokenIdentifier>
-			<Abstract type="html">水印文字的label</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/updateTextLabel</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, readwrite) UILabel *textLabel</Declaration>
-			
-			
-			<Anchor>//api/name/textLabel</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/textLabel</TokenIdentifier>
-			<Abstract type="html">水印文字的label</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/updateTextLabel</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, readwrite) UILabel *textLabel</Declaration>
-			
-			
-			<Anchor>//api/name/textLabel</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/textLabel</TokenIdentifier>
-			<Abstract type="html">水印文字的label</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/updateTextLabel</TokenIdentifier>
-		
-	</RelatedTokens>
-	
-			<Declaration>@property (nonatomic, readwrite) UILabel *textLabel</Declaration>
-			
-			
-			<Anchor>//api/name/textLabel</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setTextRect:</TokenIdentifier>
-			<Abstract type="html">水印文字的图片的位置和大小</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) CGRect textRect</Declaration>
-			
-			
-			<Anchor>//api/name/textRect</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/textRect</TokenIdentifier>
-			<Abstract type="html">水印文字的图片的位置和大小</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) CGRect textRect</Declaration>
-			
-			
-			<Anchor>//api/name/textRect</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/textRect</TokenIdentifier>
-			<Abstract type="html">水印文字的图片的位置和大小</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) CGRect textRect</Declaration>
-			
-			
-			<Anchor>//api/name/textRect</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/updateTextLabel</TokenIdentifier>
-			<Abstract type="html">刷新水印文字的内容</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>- (void)updateTextLabel</Declaration>
-			
-			
-			<Anchor>//api/name/updateTextLabel</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/focusAtPoint:</TokenIdentifier>
-			<Abstract type="html">当前采集设备是否支持自动变焦
-@param      point相机对焦的位置</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
-			
-			<Declaration>- (BOOL)focusAtPoint:(CGPoint)point</Declaration>
-			
-			<ReturnValue><Abstract type="html">YES / NO</Abstract></ReturnValue>
-			<Anchor>//api/name/focusAtPoint:</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/exposureAtPoint:</TokenIdentifier>
-			<Abstract type="html">当前采集设备是否支持自动曝光
-@param      point相机曝光的位置</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<Declaration>- (void)newPipState:(MPMoviePlaybackState)stat</Declaration>
 			
-			<Declaration>- (BOOL)exposureAtPoint:(CGPoint)point</Declaration>
 			
-			<ReturnValue><Abstract type="html">YES / NO</Abstract></ReturnValue>
-			<Anchor>//api/name/exposureAtPoint:</Anchor>
+			<Anchor>//api/name/newPipState:</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setPinchZoomFactor:</TokenIdentifier>
-			<Abstract type="html">触摸缩放因子</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/setPipState:</TokenIdentifier>
+			<Abstract type="html">播放状态</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) CGFloat pinchZoomFactor</Declaration>
+			<Declaration>@property (nonatomic, readonly) MPMoviePlaybackState PipState</Declaration>
 			
 			
-			<Anchor>//api/name/pinchZoomFactor</Anchor>
+			<Anchor>//api/name/PipState</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/pinchZoomFactor</TokenIdentifier>
-			<Abstract type="html">触摸缩放因子</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/PipState</TokenIdentifier>
+			<Abstract type="html">播放状态</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) CGFloat pinchZoomFactor</Declaration>
+			<Declaration>@property (nonatomic, readonly) MPMoviePlaybackState PipState</Declaration>
 			
 			
-			<Anchor>//api/name/pinchZoomFactor</Anchor>
+			<Anchor>//api/name/PipState</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/pinchZoomFactor</TokenIdentifier>
-			<Abstract type="html">触摸缩放因子</Abstract>
-			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPipStreamerKit/PipState</TokenIdentifier>
+			<Abstract type="html">播放状态</Abstract>
+			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) CGFloat pinchZoomFactor</Declaration>
+			<Declaration>@property (nonatomic, readonly) MPMoviePlaybackState PipState</Declaration>
 			
 			
-			<Anchor>//api/name/pinchZoomFactor</Anchor>
+			<Anchor>//api/name/PipState</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		
