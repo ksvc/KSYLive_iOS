@@ -25,6 +25,23 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyProFilter/initWithIdx:</TokenIdentifier>
+			<Abstract type="html">初始化并指定 1~2 的index来创建对应美颜滤镜</Abstract>
+			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithIdx:(NSInteger)idx</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>idx</Name>
+					<Abstract type="html">效果的索引 (非法值无效)</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithIdx:</Anchor>
+            <NodeRef refid="8"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/clm/KSYBeautifyProFilter/showVersion</TokenIdentifier>
 			<Abstract type="html">show version of this filter</Abstract>
 			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
@@ -38,7 +55,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyProFilter/setGrindRatio:</TokenIdentifier>
-			<Abstract type="html">grindRatio ranges from 0.0 to 1.0, with 0.8 as the normal level</Abstract>
+			<Abstract type="html">grindRatio ranges from 0.0 to 1.0, with 0.5 as the normal level</Abstract>
 			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
 			
 			<Declaration>@property (readwrite, nonatomic) CGFloat grindRatio</Declaration>
@@ -50,7 +67,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyProFilter/grindRatio</TokenIdentifier>
-			<Abstract type="html">grindRatio ranges from 0.0 to 1.0, with 0.8 as the normal level</Abstract>
+			<Abstract type="html">grindRatio ranges from 0.0 to 1.0, with 0.5 as the normal level</Abstract>
 			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
 			
 			<Declaration>@property (readwrite, nonatomic) CGFloat grindRatio</Declaration>
@@ -62,7 +79,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYBeautifyProFilter/grindRatio</TokenIdentifier>
-			<Abstract type="html">grindRatio ranges from 0.0 to 1.0, with 0.8 as the normal level</Abstract>
+			<Abstract type="html">grindRatio ranges from 0.0 to 1.0, with 0.5 as the normal level</Abstract>
 			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
 			
 			<Declaration>@property (readwrite, nonatomic) CGFloat grindRatio</Declaration>
@@ -74,7 +91,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyProFilter/setWhitenRatio:</TokenIdentifier>
-			<Abstract type="html">whitenRatio ranges from 0.0 to 1.0, with 0.8 as the normal level</Abstract>
+			<Abstract type="html">whitenRatio ranges from 0.0 to 1.0, with 0.3 as the normal level</Abstract>
 			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
 			
 			<Declaration>@property (readwrite, nonatomic) CGFloat whitenRatio</Declaration>
@@ -86,7 +103,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyProFilter/whitenRatio</TokenIdentifier>
-			<Abstract type="html">whitenRatio ranges from 0.0 to 1.0, with 0.8 as the normal level</Abstract>
+			<Abstract type="html">whitenRatio ranges from 0.0 to 1.0, with 0.3 as the normal level</Abstract>
 			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
 			
 			<Declaration>@property (readwrite, nonatomic) CGFloat whitenRatio</Declaration>
@@ -98,7 +115,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYBeautifyProFilter/whitenRatio</TokenIdentifier>
-			<Abstract type="html">whitenRatio ranges from 0.0 to 1.0, with 0.8 as the normal level</Abstract>
+			<Abstract type="html">whitenRatio ranges from 0.0 to 1.0, with 0.3 as the normal level</Abstract>
 			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
 			
 			<Declaration>@property (readwrite, nonatomic) CGFloat whitenRatio</Declaration>
@@ -110,7 +127,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyProFilter/setRuddyRatio:</TokenIdentifier>
-			<Abstract type="html">ruddyRatio ranges from 0.0 to 1.0, with 0.5 as the normal level, need to use the initWithRubbyMaterial</Abstract>
+			<Abstract type="html">ruddyRatio ranges from -1.0 to 1.0, with -0.3 as the normal level</Abstract>
 			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
 			
 			<Declaration>@property (readwrite, nonatomic) CGFloat ruddyRatio</Declaration>
@@ -122,7 +139,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyProFilter/ruddyRatio</TokenIdentifier>
-			<Abstract type="html">ruddyRatio ranges from 0.0 to 1.0, with 0.5 as the normal level, need to use the initWithRubbyMaterial</Abstract>
+			<Abstract type="html">ruddyRatio ranges from -1.0 to 1.0, with -0.3 as the normal level</Abstract>
 			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
 			
 			<Declaration>@property (readwrite, nonatomic) CGFloat ruddyRatio</Declaration>
@@ -134,7 +151,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYBeautifyProFilter/ruddyRatio</TokenIdentifier>
-			<Abstract type="html">ruddyRatio ranges from 0.0 to 1.0, with 0.5 as the normal level, need to use the initWithRubbyMaterial</Abstract>
+			<Abstract type="html">ruddyRatio ranges from -1.0 to 1.0, with -0.3 as the normal level</Abstract>
 			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
 			
 			<Declaration>@property (readwrite, nonatomic) CGFloat ruddyRatio</Declaration>

@@ -62,6 +62,7 @@
               and:_bgpNext];
 }
 
+
 - (IBAction)onBtn:(id)sender {
     if (sender == _pipNext){
         if( [_pipSel selectFileWithType:KSYSelectType_NEXT]){
@@ -75,5 +76,14 @@
     }
     _pipTitle.text = [NSString stringWithFormat:@"%@: %@\n%@", _pipStatus, _pipSel.fileInfo, _bgpSel.fileInfo ];
     [super onBtn:sender];
+}
+
+@synthesize pipStatus = _pipStatus;
+- (void) setPipStatus:(NSString *)pipStatus{
+    _pipStatus = pipStatus;
+    _pipTitle.text = [NSString stringWithFormat:@"%@: %@\n%@", _pipStatus, _pipSel.fileInfo, _bgpSel.fileInfo];
+}
+- (NSString *) pipStatus{
+    return _pipStatus;
 }
 @end

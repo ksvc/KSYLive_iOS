@@ -61,6 +61,7 @@
 
 // 推流地址 完整的URL
 @property NSURL * hostURL;
+@property NSMutableDictionary *obsDict;
 
 // 采集的参数设置
 - (void) setCaptureCfg;
@@ -73,4 +74,8 @@
 
 - (void) addSubViews;
 - (void) onMenuBtnPress:(UIButton *)btn;
+- (void) onQuit;
+
+#define SEL_VALUE(SEL_NAME) [NSValue valueWithPointer:@selector(SEL_NAME)]
+
 @end

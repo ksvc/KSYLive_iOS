@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYDevAuthStatus.html">
+	<File path="Constants/KSYBWEstimateMode.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYDevAuthStatus</TokenIdentifier>
-			<Abstract type="html">设备授权状态</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYBWEstimateMode</TokenIdentifier>
+			<Abstract type="html">网络自适应模式类型
+  </Abstract>
 			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
@@ -14,9 +15,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYDevAuthStatusNotDetermined</TokenIdentifier>
-            <Abstract type="html">还没有确定是否授权</Abstract>
-            <Declaration>KSYDevAuthStatusNotDetermined</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBWEstMode_Default</TokenIdentifier>
+            <Abstract type="html">默认模式 (综合模式,比较平稳)</Abstract>
+            <Declaration>KSYBWEstMode_Default</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -24,9 +25,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYDevAuthStatusRestricted</TokenIdentifier>
-            <Abstract type="html">设备受限，一般在家长模式下设备会受限</Abstract>
-            <Declaration>KSYDevAuthStatusRestricted</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBWEstMode_Negtive</TokenIdentifier>
+            <Abstract type="html">流畅优先模式(消极上调, 极速下调)</Abstract>
+            <Declaration>KSYBWEstMode_Negtive</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -34,19 +35,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYDevAuthStatusDenied</TokenIdentifier>
-            <Abstract type="html">拒绝授权</Abstract>
-            <Declaration>KSYDevAuthStatusDenied</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="37"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYDevAuthStatusAuthorized</TokenIdentifier>
-            <Abstract type="html">已授权</Abstract>
-            <Declaration>KSYDevAuthStatusAuthorized</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBWEstMode_Disable</TokenIdentifier>
+            <Abstract type="html">禁用网络自适应网络调整</Abstract>
+            <Declaration>KSYBWEstMode_Disable</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             

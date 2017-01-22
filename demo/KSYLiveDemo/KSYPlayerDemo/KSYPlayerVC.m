@@ -314,7 +314,6 @@
         serverIp = [_player serverAddress];
         NSLog(@"KSYPlayerVC: %@ -- ip:%@", [[_player contentURL] absoluteString], serverIp);
         [self StartTimer];
-        prepared_time = (long long int)([self getCurrentTime] * 1000);
         reloading = NO;
     }
     if (MPMoviePlayerPlaybackStateDidChangeNotification ==  notify.name) {

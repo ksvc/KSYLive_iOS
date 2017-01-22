@@ -30,6 +30,7 @@ Temporary Items
 lib/
 *.ipa
 xcuserdata
+project.xcworkspace/
 
 framework/
 build/

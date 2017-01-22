@@ -6,7 +6,6 @@
 //  Copyright © 2016年 yiqian. All rights reserved.
 //
 
-//@class GPUImageFilter;
 #import <GPUImage/GPUImage.h>
 
 /** KSY的滤镜基类

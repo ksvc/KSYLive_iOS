@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/MPMovieReloadMode.html">
+	<File path="Constants/KSY_NETTRACKER_ACTION.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/MPMovieReloadMode</TokenIdentifier>
-			<Abstract type="html">reload模式</Abstract>
-			<DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSY_NETTRACKER_ACTION</TokenIdentifier>
+			<Abstract type="html">探测方式</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
             
 			
 			<NodeRef refid="52"/>
@@ -14,21 +14,21 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieReloadMode_Fast</TokenIdentifier>
-            <Abstract type="html">加速播放模式</Abstract>
-            <Declaration>MPMovieReloadMode_Fast</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSY_NETTRACKER_ACTION_MTR</TokenIdentifier>
+            <Abstract type="html">mtr方式，探测链路上每个节点</Abstract>
+            <Declaration>KSY_NETTRACKER_ACTION_MTR</Declaration>
             
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            <DeclaredIn>KSYNetTracker.h</DeclaredIn>
             
             <NodeRef refid="52"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieReloadMode_Accurate</TokenIdentifier>
-            <Abstract type="html">精确检测模式</Abstract>
-            <Declaration>MPMovieReloadMode_Accurate</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSY_NETTRACKER_ACTION_PING</TokenIdentifier>
+            <Abstract type="html">ping方式，直接探测终点</Abstract>
+            <Declaration>KSY_NETTRACKER_ACTION_PING</Declaration>
             
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            <DeclaredIn>KSYNetTracker.h</DeclaredIn>
             
             <NodeRef refid="52"/>
         </Token>

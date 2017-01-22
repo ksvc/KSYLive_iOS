@@ -22,11 +22,11 @@
 /// show version of this filter
 +(void) showVersion;
 
-/// grindRatio ranges from 0.0 to 0.8, with 0.7 as the normal level
+/// grindRatio ranges from 0.0 to 1.0, with 0.87 as the normal level
 @property(readwrite,nonatomic) CGFloat grindRatio;
 
 
-/// whitenRatio ranges from 0.0 to 1.0, with 0.5 as the normal level
+/// whitenRatio ranges from 0.0 to 1.0, with 0.6 as the normal level
 @property(readwrite,nonatomic) CGFloat whitenRatio;
 
 #pragma mark
@@ -37,9 +37,8 @@
  */
 - (id)initWithRubbyMaterial:(UIImage *)img;
 
-/// ruddyRatio ranges from 0.0 to 1.0, with 0.5 as the normal level, need to use the initWithRubbyMaterial
+/// ruddyRatio ranges from 0.0 to 1.0, with 1.0 as the normal level, need to use the initWithRubbyMaterial
 @property(readwrite,nonatomic) CGFloat ruddyRatio;
-
 @end
 
 

@@ -15,7 +15,6 @@
 }
 
 @property UILabel       * lblPlayCapture;
-@property UILabel       * lblAudioOnly;
 @property UILabel       * lblMuteSt;
 @property UILabel       * lblReverb;
 @end
@@ -53,11 +52,11 @@
     [self putSlider:_bgmVol
           andSwitch:_bgmMix];
     [self putRow1:_micInput];
-    [self putRow:@[_lblAudioOnly,_swAudioOnly,
-                   _lblMuteSt,_muteStream] ];
     [self putLable:_lblReverb andView:_reverbType];
     id nu = [NSNull null];
-    [self putRow:@[nu,nu,_lblPlayCapture,_swPlayCapture]];
+    [self putRowFit:@[_lblAudioOnly,_swAudioOnly,
+                      nu, _lblMuteSt,_muteStream,
+                      nu,_lblPlayCapture,_swPlayCapture] ];
     [self putRow1:_playCapVol];
 }
 - (void) initMicInput {

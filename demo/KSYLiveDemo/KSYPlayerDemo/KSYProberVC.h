@@ -8,8 +8,8 @@
 
 #ifndef KSYProberVC_h
 #define KSYProberVC_h
-
-#import <libksygpulive/libksygpulive.h>
+#import <UIKit/UIKit.h>
+#import <libksygpulive/KSYMediaInfoProber.h>
 
 @interface KSYProberVC : UIViewController
 - (instancetype)initWithURL:(NSURL *)url;

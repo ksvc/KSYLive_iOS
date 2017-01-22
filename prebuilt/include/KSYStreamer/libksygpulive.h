@@ -7,22 +7,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "KSYTypeDef.h"
-#import "KSYAVAudioSession.h"
-
-// sources (player & capture)
-#import "KSYBgmPlayer.h"
-#import "KSYAUAudioCapture.h"
-#import "KSYDummyAudioSource.h"
-#import "KSYAVFCapture.h"
-
-// mixer
-#import "KSYAudioMixer.h"
-
-// streamer
-#import "KSYStreamerBase.h"
-#import "KSYMovieWriter.h"
-#import "KSYAVMuxer.h"
+#import "libksystreamerbase.h"
+//#import "libksystreamerengine.h"
+//#import "libksygpufilter.h"
 
 #import "KSYMoviePlayerController.h"
 #import "KSYMediaInfoProber.h"
+#import "KSYNetTracker.h"

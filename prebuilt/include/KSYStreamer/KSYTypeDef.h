@@ -17,6 +17,8 @@ typedef NS_ENUM(NSUInteger, KSYLiveScene) {
     KSYLiveScene_Default = 0,
     /// 秀场场景, 主播上半身为主
     KSYLiveScene_Showself,
+    /// 游戏场景
+    KSYLiveScene_Game,
     // others comming soon
 };
 

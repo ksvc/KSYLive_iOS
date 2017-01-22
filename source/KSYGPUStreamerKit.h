@@ -7,7 +7,9 @@
 //
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
-#import "libksygpuimage.h"
+#import "libksygpulive.h"
+#import "libksystreamerengine.h"
+#import "libksygpufilter.h"
 
 /** KSY 直播推流工具类
  
@@ -415,6 +417,13 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 @property (nonatomic, readwrite) GPUImagePicture      *logoPic;
 
 /**
+ @abstract   文字内容的图片
+ @discussion 设置为nil为清除内容图片
+ @see
+ */
+@property (nonatomic, readwrite) GPUImagePicture      *textPic;
+
+/**
  @abstract   水印logo的图片的位置和大小
  @discussion 位置和大小的单位为预览视图的百分比, 左上角为(0,0), 右下角为(1.0, 1.0)
  @discussion 如果宽为0, 则根据图像的宽高比, 和设置的高度比例, 计算得到宽度的比例
@@ -476,5 +485,31 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  @abstract 触摸缩放因子
  */
 @property (nonatomic, assign)   CGFloat pinchZoomFactor;
+
+/**
+ @abstract 推流前profile类型
+ */
+typedef NS_ENUM(NSInteger, KSYStreamerProfile) {
+                                        // capres    strres   fps  kbps
+    KSYStreamerProfile_360p_1 = 0,      // 640x480   640x360   15   512
+    KSYStreamerProfile_360p_2 = 1,      // 960x540   640x360   15   512
+    KSYStreamerProfile_360p_3 = 2,      // 1280x720  640x360   20   768
+    KSYStreamerProfile_360p_auto = 3,   // 640x480   640x360   15   512 (便于后续扩展)
+    
+    KSYStreamerProfile_540p_1 = 100,      // 960x540   960x540   15   768
+    KSYStreamerProfile_540p_2 = 101,      // 1280x720  960x540   15   768
+    KSYStreamerProfile_540p_3 = 102,      // 1280x720  960x540   20   1024
+    KSYStreamerProfile_540p_auto = 103,   // 960x540   960x540   15   768 (便于后续扩展)
+    
+    KSYStreamerProfile_720p_1 = 200,      // 1280x720  1280x720  15   1024
+    KSYStreamerProfile_720p_2 = 201,      // 1280x720  1280x720  20   1280
+    KSYStreamerProfile_720p_3 = 202,      // 1280x720  1280x720  24   1536
+    KSYStreamerProfile_720p_auto = 203,   // 1280x720  1280x720  15   1024 (便于后续扩展)
+};
+
+/**
+ @abstract 采集和推流配置参数
+ */
+@property (nonatomic, assign)   KSYStreamerProfile streamerProfile;
 
 @end

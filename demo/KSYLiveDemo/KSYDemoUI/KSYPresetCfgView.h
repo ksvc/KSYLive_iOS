@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <libksygpulive/libksygpuimage.h>
+#import <libksygpulive/KSYGPUStreamerKit.h>
 
 #import "KSYUIView.h"
 /**
@@ -15,7 +15,9 @@
  
  主要是在开始采集和推流之前可以配置的一些参数
  */
-@interface KSYPresetCfgView : KSYUIView
+@interface KSYPresetCfgView : KSYUIView<
+            UIPickerViewDataSource,
+            UIPickerViewDelegate >
 
 // UI elements
 @property UIButton* btn0;
@@ -33,6 +35,11 @@
 @property UISegmentedControl *streamResoUI; // 推流分辨率
 @property UILabel            *lblCameraPosUI;
 @property UISegmentedControl *cameraPosUI;  //
+
+@property UILabel            *lblProfileUI;
+@property UISegmentedControl *profileUI;//预设等级 and 自定义
+
+@property (nonatomic, readonly) UIPickerView  * profilePicker;
 
 @property KSYNameSlider* frameRateUI;
 
@@ -53,17 +60,20 @@
 
 // get config data
 - (NSString*) hostUrl;
-- (NSString*) capResolution;
-- (CGSize) strResolutionSize;
-- (CGSize) capResolutionSize;
-- (AVCaptureDevicePosition) cameraPos;
-- (int) frameRate;
-- (KSYVideoCodec) videoCodec;
-- (KSYAudioCodec) audioCodec;
-- (int) videoKbps;
-- (int) audioKbps;
-- (KSYBWEstimateMode) bwEstMode;
+@property(nonatomic, assign) NSString *capResolution;
+@property(nonatomic, assign) CGSize capResolutionSize;
+@property(nonatomic, assign) CGSize strResolutionSize;
+@property(nonatomic, assign) int frameRate;
+@property(nonatomic, assign) AVCaptureDevicePosition cameraPos;
+@property(nonatomic, assign) OSType gpuOutputPixelFmt;
+@property(nonatomic, assign) KSYVideoCodec videoCodec;
+@property(nonatomic, assign) int videoKbps;
+@property(nonatomic, assign) KSYAudioCodec audioCodec;
+@property(nonatomic, assign) int audioKbps;
+@property(nonatomic, assign) KSYBWEstimateMode bwEstMode;
 
-- (OSType) gpuOutputPixelFmt;
+//当前profile id
+@property NSInteger curProfileIdx;
+
 @end
 

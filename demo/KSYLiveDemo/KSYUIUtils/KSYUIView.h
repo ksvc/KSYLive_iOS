@@ -51,6 +51,8 @@
              and:(UIView*)subV2;
 // 均匀添加任意数量的视图数组
 - (void) putRow:(NSArray *) subV;
+// 添加任意数量的视图数组, 按照每个视图的内容调整宽度
+- (void) putRowFit:(NSArray *) subV;
 
 //(firstV 使用内容宽度, 剩余宽度全部分配给secondV)
 - (void) putNarrow:(UIView*)firstV

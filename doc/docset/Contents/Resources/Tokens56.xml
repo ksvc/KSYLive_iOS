@@ -1,8 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="">
+	<File path="Constants/MPMovieReloadMode.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/MPMovieReloadMode</TokenIdentifier>
+			<Abstract type="html">reload模式</Abstract>
+			<DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+			
+			<NodeRef refid="56"/>
+		</Token>
 		
 		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieReloadMode_Fast</TokenIdentifier>
+            <Abstract type="html">加速播放模式</Abstract>
+            <Declaration>MPMovieReloadMode_Fast</Declaration>
+            
+            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+            <NodeRef refid="56"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieReloadMode_Accurate</TokenIdentifier>
+            <Abstract type="html">精确检测模式</Abstract>
+            <Declaration>MPMovieReloadMode_Accurate</Declaration>
+            
+            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+            <NodeRef refid="56"/>
+        </Token>
         
         
 	</File>

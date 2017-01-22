@@ -23,7 +23,7 @@
 @property NSURL *pipURL;
 @property NSURL *bgpURL;
 // 当前画中画的播放状态
-@property NSString* pipStatus;
+@property (nonatomic) NSString* pipStatus;
 
 // match pattern
 @property NSArray* pipPattern;

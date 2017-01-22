@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <libksygpulive/libksygpulive.h>
+#import <libksygpulive/KSYMoviePlayerController.h>
 
 
 @interface MonkeyTestViewController : UIViewController
