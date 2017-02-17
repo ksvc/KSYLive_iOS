@@ -191,29 +191,20 @@ static const CGFloat kButtonHeight = 30.f;
     
     // Random parameters
     _player.shouldAutoplay = RandomBooleanValue;
-    _player.shouldEnableKSYStatModule = RandomBooleanValue;
     _player.shouldLoop = RandomBooleanValue;
     _player.scalingMode = RandomScalingMode;
     _player.videoDecoderMode = RandomMovieVideoDecoderMode;
     _player.shouldMute = RandomBooleanValue;
     [_player setTimeout:RandomPrepareTimeout readTimeout:RandomReadTimeout];
     
-//    _player.shouldAutoplay = YES;
-//    _player.shouldEnableKSYStatModule = YES;
-//    _player.shouldLoop = NO;
-//    _player.scalingMode = MPMovieScalingModeAspectFit;
-//    _player.videoDecoderMode = MPMovieVideoDecoderMode_Hardware;
-//    [_player setTimeout:10 readTimeout:60];
     
     [self appendDebugInfoWithString:[NSString stringWithFormat:@"******************\n"
                                      "URL: %@\n"
                                      "shouldAutoplay = %@\n"
-                                     "shouldEnableKSYStatModule = %@\n"
                                      "shouldLoop = %@\n"
                                      "shouldMute = %@\n",
                                      randomURL,
                                      _player.shouldAutoplay ? @"YES" : @"NO",
-                                     _player.shouldEnableKSYStatModule ? @"YES" : @"NO",
                                      _player.shouldLoop ? @"YES" : @"NO",
                                      _player.shouldMute ? @"YES" : @"NO"]];
     

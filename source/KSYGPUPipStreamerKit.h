@@ -86,17 +86,8 @@
 - (NSString*) getCurPipStateName;
 
 /**
- @abstract   设置当前的播放状态
- */
-- (void) newPipState: (MPMoviePlaybackState) stat;
-
-/**
  @abstract    播放状态
  */
 @property (nonatomic, readonly) MPMoviePlaybackState PipState;
-
-
-// Posted when audio state changes
-FOUNDATION_EXPORT NSString *const KSYPipStateDidChangeNotification NS_AVAILABLE_IOS(7_0);
 
 @end

@@ -231,7 +231,7 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
 @property (nonatomic, readonly) NSTimeInterval playableDuration;
 
 /**
- @abstract 收集日志的状态，默认开启
+ @abstract 数据统计，默认开启
  @discussion 可开关
  @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.0 and later.
@@ -269,6 +269,18 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 @property NSTimeInterval bufferTimeMax;
+
+/**
+ @abstract bufferSizeMax指定点播播放时的最大缓冲，单位MB
+ @discussion 取值大小为10-100，超过此区间时将使用默认值15。
+ 
+ * 该属性仅对点播视频有效；
+ * 默认值为15。
+ 
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 2.0 and later.
+ */
+@property NSUInteger bufferSizeMax;
 
 /**
  @abstract 已经加载的数据大小

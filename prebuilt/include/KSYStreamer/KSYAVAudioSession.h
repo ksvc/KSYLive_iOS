@@ -55,6 +55,13 @@
  */
 @property (nonatomic, assign) NSString * AVAudioSessionCategory;
 
+/**
+ @abstract 检查当前AVAudioSession的类别是否与设置的AVAudioSessionCategory 一致
+ @discussion AVAudioSession为公有的单例, APP中的其他SDK也可以修改
+ @discussion 因此可能出现直播时,改为无录音权限的类别的情况, 通过此方法进行检查
+ */
+- (BOOL) checkCategory;
+
 #pragma mark - audio input ports
 /**
  @abstract   是否有蓝牙麦克风可用
@@ -67,7 +74,7 @@
  @param      onOrOff : YES 使用蓝牙麦克风 NO
  @return     是/否有蓝牙麦克风可用
  */
-- (BOOL)switchBluetoothInput:(BOOL)onOrOff;
++ (BOOL)switchBluetoothInput:(BOOL)onOrOff;
 
 /**
  @abstract   是否有耳机麦克风可用

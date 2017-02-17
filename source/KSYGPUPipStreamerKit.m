@@ -9,9 +9,6 @@
 
 #define CASE_RETURN( ENU ) case ENU : {return @#ENU;}
 
-// Posted when stream state changes
-NSString *const KSYPipStateDidChangeNotification =@"KSYPipStateDidChangeNotification";
-
 @interface KSYGPUPipStreamerKit (){
     NSLock   *       _quitLock;  // ensure capDev closed before dealloc
 }
@@ -195,16 +192,6 @@ NSString *const KSYPipStateDidChangeNotification =@"KSYPipStateDidChangeNotifica
     _player    = nil;
 }
 
-- (void) newPipState: (MPMoviePlaybackState) stat{
-    _PipState = stat;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSNotificationCenter* dc =[NSNotificationCenter defaultCenter];
-        [dc postNotificationName:KSYPipStateDidChangeNotification
-                          object:self];
-        
-    });
-}
-
 /**
  @abstract   获取状态对应的字符串
  @param      stat 状态
@@ -221,7 +208,7 @@ NSString *const KSYPipStateDidChangeNotification =@"KSYPipStateDidChangeNotifica
  @abstract   获取当前状态对应的字符串
  */
 - (NSString*) getCurPipStateName {
-    return [self getPipStateName: _PipState];
+    return [self getPipStateName: _player.playbackState];
 }
 
 @end

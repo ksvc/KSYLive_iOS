@@ -51,50 +51,15 @@
 
 - (void) initObservers{
     [super initObservers];
-    [self.obsDict setObject:SEL_VALUE(onPipStateChange:) forKey:KSYPipStateDidChangeNotification];
+    [self.obsDict setObject:SEL_VALUE(onPipStateChange:) forKey:MPMoviePlayerPlaybackStateDidChangeNotification];
 }
 
-- (void) addObservers {
-    [super addObservers];
-}
-
-- (void) rmObservers {
-    [super rmObservers];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)enterBg:(NSNotification *)not{  //app will resigned
-    [self.kit appEnterBackground];
-}
-
-- (void) becameActive:(NSNotification *)not{ //app becameAction
-    [self.kit appBecomeActive];
-}
-
-- (BOOL)shouldAutorotate {
-    return [super shouldAutorotate];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
+#pragma mark -  state change
 - (void) onPipStateChange  :(NSNotification *)notification{
     NSString * st = [_pipKit getCurPipStateName];
     _ksyPipView.pipStatus = [st substringFromIndex:20];
 }
 
-#pragma mark - Capture & stream setup
-
-- (void) setCaptureCfg{
-    [super setCaptureCfg];
-}
-// 推流的参数设置
-- (void) setStreamerCfg {
-    [super setStreamerCfg];
-}
-
-#pragma mark -  state change
 #pragma mark - timer respond per second
 - (void)onTimer:(NSTimer *)theTimer{
     [super onTimer:theTimer];
@@ -141,12 +106,9 @@
 - (void)onPipPlay{
     [_pipKit startPipWithPlayerUrl:self.ksyPipView.pipURL
                           bgPic:self.ksyPipView.bgpURL];
-    [_pipKit newPipState:MPMoviePlaybackStatePlaying];
-    
 }
 - (void)onPipStop{
     [_pipKit stopPip];
-    [_pipKit newPipState:MPMoviePlaybackStateStopped];
 }
 - (void)onPipNext{
     if (_pipKit.player){
@@ -158,11 +120,9 @@
 - (void)onPipPause{
     if (_pipKit.player && _pipKit.player.playbackState == MPMoviePlaybackStatePlaying) {
         [_pipKit.player pause];
-        [_pipKit newPipState:MPMoviePlaybackStatePaused];
     }
     else if (_pipKit.player && _pipKit.player.playbackState == MPMoviePlaybackStatePaused){
         [_pipKit.player play];
-        [_pipKit newPipState:MPMoviePlaybackStatePlaying];
     }
 }
 

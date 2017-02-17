@@ -41,15 +41,6 @@
 #pragma mark - kit instance
 @property (nonatomic, retain) KSYGPUPipStreamerKit * pipKit;
 
-// 采集的参数设置
-- (void) setCaptureCfg;
-// 推流的参数设置
-- (void) setStreamerCfg;
-
-- (void) initObservers;
-- (void) addObservers;
-- (void) rmObservers;
-
 - (void) addSubViews;
 - (void) onMenuBtnPress:(UIButton *)btn;
 @end

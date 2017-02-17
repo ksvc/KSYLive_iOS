@@ -100,4 +100,3 @@ typedef NS_ENUM(NSUInteger, MPMovieVideoDeinterlaceMode) {
 };
 
 //----------------------------------------------
-#define KSYPLAYERCORE_VERSION 1.9.5.1
