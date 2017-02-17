@@ -169,6 +169,18 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAVAudioSession/checkCategory</TokenIdentifier>
+			<Abstract type="html">检查当前AVAudioSession的类别是否与设置的AVAudioSessionCategory 一致</Abstract>
+			<DeclaredIn>KSYAVAudioSession.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)checkCategory</Declaration>
+			
+			
+			<Anchor>//api/name/checkCategory</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/clm/KSYAVAudioSession/isBluetoothInputAvaible</TokenIdentifier>
 			<Abstract type="html">是否有蓝牙麦克风可用</Abstract>
 			<DeclaredIn>KSYAVAudioSession.h</DeclaredIn>
@@ -181,11 +193,11 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAVAudioSession/switchBluetoothInput:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/clm/KSYAVAudioSession/switchBluetoothInput:</TokenIdentifier>
 			<Abstract type="html">选择是否使用蓝牙麦克风</Abstract>
 			<DeclaredIn>KSYAVAudioSession.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)switchBluetoothInput:(BOOL)onOrOff</Declaration>
+			<Declaration>+ (BOOL)switchBluetoothInput:(BOOL)onOrOff</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>onOrOff</Name>

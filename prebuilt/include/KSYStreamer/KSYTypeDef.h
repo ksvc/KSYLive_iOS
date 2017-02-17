@@ -198,6 +198,10 @@ typedef NS_ENUM(NSUInteger, KSYNetStateCode) {
     KSYNetStateCode_EST_BW_RAISE,
     /// 估计带宽调整，下调
     KSYNetStateCode_EST_BW_DROP,
+    /// 帧率调整，上调
+    KSYNetStateCode_VIDEO_FPS_RAISE,
+    /// 帧率调整，下调
+    KSYNetStateCode_VIDEO_FPS_DROP,
     /// SDK 鉴权失败 (暂时正常推流5~8分钟后终止推流)
     KSYNetStateCode_KSYAUTHFAILED,
     /// 输入音频不连续

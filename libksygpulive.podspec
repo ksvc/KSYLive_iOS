@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'libksygpulive'
-  s.version      = '1.9.5'
+  s.version      = '2.0.0.1'
   s.license      = {
 :type => 'Proprietary',
 :text => <<-LICENSE
@@ -44,15 +44,15 @@ Pod::Spec.new do |s|
   s.subspec 'KSYMediaPlayer' do |sub|
     sub.source_files =  'prebuilt/include/KSYPlayer/*.h'
     sub.vendored_library = 'prebuilt/libs/libksyplayer.a'
-    sub.dependency 'libksygpulive/base'
-    sub.dependency 'libksygpulive/mediacore_dec_lite'
+    sub.dependency '%s/base' % s.name
+    sub.dependency '%s/mediacore_dec_lite' % s.name
   end
   # vod version of KSYMediaPlayer (more decoders)
   s.subspec 'KSYMediaPlayer_vod' do |sub|
     sub.source_files =  'prebuilt/include/KSYPlayer/*.h'
     sub.vendored_library = 'prebuilt/libs/libksyplayer.a'
-    sub.dependency 'libksygpulive/base'
-    sub.dependency 'libksygpulive/mediacore_dec_vod'
+    sub.dependency '%s/base' % s.name
+    sub.dependency '%s/mediacore_dec_vod' % s.name
   end
   s.subspec 'libksygpulive' do |sub|
     sub.source_files =  ['prebuilt/include/**/*.h',
@@ -60,11 +60,11 @@ Pod::Spec.new do |s|
     sub.vendored_library = ['prebuilt/libs/libksyplayer.a',
                             'prebuilt/libs/libksystreamer.a'];
     sub.dependency 'GPUImage'
-    sub.dependency 'libksygpulive/base'
-    sub.dependency 'libksygpulive/yuv'
-    sub.dependency 'libksygpulive/mediacodec'
-    sub.dependency 'libksygpulive/mediacore_enc_base'
-    sub.dependency 'libksygpulive/mediacore_enc_lite'
+    sub.dependency '%s/base' % s.name
+    sub.dependency '%s/yuv' % s.name
+    sub.dependency '%s/mediacodec' % s.name
+    sub.dependency '%s/mediacore_enc_base' % s.name
+    sub.dependency '%s/mediacore_enc_lite' % s.name
   end
   s.subspec 'libksygpulive_265' do |sub|
     sub.source_files =  ['prebuilt/include/**/*.h',
@@ -72,11 +72,11 @@ Pod::Spec.new do |s|
     sub.vendored_library = ['prebuilt/libs/libksyplayer.a',
                             'prebuilt/libs/libksystreamer.a'];
     sub.dependency 'GPUImage'
-    sub.dependency 'libksygpulive/base'
-    sub.dependency 'libksygpulive/yuv'
-    sub.dependency 'libksygpulive/mediacodec'
-    sub.dependency 'libksygpulive/mediacore_enc_base'
-    sub.dependency 'libksygpulive/mediacore_enc_265'
+    sub.dependency '%s/base' % s.name
+    sub.dependency '%s/yuv' % s.name
+    sub.dependency '%s/mediacodec' % s.name
+    sub.dependency '%s/mediacore_enc_base' % s.name
+    sub.dependency '%s/mediacore_enc_265' % s.name
   end
   s.subspec 'KSYGPUResource' do |sub|
     sub.resource = 'resource/KSYGPUResource.bundle'
@@ -85,10 +85,10 @@ Pod::Spec.new do |s|
     sub.source_files =  'prebuilt/include/**/*.h';
     sub.vendored_library = 'prebuilt/libs/libksyplayer.a';
     sub.dependency 'GPUImage'
-    sub.dependency 'libksygpulive/base'
-    sub.dependency 'libksygpulive/yuv'
-    sub.dependency 'libksygpulive/mediacodec'
-    sub.dependency 'libksygpulive/mediacore_enc_base'
-    sub.dependency 'libksygpulive/mediacore_enc_lite'
+    sub.dependency '%s/base' % s.name
+    sub.dependency '%s/yuv' % s.name
+    sub.dependency '%s/mediacodec' % s.name
+    sub.dependency '%s/mediacore_enc_base' % s.name
+    sub.dependency '%s/mediacore_enc_lite' % s.name
   end
 end

@@ -49,6 +49,20 @@
 @property(nonatomic, assign) BOOL bPlayCapturedAudio;
 
 /**
+ @abstract 是否使用带回声消除的采集模块(默认为NO)
+ @discussion 请在连麦开始时在设置此属性为YES, 连麦结束记得设置为NO
+ @discussion 此属性为YES时, 启动采集一定会打断其他音乐播放
+ */
+@property(nonatomic, assign) BOOL enableVoiceProcess;
+
+/**
+ @abstract 是否强制设置AVAudioSession的类别为PlayAndRecord(默认为YES)
+ @discussion 此属性为YES时, 每次启动采集会将类别强制设置为AVAudioSessionCategoryPlayAndRecord
+ @discussion 为了避免别APP中的其他SDK将AVAudioSession的类别修改为无法录音,导致无法采集到声音
+ */
+@property(nonatomic, assign) BOOL bForceAudioSessionCatogary;
+
+/**
  @abstract  设置mic采集的声音音量
  @discussion 调整范围 0.0~1.0
  */
@@ -76,10 +90,15 @@
 @property(nonatomic, copy) void(^audioProcessingCallback)(CMSampleBufferRef sampleBuffer);
 
 /**
+ @abstract 用户可以自定义播放的内容，直接把数据填入ioData
+ @discussion ioData 目前只支持int16 的单声道数据
+ */
+@property(nonatomic, copy) void(^customPlayCallback)(AudioBufferList *ioData, UInt32 inumber);
+
+/**
  @abstract   是否有耳机麦克风可用
  @return     是/否有耳机麦克风
  */
 + (BOOL)isHeadsetPluggedIn;
-
 
 @end

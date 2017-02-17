@@ -256,13 +256,6 @@
     return YES;
 }
 
-- (void)switchControlEvent:(UISwitch *)switchControl
-{
-    if (_player) {
-        _player.shouldEnableKSYStatModule = switchControl.isOn;
-    }
-}
-
 -(void)onVolumeChanged:(UISlider *)slider
 {
     if (_player){
@@ -554,7 +547,6 @@
     _player.shouldMute = shouldMute;
 //    _player.rotateDegress = 90;
 //    _player.mirror = YES;
-    _player.shouldEnableKSYStatModule = TRUE;
     _player.shouldLoop = NO;
     _player.deinterlaceMode = MPMovieVideoDeinterlaceMode_Auto;
     [_player setTimeout:10 readTimeout:60];

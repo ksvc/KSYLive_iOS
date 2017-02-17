@@ -11,7 +11,7 @@
 #import "KSYUIView.h"
 #import "KSYStreamerVC.h"
 #import "KSYPipStreamerVC.h"
-
+#import "KSYBgmStreamerVC.h"
 
 #ifdef KSYSTREAMER_DEMO
 #import "TestVCs.h"
@@ -90,15 +90,21 @@
         vc = strVC;
 
     }
+    else if ( sender == _cfgView.btn3) { // bgm demo
+        NSString * btnName = _cfgView.btn3.currentTitle;
+        KSYBgmStreamerVC * strVC = [[KSYBgmStreamerVC alloc] initWithCfg:_cfgView];
+        [strVC.ctrlView.btnStream setTitle:btnName forState:UIControlStateNormal];
+        vc = strVC;
+    }
     else if ( sender == _cfgView.btn2) { // tests
 #ifdef KSYSTREAMER_DEMO
         vc = [[TEST_VC alloc] init];
-#else
+#endif
+    }
+    else if (sender == _cfgView.btn4) {
         [self dismissViewControllerAnimated:FALSE
                                  completion:nil];
-        
         return;
-#endif
     }
     if (vc){
         [self presentViewController:vc animated:true completion:nil];

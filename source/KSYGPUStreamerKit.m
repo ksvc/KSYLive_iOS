@@ -54,6 +54,7 @@
 
 - (instancetype) initInterrupt:(BOOL) bInter {
     self = [super init];
+
     _quitLock = [[NSLock alloc] init];
     _capDev_q = dispatch_queue_create( "com.ksyun.capDev_q", DISPATCH_QUEUE_SERIAL);
     // init default property
@@ -100,7 +101,6 @@
     //Session模块
     _avAudioSession = [[KSYAVAudioSession alloc] init];
     _avAudioSession.bInterruptOtherAudio = bInter;
-    [_avAudioSession setAVAudioSessionOption];
 
     // 创建背景音乐播放模块
     _bgmPlayer = [[KSYBgmPlayer   alloc] init];
@@ -146,6 +146,14 @@
     _streamerBase.streamStateChange = ^(KSYStreamState state) {
         [selfWeak onStreamState:state];
     };
+    
+    
+    _streamerBase.videoFPSChange = ^(int newVideoFPS){
+        selfWeak.videoFPS = MAX(1, MIN(newVideoFPS, 30));
+        selfWeak.vCapDev.frameRate = selfWeak.videoFPS;
+        selfWeak.streamerBase.videoFPS = selfWeak.videoFPS;
+    };
+
     return self;
 }
 - (instancetype)init {
@@ -206,6 +214,7 @@
 }
 
 - (void) setupVMixer {
+
     // 混合后的图像输出到预览和推流
     [_vPreviewMixer removeAllTargets];
     [_vPreviewMixer addTarget:_preview];
@@ -215,6 +224,7 @@
     // 设置镜像
     [self setPreviewOrientation:_previewOrientation];
     [self setStreamOrientation:_streamOrientation];
+
 }
 
 // 添加图层到 vMixer 中
@@ -235,6 +245,7 @@
     // 前处理 和 图像 mixer
     [self setupFilter:_filter];
     [self setupVMixer];
+
     // 采集到的画面上传GPU
     _vCapDev.videoProcessingCallback = ^(CMSampleBufferRef buf) {
         if ( kit.videoProcessingCallback ){
@@ -364,7 +375,6 @@
             [_vCapDev rotateCamera];
         }
         _vCapDev.captureSessionPreset = _capPreset;
-        _vCapDev.frameRate = _videoFPS;
         // check if preset ok
         _capPreset = _vCapDev.captureSessionPreset;
         [self  updatePreDimension];
@@ -377,6 +387,9 @@
         [self setupVMixer];
         // 开始预览
         [_vCapDev startCameraCapture];
+        
+        //配置audioSession的方法由init移入startPreview，防止在init之后，startPreview之前被外部修改
+        [_avAudioSession setAVAudioSessionOption];
         [_aCapDev startCapture];
         [_quitLock unlock];
         [self newCaptureState:KSYCaptureStateCapturing];
@@ -556,7 +569,12 @@
 }
 @synthesize videoFPS = _videoFPS;
 - (void) setVideoFPS: (int) fps {
-    _videoFPS = MAX(1, MIN(fps, 30));
+    if(_captureState  ==  KSYCaptureStateIdle)
+    {
+        _videoFPS = MAX(1, MIN(fps, 30));
+        _vCapDev.frameRate = _videoFPS;
+        _streamerBase.videoFPS = _videoFPS;
+    }
 }
 
 @synthesize videoOrientation = _videoOrientation;
@@ -819,23 +837,29 @@ M_PI_2*1,M_PI_2*3, M_PI_2*2, M_PI_2*0,
  @discussion 采集到的图像的朝向还是和启动时的朝向一致
  */
 - (void) rotatePreviewTo: (UIInterfaceOrientation) orie {
+    @WeakObj(self);
     dispatch_async(dispatch_get_main_queue(), ^(){
-        _previewOrientation = orie;
-        UIView* view = [_preview superview];
-        if (_videoOrientation == orie || view == nil || _vCapDev.isRunning == NO ) {
-            _preview.transform = CGAffineTransformIdentity;
-            _previewRotateAng = 0;
-            _preview.frame = view.bounds;
-        }
-        else {
-            int capOri = UIOrienToIdx(_videoOrientation);
-            int appOri = UIOrienToIdx(orie);
-            _previewRotateAng = KSYRotateAngles[ capOri ][ appOri ];
-            _preview.transform = CGAffineTransformMakeRotation(_previewRotateAng);
-        }
-        _preview.center = view.center;
-        [self setPreviewMirrored: _previewMirrored];
+        [selfWeak internalRotatePreviewTo:orie];
     });
+}
+
+-(void)internalRotatePreviewTo: (UIInterfaceOrientation) orie
+{
+    _previewOrientation = orie;
+    UIView* view = [_preview superview];
+    if (_videoOrientation == orie || view == nil || _vCapDev.isRunning == NO ) {
+        _preview.transform = CGAffineTransformIdentity;
+        _previewRotateAng = 0;
+        _preview.frame = view.bounds;
+    }
+    else {
+        int capOri = UIOrienToIdx(_videoOrientation);
+        int appOri = UIOrienToIdx(orie);
+        _previewRotateAng = KSYRotateAngles[ capOri ][ appOri ];
+        _preview.transform = CGAffineTransformMakeRotation(_previewRotateAng);
+    }
+    _preview.center = view.center;
+    [self setPreviewMirrored: _previewMirrored];
 }
 
 const static GPUImageRotationMode KSYRotateMode [4] [4] = {
@@ -928,138 +952,109 @@ kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRota
 //设置采集和推流配置参数
 @synthesize streamerProfile =_streamerProfile;
 - (void)setStreamerProfile:(KSYStreamerProfile)profile{
+    
+    _streamerBase.videoCodec = KSYVideoCodec_AUTO;
+    _streamerBase.audioCodec = KSYAudioCodec_AT_AAC;
+    _streamerBase.bwEstimateMode = KSYBWEstMode_Default;
+    _streamerBase.videoMinFPS = 10;
+    _streamerBase.videoMaxFPS = 25;
+    
     switch (profile) {
+        case KSYStreamerProfile_360p_auto:
+            _capPreset = AVCaptureSessionPreset640x480;
+            _previewDimension = CGSizeMake(640, 360);
+            _streamDimension = CGSizeMake(640, 360);
+            self.videoFPS = 15;
+            _streamerBase.videoMaxBitrate = 512;
+            _streamerBase.audiokBPS = 48;
+            break;
         case KSYStreamerProfile_360p_1:
             _capPreset = AVCaptureSessionPreset640x480;
             _previewDimension = CGSizeMake(640, 360);
             _streamDimension = CGSizeMake(640, 360);
-            _videoFPS = 15;
-            _streamerBase.videoCodec = KSYVideoCodec_AUTO;
+            self.videoFPS = 15;
             _streamerBase.videoMaxBitrate = 512;
-            _streamerBase.audioCodec = KSYAudioCodec_AT_AAC;
             _streamerBase.audiokBPS = 48;
-            _streamerBase.bwEstimateMode = KSYBWEstMode_Default;
             break;
         case KSYStreamerProfile_360p_2:
             _capPreset = AVCaptureSessionPresetiFrame960x540;
             _previewDimension = CGSizeMake(960, 540);
             _streamDimension = CGSizeMake(640, 360);
-            _videoFPS = 15;
-            _streamerBase.videoCodec = KSYVideoCodec_AUTO;
+            self.videoFPS = 15;
             _streamerBase.videoMaxBitrate = 512;
-            _streamerBase.audioCodec = KSYAudioCodec_AT_AAC;
             _streamerBase.audiokBPS = 48;
-            _streamerBase.bwEstimateMode = KSYBWEstMode_Default;
             break;
         case KSYStreamerProfile_360p_3:
             _capPreset = AVCaptureSessionPreset1280x720;
             _previewDimension = CGSizeMake(1280, 720);
             _streamDimension = CGSizeMake(640, 360);
-            _videoFPS = 20;
-            _streamerBase.videoCodec = KSYVideoCodec_AUTO;
+            self.videoFPS = 20;
             _streamerBase.videoMaxBitrate = 768;
-            _streamerBase.audioCodec = KSYAudioCodec_AT_AAC;
             _streamerBase.audiokBPS = 48;
-            _streamerBase.bwEstimateMode = KSYBWEstMode_Default;
-            break;
-        case KSYStreamerProfile_360p_auto:
-            _capPreset = AVCaptureSessionPreset640x480;
-            _previewDimension = CGSizeMake(640, 360);
-            _streamDimension = CGSizeMake(640, 360);
-            _videoFPS = 15;
-            _streamerBase.videoCodec = KSYVideoCodec_AUTO;
-            _streamerBase.videoMaxBitrate = 512;
-            _streamerBase.audioCodec = KSYAudioCodec_AT_AAC;
-            _streamerBase.audiokBPS = 48;
-            _streamerBase.bwEstimateMode = KSYBWEstMode_Default;
-            break;
-        case KSYStreamerProfile_540p_1:
-            _capPreset = AVCaptureSessionPresetiFrame960x540;
-            _previewDimension = CGSizeMake(960, 540);
-            _streamDimension = CGSizeMake(960, 540);
-            _videoFPS = 15;
-            _streamerBase.videoCodec = KSYVideoCodec_AUTO;
-            _streamerBase.videoMaxBitrate = 768;
-            _streamerBase.audioCodec = KSYAudioCodec_AT_AAC;
-            _streamerBase.audiokBPS = 64;
-            _streamerBase.bwEstimateMode = KSYBWEstMode_Default;
-            break;
-        case KSYStreamerProfile_540p_2:
-            _capPreset = AVCaptureSessionPreset1280x720;
-            _previewDimension = CGSizeMake(1280, 720);
-            _streamDimension = CGSizeMake(960, 540);
-            _videoFPS = 15;
-            _streamerBase.videoCodec = KSYVideoCodec_AUTO;
-            _streamerBase.videoMaxBitrate = 768;
-            _streamerBase.audioCodec = KSYAudioCodec_AT_AAC;
-            _streamerBase.audiokBPS = 64;
-            _streamerBase.bwEstimateMode = KSYBWEstMode_Default;
-            break;
-        case KSYStreamerProfile_540p_3:
-            _capPreset = AVCaptureSessionPreset1280x720;
-            _previewDimension = CGSizeMake(1280, 720);
-            _streamDimension = CGSizeMake(960, 540);
-            _videoFPS = 20;
-            _streamerBase.videoCodec = KSYVideoCodec_AUTO;
-            _streamerBase.videoMaxBitrate = 1024;
-            _streamerBase.audioCodec = KSYAudioCodec_AT_AAC;
-            _streamerBase.audiokBPS = 64;
-            _streamerBase.bwEstimateMode = KSYBWEstMode_Default;
             break;
         case KSYStreamerProfile_540p_auto:
             _capPreset = AVCaptureSessionPresetiFrame960x540;
             _previewDimension = CGSizeMake(960, 540);
             _streamDimension = CGSizeMake(960, 540);
-            _videoFPS = 15;
-            _streamerBase.videoCodec = KSYVideoCodec_AUTO;
+            self.videoFPS = 15;
             _streamerBase.videoMaxBitrate = 768;
-            _streamerBase.audioCodec = KSYAudioCodec_AT_AAC;
             _streamerBase.audiokBPS = 64;
-            _streamerBase.bwEstimateMode = KSYBWEstMode_Default;
             break;
-        case KSYStreamerProfile_720p_1:
+        case KSYStreamerProfile_540p_1:
+            _capPreset = AVCaptureSessionPresetiFrame960x540;
+            _previewDimension = CGSizeMake(960, 540);
+            _streamDimension = CGSizeMake(960, 540);
+            self.videoFPS = 15;
+            _streamerBase.videoMaxBitrate = 768;
+            _streamerBase.audiokBPS = 64;
+            break;
+        case KSYStreamerProfile_540p_2:
             _capPreset = AVCaptureSessionPreset1280x720;
             _previewDimension = CGSizeMake(1280, 720);
-            _streamDimension = CGSizeMake(1280, 720);
-            _videoFPS = 15;
-            _streamerBase.videoCodec = KSYVideoCodec_AUTO;
+            _streamDimension = CGSizeMake(960, 540);
+            self.videoFPS = 15;
+            _streamerBase.videoMaxBitrate = 768;
+            _streamerBase.audiokBPS = 64;
+            break;
+        case KSYStreamerProfile_540p_3:
+            _capPreset = AVCaptureSessionPreset1280x720;
+            _previewDimension = CGSizeMake(1280, 720);
+            _streamDimension = CGSizeMake(960, 540);
+            self.videoFPS = 20;
             _streamerBase.videoMaxBitrate = 1024;
-            _streamerBase.audioCodec = KSYAudioCodec_AT_AAC;
-            _streamerBase.audiokBPS = 128;
-            _streamerBase.bwEstimateMode = KSYBWEstMode_Default;
-            break;
-        case KSYStreamerProfile_720p_2:
-            _capPreset = AVCaptureSessionPreset1280x720;
-            _previewDimension = CGSizeMake(1280, 720);
-            _streamDimension = CGSizeMake(1280, 720);
-            _videoFPS = 20;
-            _streamerBase.videoCodec = KSYVideoCodec_AUTO;
-            _streamerBase.videoMaxBitrate = 1280;
-            _streamerBase.audioCodec = KSYAudioCodec_AT_AAC;
-            _streamerBase.audiokBPS = 128;
-            _streamerBase.bwEstimateMode = KSYBWEstMode_Default;
-            break;
-        case KSYStreamerProfile_720p_3:
-            _capPreset = AVCaptureSessionPreset1280x720;
-            _previewDimension = CGSizeMake(1280, 720);
-            _streamDimension = CGSizeMake(1280, 720);
-            _videoFPS = 24;
-            _streamerBase.videoCodec = KSYVideoCodec_AUTO;
-            _streamerBase.videoMaxBitrate = 1536;
-            _streamerBase.audioCodec = KSYAudioCodec_AT_AAC;
-            _streamerBase.audiokBPS = 128;
-            _streamerBase.bwEstimateMode = KSYBWEstMode_Default;
+            _streamerBase.audiokBPS = 64;
             break;
         case KSYStreamerProfile_720p_auto:
             _capPreset = AVCaptureSessionPreset1280x720;
             _previewDimension = CGSizeMake(1280, 720);
             _streamDimension = CGSizeMake(1280, 720);
-            _videoFPS = 15;
-            _streamerBase.videoCodec = KSYVideoCodec_AUTO;
+            self.videoFPS = 15;
             _streamerBase.videoMaxBitrate = 1024;
-            _streamerBase.audioCodec = KSYAudioCodec_AT_AAC;
             _streamerBase.audiokBPS = 128;
-            _streamerBase.bwEstimateMode = KSYBWEstMode_Default;
+            break;
+        case KSYStreamerProfile_720p_1:
+            _capPreset = AVCaptureSessionPreset1280x720;
+            _previewDimension = CGSizeMake(1280, 720);
+            _streamDimension = CGSizeMake(1280, 720);
+            self.videoFPS = 15;
+            _streamerBase.videoMaxBitrate = 1024;
+            _streamerBase.audiokBPS = 128;
+            break;
+        case KSYStreamerProfile_720p_2:
+            _capPreset = AVCaptureSessionPreset1280x720;
+            _previewDimension = CGSizeMake(1280, 720);
+            _streamDimension = CGSizeMake(1280, 720);
+            self.videoFPS = 20;
+            _streamerBase.videoMaxBitrate = 1280;
+            _streamerBase.audiokBPS = 128;
+            break;
+        case KSYStreamerProfile_720p_3:
+            _capPreset = AVCaptureSessionPreset1280x720;
+            _previewDimension = CGSizeMake(1280, 720);
+            _streamDimension = CGSizeMake(1280, 720);
+            self.videoFPS = 24;
+            _streamerBase.videoMaxBitrate = 1536;
+            _streamerBase.audiokBPS = 128;
             break;
         default:
             NSLog(@"Set Invalid Profile");

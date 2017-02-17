@@ -266,7 +266,7 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 @property(nonatomic, assign) OSType gpuOutputPixelFormat;
 
 /**
- @abstract   采集视频帧率 (开始采集前设置有效)
+ @abstract   采集及编码视频帧率 (开始采集前设置有效)
  @discussion video frame per seconds 有效范围[1~30], 超出范围会取边界有效值
  @discussion 默认值为15
  */
@@ -490,21 +490,21 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  @abstract 推流前profile类型
  */
 typedef NS_ENUM(NSInteger, KSYStreamerProfile) {
-                                        // capres    strres   fps  kbps
-    KSYStreamerProfile_360p_1 = 0,      // 640x480   640x360   15   512
-    KSYStreamerProfile_360p_2 = 1,      // 960x540   640x360   15   512
-    KSYStreamerProfile_360p_3 = 2,      // 1280x720  640x360   20   768
-    KSYStreamerProfile_360p_auto = 3,   // 640x480   640x360   15   512 (便于后续扩展)
+                                        // capres    strres   fps  kbps(max)
+    KSYStreamerProfile_360p_auto = 0,   // 640x480   640x360   15   512(便于后续扩展)
+    KSYStreamerProfile_360p_1 = 1,      // 960x540   640x360   15   512
+    KSYStreamerProfile_360p_2 = 2,      // 1280x720  640x360   20   768
+    KSYStreamerProfile_360p_3 = 3,      // 640x480   640x360   15   512
     
-    KSYStreamerProfile_540p_1 = 100,      // 960x540   960x540   15   768
-    KSYStreamerProfile_540p_2 = 101,      // 1280x720  960x540   15   768
-    KSYStreamerProfile_540p_3 = 102,      // 1280x720  960x540   20   1024
-    KSYStreamerProfile_540p_auto = 103,   // 960x540   960x540   15   768 (便于后续扩展)
+    KSYStreamerProfile_540p_auto = 100,   // 960x540   960x540   15   768 (便于后续扩展)
+    KSYStreamerProfile_540p_1 = 101,      // 960x540   960x540   15   768
+    KSYStreamerProfile_540p_2 = 102,      // 1280x720  960x540   15   768
+    KSYStreamerProfile_540p_3 = 103,      // 1280x720  960x540   20   1024
     
-    KSYStreamerProfile_720p_1 = 200,      // 1280x720  1280x720  15   1024
-    KSYStreamerProfile_720p_2 = 201,      // 1280x720  1280x720  20   1280
-    KSYStreamerProfile_720p_3 = 202,      // 1280x720  1280x720  24   1536
-    KSYStreamerProfile_720p_auto = 203,   // 1280x720  1280x720  15   1024 (便于后续扩展)
+    KSYStreamerProfile_720p_auto = 200,   // 1280x720  1280x720  15   1024 (便于后续扩展)
+    KSYStreamerProfile_720p_1 = 201,      // 1280x720  1280x720  15   1024
+    KSYStreamerProfile_720p_2 = 202,      // 1280x720  1280x720  20   1280
+    KSYStreamerProfile_720p_3 = 203,      // 1280x720  1280x720  24   1536
 };
 
 /**

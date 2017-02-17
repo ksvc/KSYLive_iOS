@@ -46,6 +46,20 @@
 @property (nonatomic, assign) int           videoFPS;
 
 /**
+ @abstract   视频帧率最小值，默认与videoFPS相同
+ @discussion video frame per seconds 有效范围[1~30], 超出会提示参数错误
+ @discussion 不设置该值时表示网络自适应不使用动态帧率
+ */
+@property (nonatomic, assign) int           videoMinFPS;
+
+/**
+ @abstract   视频帧率最大值，默认与videoFPS相同
+ @discussion video frame per seconds 有效范围[1~30], 超出会提示参数错误
+ @discussion 不设置该值时表示网络自适应不使用动态帧率
+ */
+@property (nonatomic, assign) int           videoMaxFPS;
+
+/**
  @abstract   视频编码器 默认为 自动选择
  @discussion video codec used for encode
  @see        KSYVideoCodec
@@ -188,6 +202,12 @@
  */
 @property (nonatomic, readonly) KSYNetStateCode netStateCode;
 
+/**
+ @abstract   帧率应发生变化时的回调函数
+ @discussion 参数为建议设定的fps
+ */
+@property (nonatomic, copy)void (^videoFPSChange)(int32_t newVideoFPS);
+
 // Posted when stream state changes
 FOUNDATION_EXPORT NSString *const KSYStreamStateDidChangeNotification NS_AVAILABLE_IOS(7_0);
 // Posted when there is an net state event
@@ -231,7 +251,7 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
  @abstract  静音推流 (仍然有音频输出发送, 只是音量为0)
  @param     bMute YES / ON
  */
-- (void) muteStreame:(BOOL) bMute;
+- (void) muteStream:(BOOL) bMute;
 
 /**
  @abstract  处理一个视频帧(只支持编码前的原始图像数据)

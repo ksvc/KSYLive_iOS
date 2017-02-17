@@ -34,6 +34,10 @@ typedef struct _StreamState {
 @property int         bwRaiseCnt;
 // 码率下调事件发生次数
 @property int         bwDropCnt;
+//帧率上调事件发生次数
+@property int         fpsRaiseCnt;
+//帧率下调事件发生次数
+@property int         fpsDropCnt;
 
 // 将推流状态信息清0
 - (void) initStreamStat;

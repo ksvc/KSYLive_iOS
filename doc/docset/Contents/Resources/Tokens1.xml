@@ -109,6 +109,78 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/setEnableVoiceProcess:</TokenIdentifier>
+			<Abstract type="html">是否使用带回声消除的采集模块(默认为NO)</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL enableVoiceProcess</Declaration>
+			
+			
+			<Anchor>//api/name/enableVoiceProcess</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/enableVoiceProcess</TokenIdentifier>
+			<Abstract type="html">是否使用带回声消除的采集模块(默认为NO)</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL enableVoiceProcess</Declaration>
+			
+			
+			<Anchor>//api/name/enableVoiceProcess</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAUAudioCapture/enableVoiceProcess</TokenIdentifier>
+			<Abstract type="html">是否使用带回声消除的采集模块(默认为NO)</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL enableVoiceProcess</Declaration>
+			
+			
+			<Anchor>//api/name/enableVoiceProcess</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/setBForceAudioSessionCatogary:</TokenIdentifier>
+			<Abstract type="html">是否强制设置AVAudioSession的类别为PlayAndRecord(默认为YES)</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bForceAudioSessionCatogary</Declaration>
+			
+			
+			<Anchor>//api/name/bForceAudioSessionCatogary</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/bForceAudioSessionCatogary</TokenIdentifier>
+			<Abstract type="html">是否强制设置AVAudioSession的类别为PlayAndRecord(默认为YES)</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bForceAudioSessionCatogary</Declaration>
+			
+			
+			<Anchor>//api/name/bForceAudioSessionCatogary</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAUAudioCapture/bForceAudioSessionCatogary</TokenIdentifier>
+			<Abstract type="html">是否强制设置AVAudioSession的类别为PlayAndRecord(默认为YES)</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bForceAudioSessionCatogary</Declaration>
+			
+			
+			<Anchor>//api/name/bForceAudioSessionCatogary</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/setMicVolume:</TokenIdentifier>
 			<Abstract type="html">设置mic采集的声音音量</Abstract>
 			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
@@ -249,6 +321,42 @@
 			
 			
 			<Anchor>//api/name/audioProcessingCallback</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/setCustomPlayCallback:</TokenIdentifier>
+			<Abstract type="html">用户可以自定义播放的内容，直接把数据填入ioData</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( AudioBufferList *ioData , UInt32 inumber ) customPlayCallback</Declaration>
+			
+			
+			<Anchor>//api/name/customPlayCallback</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/customPlayCallback</TokenIdentifier>
+			<Abstract type="html">用户可以自定义播放的内容，直接把数据填入ioData</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( AudioBufferList *ioData , UInt32 inumber ) customPlayCallback</Declaration>
+			
+			
+			<Anchor>//api/name/customPlayCallback</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAUAudioCapture/customPlayCallback</TokenIdentifier>
+			<Abstract type="html">用户可以自定义播放的内容，直接把数据填入ioData</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( AudioBufferList *ioData , UInt32 inumber ) customPlayCallback</Declaration>
+			
+			
+			<Anchor>//api/name/customPlayCallback</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		

@@ -120,11 +120,17 @@
 		
 		<option value="//api/name/videoFPS">videoFPS</option>
 		
+		<option value="//api/name/videoFPSChange">videoFPSChange</option>
+		
 		<option value="//api/name/videoInitBitrate">videoInitBitrate</option>
 		
 		<option value="//api/name/videoMaxBitrate">videoMaxBitrate</option>
 		
+		<option value="//api/name/videoMaxFPS">videoMaxFPS</option>
+		
 		<option value="//api/name/videoMinBitrate">videoMinBitrate</option>
+		
+		<option value="//api/name/videoMinFPS">videoMinFPS</option>
 		
 	</optgroup>
 	
@@ -150,7 +156,7 @@
 		
 		<option value="//api/name/isStreaming">- isStreaming</option>
 		
-		<option value="//api/name/muteStreame:">- muteStreame:</option>
+		<option value="//api/name/muteStream:">- muteStream:</option>
 		
 		<option value="//api/name/processAudioSampleBuffer:">- processAudioSampleBuffer:</option>
 		
@@ -351,6 +357,98 @@ eg: /var/xxxxx/xxx.mp4  /var/xxxxx/xxx.flv
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>请保持调用 processVideoSampleBuffer 或 processVideoPixelBuffer 的频率与此设置的帧率一致</p><p>当实际送入的视频帧率过高时会主动丢帧</p><p>video frame per seconds 有效范围[1~30], 超出会提示参数错误</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoMinFPS" title="videoMinFPS"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoMinFPS">&nbsp;&nbsp;videoMinFPS</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视频帧率最小值，默认与videoFPS相同</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int videoMinFPS</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>video frame per seconds 有效范围[1~30], 超出会提示参数错误</p><p>不设置该值时表示网络自适应不使用动态帧率</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoMaxFPS" title="videoMaxFPS"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoMaxFPS">&nbsp;&nbsp;videoMaxFPS</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视频帧率最大值，默认与videoFPS相同</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int videoMaxFPS</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>video frame per seconds 有效范围[1~30], 超出会提示参数错误</p><p>不设置该值时表示网络自适应不使用动态帧率</p>
 			</div>
 			
 
@@ -1396,6 +1494,52 @@ eg: /var/xxxxx/xxx.mp4  /var/xxxxx/xxx.flv
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/videoFPSChange" title="videoFPSChange"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoFPSChange">&nbsp;&nbsp;videoFPSChange</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>帧率应发生变化时的回调函数</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) void ( ^ ) ( int32_t newVideoFPS ) videoFPSChange</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>参数为建议设定的fps</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/initWithDefaultCfg" title="initWithDefaultCfg"></a>
 	<h3 class="method-title"><code><a href="#//api/name/initWithDefaultCfg">&ndash;&nbsp;initWithDefaultCfg</a></code>
 </h3>
@@ -1565,8 +1709,8 @@ eg: /var/xxxxx/xxx.mp4  /var/xxxxx/xxx.flv
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/muteStreame:" title="muteStreame:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/muteStreame:">&ndash;&nbsp;muteStreame:</a></code>
+	<a name="//api/name/muteStream:" title="muteStream:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/muteStream:">&ndash;&nbsp;muteStream:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -1581,7 +1725,7 @@ eg: /var/xxxxx/xxx.mp4  /var/xxxxx/xxx.flv
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)muteStreame:(BOOL)<em>bMute</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)muteStream:(BOOL)<em>bMute</em></code></div>
 
 		    
 			
@@ -2897,7 +3041,7 @@ eg: /private/var/mobile/Containers/Data/Application/APPID/tmp/test.mp4</p><p>如
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 Kingsoft. All rights reserved. Updated: 2017-01-22</p>
+						<p class="copyright">Copyright &copy; 2017 Kingsoft. All rights reserved. Updated: 2017-02-17</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

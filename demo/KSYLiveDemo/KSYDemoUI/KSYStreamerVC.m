@@ -255,7 +255,6 @@
     _kit.streamerBase.videoMaxBitrate  = [_presetCfgView videoKbps];
     _kit.streamerBase.audioCodec       = [_presetCfgView audioCodec];
     _kit.streamerBase.audiokBPS        = [_presetCfgView audioKbps];
-    _kit.streamerBase.videoFPS         = [_presetCfgView frameRate];
     _kit.streamerBase.bwEstimateMode   = [_presetCfgView bwEstMode];
 }
 
@@ -283,8 +282,6 @@
     _kit.streamerBase.videoMaxBitrate  = 1000;
     _kit.streamerBase.videoMinBitrate  =    0;
     _kit.streamerBase.audiokBPS        =   48;
-    _kit.streamerBase.shouldEnableKSYStatModule = YES;
-    _kit.streamerBase.videoFPS = 15;
     _kit.streamerBase.logBlock = ^(NSString* str){
         NSLog(@"%@", str);
     };
@@ -297,7 +294,6 @@
     if (_presetCfgView){ // cfg from presetcfgview
         _kit.streamerBase.videoInitBitrate = _kit.streamerBase.videoMaxBitrate*6/10;//60%
         _kit.streamerBase.videoMinBitrate  = 0; //
-        _kit.streamerBase.shouldEnableKSYStatModule = YES;
         _kit.streamerBase.logBlock = ^(NSString* str){
             //NSLog(@"%@", str);
         };
@@ -375,6 +371,14 @@
         }
         case KSYNetStateCode_EST_BW_DROP: {
             _ctrlView.lblStat.bwDropCnt++;
+            break;
+        }
+        case KSYNetStateCode_VIDEO_FPS_RAISE: {
+            _ctrlView.lblStat.fpsRaiseCnt++;
+            break;
+        }
+        case KSYNetStateCode_VIDEO_FPS_DROP: {
+            _ctrlView.lblStat.fpsDropCnt++;
             break;
         }
         default:break;
@@ -656,7 +660,7 @@
     if (sw == _audioView.muteStream){
         // 静音推流(发送音量为0的数据)
         BOOL mute = _audioView.muteStream.isOn;
-        [_kit.streamerBase muteStreame:mute];
+        [_kit.streamerBase muteStream:mute];
     }
     else if (sw == _audioView.bgmMix){
         // 背景音乐 是否 参与混音
