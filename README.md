@@ -3,9 +3,8 @@
 [![Build Status](https://travis-ci.org/ksvc/KSYLive_iOS.svg?branch=master)](https://travis-ci.org/ksvc/KSYLive_iOS)
 [![CocoaPods platform](https://img.shields.io/cocoapods/p/libksygpulive.svg)](https://cocoapods.org/pods/libksygpulive)
 [![CocoaPods doc](https://img.shields.io/cocoapods/metrics/doc-percent/libksygpulive.svg)](http://cocoadocs.org/docsets/libksygpulive/)
-
-* github : [![CocoaPods version](https://img.shields.io/cocoapods/v/libksygpulive.svg)](https://cocoapods.org/pods/libksygpulive) 
-* ks3 : [![CocoaPods version](https://img.shields.io/cocoapods/v/libksygpulive_ks3.svg)](https://cocoapods.org/pods/libksygpulive_ks3) 
+[![CocoaPods version](https://img.shields.io/cocoapods/v/libksygpulive.svg)](https://cocoapods.org/pods/libksygpulive)(github)
+[![CocoaPods version](https://img.shields.io/cocoapods/v/libksygpulive_ks3.svg)](https://cocoapods.org/pods/libksygpulive_ks3)(金山云网盘)
 
 ## 一. 功能特性
 ### 1.1 推流功能
