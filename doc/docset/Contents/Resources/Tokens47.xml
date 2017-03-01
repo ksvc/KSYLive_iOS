@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYRecordState.html">
+	<File path="Constants/KSYNetStateCode.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYRecordState</TokenIdentifier>
-			<Abstract type="html">旁路录制状态</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYNetStateCode</TokenIdentifier>
+			<Abstract type="html">网络状况事件码，用于指示当前网络健康状况</Abstract>
 			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYRecordStateIdle</TokenIdentifier>
-            <Abstract type="html">初始状态</Abstract>
-            <Declaration>KSYRecordStateIdle</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_NONE</TokenIdentifier>
+            <Abstract type="html">正常无错误</Abstract>
+            <Declaration>KSYNetStateCode_NONE</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -24,9 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYRecordStateRecording</TokenIdentifier>
-            <Abstract type="html">录像中</Abstract>
-            <Declaration>KSYRecordStateRecording</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_SEND_PACKET_SLOW</TokenIdentifier>
+            <Abstract type="html">发送包时间过长，( 单次发送超过 500毫秒 ）</Abstract>
+            <Declaration>KSYNetStateCode_SEND_PACKET_SLOW</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -34,9 +34,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYRecordStateStopped</TokenIdentifier>
-            <Abstract type="html">录像停止</Abstract>
-            <Declaration>KSYRecordStateStopped</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_EST_BW_RAISE</TokenIdentifier>
+            <Abstract type="html">估计带宽调整，上调</Abstract>
+            <Declaration>KSYNetStateCode_EST_BW_RAISE</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -44,9 +44,49 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYRecordStateError</TokenIdentifier>
-            <Abstract type="html">录像失败</Abstract>
-            <Declaration>KSYRecordStateError</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_EST_BW_DROP</TokenIdentifier>
+            <Abstract type="html">估计带宽调整，下调</Abstract>
+            <Declaration>KSYNetStateCode_EST_BW_DROP</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="47"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_VIDEO_FPS_RAISE</TokenIdentifier>
+            <Abstract type="html">帧率调整，上调</Abstract>
+            <Declaration>KSYNetStateCode_VIDEO_FPS_RAISE</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="47"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_VIDEO_FPS_DROP</TokenIdentifier>
+            <Abstract type="html">帧率调整，下调</Abstract>
+            <Declaration>KSYNetStateCode_VIDEO_FPS_DROP</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="47"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_KSYAUTHFAILED</TokenIdentifier>
+            <Abstract type="html">SDK 鉴权失败 (暂时正常推流5~8分钟后终止推流)</Abstract>
+            <Declaration>KSYNetStateCode_KSYAUTHFAILED</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="47"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_IN_AUDIO_DISCONTINUOUS</TokenIdentifier>
+            <Abstract type="html">输入音频不连续</Abstract>
+            <Declaration>KSYNetStateCode_IN_AUDIO_DISCONTINUOUS</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             

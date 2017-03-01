@@ -92,12 +92,24 @@
  @see videoInitBitrate, videoMaxBitrate
  */
 @property (nonatomic, assign) int          videoMinBitrate;   // kbit/s of video
+
+/**
+ @abstract  最后输出视频文件时附带的metadata (默认为nil)
+ @discussion key 一定要是 NSString* 类型的
+ */
+@property(atomic, copy) NSDictionary * videoMetaData;
+
+/**
+ @abstract   质量等级（默认:20）
+ @discussion 视频恒定质量等级，范围0～51，值越小，质量越好
+ */
+@property (nonatomic, assign) int          videoCrf;
 /**
  @abstract   最大关键帧间隔（单位:秒, 默认:3）
  @discussion 即GOP长度 画面静止时,隔n秒插入一个关键帧
  */
 @property (nonatomic, assign) float          maxKeyInterval;   // seconds
-/**
+/** 
  @abstract   音频编码码率（单位:kbps）
  @discussion 音频目标编码码率 (比如48,96,128等)
  */
@@ -114,6 +126,13 @@
  @discussion KSY内部会根据场景的特征进行参数调优,开始推流前设置有效
  */
 @property (nonatomic, assign) KSYLiveScene              liveScene;
+
+/**
+ @abstract   本次录制的目标场景 (默认为KSYRecScene_ConstantBitRate)
+ @discussion 开始录制前设置有效
+ */
+@property (nonatomic, assign) KSYRecScene              recScene;
+
 /**
  @abstract   视频编码性能档次 ( 默认为 KSYVideoEncodePer_LowPower)
  @discussion 视频质量和设备资源之间的权衡,开始推流前设置有效
@@ -263,6 +282,13 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 
 /**
  @abstract  处理一个视频帧(只支持编码前的原始图像数据)
+ @param sampleBuffer Buffer to process
+ @param completion 当前视频帧处理完成的回调
+ */
+- (void)processVideoSampleBuffer:(CMSampleBufferRef)sampleBuffer
+                      onComplete:(void (^)(BOOL))completion;
+/**
+ @abstract  处理一个视频帧(只支持编码前的原始图像数据)
  @param pixelBuffer 待编码的像素数据
  @param timeStamp   待编码的时间戳
  @discussion 应当在开始推流前定期调用此接口，比如按照采集帧率调用
@@ -270,6 +296,16 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
  */
 - (void)processVideoPixelBuffer:(CVPixelBufferRef)pixelBuffer
                        timeInfo:(CMTime)timeStamp;
+/**
+ @abstract  处理一个视频帧(只支持编码前的原始图像数据)
+ @param pixelBuffer 待编码的像素数据
+ @param timeStamp   待编码的时间戳
+ @param completion 当前视频帧处理完成的回调
+ */
+- (void)processVideoPixelBuffer:(CVPixelBufferRef)pixelBuffer
+                       timeInfo:(CMTime)timeStamp
+                     onComplete:(void (^)(BOOL))completion;
+
 
 /**
  @abstract 处理一段音频数据
@@ -340,6 +376,12 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
  @discussion 这里是指编码后，由于网络发送阻塞导致丢弃的帧数
  */
 @property (nonatomic, readonly) int droppedVideoFrames;
+
+/**
+ @abstract 推流的qos信息
+ @discussion 在推流过程中，查询当前推流qos信息
+ */
+@property (nonatomic, readonly) KSYStreamerQosInfo *qosInfo;
 
 /**
  @abstract 查询当前推流的rtmp服务器的主机IP
@@ -418,5 +460,11 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
  @discussion 只有设置 loop为NO时才有效, 在开始播放前设置有效
  */
 @property(nonatomic, copy) void(^bypassRecordStateChange)(KSYRecordState recordState);
+
+/**
+ @abstract 是否允许编码前丢帧，默认开启
+ @warnning 请勿在直播时使用，否则可能出现音视频不同步，仅在离线转码需要输出所有帧的情况下开启
+ */
+@property (nonatomic, assign) BOOL shouldEnableKSYDropModule;
 
 @end

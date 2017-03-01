@@ -22,6 +22,14 @@ typedef NS_ENUM(NSUInteger, KSYLiveScene) {
     // others comming soon
 };
 
+/// 录制场景
+typedef NS_ENUM(NSUInteger, KSYRecScene) {
+    /// 恒定码率场景
+    KSYRecScene_ConstantBitRate = 0,
+    /// 恒定质量场景
+    KSYRecScene_ConstantQuality,
+};
+
 /// 视频编码性能档次 (视频质量 和 设备资源之间的权衡)
 typedef NS_ENUM(NSUInteger, KSYVideoEncodePerformance) {
     /// 低功耗:  cpu资源消耗低一些,视频质量差一些
@@ -285,6 +293,30 @@ typedef NS_ENUM(NSInteger, KSYRecordError) {
     /// 内部错误
     KSYRecordErrorInternal,
 };
+
+
+/**
+ * 推流的Qos信息
+ */
+typedef struct KSYStreamerQosInfo {
+    /// 当前缓冲区中待发送的音频数据大小, 单位是Bytes
+    int audioBufferDataSize;
+    /// 当前缓冲区中待发送的音频数据时间长度, 单位是ms
+    int audioBufferTimeLength;
+    /// 当前缓冲区中待发送的音频数据包个数
+    int audioBufferPackets;
+    /// 从开始推流到当前时间点已编码的音频数据大小, 单位是Bytes
+    int64_t audioTotalDataSize;
+
+    /// 当前缓冲区中待发送的视频数据大小, 单位是Bytes
+    int videoBufferDataSize;
+    /// 当前缓冲区中待发送的视频数据时间长度, 单位是ms
+    int videoBufferTimeLength;
+    /// 当前缓冲区中待发送的视频数据包个数
+    int videoBufferPackets;
+    /// 从开始推流到当前时间点已编码的音频数据大小, 单位是Bytes
+    int64_t videoTotalDataSize;
+}KSYStreamerQosInfo;
 
 #pragma mark - KSY_EXTERN
 #ifndef KSY_EXTERN

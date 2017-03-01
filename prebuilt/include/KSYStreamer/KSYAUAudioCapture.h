@@ -8,6 +8,23 @@
 //
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
+
+/*!
+ * @abstract  音效类型
+ */
+typedef NS_ENUM(NSUInteger, KSYAudioEffectType){
+    /// 初始化时状态为空闲
+    KSYAudioEffectType_NONE = 0,
+    /// 大叔
+    KSYAudioEffectType_MALE,
+    /// 萝莉
+    KSYAudioEffectType_FEMALE,
+    /// 宏大
+    KSYAudioEffectType_HEROIC,
+    /// 机器人
+    KSYAudioEffectType_ROBOT,
+};
+
 /** 音频采集模块
  
  1. 基于 AudioUnit 实现的低延时音频采集模块
@@ -77,11 +94,17 @@
  
  - 0 关闭
  - 1 录音棚
- - 2 KTV
+ - 2 ktv
  - 3 小舞台
  - 4 演唱会
  */
 @property(nonatomic, assign) int reverbType;
+
+/**
+ @abstract 音效类型
+ @discussion  音效类型仅在enableVoiceProcess=NO时有效
+ */
+@property(nonatomic, assign) KSYAudioEffectType effectType;
 
 /**
  @abstract   采集数据输出回调函数

@@ -100,7 +100,13 @@
 		
 		<option value="//api/name/netStateCode">netStateCode</option>
 		
+		<option value="//api/name/qosInfo">qosInfo</option>
+		
+		<option value="//api/name/recScene">recScene</option>
+		
 		<option value="//api/name/rtmpHostIP">rtmpHostIP</option>
+		
+		<option value="//api/name/shouldEnableKSYDropModule">shouldEnableKSYDropModule</option>
 		
 		<option value="//api/name/shouldEnableKSYStatModule">shouldEnableKSYStatModule</option>
 		
@@ -116,6 +122,8 @@
 		
 		<option value="//api/name/videoCodec">videoCodec</option>
 		
+		<option value="//api/name/videoCrf">videoCrf</option>
+		
 		<option value="//api/name/videoEncodePerf">videoEncodePerf</option>
 		
 		<option value="//api/name/videoFPS">videoFPS</option>
@@ -127,6 +135,8 @@
 		<option value="//api/name/videoMaxBitrate">videoMaxBitrate</option>
 		
 		<option value="//api/name/videoMaxFPS">videoMaxFPS</option>
+		
+		<option value="//api/name/videoMetaData">videoMetaData</option>
 		
 		<option value="//api/name/videoMinBitrate">videoMinBitrate</option>
 		
@@ -164,7 +174,11 @@
 		
 		<option value="//api/name/processVideoPixelBuffer:timeInfo:">- processVideoPixelBuffer:timeInfo:</option>
 		
+		<option value="//api/name/processVideoPixelBuffer:timeInfo:onComplete:">- processVideoPixelBuffer:timeInfo:onComplete:</option>
+		
 		<option value="//api/name/processVideoSampleBuffer:">- processVideoSampleBuffer:</option>
+		
+		<option value="//api/name/processVideoSampleBuffer:onComplete:">- processVideoSampleBuffer:onComplete:</option>
 		
 		<option value="//api/name/startBypassRecord:">- startBypassRecord:</option>
 		
@@ -741,6 +755,98 @@ eg: /var/xxxxx/xxx.mp4  /var/xxxxx/xxx.flv
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/videoMetaData" title="videoMetaData"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoMetaData">&nbsp;&nbsp;videoMetaData</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>最后输出视频文件时附带的metadata (默认为nil)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (atomic, copy) NSDictionary *videoMetaData</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>key 一定要是 NSString* 类型的</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoCrf" title="videoCrf"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoCrf">&nbsp;&nbsp;videoCrf</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>质量等级（默认:20）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int videoCrf</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>视频恒定质量等级，范围0～51，值越小，质量越好</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/maxKeyInterval" title="maxKeyInterval"></a>
 	<h3 class="method-title"><code><a href="#//api/name/maxKeyInterval">&nbsp;&nbsp;maxKeyInterval</a></code>
 </h3>
@@ -908,6 +1014,52 @@ eg: /var/xxxxx/xxx.mp4  /var/xxxxx/xxx.flv
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>KSY内部会根据场景的特征进行参数调优,开始推流前设置有效</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/recScene" title="recScene"></a>
+	<h3 class="method-title"><code><a href="#//api/name/recScene">&nbsp;&nbsp;recScene</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>本次录制的目标场景 (默认为KSYRecScene_ConstantBitRate)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) KSYRecScene recScene</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>开始录制前设置有效</p>
 			</div>
 			
 
@@ -1820,6 +1972,64 @@ eg: /var/xxxxx/xxx.mp4  /var/xxxxx/xxx.flv
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/processVideoSampleBuffer:onComplete:" title="processVideoSampleBuffer:onComplete:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/processVideoSampleBuffer:onComplete:">&ndash;&nbsp;processVideoSampleBuffer:onComplete:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>处理一个视频帧(只支持编码前的原始图像数据)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)processVideoSampleBuffer:(CMSampleBufferRef)<em>sampleBuffer</em> onComplete:(void ( ^ ) ( BOOL ))<em>completion</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>sampleBuffer</code></th>
+						<td><p>Buffer to process</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completion</code></th>
+						<td><p>当前视频帧处理完成的回调</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/processVideoPixelBuffer:timeInfo:" title="processVideoPixelBuffer:timeInfo:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/processVideoPixelBuffer:timeInfo:">&ndash;&nbsp;processVideoPixelBuffer:timeInfo:</a></code>
 </h3>
@@ -1867,6 +2077,69 @@ eg: /var/xxxxx/xxx.mp4  /var/xxxxx/xxx.flv
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>应当在开始推流前定期调用此接口，比如按照采集帧率调用</p><p>支持的图像格式包括: BGR0,NV12,YUVA444P,YUV420P</p>
 			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/processVideoPixelBuffer:timeInfo:onComplete:" title="processVideoPixelBuffer:timeInfo:onComplete:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/processVideoPixelBuffer:timeInfo:onComplete:">&ndash;&nbsp;processVideoPixelBuffer:timeInfo:onComplete:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>处理一个视频帧(只支持编码前的原始图像数据)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)processVideoPixelBuffer:(CVPixelBufferRef)<em>pixelBuffer</em> timeInfo:(CMTime)<em>timeStamp</em> onComplete:(void ( ^ ) ( BOOL ))<em>completion</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>pixelBuffer</code></th>
+						<td><p>待编码的像素数据</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>timeStamp</code></th>
+						<td><p>待编码的时间戳</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completion</code></th>
+						<td><p>当前视频帧处理完成的回调</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
 			
 
 			
@@ -2382,6 +2655,52 @@ eg: /var/xxxxx/xxx.mp4  /var/xxxxx/xxx.flv
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>这里是指编码后，由于网络发送阻塞导致丢弃的帧数</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/qosInfo" title="qosInfo"></a>
+	<h3 class="method-title"><code><a href="#//api/name/qosInfo">&nbsp;&nbsp;qosInfo</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>推流的qos信息</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) KSYStreamerQosInfo *qosInfo</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>在推流过程中，查询当前推流qos信息</p>
 			</div>
 			
 
@@ -3026,6 +3345,48 @@ eg: /private/var/mobile/Containers/Data/Application/APPID/tmp/test.mp4</p><p>如
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/shouldEnableKSYDropModule" title="shouldEnableKSYDropModule"></a>
+	<h3 class="method-title"><code><a href="#//api/name/shouldEnableKSYDropModule">&nbsp;&nbsp;shouldEnableKSYDropModule</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>是否允许编码前丢帧，默认开启
+@warnning 请勿在直播时使用，否则可能出现音视频不同步，仅在离线转码需要输出所有帧的情况下开启</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL shouldEnableKSYDropModule</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -3041,7 +3402,7 @@ eg: /private/var/mobile/Containers/Data/Application/APPID/tmp/test.mp4</p><p>如
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 Kingsoft. All rights reserved. Updated: 2017-02-17</p>
+						<p class="copyright">Copyright &copy; 2017 Kingsoft. All rights reserved. Updated: 2017-03-01</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

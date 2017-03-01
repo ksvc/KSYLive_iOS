@@ -202,7 +202,10 @@
             NSString *dir;
             NSURL *url = [NSURL URLWithString:_textFiled.text];
             NSString *scheme = [url scheme];
-            if(![scheme isEqualToString:@"rtmp"] && ![scheme isEqualToString:@"http"] && ![scheme isEqualToString:@"https"]){
+            if(![scheme isEqualToString:@"rtmp"] &&
+                ![scheme isEqualToString:@"http"] &&
+                ![scheme isEqualToString:@"https"] &&
+                ![scheme isEqualToString:@"rtsp"]){
                 dir = [NSHomeDirectory() stringByAppendingString:@"/Documents/"];
                 url = [NSURL URLWithString:[dir stringByAppendingPathComponent:_textFiled.text]];
             }

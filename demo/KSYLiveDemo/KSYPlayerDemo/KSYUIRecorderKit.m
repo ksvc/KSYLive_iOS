@@ -49,8 +49,10 @@
     }
     
     _bPlayRecord = NO;
-    _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.height)];
+    CGSize sz = [UIScreen mainScreen].bounds.size;
+    _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, sz.width,sz.height)];
     _contentView.backgroundColor = [UIColor clearColor];
+    _contentView.contentScaleFactor = 2;
     
     _playerLayer = 0 ;
     _uiLayer = 1;

@@ -55,6 +55,7 @@
 		5800DCF21D82BAFF00B1A884 /* KSYQosInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC841D82B9AA00B1A884 /* KSYQosInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		580C1C2E1E2897DF00B386D5 /* KSYNetTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 580C1C2D1E2897DF00B386D5 /* KSYNetTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		580C1C2F1E2897F100B386D5 /* KSYNetTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 580C1C2D1E2897DF00B386D5 /* KSYNetTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5837E1921E6469600044EA17 /* KSYMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 5837E1911E6469600044EA17 /* KSYMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +119,7 @@
 		58048A201D79C8EC00232F6E /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		58048A231D79C92A00232F6E /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		580C1C2D1E2897DF00B386D5 /* KSYNetTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYNetTracker.h; path = ../../../../prebuilt/include/KSYPlayer/KSYNetTracker.h; sourceTree = "<group>"; };
+		5837E1911E6469600044EA17 /* KSYMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSYMessage.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYMessage.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +267,7 @@
 				0655BF4F1DF593BF004B94D3 /* KSYAVFCapture.h */,
 				06E670731DEC37570015E3BD /* KSYDummyAudioSource.h */,
 				06E742A31D90FEB700C3E780 /* KSYSpecialEffects.h */,
+				5837E1911E6469600044EA17 /* KSYMessage.h */,
 				06E742A41D90FEB700C3E780 /* KSYBuildInSpecialEffects.h */,
 				06A646BE1D8652A400D1C620 /* KSYAVAudioSession.h */,
 				06E3D1B51E00402600E2AEA8 /* KSYBeautifyProFilter.h */,
@@ -352,6 +355,7 @@
 				06E742A81D90FEC300C3E780 /* KSYBuildInSpecialEffects.h in Headers */,
 				0655BF511DF595B1004B94D3 /* KSYAVFCapture.h in Headers */,
 				580C1C2F1E2897F100B386D5 /* KSYNetTracker.h in Headers */,
+				5837E1921E6469600044EA17 /* KSYMessage.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

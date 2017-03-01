@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYVideoEncodePerformance.html">
+	<File path="Constants/KSYStreamState.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYVideoEncodePerformance</TokenIdentifier>
-			<Abstract type="html">视频编码性能档次 (视频质量 和 设备资源之间的权衡)</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYStreamState</TokenIdentifier>
+			<Abstract type="html">推流状态</Abstract>
 			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoEncodePer_LowPower</TokenIdentifier>
-            <Abstract type="html">低功耗:  cpu资源消耗低一些,视频质量差一些</Abstract>
-            <Declaration>KSYVideoEncodePer_LowPower</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateIdle</TokenIdentifier>
+            <Abstract type="html">初始化时状态为空闲</Abstract>
+            <Declaration>KSYStreamStateIdle</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -24,9 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoEncodePer_Balance</TokenIdentifier>
-            <Abstract type="html">均衡档次: 性价比比较高</Abstract>
-            <Declaration>KSYVideoEncodePer_Balance</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateConnecting</TokenIdentifier>
+            <Abstract type="html">连接中</Abstract>
+            <Declaration>KSYStreamStateConnecting</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -34,9 +34,29 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoEncodePer_HighPerformance</TokenIdentifier>
-            <Abstract type="html">高性能: 画面质量高</Abstract>
-            <Declaration>KSYVideoEncodePer_HighPerformance</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateConnected</TokenIdentifier>
+            <Abstract type="html">已连接</Abstract>
+            <Declaration>KSYStreamStateConnected</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="52"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateDisconnecting</TokenIdentifier>
+            <Abstract type="html">断开连接中</Abstract>
+            <Declaration>KSYStreamStateDisconnecting</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="52"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateError</TokenIdentifier>
+            <Abstract type="html">推流出错</Abstract>
+            <Declaration>KSYStreamStateError</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             

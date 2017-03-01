@@ -17,6 +17,7 @@
 @property UILabel       * lblPlayCapture;
 @property UILabel       * lblMuteSt;
 @property UILabel       * lblReverb;
+@property UILabel       * lblVPIO;
 @end
 @implementation KSYAudioCtrlView
 
@@ -42,6 +43,7 @@
     _lblPlayCapture = [self addLable:@"耳返"];
     _swPlayCapture  = [self addSwitch:NO];
     _playCapVol= [self addSliderName:@"耳返音量"  From:0.0 To:1.0 Init:0.5];
+    _effectType  = [self addSegCtrlWithItems:@[@"关闭变声",@"大叔", @"萝莉", @"庄严", @"机器人"]];
     return self;
 }
 - (void)layoutUI{
@@ -58,6 +60,7 @@
                       nu, _lblMuteSt,_muteStream,
                       nu,_lblPlayCapture,_swPlayCapture] ];
     [self putRow1:_playCapVol];
+    [self putRow1:_effectType];
 }
 - (void) initMicInput {
     BOOL bHS = [KSYAVAudioSession isHeadsetInputAvaible];
@@ -107,5 +110,16 @@ static KSYMicType int2MicType( int t) {
 - (KSYMicType) micType{
     _micType = int2MicType((int)_micInput.selectedSegmentIndex);
     return _micType;
+}
+@synthesize audioEffect = _audioEffect;
+- (void) setAudioEffect:(KSYAudioEffectType)audioEffect {
+    _audioEffect = audioEffect;
+    if (_audioEffect < 5 ) {
+        _effectType.selectedSegmentIndex  = (NSInteger) _audioEffect;
+    }
+}
+- (KSYAudioEffectType) audioEffect {
+    _audioEffect =  _effectType.selectedSegmentIndex;
+    return _audioEffect;
 }
 @end
