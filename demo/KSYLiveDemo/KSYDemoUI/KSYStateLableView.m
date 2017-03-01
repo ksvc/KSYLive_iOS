@@ -21,7 +21,7 @@
     self = [super init];
     self.backgroundColor = [UIColor clearColor];
     self.textColor = [UIColor redColor];
-    self.numberOfLines = 7;
+    self.numberOfLines = 9;
     self.textAlignment = NSTextAlignmentLeft;
     [self initStreamStat];
     return self;
@@ -37,11 +37,14 @@
 }
 
 - (void) updateState:(KSYStreamerBase*)str {
+    KSYStreamerQosInfo *info = [str qosInfo];
+    
     StreamState curState = {0};
     curState.timeSecond     = [[NSDate date]timeIntervalSince1970];
     curState.uploadKByte    = [str uploadedKByte];
     curState.encodedFrames  = [str encodedFrames];
     curState.droppedVFrames = [str droppedVideoFrames];
+    
     StreamState deltaS  = {0};
     deltaS.timeSecond    = curState.timeSecond    -_lastStD.timeSecond    ;
     deltaS.uploadKByte   = curState.uploadKByte   -_lastStD.uploadKByte   ;
@@ -58,6 +61,10 @@
     NSString* stateurl  = [NSString stringWithFormat:@"%@\n", [str.hostURL absoluteString]];
     NSString* statekbps = [NSString stringWithFormat:@"实时码率(kbps)%4.1f\tA%4.1f\tV%4.1f\n", realTKbps, [str encodeAKbps], [str encodeVKbps] ];
     NSString* statefps  = [NSString stringWithFormat:@"实时帧率(fps)%2.1f\t总上传:%@\n", encFps, uploadDateSize ];
+    NSString* videoqosinfo = [NSString stringWithFormat:@"视频缓冲 %d B  %d ms  %d packets \n",
+                                                    info->videoBufferDataSize, info->videoBufferTimeLength, info->videoBufferPackets];
+    NSString* audioqosinfo = [NSString stringWithFormat:@"音频缓冲 %d B  %d ms  %d packets \n",
+                                                    info->audioBufferDataSize, info->audioBufferTimeLength, info->audioBufferPackets];
     NSString* statedrop = [NSString stringWithFormat:@"视频丢帧 %4d\t %2.1f%% \n", curState.droppedVFrames, dropPercent ];
     NSString* netEvent = [NSString stringWithFormat:@"网络事件计数 %d bad\n\tbw %d Raise %d drop\t fps %d Raise %d drop\n",
                                             _notGoodCnt, _bwRaiseCnt, _bwDropCnt, _fpsRaiseCnt, _fpsDropCnt];
@@ -65,6 +72,8 @@
     
     self.text = [ stateurl   stringByAppendingString:statekbps ];
     self.text = [ self.text  stringByAppendingString:statefps  ];
+    self.text = [ self.text stringByAppendingString:videoqosinfo ];
+    self.text = [ self.text stringByAppendingString:audioqosinfo ];
     self.text = [ self.text  stringByAppendingString:statedrop ];
     self.text = [ self.text  stringByAppendingString:netEvent  ];
     self.text = [ self.text  stringByAppendingString:cpu_use  ];

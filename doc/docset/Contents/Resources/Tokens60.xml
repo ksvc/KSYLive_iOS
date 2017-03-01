@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/MPMovieVideoDeinterlaceMode.html">
+	<File path="Constants/MPMovieReloadMode.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/MPMovieVideoDeinterlaceMode</TokenIdentifier>
-			<Abstract type="html">视频反交错模式</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/MPMovieReloadMode</TokenIdentifier>
+			<Abstract type="html">reload模式</Abstract>
 			<DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDeinterlaceMode_None</TokenIdentifier>
-            <Abstract type="html">关闭反交错</Abstract>
-            <Declaration>MPMovieVideoDeinterlaceMode_None</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieReloadMode_Fast</TokenIdentifier>
+            <Abstract type="html">加速播放模式</Abstract>
+            <Declaration>MPMovieReloadMode_Fast</Declaration>
             
             <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
@@ -24,9 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDeinterlaceMode_Auto</TokenIdentifier>
-            <Abstract type="html">自动判断是否打开反交错</Abstract>
-            <Declaration>MPMovieVideoDeinterlaceMode_Auto</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieReloadMode_Accurate</TokenIdentifier>
+            <Abstract type="html">精确检测模式</Abstract>
+            <Declaration>MPMovieReloadMode_Accurate</Declaration>
             
             <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             

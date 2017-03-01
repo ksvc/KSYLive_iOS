@@ -10,6 +10,7 @@
 #import "KSYStreamerBase.h"
 #import "KSYMovieWriter.h"
 #import "KSYAVMuxer.h"
+#import "KSYMessage.h"
 
-#define KSYSTREAMERBASE_VER 2.0.0.1
-#define KSYSTREAMERBASE_ID aa48b016bb4ccd7d2393831d38d4ee1aeb744c03
+#define KSYSTREAMERBASE_VER 2.0.1
+#define KSYSTREAMERBASE_ID 83981f64dee01c6105a0d4c34d83af2204968eae

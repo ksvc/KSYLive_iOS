@@ -47,4 +47,8 @@
 /// 本地播放的音量
 @property KSYNameSlider * playCapVol;
 
+/// 变声
+@property UISegmentedControl * effectType;
+@property (atomic, readwrite) KSYAudioEffectType  audioEffect;
+
 @end

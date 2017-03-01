@@ -77,7 +77,8 @@
     _audioKbpsUI.selectedSegmentIndex = 2;
     _lblBwEstMode = [self addLable:@"带宽估计模式"];
     _bwEstModeUI = [self addSegCtrlWithItems:@[@"默认", @"流畅", @"关闭"]];
-
+    _lblWithMessage  = [self addLable:@"消息通道"];
+    _withMessageUI = [self addSegCtrlWithItems:@[@"打开", @"关闭"]];
     _demoLable    = [self addLable:@"选择demo开始"];
     _demoLable.textAlignment = NSTextAlignmentCenter;
     
@@ -123,6 +124,17 @@ numberOfRowsInComponent:(NSInteger)component {
     [self getStreamerProfile:_curProfileIdx];
 }
 
+- (BOOL) withMessage{
+    switch (_withMessageUI.selectedSegmentIndex) {
+        case 0:
+            return YES;
+        case 1:
+            return NO;
+        default:
+            return YES;
+    }
+}
+
 //UIControlEventTouchUpInside
 - (IBAction)onBtn:(id)sender{
     if (sender == _doneBtn){
@@ -163,6 +175,8 @@ numberOfRowsInComponent:(NSInteger)component {
     _lblBwEstMode.hidden = YES;
     _bwEstModeUI.hidden = YES;
     _profilePicker.hidden = YES;
+    _lblWithMessage.hidden = YES;
+    _withMessageUI.hidden = YES;
     
     NSString* title = _btn0.currentTitle;
     _bRecord = [ title isEqualToString:@"开始录制"];
@@ -191,6 +205,8 @@ numberOfRowsInComponent:(NSInteger)component {
         _audioKbpsUI.hidden = NO;
         _lblBwEstMode.hidden = NO;
         _bwEstModeUI.hidden = NO;
+        _lblWithMessage.hidden = NO;
+        _withMessageUI.hidden = NO;
         if (_bRecord){
             [_btn0 setTitle: @"开始录制" forState: UIControlStateNormal];
         }
@@ -354,6 +370,7 @@ numberOfRowsInComponent:(NSInteger)component {
         [self putRow1:_videoKbpsUI];
         [self putLable:_lblAudioKbpsUI  andView:_audioKbpsUI];
         [self putLable:_lblBwEstMode andView:_bwEstModeUI];
+        [self putLable:_lblWithMessage andView:_withMessageUI];
     }else{
         self.btnH = 162;
         if ( self.width > self.height){

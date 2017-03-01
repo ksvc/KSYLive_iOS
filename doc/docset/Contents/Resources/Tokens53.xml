@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSY_NETTRACKER_ACTION.html">
+	<File path="Constants/KSYVideoCodec.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSY_NETTRACKER_ACTION</TokenIdentifier>
-			<Abstract type="html">探测方式</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYVideoCodec</TokenIdentifier>
+			<Abstract type="html">视频编码器类型</Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
 			<NodeRef refid="53"/>
@@ -14,21 +14,41 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSY_NETTRACKER_ACTION_MTR</TokenIdentifier>
-            <Abstract type="html">mtr方式，探测链路上每个节点</Abstract>
-            <Declaration>KSY_NETTRACKER_ACTION_MTR</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoCodec_X264</TokenIdentifier>
+            <Abstract type="html">视频编码器 - h264 软件编码器</Abstract>
+            <Declaration>KSYVideoCodec_X264</Declaration>
             
-            <DeclaredIn>KSYNetTracker.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="53"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSY_NETTRACKER_ACTION_PING</TokenIdentifier>
-            <Abstract type="html">ping方式，直接探测终点</Abstract>
-            <Declaration>KSY_NETTRACKER_ACTION_PING</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoCodec_QY265</TokenIdentifier>
+            <Abstract type="html">视频编码器 - KSY265 软件编码器</Abstract>
+            <Declaration>KSYVideoCodec_QY265</Declaration>
             
-            <DeclaredIn>KSYNetTracker.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="53"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoCodec_VT264</TokenIdentifier>
+            <Abstract type="html">视频编码器 - iOS VT264硬件编码器 (iOS 8.0以上支持)</Abstract>
+            <Declaration>KSYVideoCodec_VT264</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="53"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoCodec_AUTO</TokenIdentifier>
+            <Abstract type="html">视频编码器 - 由SDK自动选择（ VT264 &gt; X264）</Abstract>
+            <Declaration>KSYVideoCodec_AUTO</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="53"/>
         </Token>

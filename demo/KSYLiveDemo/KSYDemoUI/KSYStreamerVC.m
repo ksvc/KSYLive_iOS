@@ -38,7 +38,7 @@
     self = [super init];
     _presetCfgView = presetCfgView;
     [self initObservers];
-    _menuNames = @[@"背景音乐", @"图像/美颜",@"声音",@"其他"];
+    _menuNames = @[@"背景音乐", @"图像/美颜",@"声音", @"消息", @"其他"];
     self.view.backgroundColor = [UIColor whiteColor];
     return self;
 }
@@ -160,8 +160,6 @@
                 SEL_VALUE(onStreamStateChange:) ,   KSYStreamStateDidChangeNotification,
                 SEL_VALUE(onNetStateEvent:) ,       KSYNetStateEventNotification,
                 SEL_VALUE(onBgmPlayerStateChange:) ,KSYAudioStateDidChangeNotification,
-                SEL_VALUE(enterBg:) ,           UIApplicationDidEnterBackgroundNotification,
-                SEL_VALUE(becameActive:) ,      UIApplicationDidBecomeActiveNotification,
                 nil];
 }
 
@@ -181,14 +179,6 @@
 - (void) rmObservers {
     [super rmObservers];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)enterBg:(NSNotification *)not{  //app will resigned
-    [_kit appEnterBackground];
-}
-
-- (void) becameActive:(NSNotification *)not{ //app becameAction
-    [_kit appBecomeActive];
 }
 
 - (BOOL)shouldAutorotate {
@@ -256,6 +246,7 @@
     _kit.streamerBase.audioCodec       = [_presetCfgView audioCodec];
     _kit.streamerBase.audiokBPS        = [_presetCfgView audioKbps];
     _kit.streamerBase.bwEstimateMode   = [_presetCfgView bwEstMode];
+    _kit.streamerBase.bWithMessage = [_presetCfgView withMessage];
 }
 
 - (void) setCaptureCfg {
@@ -306,11 +297,13 @@
 
 - (void) updateStreamCfg: (BOOL) bStart {
     _kit.streamerBase.liveScene       =  self.miscView.liveScene;
+    _kit.streamerBase.recScene       =  self.miscView.recScene;
     _kit.streamerBase.videoEncodePerf =  self.miscView.vEncPerf;
     _kit.streamerBase.bWithVideo      = !self.audioView.swAudioOnly.on;
     _kit.gpuToStr.bAutoRepeat         = NO;
     _strSeconds = 0;
     self.miscView.liveSceneSeg.enabled = !bStart;
+    self.miscView.recSceneSeg.enabled = !bStart;
     self.miscView.vEncPerfSeg.enabled = !bStart;
     _miscView.swBypassRec.on = NO;
     _miscView.autoReconnect.slider.enabled = !bStart;
@@ -505,7 +498,10 @@
         _audioView.micType = _kit.avAudioSession.currentMicType;
         [_audioView initMicInput];
     }
-    else if (btn == _ctrlView.menuBtns[3] ){
+    else if(btn == _ctrlView.menuBtns[3]){
+        [self onMessage];
+    }
+    else if (btn == _ctrlView.menuBtns[4] ){
         view = _miscView;
     }
     // 将菜单的按钮隐藏, 将触发二级菜单的view显示
@@ -637,6 +633,19 @@
     [self dismissViewControllerAnimated:FALSE completion:nil];
 }
 
+-(void) onMessage{
+    NSMutableDictionary *message = [[NSMutableDictionary alloc] init];
+    _dateFormatter = [[NSDateFormatter alloc] init];
+    _dateFormatter.dateFormat = @"HH:mm:ss";
+    NSDate *now = [[NSDate alloc] init];
+    NSString * timeStr = [_dateFormatter stringFromDate:now];
+    [message setObject:@"user" forKey:@"type"];
+    [message setObject:@"test" forKey:@"event"];
+    [message setObject:timeStr forKey:@"time"];
+    [_kit processMessageData:message];
+}
+
+
 #pragma mark - UI respond : gpu filters
 - (void) onFilterChange:(id)sender{
     if (self.ksyFilterView.curFilter != _kit.filter){
@@ -688,6 +697,10 @@
     else if (seg == _audioView.reverbType){
         int t = (int)seg.selectedSegmentIndex;
         _kit.aCapDev.reverbType = t;
+        return;
+    }
+    else if (seg == _audioView.effectType) {
+        _kit.aCapDev.effectType = _audioView.audioEffect;
         return;
     }
 }

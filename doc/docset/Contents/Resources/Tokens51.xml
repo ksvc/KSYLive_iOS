@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYVideoDimension.html">
+	<File path="Constants/KSYStreamErrorCode.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYVideoDimension</TokenIdentifier>
-			<Abstract type="html">采集分辨率</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYStreamErrorCode</TokenIdentifier>
+			<Abstract type="html">推流错误码，用于指示推流失败的原因</Abstract>
 			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_16_9__1280x720</TokenIdentifier>
-            <Abstract type="html">16 : 9 宽高比，1280 x 720 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_16_9__1280x720</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_NONE</TokenIdentifier>
+            <Abstract type="html">正常无错误</Abstract>
+            <Declaration>KSYStreamErrorCode_NONE</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -24,9 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_16_9__960x540</TokenIdentifier>
-            <Abstract type="html">16 : 9 宽高比，960 x 540 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_16_9__960x540</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_KSYAUTHFAILED</TokenIdentifier>
+            <Abstract type="html">(obsolete)</Abstract>
+            <Declaration>KSYStreamErrorCode_KSYAUTHFAILED</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -34,9 +34,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_4_3__640x480</TokenIdentifier>
-            <Abstract type="html">4 : 3 宽高比，640 x 480 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_4_3__640x480</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_ENCODE_FRAMES_FAILED</TokenIdentifier>
+            <Abstract type="html">当前帧编码失败</Abstract>
+            <Declaration>KSYStreamErrorCode_ENCODE_FRAMES_FAILED</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -44,9 +44,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_16_9__640x360</TokenIdentifier>
-            <Abstract type="html">16 : 9 宽高比，640 x 360 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_16_9__640x360</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_CODEC_OPEN_FAILED</TokenIdentifier>
+            <Abstract type="html">无法打开配置指示的CODEC</Abstract>
+            <Declaration>KSYStreamErrorCode_CODEC_OPEN_FAILED</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -54,9 +54,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_5_4__352x288</TokenIdentifier>
-            <Abstract type="html">4 : 3 宽高比，320 x 240 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_5_4__352x288</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_CONNECT_FAILED</TokenIdentifier>
+            <Abstract type="html">连接出错，检查地址</Abstract>
+            <Declaration>KSYStreamErrorCode_CONNECT_FAILED</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -64,9 +64,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_UserDefine_Scale</TokenIdentifier>
-            <Abstract type="html">缩放自定义分辨率 从设备支持的最近分辨率缩放获得, 若设备没有对应宽高比的分辨率，则裁剪后进行缩放</Abstract>
-            <Declaration>KSYVideoDimension_UserDefine_Scale</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_CONNECT_BREAK</TokenIdentifier>
+            <Abstract type="html">网络连接中断</Abstract>
+            <Declaration>KSYStreamErrorCode_CONNECT_BREAK</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -74,9 +74,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_UserDefine_Crop</TokenIdentifier>
-            <Abstract type="html">裁剪自定义分辨率 从设备支持的最近分辨率裁剪获得</Abstract>
-            <Declaration>KSYVideoDimension_UserDefine_Crop</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_NonExistDomain</TokenIdentifier>
+            <Abstract type="html">rtmp 推流域名不存在 (KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_NonExistDomain</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -84,9 +84,159 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_Default</TokenIdentifier>
-            <Abstract type="html">默认分辨率，默认为 4 : 3 宽高比，640 x 480 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_Default</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_NonExistApplication</TokenIdentifier>
+            <Abstract type="html">rtmp 应用名不存在(KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_NonExistApplication</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="51"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_AlreadyExistStreamName</TokenIdentifier>
+            <Abstract type="html">rtmp 流名已存在(KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_AlreadyExistStreamName</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="51"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_ForbiddenByBlacklist</TokenIdentifier>
+            <Abstract type="html">rtmp 被黑名单拒绝(KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_ForbiddenByBlacklist</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="51"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_InternalError</TokenIdentifier>
+            <Abstract type="html">rtmp 内部错误(KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_InternalError</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="51"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_URLExpired</TokenIdentifier>
+            <Abstract type="html">rtmp URL 地址已过期(KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_URLExpired</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="51"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_SignatureDoesNotMatch</TokenIdentifier>
+            <Abstract type="html">rtmp URL 地址签名错误(KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_SignatureDoesNotMatch</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="51"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_InvalidAccessKeyId</TokenIdentifier>
+            <Abstract type="html">rtmp URL 中AccessKeyId非法(KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_InvalidAccessKeyId</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="51"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_BadParams</TokenIdentifier>
+            <Abstract type="html">rtmp URL 中参数错误(KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_BadParams</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="51"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_ForbiddenByRegion</TokenIdentifier>
+            <Abstract type="html">rtmp URL 中的推流不在发布点内（KSY 自定义）</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_ForbiddenByRegion</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="51"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_FRAMES_THRESHOLD</TokenIdentifier>
+            <Abstract type="html">(obsolete)</Abstract>
+            <Declaration>KSYStreamErrorCode_FRAMES_THRESHOLD</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="51"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_NO_INPUT_SAMPLE</TokenIdentifier>
+            <Abstract type="html">(obsolete)</Abstract>
+            <Declaration>KSYStreamErrorCode_NO_INPUT_SAMPLE</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="51"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_DNS_Parse_failed</TokenIdentifier>
+            <Abstract type="html">对于URL中的域名解析失败</Abstract>
+            <Declaration>KSYStreamErrorCode_DNS_Parse_failed</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="51"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_Connect_Server_failed</TokenIdentifier>
+            <Abstract type="html">对于URL对应的服务器连接失败(无法建立TCP连接)</Abstract>
+            <Declaration>KSYStreamErrorCode_Connect_Server_failed</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="51"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_Publish_failed</TokenIdentifier>
+            <Abstract type="html">跟RTMP服务器完成握手后,向{appname}/{streamname} 推流失败</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_Publish_failed</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="51"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_AV_SYNC_ERROR</TokenIdentifier>
+            <Abstract type="html">音视频同步失败 (输入的音频和视频的时间戳的差值超过5s)</Abstract>
+            <Declaration>KSYStreamErrorCode_AV_SYNC_ERROR</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="51"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_INVALID_ADDRESS</TokenIdentifier>
+            <Abstract type="html">非法地址(地址为空或url中的协议或本地文件的后缀SDK不支持, 请检查)</Abstract>
+            <Declaration>KSYStreamErrorCode_INVALID_ADDRESS</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             

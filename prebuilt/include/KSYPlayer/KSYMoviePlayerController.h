@@ -259,11 +259,11 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
 @property (nonatomic, copy)void (^logBlock)(NSString *logJson);
 
 /**
- @abstract bufferTimeMax指定直播流播放时的最大缓冲时长，单位为秒。
- @discussion 当buffer为负数时，关闭直播追赶。
+ @abstract bufferTimeMax指定播放时的缓冲时长，单位秒
+ @discussion 对于直播流，该属性用于直播延时控制；对于点播流，该属性用于缓冲时长控制
  
- * 该属性仅对直播流有效；
- * 默认值为2秒。
+ * 直播流该属性默认为2秒，设置为0或负值时为关闭直播追赶
+ * 点播流该属性默认为3600秒，且与bufferSizeMax同时生效，两者取小值
  
  @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.0 and later.
@@ -272,7 +272,7 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
 
 /**
  @abstract bufferSizeMax指定点播播放时的最大缓冲，单位MB
- @discussion 取值大小为10-100，超过此区间时将使用默认值15。
+ @discussion 取值大小为0-100，超过此区间时将使用默认值15。
  
  * 该属性仅对点播视频有效；
  * 默认值为15。

@@ -120,6 +120,12 @@
 @property (nonatomic, readonly) KSYAudioMixer          *aMixer;
 
 /**
+ @abstract   消息通道
+ @discussion 用于采集消息，并将数据送入streamerBase
+ */
+@property (nonatomic, readonly) KSYMessage                 *msgStreamer;
+
+/**
  @abstract   获取初始化时创建的底层推流工具
  @discussion 1. 通过它来设置推流参数
  @discussion 2. 通过它来启动，停止推流
@@ -511,5 +517,14 @@ typedef NS_ENUM(NSInteger, KSYStreamerProfile) {
  @abstract 采集和推流配置参数
  */
 @property (nonatomic, assign)   KSYStreamerProfile streamerProfile;
+
+#pragma mark - message
+
+/**
+ @abstract 用户待发送的消息
+ @param      messageData待发送的消息
+ @return     YES / NO
+ */
+- (BOOL) processMessageData:(NSDictionary *)messageData;
 
 @end

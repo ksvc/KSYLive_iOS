@@ -27,9 +27,12 @@
 
 /// 直播场景配置
 @property UISegmentedControl  * liveSceneSeg;
+/// 本地录制场景配置
+@property UISegmentedControl  * recSceneSeg;
 @property UISegmentedControl  * vEncPerfSeg;
 
 @property (nonatomic, readonly) KSYLiveScene liveScene;
+@property (nonatomic, readonly) KSYRecScene recScene;
 @property (nonatomic, readonly) KSYVideoEncodePerformance  vEncPerf;
 
 @property KSYNameSlider       * autoReconnect;

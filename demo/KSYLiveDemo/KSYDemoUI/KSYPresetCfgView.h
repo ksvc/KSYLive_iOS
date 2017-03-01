@@ -58,6 +58,10 @@
 @property UILabel               *lblBwEstMode;    //
 @property UISegmentedControl    *bwEstModeUI;   //
 
+//message
+@property UILabel                               *lblWithMessage;
+@property UISegmentedControl           *withMessageUI;
+
 // get config data
 - (NSString*) hostUrl;
 @property(nonatomic, assign) NSString *capResolution;
@@ -74,6 +78,9 @@
 
 //当前profile id
 @property NSInteger curProfileIdx;
+
+//message
+@property(nonatomic, assign) BOOL withMessage;
 
 @end
 

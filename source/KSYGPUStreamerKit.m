@@ -142,6 +142,11 @@
 
     // 组装音频通道
     [self setupAudioPath];
+    
+    //消息通道
+    _msgStreamer = [[KSYMessage alloc] init];
+    [self setupMessagePath];
+    
     @WeakObj(self);
     _streamerBase.streamStateChange = ^(KSYStreamState state) {
         [selfWeak onStreamState:state];
@@ -153,6 +158,16 @@
         selfWeak.vCapDev.frameRate = selfWeak.videoFPS;
         selfWeak.streamerBase.videoFPS = selfWeak.videoFPS;
     };
+    
+    NSNotificationCenter* dc = [NSNotificationCenter defaultCenter];
+    [dc addObserver:self
+           selector:@selector(appBecomeActive)
+               name:UIApplicationDidBecomeActiveNotification
+             object:nil];
+    [dc addObserver:self
+           selector:@selector(appEnterBackground)
+               name:UIApplicationDidEnterBackgroundNotification
+             object:nil];
 
     return self;
 }
@@ -162,11 +177,13 @@
 - (void)dealloc {
     [_quitLock lock];
     [self closeKit];
+    _msgStreamer = nil;
     _bgmPlayer = nil;
     _streamerBase = nil;
     _vCapDev = nil;
     [_quitLock unlock];
     _quitLock = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 /* reset all submodules */
@@ -307,6 +324,20 @@
     _aMixer.mainTrack = _micTrack;
     [_aMixer setTrack:_micTrack enable:YES];
     [_aMixer setTrack:_bgmTrack enable:YES];
+}
+
+#pragma mark - message
+- (void) setupMessagePath {
+    __weak KSYGPUStreamerKit *kit = self;
+    _msgStreamer.messageProcessingCallback = ^(NSDictionary *messageData){
+        [kit.streamerBase processMessageData:messageData];
+    };
+}
+
+- (BOOL)  processMessageData:(NSDictionary *)messageData{
+    if(_msgStreamer)
+        return [_msgStreamer processMessageData:messageData];
+    return NO;
 }
 
 #pragma mark - 状态通知
