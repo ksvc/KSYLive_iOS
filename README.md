@@ -46,8 +46,20 @@
 - [x] 业内一流的H.265解码；
 - [x] 小于2M大小的超轻量级直播sdk；
 
-## 二. 推流端大事记  
-### 2.1 2016年发布大事记  
+### 1.4 关于热更新
+
+金山云SDK保证，提供的[KSYLive iOS直播SDK](https://github.com/ksvc/KSYLive_iOS)未使用热更新技术，例如：RN(ReactNative)、weex、JSPatch等，请放心使用。
+
+### 1.5 关于费用
+金山云SDK保证，提供的[KSYLive iOS直播SDK](https://github.com/ksvc/KSYLive_iOS)可以用于商业应用，不会收取任何SDK使用费用。但是基于[KSYLive iOS直播SDK](https://github.com/ksvc/KSYLive_iOS)的其他商业服务，会由特定供应商收取授权费用，大致包括：
+1. 云存储
+1. CDN分发
+1. 动态贴纸
+1. 连麦
+1. 第三方美颜
+
+## 二. 推流端大事记 
+### 2.1 2016年发布大事记  
 1. 2016.02.25 上行网络自适应上线；
 1. 2016.03.26 [内建美颜](https://github.com/ksvc/KSYLive_iOS/wiki/filter)上线；
 1. 2016.04.11 支持四种混响模式的[美声](https://github.com/ksvc/KSYLive_iOS/wiki/reverb)上线；
