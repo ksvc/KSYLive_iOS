@@ -52,6 +52,7 @@
 
 ### 1.5 关于费用
 金山云SDK保证，提供的[KSYLive iOS直播SDK](https://github.com/ksvc/KSYLive_iOS)可以用于商业应用，不会收取任何SDK使用费用。但是基于[KSYLive iOS直播SDK](https://github.com/ksvc/KSYLive_iOS)的其他商业服务，会由特定供应商收取授权费用，大致包括：
+
 1. 云存储
 1. CDN分发
 1. 动态贴纸
