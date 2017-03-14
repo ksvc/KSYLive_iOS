@@ -31,7 +31,8 @@
 - [x] 支持软编、硬编的[性能编码模式](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)
 - [x] 支持[预览和推流分别镜像](https://github.com/ksvc/KSYLive_iOS/wiki/mirrored)
 - [x] [在线API 文档支持](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
-- [x] 支持[边推边录]，在直播推流过程中同时保存录像文件(https://github.com/ksvc/KSYLive_iOS/wiki/bypassRecord)
+- [x] 支持[边推边录](https://github.com/ksvc/KSYLive_iOS/wiki/bypassRecord)，在直播推流过程中同时保存录像文件
+- [x] 支持[立体声](https://github.com/ksvc/KSYLive_iOS/wiki/stereo)推流
 
 ### 1.2 文档
 [详情请见wiki](https://github.com/ksvc/KSYLive_iOS/wiki)
@@ -78,11 +79,11 @@
 1. 2016.10.19 支持[推流横竖屏动态变化](https://github.com/ksvc/KSYLive_iOS/wiki/dynamicOrientation)；
 1. 2016.10.20 支持[replaykit录屏推流](https://github.com/ksvc/KSYDiversityLive_iOS/tree/master/KSYReplayKit)；
 1. 2016.11.18 支持[边推流边录制为mp4文件](https://github.com/ksvc/KSYLive_iOS/wiki/bypassRecord)
+1. 2016.2.22 支持[动态帧率](https://github.com/ksvc/KSYLive_iOS/wiki/dynamicFPS)
+1. 2016.3.1 支持主播音频[采集变声](http://ksvc.github.io/KSYLive_iOS/doc/html/Classes/KSYAUAudioCapture.html#//api/name/effectTyped)
+1. 2017.3.14 支持[立体声](https://github.com/ksvc/KSYLive_iOS/wiki/stereo)推流
 
 ### 2.2 近期工作  
-1. 2017.02.xx 动态帧率;
-1. 2017.02.xx 变声处理;
-1. 2017.02.xx 行车记录仪直播;
 1. 2017.03.xx 多视角直播;
 1. 2017.03.xx 背景音降噪;
 
