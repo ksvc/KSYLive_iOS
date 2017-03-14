@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYNetRouterInfo.html">
+	<File path="Classes/KSYBeautifyFaceFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYNetRouterInfo</TokenIdentifier>
-			<Abstract type="html">网络链路上的路由节点信息类</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYBeautifyFaceFilter</TokenIdentifier>
+			<Abstract type="html">金山云美颜滤镜</Abstract>
+			<DeclaredIn>KSYBeautifyFaceFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="8"/>
@@ -13,254 +13,151 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/setIps:</TokenIdentifier>
-			<Abstract type="html">链路上每个节点的ip地址</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyFaceFilter/init</TokenIdentifier>
+			<Abstract type="html">init</Abstract>
+			<DeclaredIn>KSYBeautifyFaceFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) NSMutableArray *ips</Declaration>
+			<Declaration>- (id)init</Declaration>
 			
 			
-			<Anchor>//api/name/ips</Anchor>
+			<Anchor>//api/name/init</Anchor>
             <NodeRef refid="8"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/ips</TokenIdentifier>
-			<Abstract type="html">链路上每个节点的ip地址</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/clm/KSYBeautifyFaceFilter/showVersion</TokenIdentifier>
+			<Abstract type="html">show version of this filter</Abstract>
+			<DeclaredIn>KSYBeautifyFaceFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) NSMutableArray *ips</Declaration>
+			<Declaration>+ (void)showVersion</Declaration>
 			
 			
-			<Anchor>//api/name/ips</Anchor>
+			<Anchor>//api/name/showVersion</Anchor>
             <NodeRef refid="8"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetRouterInfo/ips</TokenIdentifier>
-			<Abstract type="html">链路上每个节点的ip地址</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyFaceFilter/setGrindRatio:</TokenIdentifier>
+			<Abstract type="html">grindRatio ranges from 0.0 to 1.0, with 0.87 as the normal level</Abstract>
+			<DeclaredIn>KSYBeautifyFaceFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) NSMutableArray *ips</Declaration>
+			<Declaration>@property (readwrite, nonatomic) CGFloat grindRatio</Declaration>
 			
 			
-			<Anchor>//api/name/ips</Anchor>
+			<Anchor>//api/name/grindRatio</Anchor>
             <NodeRef refid="8"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/setTmax:</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt最大值</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyFaceFilter/grindRatio</TokenIdentifier>
+			<Abstract type="html">grindRatio ranges from 0.0 to 1.0, with 0.87 as the normal level</Abstract>
+			<DeclaredIn>KSYBeautifyFaceFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) float tmax</Declaration>
+			<Declaration>@property (readwrite, nonatomic) CGFloat grindRatio</Declaration>
 			
 			
-			<Anchor>//api/name/tmax</Anchor>
+			<Anchor>//api/name/grindRatio</Anchor>
             <NodeRef refid="8"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/tmax</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt最大值</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYBeautifyFaceFilter/grindRatio</TokenIdentifier>
+			<Abstract type="html">grindRatio ranges from 0.0 to 1.0, with 0.87 as the normal level</Abstract>
+			<DeclaredIn>KSYBeautifyFaceFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) float tmax</Declaration>
+			<Declaration>@property (readwrite, nonatomic) CGFloat grindRatio</Declaration>
 			
 			
-			<Anchor>//api/name/tmax</Anchor>
+			<Anchor>//api/name/grindRatio</Anchor>
             <NodeRef refid="8"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetRouterInfo/tmax</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt最大值</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyFaceFilter/setWhitenRatio:</TokenIdentifier>
+			<Abstract type="html">whitenRatio ranges from 0.0 to 1.0, with 0.6 as the normal level</Abstract>
+			<DeclaredIn>KSYBeautifyFaceFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) float tmax</Declaration>
+			<Declaration>@property (readwrite, nonatomic) CGFloat whitenRatio</Declaration>
 			
 			
-			<Anchor>//api/name/tmax</Anchor>
+			<Anchor>//api/name/whitenRatio</Anchor>
             <NodeRef refid="8"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/setTmin:</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt最小值</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyFaceFilter/whitenRatio</TokenIdentifier>
+			<Abstract type="html">whitenRatio ranges from 0.0 to 1.0, with 0.6 as the normal level</Abstract>
+			<DeclaredIn>KSYBeautifyFaceFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) float tmin</Declaration>
+			<Declaration>@property (readwrite, nonatomic) CGFloat whitenRatio</Declaration>
 			
 			
-			<Anchor>//api/name/tmin</Anchor>
+			<Anchor>//api/name/whitenRatio</Anchor>
             <NodeRef refid="8"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/tmin</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt最小值</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYBeautifyFaceFilter/whitenRatio</TokenIdentifier>
+			<Abstract type="html">whitenRatio ranges from 0.0 to 1.0, with 0.6 as the normal level</Abstract>
+			<DeclaredIn>KSYBeautifyFaceFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) float tmin</Declaration>
+			<Declaration>@property (readwrite, nonatomic) CGFloat whitenRatio</Declaration>
 			
 			
-			<Anchor>//api/name/tmin</Anchor>
+			<Anchor>//api/name/whitenRatio</Anchor>
             <NodeRef refid="8"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetRouterInfo/tmin</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt最小值</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyFaceFilter/initWithRubbyMaterial:</TokenIdentifier>
+			<Abstract type="html">初始化输入的红润特效素材图像</Abstract>
+			<DeclaredIn>KSYBeautifyFaceFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) float tmin</Declaration>
-			
-			
-			<Anchor>//api/name/tmin</Anchor>
+			<Declaration>- (id)initWithRubbyMaterial:(UIImage *)img</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>img</Name>
+					<Abstract type="html">红润特效素材文件 (比如KSYGPUResource.bundle中的资源文件)</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">构造出来的滤镜</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithRubbyMaterial:</Anchor>
             <NodeRef refid="8"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/setTavg:</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt平均值</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyFaceFilter/setRuddyRatio:</TokenIdentifier>
+			<Abstract type="html">ruddyRatio ranges from 0.0 to 1.0, with 1.0 as the normal level, need to use the initWithRubbyMaterial</Abstract>
+			<DeclaredIn>KSYBeautifyFaceFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) float tavg</Declaration>
+			<Declaration>@property (readwrite, nonatomic) CGFloat ruddyRatio</Declaration>
 			
 			
-			<Anchor>//api/name/tavg</Anchor>
+			<Anchor>//api/name/ruddyRatio</Anchor>
             <NodeRef refid="8"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/tavg</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt平均值</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyFaceFilter/ruddyRatio</TokenIdentifier>
+			<Abstract type="html">ruddyRatio ranges from 0.0 to 1.0, with 1.0 as the normal level, need to use the initWithRubbyMaterial</Abstract>
+			<DeclaredIn>KSYBeautifyFaceFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) float tavg</Declaration>
+			<Declaration>@property (readwrite, nonatomic) CGFloat ruddyRatio</Declaration>
 			
 			
-			<Anchor>//api/name/tavg</Anchor>
+			<Anchor>//api/name/ruddyRatio</Anchor>
             <NodeRef refid="8"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetRouterInfo/tavg</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt平均值</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYBeautifyFaceFilter/ruddyRatio</TokenIdentifier>
+			<Abstract type="html">ruddyRatio ranges from 0.0 to 1.0, with 1.0 as the normal level, need to use the initWithRubbyMaterial</Abstract>
+			<DeclaredIn>KSYBeautifyFaceFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) float tavg</Declaration>
-			
-			
-			<Anchor>//api/name/tavg</Anchor>
-            <NodeRef refid="8"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/setTdev:</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt均方差</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float tdev</Declaration>
+			<Declaration>@property (readwrite, nonatomic) CGFloat ruddyRatio</Declaration>
 			
 			
-			<Anchor>//api/name/tdev</Anchor>
-            <NodeRef refid="8"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/tdev</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt均方差</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float tdev</Declaration>
-			
-			
-			<Anchor>//api/name/tdev</Anchor>
-            <NodeRef refid="8"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetRouterInfo/tdev</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt均方差</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float tdev</Declaration>
-			
-			
-			<Anchor>//api/name/tdev</Anchor>
-            <NodeRef refid="8"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/setLoss:</TokenIdentifier>
-			<Abstract type="html">所有探测报文的丢包率</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float loss</Declaration>
-			
-			
-			<Anchor>//api/name/loss</Anchor>
-            <NodeRef refid="8"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/loss</TokenIdentifier>
-			<Abstract type="html">所有探测报文的丢包率</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float loss</Declaration>
-			
-			
-			<Anchor>//api/name/loss</Anchor>
-            <NodeRef refid="8"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetRouterInfo/loss</TokenIdentifier>
-			<Abstract type="html">所有探测报文的丢包率</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float loss</Declaration>
-			
-			
-			<Anchor>//api/name/loss</Anchor>
-            <NodeRef refid="8"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/setNumber:</TokenIdentifier>
-			<Abstract type="html">统计所使用的探测报文个数</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) int number</Declaration>
-			
-			
-			<Anchor>//api/name/number</Anchor>
-            <NodeRef refid="8"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/number</TokenIdentifier>
-			<Abstract type="html">统计所使用的探测报文个数</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) int number</Declaration>
-			
-			
-			<Anchor>//api/name/number</Anchor>
-            <NodeRef refid="8"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetRouterInfo/number</TokenIdentifier>
-			<Abstract type="html">统计所使用的探测报文个数</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) int number</Declaration>
-			
-			
-			<Anchor>//api/name/number</Anchor>
+			<Anchor>//api/name/ruddyRatio</Anchor>
             <NodeRef refid="8"/>
 		</Token>
 		

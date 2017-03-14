@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYAudioInfo.html">
+	<File path="Classes/KSYAQPlayer.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYAudioInfo</TokenIdentifier>
-			<Abstract type="html">音频信息</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYAQPlayer</TokenIdentifier>
+			<Abstract type="html">基于AudioQueue的音乐播放器</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
             
 			
 			<NodeRef refid="1"/>
@@ -13,254 +13,379 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/setAcodec:</TokenIdentifier>
-			<Abstract type="html">音频编码格式,  具体类型为MEDIAINFOCODECID</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/play:</TokenIdentifier>
+			<Abstract type="html">开始播放</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID acodec</Declaration>
-			
-			
-			<Anchor>//api/name/acodec</Anchor>
+			<Declaration>- (BOOL)play:(AudioStreamBasicDescription *)fmt</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>fmt,</Name>
+					<Abstract type="html">后续送入的音频数据的格式</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">是否能够开始播放</Abstract></ReturnValue>
+			<Anchor>//api/name/play:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/acodec</TokenIdentifier>
-			<Abstract type="html">音频编码格式,  具体类型为MEDIAINFOCODECID</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/stop</TokenIdentifier>
+			<Abstract type="html">停止播放背景音乐</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID acodec</Declaration>
+			<Declaration>- (void)stop</Declaration>
 			
 			
-			<Anchor>//api/name/acodec</Anchor>
+			<Anchor>//api/name/stop</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioInfo/acodec</TokenIdentifier>
-			<Abstract type="html">音频编码格式,  具体类型为MEDIAINFOCODECID</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/pause</TokenIdentifier>
+			<Abstract type="html">暂停播放背景音乐</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID acodec</Declaration>
+			<Declaration>- (void)pause</Declaration>
 			
 			
-			<Anchor>//api/name/acodec</Anchor>
+			<Anchor>//api/name/pause</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/setLanguage:</TokenIdentifier>
-			<Abstract type="html">音频语言, 如chinese, english...</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/resume</TokenIdentifier>
+			<Abstract type="html">恢复播放背景音乐</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) NSString *language</Declaration>
+			<Declaration>- (void)resume</Declaration>
 			
 			
-			<Anchor>//api/name/language</Anchor>
+			<Anchor>//api/name/resume</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/language</TokenIdentifier>
-			<Abstract type="html">音频语言, 如chinese, english...</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/setVolume:</TokenIdentifier>
+			<Abstract type="html">播放音量</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) NSString *language</Declaration>
+			<Declaration>@property (nonatomic, assign) double volume</Declaration>
 			
 			
-			<Anchor>//api/name/language</Anchor>
+			<Anchor>//api/name/volume</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioInfo/language</TokenIdentifier>
-			<Abstract type="html">音频语言, 如chinese, english...</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/volume</TokenIdentifier>
+			<Abstract type="html">播放音量</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) NSString *language</Declaration>
+			<Declaration>@property (nonatomic, assign) double volume</Declaration>
 			
 			
-			<Anchor>//api/name/language</Anchor>
+			<Anchor>//api/name/volume</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/setBitrate:</TokenIdentifier>
-			<Abstract type="html">音频码率</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAQPlayer/volume</TokenIdentifier>
+			<Abstract type="html">播放音量</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int64_t bitrate</Declaration>
+			<Declaration>@property (nonatomic, assign) double volume</Declaration>
 			
 			
-			<Anchor>//api/name/bitrate</Anchor>
+			<Anchor>//api/name/volume</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/bitrate</TokenIdentifier>
-			<Abstract type="html">音频码率</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/setPitch:</TokenIdentifier>
+			<Abstract type="html">播放声音的音调</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int64_t bitrate</Declaration>
+			<Declaration>@property (nonatomic, assign) double pitch</Declaration>
 			
 			
-			<Anchor>//api/name/bitrate</Anchor>
+			<Anchor>//api/name/pitch</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioInfo/bitrate</TokenIdentifier>
-			<Abstract type="html">音频码率</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/pitch</TokenIdentifier>
+			<Abstract type="html">播放声音的音调</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int64_t bitrate</Declaration>
+			<Declaration>@property (nonatomic, assign) double pitch</Declaration>
 			
 			
-			<Anchor>//api/name/bitrate</Anchor>
+			<Anchor>//api/name/pitch</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/setChannels:</TokenIdentifier>
-			<Abstract type="html">声道数</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAQPlayer/pitch</TokenIdentifier>
+			<Abstract type="html">播放声音的音调</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int32_t channels</Declaration>
+			<Declaration>@property (nonatomic, assign) double pitch</Declaration>
 			
 			
-			<Anchor>//api/name/channels</Anchor>
+			<Anchor>//api/name/pitch</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/channels</TokenIdentifier>
-			<Abstract type="html">声道数</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/setInFmt:</TokenIdentifier>
+			<Abstract type="html">输入的音频格式</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int32_t channels</Declaration>
+			<Declaration>@property (nonatomic, readonly) AudioStreamBasicDescription inFmt</Declaration>
 			
 			
-			<Anchor>//api/name/channels</Anchor>
+			<Anchor>//api/name/inFmt</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioInfo/channels</TokenIdentifier>
-			<Abstract type="html">声道数</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/inFmt</TokenIdentifier>
+			<Abstract type="html">输入的音频格式</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int32_t channels</Declaration>
+			<Declaration>@property (nonatomic, readonly) AudioStreamBasicDescription inFmt</Declaration>
 			
 			
-			<Anchor>//api/name/channels</Anchor>
+			<Anchor>//api/name/inFmt</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/setSamplerate:</TokenIdentifier>
-			<Abstract type="html">音频采样率</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAQPlayer/inFmt</TokenIdentifier>
+			<Abstract type="html">输入的音频格式</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int32_t samplerate</Declaration>
+			<Declaration>@property (nonatomic, readonly) AudioStreamBasicDescription inFmt</Declaration>
 			
 			
-			<Anchor>//api/name/samplerate</Anchor>
+			<Anchor>//api/name/inFmt</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/samplerate</TokenIdentifier>
-			<Abstract type="html">音频采样率</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/setOutFmt:</TokenIdentifier>
+			<Abstract type="html">回调输出的音频格式</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int32_t samplerate</Declaration>
+			<Declaration>@property (nonatomic, readonly) AudioStreamBasicDescription outFmt</Declaration>
 			
 			
-			<Anchor>//api/name/samplerate</Anchor>
+			<Anchor>//api/name/outFmt</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioInfo/samplerate</TokenIdentifier>
-			<Abstract type="html">音频采样率</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/outFmt</TokenIdentifier>
+			<Abstract type="html">回调输出的音频格式</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int32_t samplerate</Declaration>
+			<Declaration>@property (nonatomic, readonly) AudioStreamBasicDescription outFmt</Declaration>
 			
 			
-			<Anchor>//api/name/samplerate</Anchor>
+			<Anchor>//api/name/outFmt</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/setSample_format:</TokenIdentifier>
-			<Abstract type="html">音频采样格式, 具体类型为MEDIAINFOSAMPLEFMT</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAQPlayer/outFmt</TokenIdentifier>
+			<Abstract type="html">回调输出的音频格式</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) MEDIAINFO_SAMPLE_FMT sample_format</Declaration>
+			<Declaration>@property (nonatomic, readonly) AudioStreamBasicDescription outFmt</Declaration>
 			
 			
-			<Anchor>//api/name/sample_format</Anchor>
+			<Anchor>//api/name/outFmt</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/sample_format</TokenIdentifier>
-			<Abstract type="html">音频采样格式, 具体类型为MEDIAINFOSAMPLEFMT</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/setMute:</TokenIdentifier>
+			<Abstract type="html">背景音乐播放静音</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) MEDIAINFO_SAMPLE_FMT sample_format</Declaration>
+			<Declaration>@property (nonatomic, assign) BOOL mute</Declaration>
 			
 			
-			<Anchor>//api/name/sample_format</Anchor>
+			<Anchor>//api/name/mute</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioInfo/sample_format</TokenIdentifier>
-			<Abstract type="html">音频采样格式, 具体类型为MEDIAINFOSAMPLEFMT</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/mute</TokenIdentifier>
+			<Abstract type="html">背景音乐播放静音</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) MEDIAINFO_SAMPLE_FMT sample_format</Declaration>
+			<Declaration>@property (nonatomic, assign) BOOL mute</Declaration>
 			
 			
-			<Anchor>//api/name/sample_format</Anchor>
+			<Anchor>//api/name/mute</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/setFramesize:</TokenIdentifier>
-			<Abstract type="html">音频帧大小</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAQPlayer/mute</TokenIdentifier>
+			<Abstract type="html">背景音乐播放静音</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int32_t framesize</Declaration>
+			<Declaration>@property (nonatomic, assign) BOOL mute</Declaration>
 			
 			
-			<Anchor>//api/name/framesize</Anchor>
+			<Anchor>//api/name/mute</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/framesize</TokenIdentifier>
-			<Abstract type="html">音频帧大小</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/setPullDataCB:</TokenIdentifier>
+			<Abstract type="html">音频数据输入回调</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int32_t framesize</Declaration>
+			<Declaration>@property (nonatomic, copy) BOOL ( ^ ) ( AudioQueueBufferRef buf ) pullDataCB</Declaration>
 			
 			
-			<Anchor>//api/name/framesize</Anchor>
+			<Anchor>//api/name/pullDataCB</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioInfo/framesize</TokenIdentifier>
-			<Abstract type="html">音频帧大小</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/pullDataCB</TokenIdentifier>
+			<Abstract type="html">音频数据输入回调</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int32_t framesize</Declaration>
+			<Declaration>@property (nonatomic, copy) BOOL ( ^ ) ( AudioQueueBufferRef buf ) pullDataCB</Declaration>
 			
 			
-			<Anchor>//api/name/framesize</Anchor>
+			<Anchor>//api/name/pullDataCB</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAQPlayer/pullDataCB</TokenIdentifier>
+			<Abstract type="html">音频数据输入回调</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) BOOL ( ^ ) ( AudioQueueBufferRef buf ) pullDataCB</Declaration>
+			
+			
+			<Anchor>//api/name/pullDataCB</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/setPutDataCB:</TokenIdentifier>
+			<Abstract type="html">音频数据输出回调</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) BOOL ( ^ ) ( uint8_t **pData , int len , const AudioStreamBasicDescription *fmt , CMTime pts ) putDataCB</Declaration>
+			
+			
+			<Anchor>//api/name/putDataCB</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/putDataCB</TokenIdentifier>
+			<Abstract type="html">音频数据输出回调</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) BOOL ( ^ ) ( uint8_t **pData , int len , const AudioStreamBasicDescription *fmt , CMTime pts ) putDataCB</Declaration>
+			
+			
+			<Anchor>//api/name/putDataCB</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAQPlayer/putDataCB</TokenIdentifier>
+			<Abstract type="html">音频数据输出回调</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) BOOL ( ^ ) ( uint8_t **pData , int len , const AudioStreamBasicDescription *fmt , CMTime pts ) putDataCB</Declaration>
+			
+			
+			<Anchor>//api/name/putDataCB</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/setIsRunning:</TokenIdentifier>
+			<Abstract type="html">音频播放是否运行</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL isRunning</Declaration>
+			
+			
+			<Anchor>//api/name/isRunning</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/isRunning</TokenIdentifier>
+			<Abstract type="html">音频播放是否运行</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL isRunning</Declaration>
+			
+			
+			<Anchor>//api/name/isRunning</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAQPlayer/isRunning</TokenIdentifier>
+			<Abstract type="html">音频播放是否运行</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL isRunning</Declaration>
+			
+			
+			<Anchor>//api/name/isRunning</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/setAudioErrorCode:</TokenIdentifier>
+			<Abstract type="html">播放错误码</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) OSStatus audioErrorCode</Declaration>
+			
+			
+			<Anchor>//api/name/audioErrorCode</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/audioErrorCode</TokenIdentifier>
+			<Abstract type="html">播放错误码</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) OSStatus audioErrorCode</Declaration>
+			
+			
+			<Anchor>//api/name/audioErrorCode</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAQPlayer/audioErrorCode</TokenIdentifier>
+			<Abstract type="html">播放错误码</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) OSStatus audioErrorCode</Declaration>
+			
+			
+			<Anchor>//api/name/audioErrorCode</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		

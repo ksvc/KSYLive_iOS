@@ -1,37 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSY_NETTRACKER_ACTION.html">
+	<File path="Classes/KSYMovieWriter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSY_NETTRACKER_ACTION</TokenIdentifier>
-			<Abstract type="html">探测方式</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYMovieWriter</TokenIdentifier>
+			<Abstract type="html">视频文件录制类</Abstract>
+			<DeclaredIn>KSYMovieWriter.h</DeclaredIn>
             
 			
 			<NodeRef refid="31"/>
 		</Token>
 		
 		
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSY_NETTRACKER_ACTION_MTR</TokenIdentifier>
-            <Abstract type="html">mtr方式，探测链路上每个节点</Abstract>
-            <Declaration>KSY_NETTRACKER_ACTION_MTR</Declaration>
-            
-            <DeclaredIn>KSYNetTracker.h</DeclaredIn>
-            
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMovieWriter/startWrite:</TokenIdentifier>
+			<Abstract type="html">write video stream to local files</Abstract>
+			<DeclaredIn>KSYMovieWriter.h</DeclaredIn>
+			
+			<Declaration>- (void)startWrite:(NSURL *)filePath</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>filePath</Name>
+					<Abstract type="html">is local file path</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/startWrite:</Anchor>
             <NodeRef refid="31"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSY_NETTRACKER_ACTION_PING</TokenIdentifier>
-            <Abstract type="html">ping方式，直接探测终点</Abstract>
-            <Declaration>KSY_NETTRACKER_ACTION_PING</Declaration>
-            
-            <DeclaredIn>KSYNetTracker.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMovieWriter/stopWrite</TokenIdentifier>
+			<Abstract type="html">stop wirte file</Abstract>
+			<DeclaredIn>KSYMovieWriter.h</DeclaredIn>
+			
+			<Declaration>- (void)stopWrite</Declaration>
+			
+			
+			<Anchor>//api/name/stopWrite</Anchor>
             <NodeRef refid="31"/>
-        </Token>
+		</Token>
+		
         
         
 	</File>
