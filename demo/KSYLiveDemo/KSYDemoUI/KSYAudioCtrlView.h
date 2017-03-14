@@ -31,6 +31,9 @@
 /// 静音推流开关 ( 发送音量为0的音频数据 )
 @property UISwitch      * muteStream;
 
+/// 推流声音为立体声
+@property UISwitch      * stereoStream;
+
 /// 音频输入设备选择(话筒, 有限耳麦 或 蓝牙耳麦)
 @property UISegmentedControl  * micInput;
 /// get value from UI ( micInput )

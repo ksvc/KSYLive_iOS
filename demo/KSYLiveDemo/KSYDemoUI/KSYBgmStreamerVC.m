@@ -76,7 +76,7 @@
 - (void)onTimer:(NSTimer *)theTimer{
     [super onTimer:theTimer];
     if (_bgmKit.ksyBgmPlayer && _bgmKit.ksyBgmPlayer.playbackState == MPMoviePlaybackStatePlaying) {
-        self.ksyBgmView.progressV.progress = _bgmKit.ksyBgmPlayer.currentPlaybackTime/_bgmKit.ksyBgmPlayer.duration;
+        self.ksyBgmView.progressBar.playProgress = _bgmKit.ksyBgmPlayer.currentPlaybackTime/_bgmKit.ksyBgmPlayer.duration;
     }
 }
 

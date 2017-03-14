@@ -28,8 +28,8 @@
  @param playerUrl:播放视频的url
  @param bgUrl:背景图片的url
  */
--(void)startPipWithPlayerUrl:(NSURL*)playerUrl
-                       bgPic:(NSURL*)bgUrl;
+-(void)startPipWithPlayerUrl:( NSURL* _Nullable )playerUrl
+                       bgPic:( NSURL* _Nullable )bgUrl;
 /**
  @abstract   停止画中画
  **/

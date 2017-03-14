@@ -10,6 +10,7 @@
 #import "QRViewController.h"
 #import "URLTableViewController.h"
 #import "KSYProgressView.h"
+#import "KSYPlayerConfigureVC.h"
 
 @interface KSYPlayerVC () <UITextFieldDelegate>
 @property (strong, nonatomic) NSURL *url;
@@ -36,9 +37,7 @@
     UIButton *btnMute;
     UIButton *btnShotScreen;
     UIButton *btnMirror;
-    
-    UILabel  *lableHWCodec;
-    UISwitch  *switchHwCodec;
+    UIButton *btnConfig;
     
     UILabel *labelVolume;
     UISlider *sliderVolume;
@@ -57,6 +56,7 @@
 	int content_mode;
     
     int msgNum;
+    PlayerConfigure config;
 }
 
 - (instancetype)initWithURL:(NSURL *)url {
@@ -65,6 +65,14 @@
         self.reloadUrl = url;
     }
     
+    config.decodeMode = MPMovieVideoDecoderMode_Hardware;
+    config.deinterlaceMode = MPMovieVideoDeinterlaceMode_Auto;
+    config.bLoop = NO;
+    config.bAudioInterrupt = YES;
+    config.connectTimeout = 10;
+    config.readTimeout = 60;
+    config.bufferSizeMax = -1;
+    config.bufferTimeMax = -1;
     return self;
 }
 
@@ -135,6 +143,7 @@
     btnMute = [self addButtonWithTitle:@"mute" action:@selector(onMute:)];
     
     btnMirror = [self addButtonWithTitle:@"镜像" action:@selector(onMirror:)];
+    btnConfig = [self addButtonWithTitle:@"播放器配置" action:@selector(onConfig:)];
 
 	stat = [[UILabel alloc] init];
     stat.backgroundColor = [UIColor clearColor];
@@ -150,19 +159,10 @@
     msg .textAlignment = NSTextAlignmentLeft;
     [self.view addSubview:msg ];
     
-    lableHWCodec = [[UILabel alloc] init];
-    lableHWCodec.text = @"硬解码";
-    lableHWCodec.textColor = [UIColor lightGrayColor];
-    [self.view addSubview:lableHWCodec];
-    
     labelVolume = [[UILabel alloc] init];
     labelVolume.text = @"音量";
     labelVolume.textColor = [UIColor lightGrayColor];
     [self.view addSubview:labelVolume];
-    
-    switchHwCodec = [[UISwitch alloc] init];
-    [self.view  addSubview:switchHwCodec];
-    switchHwCodec.on = YES;
     
     sliderVolume = [[UISlider alloc] init];
     sliderVolume.minimumValue = 0;
@@ -210,11 +210,6 @@
     labelVolume.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     xPos += btnWdt + gap;
     sliderVolume.frame  = CGRectMake(xPos, yPos, wdt - 3 * gap - btnWdt, btnHgt);
-    yPos += btnHgt + gap;
-    xPos = gap;
-    lableHWCodec.frame =CGRectMake(xPos, yPos, btnWdt * 2, btnHgt);
-    xPos += btnWdt + gap;
-    switchHwCodec.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     
     videoView.frame = CGRectMake(0, 0, wdt, hgt);
     
@@ -245,6 +240,8 @@
     xPos = gap;
     yPos -= (btnHgt + gap);
     btnMirror.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
+    xPos += gap + btnWdt;
+    btnConfig.frame = CGRectMake(xPos, yPos, btnWdt*2, btnHgt);
     
     xPos = gap;
     yPos = btnMirror.frame.origin.y - btnHgt - gap;
@@ -537,19 +534,26 @@
     videoView.autoresizesSubviews = TRUE;
     _player.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     _player.shouldAutoplay = TRUE;
-    _player.shouldEnableVideoPostProcessing = TRUE;
     _player.scalingMode = MPMovieScalingModeAspectFit;
     content_mode = _player.scalingMode + 1;
     if(content_mode > MPMovieScalingModeFill)
         content_mode = MPMovieScalingModeNone;
     
-    _player.videoDecoderMode = switchHwCodec.isOn? MPMovieVideoDecoderMode_Hardware : MPMovieVideoDecoderMode_Software;
+    _player.videoDecoderMode = config.decodeMode;
     _player.shouldMute = shouldMute;
 //    _player.rotateDegress = 90;
 //    _player.mirror = YES;
-    _player.shouldLoop = NO;
-    _player.deinterlaceMode = MPMovieVideoDeinterlaceMode_Auto;
-    [_player setTimeout:10 readTimeout:60];
+    _player.shouldLoop = config.bLoop;
+    _player.deinterlaceMode = config.deinterlaceMode;
+    _player.bInterruptOtherAudio = config.bAudioInterrupt;
+    if(config.bufferTimeMax != -1)
+    {
+        _player.bufferTimeMax = config.bufferTimeMax;
+    }
+    if(config.bufferSizeMax != -1){
+        _player.bufferSizeMax = config.bufferSizeMax;
+    }
+    [_player setTimeout:config.connectTimeout readTimeout:config.readTimeout];
     
     NSKeyValueObservingOptions opts = NSKeyValueObservingOptionNew;
     [_player addObserver:self forKeyPath:@"currentPlaybackTime" options:opts context:nil];
@@ -891,6 +895,13 @@
     msg.text = [msg.text stringByAppendingString:msgString];
     if(++msgNum >= 3)
         msgNum  = 0;
+}
+
+- (IBAction)onConfig:(id)sender {
+    KSYPlayerConfigureVC* vc = [[KSYPlayerConfigureVC alloc]initWithConfig:config confirm:^(PlayerConfigure newConfig){
+        config = newConfig;
+    }];
+    [self presentViewController:vc animated:NO completion:nil];
 }
 
 @end

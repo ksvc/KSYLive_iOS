@@ -16,6 +16,7 @@
 #import "KSYNameSlider.h"
 
 @interface KSYPipStreamerVC () <UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
+    NSUInteger _pipBtnIdx;
 }
 @end
 
@@ -29,7 +30,8 @@
 
 #pragma mark - UIViewController
 - (void)viewDidLoad {
-    self.menuNames = @[@"背景音乐",@"图像/美颜",@"声音",@"其他",@"画中画"];
+    self.menuNames = [self.menuNames arrayByAddingObject:@"画中画"];
+    _pipBtnIdx = self.menuNames.count;
     _pipKit = [[KSYGPUPipStreamerKit alloc] initWithDefaultCfg];
     self.kit = _pipKit;
     [super viewDidLoad];
@@ -75,7 +77,7 @@
 - (void)onMenuBtnPress:(UIButton *)btn{
     [super onMenuBtnPress:btn];
     KSYUIView * view = nil;
-    if (btn == self.ctrlView.menuBtns[4] ){
+    if (btn == self.ctrlView.menuBtns[_pipBtnIdx-1] ){
         view = _ksyPipView;   // 画中画播放相关
     }
     // 将菜单的按钮隐藏, 将触发二级菜单的view显示

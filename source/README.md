@@ -13,3 +13,8 @@
 继承KSYGPUStreamerKit类, 添加画中画播放功能, 满足直播过程中的互动等需求。
 
 [使用说明请见wiki](https://github.com/ksvc/KSYLive_iOS/wiki/pip)
+
+## KSYUIRecorderKit类
+播放录屏功能, 满足直播过程中的主播精彩瞬间的保存和分享等需求。
+
+[使用说明请见wiki](https://github.com/ksvc/KSYMediaPlayer_iOS/wiki/playerRecord)

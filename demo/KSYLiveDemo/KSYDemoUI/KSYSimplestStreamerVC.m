@@ -18,6 +18,8 @@ UIPickerViewDelegate>{
 @property NSInteger         curProfileIdx;
 @property NSURL             *url;
 @property UILabel           *streamState;
+@property GPUImageOutput<GPUImageInput>* curFilter;
+
 @end
 
 @implementation KSYSimplestStreamerVC
@@ -58,6 +60,10 @@ UIPickerViewDelegate>{
 - (void)viewDidLoad {
     [super viewDidLoad];
     _kit = [[KSYGPUStreamerKit alloc] init];
+    _curFilter = [[KSYGPUBeautifyExtFilter alloc] init];
+    _kit.cameraPosition = AVCaptureDevicePositionFront;
+    _kit.gpuOutputPixelFormat = kCVPixelFormatType_32BGRA;
+    _kit.capturePixelFormat   = kCVPixelFormatType_32BGRA;
     self.view.backgroundColor = [UIColor whiteColor];
     _profileNames = [NSArray arrayWithObjects:@"360p_auto",@"360p_1",@"360p_2",@"360p_3",@"540p_auto",
                      @"540p_1",@"540p_2",@"540p_3",@"720p_auto",
@@ -71,7 +77,8 @@ UIPickerViewDelegate>{
     _profilePicker.dataSource = self;
     _profilePicker.showsSelectionIndicator= YES;
     _profilePicker.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.3];
-    
+    [_profilePicker selectRow:7 inComponent:0 animated:YES];
+
     UIButton *captureBtn = [[UIButton alloc] initWithFrame:CGRectMake(5, self.view.frame.size.height-35, 120, 30)];
     [self.view addSubview:captureBtn];
     [captureBtn setTitle:@"开始预览" forState:UIControlStateNormal];
@@ -102,6 +109,7 @@ UIPickerViewDelegate>{
     _profilePicker.hidden = YES;
     if (!_kit.vCapDev.isRunning){
         _kit.videoOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+        [_kit setupFilter:_curFilter];
         [_kit startPreview:self.view];
     }
     else {
@@ -146,7 +154,7 @@ numberOfRowsInComponent:(NSInteger)component {
     }else if (row >= 8 && row <= 11){
         _curProfileIdx = 200 + (row - 8);
     }else{
-        _curProfileIdx = 0;
+        _curProfileIdx = 103;
     }
     _kit.streamerProfile = _curProfileIdx;
 }

@@ -18,6 +18,7 @@
 @property UILabel       * lblMuteSt;
 @property UILabel       * lblReverb;
 @property UILabel       * lblVPIO;
+@property UILabel       * lblStereo;
 @end
 @implementation KSYAudioCtrlView
 
@@ -37,6 +38,8 @@
     _lblMuteSt       = [self addLable:@"静音推流"];
     _muteStream      = [self addSwitch:NO];
     
+    _lblStereo     = [self addLable:@"立体声推流"];
+    _stereoStream  = [self addSwitch:NO];
     _lblReverb  = [self addLable:@"混响"];
     _reverbType = [self addSegCtrlWithItems:@[@"关闭", @"录影棚",
                                               @"演唱会",@"KTV",@"小舞台"]];
@@ -61,10 +64,11 @@
                       nu,_lblPlayCapture,_swPlayCapture] ];
     [self putRow1:_playCapVol];
     [self putRow1:_effectType];
+    [self putRowFit:@[_lblStereo, _stereoStream]];
 }
 - (void) initMicInput {
-    BOOL bHS = [KSYAVAudioSession isHeadsetInputAvaible];
-    BOOL bBT = [KSYAVAudioSession isBluetoothInputAvaible];
+    BOOL bHS = [AVAudioSession isHeadsetInputAvaible];
+    BOOL bBT = [AVAudioSession isBluetoothInputAvaible];
     [_micInput setEnabled:YES forSegmentAtIndex:1];
     [_micInput setEnabled:YES forSegmentAtIndex:2];
     if (!bHS){

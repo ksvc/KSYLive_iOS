@@ -99,11 +99,6 @@
 
 #pragma mark - sub modules - audio
 /**
- @abstract  配置管理 AVAudioSession的工具类
- */
-@property (nonatomic, readonly) KSYAVAudioSession      *avAudioSession;
-
-/**
  @abstract  音频采集设备 Audio Unit 音频采集
  */
 @property (nonatomic, readonly) KSYAUAudioCapture      *aCapDev;
@@ -118,6 +113,23 @@
  @discussion 用于将多路音频进行混合,将混合后的音频送入streamerBase
  */
 @property (nonatomic, readonly) KSYAudioMixer          *aMixer;
+
+/**
+ 音频采集模式
+
+ - KSYAudioCap_AudioUnit: 后台音频采集和推流
+ - KSYAudioCap_AVCaptureDevice: 后台任务静音推流，不支持后台采集
+ */
+typedef NS_ENUM(NSInteger, KSYAudioCapType){
+    KSYAudioCap_AudioUnit,
+    KSYAudioCap_AVCaptureDevice
+};
+
+/**
+ @abstract   音频采集模式
+ @discussion 推荐使用AudioUnit模式
+ */
+@property (nonatomic, assign) KSYAudioCapType          audioCaptureType;
 
 /**
  @abstract   消息通道
@@ -205,9 +217,9 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 
 /**
  @abstract   进入后台: 暂停图像采集
- @discussion 暂停图像采集和预览
+ @discussion 暂停图像采集和预览, 中断旁路录制
  @discussion 如果需要释放mic资源请直接调用停止采集
- @see aCapDev
+ @discussion kit内部在收到UIApplicationDidEnterBackgroundNotification 或采集被打断等事件时,会主动调用本接口
  */
 - (void) appEnterBackground;
 
@@ -215,6 +227,7 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  @abstract   回到前台: 恢复采集
  @discussion 恢复图像采集和预览
  @discussion 恢复音频采集
+ @discussion kit内部在收到UIApplicationDidBecomeActiveNotification等事件时,会主动调用本接口
  */
 - (void) appBecomeActive;
 
@@ -292,6 +305,14 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  @discussion 需要与UI方向一致
  */
 @property (nonatomic, readwrite) UIInterfaceOrientation videoOrientation;
+
+/**
+ @abstract   是否用双声道推流 (默认为NO)
+ @discussion 使用KSYAUAudioCapture采集的声音目前只支持单声道(主播说话的声音为单声道)
+ @discussion 背景音乐如果是双声道的音频,通过修改bStereoStream, 可以让观众听到双声道的音乐
+ @discussion 只能在开始推流前修改本属性, 开始推流后, 修改无效
+ */
+@property (nonatomic, assign) BOOL                    bStereoAudioStream;
 
 #pragma mark - camera operation
 /**
@@ -392,6 +413,12 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 
 /** 推流设置成镜像模式,默认为NO */
 @property (nonatomic, assign) BOOL streamerMirrored;
+
+/**
+ @abstract   推流的画面是否冻结 (默认为NO)
+ @discussion 通过本属性可以主动将推流的画面固定为当前帧
+ */
+@property (nonatomic, assign) BOOL streamerFreezed;
 
 /** 预览图像朝向, 如果UI能够旋转,需要保持和UI的朝向一致 */
 @property (nonatomic, assign) UIInterfaceOrientation previewOrientation;
@@ -515,6 +542,7 @@ typedef NS_ENUM(NSInteger, KSYStreamerProfile) {
 
 /**
  @abstract 采集和推流配置参数
+ @discussion 选择profile类型后, 采集和编码参数会自动配置进去, 默认的profile类型是KSYStreamerProfile_540p_3
  */
 @property (nonatomic, assign)   KSYStreamerProfile streamerProfile;
 

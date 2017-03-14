@@ -10,6 +10,14 @@ target 'KSYLiveDemo' do
  	#pod 'libksygpulive/libksygpulive_265', :path => '../'
 end
 
+target 'KSYLiveDemo_Swift' do
+    pod 'Bugly'
+    pod 'GPUImage'
+    pod 'libksygpulive/KSYGPUResource', :path => '../'
+    pod 'libksygpulive/libksygpulive', :path => '../'
+    #pod 'libksygpulive/libksygpulive_265', :path => '../'
+end
+
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     puts "!!!! #{target.name}"

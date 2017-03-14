@@ -7,8 +7,8 @@
 //
 
 
-#import "KSYUIView.h"
-
+#import "../KSYUIUtils/KSYUIView.h"
+#import "../KSYPlayerDemo/KSYProgressView.h"
 @class KSYNameSlider;
 
 @interface KSYBgmView : KSYUIView
@@ -16,17 +16,20 @@
 @property UIButton * playBtn;
 @property UIButton * pauseBtn;
 @property UIButton * stopBtn;
-@property UIProgressView * progressV;
+@property KSYProgressView *progressBar;
 @property KSYNameSlider * volumSl;
 @property UIButton * nextBtn;
 @property UIButton * muteBtn;
 @property UISegmentedControl * loopType;
+@property KSYNameSlider * pitchSl;
+@property UIStepper * pitchStep;
+
 
 /// 当前播放的背景音乐的路径
 @property (nonatomic, readonly) NSString* bgmPath;
 /// bgmStatus string
 @property (nonatomic) NSString* bgmStatus;
-/// match pattern
+/// match pattern(音乐文件的后缀)
 @property (nonatomic, readonly) NSArray* bgmPattern;
 
 /// get next bgm path to play
