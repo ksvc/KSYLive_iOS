@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/KSYCaptureState.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYCaptureState</TokenIdentifier>
+			<Abstract type="html">采集设备状态</Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+			
+			<NodeRef refid="17"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYCaptureStateIdle</TokenIdentifier>
+            <Abstract type="html">设备空闲中</Abstract>
+            <Declaration>KSYCaptureStateIdle</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="17"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYCaptureStateCapturing</TokenIdentifier>
+            <Abstract type="html">设备工作中</Abstract>
+            <Declaration>KSYCaptureStateCapturing</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="17"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYCaptureStateDevAuthDenied</TokenIdentifier>
+            <Abstract type="html">设备授权被拒绝</Abstract>
+            <Declaration>KSYCaptureStateDevAuthDenied</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="17"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYCaptureStateClosingCapture</TokenIdentifier>
+            <Abstract type="html">关闭采集设备中</Abstract>
+            <Declaration>KSYCaptureStateClosingCapture</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="17"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYCaptureStateParameterError</TokenIdentifier>
+            <Abstract type="html">参数错误，无法打开（比如设置的分辨率，码率当前设备不支持）</Abstract>
+            <Declaration>KSYCaptureStateParameterError</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="17"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYCaptureStateDevBusy</TokenIdentifier>
+            <Abstract type="html">设备正忙，请稍后尝试 ( 该状态在发出通知0.5秒后被清除 ）</Abstract>
+            <Declaration>KSYCaptureStateDevBusy</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="17"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/MEDIAINFO_SAMPLE_FMT.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/MEDIAINFO_SAMPLE_FMT</TokenIdentifier>
+			<Abstract type="html">音频采样格式</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+			
+			<NodeRef refid="34"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_SAMPLE_FMT_UNKNOWN</TokenIdentifier>
+            <Abstract type="html">未知的音频采样格式</Abstract>
+            <Declaration>MEDIAINFO_SAMPLE_FMT_UNKNOWN</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="34"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_SAMPLE_FMT_U8</TokenIdentifier>
+            <Abstract type="html">音频采样格式为unsigned 8 bits</Abstract>
+            <Declaration>MEDIAINFO_SAMPLE_FMT_U8</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="34"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_SAMPLE_FMT_S16</TokenIdentifier>
+            <Abstract type="html">音频采样格式为signed 16 bits</Abstract>
+            <Declaration>MEDIAINFO_SAMPLE_FMT_S16</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="34"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_SAMPLE_FMT_S32</TokenIdentifier>
+            <Abstract type="html">音频采样格式为signed 32 bits</Abstract>
+            <Declaration>MEDIAINFO_SAMPLE_FMT_S32</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="34"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_SAMPLE_FMT_FLT</TokenIdentifier>
+            <Abstract type="html">音频采样格式为float</Abstract>
+            <Declaration>MEDIAINFO_SAMPLE_FMT_FLT</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="34"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_SAMPLE_FMT_DBL</TokenIdentifier>
+            <Abstract type="html">音频采样格式为double</Abstract>
+            <Declaration>MEDIAINFO_SAMPLE_FMT_DBL</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="34"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_SAMPLE_FMT_U8P</TokenIdentifier>
+            <Abstract type="html">音频采样格式为unsigned 8 bits, planar</Abstract>
+            <Declaration>MEDIAINFO_SAMPLE_FMT_U8P</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="34"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_SAMPLE_FMT_S16P</TokenIdentifier>
+            <Abstract type="html">音频采样格式为signed 16 bits, planar</Abstract>
+            <Declaration>MEDIAINFO_SAMPLE_FMT_S16P</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="34"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_SAMPLE_FMT_S32P</TokenIdentifier>
+            <Abstract type="html">音频采样格式为signed 32 bits, planar</Abstract>
+            <Declaration>MEDIAINFO_SAMPLE_FMT_S32P</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="34"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_SAMPLE_FMT_FLTP</TokenIdentifier>
+            <Abstract type="html">音频采样格式为float, planar</Abstract>
+            <Declaration>MEDIAINFO_SAMPLE_FMT_FLTP</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="34"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_SAMPLE_FMT_DBLP</TokenIdentifier>
+            <Abstract type="html">音频采样格式为double, planar</Abstract>
+            <Declaration>MEDIAINFO_SAMPLE_FMT_DBLP</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="34"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_SAMPLE_FMT_NB</TokenIdentifier>
+            <Abstract type="html">音频采样格式为Number of sample formats</Abstract>
+            <Declaration>MEDIAINFO_SAMPLE_FMT_NB</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="34"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

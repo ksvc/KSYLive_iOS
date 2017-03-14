@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DocSetNodes version="1.0">
+    <TOC>
+        <Node type="folder">
+            <Name>KSYLive_iOS</Name>
+            <Path>index.html</Path>
+			<Subnodes>
+                
+				
+				<Node type="folder">
+					<Name>Classes</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="1"/>
+						<NodeRef refid="2"/>
+						<NodeRef refid="3"/>
+						<NodeRef refid="4"/>
+						<NodeRef refid="5"/>
+						<NodeRef refid="6"/>
+						<NodeRef refid="7"/>
+						<NodeRef refid="8"/>
+						<NodeRef refid="9"/>
+						<NodeRef refid="10"/>
+						<NodeRef refid="11"/>
+						<NodeRef refid="12"/>
+						
+					</Subnodes>
+				</Node>
+				
+				
+                
+				<Node>
+					<Name>Protocols</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="13"/>
+						
+					</Subnodes>
+				</Node>
+				
+                
+				<Node>
+					<Name>Constants</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="14"/>
+						<NodeRef refid="15"/>
+						<NodeRef refid="16"/>
+						<NodeRef refid="17"/>
+						<NodeRef refid="18"/>
+						<NodeRef refid="19"/>
+						<NodeRef refid="20"/>
+						<NodeRef refid="21"/>
+						<NodeRef refid="22"/>
+						<NodeRef refid="23"/>
+						<NodeRef refid="24"/>
+						<NodeRef refid="25"/>
+						<NodeRef refid="26"/>
+						<NodeRef refid="27"/>
+						<NodeRef refid="28"/>
+						<NodeRef refid="29"/>
+						<NodeRef refid="30"/>
+						<NodeRef refid="31"/>
+						<NodeRef refid="32"/>
+						<NodeRef refid="33"/>
+						<NodeRef refid="34"/>
+						<NodeRef refid="35"/>
+						<NodeRef refid="36"/>
+						<NodeRef refid="37"/>
+						<NodeRef refid="38"/>
+						
+					</Subnodes>
+				</Node>
+				
+                
+                <Node>
+                    <Name>Blocks</Name>
+                    <Path>index.html</Path>
+                    <Subnodes>
+                        <NodeRef refid="39"/>
+                        <NodeRef refid="40"/>
+                        <NodeRef refid="41"/>
+                        <NodeRef refid="42"/>
+                        
+                    </Subnodes>
+                </Node>
+                
+			</Subnodes>
+        </Node>
+    </TOC>
+	<Library>
+		
+		<Node id="1" type="file" documentType="reference">
+            <Name>KSYAudioInfo</Name>
+            <Path>Classes/KSYAudioInfo.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/KSYAudioInfo.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/KSYAudioInfo.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/KSYAudioInfo.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="2" type="file" documentType="reference">
+            <Name>KSYGPUBgmStreamerKit</Name>
+            <Path>Classes/KSYGPUBgmStreamerKit.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/KSYGPUBgmStreamerKit.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/KSYGPUBgmStreamerKit.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/KSYGPUBgmStreamerKit.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/KSYGPUBgmStreamerKit.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="3" type="file" documentType="reference">
+            <Name>KSYGPUPipStreamerKit</Name>
+            <Path>Classes/KSYGPUPipStreamerKit.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/KSYGPUPipStreamerKit.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/KSYGPUPipStreamerKit.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/KSYGPUPipStreamerKit.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/KSYGPUPipStreamerKit.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="4" type="file" documentType="reference">
+            <Name>KSYGPUStreamerKit</Name>
+            <Path>Classes/KSYGPUStreamerKit.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/KSYGPUStreamerKit.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/KSYGPUStreamerKit.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/KSYGPUStreamerKit.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/KSYGPUStreamerKit.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="5" type="file" documentType="reference">
+            <Name>KSYMediaInfo</Name>
+            <Path>Classes/KSYMediaInfo.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/KSYMediaInfo.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/KSYMediaInfo.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/KSYMediaInfo.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="6" type="file" documentType="reference">
+            <Name>KSYMediaInfoProber</Name>
+            <Path>Classes/KSYMediaInfoProber.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/KSYMediaInfoProber.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/KSYMediaInfoProber.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/KSYMediaInfoProber.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/KSYMediaInfoProber.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="7" type="file" documentType="reference">
+            <Name>KSYMoviePlayerController</Name>
+            <Path>Classes/KSYMoviePlayerController.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/KSYMoviePlayerController.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/KSYMoviePlayerController.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/KSYMoviePlayerController.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/KSYMoviePlayerController.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="8" type="file" documentType="reference">
+            <Name>KSYNetRouterInfo</Name>
+            <Path>Classes/KSYNetRouterInfo.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/KSYNetRouterInfo.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/KSYNetRouterInfo.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/KSYNetRouterInfo.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="9" type="file" documentType="reference">
+            <Name>KSYNetTracker</Name>
+            <Path>Classes/KSYNetTracker.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/KSYNetTracker.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/KSYNetTracker.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/KSYNetTracker.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/KSYNetTracker.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="10" type="file" documentType="reference">
+            <Name>KSYQosInfo</Name>
+            <Path>Classes/KSYQosInfo.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/KSYQosInfo.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/KSYQosInfo.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/KSYQosInfo.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="11" type="file" documentType="reference">
+            <Name>KSYUIRecorderKit</Name>
+            <Path>Classes/KSYUIRecorderKit.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/KSYUIRecorderKit.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/KSYUIRecorderKit.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/KSYUIRecorderKit.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/KSYUIRecorderKit.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="12" type="file" documentType="reference">
+            <Name>KSYVideoInfo</Name>
+            <Path>Classes/KSYVideoInfo.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/KSYVideoInfo.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/KSYVideoInfo.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/KSYVideoInfo.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                
+            </Subnodes>
+            
+        </Node>
+		
+		
+        <Node id="13" type="file" documentType="reference">
+            <Name>KSYMediaPlayback</Name>
+            <Path>Protocols/KSYMediaPlayback.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Protocols/KSYMediaPlayback.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Protocols/KSYMediaPlayback.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Protocols/KSYMediaPlayback.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Protocols/KSYMediaPlayback.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		
+        <Node id="14" type="file" documentType="reference">
+            <Name>KSYAudioCodec</Name>
+            <Path>Constants/KSYAudioCodec.html</Path>
+            
+        </Node>
+		<Node id="15" type="file" documentType="reference">
+            <Name>KSYBWEstimateMode</Name>
+            <Path>Constants/KSYBWEstimateMode.html</Path>
+            
+        </Node>
+		<Node id="16" type="file" documentType="reference">
+            <Name>KSYBgmPlayerState</Name>
+            <Path>Constants/KSYBgmPlayerState.html</Path>
+            
+        </Node>
+		<Node id="17" type="file" documentType="reference">
+            <Name>KSYCaptureState</Name>
+            <Path>Constants/KSYCaptureState.html</Path>
+            
+        </Node>
+		<Node id="18" type="file" documentType="reference">
+            <Name>KSYDevAuthStatus</Name>
+            <Path>Constants/KSYDevAuthStatus.html</Path>
+            
+        </Node>
+		<Node id="19" type="file" documentType="reference">
+            <Name>KSYLiveScene</Name>
+            <Path>Constants/KSYLiveScene.html</Path>
+            
+        </Node>
+		<Node id="20" type="file" documentType="reference">
+            <Name>KSYMPErrorCode</Name>
+            <Path>Constants/KSYMPErrorCode.html</Path>
+            
+        </Node>
+		<Node id="21" type="file" documentType="reference">
+            <Name>KSYMicType</Name>
+            <Path>Constants/KSYMicType.html</Path>
+            
+        </Node>
+		<Node id="22" type="file" documentType="reference">
+            <Name>KSYNetStateCode</Name>
+            <Path>Constants/KSYNetStateCode.html</Path>
+            
+        </Node>
+		<Node id="23" type="file" documentType="reference">
+            <Name>KSYRecScene</Name>
+            <Path>Constants/KSYRecScene.html</Path>
+            
+        </Node>
+		<Node id="24" type="file" documentType="reference">
+            <Name>KSYRecordError</Name>
+            <Path>Constants/KSYRecordError.html</Path>
+            
+        </Node>
+		<Node id="25" type="file" documentType="reference">
+            <Name>KSYRecordState</Name>
+            <Path>Constants/KSYRecordState.html</Path>
+            
+        </Node>
+		<Node id="26" type="file" documentType="reference">
+            <Name>KSYStreamErrorCode</Name>
+            <Path>Constants/KSYStreamErrorCode.html</Path>
+            
+        </Node>
+		<Node id="27" type="file" documentType="reference">
+            <Name>KSYStreamState</Name>
+            <Path>Constants/KSYStreamState.html</Path>
+            
+        </Node>
+		<Node id="28" type="file" documentType="reference">
+            <Name>KSYVideoCodec</Name>
+            <Path>Constants/KSYVideoCodec.html</Path>
+            
+        </Node>
+		<Node id="29" type="file" documentType="reference">
+            <Name>KSYVideoDimension</Name>
+            <Path>Constants/KSYVideoDimension.html</Path>
+            
+        </Node>
+		<Node id="30" type="file" documentType="reference">
+            <Name>KSYVideoEncodePerformance</Name>
+            <Path>Constants/KSYVideoEncodePerformance.html</Path>
+            
+        </Node>
+		<Node id="31" type="file" documentType="reference">
+            <Name>KSY_NETTRACKER_ACTION</Name>
+            <Path>Constants/KSY_NETTRACKER_ACTION.html</Path>
+            
+        </Node>
+		<Node id="32" type="file" documentType="reference">
+            <Name>MEDIAINFO_CODEC_ID</Name>
+            <Path>Constants/MEDIAINFO_CODEC_ID.html</Path>
+            
+        </Node>
+		<Node id="33" type="file" documentType="reference">
+            <Name>MEDIAINFO_MUX_TYPE</Name>
+            <Path>Constants/MEDIAINFO_MUX_TYPE.html</Path>
+            
+        </Node>
+		<Node id="34" type="file" documentType="reference">
+            <Name>MEDIAINFO_SAMPLE_FMT</Name>
+            <Path>Constants/MEDIAINFO_SAMPLE_FMT.html</Path>
+            
+        </Node>
+		<Node id="35" type="file" documentType="reference">
+            <Name>MPMovieReloadMode</Name>
+            <Path>Constants/MPMovieReloadMode.html</Path>
+            
+        </Node>
+		<Node id="36" type="file" documentType="reference">
+            <Name>MPMovieStatus</Name>
+            <Path>Constants/MPMovieStatus.html</Path>
+            
+        </Node>
+		<Node id="37" type="file" documentType="reference">
+            <Name>MPMovieVideoDecoderMode</Name>
+            <Path>Constants/MPMovieVideoDecoderMode.html</Path>
+            
+        </Node>
+		<Node id="38" type="file" documentType="reference">
+            <Name>MPMovieVideoDeinterlaceMode</Name>
+            <Path>Constants/MPMovieVideoDeinterlaceMode.html</Path>
+            
+        </Node>
+		
+        <Node id="39" type="file" documentType="reference">
+            <Name>KSYPlyAudioDataBlock</Name>
+            <Path>Blocks/KSYPlyAudioDataBlock.html</Path>
+            
+        </Node>
+        <Node id="40" type="file" documentType="reference">
+            <Name>KSYPlyMessageDataBlock</Name>
+            <Path>Blocks/KSYPlyMessageDataBlock.html</Path>
+            
+        </Node>
+        <Node id="41" type="file" documentType="reference">
+            <Name>KSYPlyTextureBlock</Name>
+            <Path>Blocks/KSYPlyTextureBlock.html</Path>
+            
+        </Node>
+        <Node id="42" type="file" documentType="reference">
+            <Name>KSYPlyVideoDataBlock</Name>
+            <Path>Blocks/KSYPlyVideoDataBlock.html</Path>
+            
+        </Node>
+        
+	</Library>
+</DocSetNodes>
