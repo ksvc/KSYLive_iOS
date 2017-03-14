@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/KSYUIRecorderKit.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYUIRecorderKit</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+            
+			
+			<NodeRef refid="11"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/setContentView:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) UIView *contentView</Declaration>
+			
+			
+			<Anchor>//api/name/contentView</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/contentView</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) UIView *contentView</Declaration>
+			
+			
+			<Anchor>//api/name/contentView</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYUIRecorderKit/contentView</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) UIView *contentView</Declaration>
+			
+			
+			<Anchor>//api/name/contentView</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/processWithTextureId:TextureSize:Time:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>- (void)processWithTextureId:(GLuint)InputTexture TextureSize:(CGSize)TextureSize Time:(CMTime)time</Declaration>
+			
+			
+			<Anchor>//api/name/processWithTextureId:TextureSize:Time:</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/processAudioSampleBuffer:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>- (void)processAudioSampleBuffer:(CMSampleBufferRef)buf</Declaration>
+			
+			
+			<Anchor>//api/name/processAudioSampleBuffer:</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/startRecord:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>- (void)startRecord:(NSURL *)path</Declaration>
+			
+			
+			<Anchor>//api/name/startRecord:</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/stopRecord</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>- (void)stopRecord</Declaration>
+			
+			
+			<Anchor>//api/name/stopRecord</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/setBPlayRecord:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>@property BOOL bPlayRecord</Declaration>
+			
+			
+			<Anchor>//api/name/bPlayRecord</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/bPlayRecord</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>@property BOOL bPlayRecord</Declaration>
+			
+			
+			<Anchor>//api/name/bPlayRecord</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYUIRecorderKit/bPlayRecord</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>@property BOOL bPlayRecord</Declaration>
+			
+			
+			<Anchor>//api/name/bPlayRecord</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/setWriter:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) KSYMovieWriter *writer</Declaration>
+			
+			
+			<Anchor>//api/name/writer</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/writer</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) KSYMovieWriter *writer</Declaration>
+			
+			
+			<Anchor>//api/name/writer</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYUIRecorderKit/writer</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) KSYMovieWriter *writer</Declaration>
+			
+			
+			<Anchor>//api/name/writer</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>
