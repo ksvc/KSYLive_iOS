@@ -1,147 +1,226 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/MEDIAINFO_MUX_TYPE.html">
+	<File path="Classes/KSYNetTracker.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/MEDIAINFO_MUX_TYPE</TokenIdentifier>
-			<Abstract type="html">封装格式</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYNetTracker</TokenIdentifier>
+			<Abstract type="html">网络链路探测器类</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
             
 			
 			<NodeRef refid="33"/>
 		</Token>
 		
 		
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_UNKNOWN</TokenIdentifier>
-            <Abstract type="html">未知的文件封装格式</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_UNKNOWN</Declaration>
-            
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-            
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/start:</TokenIdentifier>
+			<Abstract type="html">开始探测</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			
+			<Declaration>- (int)start:(NSString *__nonnull)domain</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>domain</Name>
+					<Abstract type="html">探测地址</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">成功开始返回0, 否则返回非0</Abstract></ReturnValue>
+			<Anchor>//api/name/start:</Anchor>
             <NodeRef refid="33"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_MP2T</TokenIdentifier>
-            <Abstract type="html">封装格式为TS</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_MP2T</Declaration>
-            
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/stop</TokenIdentifier>
+			<Abstract type="html">停止探测</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			
+			<Declaration>- (void)stop</Declaration>
+			
+			
+			<Anchor>//api/name/stop</Anchor>
             <NodeRef refid="33"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_MOV</TokenIdentifier>
-            <Abstract type="html">封装格式为MOV</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_MOV</Declaration>
-            
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setAction:</TokenIdentifier>
+			<Abstract type="html">探测方式</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) KSY_NETTRACKER_ACTION action</Declaration>
+			
+			
+			<Anchor>//api/name/action</Anchor>
             <NodeRef refid="33"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_AVI</TokenIdentifier>
-            <Abstract type="html">封装格式为AVI</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_AVI</Declaration>
-            
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/action</TokenIdentifier>
+			<Abstract type="html">探测方式</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) KSY_NETTRACKER_ACTION action</Declaration>
+			
+			
+			<Anchor>//api/name/action</Anchor>
             <NodeRef refid="33"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_FLV</TokenIdentifier>
-            <Abstract type="html">封装格式为FLV</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_FLV</Declaration>
-            
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/action</TokenIdentifier>
+			<Abstract type="html">探测方式</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) KSY_NETTRACKER_ACTION action</Declaration>
+			
+			
+			<Anchor>//api/name/action</Anchor>
             <NodeRef refid="33"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_MKV</TokenIdentifier>
-            <Abstract type="html">封装格式为MKV</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_MKV</Declaration>
-            
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setTimeout:</TokenIdentifier>
+			<Abstract type="html">探测超时时间，单位是ms，默认值是1000ms</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int timeout</Declaration>
+			
+			
+			<Anchor>//api/name/timeout</Anchor>
             <NodeRef refid="33"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_ASF</TokenIdentifier>
-            <Abstract type="html">封装格式为ASF</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_ASF</Declaration>
-            
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/timeout</TokenIdentifier>
+			<Abstract type="html">探测超时时间，单位是ms，默认值是1000ms</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int timeout</Declaration>
+			
+			
+			<Anchor>//api/name/timeout</Anchor>
             <NodeRef refid="33"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_RM</TokenIdentifier>
-            <Abstract type="html">封装格式为RM</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_RM</Declaration>
-            
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/timeout</TokenIdentifier>
+			<Abstract type="html">探测超时时间，单位是ms，默认值是1000ms</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int timeout</Declaration>
+			
+			
+			<Anchor>//api/name/timeout</Anchor>
             <NodeRef refid="33"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_WAV</TokenIdentifier>
-            <Abstract type="html">封装格式为WAV</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_WAV</Declaration>
-            
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setMaxttl:</TokenIdentifier>
+			<Abstract type="html">探测使用的最大ttl值，默认值是64</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int maxttl</Declaration>
+			
+			
+			<Anchor>//api/name/maxttl</Anchor>
             <NodeRef refid="33"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_OGG</TokenIdentifier>
-            <Abstract type="html">封装格式为OGG</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_OGG</Declaration>
-            
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/maxttl</TokenIdentifier>
+			<Abstract type="html">探测使用的最大ttl值，默认值是64</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int maxttl</Declaration>
+			
+			
+			<Anchor>//api/name/maxttl</Anchor>
             <NodeRef refid="33"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_APE</TokenIdentifier>
-            <Abstract type="html">封装格式为APE</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_APE</Declaration>
-            
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/maxttl</TokenIdentifier>
+			<Abstract type="html">探测使用的最大ttl值，默认值是64</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int maxttl</Declaration>
+			
+			
+			<Anchor>//api/name/maxttl</Anchor>
             <NodeRef refid="33"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_RAWVIDEO</TokenIdentifier>
-            <Abstract type="html">封装格式为RAWVIDEO</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_RAWVIDEO</Declaration>
-            
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setNumber:</TokenIdentifier>
+			<Abstract type="html">探测次数，默认值是10</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int number</Declaration>
+			
+			
+			<Anchor>//api/name/number</Anchor>
             <NodeRef refid="33"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_HLS</TokenIdentifier>
-            <Abstract type="html">封装格式为HLS</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_HLS</Declaration>
-            
-            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/number</TokenIdentifier>
+			<Abstract type="html">探测次数，默认值是10</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int number</Declaration>
+			
+			
+			<Anchor>//api/name/number</Anchor>
             <NodeRef refid="33"/>
-        </Token>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/number</TokenIdentifier>
+			<Abstract type="html">探测次数，默认值是10</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int number</Declaration>
+			
+			
+			<Anchor>//api/name/number</Anchor>
+            <NodeRef refid="33"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setRouterInfo:</TokenIdentifier>
+			<Abstract type="html">链路状况</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSMutableArray *routerInfo</Declaration>
+			
+			
+			<Anchor>//api/name/routerInfo</Anchor>
+            <NodeRef refid="33"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/routerInfo</TokenIdentifier>
+			<Abstract type="html">链路状况</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSMutableArray *routerInfo</Declaration>
+			
+			
+			<Anchor>//api/name/routerInfo</Anchor>
+            <NodeRef refid="33"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/routerInfo</TokenIdentifier>
+			<Abstract type="html">链路状况</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSMutableArray *routerInfo</Declaration>
+			
+			
+			<Anchor>//api/name/routerInfo</Anchor>
+            <NodeRef refid="33"/>
+		</Token>
+		
         
         
 	</File>

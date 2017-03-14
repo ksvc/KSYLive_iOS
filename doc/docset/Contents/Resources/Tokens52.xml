@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/KSYRecScene.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYRecScene</TokenIdentifier>
+			<Abstract type="html">录制场景</Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+			
+			<NodeRef refid="52"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYRecScene_ConstantBitRate</TokenIdentifier>
+            <Abstract type="html">恒定码率场景</Abstract>
+            <Declaration>KSYRecScene_ConstantBitRate</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="52"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYRecScene_ConstantQuality</TokenIdentifier>
+            <Abstract type="html">恒定质量场景</Abstract>
+            <Declaration>KSYRecScene_ConstantQuality</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="52"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

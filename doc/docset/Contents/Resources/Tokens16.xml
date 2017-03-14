@@ -1,87 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYBgmPlayerState.html">
+	<File path="Classes/KSYGPUBeautifyPlusFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYBgmPlayerState</TokenIdentifier>
-			<Abstract type="html">音频播放状态</Abstract>
-			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUBeautifyPlusFilter</TokenIdentifier>
+			<Abstract type="html">增强美颜滤镜</Abstract>
+			<DeclaredIn>KSYGPUBeautifyPlusFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="16"/>
 		</Token>
 		
 		
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateInit</TokenIdentifier>
-            <Abstract type="html">初始状态</Abstract>
-            <Declaration>KSYBgmPlayerStateInit</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyPlusFilter/setBeautylevel:</TokenIdentifier>
+			<Abstract type="html">美颜的等级</Abstract>
+			<DeclaredIn>KSYGPUBeautifyPlusFilter.h</DeclaredIn>
+			
+			<Declaration>- (void)setBeautylevel:(int)level</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>level</Name>
+					<Abstract type="html">1 ~ 5，逐级增强, 默认为3</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setBeautylevel:</Anchor>
             <NodeRef refid="16"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateStarting</TokenIdentifier>
-            <Abstract type="html">背景音正在播放</Abstract>
-            <Declaration>KSYBgmPlayerStateStarting</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="16"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateStopped</TokenIdentifier>
-            <Abstract type="html">背景音停止</Abstract>
-            <Declaration>KSYBgmPlayerStateStopped</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="16"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStatePlaying</TokenIdentifier>
-            <Abstract type="html">背景音正在播放</Abstract>
-            <Declaration>KSYBgmPlayerStatePlaying</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="16"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStatePaused</TokenIdentifier>
-            <Abstract type="html">背景音暂停</Abstract>
-            <Declaration>KSYBgmPlayerStatePaused</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="16"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateError</TokenIdentifier>
-            <Abstract type="html">背景音播放出错</Abstract>
-            <Declaration>KSYBgmPlayerStateError</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="16"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateInterrupted</TokenIdentifier>
-            <Abstract type="html">背景音被打断</Abstract>
-            <Declaration>KSYBgmPlayerStateInterrupted</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="16"/>
-        </Token>
+		</Token>
+		
         
         
 	</File>

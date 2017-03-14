@@ -1,57 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYAudioCodec.html">
+	<File path="Classes/KSYGPUBeautifyExtFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYAudioCodec</TokenIdentifier>
-			<Abstract type="html">音频编码器类型</Abstract>
-			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUBeautifyExtFilter</TokenIdentifier>
+			<Abstract type="html">扩展增强美颜滤镜</Abstract>
+			<DeclaredIn>KSYGPUBeautifyExtFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="14"/>
 		</Token>
 		
 		
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioCodec_AAC_HE</TokenIdentifier>
-            <Abstract type="html">aac音频软件编码器 - AAC_HE</Abstract>
-            <Declaration>KSYAudioCodec_AAC_HE</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyExtFilter/setBeautylevel:</TokenIdentifier>
+			<Abstract type="html">美颜的等级</Abstract>
+			<DeclaredIn>KSYGPUBeautifyExtFilter.h</DeclaredIn>
+			
+			<Declaration>- (void)setBeautylevel:(int)level</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>level</Name>
+					<Abstract type="html">1 ~ 5，逐级增强, 默认为3</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setBeautylevel:</Anchor>
             <NodeRef refid="14"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioCodec_AAC</TokenIdentifier>
-            <Abstract type="html">aac音频软件编码器 - AAC_LC</Abstract>
-            <Declaration>KSYAudioCodec_AAC</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="14"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioCodec_AT_AAC</TokenIdentifier>
-            <Abstract type="html">iOS自带的audiotoolbox音频编码器 - AAC_LC (CPU占用较低,但推荐码率:64kbps单声道,128kbps双声道)</Abstract>
-            <Declaration>KSYAudioCodec_AT_AAC</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="14"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioCodec_AAC_HE_V2</TokenIdentifier>
-            <Abstract type="html">aac软件编码器 - AACHEV2 (仅双声道音频可用, 如果输入数据为单声道, 则自动退化为 AAC_HE)</Abstract>
-            <Declaration>KSYAudioCodec_AAC_HE_V2</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="14"/>
-        </Token>
+		</Token>
+		
         
         
 	</File>
