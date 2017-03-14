@@ -32,7 +32,7 @@
 - [x] 支持[预览和推流分别镜像](https://github.com/ksvc/KSYLive_iOS/wiki/mirrored)
 - [x] [在线API 文档支持](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
 - [x] 支持[边推边录](https://github.com/ksvc/KSYLive_iOS/wiki/bypassRecord)，在直播推流过程中同时保存录像文件
-- [x] 支持[立体声](https://github.com/ksvc/KSYLive_iOS/wiki/stereo)推流
+- [x] 支持[立体声](https://github.com/ksvc/KSYLive_iOS/wiki/stereo)推流（双声道）
 
 ### 1.2 文档
 [详情请见wiki](https://github.com/ksvc/KSYLive_iOS/wiki)
