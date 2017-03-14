@@ -67,8 +67,8 @@
     self.cameraRect = CGRectMake(0.7, 0.7, 0.24, 0.24);
 }
 
--(void)startPipWithPlayerUrl:(NSURL*)playerUrl
-                       bgPic:(NSURL*)bgUrl
+-(void)startPipWithPlayerUrl:( NSURL* _Nullable )playerUrl
+                       bgPic:( NSURL* _Nullable )bgUrl
 {
     if(playerUrl) {
         [self.aMixer setTrack:_pipTrack enable:YES];

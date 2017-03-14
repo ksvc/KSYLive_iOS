@@ -17,6 +17,10 @@
     CGFloat _previewRotateAng;
     int            _autoRetryCnt;
     BOOL           _bRetry;
+    BOOL           _bInterrupt;
+    KSYDummyAudioSource *_dAudioSrc;
+    // 音频采集模式（KSYAudioCapType）为AVCaptureDevice时发送静音包
+    BOOL _bMute;
 }
 @end
 
@@ -58,6 +62,7 @@
     _quitLock = [[NSLock alloc] init];
     _capDev_q = dispatch_queue_create( "com.ksyun.capDev_q", DISPATCH_QUEUE_SERIAL);
     // init default property
+    _bInterrupt       = bInter;
     _captureState     = KSYCaptureStateIdle;
     _capPreset        = AVCaptureSessionPreset640x480;
     _videoFPS         = 15;
@@ -98,10 +103,6 @@
     _previewOrientation =
     _videoOrientation   =
     _streamOrientation  = UIInterfaceOrientationPortrait;
-    //Session模块
-    _avAudioSession = [[KSYAVAudioSession alloc] init];
-    _avAudioSession.bInterruptOtherAudio = bInter;
-
     // 创建背景音乐播放模块
     _bgmPlayer = [[KSYBgmPlayer   alloc] init];
     // 音频采集模块
@@ -139,9 +140,17 @@
     ///// 3.2 音频通路 ///////////
     // 核心部件:音频叠加混合
     _aMixer = [[KSYAudioMixer alloc]init];
-
+    _bStereoAudioStream = NO;
+    
     // 组装音频通道
     [self setupAudioPath];
+    // 设置 AudioSession的属性为直播需要的默认值, 具体如下:
+    // bInterruptOtherAudio : NO  不打断其他播放器
+    // bDefaultToSpeaker : YES    背景音乐从外放播放
+    // bAllowBluetooth : YES      启用蓝牙
+    // AVAudioSessionCategory : AVAudioSessionCategoryPlayAndRecord  允许录音
+    [[AVAudioSession sharedInstance] setDefaultCfg];
+    [AVAudioSession sharedInstance].bInterruptOtherAudio = bInter;
     
     //消息通道
     _msgStreamer = [[KSYMessage alloc] init];
@@ -151,14 +160,14 @@
     _streamerBase.streamStateChange = ^(KSYStreamState state) {
         [selfWeak onStreamState:state];
     };
-    
-    
     _streamerBase.videoFPSChange = ^(int newVideoFPS){
         selfWeak.videoFPS = MAX(1, MIN(newVideoFPS, 30));
         selfWeak.vCapDev.frameRate = selfWeak.videoFPS;
         selfWeak.streamerBase.videoFPS = selfWeak.videoFPS;
     };
-    
+    //设置profile初始值
+    self.streamerProfile = KSYStreamerProfile_540p_3;
+
     NSNotificationCenter* dc = [NSNotificationCenter defaultCenter];
     [dc addObserver:self
            selector:@selector(appBecomeActive)
@@ -168,7 +177,6 @@
            selector:@selector(appEnterBackground)
                name:UIApplicationDidEnterBackgroundNotification
              object:nil];
-
     return self;
 }
 - (instancetype)init {
@@ -181,6 +189,7 @@
     _bgmPlayer = nil;
     _streamerBase = nil;
     _vCapDev = nil;
+    _dAudioSrc = nil;
     [_quitLock unlock];
     _quitLock = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -192,6 +201,7 @@
     [_streamerBase stopStream];
     [_aCapDev      stopCapture];
     [_vCapDev      stopCameraCapture];
+    [_vCapDev      removeAudioInputsAndOutputs];
     
     [_capToGpu    removeAllTargets];
     [_filter      removeAllTargets];
@@ -231,7 +241,6 @@
 }
 
 - (void) setupVMixer {
-
     // 混合后的图像输出到预览和推流
     [_vPreviewMixer removeAllTargets];
     [_vPreviewMixer addTarget:_preview];
@@ -241,7 +250,6 @@
     // 设置镜像
     [self setPreviewOrientation:_previewOrientation];
     [self setStreamOrientation:_streamOrientation];
-
 }
 
 // 添加图层到 vMixer 中
@@ -310,8 +318,15 @@
         [kit mixAudio:buf to:kit.micTrack];
     };
     //2. 背景音乐播放,音乐数据送入混音器
-    _bgmPlayer.audioDataBlock = ^(CMSampleBufferRef buf){
-        [kit mixAudio:buf to:kit.bgmTrack];
+    _bgmPlayer.audioDataBlock = ^ BOOL(uint8_t** pData, int len, const AudioStreamBasicDescription* fmt, CMTime pts){
+        if ([kit.streamerBase isStreaming]) {
+        [kit.aMixer processAudioData:pData
+                            nbSample:len
+                          withFormat:fmt
+                            timeinfo:pts
+                                  of:kit.bgmTrack];
+        }
+        return YES;
     };
     // 混音结果送入streamer
     _aMixer.audioProcessingCallback = ^(CMSampleBufferRef buf){
@@ -420,7 +435,7 @@
         [_vCapDev startCameraCapture];
         
         //配置audioSession的方法由init移入startPreview，防止在init之后，startPreview之前被外部修改
-        [_avAudioSession setAVAudioSessionOption];
+        [AVAudioSession sharedInstance].bInterruptOtherAudio = _bInterrupt;
         [_aCapDev startCapture];
         [_quitLock unlock];
         [self newCaptureState:KSYCaptureStateCapturing];
@@ -455,8 +470,14 @@
 - (void) appEnterBackground {
     // 进入后台时, 将预览从图像混合器中脱离, 避免后台OpenGL渲染崩溃
     [_vPreviewMixer removeAllTargets];
+    if (_audioCaptureType == KSYAudioCap_AVCaptureDevice) {
+        [self startDummySource];
+    }
     // 重复最后一帧视频图像
     _gpuToStr.bAutoRepeat = YES;
+    if (_streamerBase.bypassRecordState == KSYRecordStateRecording ) {
+        [_streamerBase stopBypassRecord];
+    }
 }
 
 /** 回到前台 */
@@ -464,7 +485,48 @@
     // 回到前台, 重新连接预览
     [self setupVMixer];
     [_aCapDev  resumeCapture];
-    _gpuToStr.bAutoRepeat = NO;
+    
+    if (_audioCaptureType == KSYAudioCap_AVCaptureDevice) {
+        _bMute = NO;
+        // 停止 dummy audio source
+        if ([_dAudioSrc bRunning]) {
+            [_dAudioSrc stop];
+            _dAudioSrc.audioProcessingCallback  = nil;
+        }
+    }
+    if (!_streamerFreezed) {
+        _gpuToStr.bAutoRepeat = NO;
+    }
+}
+
+- (void)startDummySource{
+    @WeakObj(self);
+
+    _bMute = YES;
+    // 开启后台任务，避免被suspend
+    __block UIBackgroundTaskIdentifier background_task;
+    
+    dispatch_queue_t back_task_queue = dispatch_queue_create("com.ksyun.backgroundTask.queue", DISPATCH_QUEUE_SERIAL);
+    background_task = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^ {
+        [[UIApplication sharedApplication] endBackgroundTask:background_task];
+        background_task = UIBackgroundTaskInvalid;
+    }];
+    
+    dispatch_async(back_task_queue, ^{
+        while (_bMute) {
+            sleep(1);
+        }
+        [[UIApplication sharedApplication] endBackgroundTask:background_task];
+        background_task = UIBackgroundTaskInvalid;
+    });
+    
+    // 开启 dummy audio source
+    _dAudioSrc.audioProcessingCallback = ^(CMSampleBufferRef buf) {
+        if (selfWeak.audioProcessingCallback && _bMute) {
+            selfWeak.audioProcessingCallback( buf);
+        }
+    };
+    [_dAudioSrc start];
 }
 #pragma mark - try reconnect
 - (void) onStreamState : (KSYStreamState) stat {
@@ -477,6 +539,8 @@
     }
 }
 - (void) onStreamError: (KSYStreamErrorCode) errCode {
+    NSString * name = [_streamerBase getCurKSYStreamErrorCodeName];
+    NSLog(@"stream Error: %@", [name substringFromIndex:20]);
     if (errCode == KSYStreamErrorCode_CONNECT_BREAK ||
         errCode == KSYStreamErrorCode_AV_SYNC_ERROR ||
         errCode == KSYStreamErrorCode_Connect_Server_failed ||
@@ -492,14 +556,13 @@
     int64_t delaySec = (int64_t)(_autoRetryDelay * NSEC_PER_SEC);
     dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, delaySec);
     dispatch_after(delay, dispatch_get_main_queue(), ^{
+        _bRetry = NO;
         if (_autoRetryCnt <= 0) {
-            _bRetry = NO; // reach max retry, stop
             return;
         }
         NSLog(@"retry connect %d/%d", _autoRetryCnt, _maxAutoRetry);
         _autoRetryCnt--;
         [_streamerBase startStream:_streamerBase.hostURL];
-        [self tryReconnect];// schedule next retry
     });
 }
 @synthesize autoRetryDelay = _autoRetryDelay;
@@ -620,6 +683,18 @@
 }
 - (UIInterfaceOrientation) videoOrientation{
     return _vCapDev.outputImageOrientation;
+}
+
+@synthesize bStereoAudioStream = _bStereoAudioStream;
+- (void) setBStereoAudioStream:(BOOL)bStereoAudioStream {
+    if (_streamerBase.isStreaming){
+        return; // 推流过程中修改本属性会导致观众端的声音异常
+    }
+    _bStereoAudioStream =
+    _aMixer.bStereo = bStereoAudioStream;
+}
+-(BOOL) bStereoAudioStream {
+    return _aMixer.bStereo;
 }
 
 /**
@@ -837,6 +912,11 @@
     _streamerMirrored = bMirrored;
 }
 
+- (void) setStreamerFreezed:(BOOL)streamerFreezed {
+    _streamerFreezed = streamerFreezed;
+    _gpuToStr.bAutoRepeat = streamerFreezed;
+}
+
 int UIOrienToIdx (UIInterfaceOrientation orien) {
     switch (orien) {
         case UIInterfaceOrientationPortrait:
@@ -981,7 +1061,6 @@ kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRota
 }
 
 //设置采集和推流配置参数
-@synthesize streamerProfile =_streamerProfile;
 - (void)setStreamerProfile:(KSYStreamerProfile)profile{
     
     _streamerBase.videoCodec = KSYVideoCodec_AUTO;
@@ -1089,7 +1168,48 @@ kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRota
             break;
         default:
             NSLog(@"Set Invalid Profile");
+            return;
     }
+    _streamerBase.videoInitBitrate = _streamerBase.videoMaxBitrate*6/10;
+    _streamerBase.videoMinBitrate  = 0;
+    _streamerProfile = profile;
+}
+
+//
+- (void)setAudioCaptureType:(KSYAudioCapType)audioCaptureType{
+    _audioCaptureType = audioCaptureType;
+    
+    @WeakObj(self);
+    
+    if (audioCaptureType == KSYAudioCap_AudioUnit) {
+        [_vCapDev removeAudioInputsAndOutputs];
+        
+        if (!_aCapDev) {
+            _aCapDev = [[KSYAUAudioCapture alloc] init];
+        }
+        [_aCapDev startCapture];
+        
+        _aCapDev.audioProcessingCallback = ^(CMSampleBufferRef buf){
+            if ( selfWeak.audioProcessingCallback ){
+                selfWeak.audioProcessingCallback(buf);
+            }
+            [selfWeak mixAudio:buf to:selfWeak.micTrack];
+        };
+    }else if (audioCaptureType == KSYAudioCap_AVCaptureDevice) {
+        _aCapDev = nil;
+        [_vCapDev addAudioInputsAndOutputs];
+
+        // 创建 dummy audio source
+        _dAudioSrc = [[KSYDummyAudioSource alloc] init];
+        
+        _vCapDev.audioProcessingCallback = ^(CMSampleBufferRef buf){
+            if ( selfWeak.audioProcessingCallback ){
+                selfWeak.audioProcessingCallback(buf);
+            }
+            [selfWeak mixAudio:buf to:selfWeak.micTrack];
+        };
+    }
+    
 }
 
 @end

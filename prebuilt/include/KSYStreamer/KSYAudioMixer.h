@@ -18,7 +18,7 @@
  3. 将输入的音频pcm数据存入buffer，每一路音频的buffer独立
  4. 每次麦克风的音频输入，都会触发从所有buffer中取数据，混合，发送的动作
  5. 每一路音频可以单独配置音量
- 6. 输出格式固定为 44.1KHz, 单声道， S16
+ 6. 输出格式固定为 44.1KHz, S16 (声道数可设定)
 
  */
 @interface KSYAudioMixer : NSObject
@@ -108,8 +108,14 @@
 @property(nonatomic, assign) int mainTrack;
 
 /**
+ @abstract   输出音频是否为双声道立体声 (默认为NO)
+ @discussion 如果输入数据都不是双声道则输出数据左右耳内容一样
+ */
+@property(nonatomic, assign) BOOL bStereo;
+
+/**
  @abstract   混音后输出PCM的格式
- @discussion 暂时为固定一种格式 (44.1KHz, 单声道， S16)
+ @discussion 暂时为固定一种格式 (44.1KHz, S16)
  */
 @property (nonatomic, readonly) AudioStreamBasicDescription* outFmtDes;
 @end

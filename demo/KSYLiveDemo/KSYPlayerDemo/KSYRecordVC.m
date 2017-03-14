@@ -6,9 +6,9 @@
 //
 
 #import "KSYRecordVC.h"
+#import <libksygpulive/KSYUIRecorderKit.h>
 #import <CommonCrypto/CommonDigest.h>
 #import "KSYProgressView.h"
-#import "KSYUIRecorderKit.h"
 #import <GPUImage/GPUImage.h>
 
 @interface KSYRecordVC () <UITextFieldDelegate>

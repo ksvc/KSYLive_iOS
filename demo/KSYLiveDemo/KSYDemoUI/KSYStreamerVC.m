@@ -56,7 +56,7 @@
     if (_presetCfgView.profileUI.selectedSegmentIndex){
         [self setCustomizeCfg];//自定义
     }else{
-        [_kit setStreamerProfile:_presetCfgView.curProfileIdx];//配置profile
+        _kit.streamerProfile = _presetCfgView.curProfileIdx;//配置profile
     }
     // 采集相关设置初始化
     [self setCaptureCfg];
@@ -89,7 +89,6 @@
     _foucsCursor.frame = CGRectMake(80, 80, 80, 80);
     [self.view addSubview:_foucsCursor];
     _foucsCursor.alpha = 0;
-    
 }
 
 - (void)addSubViews{
@@ -111,10 +110,13 @@
         [weakself onBgmBtnPress:sender];
     };
     _ksyBgmView.onSliderBlock = ^(id sender) {
-        [weakself onBgmVolume:sender];
+        [weakself onBgmSlider:sender];
     };
     _ksyBgmView.onSegCtrlBlock = ^(id sender) {
         [weakself onBgmCtrSle:sender];
+    };
+    _ksyBgmView.progressBar.dragingSliderCallback = ^(float progress) {
+        [weakself.kit.bgmPlayer seekToProgress:progress];
     };
     // 滤镜相关参数改变
     _ksyFilterView.onSegCtrlBlock=^(id sender) {
@@ -240,13 +242,15 @@
     _kit.capPreset        = [self.presetCfgView capResolution];
     _kit.previewDimension = [self.presetCfgView capResolutionSize];
     _kit.streamDimension  = [self.presetCfgView strResolutionSize ];
-    _kit.videoFPS       = [self.presetCfgView frameRate];
+    _kit.videoFPS         = [self.presetCfgView frameRate];
     _kit.streamerBase.videoCodec       = [_presetCfgView videoCodec];
     _kit.streamerBase.videoMaxBitrate  = [_presetCfgView videoKbps];
     _kit.streamerBase.audioCodec       = [_presetCfgView audioCodec];
     _kit.streamerBase.audiokBPS        = [_presetCfgView audioKbps];
     _kit.streamerBase.bwEstimateMode   = [_presetCfgView bwEstMode];
-    _kit.streamerBase.bWithMessage = [_presetCfgView withMessage];
+    _kit.streamerBase.bWithMessage     = [_presetCfgView withMessage];
+    _kit.streamerBase.videoInitBitrate = _kit.streamerBase.videoMaxBitrate*6/10;//60%
+    _kit.streamerBase.videoMinBitrate  = 0; //
 }
 
 - (void) setCaptureCfg {
@@ -283,8 +287,6 @@
         return;
     }
     if (_presetCfgView){ // cfg from presetcfgview
-        _kit.streamerBase.videoInitBitrate = _kit.streamerBase.videoMaxBitrate*6/10;//60%
-        _kit.streamerBase.videoMinBitrate  = 0; //
         _kit.streamerBase.logBlock = ^(NSString* str){
             //NSLog(@"%@", str);
         };
@@ -296,15 +298,14 @@
 }
 
 - (void) updateStreamCfg: (BOOL) bStart {
-    _kit.streamerBase.liveScene       =  self.miscView.liveScene;
-    _kit.streamerBase.recScene       =  self.miscView.recScene;
-    _kit.streamerBase.videoEncodePerf =  self.miscView.vEncPerf;
-    _kit.streamerBase.bWithVideo      = !self.audioView.swAudioOnly.on;
-    _kit.gpuToStr.bAutoRepeat         = NO;
+    _kit.streamerBase.liveScene       = self.miscView.liveScene;
+    _kit.streamerBase.recScene        = self.miscView.recScene;
+    _kit.streamerBase.videoEncodePerf = self.miscView.vEncPerf;
     _strSeconds = 0;
     self.miscView.liveSceneSeg.enabled = !bStart;
     self.miscView.recSceneSeg.enabled = !bStart;
     self.miscView.vEncPerfSeg.enabled = !bStart;
+    self.audioView.stereoStream.enabled = !bStart;
     _miscView.swBypassRec.on = NO;
     _miscView.autoReconnect.slider.enabled = !bStart;
     _kit.maxAutoRetry = (int)_miscView.autoReconnect.slider.value;
@@ -380,6 +381,9 @@
 - (void) onBgmPlayerStateChange  :(NSNotification *)notification{
     NSString * st = [_kit.bgmPlayer getCurBgmStateName];
     _ksyBgmView.bgmStatus = [st substringFromIndex:17];
+    if (_kit.bgmPlayer.bgmPlayerState == KSYBgmPlayerStatePlaying) {
+        _ksyBgmView.progressBar.totalTimeInSeconds = _kit.bgmPlayer.bgmDuration;
+    }
 }
 - (void) onStreamStateChange :(NSNotification *)notification{
     if (_kit.streamerBase){
@@ -442,6 +446,7 @@
     else if (newState == KSYRecordStateStopped) {
         NSLog(@"stop bypass record");
         [self saveVideoToAlbum:_bypassRecFile];
+        _miscView.swBypassRec.on = NO;
     }
     else if (newState == KSYRecordStateError) {
         NSLog(@"bypass record error %@", _kit.streamerBase.bypassRecordErrorName);
@@ -453,7 +458,7 @@
         [_ctrlView.lblStat updateState: _kit.streamerBase];
     }
     if (_kit.bgmPlayer && _kit.bgmPlayer.bgmPlayerState ==KSYBgmPlayerStatePlaying ) {
-        _ksyBgmView.progressV.progress = _kit.bgmPlayer.bgmProcess;
+        _ksyBgmView.progressBar.playProgress = _kit.bgmPlayer.bgmProcess;
     }
     _strSeconds++;
     [self updateLogoText];
@@ -495,7 +500,7 @@
     }
     else if (btn == _ctrlView.menuBtns[2] ){
         view = _audioView;    // 混音控制台
-        _audioView.micType = _kit.avAudioSession.currentMicType;
+        _audioView.micType = [[AVAudioSession sharedInstance] currentMicType];
         [_audioView initMicInput];
     }
     else if(btn == _ctrlView.menuBtns[3]){
@@ -538,6 +543,7 @@
 }
 //bgmView Control
 - (void)onBgmBtnPress:(UIButton *)btn{
+    @WeakObj(self);
     if (btn == _ksyBgmView.playBtn){
         [self onBgmPlay];
     }
@@ -550,45 +556,43 @@
         }
     }
     else if (btn == _ksyBgmView.stopBtn){
-        [self onBgmStop];
+        [_kit.bgmPlayer stopPlayBgm];
     }
     else if (btn == _ksyBgmView.nextBtn){
         [self.ksyBgmView nextBgmPath];
-        [self playNextBgm];
+        [_kit.bgmPlayer stopPlayBgm:^() {
+            [selfWeak onBgmPlay];
+        }];
     }
     else if (btn == _ksyBgmView.previousBtn) {
         [self.ksyBgmView previousBgmPath];
-        [self playNextBgm];
+        [_kit.bgmPlayer stopPlayBgm:^() {
+            [selfWeak onBgmPlay];
+        }];
     }
     else if (btn == _ksyBgmView.muteBtn){
         // 仅仅是静音了本地播放, 推流中仍然有音乐
-        _kit.bgmPlayer.bMutBgmPlay = !_kit.bgmPlayer.bMutBgmPlay;
+        _kit.bgmPlayer.bMuteBgmPlay = !_kit.bgmPlayer.bMuteBgmPlay;
     }
 }
-- (void) playNextBgm {
-    if (_kit.bgmPlayer.bgmPlayerState == KSYBgmPlayerStatePlaying) {
-        [_kit.bgmPlayer stopPlayBgm];
-        [self onBgmPlay];
-    }
-}
+
 - (void) onBgmPlay{
     NSString* path = _ksyBgmView.bgmPath;
     if (!path) {
-        [self onBgmStop];
+        [_kit.bgmPlayer stopPlayBgm];
+        return;
     }
     [_kit.bgmPlayer startPlayBgm:path isLoop:NO];
 }
-
-- (void) onBgmStop{
-    if (_kit.bgmPlayer.bgmPlayerState == KSYBgmPlayerStatePlaying) {
-        [_kit.bgmPlayer stopPlayBgm];
-    }
-}
-
 // 背景音乐音量调节
-- (void)onBgmVolume:(id )sl{
+- (void)onBgmSlider:(id )sl{
     if (sl == _ksyBgmView.volumSl){
+        // 仅仅修改播放音量, 观众音量请调节mixer的音量
         _kit.bgmPlayer.bgmVolume = _ksyBgmView.volumSl.normalValue;
+    }
+    else if (sl == _ksyBgmView.pitchSl){
+        // 同时修改本地和观众端的 音调 (推荐变调的取值范围为 -3 到 3的整数)
+        _kit.bgmPlayer.bgmPitch = _ksyBgmView.pitchSl.value;
     }
 }
 
@@ -677,8 +681,11 @@
     }
     else if (sw == _audioView.swAudioOnly && _kit.streamerBase) {
         if (_kit.streamerBase.isStreaming) {
-            _kit.gpuToStr.bAutoRepeat = sw.on;
+            _kit.streamerFreezed = sw.on;
         }
+    }
+    else if (sw == _audioView.stereoStream ){
+        _kit.bStereoAudioStream = sw.on;
     }
     else if (sw == _audioView.swPlayCapture){
         if ( ![KSYAUAudioCapture isHeadsetPluggedIn] ) {
@@ -692,7 +699,7 @@
 }
 - (void)onAMixerSegCtrl:(UISegmentedControl *)seg{
     if (_kit && seg == _audioView.micInput) {
-        _kit.avAudioSession.currentMicType = _audioView.micType;
+        [AVAudioSession sharedInstance].currentMicType = _audioView.micType;
     }
     else if (seg == _audioView.reverbType){
         int t = (int)seg.selectedSegmentIndex;

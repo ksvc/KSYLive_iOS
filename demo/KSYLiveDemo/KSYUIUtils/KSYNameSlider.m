@@ -71,4 +71,14 @@
     _slider.value = val * _slider.maximumValue + _slider.minimumValue;
     [self updateValue];
 }
+- (float)value{
+    return _slider.value;
+}
+- (void)setValue:(float )val{
+    _slider.value = val;
+    [self updateValue];
+    if (_onSliderBlock) {
+        _onSliderBlock(self);
+    }
+}
 @end

@@ -8,7 +8,7 @@
 
 #ifndef _KSYTypeDef_h_
 #define _KSYTypeDef_h_
-
+#include <sys/cdefs.h>
 #pragma mark - scene and performance settings
 
 /// 直播场景 (KSY内部会根据场景的特征进行参数调优)
@@ -98,12 +98,14 @@ typedef NS_ENUM(NSUInteger, KSYVideoCodec) {
  * @abstract  音频编码器类型
  */
 typedef NS_ENUM(NSUInteger, KSYAudioCodec) {
-    /// faac音频软件编码器 - AAC_HE
+    /// aac音频软件编码器 - AAC_HE
     KSYAudioCodec_AAC_HE = 0,
-    /// faac音频软件编码器 - AAC_LC
+    /// aac音频软件编码器 - AAC_LC
     KSYAudioCodec_AAC,
-    /// iOS自带的audiotoolbox音频编码器 - AAC_LC
+    /// iOS自带的audiotoolbox音频编码器 - AAC_LC (CPU占用较低,但推荐码率:64kbps单声道,128kbps双声道)
     KSYAudioCodec_AT_AAC,
+    /// aac音频软件编码器 - AAC_HE_V2 (仅双声道音频可以选用, 如果输入数据为单声道, 则自动退化为 KSYAudioCodec_AAC_HE)
+    KSYAudioCodec_AAC_HE_V2,
 };
 
 #pragma mark - QYPublisher State
@@ -149,7 +151,7 @@ typedef NS_ENUM(NSUInteger, KSYStreamErrorCode) {
     /// 正常无错误
     KSYStreamErrorCode_NONE = 0,
     /// (obsolete)
-    KSYStreamErrorCode_KSYAUTHFAILED,
+    KSYStreamErrorCode_KSYAUTHFAILED __deprecated_enum_msg("auth removed"),
     /// 当前帧编码失败
     KSYStreamErrorCode_ENCODE_FRAMES_FAILED,
     /// 无法打开配置指示的CODEC

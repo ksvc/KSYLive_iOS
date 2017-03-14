@@ -30,6 +30,12 @@
  @abstract   停止播放背景音乐
  */
 - (void) stopPlayBgm;
+
+/**
+ @abstract   停止播放背景音乐
+ @param      停止完成的回调函数
+ */
+- (void) stopPlayBgm: (void (^)())completion;
 /**
  @abstract   暂停播放背景音乐
  */
@@ -40,6 +46,20 @@
 - (void) resumeBgm;
 
 /**
+ @abstract  seek到指定时间 (拖动进度条)
+ @param     time 时间, 请参考 bgmDuration (单位,秒)
+ @return    是否seek 成功
+ */
+- (BOOL) seekToTime:(float)time;
+
+/**
+ @abstract  seek到指定进度 (拖动进度条)
+ @param     prog 进度, 请参考 bgmProgress
+ @return    是否seek 成功
+ */
+- (BOOL) seekToProgress:(float)prog;
+
+/**
  @abstract   背景音乐的音量
  @discussion 调整范围 0.0~1.0
  @discussion 仅仅调整播放的音量, 不影响回调的音频数据
@@ -47,17 +67,24 @@
 @property (nonatomic, assign) double bgmVolume;
 
 /**
+ @abstract   播放声音的音调
+ @discussion 调整范围 [-24.0 ~ 24.0], 默认为0.01, 单位为半音
+ @discussion 0.01 为1度, 1.0为一个半音, 12个半音为1个八度
+ */
+@property (nonatomic, assign) double bgmPitch;
+
+/**
  @abstract   背景音乐播放静音
  @discussion 仅仅静音播放, 不影响回调的音频数据
  */
-@property (nonatomic, assign) BOOL bMutBgmPlay;
+@property (nonatomic, assign) BOOL bMuteBgmPlay;
 
 #pragma mark - callbacks
 /**
  @abstract   音频数据输出回调
  @discussion sampleBuffer 从音乐文件中解码得到的PCM数据
- */
-@property(nonatomic, copy) void(^audioDataBlock)(CMSampleBufferRef sampleBuffer);
+ */ 
+@property(nonatomic, copy) BOOL (^audioDataBlock)(uint8_t** pData, int len, const AudioStreamBasicDescription* fmt, CMTime pts);
 
 /**
  @abstract   当背景音乐播放完成时，调用此回调函数

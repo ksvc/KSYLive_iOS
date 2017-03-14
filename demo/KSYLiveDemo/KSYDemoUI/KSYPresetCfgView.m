@@ -70,7 +70,7 @@
     _lblVideoCodecUI = [self addLable:@"视频编码器"];
     _videoCodecUI = [self addSegCtrlWithItems:@[@"自动",@"软264",@"硬264",@"软265"]];
     _lblAudioCodecUI = [self addLable:@"音频编码器"];
-    _audioCodecUI = [self addSegCtrlWithItems:@[@"软AAC-HE",@"软AAC-LC",@"硬AAC-LC"]];
+    _audioCodecUI = [self addSegCtrlWithItems:@[@"aache",@"aaclc",@"ATaaclc", @"aachev2"]];
     _videoKbpsUI  = [self addSliderName:@"视频码率kbps" From:100.0 To:1600.0 Init:800.0];
     _lblAudioKbpsUI= [self addLable:@"音频码率kbps"];
     _audioKbpsUI  = [self addSegCtrlWithItems:@[@"12",@"24",@"32", @"48", @"64", @"128"]];
@@ -89,8 +89,9 @@
     _profilePicker.dataSource = self;
     _profilePicker.showsSelectionIndicator= YES;
     _profilePicker.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.3];
-    
-    _curProfileIdx = 0;
+    [_profilePicker selectRow:7 inComponent:0 animated:YES];
+
+    _curProfileIdx = 103;
     [self selectProfile:0];
     
     return self;
@@ -119,7 +120,7 @@ numberOfRowsInComponent:(NSInteger)component {
     }else if (row >= 8 && row <= 11){
         _curProfileIdx = 200 + (row - 8);
     }else{
-        _curProfileIdx = 0;
+        _curProfileIdx = 103;
     }
     [self getStreamerProfile:_curProfileIdx];
 }
@@ -485,6 +486,8 @@ numberOfRowsInComponent:(NSInteger)component {
             return  KSYAudioCodec_AAC;
         case 2:
             return  KSYAudioCodec_AT_AAC;
+        case 3:
+            return  KSYAudioCodec_AAC_HE_V2;
         default:
             return  KSYAudioCodec_AAC_HE;
     }

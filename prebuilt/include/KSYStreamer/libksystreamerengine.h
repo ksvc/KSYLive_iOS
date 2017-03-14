@@ -12,8 +12,11 @@
 // sources (player & capture)
 #import "KSYGPUPicInput.h"
 #import "KSYGPUCamera.h"
+#import "AVAudioSession+KSY.h"
 #import "KSYAVAudioSession.h"
 #import "KSYBgmPlayer.h"
+#import "KSYBgmReader.h"
+#import "KSYAQPlayer.h"
 #import "KSYAUAudioCapture.h"
 #import "KSYDummyAudioSource.h"
 #import "KSYAVFCapture.h"
@@ -24,5 +27,5 @@
 #import "KSYGPUPicOutput.h"
 
 
-#define KSYSTREAMERENGINE_VER 2.0.1
-#define KSYSTREAMERENGINE_ID 418218f0097dba7b184313cf15a0d8c7157e3939
+#define KSYSTREAMERENGINE_VER 2.0.2
+#define KSYSTREAMERENGINE_ID 8ef163210af8beb674e1a0dc581cb57f585fa72c
