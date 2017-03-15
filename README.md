@@ -1,4 +1,4 @@
-#[KSY Live iOS SDK](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
+# [KSY Live iOS SDK](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
 
 [![Build Status](https://travis-ci.org/ksvc/KSYLive_iOS.svg?branch=master)](https://travis-ci.org/ksvc/KSYLive_iOS)
 [![CocoaPods platform](https://img.shields.io/cocoapods/p/libksygpulive.svg)](https://cocoapods.org/pods/libksygpulive)
