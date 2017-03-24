@@ -29,6 +29,7 @@
     // 本地录制:直接存储到本地
     UIImageView *_foucsCursor;//对焦框
     CGFloat _currentPinchZoomFactor;//当前触摸缩放因子
+    UIView *_bgView;        // 预览视图父控件（用于处理转屏，保持画面相对手机不变）
 }
 @end
 
@@ -64,16 +65,45 @@
     [self setStreamerCfg];
     // 打印版本号信息
     NSLog(@"version: %@", [_kit getKSYVersion]);
-    if (_kit) { // init with default filter
-        _kit.videoOrientation = [[UIApplication sharedApplication] statusBarOrientation];
-        [_kit setupFilter:self.ksyFilterView.curFilter];
-        [_kit startPreview:self.view];
-    }
+
     [self setupLogo];
     _bypassRecFile =[NSHomeDirectory() stringByAppendingString:@"/Library/Caches/rec.mp4"];
     _kit.streamerBase.bypassRecordStateChange = ^(KSYRecordState state) {
         [self onBypassRecordStateChange:state];
     };
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self layoutPreviewBgView];
+    if (_kit) { // init with default filter
+        _kit.videoOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+        [_kit setupFilter:self.ksyFilterView.curFilter];
+        [_kit startPreview:_bgView];
+    }
+}
+
+// 根据状态栏方向初始化预览的bgView
+- (void)layoutPreviewBgView{
+    // size
+    CGFloat minLength = MIN(_bgView.frame.size.width, _bgView.frame.size.height);
+    CGFloat maxLength = MAX(_bgView.frame.size.width, _bgView.frame.size.height);
+    CGRect newFrame;
+    // frame
+    CGAffineTransform newTransform;
+    
+    UIInterfaceOrientation currentInterfaceOrientation = [UIApplication sharedApplication].statusBarOrientation;
+    
+    if (currentInterfaceOrientation == UIInterfaceOrientationPortrait) {
+        newTransform = CGAffineTransformIdentity;
+        newFrame = CGRectMake(0, 0, minLength, maxLength);
+    } else {
+        newTransform = CGAffineTransformMakeRotation(M_PI_2*(currentInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ? 1 : -1));
+        newFrame = CGRectMake(0, 0, maxLength, minLength);
+    }
+    
+    _bgView.transform = newTransform;
+    _bgView.frame = newFrame;
 }
 
 - (void) addSwipeGesture{
@@ -92,6 +122,8 @@
 }
 
 - (void)addSubViews{
+    _bgView = [[UIView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:_bgView];
     _ctrlView  = [[KSYCtrlView alloc] initWithMenu:_menuNames];
     [self.view addSubview:_ctrlView];
     _ctrlView.frame = self.view.frame;
@@ -101,58 +133,58 @@
     _miscView       = [[KSYMiscView alloc]initWithParent:_ctrlView];
     
     // connect UI
-    __weak KSYStreamerVC *weakself = self;
+    weakObj(self);
     _ctrlView.onBtnBlock = ^(id btn){
-        [weakself onBasicCtrl:btn];
+        [selfWeak onBasicCtrl:btn];
     };
     // 背景音乐控制页面
     _ksyBgmView.onBtnBlock = ^(id sender) {
-        [weakself onBgmBtnPress:sender];
+        [selfWeak onBgmBtnPress:sender];
     };
     _ksyBgmView.onSliderBlock = ^(id sender) {
-        [weakself onBgmSlider:sender];
+        [selfWeak onBgmSlider:sender];
     };
     _ksyBgmView.onSegCtrlBlock = ^(id sender) {
-        [weakself onBgmCtrSle:sender];
+        [selfWeak onBgmCtrSle:sender];
     };
     _ksyBgmView.progressBar.dragingSliderCallback = ^(float progress) {
-        [weakself.kit.bgmPlayer seekToProgress:progress];
+        [selfWeak.kit.bgmPlayer seekToProgress:progress];
     };
     // 滤镜相关参数改变
     _ksyFilterView.onSegCtrlBlock=^(id sender) {
-        [weakself onFilterChange:sender];
+        [selfWeak onFilterChange:sender];
     };
     _ksyFilterView.onBtnBlock=^(id sender) {
-        [weakself onFilterBtn:sender];
+        [selfWeak onFilterBtn:sender];
     };
     _ksyFilterView.onSwitchBlock=^(id sender) {
-        [weakself onFilterSwitch:sender];
+        [selfWeak onFilterSwitch:sender];
     };
     // 混音相关参数改变
     _audioView.onSwitchBlock=^(id sender){
-        [weakself onAMixerSwitch:sender];
+        [selfWeak onAMixerSwitch:sender];
     };
     _audioView.onSliderBlock=^(id sender){
-        [weakself onAMixerSlider:sender];
+        [selfWeak onAMixerSlider:sender];
     };
     _audioView.onSegCtrlBlock=^(id sender){
-        [weakself onAMixerSegCtrl:sender];
+        [selfWeak onAMixerSegCtrl:sender];
     };
     // 其他杂项
     _miscView.onBtnBlock = ^(id sender) {
-        [weakself onMiscBtns: sender];
+        [selfWeak onMiscBtns: sender];
     };
     _miscView.onSwitchBlock = ^(id sender) {
-        [weakself onMiscSwitch: sender];
+        [selfWeak onMiscSwitch: sender];
     };
     _miscView.onSliderBlock = ^(id sender) {
-        [weakself onMiscSlider: sender];
+        [selfWeak onMiscSlider: sender];
     };
     _miscView.onSegCtrlBlock=^(id sender){
-        [weakself onMisxSegCtrl:sender];
+        [selfWeak onMisxSegCtrl:sender];
     };
     self.onNetworkChange = ^(NSString * msg){
-        weakself.ctrlView.lblNetwork.text = msg;
+        selfWeak.ctrlView.lblNetwork.text = msg;
     };
 }
 
@@ -200,26 +232,27 @@
         [_ctrlView layoutUI];
     }
 }
+- (NSString *) timeStr {
+    if (_dateFormatter == nil) {
+        _dateFormatter = [[NSDateFormatter alloc] init];
+        _dateFormatter.dateFormat = @"HH:mm:ss";
+    }
+    NSDate *now = [[NSDate alloc] init];
+    return [_dateFormatter stringFromDate:now];
+}
 #pragma mark - logo setup
 - (void) setupLogo{
     CGFloat yPos = 0.05;
     CGFloat hgt  = 0.1; // logo图片的高度是预览画面的十分之一
-    NSString *logoFile=[NSHomeDirectory() stringByAppendingString:@"/Documents/ksvc.png"];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:logoFile]){
-        NSURL *url =[[NSURL alloc] initFileURLWithPath:logoFile];
-        _kit.logoPic  = [[GPUImagePicture alloc] initWithURL: url];
-        _kit.logoRect = CGRectMake(0.05, yPos, 0, hgt);
-        _kit.logoAlpha= 0.5;
-        yPos += hgt;
-        _miscView.alphaSl.normalValue = _kit.logoAlpha;
-    }
+    UIImage * logoImg = [UIImage imageNamed:@"ksvc"];
+    _kit.logoPic  = [[GPUImagePicture alloc] initWithImage:logoImg];
+    _kit.logoRect = CGRectMake(0.05, yPos, 0, hgt);
+    _kit.logoAlpha= 0.5;
+    yPos += hgt;
+    _miscView.alphaSl.normalValue = _kit.logoAlpha;
     _kit.textLabel.numberOfLines = 2;
     _kit.textLabel.textAlignment = NSTextAlignmentCenter;
-    
-    _dateFormatter = [[NSDateFormatter alloc] init];
-    _dateFormatter.dateFormat = @"HH:mm:ss";
-    NSDate *now = [[NSDate alloc] init];
-    NSString * timeStr = [_dateFormatter stringFromDate:now];
+    NSString * timeStr = [self timeStr];
     _kit.textLabel.text = [NSString stringWithFormat:@"ksyun\n%@", timeStr];
     [_kit.textLabel sizeToFit];
     _kit.textRect = CGRectMake(0.05, yPos, 0, 0.04); // 水印文字的高度为预览画面的 0.04倍
@@ -231,8 +264,7 @@
     if (appState != UIApplicationStateActive){
         return;
     } // 将当前时间显示在左上角
-    NSDate *now = [[NSDate alloc] init];
-    NSString * timeStr = [_dateFormatter stringFromDate:now];
+    NSString * timeStr = [self timeStr];
     _kit.textLabel.text = [NSString stringWithFormat:@"ksyun\n%@", timeStr];
     [_kit updateTextLabel];
 }
@@ -529,14 +561,14 @@
 #pragma mark - subviews: bgmview
 - (void)onBgmCtrSle:(UISegmentedControl*)sender {
     if ( sender == _ksyBgmView.loopType){
-        __weak KSYStreamerVC *weakself = self;
+        weakObj(self);
         if ( sender.selectedSegmentIndex == 0) { // signal play
             _kit.bgmPlayer.bgmFinishBlock = ^{};
         }
         else { // loop to next
             _kit.bgmPlayer.bgmFinishBlock = ^{
-                [weakself.ksyBgmView loopNextBgmPath];
-                [weakself onBgmPlay];
+                [selfWeak.ksyBgmView loopNextBgmPath];
+                [selfWeak onBgmPlay];
             };
         }
     }
@@ -612,7 +644,7 @@
 - (void) onCapture{
     if (!_kit.vCapDev.isRunning){
         _kit.videoOrientation = [[UIApplication sharedApplication] statusBarOrientation];
-        [_kit startPreview:self.view];
+        [_kit startPreview:_bgView];
     }
     else {
         [_kit stopPreview];
@@ -639,16 +671,12 @@
 
 -(void) onMessage{
     NSMutableDictionary *message = [[NSMutableDictionary alloc] init];
-    _dateFormatter = [[NSDateFormatter alloc] init];
-    _dateFormatter.dateFormat = @"HH:mm:ss";
-    NSDate *now = [[NSDate alloc] init];
-    NSString * timeStr = [_dateFormatter stringFromDate:now];
+    NSString * timeStr = [self timeStr];
     [message setObject:@"user" forKey:@"type"];
     [message setObject:@"test" forKey:@"event"];
     [message setObject:timeStr forKey:@"time"];
     [_kit processMessageData:message];
 }
-
 
 #pragma mark - UI respond : gpu filters
 - (void) onFilterChange:(id)sender{
@@ -845,10 +873,130 @@
         return;
     }
     UIInterfaceOrientation orie = [[UIApplication sharedApplication] statusBarOrientation];
-    [_kit rotatePreviewTo:orie];
     if (_ksyFilterView.swStrRotate.on) {
         [_kit rotateStreamTo:orie];
     }
+}
+
+// 旋转处理，通过旋转bgView来做到画面相对手机静止不动
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    
+    // size
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    CGFloat minLength = MIN(screenSize.width, screenSize.height);
+    CGFloat maxLength = MAX(screenSize.width, screenSize.height);
+    CGRect newFrame;
+    
+    // frame
+    CGAffineTransform newTransform;
+    // need stay frame after animation
+    CGAffineTransform newTransformOfStay;
+    // whether need to stay
+    __block BOOL needStay = NO;
+    
+    if (toInterfaceOrientation == UIInterfaceOrientationPortrait) {
+        newTransform = CGAffineTransformIdentity;
+        newFrame = CGRectMake(0, 0, minLength, maxLength);
+    } else {
+        if (self.interfaceOrientation == UIInterfaceOrientationPortrait) {
+            newTransform = CGAffineTransformMakeRotation(M_PI_2*(toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ? 1 : -1));
+        } else {
+            needStay = YES;
+            if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
+                newTransform = CGAffineTransformRotate(_bgView.transform,M_PI * 1.00001);
+                newTransformOfStay = CGAffineTransformRotate(_bgView.transform, M_PI);
+            }else{
+                newTransform = CGAffineTransformRotate(_bgView.transform,SYSTEM_VERSION_GE_TO(@"8.0") ? 1.00001 * M_PI : M_PI * 0.99999);
+                newTransformOfStay = CGAffineTransformRotate(_bgView.transform, M_PI);
+                
+            }
+        }
+        newFrame = CGRectMake(0, 0, maxLength, minLength);
+    }
+    
+    __weak typeof(self) weakSelf = self;
+    [UIView animateWithDuration:duration animations:^{
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        // sometimes strongSelf can be nil in iOS version 7.0
+        if (!strongSelf) {
+            return ;
+        }
+        _bgView.transform = newTransform;
+        _bgView.frame = newFrame;
+    }completion:^(BOOL finished) {
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        if (!strongSelf) {
+            return ;
+        }
+        if (needStay) {
+            _bgView.transform = newTransformOfStay;
+            _bgView.frame = newFrame;
+            needStay = NO;
+        }
+    }];
+    
+}
+
+// 旋转处理，通过旋转bgView来做到画面相对手机静止不动
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator NS_AVAILABLE_IOS(8_0)
+{
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+
+    // size
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    CGFloat minLength = MIN(screenSize.width, screenSize.height);
+    CGFloat maxLength = MAX(screenSize.width, screenSize.height);
+    CGRect newFrame;
+    
+    // frame
+    CGAffineTransform newTransform;
+    // need stay frame after animation
+    CGAffineTransform newTransformOfStay;
+    // whether need to stay
+    __block BOOL needStay = NO;
+    
+    UIInterfaceOrientation currentInterfaceOrientation = [UIApplication sharedApplication].statusBarOrientation;
+    UIDeviceOrientation toDeviceOrientation = [UIDevice currentDevice].orientation;
+    
+    if (toDeviceOrientation == UIDeviceOrientationPortrait) {
+        newTransform = CGAffineTransformIdentity;
+        newFrame = CGRectMake(0, 0, minLength, maxLength);
+    } else {
+        if (currentInterfaceOrientation == UIInterfaceOrientationPortrait) {
+            newTransform = CGAffineTransformMakeRotation(M_PI_2*(toDeviceOrientation == UIDeviceOrientationLandscapeRight ? 1 : -1));
+        } else {
+            needStay = YES;
+            if (currentInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
+                newTransform = CGAffineTransformRotate(_bgView.transform, M_PI * 1.00001);
+                newTransformOfStay = CGAffineTransformRotate(_bgView.transform, M_PI);
+            }else{
+                newTransform = CGAffineTransformRotate(_bgView.transform, SYSTEM_VERSION_GE_TO(@"8.0") ? 1.00001 * M_PI : M_PI * 0.99999);
+                newTransformOfStay = CGAffineTransformRotate(_bgView.transform, M_PI);
+            }
+        }
+        newFrame = CGRectMake(0, 0, maxLength, minLength);
+    }
+    
+    __weak typeof(self) weakSelf = self;
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        if (!strongSelf) {
+            return ;
+        }
+        _bgView.transform = newTransform;
+        _bgView.frame =  newFrame;
+    } completion:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        if (!strongSelf) {
+            return ;
+        }
+        if (needStay) {
+            _bgView.transform = newTransformOfStay;
+            _bgView.frame = newFrame;
+            needStay = NO;
+        }
+    }];
 }
 
 #pragma mark - bypass record & record

@@ -11,11 +11,11 @@
 #import "URLTableViewController.h"
 #import "KSYProgressView.h"
 #import "KSYPlayerConfigureVC.h"
+#import "KSYFloatVC.h"
 
 @interface KSYPlayerVC () <UITextFieldDelegate>
 @property (strong, nonatomic) NSURL *url;
 @property (strong, nonatomic) NSURL *reloadUrl;
-@property (strong, nonatomic) KSYMoviePlayerController *player;
 @end
 
 @implementation KSYPlayerVC{
@@ -38,9 +38,13 @@
     UIButton *btnShotScreen;
     UIButton *btnMirror;
     UIButton *btnConfig;
+    UIButton *btnFloat;
     
     UILabel *labelVolume;
     UISlider *sliderVolume;
+    
+    UILabel *labelAudioPan;
+    UISegmentedControl  *segAudioPan;
     
     KSYProgressView *progressView;
     
@@ -57,6 +61,8 @@
     
     int msgNum;
     PlayerConfigure config;
+    
+    KSYFloatVC *_floatVC;
 }
 
 - (instancetype)initWithURL:(NSURL *)url {
@@ -102,6 +108,17 @@
     shouldMute = NO;
     
     progressView.hidden = YES;
+    
+    _floatVC = [[KSYFloatVC alloc] init];
+    _floatVC.playerVC = self;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    if(_player)
+    {
+        [_player.view setFrame: videoView.bounds]; 
+        [videoView addSubview: _player.view];
+    }
 }
 
 - (void)dealloc {
@@ -143,26 +160,11 @@
     btnMute = [self addButtonWithTitle:@"mute" action:@selector(onMute:)];
     
     btnMirror = [self addButtonWithTitle:@"镜像" action:@selector(onMirror:)];
-    btnConfig = [self addButtonWithTitle:@"播放器配置" action:@selector(onConfig:)];
+    btnConfig = [self addButtonWithTitle:@"配置" action:@selector(onConfig:)];
+    
+    btnFloat = [self addButtonWithTitle:@"悬窗" action:@selector(onFloat:)];
 
-	stat = [[UILabel alloc] init];
-    stat.backgroundColor = [UIColor clearColor];
-    stat.textColor = [UIColor redColor];
-    stat.numberOfLines = -1;
-    stat.textAlignment = NSTextAlignmentLeft;
-    [self.view addSubview:stat];
-    
-    msg = [[UILabel alloc] init];
-    msg .backgroundColor = [UIColor clearColor];
-    msg .textColor = [UIColor blueColor];
-    msg .numberOfLines = -1;
-    msg .textAlignment = NSTextAlignmentLeft;
-    [self.view addSubview:msg ];
-    
-    labelVolume = [[UILabel alloc] init];
-    labelVolume.text = @"音量";
-    labelVolume.textColor = [UIColor lightGrayColor];
-    [self.view addSubview:labelVolume];
+    labelVolume = [self addLabelWithText:@"音量" textColor:[UIColor lightGrayColor]];
     
     sliderVolume = [[UISlider alloc] init];
     sliderVolume.minimumValue = 0;
@@ -170,6 +172,13 @@
     sliderVolume.value = 100;
     [sliderVolume addTarget:self action:@selector(onVolumeChanged:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:sliderVolume];
+    
+    labelAudioPan = [self addLabelWithText:@"立体声平衡" textColor:[UIColor lightGrayColor]];
+    segAudioPan = [self addSegCtrlWithItems:@[@"左声道", @"立体声", @"右声道"] action:@selector(onAudioPan:)];
+    segAudioPan.selectedSegmentIndex = 1;
+    
+    stat = [self addLabelWithText:nil textColor:[UIColor redColor]];
+    msg = [self addLabelWithText:nil textColor:[UIColor blueColor]];
     
     progressView = [[KSYProgressView alloc] init];
     [self.view addSubview:progressView];
@@ -196,6 +205,28 @@
     return button;
 }
 
+- (UISegmentedControl *)addSegCtrlWithItems: (NSArray *) items action:(SEL)action{
+    UISegmentedControl * segC;
+    segC = [[UISegmentedControl alloc] initWithItems:items];
+    segC.selectedSegmentIndex = 0;
+    segC.layer.cornerRadius = 5;
+    segC.backgroundColor = [UIColor lightGrayColor];
+    [segC addTarget:self action:action forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:segC];
+    return segC;
+}
+
+- (UILabel *)addLabelWithText:(NSString *)text textColor:(UIColor*)textColor {
+    UILabel *label = [[UILabel alloc] init];
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = textColor;
+    label.numberOfLines = -1;
+    label.text = text;
+    label .textAlignment = NSTextAlignmentLeft;
+    [self.view addSubview:label];
+    return label;
+}
+
 - (void) layoutUI {
     CGFloat wdt = self.view.bounds.size.width;
     CGFloat hgt = self.view.bounds.size.height;
@@ -205,13 +236,19 @@
     CGFloat xPos = 0;
     CGFloat yPos = 0;
 
+    videoView.frame = CGRectMake(0, 0, wdt, hgt);
+    
     yPos = 2 * gap;
     xPos = gap;
     labelVolume.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     xPos += btnWdt + gap;
     sliderVolume.frame  = CGRectMake(xPos, yPos, wdt - 3 * gap - btnWdt, btnHgt);
     
-    videoView.frame = CGRectMake(0, 0, wdt, hgt);
+    xPos = gap;
+    yPos += btnHgt + gap;
+    labelAudioPan.frame = CGRectMake(xPos, yPos, btnWdt * 1.5, btnHgt);
+    xPos += btnWdt * 1.5 + gap;
+    segAudioPan.frame = CGRectMake(xPos, yPos, btnWdt * 3, btnHgt);
     
     xPos = gap;
     yPos = hgt - btnHgt - gap;
@@ -240,8 +277,12 @@
     xPos = gap;
     yPos -= (btnHgt + gap);
     btnMirror.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
+    
     xPos += gap + btnWdt;
-    btnConfig.frame = CGRectMake(xPos, yPos, btnWdt*2, btnHgt);
+    btnConfig.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
+    
+    xPos += gap + btnWdt;
+    btnFloat.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
     
     xPos = gap;
     yPos = btnMirror.frame.origin.y - btnHgt - gap;
@@ -802,6 +843,19 @@
 	if(content_mode > MPMovieScalingModeFill)
 		content_mode = MPMovieScalingModeNone;
 }
+                       
+- (IBAction)onAudioPan:(id)sender {
+    MPMovieAudioPan pan = MPMovieAudioPan_Stereo;
+    if(0 == segAudioPan.selectedSegmentIndex)
+        pan  = MPMovieAudioPan_Left;
+    else if(1 == segAudioPan.selectedSegmentIndex)
+        pan = MPMovieAudioPan_Stereo;
+    else if(2 == segAudioPan.selectedSegmentIndex)
+        pan = MPMoviveAudioPan_Right;
+    if(_player) {
+        _player.audioPan = pan;
+    }
+}
 
 - (void) remoteControlReceivedWithEvent: (UIEvent *) receivedEvent {
     if (receivedEvent.type == UIEventTypeRemoteControl) {
@@ -902,6 +956,10 @@
         config = newConfig;
     }];
     [self presentViewController:vc animated:NO completion:nil];
+}
+
+- (IBAction)onFloat:(id)sender {
+    [self presentViewController:_floatVC animated:NO completion:nil];
 }
 
 @end

@@ -12,6 +12,7 @@
 #import "KSYStreamerVC.h"
 #import "KSYPipStreamerVC.h"
 #import "KSYBgmStreamerVC.h"
+#import "KSYFloatStreamerVC.h"
 
 #ifdef KSYSTREAMER_DEMO
 #import "TestVCs.h"
@@ -35,9 +36,9 @@
     if (_cfgView == nil){
         _cfgView = [[KSYPresetCfgView alloc] init];
     }
-    __weak KSYPresetCfgVC * weakSelf = self;
+    weakObj(self);
     _cfgView.onBtnBlock = ^(id sender){
-        [weakSelf  btnFunc:sender];
+        [selfWeak  btnFunc:sender];
     };
     _cfgView.frame = self.view.frame;
     self.view = _cfgView;
@@ -96,6 +97,12 @@
         [strVC.ctrlView.btnStream setTitle:btnName forState:UIControlStateNormal];
         vc = strVC;
     }
+    else if (sender ==  _cfgView.btn5) { // floating demo
+        NSString * btnName = _cfgView.btn5.currentTitle;
+        KSYFloatStreamerVC *strVC = [[KSYFloatStreamerVC alloc] initWithCfg:_cfgView];
+        [strVC.ctrlView.btnStream setTitle:btnName forState:UIControlStateNormal];
+        vc = strVC;
+    }
     else if ( sender == _cfgView.btn2) { // tests
 #ifdef KSYSTREAMER_DEMO
         vc = [[TEST_VC alloc] init];
@@ -106,6 +113,7 @@
                                  completion:nil];
         return;
     }
+
     if (vc){
         [self presentViewController:vc animated:true completion:nil];
     }

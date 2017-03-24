@@ -8,7 +8,7 @@
 
 #import "KSYUIVC.h"
 #import <mach/mach.h>
-#import "KSYReachability.h"
+#import <libksygpulive/KSYReachability.h>
 #import "KSYUIView.h"
 
 @interface KSYUIVC() {
@@ -37,7 +37,7 @@
     NSNotificationCenter * dc = [NSNotificationCenter defaultCenter];
     [dc addObserver:self
            selector:@selector(netWorkChange)
-               name:kReachabilityChangedNotification
+               name:kKSYReachabilityChangedNotification
              object:nil];
     _reach = [KSYReachability reachabilityWithHostName:@"http://www.kingsoft.com"];
     [_reach startNotifier];
@@ -72,12 +72,18 @@
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self layoutUI];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [UIApplication sharedApplication].idleTimerDisabled=YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear: animated];
     [UIApplication sharedApplication].idleTimerDisabled=NO;
 }
 
@@ -108,12 +114,13 @@
 #pragma mark - ui rotate
 - (void)viewWillTransitionToSize:(CGSize)size
        withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
-    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) { }
-                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-                                     if(SYSTEM_VERSION_GE_TO(@"8.0")) {
-                                         [self onViewRotate];
-                                     }
-                                 }];
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        if(SYSTEM_VERSION_GE_TO(@"8.0")) {
+            [self onViewRotate];
+        }
+    }completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        
+    }];
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 }
 
@@ -124,7 +131,7 @@
     [self onViewRotate];
 }
 - (void) onViewRotate {
-    // 子类 重新该方法来响应屏幕旋转
+    // 子类 重写该方法来响应屏幕旋转
 }
 
 #pragma mark - string format

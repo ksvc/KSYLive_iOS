@@ -1,8 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="">
+	<File path="Constants/NetworkStatus.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/NetworkStatus</TokenIdentifier>
+			<Abstract type="html">Create NS_ENUM macro if it does not exist on the targeted version of iOS or OS X.</Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+            
+			
+			<NodeRef refid="70"/>
+		</Token>
 		
 		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/NotReachable</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>NotReachable</Declaration>
+            
+            <DeclaredIn>KSYReachability.h</DeclaredIn>
+            
+            <NodeRef refid="70"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ReachableViaWiFi</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>ReachableViaWiFi</Declaration>
+            
+            <DeclaredIn>KSYReachability.h</DeclaredIn>
+            
+            <NodeRef refid="70"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/ReachableViaWWAN</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>ReachableViaWWAN</Declaration>
+            
+            <DeclaredIn>KSYReachability.h</DeclaredIn>
+            
+            <NodeRef refid="70"/>
+        </Token>
         
         
 	</File>

@@ -241,11 +241,11 @@
     [self setupObservers];
     
     //player视频数据输入
-    __weak KSYUIRecorderKit* weakKit = _kit;
+    @WeakObj(_kit);
     _player.textureBlock = ^(GLuint textureId, int width, int height, double pts){
         CGSize size = CGSizeMake(width, height);
         CMTime _pts = CMTimeMake((int64_t)(pts * 1000), 1000);
-        [weakKit processWithTextureId:textureId TextureSize:size Time:_pts];
+        [_kitWeak processWithTextureId:textureId TextureSize:size Time:_pts];
     };
     
     //player音频数据输入
@@ -256,7 +256,7 @@
             NSLog(@"audio pts < 0");
             return;
         }
-        [weakKit processAudioSampleBuffer:buf];
+        [_kitWeak processAudioSampleBuffer:buf];
     };
     
     _player.videoDecoderMode = switchHwCodec.isOn? MPMovieVideoDecoderMode_Hardware : MPMovieVideoDecoderMode_Software;

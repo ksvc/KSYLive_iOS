@@ -77,7 +77,7 @@ class KSYStreamerVC: KSYUIVC, UIImagePickerControllerDelegate, UINavigationContr
         addSwipeGesture()
         addFoucsCursor()
         addPinchGestureRecognizer()
-        if presetCfgView!.profileUI!.selectedSegmentIndex == 0 {
+        if presetCfgView!.profileUI!.selectedSegmentIndex != 0 {
             setCustomizeCfg()
         }else{
             kit?.streamerProfile = KSYStreamerProfile(rawValue: presetCfgView!.curProfileIdx)!

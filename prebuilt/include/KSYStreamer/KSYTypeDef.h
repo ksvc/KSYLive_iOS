@@ -104,7 +104,7 @@ typedef NS_ENUM(NSUInteger, KSYAudioCodec) {
     KSYAudioCodec_AAC,
     /// iOS自带的audiotoolbox音频编码器 - AAC_LC (CPU占用较低,但推荐码率:64kbps单声道,128kbps双声道)
     KSYAudioCodec_AT_AAC,
-    /// aac软件编码器 - AAC_HE_V2 (仅双声道音频可用, 如果输入数据为单声道, 则自动退化为 AAC_HE)
+    /// aac软件编码器 - AAC_HE_V2 (仅双声道音频可用;如果输入数据为单声道,则自动退化为 AAC_HE)
     KSYAudioCodec_AAC_HE_V2,
 };
 
@@ -151,7 +151,7 @@ typedef NS_ENUM(NSUInteger, KSYStreamErrorCode) {
     /// 正常无错误
     KSYStreamErrorCode_NONE = 0,
     /// (obsolete)
-    KSYStreamErrorCode_KSYAUTHFAILED,
+    KSYStreamErrorCode_KSYAUTHFAILED __deprecated_enum_msg("auth removed"),
     /// 当前帧编码失败
     KSYStreamErrorCode_ENCODE_FRAMES_FAILED,
     /// 无法打开配置指示的CODEC
@@ -194,6 +194,8 @@ typedef NS_ENUM(NSUInteger, KSYStreamErrorCode) {
     KSYStreamErrorCode_AV_SYNC_ERROR,
     /// 非法地址(地址为空或url中的协议或本地文件的后缀SDK不支持, 请检查)
     KSYStreamErrorCode_INVALID_ADDRESS,
+    /// 网络不通
+    KSYStreamErrorCode_NETWORK_UNREACHABLE,
 };
 
 /*!
@@ -216,6 +218,10 @@ typedef NS_ENUM(NSUInteger, KSYNetStateCode) {
     KSYNetStateCode_KSYAUTHFAILED,
     /// 输入音频不连续
     KSYNetStateCode_IN_AUDIO_DISCONTINUOUS,
+    /// 网络变为不可用
+    KSYNetStateCode_UNREACHABLE,
+    /// 网络变为可用
+    KSYNetStateCode_REACHABLE,
 };
 
 /*!

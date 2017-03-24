@@ -7,14 +7,19 @@
 //
 
 #import "KSYSimplestStreamerVC.h"
-#import <libksygpulive/KSYGPUStreamerKit.h>
+#import "KSYUIView.h"
 
 @interface KSYSimplestStreamerVC ()<UIPickerViewDataSource,
 UIPickerViewDelegate>{
     NSArray * _profileNames;
+    
+    UIButton *captureBtn;
+    UIButton *streamBtn;
+    UIButton *cameraBtn;
+    UIButton *quitBtn;
+    KSYUIView *ctrlView;
 }
-@property KSYGPUStreamerKit *kit;
-@property UIPickerView      *profilePicker;
+
 @property NSInteger         curProfileIdx;
 @property NSURL             *url;
 @property UILabel           *streamState;
@@ -70,41 +75,62 @@ UIPickerViewDelegate>{
                      @"720p_1",@"720p_2",@"720p_3",nil];
     [self setupUI];
 }
+
 - (void)setupUI{
+    ctrlView = [[KSYUIView alloc] initWithFrame:self.view.bounds];
+    @WeakObj(self);
+    ctrlView.onBtnBlock = ^(id sender){
+        [selfWeak  onBtn:sender];
+    };
+    
+    // top view
+    quitBtn = [ctrlView addButton:@"退出"];
+    _streamState = [ctrlView addLable:@"空闲状态"];
+    _streamState.textColor = [UIColor redColor];
+    _streamState.textAlignment = NSTextAlignmentCenter;
+    cameraBtn = [ctrlView addButton:@"前后摄像头"];
+    
+    // profile picker
     _profilePicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 200, self.view.frame.size.width, 200)];
-    [self.view addSubview: _profilePicker];
     _profilePicker.delegate   = self;
     _profilePicker.dataSource = self;
     _profilePicker.showsSelectionIndicator= YES;
     _profilePicker.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.3];
     [_profilePicker selectRow:7 inComponent:0 animated:YES];
+    
+    // bottom view
+    captureBtn = [ctrlView addButton:@"开始预览"];
+    streamBtn = [ctrlView addButton:@"开始推流"];
 
-    UIButton *captureBtn = [[UIButton alloc] initWithFrame:CGRectMake(5, self.view.frame.size.height-35, 120, 30)];
-    [self.view addSubview:captureBtn];
-    [captureBtn setTitle:@"开始预览" forState:UIControlStateNormal];
-    [captureBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [captureBtn setBackgroundColor:[UIColor lightGrayColor]];
-    [captureBtn addTarget:self action:@selector(onCapture) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton *streamBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width-125, self.view.frame.size.height-35, 120, 30)];
-    [self.view addSubview:streamBtn];
-    [streamBtn setTitle:@"开始推流" forState:UIControlStateNormal];
-    [streamBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [streamBtn setBackgroundColor:[UIColor lightGrayColor]];
-    [streamBtn addTarget:self action:@selector(onStream) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton *quitBtn = [[UIButton alloc] initWithFrame:CGRectMake(5, 20, 60, 30)];
-    [self.view addSubview:quitBtn];
-    [quitBtn setTitle:@"退出" forState:UIControlStateNormal];
-    [quitBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [quitBtn setBackgroundColor:[UIColor lightGrayColor]];
-    [quitBtn addTarget:self action:@selector(onQuit) forControlEvents:UIControlEventTouchUpInside];
-    
-    _streamState = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - 60, 20, 120, 30)];
-    [self.view addSubview:_streamState];
-    _streamState.textAlignment = NSTextAlignmentCenter;
-    _streamState.textColor = [UIColor redColor];
+    [self.view addSubview:ctrlView];
+    [ctrlView addSubview:_profilePicker];
+    [self layoutUI];
 }
+
+- (void)layoutUI{
+    [ctrlView layoutUI];
+    [ctrlView putRow:@[quitBtn, _streamState, cameraBtn]];
+    
+    ctrlView.yPos = self.view.frame.size.height - 30;
+    [ctrlView putRow:@[captureBtn, [UIView new], streamBtn]];
+}
+
+- (void)onBtn:(UIButton *)btn{
+    if (btn == captureBtn) {
+        [self onCapture];
+    }else if (btn == streamBtn){
+        [self onStream];
+    }else if (btn == cameraBtn){
+        [self onCamera];
+    }else if (btn == quitBtn){
+        [self onQuit];
+    }
+}
+
+- (void)onCamera{
+    [_kit switchCamera];
+}
+
 - (void)onCapture{
     _profilePicker.hidden = YES;
     if (!_kit.vCapDev.isRunning){

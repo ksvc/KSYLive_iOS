@@ -30,8 +30,12 @@
 // 如果没有主动调用, 会在 dealloc时调用
 - (void) rmObservers;
 
-// 重载本函数进行UI重新布局
+// 重写本函数进行UI重新布局
 - (void) layoutUI;
+
+// 重写该方法来响应屏幕旋转
+- (void) onViewRotate;
+
 // 默认的控制视图
 @property KSYUIView *layoutView;
 

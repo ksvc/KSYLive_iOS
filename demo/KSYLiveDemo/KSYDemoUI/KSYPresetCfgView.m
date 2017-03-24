@@ -38,7 +38,8 @@
 #endif
     _btn3 =  [self addButton:@"背景音乐直播"];
     _btn4 =  [self addButton:@"返回"];
-
+    _btn5 = [self addButton:@"悬浮窗直播"];
+    
     _lblCameraPosUI = [self addLable:@"摄像头"];
     _cameraPosUI    = [self addSegCtrlWithItems:@[@"前置",@"后置"]];
     _lblGpuPixFmtUI = [self addLable:@"像素格式"];
@@ -392,7 +393,7 @@ numberOfRowsInComponent:(NSInteger)component {
         [self putRow: @[_btn1,_btn3,_btn2] ];
     }
     else {
-        [self putRow: @[_btn1,_btn3] ];
+        [self putRow: @[_btn1,_btn3,_btn5] ];
     }
 }
 

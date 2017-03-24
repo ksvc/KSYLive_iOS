@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		050E1CFC1E76409600653275 /* KSYHorScreenStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 050E1CFB1E76409600653275 /* KSYHorScreenStreamerVC.m */; };
 		0530DE591E484C6100EEAD32 /* KSYBgmStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0530DE581E484C6100EEAD32 /* KSYBgmStreamerVC.m */; };
 		056FE3801E1BA730002FC22F /* KSYPipStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 056FE37F1E1BA730002FC22F /* KSYPipStreamerVC.m */; };
 		060AE9C51D4653010064DD65 /* KSYFileSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 060AE9C41D4653010064DD65 /* KSYFileSelector.m */; };
 		064980251DAFB8AB00AA5A0A /* KSYAudioCtrlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 064980231DAFB8AB00AA5A0A /* KSYAudioCtrlView.m */; };
-		065E7CF51D66E60F00EC8D45 /* KSYReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 065E7CF31D66E60F00EC8D45 /* KSYReachability.m */; };
 		069E428A1C10357D00392B5E /* KSYLiveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 069E42881C10357D00392B5E /* KSYLiveVC.m */; };
 		06A646591D81500000D1C620 /* KSYStateLableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CB3A641D813EE70017378F /* KSYStateLableView.m */; };
 		06A646B41D8459C800D1C620 /* URLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A646A51D84572E00D1C620 /* URLTableViewController.m */; };
@@ -38,11 +38,14 @@
 		06FBBD691D2E17E00065ED55 /* KSYUIVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD481D2E17E00065ED55 /* KSYUIVC.m */; };
 		06FBBD6B1D2E17E00065ED55 /* KSYUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD4A1D2E17E00065ED55 /* KSYUIView.m */; };
 		3991D0F21DD5674200032EC0 /* KSYRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3991D0EF1DD5674200032EC0 /* KSYRecordVC.m */; };
+		5806F5A71E7FF8B100FDB488 /* KSYFloatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5806F5A61E7FF8B100FDB488 /* KSYFloatVC.m */; };
 		580C1C311E289BC800B386D5 /* KSYNetTrackerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C1C301E289BC800B386D5 /* KSYNetTrackerVC.m */; };
 		58BC85EA1E6D9956004D7F16 /* KSYPlayerConfigureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BC85E91E6D9956004D7F16 /* KSYPlayerConfigureVC.m */; };
 		625EF3B51C9A95BE00DBA1CC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 625EF3B41C9A95BE00DBA1CC /* libsqlite3.tbd */; };
 		95B4A3EF1CBF6CC700CB6804 /* KSYSQLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B4A3EA1CBF6CC700CB6804 /* KSYSQLite.m */; };
 		95B4A3F11CBF6CC700CB6804 /* QRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B4A3EE1CBF6CC700CB6804 /* QRViewController.m */; };
+		C323BC1E1E794C2900D4682C /* KSYFloatStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C323BC1D1E794C2900D4682C /* KSYFloatStreamerVC.m */; };
+		C323BC211E794DEB00D4682C /* KSYFloatingWindowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C323BC201E794DEB00D4682C /* KSYFloatingWindowVC.m */; };
 		C36493FE1E6E8CA600299E99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36493FD1E6E8CA600299E99 /* AppDelegate.swift */; };
 		C36494001E6E8CA600299E99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36493FF1E6E8CA600299E99 /* ViewController.swift */; };
 		C36494031E6E8CA600299E99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C36494011E6E8CA600299E99 /* Main.storyboard */; };
@@ -100,6 +103,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		050E1CFA1E76409600653275 /* KSYHorScreenStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYHorScreenStreamerVC.h; sourceTree = "<group>"; };
+		050E1CFB1E76409600653275 /* KSYHorScreenStreamerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYHorScreenStreamerVC.m; sourceTree = "<group>"; };
 		0530DE571E484C6100EEAD32 /* KSYBgmStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYBgmStreamerVC.h; sourceTree = "<group>"; };
 		0530DE581E484C6100EEAD32 /* KSYBgmStreamerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYBgmStreamerVC.m; sourceTree = "<group>"; };
 		056FE37E1E1BA730002FC22F /* KSYPipStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYPipStreamerVC.h; sourceTree = "<group>"; };
@@ -108,8 +113,6 @@
 		060AE9C41D4653010064DD65 /* KSYFileSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYFileSelector.m; sourceTree = "<group>"; };
 		064980231DAFB8AB00AA5A0A /* KSYAudioCtrlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYAudioCtrlView.m; sourceTree = "<group>"; };
 		064980241DAFB8AB00AA5A0A /* KSYAudioCtrlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYAudioCtrlView.h; sourceTree = "<group>"; };
-		065E7CF31D66E60F00EC8D45 /* KSYReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYReachability.m; sourceTree = "<group>"; };
-		065E7CF41D66E60F00EC8D45 /* KSYReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYReachability.h; sourceTree = "<group>"; };
 		069E42881C10357D00392B5E /* KSYLiveVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYLiveVC.m; sourceTree = "<group>"; };
 		069E42891C10357D00392B5E /* KSYLiveVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYLiveVC.h; sourceTree = "<group>"; };
 		06A646A51D84572E00D1C620 /* URLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLTableViewController.m; path = KSYLiveDemo/KSYPlayerDemo/URLTableViewController.m; sourceTree = "<group>"; };
@@ -160,6 +163,8 @@
 		06FBBD4A1D2E17E00065ED55 /* KSYUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYUIView.m; sourceTree = "<group>"; };
 		3991D0EE1DD5674200032EC0 /* KSYRecordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYRecordVC.h; path = KSYLiveDemo/KSYPlayerDemo/KSYRecordVC.h; sourceTree = "<group>"; };
 		3991D0EF1DD5674200032EC0 /* KSYRecordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYRecordVC.m; path = KSYLiveDemo/KSYPlayerDemo/KSYRecordVC.m; sourceTree = "<group>"; };
+		5806F5A51E7FF8B100FDB488 /* KSYFloatVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYFloatVC.h; path = KSYLiveDemo/KSYPlayerDemo/KSYFloatVC.h; sourceTree = "<group>"; };
+		5806F5A61E7FF8B100FDB488 /* KSYFloatVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYFloatVC.m; path = KSYLiveDemo/KSYPlayerDemo/KSYFloatVC.m; sourceTree = "<group>"; };
 		580C1C301E289BC800B386D5 /* KSYNetTrackerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYNetTrackerVC.m; path = KSYLiveDemo/KSYPlayerDemo/KSYNetTrackerVC.m; sourceTree = "<group>"; };
 		580C1C321E289C1600B386D5 /* KSYNetTrackerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSYNetTrackerVC.h; path = KSYLiveDemo/KSYPlayerDemo/KSYNetTrackerVC.h; sourceTree = "<group>"; };
 		58BC85E81E6D9956004D7F16 /* KSYPlayerConfigureVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYPlayerConfigureVC.h; path = KSYLiveDemo/KSYPlayerDemo/KSYPlayerConfigureVC.h; sourceTree = "<group>"; };
@@ -169,6 +174,10 @@
 		95B4A3EA1CBF6CC700CB6804 /* KSYSQLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYSQLite.m; sourceTree = "<group>"; };
 		95B4A3ED1CBF6CC700CB6804 /* QRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRViewController.h; sourceTree = "<group>"; };
 		95B4A3EE1CBF6CC700CB6804 /* QRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRViewController.m; sourceTree = "<group>"; };
+		C323BC1C1E794C2900D4682C /* KSYFloatStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYFloatStreamerVC.h; sourceTree = "<group>"; };
+		C323BC1D1E794C2900D4682C /* KSYFloatStreamerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYFloatStreamerVC.m; sourceTree = "<group>"; };
+		C323BC1F1E794DEB00D4682C /* KSYFloatingWindowVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYFloatingWindowVC.h; sourceTree = "<group>"; };
+		C323BC201E794DEB00D4682C /* KSYFloatingWindowVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYFloatingWindowVC.m; sourceTree = "<group>"; };
 		C36493FB1E6E8CA600299E99 /* KSYLiveDemo_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KSYLiveDemo_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C36493FD1E6E8CA600299E99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C36493FF1E6E8CA600299E99 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -255,6 +264,8 @@
 		067F7E4F1D4762AC00F54FEA /* KSYPlayerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				5806F5A51E7FF8B100FDB488 /* KSYFloatVC.h */,
+				5806F5A61E7FF8B100FDB488 /* KSYFloatVC.m */,
 				58BC85E81E6D9956004D7F16 /* KSYPlayerConfigureVC.h */,
 				58BC85E91E6D9956004D7F16 /* KSYPlayerConfigureVC.m */,
 				580C1C301E289BC800B386D5 /* KSYNetTrackerVC.m */,
@@ -342,6 +353,8 @@
 		06FBBD271D2E17E00065ED55 /* KSYDemoUI */ = {
 			isa = PBXGroup;
 			children = (
+				C323BC1F1E794DEB00D4682C /* KSYFloatingWindowVC.h */,
+				C323BC201E794DEB00D4682C /* KSYFloatingWindowVC.m */,
 				06FBBD3A1D2E17E00065ED55 /* KSYPresetCfgVC.h */,
 				06FBBD3B1D2E17E00065ED55 /* KSYPresetCfgVC.m */,
 				06FBBD3C1D2E17E00065ED55 /* KSYPresetCfgView.h */,
@@ -354,6 +367,10 @@
 				056FE37F1E1BA730002FC22F /* KSYPipStreamerVC.m */,
 				E33527EB1E49986400DB6DD1 /* KSYSimplestStreamerVC.h */,
 				E33527EC1E49986400DB6DD1 /* KSYSimplestStreamerVC.m */,
+				050E1CFA1E76409600653275 /* KSYHorScreenStreamerVC.h */,
+				050E1CFB1E76409600653275 /* KSYHorScreenStreamerVC.m */,
+				C323BC1C1E794C2900D4682C /* KSYFloatStreamerVC.h */,
+				C323BC1D1E794C2900D4682C /* KSYFloatStreamerVC.m */,
 				06FBBD8E1D2E23110065ED55 /* subviews */,
 			);
 			name = KSYDemoUI;
@@ -363,8 +380,6 @@
 		06FBBD441D2E17E00065ED55 /* KSYUIUtils */ = {
 			isa = PBXGroup;
 			children = (
-				065E7CF41D66E60F00EC8D45 /* KSYReachability.h */,
-				065E7CF31D66E60F00EC8D45 /* KSYReachability.m */,
 				060AE9C31D4653010064DD65 /* KSYFileSelector.h */,
 				060AE9C41D4653010064DD65 /* KSYFileSelector.m */,
 				06FBBD451D2E17E00065ED55 /* KSYNameSlider.h */,
@@ -605,6 +620,7 @@
 				06FBBD5B1D2E17E00065ED55 /* KSYPipView.m in Sources */,
 				06B2B1AC1BE8F0D900E0CC85 /* AppDelegate.m in Sources */,
 				06FBBD691D2E17E00065ED55 /* KSYUIVC.m in Sources */,
+				C323BC211E794DEB00D4682C /* KSYFloatingWindowVC.m in Sources */,
 				069E428A1C10357D00392B5E /* KSYLiveVC.m in Sources */,
 				064980251DAFB8AB00AA5A0A /* KSYAudioCtrlView.m in Sources */,
 				06FBBD511D2E17E00065ED55 /* KSYCtrlView.m in Sources */,
@@ -612,16 +628,18 @@
 				58BC85EA1E6D9956004D7F16 /* KSYPlayerConfigureVC.m in Sources */,
 				06FBBD531D2E17E00065ED55 /* KSYFilterView.m in Sources */,
 				06FBBD4D1D2E17E00065ED55 /* KSYBgmView.m in Sources */,
+				050E1CFC1E76409600653275 /* KSYHorScreenStreamerVC.m in Sources */,
 				06A646591D81500000D1C620 /* KSYStateLableView.m in Sources */,
+				5806F5A71E7FF8B100FDB488 /* KSYFloatVC.m in Sources */,
 				06FBBD5F1D2E17E00065ED55 /* KSYPresetCfgView.m in Sources */,
 				06FBBD651D2E17E00065ED55 /* KSYStreamerVC.m in Sources */,
 				06FBBD6B1D2E17E00065ED55 /* KSYUIView.m in Sources */,
 				F296EC001D3527FF001C4120 /* KSYMiscView.m in Sources */,
+				C323BC1E1E794C2900D4682C /* KSYFloatStreamerVC.m in Sources */,
 				E33527ED1E49986400DB6DD1 /* KSYSimplestStreamerVC.m in Sources */,
 				06FBBD671D2E17E00065ED55 /* KSYNameSlider.m in Sources */,
 				06B2B1A91BE8F0D900E0CC85 /* main.m in Sources */,
 				95B4A3EF1CBF6CC700CB6804 /* KSYSQLite.m in Sources */,
-				065E7CF51D66E60F00EC8D45 /* KSYReachability.m in Sources */,
 				06FBBD5D1D2E17E00065ED55 /* KSYPresetCfgVC.m in Sources */,
 				060AE9C51D4653010064DD65 /* KSYFileSelector.m in Sources */,
 				580C1C311E289BC800B386D5 /* KSYNetTrackerVC.m in Sources */,

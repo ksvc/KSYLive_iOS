@@ -504,6 +504,16 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
 @property(nonatomic) BOOL  bInterruptOtherAudio;
 
 /**
+ @abstract 立体声平衡模式，默认立体声输出
+ @discussion 针对单声道或双声道音频播放配置时有效，多声道音频播放配置无效
+ @discussion 需要佩戴耳机以区分左右声道，手机外放无效果
+ @discussion prepareToPlay前配置无效，应在播放过程中动态配置
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 2.0.3 and later
+ */
+@property(nonatomic) MPMovieAudioPan audioPan;
+
+/**
  @abstract timeout指定拉流超时时间,单位是秒
  @param prepareTimeout 建立链接超时时间，默认值是10秒
  @param readTimeout 拉流超时时间，默认值是30秒
@@ -649,6 +659,14 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
  @since Available in KSYMoviePlayerController 1.9.1 and later.
  */
 - (void)seekTo:(double)pos accurate:(BOOL)isAccurate;
+
+/**
+ @abstract 发送http请求时需要header带上的字段
+ @discussion 在调用prepareToPlay方法前调用生效
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 2.0.3 and later.
+ */
+-(void)setHttpHeaders:(NSDictionary *)headers;
 
 @end
 
