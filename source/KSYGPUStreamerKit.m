@@ -9,7 +9,7 @@
 
 #define FLOAT_EQ( f0, f1 ) ( (f0 - f1 < 0.0001)&& (f0 - f1 > -0.0001) )
 
-#define WeakObj(o) try{}@finally{} __weak typeof(o) o##Weak = o;
+#define weakObj(o) __weak typeof(o) o##Weak = o;
 
 @interface KSYGPUStreamerKit (){
     dispatch_queue_t _capDev_q;
@@ -21,7 +21,10 @@
     KSYDummyAudioSource *_dAudioSrc;
     // 音频采集模式（KSYAudioCapType）为AVCaptureDevice时发送静音包
     BOOL _bMute;
+    NetworkStatus _lastNetStatus;
 }
+// vMixerTargets
+@property (nonatomic, copy) NSArray *vPreviewTargets;
 @end
 
 @implementation KSYGPUStreamerKit
@@ -156,7 +159,7 @@
     _msgStreamer = [[KSYMessage alloc] init];
     [self setupMessagePath];
     
-    @WeakObj(self);
+    weakObj(self);
     _streamerBase.streamStateChange = ^(KSYStreamState state) {
         [selfWeak onStreamState:state];
     };
@@ -176,6 +179,10 @@
     [dc addObserver:self
            selector:@selector(appEnterBackground)
                name:UIApplicationDidEnterBackgroundNotification
+             object:nil];
+    [dc addObserver:self
+           selector:@selector(onNetEvent)
+               name:KSYNetStateEventNotification
              object:nil];
     return self;
 }
@@ -241,9 +248,21 @@
 }
 
 - (void) setupVMixer {
+    if (_vPreviewMixer.targets.count > 0 && _vPreviewTargets.count == 0) {
+        _vPreviewTargets = [_vPreviewMixer.targets copy];
+    }
+    
     // 混合后的图像输出到预览和推流
     [_vPreviewMixer removeAllTargets];
-    [_vPreviewMixer addTarget:_preview];
+    
+    if (![_vPreviewTargets containsObject:_preview]) {
+        [_vPreviewMixer addTarget:_preview];
+    }else{
+        for (id<GPUImageInput> target in _vPreviewTargets) {
+            [_vPreviewMixer addTarget:target];
+        }
+    }
+    _vPreviewTargets = nil;
     
     [_vStreamMixer  removeAllTargets];
     [_vStreamMixer  addTarget:_gpuToStr];
@@ -266,36 +285,36 @@
 }
 // 组装视频通道
 - (void) setupVideoPath {
-    __weak KSYGPUStreamerKit * kit = self;
+    weakObj(self);
     // 前处理 和 图像 mixer
     [self setupFilter:_filter];
     [self setupVMixer];
 
     // 采集到的画面上传GPU
     _vCapDev.videoProcessingCallback = ^(CMSampleBufferRef buf) {
-        if ( kit.videoProcessingCallback ){
-            kit.videoProcessingCallback(buf);
+        if ( selfWeak.videoProcessingCallback ){
+            selfWeak.videoProcessingCallback(buf);
         }
-        [kit.capToGpu processSampleBuffer:buf];
+        [selfWeak.capToGpu processSampleBuffer:buf];
     };
     // GPU 上的数据导出到streamer
     _gpuToStr.videoProcessingCallback = ^(CVPixelBufferRef pixelBuffer, CMTime timeInfo){
-        if (![kit.streamerBase isStreaming]){
+        if (![selfWeak.streamerBase isStreaming]){
             return;
         }
-        [kit.streamerBase processVideoPixelBuffer:pixelBuffer
+        [selfWeak.streamerBase processVideoPixelBuffer:pixelBuffer
                                          timeInfo:timeInfo];
     };
     // 采集被打断的事件回调
     _vCapDev.interruptCallback = ^(BOOL bInterrupt) {
         if (bInterrupt) {
-            [kit appEnterBackground];
+            [selfWeak appEnterBackground];
         }
         else {
-            [kit appBecomeActive];
+            [selfWeak appBecomeActive];
         }
-        if(kit.interruptCallback) {
-            kit.interruptCallback(bInterrupt);
+        if(selfWeak.interruptCallback) {
+            selfWeak.interruptCallback(bInterrupt);
         }
     };
 }
@@ -309,31 +328,31 @@
 }
 // 组装声音通道
 - (void) setupAudioPath {
-    __weak KSYGPUStreamerKit * kit = self;
+    weakObj(self);
     //1. 音频采集, 语音数据送入混音器
     _aCapDev.audioProcessingCallback = ^(CMSampleBufferRef buf){
-        if ( kit.audioProcessingCallback ){
-            kit.audioProcessingCallback(buf);
+        if ( selfWeak.audioProcessingCallback ){
+            selfWeak.audioProcessingCallback(buf);
         }
-        [kit mixAudio:buf to:kit.micTrack];
+        [selfWeak mixAudio:buf to:selfWeak.micTrack];
     };
     //2. 背景音乐播放,音乐数据送入混音器
     _bgmPlayer.audioDataBlock = ^ BOOL(uint8_t** pData, int len, const AudioStreamBasicDescription* fmt, CMTime pts){
-        if ([kit.streamerBase isStreaming]) {
-        [kit.aMixer processAudioData:pData
+        if ([selfWeak.streamerBase isStreaming]) {
+        [selfWeak.aMixer processAudioData:pData
                             nbSample:len
                           withFormat:fmt
                             timeinfo:pts
-                                  of:kit.bgmTrack];
+                                  of:selfWeak.bgmTrack];
         }
         return YES;
     };
     // 混音结果送入streamer
     _aMixer.audioProcessingCallback = ^(CMSampleBufferRef buf){
-        if (![kit.streamerBase isStreaming]){
+        if (![selfWeak.streamerBase isStreaming]){
             return;
         }
-        [kit.streamerBase processAudioSampleBuffer:buf];
+        [selfWeak.streamerBase processAudioSampleBuffer:buf];
     };
     // mixer 的主通道为麦克风,时间戳以main通道为准
     _aMixer.mainTrack = _micTrack;
@@ -343,9 +362,9 @@
 
 #pragma mark - message
 - (void) setupMessagePath {
-    __weak KSYGPUStreamerKit *kit = self;
+    weakObj(self);
     _msgStreamer.messageProcessingCallback = ^(NSDictionary *messageData){
-        [kit.streamerBase processMessageData:messageData];
+        [selfWeak.streamerBase processMessageData:messageData];
     };
 }
 
@@ -425,7 +444,7 @@
         _capPreset = _vCapDev.captureSessionPreset;
         [self  updatePreDimension];
         [self  updateStrDimension:self.videoOrientation];
-        // 旋转
+//         旋转
         [self rotatePreviewTo:_videoOrientation ];
         [self rotateStreamTo: _videoOrientation ];
         // 连接
@@ -468,6 +487,10 @@
 
 /**  进入后台 */
 - (void) appEnterBackground {
+    if (_vPreviewMixer.targets.count > 0){
+        _vPreviewTargets = [_vPreviewMixer.targets copy];
+    }
+    
     // 进入后台时, 将预览从图像混合器中脱离, 避免后台OpenGL渲染崩溃
     [_vPreviewMixer removeAllTargets];
     if (_audioCaptureType == KSYAudioCap_AVCaptureDevice) {
@@ -500,8 +523,7 @@
 }
 
 - (void)startDummySource{
-    @WeakObj(self);
-
+    weakObj(self);
     _bMute = YES;
     // 开启后台任务，避免被suspend
     __block UIBackgroundTaskIdentifier background_task;
@@ -540,7 +562,7 @@
 }
 - (void) onStreamError: (KSYStreamErrorCode) errCode {
     NSString * name = [_streamerBase getCurKSYStreamErrorCodeName];
-    NSLog(@"stream Error: %@", [name substringFromIndex:20]);
+    NSLog(@"stream Error: %@", [name substringFromIndex:19]);
     if (errCode == KSYStreamErrorCode_CONNECT_BREAK ||
         errCode == KSYStreamErrorCode_AV_SYNC_ERROR ||
         errCode == KSYStreamErrorCode_Connect_Server_failed ||
@@ -551,18 +573,37 @@
         }
     }
 }
+- (void) onNetEvent {
+    KSYNetStateCode code = [_streamerBase netStateCode];
+    if (code == KSYNetStateCode_REACHABLE) {
+        if ( _streamerBase.streamState == KSYStreamStateError) {
+            [self tryReconnect];
+        }
+        NetworkStatus curStat = _streamerBase.netReachability.currentReachabilityStatus;
+        if (_lastNetStatus == ReachableViaWWAN &&
+            curStat == ReachableViaWiFi) { // 4G to wifi
+            NSLog(@"warning: 4Gtowifi: still using 4G!");
+        }
+        _lastNetStatus = curStat;
+    }
+    else if (code == KSYNetStateCode_UNREACHABLE) {
+        _lastNetStatus = _streamerBase.netReachability.currentReachabilityStatus;
+    }
+}
 - (void) tryReconnect {
     _bRetry = YES;
     int64_t delaySec = (int64_t)(_autoRetryDelay * NSEC_PER_SEC);
     dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, delaySec);
     dispatch_after(delay, dispatch_get_main_queue(), ^{
         _bRetry = NO;
-        if (_autoRetryCnt <= 0) {
+        if (_autoRetryCnt <= 0 || !_streamerBase.isReachable) {
             return;
         }
-        NSLog(@"retry connect %d/%d", _autoRetryCnt, _maxAutoRetry);
-        _autoRetryCnt--;
-        [_streamerBase startStream:_streamerBase.hostURL];
+        if (!_streamerBase.isStreaming) {
+            NSLog(@"retry connect %d/%d", _autoRetryCnt, _maxAutoRetry);
+            _autoRetryCnt--;
+            [_streamerBase startStream:_streamerBase.hostURL];
+        }
     });
 }
 @synthesize autoRetryDelay = _autoRetryDelay;
@@ -626,9 +667,9 @@
 // 根据宽高比计算需要裁剪掉的区域
 - (void) updatePreDimension {
     _previewDimension = [self getDimension:_previewDimension
-                               byOriention:self.videoOrientation];
+                               byOriention:_videoOrientation];
     CGSize  inSz     =  [self captureDimension];
-    inSz = [self getDimension:inSz byOriention:self.videoOrientation];
+    inSz = [self getDimension:inSz byOriention:_vCapDev.outputImageOrientation];
     CGSize cropSz = [self calcCropSize:inSz to:_previewDimension];
     _capToGpu.cropRegion = [self calcCropRect:inSz to:cropSz];
     [_capToGpu forceProcessingAtSize:_previewDimension];
@@ -948,7 +989,7 @@ M_PI_2*1,M_PI_2*3, M_PI_2*2, M_PI_2*0,
  @discussion 采集到的图像的朝向还是和启动时的朝向一致
  */
 - (void) rotatePreviewTo: (UIInterfaceOrientation) orie {
-    @WeakObj(self);
+    weakObj(self);
     dispatch_async(dispatch_get_main_queue(), ^(){
         [selfWeak internalRotatePreviewTo:orie];
     });
@@ -958,18 +999,21 @@ M_PI_2*1,M_PI_2*3, M_PI_2*2, M_PI_2*0,
 {
     _previewOrientation = orie;
     UIView* view = [_preview superview];
-    if (_videoOrientation == orie || view == nil || _vCapDev.isRunning == NO ) {
-        _preview.transform = CGAffineTransformIdentity;
+    if (UIInterfaceOrientationPortrait == orie || view == nil) {
+        for (UIView<GPUImageInput> *v in _vPreviewMixer.targets) {
+            v.transform = CGAffineTransformIdentity;
+        }
         _previewRotateAng = 0;
-        _preview.frame = view.bounds;
     }
     else {
-        int capOri = UIOrienToIdx(_videoOrientation);
-        int appOri = UIOrienToIdx(orie);
+        int capOri = UIOrienToIdx(_vCapDev.outputImageOrientation);
+        int appOri = UIOrienToIdx(UIInterfaceOrientationPortrait);
         _previewRotateAng = KSYRotateAngles[ capOri ][ appOri ];
-        _preview.transform = CGAffineTransformMakeRotation(_previewRotateAng);
+        for (UIView<GPUImageInput> *v in _vPreviewMixer.targets) {
+            v.transform = CGAffineTransformMakeRotation(_previewRotateAng);
+        }
     }
-    _preview.center = view.center;
+    _preview.frame = view.bounds;
     [self setPreviewMirrored: _previewMirrored];
 }
 
@@ -1178,9 +1222,7 @@ kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRota
 //
 - (void)setAudioCaptureType:(KSYAudioCapType)audioCaptureType{
     _audioCaptureType = audioCaptureType;
-    
-    @WeakObj(self);
-    
+    weakObj(self);
     if (audioCaptureType == KSYAudioCap_AudioUnit) {
         [_vCapDev removeAudioInputsAndOutputs];
         
@@ -1209,7 +1251,6 @@ kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRota
             [selfWeak mixAudio:buf to:selfWeak.micTrack];
         };
     }
-    
 }
 
 @end

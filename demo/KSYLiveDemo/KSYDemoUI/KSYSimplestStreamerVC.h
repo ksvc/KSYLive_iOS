@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "KSYUIVC.h"
+#import <libksygpulive/KSYGPUStreamerKit.h>
 
 @interface KSYSimplestStreamerVC : KSYUIVC
+
+@property KSYGPUStreamerKit *kit;
+
+// profile picker
+@property UIPickerView *profilePicker;
+
 - (id)initWithUrl:(NSString *)rtmpUrl;
+
+// 重写此方法，调整UI布局
+- (void)setupUI;
 @end

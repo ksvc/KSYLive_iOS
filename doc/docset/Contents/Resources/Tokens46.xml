@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYCaptureState.html">
+	<File path="Constants/KSYBgmPlayerState.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYCaptureState</TokenIdentifier>
-			<Abstract type="html">采集设备状态</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYBgmPlayerState</TokenIdentifier>
+			<Abstract type="html">音频播放状态</Abstract>
 			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYCaptureStateIdle</TokenIdentifier>
-            <Abstract type="html">设备空闲中</Abstract>
-            <Declaration>KSYCaptureStateIdle</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateInit</TokenIdentifier>
+            <Abstract type="html">初始状态</Abstract>
+            <Declaration>KSYBgmPlayerStateInit</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -24,9 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYCaptureStateCapturing</TokenIdentifier>
-            <Abstract type="html">设备工作中</Abstract>
-            <Declaration>KSYCaptureStateCapturing</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateStarting</TokenIdentifier>
+            <Abstract type="html">背景音正在播放</Abstract>
+            <Declaration>KSYBgmPlayerStateStarting</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -34,9 +34,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYCaptureStateDevAuthDenied</TokenIdentifier>
-            <Abstract type="html">设备授权被拒绝</Abstract>
-            <Declaration>KSYCaptureStateDevAuthDenied</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateStopped</TokenIdentifier>
+            <Abstract type="html">背景音停止</Abstract>
+            <Declaration>KSYBgmPlayerStateStopped</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -44,9 +44,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYCaptureStateClosingCapture</TokenIdentifier>
-            <Abstract type="html">关闭采集设备中</Abstract>
-            <Declaration>KSYCaptureStateClosingCapture</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStatePlaying</TokenIdentifier>
+            <Abstract type="html">背景音正在播放</Abstract>
+            <Declaration>KSYBgmPlayerStatePlaying</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -54,9 +54,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYCaptureStateParameterError</TokenIdentifier>
-            <Abstract type="html">参数错误，无法打开（比如设置的分辨率，码率当前设备不支持）</Abstract>
-            <Declaration>KSYCaptureStateParameterError</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStatePaused</TokenIdentifier>
+            <Abstract type="html">背景音暂停</Abstract>
+            <Declaration>KSYBgmPlayerStatePaused</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -64,9 +64,19 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYCaptureStateDevBusy</TokenIdentifier>
-            <Abstract type="html">设备正忙，请稍后尝试 ( 该状态在发出通知0.5秒后被清除 ）</Abstract>
-            <Declaration>KSYCaptureStateDevBusy</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateError</TokenIdentifier>
+            <Abstract type="html">背景音播放出错</Abstract>
+            <Declaration>KSYBgmPlayerStateError</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="46"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateInterrupted</TokenIdentifier>
+            <Abstract type="html">背景音被打断</Abstract>
+            <Declaration>KSYBgmPlayerStateInterrupted</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             

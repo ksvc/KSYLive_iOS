@@ -99,4 +99,15 @@ typedef NS_ENUM(NSUInteger, MPMovieVideoDeinterlaceMode) {
     MPMovieVideoDeinterlaceMode_Auto,
 };
 
+/**
+ * 立体声平衡
+ */
+typedef NS_ENUM(NSInteger, MPMovieAudioPan) {
+    ///完全左声道
+    MPMovieAudioPan_Left = -1,
+    ///左右声道平衡
+    MPMovieAudioPan_Stereo,
+    ///完全右声道
+    MPMoviveAudioPan_Right,
+};
 //----------------------------------------------

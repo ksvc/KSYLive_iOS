@@ -348,9 +348,9 @@
     [sl.slider addTarget:self
                   action:@selector(onSlider:)
         forControlEvents:UIControlEventValueChanged ];
-    __weak KSYUIView * view = self;
+    weakObj(self);
     sl.onSliderBlock = ^(id sender){
-        [view onSlider:sender];
+        [selfWeak onSlider:sender];
     };
     return sl;
 }

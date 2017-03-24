@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYVideoDimension.html">
+	<File path="Constants/KSYVideoCodec.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYVideoDimension</TokenIdentifier>
-			<Abstract type="html">采集分辨率</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYVideoCodec</TokenIdentifier>
+			<Abstract type="html">视频编码器类型</Abstract>
 			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_16_9__1280x720</TokenIdentifier>
-            <Abstract type="html">16 : 9 宽高比，1280 x 720 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_16_9__1280x720</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoCodec_X264</TokenIdentifier>
+            <Abstract type="html">视频编码器 - h264 软件编码器</Abstract>
+            <Declaration>KSYVideoCodec_X264</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -24,9 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_16_9__960x540</TokenIdentifier>
-            <Abstract type="html">16 : 9 宽高比，960 x 540 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_16_9__960x540</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoCodec_QY265</TokenIdentifier>
+            <Abstract type="html">视频编码器 - KSY265 软件编码器</Abstract>
+            <Declaration>KSYVideoCodec_QY265</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -34,9 +34,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_4_3__640x480</TokenIdentifier>
-            <Abstract type="html">4 : 3 宽高比，640 x 480 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_4_3__640x480</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoCodec_VT264</TokenIdentifier>
+            <Abstract type="html">视频编码器 - iOS VT264硬件编码器 (iOS 8.0以上支持)</Abstract>
+            <Declaration>KSYVideoCodec_VT264</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -44,49 +44,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_16_9__640x360</TokenIdentifier>
-            <Abstract type="html">16 : 9 宽高比，640 x 360 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_16_9__640x360</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="58"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_5_4__352x288</TokenIdentifier>
-            <Abstract type="html">4 : 3 宽高比，320 x 240 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_5_4__352x288</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="58"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_UserDefine_Scale</TokenIdentifier>
-            <Abstract type="html">缩放自定义分辨率 从设备支持的最近分辨率缩放获得, 若设备没有对应宽高比的分辨率，则裁剪后进行缩放</Abstract>
-            <Declaration>KSYVideoDimension_UserDefine_Scale</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="58"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_UserDefine_Crop</TokenIdentifier>
-            <Abstract type="html">裁剪自定义分辨率 从设备支持的最近分辨率裁剪获得</Abstract>
-            <Declaration>KSYVideoDimension_UserDefine_Crop</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="58"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_Default</TokenIdentifier>
-            <Abstract type="html">默认分辨率，默认为 4 : 3 宽高比，640 x 480 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_Default</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoCodec_AUTO</TokenIdentifier>
+            <Abstract type="html">视频编码器 - 由SDK自动选择（ VT264 &gt; X264）</Abstract>
+            <Declaration>KSYVideoCodec_AUTO</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             

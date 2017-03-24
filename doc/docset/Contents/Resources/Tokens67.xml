@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/MPMovieVideoDeinterlaceMode.html">
+	<File path="Constants/MPMovieStatus.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/MPMovieVideoDeinterlaceMode</TokenIdentifier>
-			<Abstract type="html">视频反交错模式</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/MPMovieStatus</TokenIdentifier>
+			<Abstract type="html">status类型</Abstract>
 			<DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDeinterlaceMode_None</TokenIdentifier>
-            <Abstract type="html">关闭反交错</Abstract>
-            <Declaration>MPMovieVideoDeinterlaceMode_None</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieStatusVideoDecodeWrong</TokenIdentifier>
+            <Abstract type="html">视频解码出错</Abstract>
+            <Declaration>MPMovieStatusVideoDecodeWrong</Declaration>
             
             <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
@@ -24,9 +24,29 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDeinterlaceMode_Auto</TokenIdentifier>
-            <Abstract type="html">自动判断是否打开反交错</Abstract>
-            <Declaration>MPMovieVideoDeinterlaceMode_Auto</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieStatusAudioDecodeWrong</TokenIdentifier>
+            <Abstract type="html">音频解码出错</Abstract>
+            <Declaration>MPMovieStatusAudioDecodeWrong</Declaration>
+            
+            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+            <NodeRef refid="67"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieStatusHWCodecUsed</TokenIdentifier>
+            <Abstract type="html">使用硬件解码</Abstract>
+            <Declaration>MPMovieStatusHWCodecUsed</Declaration>
+            
+            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+            <NodeRef refid="67"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieStatusSWCodecUsed</TokenIdentifier>
+            <Abstract type="html">使用软件解码</Abstract>
+            <Declaration>MPMovieStatusSWCodecUsed</Declaration>
             
             <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             

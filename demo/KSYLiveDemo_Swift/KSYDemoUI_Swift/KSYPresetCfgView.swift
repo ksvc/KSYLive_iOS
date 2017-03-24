@@ -218,11 +218,11 @@ class KSYPresetCfgView: KSYUIView, UIImagePickerControllerDelegate, UINavigation
         switch idx {
         case 0:
             return CGSize.init(width: 640, height: 360)
-        case 0:
+        case 1:
             return CGSize.init(width: 960, height: 540)
-        case 0:
+        case 2:
             return CGSize.init(width: 1280, height: 720)
-        case 0:
+        case 3:
             return CGSize.init(width: 640, height: 480)
         default:
             return CGSize.init(width: 400, height: 400)
@@ -521,10 +521,10 @@ extension KSYPresetCfgView: UIPickerViewDelegate, UIPickerViewDataSource {
             self.curProfileIdx = row
         }else if row >= 4 && row <= 7 {
             self.curProfileIdx = 100 + (row - 4)
-        }else if row >= 4 && row <= 7 {
+        }else if row >= 8 && row <= 11 {
             self.curProfileIdx = 200 + (row - 8)
         }else{
-            self.curProfileIdx = 0
+            self.curProfileIdx = 103
         }
         getStreamerProfile(profile: KSYStreamerProfile(rawValue: self.curProfileIdx)!)
     }

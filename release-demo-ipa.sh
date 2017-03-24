@@ -2,14 +2,18 @@
 
 USER_KEY=$1
 API_KEY=$2
-
+alias sed='sed -i "" -E '
+echo "=================== prepare demo (with 265 enabled) @ `date`==================="
 cd demo
+sed "s@(live\')@live_265\'@"  Podfile
 pod install
+
 echo "=================== archive demo @ `date`==================="
-sed -i "" -E "s@(CODE_SIGN_ID.*iPhone) Developer@\1 Distribution@" \
+sed "s@(CODE_SIGN_ID.*iPhone) Developer@\1 Distribution@" \
 	KSYLiveDemo.xcodeproj/project.pbxproj
-sed -i "" -E "s@(PROVISIONING_PROFILE)(.*);@\1 = \"64ac3c36-4e3c-4446-b519-fec904348a3b\";@" \
+sed "s@(PROVISIONING_PROFILE)(.*);@\1 = \"64ac3c36-4e3c-4446-b519-fec904348a3b\";@" \
 	KSYLiveDemo.xcodeproj/project.pbxproj
+
 xcodebuild -workspace *.xcwork*  -quiet  \
 		   -scheme KSYLiveDemo archive   \
 		   -archivePath `pwd`/archiveDir \

@@ -8,6 +8,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
 #import "KSYTypeDef.h"
+@class KSYReachability;
 
 /**
  金山云直播推流SDK iOS版提供了iOS移动设备上的推流功能
@@ -94,8 +95,14 @@
 @property (nonatomic, assign) int          videoMinBitrate;   // kbit/s of video
 
 /**
- @abstract  最后输出视频文件时附带的metadata (默认为nil)
+ @abstract  推流全局附带的metadata (默认为nil)
  @discussion key 一定要是 NSString* 类型的
+ */
+@property(atomic, copy) NSDictionary * streamMetaData;
+
+/**
+ @abstract  视频流附带的metadata (默认为nil)
+ @discussion key 一定要是 NSString* 类型的; 目前有效
  */
 @property(atomic, copy) NSDictionary * videoMetaData;
 
@@ -467,4 +474,9 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
  */
 @property (nonatomic, assign) BOOL shouldEnableKSYDropModule;
 
+//// 网络状态监控 (当SDK内部发现网络不可用时主动发出connet_break的错误码)
+@property (nonatomic, readonly) KSYReachability* netReachability;
+
+//// 是否能连通外网 (使用 www.kingsoft.com 作为检测目标)
+@property (nonatomic, readonly) BOOL isReachable;
 @end

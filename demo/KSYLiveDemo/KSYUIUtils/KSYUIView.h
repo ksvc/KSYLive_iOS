@@ -112,3 +112,4 @@
 @end
 
 #define WeakObj(o) try{}@finally{} __weak typeof(o) o##Weak = o;
+#define weakObj(o) __weak typeof(o) o##Weak = o;
