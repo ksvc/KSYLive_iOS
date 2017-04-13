@@ -9,6 +9,8 @@
 ## 一. 功能特性
 ### 1.1 推流功能
 - [x] AAC 音频编码（支持软、硬编）
+- [x] H.264 视频编码（支持软编/硬编,支持baseline/main/high profile）
+- [x] [H.265 视频软编码](https://github.com/ksvc/KSYLive_iOS/wiki/enableH265)
 - [x] H.264 视频编码（支持软编H.264/H.265 支持H.264硬编(支持baseline/main/high profile)）
 - [x] 多分辨率编码支持
 - [x] 摄像头控制（朝向,闪光灯,前后摄像头）
