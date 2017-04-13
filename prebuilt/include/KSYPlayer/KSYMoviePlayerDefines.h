@@ -49,7 +49,9 @@ typedef NS_ENUM(NSInteger, KSYMPErrorCode) {
     ///音频解码失败
     KSYMPErrorCodeAudioDecodeFailed  	= -10015,
     ///次数过多的3xx跳转(8次)
-    KSYMPErrorCode3xxOverFlow               = -10016,
+    KSYMPErrorCode3xxOverFlow           = -10016,
+    ///无效的url
+    KSYMPErrorInvalidURL                = -10050,
 };
 
 /**

@@ -85,6 +85,7 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
  * http
  * rtmp
  * file, 本地文件
+ * rtsp
  
  @warning 必须调用该方法进行初始化，不能调用init方法。
  @since Available in KSYMoviePlayerController 1.0 and later.
@@ -102,13 +103,39 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
  @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.8.7 and later.
 */
-- (instancetype)initWithContentURL:(NSURL *)url sharegroup:(EAGLSharegroup*)sharegroup NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithContentURL:(NSURL *)url sharegroup:(EAGLSharegroup*)sharegroup;
+
+/**
+ @abstract 初始化播放器并设置播放地址
+ @param url 视频播放的绝对地址，可以设置为nil;
+ @param list 分片列表，可以设置为nil
+ @param sharegroup opengl的sharegroup, 用于共享视频渲染texture, 可以设置为nil
+ @return 返回KSYMoviePlayerController对象，该对象的视频播放地址ContentURL已经初始化。此时播放器状态为MPMoviePlaybackStateStopped.
+ 
+ @discussion 该方法更适用于点播
+ @discussion url和list的设置逻辑:
+ 
+ * url和fileList不能同时为空
+ * url为nil，fileList不为nil时，播放器取list中的地址进行播放
+ * url不nil，fileList为nil时，播放器取baseURL进行播放
+ * url和fileList都不为nil，播放会认为url是绝对地址，list为相对地址，找到url中的最后一个'/'进行url/list 拼接后播放
+ 
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 2.1.0 and later.
+ */
+- (instancetype)initWithContentURL:(NSURL *)url fileList:(NSArray *)fileList sharegroup:(EAGLSharegroup*)sharegroup NS_DESIGNATED_INITIALIZER;
 
 /**
  @abstract 正在播放的视频文件的URL地址，该地址可以是本地地址或者服务器地址。
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 @property (nonatomic, readonly) NSURL *contentURL;
+
+/**
+ @abstract 正在播放的视频文件的list列表
+ @since Available in KSYMoviePlayerController 2.1.0 and later.
+ */
+@property (nonatomic, readonly) NSArray *fileList;
 
 /**
  @abstract 包含视频播放内容的VIEW（只读）。
@@ -623,17 +650,28 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
 
 /**
  @abstract 设置播放url
- @param url 视频播放地址，该地址可以是本地地址或者服务器地址.如果为nil，则使用前一次播放地址
+ @param url 视频播放地址，该地址可以是本地地址或者服务器地址.
  @discussion 使用说明
  
  * 通常用于使用一个对象进行多次播放的场景
  * 调用reset接口停止播放后使用该接口来设置下一次播放地址
  * 需要在[prepareToPlay]([KSYMediaPlayback prepareToPlay])方法之前设置
+ * v2.1.0及之后的版本，该url不可设置为nil；之前的版本设置为nil，会播放上一次的播放地址
  
  @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 1.6.2 and later.
  */
 - (void)setUrl:(NSURL *)url;
+
+/**
+ @abstract 设置播放url
+ @param baseURL 视频播放的绝对地址，该地址可以是本地地址或者服务器地址
+ @param fileList 分片列表
+ @discussion url和fileList不可同时为nil
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 2.1.0 and later.
+ */
+- (void)setUrl:(NSURL *)url fileList:(NSArray *)fileList;
 
 /**
  @abstract 重置播放器

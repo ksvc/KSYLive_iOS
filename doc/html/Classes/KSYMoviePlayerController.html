@@ -80,6 +80,8 @@
 		
 		<option value="//api/name/duration">duration</option>
 		
+		<option value="//api/name/fileList">fileList</option>
+		
 		<option value="//api/name/loadState">loadState</option>
 		
 		<option value="//api/name/localDNSIP">localDNSIP</option>
@@ -144,6 +146,8 @@
 		
 		<option value="//api/name/initWithContentURL:">- initWithContentURL:</option>
 		
+		<option value="//api/name/initWithContentURL:fileList:sharegroup:">- initWithContentURL:fileList:sharegroup:</option>
+		
 		<option value="//api/name/initWithContentURL:sharegroup:">- initWithContentURL:sharegroup:</option>
 		
 		<option value="//api/name/isPlaying">- isPlaying</option>
@@ -163,6 +167,8 @@
 		<option value="//api/name/setTimeout:readTimeout:">- setTimeout:readTimeout:</option>
 		
 		<option value="//api/name/setUrl:">- setUrl:</option>
+		
+		<option value="//api/name/setUrl:fileList:">- setUrl:fileList:</option>
 		
 		<option value="//api/name/setVolume:rigthVolume:">- setVolume:rigthVolume:</option>
 		
@@ -277,6 +283,7 @@
 <li>http</li>
 <li>rtmp</li>
 <li>file, 本地文件</li>
+<li>rtsp</li>
 </ul>
 <div class="warning"><p><strong>Warning:</strong> 必须调用该方法进行初始化，不能调用init方法。</p></div>
 			</div>
@@ -369,6 +376,92 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/initWithContentURL:fileList:sharegroup:" title="initWithContentURL:fileList:sharegroup:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithContentURL:fileList:sharegroup:">&ndash;&nbsp;initWithContentURL:fileList:sharegroup:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>初始化播放器并设置播放地址</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithContentURL:(NSURL *)<em>url</em> fileList:(NSArray *)<em>fileList</em> sharegroup:(EAGLSharegroup *)<em>sharegroup</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>url</code></th>
+						<td><p>视频播放的绝对地址，可以设置为nil;</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>sharegroup</code></th>
+						<td><p>opengl的sharegroup, 用于共享视频渲染texture, 可以设置为nil</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>list</code></th>
+						<td><p>分片列表，可以设置为nil</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>返回KSYMoviePlayerController对象，该对象的视频播放地址ContentURL已经初始化。此时播放器状态为MPMoviePlaybackStateStopped.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in KSYMoviePlayerController 2.1.0 and later.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>该方法更适用于点播</p><p>url和list的设置逻辑:</p>
+
+<ul>
+<li>url和fileList不能同时为空</li>
+<li>url为nil，fileList不为nil时，播放器取list中的地址进行播放</li>
+<li>url不nil，fileList为nil时，播放器取baseURL进行播放</li>
+<li>url和fileList都不为nil，播放会认为url是绝对地址，list为相对地址，找到url中的最后一个'/&lsquo;进行url/list 拼接后播放</li>
+</ul>
+<div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/contentURL" title="contentURL"></a>
 	<h3 class="method-title"><code><a href="#//api/name/contentURL">&nbsp;&nbsp;contentURL</a></code>
 </h3>
@@ -396,6 +489,52 @@
 			<div class="method-subsection availability">
 				<h4 class="method-subtitle parameter-title">Availability</h4>
 				<p>Available in KSYMoviePlayerController 1.0 and later.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/fileList" title="fileList"></a>
+	<h3 class="method-title"><code><a href="#//api/name/fileList">&nbsp;&nbsp;fileList</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>正在播放的视频文件的list列表</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSArray *fileList</code></div>
+
+		    
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in KSYMoviePlayerController 2.1.0 and later.</p>
 			</div>
 			
 
@@ -3030,7 +3169,7 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>url</code></th>
-						<td><p>视频播放地址，该地址可以是本地地址或者服务器地址.如果为nil，则使用前一次播放地址</p></td>
+						<td><p>视频播放地址，该地址可以是本地地址或者服务器地址.</p></td>
 					</tr>
 				
 				</table>
@@ -3055,8 +3194,77 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 <li>通常用于使用一个对象进行多次播放的场景</li>
 <li>调用reset接口停止播放后使用该接口来设置下一次播放地址</li>
 <li>需要在<a href="../Protocols/KSYMediaPlayback.html#//api/name/prepareToPlay">prepareToPlay</a>方法之前设置</li>
+<li>v2.1.0及之后的版本，该url不可设置为nil；之前的版本设置为nil，会播放上一次的播放地址</li>
 </ul>
 <div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setUrl:fileList:" title="setUrl:fileList:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setUrl:fileList:">&ndash;&nbsp;setUrl:fileList:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置播放url</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setUrl:(NSURL *)<em>url</em> fileList:(NSArray *)<em>fileList</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fileList</code></th>
+						<td><p>分片列表</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>baseURL</code></th>
+						<td><p>视频播放的绝对地址，该地址可以是本地地址或者服务器地址</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in KSYMoviePlayerController 2.1.0 and later.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>url和fileList不可同时为nil</p><div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div>
 			</div>
 			
 
@@ -3278,7 +3486,7 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 Kingsoft. All rights reserved. Updated: 2017-03-24</p>
+						<p class="copyright">Copyright &copy; 2017 Kingsoft. All rights reserved. Updated: 2017-04-13</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

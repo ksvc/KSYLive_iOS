@@ -30,7 +30,9 @@
 - (id)init{
     self = [super init];
     _effectNames = [NSArray arrayWithObjects: @"1 小清新",  @"2 靓丽",
-                    @"3 甜美可人",  @"4 怀旧",  @"5 蓝调",  @"6 老照片" , nil];
+                    @"3 甜美可人",  @"4 怀旧",  @"5 蓝调",  @"6 老照片" ,
+                    @"7 樱花", @"8 樱花（光线较暗）", @"9 红润（光线较暗）",
+                    @"10 阳光（光线较暗）", @"11 红润", @"12 阳光", @"13 自然", nil];
     _curEffectIdx = 1;
     // 修改美颜参数
     _filterParam1 = [self addSliderName:@"参数" From:0 To:100 Init:50];

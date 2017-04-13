@@ -6,9 +6,8 @@
 //  Copyright © 2016年 yiqian. All rights reserved.
 //
 #import <Foundation/Foundation.h>
-#import <CallKit/CXCallObserver.h>
 
-@interface KSYMessage : NSObject<CXCallObserverDelegate>
+@interface KSYMessage : NSObject
 
 /**
  @abstract    处理消息数据

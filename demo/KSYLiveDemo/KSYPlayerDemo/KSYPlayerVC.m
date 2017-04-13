@@ -16,6 +16,7 @@
 @interface KSYPlayerVC () <UITextFieldDelegate>
 @property (strong, nonatomic) NSURL *url;
 @property (strong, nonatomic) NSURL *reloadUrl;
+@property(strong, nonatomic) NSArray *fileList;
 @end
 
 @implementation KSYPlayerVC{
@@ -66,9 +67,14 @@
 }
 
 - (instancetype)initWithURL:(NSURL *)url {
+    return [self initWithURL:url fileList:_fileList];
+}
+
+- (instancetype)initWithURL:(NSURL *)url fileList:(NSArray *)fileList{
     if((self = [super init])) {
         self.url = url;
         self.reloadUrl = url;
+        self.fileList = fileList;
     }
     
     config.decodeMode = MPMovieVideoDecoderMode_Hardware;
@@ -523,9 +529,9 @@
                                                  object:_player];
 }
 
-- (void)initPlayerWithURL:(NSURL *)aURL {
+- (void)initPlayerWithURL:(NSURL *)aURL fileList:(NSArray *)fileList{
     lastSize = 0.0;
-    self.player = [[KSYMoviePlayerController alloc] initWithContentURL: aURL];
+    self.player = [[KSYMoviePlayerController alloc] initWithContentURL: aURL fileList:fileList sharegroup:nil];
     [self setupObservers];
     
     _player.logBlock = ^(NSString *logJson){
@@ -639,7 +645,7 @@
     
     if(nil == _player)
     {
-        [self initPlayerWithURL:_url];
+        [self initPlayerWithURL:_url fileList:_fileList];
     } else {
         [_player setUrl:[NSURL URLWithString:@"rtmp://live.hkstv.hk.lxdns.com/live/hks"]];
         [_player prepareToPlay];

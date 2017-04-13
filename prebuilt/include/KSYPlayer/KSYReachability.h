@@ -20,11 +20,11 @@
 
 extern NSString *const kKSYReachabilityChangedNotification;
 
-typedef NS_ENUM(NSInteger, NetworkStatus) {
-    // Apple NetworkStatus Compatible Names.
-    NotReachable = 0,
-    ReachableViaWiFi = 2,
-    ReachableViaWWAN = 1
+typedef NS_ENUM(NSInteger, KSYNetworkStatus) {
+    // same as Apple NetworkStatus
+    KSYNotReachable = 0,
+    KSYReachableViaWiFi = 2,
+    KSYReachableViaWWAN = 1
 };
 
 @class KSYReachability;
@@ -69,7 +69,7 @@ typedef void (^NetworkReachability)(KSYReachability * reachability, SCNetworkCon
 // Is user intervention required?
 -(BOOL)isInterventionRequired;
 
--(NetworkStatus)currentReachabilityStatus;
+-(KSYNetworkStatus)currentReachabilityStatus;
 -(SCNetworkReachabilityFlags)reachabilityFlags;
 -(NSString*)currentReachabilityString;
 -(NSString*)currentReachabilityFlags;

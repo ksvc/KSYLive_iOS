@@ -80,6 +80,7 @@
 		C36494491E6E8D0600299E99 /* KSYUIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C364942D1E6E8D0600299E99 /* KSYUIVC.swift */; };
 		C364944A1E6E8D0600299E99 /* KSYUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C364942E1E6E8D0600299E99 /* KSYUIView.swift */; };
 		C364944B1E6E8D2F00299E99 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 625EF3B41C9A95BE00DBA1CC /* libsqlite3.tbd */; };
+		C3C37F4A1E83A02E0060DA49 /* KSYVideoListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C37F491E83A02E0060DA49 /* KSYVideoListVC.m */; };
 		C3ECDD0E1E6FFA34007203E5 /* KSYHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C3ECDD0D1E6FFA34007203E5 /* KSYHelper.m */; };
 		C3ECDD441E72BE81007203E5 /* KSYGPUResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 06E742AB1D90FFD600C3E780 /* KSYGPUResource.bundle */; };
 		C3ECDD451E72BE81007203E5 /* KSYLiveDemo-dy-framework.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 06CF36E71DE5D14C00BCE88C /* KSYLiveDemo-dy-framework.xcconfig */; };
@@ -214,6 +215,8 @@
 		C364942C1E6E8D0600299E99 /* KSYReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSYReachability.swift; sourceTree = "<group>"; };
 		C364942D1E6E8D0600299E99 /* KSYUIVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSYUIVC.swift; sourceTree = "<group>"; };
 		C364942E1E6E8D0600299E99 /* KSYUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSYUIView.swift; sourceTree = "<group>"; };
+		C3C37F481E83A02E0060DA49 /* KSYVideoListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYVideoListVC.h; sourceTree = "<group>"; };
+		C3C37F491E83A02E0060DA49 /* KSYVideoListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYVideoListVC.m; sourceTree = "<group>"; };
 		C3ECDD0C1E6FFA34007203E5 /* KSYHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYHelper.h; sourceTree = "<group>"; };
 		C3ECDD0D1E6FFA34007203E5 /* KSYHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYHelper.m; sourceTree = "<group>"; };
 		E33527EB1E49986400DB6DD1 /* KSYSimplestStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYSimplestStreamerVC.h; sourceTree = "<group>"; };
@@ -282,6 +285,8 @@
 				06A646AD1D84572E00D1C620 /* KSYPlayerVC.m */,
 				06A646AE1D84572E00D1C620 /* KSYPlayerVC.h */,
 				580C1C321E289C1600B386D5 /* KSYNetTrackerVC.h */,
+				C3C37F481E83A02E0060DA49 /* KSYVideoListVC.h */,
+				C3C37F491E83A02E0060DA49 /* KSYVideoListVC.m */,
 			);
 			name = KSYPlayerDemo;
 			sourceTree = "<group>";
@@ -622,6 +627,7 @@
 				06FBBD691D2E17E00065ED55 /* KSYUIVC.m in Sources */,
 				C323BC211E794DEB00D4682C /* KSYFloatingWindowVC.m in Sources */,
 				069E428A1C10357D00392B5E /* KSYLiveVC.m in Sources */,
+				C3C37F4A1E83A02E0060DA49 /* KSYVideoListVC.m in Sources */,
 				064980251DAFB8AB00AA5A0A /* KSYAudioCtrlView.m in Sources */,
 				06FBBD511D2E17E00065ED55 /* KSYCtrlView.m in Sources */,
 				95B4A3F11CBF6CC700CB6804 /* QRViewController.m in Sources */,
