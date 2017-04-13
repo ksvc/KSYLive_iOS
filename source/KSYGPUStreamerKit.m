@@ -21,7 +21,7 @@
     KSYDummyAudioSource *_dAudioSrc;
     // 音频采集模式（KSYAudioCapType）为AVCaptureDevice时发送静音包
     BOOL _bMute;
-    NetworkStatus _lastNetStatus;
+    KSYNetworkStatus _lastNetStatus;
 }
 // vMixerTargets
 @property (nonatomic, copy) NSArray *vPreviewTargets;
@@ -126,6 +126,7 @@
     _streamerBase = [[KSYStreamerBase alloc] initWithDefaultCfg];
     // 创建 预览模块, 并放到视图底部
     _preview = [[GPUImageView alloc] init];
+    _preview.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
     
     ///// 3. 数据处理和通路 ///////////
     ///// 3.1 视频通路 ///////////
@@ -579,9 +580,9 @@
         if ( _streamerBase.streamState == KSYStreamStateError) {
             [self tryReconnect];
         }
-        NetworkStatus curStat = _streamerBase.netReachability.currentReachabilityStatus;
-        if (_lastNetStatus == ReachableViaWWAN &&
-            curStat == ReachableViaWiFi) { // 4G to wifi
+        KSYNetworkStatus curStat = _streamerBase.netReachability.currentReachabilityStatus;
+        if (_lastNetStatus == KSYReachableViaWWAN &&
+            curStat == KSYReachableViaWiFi) { // 4G to wifi
             NSLog(@"warning: 4Gtowifi: still using 4G!");
         }
         _lastNetStatus = curStat;
@@ -1031,6 +1032,9 @@ kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRota
  */
 - (void) rotateStreamTo: (UIInterfaceOrientation) orie {
     _streamOrientation = orie;
+    if (_gpuToStr.bAutoRepeat) {
+        return;
+    }
     if (_videoOrientation == orie || _vCapDev.isRunning == NO) {
         [_gpuToStr setInputRotation:kGPUImageNoRotation atIndex:0];
     }

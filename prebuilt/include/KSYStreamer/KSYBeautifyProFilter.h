@@ -33,8 +33,8 @@
 @property(readwrite,nonatomic) CGFloat ruddyRatio;
 
 /**
-几组推荐的效果参数  自然：whitenRatio=1.0,ruddyRatio=0.0;
-                粉嫩：whitenRatio=0.3,ruddyRatio=-0.3；
+几组推荐的效果参数  美白：whitenRatio=1.0,ruddyRatio=0.0;
+                粉嫩：whitenRatio=0.5,ruddyRatio=-0.3；
                 红润：whitenRatio=0.3,ruddyRatio=0.4；
 其中init 效果参数默认是粉嫩，磨皮参数默认是0.5；
 */

@@ -203,6 +203,16 @@
             <NodeRef refid="50"/>
         </Token>
         
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYMPErrorInvalidURL</TokenIdentifier>
+            <Abstract type="html">无效的url</Abstract>
+            <Declaration>KSYMPErrorInvalidURL</Declaration>
+            
+            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+            <NodeRef refid="50"/>
+        </Token>
+        
         
 	</File>
 </Tokens>

@@ -116,7 +116,7 @@
 -(void)createWriter{
     _gpuToStr = [[KSYGPUPicOutput alloc] initWithOutFmt:kCVPixelFormatType_32BGRA];
     _writer = [[KSYMovieWriter alloc] init];
-    _writer.videoCodec = KSYVideoCodec_VT264;
+    _writer.videoCodec = KSYVideoCodec_AUTO;
     _writer.audioCodec = KSYAudioCodec_AAC;
     _writer.bWithVideo = YES;
     _writer.bWithAudio = YES;

@@ -10,6 +10,7 @@
 
 @interface KSYPlayerVC : UIViewController
 - (instancetype)initWithURL:(NSURL *)url;
+- (instancetype)initWithURL:(NSURL *)url fileList:(NSArray *)list;
 @property (strong, nonatomic) KSYMoviePlayerController *player;
 @end
 

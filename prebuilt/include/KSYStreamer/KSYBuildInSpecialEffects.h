@@ -18,12 +18,19 @@
  4 怀旧
  5 蓝调
  6 老照片
+ 7 樱花
+ 8 樱花（光线较暗）
+ 9 红润（光线较暗）
+ 10 阳光（光线较暗）
+ 11 红润
+ 12 阳光
+ 13 自然
  */
 @interface KSYBuildInSpecialEffects : KSYSpecialEffects
 
 #pragma mark - internal special effects
 /**
- @abstract   初始化并指定 1~6 的index来创建对应效果
+ @abstract   初始化并指定 1~13 的index来创建对应效果
  @param      idx 效果的索引 (非法值无效)
  */
 - (id)initWithIdx:(NSInteger)idx;

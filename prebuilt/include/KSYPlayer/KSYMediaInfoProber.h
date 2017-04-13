@@ -29,7 +29,19 @@
  @abstract 文件格式探测时间，单位是秒，默认值是3秒
  @discussion 超过该时间未探测到文件格式时，直接返回
  */
-@property (nonatomic) int timeout;
+@property (nonatomic) NSTimeInterval timeout;
+
+/**
+ @abstract 是否要加速探测速度
+ @discussion 加速后，探测格式可能不完整，默认不加速
+ */
+@property (nonatomic) BOOL bAccelerate;
+
+/**
+ @abstract 发送http请求时需要header带上的字段
+ @since Available in KSYMoviePlayerController 2.1.0 and later.
+ */
+-(void)setHttpHeaders:(NSDictionary *)headers;
 
 /**
  @abstract 待探测的文件格式地址

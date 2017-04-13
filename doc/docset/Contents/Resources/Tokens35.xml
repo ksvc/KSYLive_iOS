@@ -341,7 +341,7 @@
 			<Abstract type="html"></Abstract>
 			<DeclaredIn>KSYReachability.h</DeclaredIn>
 			
-			<Declaration>- (NetworkStatus)currentReachabilityStatus</Declaration>
+			<Declaration>- (KSYNetworkStatus)currentReachabilityStatus</Declaration>
 			
 			
 			<Anchor>//api/name/currentReachabilityStatus</Anchor>

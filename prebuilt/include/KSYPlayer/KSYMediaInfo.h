@@ -185,6 +185,11 @@ typedef NS_ENUM(NSInteger, MEDIAINFO_SAMPLE_FMT){
 @property (nonatomic, assign) int64_t bitrate;
 
 /**
+ 视频总时长，单位是秒
+ */
+@property (nonatomic, assign) NSTimeInterval duration;
+
+/**
  所有视频流信息，具体对象类型为KSYVideoInfo
  */
 @property (nonatomic) NSMutableArray *videos;

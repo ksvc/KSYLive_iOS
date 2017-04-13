@@ -15,10 +15,13 @@
 #import "KSYPipView.h"
 #import "KSYNameSlider.h"
 
+#import <CallKit/CXCallObserver.h>
+#import <CallKit/CallKit.h>
+
 // 为防止将手机存储写满,限制录像时长为30s
 #define REC_MAX_TIME 30 //录制视频的最大时间，单位s
 
-@interface KSYStreamerVC () <UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
+@interface KSYStreamerVC () <UIImagePickerControllerDelegate,UINavigationControllerDelegate, CXCallObserverDelegate>{
     UISwipeGestureRecognizer *_swipeGest;
     NSDateFormatter * _dateFormatter;
     int _strSeconds; // 推流持续的时间 , 单位s
@@ -30,6 +33,8 @@
     UIImageView *_foucsCursor;//对焦框
     CGFloat _currentPinchZoomFactor;//当前触摸缩放因子
     UIView *_bgView;        // 预览视图父控件（用于处理转屏，保持画面相对手机不变）
+    
+    CXCallObserver *_callObserver;
 }
 @end
 
@@ -195,6 +200,9 @@
                 SEL_VALUE(onNetStateEvent:) ,       KSYNetStateEventNotification,
                 SEL_VALUE(onBgmPlayerStateChange:) ,KSYAudioStateDidChangeNotification,
                 nil];
+    
+    _callObserver = [[CXCallObserver alloc] init];
+    [_callObserver setDelegate:self queue:nil];
 }
 
 - (void) addObservers {
@@ -213,6 +221,7 @@
 - (void) rmObservers {
     [super rmObservers];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    _callObserver = nil;
 }
 
 - (BOOL)shouldAutorotate {
@@ -243,8 +252,11 @@
 #pragma mark - logo setup
 - (void) setupLogo{
     CGFloat yPos = 0.05;
-    CGFloat hgt  = 0.1; // logo图片的高度是预览画面的十分之一
+    // 预览视图的scale
+    CGFloat scale = MAX(_bgView.frame.size.width, _bgView.frame.size.height) / self.view.frame.size.height;
+    CGFloat hgt  = 0.1 * scale; // logo图片的高度是预览画面的十分之一
     UIImage * logoImg = [UIImage imageNamed:@"ksvc"];
+    
     _kit.logoPic  = [[GPUImagePicture alloc] initWithImage:logoImg];
     _kit.logoRect = CGRectMake(0.05, yPos, 0, hgt);
     _kit.logoAlpha= 0.5;
@@ -255,7 +267,7 @@
     NSString * timeStr = [self timeStr];
     _kit.textLabel.text = [NSString stringWithFormat:@"ksyun\n%@", timeStr];
     [_kit.textLabel sizeToFit];
-    _kit.textRect = CGRectMake(0.05, yPos, 0, 0.04); // 水印文字的高度为预览画面的 0.04倍
+    _kit.textRect = CGRectMake(0.05, yPos, 0, 0.04 * scale); // 水印文字的高度为预览画面的 0.04倍
     [_kit updateTextLabel];
 }
 
@@ -644,6 +656,8 @@
 - (void) onCapture{
     if (!_kit.vCapDev.isRunning){
         _kit.videoOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+        // 重新开启预览是需要重新根据方向setupLogo
+        [self setupLogo];
         [_kit startPreview:_bgView];
     }
     else {
@@ -1150,5 +1164,30 @@
     }
     CGFloat zoomFactor = _currentPinchZoomFactor * recognizer.scale;//当前触摸缩放因子*坐标比例
     [_kit setPinchZoomFactor:zoomFactor];
+}
+
+#pragma mark - CXCallObserverDelegate method
+- (void)callObserver:(CXCallObserver *)callObserver callChanged:(CXCall *)call {
+    NSMutableDictionary *message = [[NSMutableDictionary alloc] init];
+    BOOL needSendMsg = YES;
+    
+    [message setObject:@"system" forKey:@"type"];
+    [message setObject:@"call" forKey:@"event"];
+    
+    if (call.hasEnded){
+        [message setObject:@"disconnected" forKey:@"status"];
+    } else if (call.hasConnected){
+        [message setObject:@"connected" forKey:@"status"];
+    } else if (call.outgoing) {
+        [message setObject:@"dialing" forKey:@"status"];
+    } else if (call.isOnHold) {
+        //TODO
+        needSendMsg = NO;
+    } else {
+        [message setObject:@"incoming" forKey:@"status"];
+    }
+    
+    if(needSendMsg == YES)
+        [_kit processMessageData:message];
 }
 @end

@@ -50,6 +50,29 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/initWithContentURL:fileList:sharegroup:</TokenIdentifier>
+			<Abstract type="html">初始化播放器并设置播放地址</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)initWithContentURL:(NSURL *)url fileList:(NSArray *)fileList sharegroup:(EAGLSharegroup *)sharegroup</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>url</Name>
+					<Abstract type="html">视频播放的绝对地址，可以设置为nil;</Abstract>
+				</Parameter><Parameter>
+					<Name>sharegroup</Name>
+					<Abstract type="html">opengl的sharegroup, 用于共享视频渲染texture, 可以设置为nil</Abstract>
+				</Parameter><Parameter>
+					<Name>list</Name>
+					<Abstract type="html">分片列表，可以设置为nil</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">返回KSYMoviePlayerController对象，该对象的视频播放地址ContentURL已经初始化。此时播放器状态为MPMoviePlaybackStateStopped.</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithContentURL:fileList:sharegroup:</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setContentURL:</TokenIdentifier>
 			<Abstract type="html">正在播放的视频文件的URL地址，该地址可以是本地地址或者服务器地址。</Abstract>
 			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
@@ -82,6 +105,42 @@
 			
 			
 			<Anchor>//api/name/contentURL</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setFileList:</TokenIdentifier>
+			<Abstract type="html">正在播放的视频文件的list列表</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSArray *fileList</Declaration>
+			
+			
+			<Anchor>//api/name/fileList</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/fileList</TokenIdentifier>
+			<Abstract type="html">正在播放的视频文件的list列表</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSArray *fileList</Declaration>
+			
+			
+			<Anchor>//api/name/fileList</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/fileList</TokenIdentifier>
+			<Abstract type="html">正在播放的视频文件的list列表</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSArray *fileList</Declaration>
+			
+			
+			<Anchor>//api/name/fileList</Anchor>
             <NodeRef refid="30"/>
 		</Token>
 		
@@ -1603,11 +1662,31 @@
 			<Parameters>
 				<Parameter>
 					<Name>url</Name>
-					<Abstract type="html">视频播放地址，该地址可以是本地地址或者服务器地址.如果为nil，则使用前一次播放地址</Abstract>
+					<Abstract type="html">视频播放地址，该地址可以是本地地址或者服务器地址.</Abstract>
 				</Parameter>
 			</Parameters>
 			
 			<Anchor>//api/name/setUrl:</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setUrl:fileList:</TokenIdentifier>
+			<Abstract type="html">设置播放url</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>- (void)setUrl:(NSURL *)url fileList:(NSArray *)fileList</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>fileList</Name>
+					<Abstract type="html">分片列表</Abstract>
+				</Parameter><Parameter>
+					<Name>baseURL</Name>
+					<Abstract type="html">视频播放的绝对地址，该地址可以是本地地址或者服务器地址</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setUrl:fileList:</Anchor>
             <NodeRef refid="30"/>
 		</Token>
 		
