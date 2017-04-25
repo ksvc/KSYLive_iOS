@@ -239,4 +239,4 @@ pod repo update
 * QQ讨论群：574179720 [视频云技术交流群] 
 * Issues:<https://github.com/ksvc/KSYLive_iOS/issues>
 
-<a href="http://www.ksyun.com/"><img src="http://www.ksyun.com/assets/img/static/logo.png" border="0" alt="金山云计算" /></a>
+<a href="http://www.ksyun.com/"><img src="https://raw.githubusercontent.com/wiki/ksvc/KSYLive_Android/images/logo.png" border="0" alt="金山云计算" /></a>
