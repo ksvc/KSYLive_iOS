@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Categories/AVAudioSession+KSY.html">
+	<File path="Classes/KSYVideoInfo.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cat/AVAudioSession(KSY)</TokenIdentifier>
-			<Abstract type="html">iOS的AVAudioSession 属性配置工具类</Abstract>
-			<DeclaredIn>AVAudioSession+KSY.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYVideoInfo</TokenIdentifier>
+			<Abstract type="html">视频信息</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
 			
 			<NodeRef refid="40"/>
@@ -13,247 +13,110 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/AVAudioSession/setDefaultCfg</TokenIdentifier>
-			<Abstract type="html">设置默认配置</Abstract>
-			<DeclaredIn>AVAudioSession+KSY.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/setVcodec:</TokenIdentifier>
+			<Abstract type="html">视频编码格式, 具体类型为MEDIAINFOCODECID</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>- (void)setDefaultCfg</Declaration>
+			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID vcodec</Declaration>
 			
 			
-			<Anchor>//api/name/setDefaultCfg</Anchor>
+			<Anchor>//api/name/vcodec</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/AVAudioSession/setBInterruptOtherAudio:</TokenIdentifier>
-			<Abstract type="html">是否打断其他后台的音乐播放 (默认为NO)</Abstract>
-			<DeclaredIn>AVAudioSession+KSY.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/vcodec</TokenIdentifier>
+			<Abstract type="html">视频编码格式, 具体类型为MEDIAINFOCODECID</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL bInterruptOtherAudio</Declaration>
+			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID vcodec</Declaration>
 			
 			
-			<Anchor>//api/name/bInterruptOtherAudio</Anchor>
+			<Anchor>//api/name/vcodec</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/AVAudioSession/bInterruptOtherAudio</TokenIdentifier>
-			<Abstract type="html">是否打断其他后台的音乐播放 (默认为NO)</Abstract>
-			<DeclaredIn>AVAudioSession+KSY.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYVideoInfo/vcodec</TokenIdentifier>
+			<Abstract type="html">视频编码格式, 具体类型为MEDIAINFOCODECID</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL bInterruptOtherAudio</Declaration>
+			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID vcodec</Declaration>
 			
 			
-			<Anchor>//api/name/bInterruptOtherAudio</Anchor>
+			<Anchor>//api/name/vcodec</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/AVAudioSession/bInterruptOtherAudio</TokenIdentifier>
-			<Abstract type="html">是否打断其他后台的音乐播放 (默认为NO)</Abstract>
-			<DeclaredIn>AVAudioSession+KSY.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/setFrame_width:</TokenIdentifier>
+			<Abstract type="html">视频帧宽度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL bInterruptOtherAudio</Declaration>
+			<Declaration>@property (nonatomic, assign) int32_t frame_width</Declaration>
 			
 			
-			<Anchor>//api/name/bInterruptOtherAudio</Anchor>
+			<Anchor>//api/name/frame_width</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/AVAudioSession/setBDefaultToSpeaker:</TokenIdentifier>
-			<Abstract type="html">启动采集后,是否从扬声器播放声音 (默认为YES)</Abstract>
-			<DeclaredIn>AVAudioSession+KSY.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/frame_width</TokenIdentifier>
+			<Abstract type="html">视频帧宽度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL bDefaultToSpeaker</Declaration>
+			<Declaration>@property (nonatomic, assign) int32_t frame_width</Declaration>
 			
 			
-			<Anchor>//api/name/bDefaultToSpeaker</Anchor>
+			<Anchor>//api/name/frame_width</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/AVAudioSession/bDefaultToSpeaker</TokenIdentifier>
-			<Abstract type="html">启动采集后,是否从扬声器播放声音 (默认为YES)</Abstract>
-			<DeclaredIn>AVAudioSession+KSY.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYVideoInfo/frame_width</TokenIdentifier>
+			<Abstract type="html">视频帧宽度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL bDefaultToSpeaker</Declaration>
+			<Declaration>@property (nonatomic, assign) int32_t frame_width</Declaration>
 			
 			
-			<Anchor>//api/name/bDefaultToSpeaker</Anchor>
+			<Anchor>//api/name/frame_width</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/AVAudioSession/bDefaultToSpeaker</TokenIdentifier>
-			<Abstract type="html">启动采集后,是否从扬声器播放声音 (默认为YES)</Abstract>
-			<DeclaredIn>AVAudioSession+KSY.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/setFrame_height:</TokenIdentifier>
+			<Abstract type="html">视频帧高度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL bDefaultToSpeaker</Declaration>
+			<Declaration>@property (nonatomic, assign) int32_t frame_height</Declaration>
 			
 			
-			<Anchor>//api/name/bDefaultToSpeaker</Anchor>
+			<Anchor>//api/name/frame_height</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/AVAudioSession/setBAllowBluetooth:</TokenIdentifier>
-			<Abstract type="html">是否启用蓝牙设备 (默认为YES)</Abstract>
-			<DeclaredIn>AVAudioSession+KSY.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/frame_height</TokenIdentifier>
+			<Abstract type="html">视频帧高度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL bAllowBluetooth</Declaration>
+			<Declaration>@property (nonatomic, assign) int32_t frame_height</Declaration>
 			
 			
-			<Anchor>//api/name/bAllowBluetooth</Anchor>
+			<Anchor>//api/name/frame_height</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/AVAudioSession/bAllowBluetooth</TokenIdentifier>
-			<Abstract type="html">是否启用蓝牙设备 (默认为YES)</Abstract>
-			<DeclaredIn>AVAudioSession+KSY.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYVideoInfo/frame_height</TokenIdentifier>
+			<Abstract type="html">视频帧高度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL bAllowBluetooth</Declaration>
-			
-			
-			<Anchor>//api/name/bAllowBluetooth</Anchor>
-            <NodeRef refid="40"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/AVAudioSession/bAllowBluetooth</TokenIdentifier>
-			<Abstract type="html">是否启用蓝牙设备 (默认为YES)</Abstract>
-			<DeclaredIn>AVAudioSession+KSY.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL bAllowBluetooth</Declaration>
+			<Declaration>@property (nonatomic, assign) int32_t frame_height</Declaration>
 			
 			
-			<Anchor>//api/name/bAllowBluetooth</Anchor>
-            <NodeRef refid="40"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/AVAudioSession/setAVAudioSessionCategory:</TokenIdentifier>
-			<Abstract type="html">本SDK使用的AVAudioSession的类别 (默认为AVAudioSessionCategoryPlayAndRecord)</Abstract>
-			<DeclaredIn>AVAudioSession+KSY.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) NSString *AVAudioSessionCategory</Declaration>
-			
-			
-			<Anchor>//api/name/AVAudioSessionCategory</Anchor>
-            <NodeRef refid="40"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/AVAudioSession/AVAudioSessionCategory</TokenIdentifier>
-			<Abstract type="html">本SDK使用的AVAudioSession的类别 (默认为AVAudioSessionCategoryPlayAndRecord)</Abstract>
-			<DeclaredIn>AVAudioSession+KSY.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) NSString *AVAudioSessionCategory</Declaration>
-			
-			
-			<Anchor>//api/name/AVAudioSessionCategory</Anchor>
-            <NodeRef refid="40"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/AVAudioSession/AVAudioSessionCategory</TokenIdentifier>
-			<Abstract type="html">本SDK使用的AVAudioSession的类别 (默认为AVAudioSessionCategoryPlayAndRecord)</Abstract>
-			<DeclaredIn>AVAudioSession+KSY.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) NSString *AVAudioSessionCategory</Declaration>
-			
-			
-			<Anchor>//api/name/AVAudioSessionCategory</Anchor>
-            <NodeRef refid="40"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/AVAudioSession/isBluetoothInputAvaible</TokenIdentifier>
-			<Abstract type="html">是否有蓝牙麦克风可用</Abstract>
-			<DeclaredIn>AVAudioSession+KSY.h</DeclaredIn>
-			
-			<Declaration>+ (BOOL)isBluetoothInputAvaible</Declaration>
-			
-			<ReturnValue><Abstract type="html">是/否有蓝牙麦克风可用</Abstract></ReturnValue>
-			<Anchor>//api/name/isBluetoothInputAvaible</Anchor>
-            <NodeRef refid="40"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/AVAudioSession/switchBluetoothInput:</TokenIdentifier>
-			<Abstract type="html">选择是否使用蓝牙麦克风</Abstract>
-			<DeclaredIn>AVAudioSession+KSY.h</DeclaredIn>
-			
-			<Declaration>+ (BOOL)switchBluetoothInput:(BOOL)onOrOff</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>onOrOff</Name>
-					<Abstract type="html">: YES 使用蓝牙麦克风 NO</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">是/否有蓝牙麦克风可用</Abstract></ReturnValue>
-			<Anchor>//api/name/switchBluetoothInput:</Anchor>
-            <NodeRef refid="40"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/AVAudioSession/isHeadsetInputAvaible</TokenIdentifier>
-			<Abstract type="html">是否有耳机麦克风可用</Abstract>
-			<DeclaredIn>AVAudioSession+KSY.h</DeclaredIn>
-			
-			<Declaration>+ (BOOL)isHeadsetInputAvaible</Declaration>
-			
-			<ReturnValue><Abstract type="html">是/否有耳机麦克风</Abstract></ReturnValue>
-			<Anchor>//api/name/isHeadsetInputAvaible</Anchor>
-            <NodeRef refid="40"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/AVAudioSession/isHeadsetPluggedIn</TokenIdentifier>
-			<Abstract type="html">查询当前是否有耳机(包括蓝牙耳机)</Abstract>
-			<DeclaredIn>AVAudioSession+KSY.h</DeclaredIn>
-			
-			<Declaration>+ (BOOL)isHeadsetPluggedIn</Declaration>
-			
-			
-			<Anchor>//api/name/isHeadsetPluggedIn</Anchor>
-            <NodeRef refid="40"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/AVAudioSession/setCurrentMicType:</TokenIdentifier>
-			<Abstract type="html">当前使用的音频采集设备</Abstract>
-			<DeclaredIn>AVAudioSession+KSY.h</DeclaredIn>
-			
-			<Declaration>@property KSYMicType currentMicType</Declaration>
-			
-			
-			<Anchor>//api/name/currentMicType</Anchor>
-            <NodeRef refid="40"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/AVAudioSession/currentMicType</TokenIdentifier>
-			<Abstract type="html">当前使用的音频采集设备</Abstract>
-			<DeclaredIn>AVAudioSession+KSY.h</DeclaredIn>
-			
-			<Declaration>@property KSYMicType currentMicType</Declaration>
-			
-			
-			<Anchor>//api/name/currentMicType</Anchor>
-            <NodeRef refid="40"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/AVAudioSession/currentMicType</TokenIdentifier>
-			<Abstract type="html">当前使用的音频采集设备</Abstract>
-			<DeclaredIn>AVAudioSession+KSY.h</DeclaredIn>
-			
-			<Declaration>@property KSYMicType currentMicType</Declaration>
-			
-			
-			<Anchor>//api/name/currentMicType</Anchor>
+			<Anchor>//api/name/frame_height</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		

@@ -209,6 +209,22 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 - (void) startPreview: (UIView*) view;
 
 /**
+ @abstract 开启视频配置和采集
+ @discussion 设置完成视频采集参数之后，按照设置值启动视频预览，启动后对视频采集参数修改不会生效
+ @discussion 需要访问摄像头的权限，若授权失败，其他API都会拒绝服务
+ @discussion 视频采集成功返回YES，不成功返回NO
+ */
+- (BOOL) startVideoCap;
+
+/**
+ @abstract 开始音频配置和采集
+ @discussion 设置完成音频采集参数之后，按照设置值启动音频预览，启动后对音频采集参数修改不会生效
+ @discussion 需要访问麦克风的权限，若授权失败，其他API都会拒绝服务
+ @discussion 音频采集成功返回YES，不成功返回NO
+ */
+- (BOOL) startAudioCap;
+
+/**
  @abstract   停止预览，停止采集设备，并清理会话
  @discussion 若推流未结束，则先停止推流
  @see stopStream

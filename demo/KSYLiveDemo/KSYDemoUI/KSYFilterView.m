@@ -164,10 +164,11 @@
         _filterParam3.hidden = NO;
         _effectPicker.hidden = NO;
         // 构造美颜滤镜 和  特效滤镜
-        KSYBeautifyFaceFilter    * bf = [[KSYBeautifyFaceFilter alloc] init];
+        KSYBeautifyProFilter    * bf = [[KSYBeautifyProFilter alloc] init];
         KSYBuildInSpecialEffects * sf = [[KSYBuildInSpecialEffects alloc] initWithIdx:_curEffectIdx];
         bf.grindRatio  = _filterParam1.normalValue;
         bf.whitenRatio = _filterParam2.normalValue;
+        bf.ruddyRatio  = 0.5;
         sf.intensity   = _filterParam3.normalValue;
         [bf addTarget:sf];
         
@@ -222,7 +223,7 @@
     }
     else if ( _curIdx == 4 ){
         GPUImageFilterGroup * fg = (GPUImageFilterGroup *)_curFilter;
-        KSYBeautifyFaceFilter    * bf = (KSYBeautifyFaceFilter *)[fg filterAtIndex:0];
+        KSYBeautifyProFilter    * bf = (KSYBeautifyProFilter *)[fg filterAtIndex:0];
         KSYBuildInSpecialEffects * sf = (KSYBuildInSpecialEffects *)[fg filterAtIndex:1];
         if (sender == _filterParam1 ){
             bf.grindRatio = _filterParam1.normalValue;

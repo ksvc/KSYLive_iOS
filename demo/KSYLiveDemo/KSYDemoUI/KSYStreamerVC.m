@@ -353,12 +353,12 @@
     _miscView.swBypassRec.on = NO;
     _miscView.autoReconnect.slider.enabled = !bStart;
     _kit.maxAutoRetry = (int)_miscView.autoReconnect.slider.value;
+    [self updateSwAudioOnly:bStart];
     
     //判断是直播还是录制
     NSString* title = _ctrlView.btnStream.currentTitle;
     _bRecord = [ title isEqualToString:@"开始录制"];
     _miscView.swBypassRec.enabled = !_bRecord; // 直接录制时, 不能旁路录制
-    [self updateSwAudioOnly:bStart];
     if (_bRecord && bStart){
         [self deleteFile:[_presetCfgView hostUrl]];
     }
@@ -367,13 +367,15 @@
 // 启动推流 / 停止推流
 - (void) updateSwAudioOnly : (BOOL) bStart {
     if (bStart) {
-        if (self.audioView.swAudioOnly.on) {
+        if (self.audioView.swAudioOnly.on) {  // 开启了纯音频推流
             self.audioView.swAudioOnly.enabled = NO;
             self.audioView.lblAudioOnly.text =@"纯音频流";
+            _kit.streamerBase.bWithVideo = NO;  // 关闭视频
         }
         else {
             self.audioView.swAudioOnly.enabled = YES;
             self.audioView.lblAudioOnly.text =@"冻结画面";
+            _kit.streamerBase.bWithVideo = YES; //未启用纯音频推流 开启视频
         }
     }
     else {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		050E1CFC1E76409600653275 /* KSYHorScreenStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 050E1CFB1E76409600653275 /* KSYHorScreenStreamerVC.m */; };
+		052B29371EAA2DC000BFECB0 /* KSYBgpStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 052B29361EAA2DC000BFECB0 /* KSYBgpStreamerVC.m */; };
 		0530DE591E484C6100EEAD32 /* KSYBgmStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0530DE581E484C6100EEAD32 /* KSYBgmStreamerVC.m */; };
 		056FE3801E1BA730002FC22F /* KSYPipStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 056FE37F1E1BA730002FC22F /* KSYPipStreamerVC.m */; };
 		060AE9C51D4653010064DD65 /* KSYFileSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 060AE9C41D4653010064DD65 /* KSYFileSelector.m */; };
@@ -106,6 +107,8 @@
 /* Begin PBXFileReference section */
 		050E1CFA1E76409600653275 /* KSYHorScreenStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYHorScreenStreamerVC.h; sourceTree = "<group>"; };
 		050E1CFB1E76409600653275 /* KSYHorScreenStreamerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYHorScreenStreamerVC.m; sourceTree = "<group>"; };
+		052B29351EAA2DC000BFECB0 /* KSYBgpStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYBgpStreamerVC.h; sourceTree = "<group>"; };
+		052B29361EAA2DC000BFECB0 /* KSYBgpStreamerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYBgpStreamerVC.m; sourceTree = "<group>"; };
 		0530DE571E484C6100EEAD32 /* KSYBgmStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYBgmStreamerVC.h; sourceTree = "<group>"; };
 		0530DE581E484C6100EEAD32 /* KSYBgmStreamerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYBgmStreamerVC.m; sourceTree = "<group>"; };
 		056FE37E1E1BA730002FC22F /* KSYPipStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYPipStreamerVC.h; sourceTree = "<group>"; };
@@ -376,6 +379,8 @@
 				050E1CFB1E76409600653275 /* KSYHorScreenStreamerVC.m */,
 				C323BC1C1E794C2900D4682C /* KSYFloatStreamerVC.h */,
 				C323BC1D1E794C2900D4682C /* KSYFloatStreamerVC.m */,
+				052B29351EAA2DC000BFECB0 /* KSYBgpStreamerVC.h */,
+				052B29361EAA2DC000BFECB0 /* KSYBgpStreamerVC.m */,
 				06FBBD8E1D2E23110065ED55 /* subviews */,
 			);
 			name = KSYDemoUI;
@@ -619,6 +624,7 @@
 				0530DE591E484C6100EEAD32 /* KSYBgmStreamerVC.m in Sources */,
 				06A646B71D8459C800D1C620 /* KSYProberVC.m in Sources */,
 				06A646B81D8459C800D1C620 /* KSYPlayerVC.m in Sources */,
+				052B29371EAA2DC000BFECB0 /* KSYBgpStreamerVC.m in Sources */,
 				3991D0F21DD5674200032EC0 /* KSYRecordVC.m in Sources */,
 				E3B007391CE31547009AF074 /* KSYDBCreater.m in Sources */,
 				056FE3801E1BA730002FC22F /* KSYPipStreamerVC.m in Sources */,

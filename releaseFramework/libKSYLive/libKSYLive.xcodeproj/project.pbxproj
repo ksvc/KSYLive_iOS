@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		052B29421EAB316300BFECB0 /* KSYGPUBgpStreamerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 052B293E1EAB315100BFECB0 /* KSYGPUBgpStreamerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		052B29431EAB316800BFECB0 /* KSYGPUBgpStreamerKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 052B293F1EAB315100BFECB0 /* KSYGPUBgpStreamerKit.m */; };
 		0530DE5E1E489CC800EEAD32 /* KSYGPUBgmStreamerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0530DE5A1E489CC200EEAD32 /* KSYGPUBgmStreamerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0530DE5F1E489CCD00EEAD32 /* KSYGPUBgmStreamerKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0530DE5B1E489CC200EEAD32 /* KSYGPUBgmStreamerKit.m */; };
 		056FE3831E1BC9B1002FC22F /* KSYGPUPipStreamerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 056FE3811E1BC9B1002FC22F /* KSYGPUPipStreamerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -61,10 +63,13 @@
 		5800DCF21D82BAFF00B1A884 /* KSYQosInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC841D82B9AA00B1A884 /* KSYQosInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		580C1C2E1E2897DF00B386D5 /* KSYNetTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 580C1C2D1E2897DF00B386D5 /* KSYNetTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		580C1C2F1E2897F100B386D5 /* KSYNetTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 580C1C2D1E2897DF00B386D5 /* KSYNetTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		583682961EADDEF0002D3CB9 /* KSYReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 0623D6F11E78184200AEF51E /* KSYReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5837E1921E6469600044EA17 /* KSYMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 5837E1911E6469600044EA17 /* KSYMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		052B293E1EAB315100BFECB0 /* KSYGPUBgpStreamerKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUBgpStreamerKit.h; path = ../../source/KSYGPUBgpStreamerKit.h; sourceTree = "<group>"; };
+		052B293F1EAB315100BFECB0 /* KSYGPUBgpStreamerKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYGPUBgpStreamerKit.m; path = ../../source/KSYGPUBgpStreamerKit.m; sourceTree = "<group>"; };
 		0530DE5A1E489CC200EEAD32 /* KSYGPUBgmStreamerKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUBgmStreamerKit.h; path = ../../source/KSYGPUBgmStreamerKit.h; sourceTree = "<group>"; };
 		0530DE5B1E489CC200EEAD32 /* KSYGPUBgmStreamerKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYGPUBgmStreamerKit.m; path = ../../source/KSYGPUBgmStreamerKit.m; sourceTree = "<group>"; };
 		056FE3811E1BC9B1002FC22F /* KSYGPUPipStreamerKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUPipStreamerKit.h; path = ../../source/KSYGPUPipStreamerKit.h; sourceTree = "<group>"; };
@@ -163,6 +168,8 @@
 				0530DE5B1E489CC200EEAD32 /* KSYGPUBgmStreamerKit.m */,
 				057364D31E67CB73006EC5FA /* KSYUIRecorderKit.h */,
 				057364D41E67CB73006EC5FA /* KSYUIRecorderKit.m */,
+				052B293E1EAB315100BFECB0 /* KSYGPUBgpStreamerKit.h */,
+				052B293F1EAB315100BFECB0 /* KSYGPUBgpStreamerKit.m */,
 			);
 			name = KSYGPUStreamerKit;
 			sourceTree = "<group>";
@@ -329,6 +336,7 @@
 				5800DC891D82B9AA00B1A884 /* KSYMoviePlayerDefines.h in Headers */,
 				5800DC8A1D82B9AA00B1A884 /* KSYQosInfo.h in Headers */,
 				580C1C2E1E2897DF00B386D5 /* KSYNetTracker.h in Headers */,
+				583682961EADDEF0002D3CB9 /* KSYReachability.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +387,7 @@
 				063254BD1E6810C600638EC8 /* KSYAQPlayer.h in Headers */,
 				0623D6F31E78185400AEF51E /* KSYReachability.h in Headers */,
 				063254BE1E6810C600638EC8 /* KSYBgmReader.h in Headers */,
+				052B29421EAB316300BFECB0 /* KSYGPUBgpStreamerKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +495,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				057364D61E67CB73006EC5FA /* KSYUIRecorderKit.m in Sources */,
+				052B29431EAB316800BFECB0 /* KSYGPUBgpStreamerKit.m in Sources */,
 				0530DE5F1E489CCD00EEAD32 /* KSYGPUBgmStreamerKit.m in Sources */,
 				056FE3841E1BC9B1002FC22F /* KSYGPUPipStreamerKit.m in Sources */,
 				06A646D21D865B3B00D1C620 /* KSYGPUStreamerKit.m in Sources */,

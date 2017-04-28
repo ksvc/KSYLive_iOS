@@ -59,6 +59,13 @@
 @property(nonatomic, assign) GPUImageRotationMode outputRotation;
 
 /**
+ @abstract   是否允许超时丢帧
+ @discussion 当video frame处理超时时，该属性为YES时，将丢弃新的video frame，为NO时将等待处理完毕的信号。
+ @discussion 默认为YES。
+ */
+@property(nonatomic, assign) BOOL alwaysDiscardsLateVideoFrames;
+
+/**
  @abstract 输入图像数据
  @param    sampleBuffer 图像数据和时间信息
  */

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYRecordError.html">
+	<File path="Constants/KSYPlayRecordScheme.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYRecordError</TokenIdentifier>
-			<Abstract type="html">旁路录制错误码</Abstract>
-			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYPlayRecordScheme</TokenIdentifier>
+			<Abstract type="html">录制方案</Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
             
 			
 			<NodeRef refid="55"/>
@@ -14,41 +14,21 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYRecordErrorNone</TokenIdentifier>
-            <Abstract type="html">无错误</Abstract>
-            <Declaration>KSYRecordErrorNone</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYPlayerRecord_PicMix_Scheme</TokenIdentifier>
+            <Abstract type="html">UI+Video混合方案</Abstract>
+            <Declaration>KSYPlayerRecord_PicMix_Scheme</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="55"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYRecordErrorPathInvalid</TokenIdentifier>
-            <Abstract type="html">地址错误</Abstract>
-            <Declaration>KSYRecordErrorPathInvalid</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
             
             <NodeRef refid="55"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYRecordErrorFormatNotSupport</TokenIdentifier>
-            <Abstract type="html">格式不支持</Abstract>
-            <Declaration>KSYRecordErrorFormatNotSupport</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYPlayerRecord_ScreenShot_Scheme</TokenIdentifier>
+            <Abstract type="html">截屏式方案</Abstract>
+            <Declaration>KSYPlayerRecord_ScreenShot_Scheme</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="55"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYRecordErrorInternal</TokenIdentifier>
-            <Abstract type="html">内部错误</Abstract>
-            <Declaration>KSYRecordErrorInternal</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
             
             <NodeRef refid="55"/>
         </Token>

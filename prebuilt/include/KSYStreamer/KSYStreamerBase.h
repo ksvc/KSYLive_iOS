@@ -163,6 +163,13 @@
  */
 @property (nonatomic, assign)BOOL           bWithMessage;
 
+/**
+ @abstract cpu缩放比率,设置>0为按比例缩放，默认为0
+ @warning  请在推流之前进行设置
+ */
+@property (nonatomic, assign)   float scaleRatio;
+
+
 #pragma mark - Status Notification
 
 /**

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'libksygpulive'
-  s.version      = '2.1.0'
+  s.version      = '2.1.1'
   s.license      = {
 :type => 'Proprietary',
 :text => <<-LICENSE
@@ -57,6 +57,17 @@ Pod::Spec.new do |s|
   s.subspec 'libksygpulive' do |sub|
     sub.source_files =  ['prebuilt/include/**/*.h',
                          'source/*.{h,m}']
+    sub.vendored_library = ['prebuilt/libs/libksyplayer.a',
+                            'prebuilt/libs/libksystreamer.a'];
+    sub.dependency 'GPUImage'
+    sub.dependency '%s/base' % s.name
+    sub.dependency '%s/yuv' % s.name
+    sub.dependency '%s/mediacodec' % s.name
+    sub.dependency '%s/mediacore_enc_base' % s.name
+    sub.dependency '%s/mediacore_enc_lite' % s.name
+  end
+  s.subspec 'libksygpulive_noKit' do |sub|
+    sub.source_files =  ['prebuilt/include/**/*.h']
     sub.vendored_library = ['prebuilt/libs/libksyplayer.a',
                             'prebuilt/libs/libksystreamer.a'];
     sub.dependency 'GPUImage'

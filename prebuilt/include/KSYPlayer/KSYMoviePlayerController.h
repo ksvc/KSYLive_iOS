@@ -6,11 +6,12 @@
 //  Copyright © 2015 kingsoft. All rights reserved.
 //
 
+#import <AVFoundation/AVFoundation.h>
+#import <MediaPlayer/MediaPlayer.h>
 #import "KSYMediaPlayback.h"
 #import "KSYQosInfo.h"
 #import "KSYMoviePlayerDefines.h"
-#import <AVFoundation/AVFoundation.h>
-#import <MediaPlayer/MediaPlayer.h>
+#import "KSYReachability.h"
 /**
  金山云播放内核提供了跨终端平台的播放器SDK，支持Android/iOS/Flash平台的视频播放需求。金山云播放内核集成有业界一流的高性能H.265/HEVC解码器，提供流畅、低功耗的播放体验。同时SDK提供和系统播放器一致的音视频播放、控制接口，极大地降低了开发门槛。
  
@@ -541,6 +542,24 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
 @property(nonatomic) MPMovieAudioPan audioPan;
 
 /**
+ @abstract 用于检测网络连通性的地址，默认使用地址为“www.kingsoft.com”
+ @discussion 用户可自定义地址，但不可设置无效地址，如果不清楚规则，建议使用默认值
+ @discussion 设置为nil时，则关闭网络连通性的检测, networkStatus属性值为-1
+ @discussion 建议在创建对象后设置一次或不设置，不推荐在播放过程中动态配置
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 2.1.1 and later
+ */
+@property (nonatomic, readwrite) NSString* networkDetectURL;
+
+/**
+ @abstract 网络连通状态
+ @discussion 使用 www.kingsoft.com 作为检测目标
+ @discussion 如果networkStatus不等于KSYNetworkStatus枚举中的任意值，则表明当前尚未监测到网络状态
+ @since Available in KSYMoviePlayerController 2.1.1 and later
+ */
+@property (nonatomic, readonly) KSYNetworkStatus networkStatus;
+
+/**
  @abstract timeout指定拉流超时时间,单位是秒
  @param prepareTimeout 建立链接超时时间，默认值是10秒
  @param readTimeout 拉流超时时间，默认值是30秒
@@ -707,35 +726,3 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
 -(void)setHttpHeaders:(NSDictionary *)headers;
 
 @end
-
-
-// Posted when the playback state changes, either programatically or by the user.
-MP_EXTERN NSString * const MPMoviePlayerPlaybackStateDidChangeNotification;
-
-// Posted when movie playback ends or a user exits playback.
-MP_EXTERN NSString * const MPMoviePlayerPlaybackDidFinishNotification;
-
-MP_EXTERN NSString * const MPMoviePlayerPlaybackDidFinishReasonUserInfoKey; // NSNumber (MPMovieFinishReason)
-
-// Posted when the network load state changes.
-MP_EXTERN NSString * const MPMoviePlayerLoadStateDidChangeNotification;
-
-MP_EXTERN NSString * const MPMovieNaturalSizeAvailableNotification;
-
-MP_EXTERN NSString * const MPMoviePlayerFirstVideoFrameRenderedNotification;
-
-MP_EXTERN NSString * const MPMoviePlayerFirstAudioFrameRenderedNotification;
-
-MP_EXTERN NSString * const MPMoviePlayerSuggestReloadNotification;
-
-MP_EXTERN NSString * const MPMoviePlayerPlaybackStatusNotification;
-
-MP_EXTERN NSString * const MPMoviePlayerPlaybackStatusUserInfoKey; // NSNumber (MPMovieStatus)
-
-MP_EXTERN const NSString *const kKSYPLYFormat;
-
-MP_EXTERN const NSString *const kKSYPLYHttpFirstDataTime;
-
-MP_EXTERN const NSString *const kKSYPLYHttpAnalyzeDns;
-
-MP_EXTERN const NSString *const kKSYPLYHttpConnectTime;

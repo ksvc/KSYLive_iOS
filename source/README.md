@@ -18,3 +18,7 @@
 播放录屏功能, 满足直播过程中的主播精彩瞬间的保存和分享等需求。
 
 [使用说明请见wiki](https://github.com/ksvc/KSYMediaPlayer_iOS/wiki/playerRecord)
+
+## KSYGPUBgpStreamerKit类
+背景图片推流功能，满足主播想要展示的图片等需求。
+[使用说明请见wiki](https://github.com/ksvc/KSYLive_iOS/wiki/BgpStream)
