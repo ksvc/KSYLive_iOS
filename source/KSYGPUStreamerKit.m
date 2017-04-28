@@ -419,23 +419,36 @@
     if (_capDev_q == nil || view == nil || [_vCapDev isRunning]) {
         return;
     }
-    AVAuthorizationStatus status_audio = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
-    AVAuthorizationStatus status_video = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-    if ( status_audio == AVAuthorizationStatusDenied ||
-         status_video == AVAuthorizationStatusDenied ) {
-        [self newCaptureState:KSYCaptureStateDevAuthDenied];
-        return;
-    }
-    dispatch_async(_capDev_q, ^{
-        dispatch_async(dispatch_get_main_queue(), ^(){
-            [view addSubview:_preview];
-            [view sendSubviewToBack:_preview];
-            _preview.frame = view.bounds;
-        });
-        if (_capPreset == nil) {
-            [self newCaptureState:KSYCaptureStateParameterError];
+    dispatch_async(dispatch_get_main_queue(), ^(){
+        [view addSubview:_preview];
+        [view sendSubviewToBack:_preview];
+        _preview.frame = view.bounds;
+        if ([self startVideoCap] == NO){
             return;
         }
+        if ([self startAudioCap] == NO){
+            return;
+        }
+    });
+}
+
+/**
+ @abstract 开启视频配置和采集
+ @discussion 设置完成视频采集参数之后，按照设置值启动视频预览，启动后对视频采集参数修改不会生效
+ @discussion 需要访问摄像头的权限，若授权失败，其他API都会拒绝服务
+ @discussion 视频采集成功返回YES，不成功返回NO
+ */
+- (BOOL) startVideoCap{
+    AVAuthorizationStatus status_video = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if ( status_video == AVAuthorizationStatusDenied == AVAuthorizationStatusDenied) {
+        [self newCaptureState:KSYCaptureStateDevAuthDenied];
+        return NO;
+    }
+    if (_capPreset == nil) {
+        [self newCaptureState:KSYCaptureStateParameterError];
+        return NO;
+    }
+    dispatch_async(_capDev_q, ^{
         [_quitLock lock];
         if ( _cameraPosition != [_vCapDev cameraPosition] ){
             [_vCapDev rotateCamera];
@@ -445,7 +458,7 @@
         _capPreset = _vCapDev.captureSessionPreset;
         [self  updatePreDimension];
         [self  updateStrDimension:self.videoOrientation];
-//         旋转
+        // 旋转
         [self rotatePreviewTo:_videoOrientation ];
         [self rotateStreamTo: _videoOrientation ];
         // 连接
@@ -453,13 +466,33 @@
         [self setupVMixer];
         // 开始预览
         [_vCapDev startCameraCapture];
-        
+        [_quitLock unlock];
+        [self newCaptureState:KSYCaptureStateCapturing];
+    });
+    return YES;
+}
+
+/**
+ @abstract 开始音频配置和采集
+ @discussion 设置完成音频采集参数之后，按照设置值启动音频预览，启动后对音频采集参数修改不会生效
+ @discussion 需要访问麦克风的权限，若授权失败，其他API都会拒绝服务
+ @discussion 音频采集成功返回YES，不成功返回NO
+ */
+- (BOOL) startAudioCap{
+    AVAuthorizationStatus status_audio = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
+    if ( status_audio == AVAuthorizationStatusDenied) {
+        [self newCaptureState:KSYCaptureStateDevAuthDenied];
+        return NO;
+    }
+    dispatch_async(_capDev_q, ^{
+        [_quitLock lock];
         //配置audioSession的方法由init移入startPreview，防止在init之后，startPreview之前被外部修改
         [AVAudioSession sharedInstance].bInterruptOtherAudio = _bInterrupt;
         [_aCapDev startCapture];
         [_quitLock unlock];
         [self newCaptureState:KSYCaptureStateCapturing];
     });
+    return YES;
 }
 
 /**

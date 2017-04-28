@@ -8,6 +8,7 @@
 #import "KSYGPUBgmStreamerKit.h"
 
 #define CASE_RETURN( ENU ) case ENU : {return @#ENU;}
+#define weakObj(o) __weak typeof(o) o##Weak = o;
 
 @interface KSYGPUBgmStreamerKit (){
     NSLock   *       _quitLock;  // ensure capDev closed before dealloc
@@ -41,8 +42,9 @@
     // 创建背景音乐播放模块
     _ksyBgmPlayer = [[KSYMoviePlayerController alloc] initWithContentURL:url sharegroup:[[[GPUImageContext sharedImageProcessingContext] context] sharegroup]];
     // 背景音乐播放,音乐数据送入混音器
+    weakObj(self);
     _ksyBgmPlayer.audioDataBlock = ^(CMSampleBufferRef buf){
-        [self mixAudio:buf to:self.bgmTrack];
+        [selfWeak mixAudio:buf to:selfWeak.bgmTrack];
     };
     _ksyBgmPlayer.videoDecoderMode = shouldUseHWCodec ? MPMovieVideoDecoderMode_Hardware : MPMovieVideoDecoderMode_Software;
     _ksyBgmPlayer.shouldAutoplay = shouldAutoplay;

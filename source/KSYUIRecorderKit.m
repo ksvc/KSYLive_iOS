@@ -36,6 +36,8 @@
 @property  KSYGPUPicOutput* gpuToStr;
 @property  CMTime lastPts;
 
+@property (nonatomic) KSYPlayRecordScheme  scheme;
+
 @end
 
 @implementation KSYUIRecorderKit
@@ -60,13 +62,37 @@
     
     _bBackground = NO;
     
-    [self createMixer];
-    
     [self createWriter];
+    [self createAudioMixer];
+    [self createVideoMixer];
     
     [self registerApplicationObservers];
-
+    
     return self;
+}
+
+- (instancetype) initWithScheme:(KSYPlayRecordScheme)scheme{
+    _scheme = scheme;
+    if(_scheme == KSYPlayerRecord_PicMix_Scheme)
+        return [self init];
+    else if(_scheme == KSYPlayerRecord_ScreenShot_Scheme)
+    {
+        _bPlayRecord = NO;
+        
+        _dummyTrack = 0;
+        _playerTrack = 1;
+        
+        _bBackground = NO;
+        
+        [self createWriter];
+        [self createAudioMixer];
+        
+        [self registerApplicationObservers];
+        
+        return self;
+    }
+    
+    return nil;
 }
 
 -(void)dealloc{
@@ -103,80 +129,114 @@
 
 -(void)startRecord:(NSURL*) path
 {
-    [_writer startWrite:path];
-    _bPlayRecord = YES;
+    if(_writer && _bPlayRecord == NO)
+    {
+        [_writer startWrite:path];
+        _bPlayRecord = YES;
+    }
 }
 
 -(void)stopRecord
 {
-    [_writer stopWrite];
-    _bPlayRecord = NO;
+    if(_writer && _bPlayRecord == YES)
+    {
+        [_writer stopWrite];
+        _bPlayRecord = NO;
+    }
 }
 
 -(void)createWriter{
-    _gpuToStr = [[KSYGPUPicOutput alloc] initWithOutFmt:kCVPixelFormatType_32BGRA];
-    _writer = [[KSYMovieWriter alloc] init];
-    _writer.videoCodec = KSYVideoCodec_AUTO;
-    _writer.audioCodec = KSYAudioCodec_AAC;
-    _writer.bWithVideo = YES;
-    _writer.bWithAudio = YES;
-    
-    __weak KSYUIRecorderKit * weakKit = self;
-    _aMixer.audioProcessingCallback = ^(CMSampleBufferRef buf){        
-        [weakKit.writer processAudioSampleBuffer:buf];
-    };
-    
-    _gpuToStr.videoProcessingCallback = ^(CVPixelBufferRef pixelBuffer, CMTime timeInfo){
-        [weakKit.writer processVideoPixelBuffer:pixelBuffer timeInfo:timeInfo];
-    };
-    
-    [_uiMixer addTarget:_gpuToStr];
+    if(!_writer)
+    {
+        _writer = [[KSYMovieWriter alloc] init];
+        _writer.videoCodec = KSYVideoCodec_VT264;
+        _writer.audioCodec = KSYAudioCodec_AAC;
+        _writer.bWithVideo = YES;
+        _writer.bWithAudio = YES;
+    }
 }
 
--(void)createMixer{
-    _uiMixer = [[KSYGPUPicMixer alloc] init];
-    _uiMixer.masterLayer = _uiLayer;
-    [_uiMixer setPicRect:CGRectMake(-1,-1,0.0,0.0) ofLayer:_playerLayer];
-    [_uiMixer setPicRotation:kGPUImageFlipVertical ofLayer:_playerLayer];
-    [_uiMixer setPicAlpha:1.0 ofLayer:_playerLayer];
+-(void)createVideoMixer{
+    if(!_uiMixer)
+    {
+        _uiMixer = [[KSYGPUPicMixer alloc] init];
+        _uiMixer.masterLayer = _uiLayer;
+        [_uiMixer setPicRect:CGRectMake(-1,-1,0.0,0.0) ofLayer:_playerLayer];
+        [_uiMixer setPicRotation:kGPUImageFlipVertical ofLayer:_playerLayer];
+        [_uiMixer setPicAlpha:1.0 ofLayer:_playerLayer];
+        
+        [_uiMixer setPicRect:CGRectMake(0,0,1.0,1.0) ofLayer:_uiLayer];
+        [_uiMixer setPicAlpha:1.0 ofLayer:_uiLayer];
+    }
     
-    [_uiMixer setPicRect:CGRectMake(0,0,1.0,1.0) ofLayer:_uiLayer];
-    [_uiMixer setPicAlpha:1.0 ofLayer:_uiLayer];
+    if(!_gpuToStr)
+    {
+        _gpuToStr = [[KSYGPUPicOutput alloc] initWithOutFmt:kCVPixelFormatType_32BGRA];
+        __weak KSYUIRecorderKit * weakKit = self;
+        _gpuToStr.videoProcessingCallback = ^(CVPixelBufferRef pixelBuffer, CMTime timeInfo){
+            [weakKit.writer processVideoPixelBuffer:pixelBuffer timeInfo:timeInfo];
+        };
+        
+        [_uiMixer addTarget:_gpuToStr];
+    }
+}
+
+-(void)createAudioMixer{
     
-    _aMixer = [[KSYAudioMixer alloc]init];
-    _aMixer.mainTrack = _dummyTrack;
-    
-    [_aMixer setTrack:_dummyTrack enable:YES];
-    [_aMixer setTrack:_playerTrack enable:YES];
-    
-    AudioStreamBasicDescription format;
-    memset(&format, 0, sizeof(format));
-    format.mSampleRate = 44100;
-    format.mFormatID = kAudioFormatLinearPCM;
-    format.mFormatFlags = kLinearPCMFormatFlagIsSignedInteger | kLinearPCMFormatFlagIsPacked;
-    format.mChannelsPerFrame = 2;
-    format.mBitsPerChannel = 16;
-    format.mBytesPerFrame = (format.mBitsPerChannel * format.mChannelsPerFrame / 8);
-    format.mFramesPerPacket = 1;
-    format.mBytesPerPacket = format.mBytesPerFrame * format.mFramesPerPacket;
-    
-    __weak KSYUIRecorderKit *weakKit = self;
-    _dummyAudio = [[KSYDummyAudioSource alloc]initWithAudioFmt:format];
-    _dummyAudio.audioProcessingCallback = ^(CMSampleBufferRef sampleBuffer){
-        [weakKit.aMixer processAudioSampleBuffer:sampleBuffer of:weakKit.dummyTrack];
-        weakKit.lastPts = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);        
-    };
-    CMTime startPts = CMTimeMake((int64_t)(0 * 1000), 1000);
-    [_dummyAudio startAt:startPts];
+    if(!_aMixer)
+    {
+        _aMixer = [[KSYAudioMixer alloc]init];
+        _aMixer.mainTrack = _dummyTrack;
+        
+        [_aMixer setTrack:_dummyTrack enable:YES];
+        [_aMixer setTrack:_playerTrack enable:YES];
+      
+        __weak KSYUIRecorderKit * weakKit = self;
+        _aMixer.audioProcessingCallback = ^(CMSampleBufferRef buf){
+            [weakKit.writer processAudioSampleBuffer:buf];
+        };
+
+        AudioStreamBasicDescription format;
+        memset(&format, 0, sizeof(format));
+        format.mSampleRate = 44100;
+        format.mFormatID = kAudioFormatLinearPCM;
+        format.mFormatFlags = kLinearPCMFormatFlagIsSignedInteger | kLinearPCMFormatFlagIsPacked;
+        format.mChannelsPerFrame = 2;
+        format.mBitsPerChannel = 16;
+        format.mBytesPerFrame = (format.mBitsPerChannel * format.mChannelsPerFrame / 8);
+        format.mFramesPerPacket = 1;
+        format.mBytesPerPacket = format.mBytesPerFrame * format.mFramesPerPacket;
+
+        _dummyAudio = [[KSYDummyAudioSource alloc]initWithAudioFmt:format];
+        _dummyAudio.audioProcessingCallback = ^(CMSampleBufferRef sampleBuffer){
+            [weakKit.aMixer processAudioSampleBuffer:sampleBuffer of:weakKit.dummyTrack];
+            weakKit.lastPts = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
+        };
+        CMTime startPts = CMTimeMake((int64_t)(0 * 1000), 1000);
+        [_dummyAudio startAt:startPts];
+    }
 }
 
 -(void) processAudioSampleBuffer:(CMSampleBufferRef) buf
 {
     @synchronized (self) {
-        if(!_bPlayRecord)
+        if(!_bPlayRecord || !_aMixer)
             return;
         
         [_aMixer processAudioSampleBuffer:buf of:_playerTrack];
+    }
+}
+
+-(void) processVideoSampleBuffer:(CVPixelBufferRef)pixelBuffer timeInfo:(CMTime)timeStamp
+{
+    @synchronized (self) {
+        if(!_writer || !_bPlayRecord || _bBackground || _scheme != KSYPlayerRecord_ScreenShot_Scheme)
+            return;
+        
+        CMTime pts = timeStamp;
+        if(!CMTIME_IS_VALID(pts))
+            pts = _lastPts;
+        [_writer processVideoPixelBuffer:pixelBuffer timeInfo:pts];
     }
 }
 
@@ -185,7 +245,7 @@
                         Time:(CMTime)time
 {
     @synchronized (self) {
-        if(!_bPlayRecord && _bBackground)
+        if(!_bPlayRecord || _bBackground || _scheme != KSYPlayerRecord_PicMix_Scheme)
             return;
         
         if(_uiMixer)

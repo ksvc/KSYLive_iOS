@@ -108,6 +108,13 @@
     [self.view addGestureRecognizer:upSwipeRecognizer];
     [self.view addGestureRecognizer:downSwipeRecognizer];
     
+    //捏合缩放
+    UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchView:)];
+    [self.view addGestureRecognizer:pinchGesture];
+    //旋转
+    UIRotationGestureRecognizer *rotationGesture = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(rotateView:)];
+    [self.view addGestureRecognizer:rotationGesture];
+    
     // 该变量决定停止播放时使用的接口，YES时调用reset接口，NO时调用stop接口
     usingReset = YES;
     
@@ -442,6 +449,23 @@
             NSLog(@"Software Codec used\n");
         }
     }
+    if(MPMoviePlayerNetworkStatusChangeNotification == notify.name)
+    {
+        int currStatus = [[[notify userInfo] valueForKey:MPMoviePlayerCurrNetworkStatusUserInfoKey] intValue];
+        int lastStatus = [[[notify userInfo] valueForKey:MPMoviePlayerLastNetworkStatusUserInfoKey] intValue];
+        if(KSYNotReachable == currStatus)
+        {
+            NSLog(@"network not reachable\n");
+        }
+        else if((KSYReachableViaWiFi == currStatus || KSYReachableViaWWAN == currStatus) && KSYNotReachable == lastStatus)
+        {
+            NSLog(@"network reachable via %s\n", currStatus == KSYReachableViaWiFi ? "WIFI" : "WWAN");
+        }
+        else if(currStatus != lastStatus)
+        {
+            NSLog(@"network reachable change from %s to %s\n", lastStatus == KSYReachableViaWiFi ? "WIFI" : "WWAN", currStatus == KSYReachableViaWiFi ? "WIFI" : "WWAN");
+        }
+    }
 }
 - (void) toast:(NSString*)message{
     UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
@@ -496,9 +520,13 @@
                                             selector:@selector(handlePlayerNotify:)
                                                 name:(MPMoviePlayerPlaybackStatusNotification)
                                               object:_player];
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(handlePlayerNotify:)
+                                                name:(MPMoviePlayerNetworkStatusChangeNotification)
+                                              object:_player];
 }
 
-- (void)releaseObservers 
+- (void)releaseObservers
 {
     [[NSNotificationCenter defaultCenter]removeObserver:self
                                                    name:MPMediaPlaybackIsPreparedToPlayDidChangeNotification
@@ -526,6 +554,9 @@
                                                  object:_player];
     [[NSNotificationCenter defaultCenter]removeObserver:self
                                                    name:MPMoviePlayerPlaybackStatusNotification
+                                                 object:_player];
+    [[NSNotificationCenter defaultCenter]removeObserver:self
+                                                   name:MPMoviePlayerNetworkStatusChangeNotification
                                                  object:_player];
 }
 
@@ -725,6 +756,15 @@
     double flowSize = [_player readSize];
     NSDictionary *meta = [_player getMetadata];
     KSYQosInfo *info = _player.qosInfo;
+    NSString *netStatus = nil;
+    if(_player.networkStatus == KSYNotReachable)
+        netStatus = @"NO";
+    else if(_player.networkStatus == KSYReachableViaWiFi)
+        netStatus = @"WIFI";
+    else if(_player.networkStatus == KSYReachableViaWWAN)
+        netStatus = @"WWAN";
+    else
+        netStatus = @"Unknown";
     stat.text = [NSString stringWithFormat:@
                  "SDK版本:v%@\n"
                  "播放器实例:%p\n"
@@ -749,7 +789,8 @@
                  "视频缓冲队列时长:%.1fs\n"
                  "已下载视频数据量:%.1fMB\n"
                  "已下载总数据量%.1fMB\n"
-                 "解码帧率:%.2f 显示帧率:%.2f\n",
+                 "解码帧率:%.2f 显示帧率:%.2f\n"
+                 "网络连通性:%@\n",
 
                  [_player getVersion],
                  _player,
@@ -777,7 +818,8 @@
                  (float)info.videoTotalDataSize / 1e6,
                  (float)info.totalDataSize / 1e6,
                  info.videoDecodeFPS,
-                 info.videoRefreshFPS];
+                 info.videoRefreshFPS,
+                 netStatus];
     lastCheckTime = [self getCurrentTime];
     lastSize = flowSize;
     
@@ -945,6 +987,31 @@
     if(swpie.direction == UISwipeGestureRecognizerDirectionUp) {
         CGRect originalFrame = msg.frame;
         msg.frame =  CGRectMake(-originalFrame.size.width, originalFrame.origin.y, originalFrame.size.width, originalFrame.size.height);
+    }
+}
+
+// 处理捏合缩放手势
+- (void) pinchView:(UIPinchGestureRecognizer *)pinchGestureRecognizer
+{
+    UIView *view = videoView;
+    if (pinchGestureRecognizer.state == UIGestureRecognizerStateBegan || pinchGestureRecognizer.state == UIGestureRecognizerStateChanged) {
+        view.transform = CGAffineTransformScale(view.transform, pinchGestureRecognizer.scale, pinchGestureRecognizer.scale);
+        pinchGestureRecognizer.scale = 1;
+    }
+}
+
+// 处理旋转手势
+- (void) rotateView:(UIRotationGestureRecognizer *)rotationGestureRecognizer
+{
+    UIView *view = videoView;
+    if([rotationGestureRecognizer state] == UIGestureRecognizerStateEnded) {
+        view.transform = CGAffineTransformIdentity;
+        return;
+    }
+    
+    if (rotationGestureRecognizer.state == UIGestureRecognizerStateBegan || rotationGestureRecognizer.state == UIGestureRecognizerStateChanged) {
+        view.transform = CGAffineTransformRotate(view.transform, rotationGestureRecognizer.rotation);
+        [rotationGestureRecognizer setRotation:0];
     }
 }
 

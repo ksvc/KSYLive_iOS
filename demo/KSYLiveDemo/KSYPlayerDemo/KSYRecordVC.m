@@ -11,6 +11,12 @@
 #import "KSYProgressView.h"
 #import <GPUImage/GPUImage.h>
 
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
 @interface KSYRecordVC () <UITextFieldDelegate>
 @property (strong, nonatomic) NSURL *url;
 @property (strong, nonatomic) KSYMoviePlayerController *player;
@@ -32,10 +38,18 @@
     UILabel *labelVolume;
     UISlider *sliderVolume;
     
+    UILabel *labelRecord;
+    UISegmentedControl  *segRecord;
+    
     UIButton *btnStartRecord;
     UIButton *btnStopRecord;
     
     NSString *recordFilePath;
+    
+    CADisplayLink *displayLink;
+    dispatch_queue_t queue;
+    
+    NSInteger recordScheme;
 }
 
 - (instancetype)initWithURL:(NSURL *)url {
@@ -43,6 +57,7 @@
         self.url = url;
     }
     
+    recordScheme =  -1;
     return self;
 }
 
@@ -50,8 +65,6 @@
     [super viewDidLoad];
     
     [self initUI];
-    
-    [self setupUIKit];
 }
 
 - (void) initUI {
@@ -97,6 +110,18 @@
     [sliderVolume addTarget:self action:@selector(onVolumeChanged:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:sliderVolume];
 
+    labelRecord = [[UILabel alloc] init];
+    labelRecord.text = @"录屏方案";
+    labelRecord.textColor = [UIColor lightGrayColor];
+    [self.view addSubview:labelRecord];
+    
+    segRecord = [[UISegmentedControl alloc] initWithItems:@[@"关闭", @"图像混合", @"截屏"]];
+    segRecord.selectedSegmentIndex = 0;
+    segRecord.layer.cornerRadius = 5;
+    segRecord.backgroundColor = [UIColor lightGrayColor];
+    [segRecord addTarget:self action:@selector(onRecScheme:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:segRecord];
+    
     [self layoutUI];
     
     [self.view bringSubviewToFront:stat];
@@ -115,6 +140,7 @@
     [self.view addSubview:button];
     return button;
 }
+
 - (void) layoutUI {
     CGFloat wdt = self.view.bounds.size.width;
     CGFloat hgt = self.view.bounds.size.height;
@@ -127,13 +153,18 @@
     yPos = 2 * gap;
     xPos = gap;
     labelVolume.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    xPos += btnWdt + gap;
-    sliderVolume.frame  = CGRectMake(xPos, yPos, wdt - 3 * gap - btnWdt, btnHgt);
+    xPos += btnWdt * 1.4 + gap;
+    sliderVolume.frame  = CGRectMake(xPos, yPos, wdt - 3 * gap - btnWdt * 1.4, btnHgt);
     yPos += btnHgt + gap;
     xPos = gap;
-    lableHWCodec.frame =CGRectMake(xPos, yPos, btnWdt * 2, btnHgt);
-    xPos += btnWdt + gap;
+    lableHWCodec.frame =CGRectMake(xPos, yPos, btnWdt * 1.4, btnHgt);
+    xPos += btnWdt * 1.4 + gap;
     switchHwCodec.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
+    xPos = gap;
+    yPos += btnHgt + gap;
+    labelRecord.frame = CGRectMake(xPos, yPos, btnWdt * 1.4, btnHgt);
+    xPos += btnWdt * 1.4 + gap;
+    segRecord.frame = CGRectMake(xPos, yPos, btnWdt * 4, btnHgt);
     
     videoView.frame = CGRectMake(0, 0, wdt, hgt);
     
@@ -169,8 +200,6 @@
         [_player setVolume:slider.value/100 rigthVolume:slider.value/100];
     }
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -237,17 +266,22 @@
 }
 
 - (void)initPlayerWithURL:(NSURL *)aURL {
-    self.player = [[KSYMoviePlayerController alloc] initWithContentURL:_url sharegroup:[[[GPUImageContext sharedImageProcessingContext] context] sharegroup]];
-    [self setupObservers];
-    
-    //player视频数据输入
+    if(recordScheme == KSYPlayerRecord_PicMix_Scheme)
+    {
+        self.player = [[KSYMoviePlayerController alloc] initWithContentURL:_url sharegroup:[[[GPUImageContext sharedImageProcessingContext] context] sharegroup]];
+        @WeakObj(_kit);
+        //player视频数据输入
+        _player.textureBlock = ^(GLuint textureId, int width, int height, double pts){
+            CGSize size = CGSizeMake(width, height);
+            CMTime _pts = CMTimeMake((int64_t)(pts * 1000), 1000);
+            if(_kitWeak)
+                [_kitWeak processWithTextureId:textureId TextureSize:size Time:_pts];
+        };
+    }
+    else
+        self.player = [[KSYMoviePlayerController alloc] initWithContentURL:_url sharegroup:nil];
+  
     @WeakObj(_kit);
-    _player.textureBlock = ^(GLuint textureId, int width, int height, double pts){
-        CGSize size = CGSizeMake(width, height);
-        CMTime _pts = CMTimeMake((int64_t)(pts * 1000), 1000);
-        [_kitWeak processWithTextureId:textureId TextureSize:size Time:_pts];
-    };
-    
     //player音频数据输入
     _player.audioDataBlock = ^(CMSampleBufferRef buf){
         CMTime pts = CMSampleBufferGetPresentationTimeStamp(buf);
@@ -256,7 +290,8 @@
             NSLog(@"audio pts < 0");
             return;
         }
-        [_kitWeak processAudioSampleBuffer:buf];
+        if(_kitWeak)
+            [_kitWeak processAudioSampleBuffer:buf];
     };
     
     _player.videoDecoderMode = switchHwCodec.isOn? MPMovieVideoDecoderMode_Hardware : MPMovieVideoDecoderMode_Software;
@@ -264,10 +299,18 @@
     [videoView addSubview: _player.view];
     [videoView bringSubviewToFront:stat];
     
+    [self setupObservers];
+    
     [_player prepareToPlay];
 }
 
 - (IBAction)onPlayVideo:(id)sender {
+    if(recordScheme != KSYPlayerRecord_ScreenShot_Scheme && recordScheme != KSYPlayerRecord_PicMix_Scheme)
+    {
+        NSString *message = @"请先选择录制类型!";
+        [self toast:message];
+        return ;
+    }
     
     if(nil == _player)
     {
@@ -291,9 +334,13 @@
     }
 }
 
-
 - (IBAction)onStopVideo:(id)sender {
     if (_player) {
+        [self stopTimer];
+        [_kit stopRecord];
+        btnStartRecord.enabled = YES;
+        btnStopRecord.enabled = NO;
+        
         [_player stop];
         [self releaseObservers];
         [_player.view removeFromSuperview];
@@ -309,18 +356,13 @@
 
 
 #pragma record kit setup
--(void)setupUIKit{
-    recordFilePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/RecordAv.mp4"];
-    _kit = [[KSYUIRecorderKit alloc]init];
-    [self addUIToKit];
-}
-
 -(void)addUIToKit{
-    
     [_kit.contentView addSubview:labelVolume];
     [_kit.contentView addSubview:sliderVolume];
     [_kit.contentView addSubview:lableHWCodec];
     [_kit.contentView addSubview:switchHwCodec];
+    [_kit.contentView addSubview:labelRecord];
+    [_kit.contentView addSubview:segRecord];
     [_kit.contentView addSubview:btnPlay];
     [_kit.contentView addSubview:btnPause];
     [_kit.contentView addSubview:btnResume];
@@ -330,21 +372,48 @@
     [_kit.contentView addSubview:btnStopRecord];
     [_kit.contentView addSubview:stat];
     
-    [_kit.contentView addSubview:_player.view];
     [self.view addSubview:_kit.contentView];
     [_kit.contentView sendSubviewToBack:videoView];
 }
 
+- (IBAction)onRecScheme:(id)sender {
+    if(1 == segRecord.selectedSegmentIndex)
+    {
+        recordScheme = KSYPlayerRecord_PicMix_Scheme;
+        _kit = [[KSYUIRecorderKit alloc]init];
+        [self addUIToKit];
+    }
+    else if(2 == segRecord.selectedSegmentIndex)
+    {
+        recordScheme = KSYPlayerRecord_ScreenShot_Scheme;
+        _kit = [[KSYUIRecorderKit alloc]initWithScheme:KSYPlayerRecord_ScreenShot_Scheme];
+        queue = dispatch_queue_create("com.ksyun.playerRecord", DISPATCH_QUEUE_SERIAL);
+    }
+    recordFilePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/RecordAv.mp4"];
+    segRecord.enabled = NO;
+}
+
+#pragma wite file
 -(IBAction)onStartRecordVideo:(id)sender{
     [self deleteFile:recordFilePath];
     NSURL * path =[[NSURL alloc] initWithString:recordFilePath];
-    [_kit startRecord:path];
+    if(_kit)
+    {
+        if(recordScheme == KSYPlayerRecord_ScreenShot_Scheme)
+            [self setupTimer];
+        [_kit startRecord:path];
+    }
+    
     btnStartRecord.enabled = NO;
     btnStopRecord.enabled = YES;
 }
 
 -(IBAction)onStopRecordVideo:(id)sender{
-    [_kit stopRecord];
+    if(_kit)
+    {
+        [_kit stopRecord];
+        [self stopTimer];
+    }
     btnStartRecord.enabled = YES;
     btnStopRecord.enabled = NO;
 }
@@ -421,4 +490,97 @@
     }
 }
 
+#pragma screeshot
+//UIImage->CVPixelBufferRef
+- (CVPixelBufferRef)pixelBufferFromCGImage:(CGImageRef)image
+{
+    CVPixelBufferRef pixelBuffer = NULL;
+    CGFloat imageWidth = 0;
+    CGFloat imageHeight = 0;
+    CVReturn status = kCVReturnError;
+    
+    if(!image)
+        return nil;
+    
+    NSMutableDictionary *options = [[NSMutableDictionary alloc]init];
+    [options setObject:[NSNumber numberWithBool:YES] forKey:(NSString *)kCVPixelBufferCGImageCompatibilityKey];
+    [options setObject:[NSNumber numberWithBool:YES] forKey:(NSString *)kCVPixelBufferCGBitmapContextCompatibilityKey];
+    if(SYSTEM_VERSION_LESS_THAN(@"9.0"))
+        [options setObject:@{} forKey:(NSString *)kCVPixelBufferIOSurfacePropertiesKey];
+    
+    imageWidth = CGImageGetWidth(image);
+    imageHeight = CGImageGetHeight(image);
+    
+    status = CVPixelBufferCreate(kCFAllocatorDefault,
+                                 imageWidth,
+                                 imageHeight,
+                                 kCVPixelFormatType_32BGRA,
+                                 (__bridge CFDictionaryRef) options,
+                                 &pixelBuffer);
+    
+    if(status != kCVReturnSuccess || !pixelBuffer)
+        return nil;
+    
+    CVPixelBufferLockBaseAddress(pixelBuffer, 0);
+    void *pixelData = CVPixelBufferGetBaseAddress(pixelBuffer);
+    
+    CGColorSpaceRef rgbColorSpace = CGColorSpaceCreateDeviceRGB();
+    
+    CGContextRef context = CGBitmapContextCreate(pixelData,
+                                                 imageWidth,
+                                                 imageHeight,
+                                                 8,
+                                                 CVPixelBufferGetBytesPerRow(pixelBuffer),
+                                                 rgbColorSpace,
+                                                 kCGImageAlphaNoneSkipFirst | kCGBitmapByteOrder32Little);
+    
+    CGContextConcatCTM(context, CGAffineTransformIdentity);
+    CGContextDrawImage(context, CGRectMake(0, 0, imageWidth, imageHeight), image);
+    
+    CGColorSpaceRelease(rgbColorSpace);
+    CGContextRelease(context);
+    
+    CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
+    
+    return pixelBuffer;
+}
+
+//截图指定UI
+- (void)captureScreen:(CADisplayLink *)displayLink
+{
+    dispatch_sync(queue, ^
+                  {
+                      CVPixelBufferRef buffer = NULL;
+                      UIImage *screenshot = NULL;
+                      UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, YES, 0);
+                      [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:NO];
+                      screenshot = UIGraphicsGetImageFromCurrentImageContext();
+                      UIGraphicsEndImageContext();
+                      if(screenshot)
+                      {
+                          buffer = [self pixelBufferFromCGImage:screenshot.CGImage];
+                          [_kit processVideoSampleBuffer:buffer timeInfo:kCMTimeInvalid];
+                          CVPixelBufferRelease(buffer);
+                      }
+                  });
+}
+
+- (void)setupTimer
+{
+    if(!displayLink)
+    {
+        displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(captureScreen:)];
+        if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"10.0"))
+            displayLink.preferredFramesPerSecond = 15;
+        else
+            displayLink.frameInterval = 4;
+        [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+    }
+}
+
+- (void)stopTimer
+{
+    [displayLink invalidate];
+    displayLink = nil;
+}
 @end

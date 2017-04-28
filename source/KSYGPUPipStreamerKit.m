@@ -8,6 +8,7 @@
 #import "KSYGPUPipStreamerKit.h"
 
 #define CASE_RETURN( ENU ) case ENU : {return @#ENU;}
+#define weakObj(o) __weak typeof(o) o##Weak = o;
 
 @interface KSYGPUPipStreamerKit (){
     NSLock   *       _quitLock;  // ensure capDev closed before dealloc
@@ -84,14 +85,15 @@
         _player.videoDecoderMode = shouldUseHWCodec ? MPMovieVideoDecoderMode_Hardware : MPMovieVideoDecoderMode_Software;
         _player.shouldAutoplay = shouldAutoplay;
         _player.shouldMute = shouldMute;
+        weakObj(self);
         _player.videoDataBlock = ^(CMSampleBufferRef buf){
             CVPixelBufferRef pb = CMSampleBufferGetImageBuffer(buf);
-            [_yuvInput forceProcessingAtSize:CGSizeMake(CVPixelBufferGetWidth(pb), CVPixelBufferGetHeight(pb))];
-            [_yuvInput processPixelBuffer:CMSampleBufferGetImageBuffer(buf) time:CMTimeMake(2, 10)];
+            [selfWeak.yuvInput forceProcessingAtSize:CGSizeMake(CVPixelBufferGetWidth(pb), CVPixelBufferGetHeight(pb))];
+            [selfWeak.yuvInput processPixelBuffer:CMSampleBufferGetImageBuffer(buf) time:CMTimeMake(2, 10)];
         };
         _player.audioDataBlock = ^(CMSampleBufferRef buf){
-            if ([self.streamerBase isStreaming]){
-                [self.aMixer processAudioSampleBuffer:buf of:_pipTrack];
+            if ([selfWeak.streamerBase isStreaming]){
+                [selfWeak.aMixer processAudioSampleBuffer:buf of:selfWeak.pipTrack];
             }
         };
     }

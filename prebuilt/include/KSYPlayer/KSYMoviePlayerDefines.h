@@ -52,6 +52,8 @@ typedef NS_ENUM(NSInteger, KSYMPErrorCode) {
     KSYMPErrorCode3xxOverFlow           = -10016,
     ///无效的url
     KSYMPErrorInvalidURL                = -10050,
+    ///网络不通
+    KSYMPErrorNetworkUnReachable        = -10051,
 };
 
 /**
@@ -113,3 +115,47 @@ typedef NS_ENUM(NSInteger, MPMovieAudioPan) {
     MPMoviveAudioPan_Right,
 };
 //----------------------------------------------
+
+/**
+ * all notification
+ */
+// Posted when the prepared state changes of an object conforming to the MPMediaPlayback protocol changes.
+// This supersedes MPMoviePlayerContentPreloadDidFinishNotification.
+MP_EXTERN NSString *const MPMediaPlaybackIsPreparedToPlayDidChangeNotification;
+
+// Posted when the playback state changes, either programatically or by the user.
+MP_EXTERN NSString * const MPMoviePlayerPlaybackStateDidChangeNotification;
+
+// Posted when movie playback ends or a user exits playback.
+MP_EXTERN NSString * const MPMoviePlayerPlaybackDidFinishNotification;
+MP_EXTERN NSString * const MPMoviePlayerPlaybackDidFinishReasonUserInfoKey; // NSNumber (MPMovieFinishReason)
+
+// Posted when the network load state changes.
+MP_EXTERN NSString * const MPMoviePlayerLoadStateDidChangeNotification;
+
+// Posted when video size available or change
+MP_EXTERN NSString * const MPMovieNaturalSizeAvailableNotification;
+
+// Posted when first video/audio render
+MP_EXTERN NSString * const MPMoviePlayerFirstVideoFrameRenderedNotification;
+MP_EXTERN NSString * const MPMoviePlayerFirstAudioFrameRenderedNotification;
+
+// Posted when should reload url
+MP_EXTERN NSString * const MPMoviePlayerSuggestReloadNotification;
+
+// Posted when playback status change
+MP_EXTERN NSString * const MPMoviePlayerPlaybackStatusNotification;
+MP_EXTERN NSString * const MPMoviePlayerPlaybackStatusUserInfoKey; // NSNumber (MPMovieStatus)
+
+//Posted when the network status change
+MP_EXTERN NSString * const MPMoviePlayerNetworkStatusChangeNotification;
+MP_EXTERN NSString * const MPMoviePlayerCurrNetworkStatusUserInfoKey; // NSNumber (KSYNetworkStatus)
+MP_EXTERN NSString * const MPMoviePlayerLastNetworkStatusUserInfoKey; // NSNumber (KSYNetworkStatus)
+
+/**
+ * getMetadata方法对应的关键字
+ */
+MP_EXTERN const NSString *const kKSYPLYFormat;
+MP_EXTERN const NSString *const kKSYPLYHttpFirstDataTime;
+MP_EXTERN const NSString *const kKSYPLYHttpAnalyzeDns;
+MP_EXTERN const NSString *const kKSYPLYHttpConnectTime;

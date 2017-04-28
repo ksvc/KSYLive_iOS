@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYMediaInfoProber.html">
+	<File path="Classes/KSYMediaInfo.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYMediaInfoProber</TokenIdentifier>
-			<Abstract type="html">KSYMediaInfoProber</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYMediaInfo</TokenIdentifier>
+			<Abstract type="html">媒体信息</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
 			
 			<NodeRef refid="28"/>
@@ -13,342 +13,182 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/initWithContentURL:</TokenIdentifier>
-			<Abstract type="html">初始化文件格式探测器并设置播放地址</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/setType:</TokenIdentifier>
+			<Abstract type="html">封装格式，具体类型为MEDIAINFOMUXTYPE</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>- (instancetype)initWithContentURL:(NSURL *)url</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>url</Name>
-					<Abstract type="html">待探测格式的文件地址，该地址可以是本地地址或者服务器地址.</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">返回KSYMediaInfoProber对象</Abstract></ReturnValue>
-			<Anchor>//api/name/initWithContentURL:</Anchor>
+			<Declaration>@property (nonatomic) MEDIAINFO_MUX_TYPE type</Declaration>
+			
+			
+			<Anchor>//api/name/type</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/setTimeout:</TokenIdentifier>
-			<Abstract type="html">文件格式探测时间，单位是秒，默认值是3秒</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/type</TokenIdentifier>
+			<Abstract type="html">封装格式，具体类型为MEDIAINFOMUXTYPE</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) NSTimeInterval timeout</Declaration>
+			<Declaration>@property (nonatomic) MEDIAINFO_MUX_TYPE type</Declaration>
 			
 			
-			<Anchor>//api/name/timeout</Anchor>
+			<Anchor>//api/name/type</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/timeout</TokenIdentifier>
-			<Abstract type="html">文件格式探测时间，单位是秒，默认值是3秒</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfo/type</TokenIdentifier>
+			<Abstract type="html">封装格式，具体类型为MEDIAINFOMUXTYPE</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) NSTimeInterval timeout</Declaration>
+			<Declaration>@property (nonatomic) MEDIAINFO_MUX_TYPE type</Declaration>
 			
 			
-			<Anchor>//api/name/timeout</Anchor>
+			<Anchor>//api/name/type</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfoProber/timeout</TokenIdentifier>
-			<Abstract type="html">文件格式探测时间，单位是秒，默认值是3秒</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/setBitrate:</TokenIdentifier>
+			<Abstract type="html">码率</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) NSTimeInterval timeout</Declaration>
+			<Declaration>@property (nonatomic, assign) int64_t bitrate</Declaration>
 			
 			
-			<Anchor>//api/name/timeout</Anchor>
+			<Anchor>//api/name/bitrate</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/setBAccelerate:</TokenIdentifier>
-			<Abstract type="html">是否要加速探测速度</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/bitrate</TokenIdentifier>
+			<Abstract type="html">码率</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) BOOL bAccelerate</Declaration>
+			<Declaration>@property (nonatomic, assign) int64_t bitrate</Declaration>
 			
 			
-			<Anchor>//api/name/bAccelerate</Anchor>
+			<Anchor>//api/name/bitrate</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/bAccelerate</TokenIdentifier>
-			<Abstract type="html">是否要加速探测速度</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfo/bitrate</TokenIdentifier>
+			<Abstract type="html">码率</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) BOOL bAccelerate</Declaration>
+			<Declaration>@property (nonatomic, assign) int64_t bitrate</Declaration>
 			
 			
-			<Anchor>//api/name/bAccelerate</Anchor>
+			<Anchor>//api/name/bitrate</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfoProber/bAccelerate</TokenIdentifier>
-			<Abstract type="html">是否要加速探测速度</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/setDuration:</TokenIdentifier>
+			<Abstract type="html">视频总时长，单位是秒</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) BOOL bAccelerate</Declaration>
+			<Declaration>@property (nonatomic, assign) NSTimeInterval duration</Declaration>
 			
 			
-			<Anchor>//api/name/bAccelerate</Anchor>
+			<Anchor>//api/name/duration</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/setHttpHeaders:</TokenIdentifier>
-			<Abstract type="html">发送http请求时需要header带上的字段</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/duration</TokenIdentifier>
+			<Abstract type="html">视频总时长，单位是秒</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>- (void)setHttpHeaders:(NSDictionary *)headers</Declaration>
+			<Declaration>@property (nonatomic, assign) NSTimeInterval duration</Declaration>
 			
 			
-			<Anchor>//api/name/setHttpHeaders:</Anchor>
+			<Anchor>//api/name/duration</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/setUrl:</TokenIdentifier>
-			<Abstract type="html">待探测的文件格式地址</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfo/duration</TokenIdentifier>
+			<Abstract type="html">视频总时长，单位是秒</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) NSURL *url</Declaration>
+			<Declaration>@property (nonatomic, assign) NSTimeInterval duration</Declaration>
 			
 			
-			<Anchor>//api/name/url</Anchor>
+			<Anchor>//api/name/duration</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/url</TokenIdentifier>
-			<Abstract type="html">待探测的文件格式地址</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/setVideos:</TokenIdentifier>
+			<Abstract type="html">所有视频流信息，具体对象类型为KSYVideoInfo</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) NSURL *url</Declaration>
+			<Declaration>@property (nonatomic) NSMutableArray *videos</Declaration>
 			
 			
-			<Anchor>//api/name/url</Anchor>
+			<Anchor>//api/name/videos</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfoProber/url</TokenIdentifier>
-			<Abstract type="html">待探测的文件格式地址</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/videos</TokenIdentifier>
+			<Abstract type="html">所有视频流信息，具体对象类型为KSYVideoInfo</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) NSURL *url</Declaration>
+			<Declaration>@property (nonatomic) NSMutableArray *videos</Declaration>
 			
 			
-			<Anchor>//api/name/url</Anchor>
+			<Anchor>//api/name/videos</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/setBH264Codec:</TokenIdentifier>
-			<Abstract type="html">编码类型是否是h264</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfo/videos</TokenIdentifier>
+			<Abstract type="html">所有视频流信息，具体对象类型为KSYVideoInfo</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) BOOL bH264Codec</Declaration>
+			<Declaration>@property (nonatomic) NSMutableArray *videos</Declaration>
 			
 			
-			<Anchor>//api/name/bH264Codec</Anchor>
+			<Anchor>//api/name/videos</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/bH264Codec</TokenIdentifier>
-			<Abstract type="html">编码类型是否是h264</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/setAudios:</TokenIdentifier>
+			<Abstract type="html">所有音频流信息，具体对象类型为KSYAudioInfo</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) BOOL bH264Codec</Declaration>
+			<Declaration>@property (nonatomic) NSMutableArray *audios</Declaration>
 			
 			
-			<Anchor>//api/name/bH264Codec</Anchor>
+			<Anchor>//api/name/audios</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfoProber/bH264Codec</TokenIdentifier>
-			<Abstract type="html">编码类型是否是h264</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/audios</TokenIdentifier>
+			<Abstract type="html">所有音频流信息，具体对象类型为KSYAudioInfo</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) BOOL bH264Codec</Declaration>
+			<Declaration>@property (nonatomic) NSMutableArray *audios</Declaration>
 			
 			
-			<Anchor>//api/name/bH264Codec</Anchor>
+			<Anchor>//api/name/audios</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/setBHEVCCodec:</TokenIdentifier>
-			<Abstract type="html">编码类型是否是hevc</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfo/audios</TokenIdentifier>
+			<Abstract type="html">所有音频流信息，具体对象类型为KSYAudioInfo</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) BOOL bHEVCCodec</Declaration>
-			
-			
-			<Anchor>//api/name/bHEVCCodec</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/bHEVCCodec</TokenIdentifier>
-			<Abstract type="html">编码类型是否是hevc</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) BOOL bHEVCCodec</Declaration>
+			<Declaration>@property (nonatomic) NSMutableArray *audios</Declaration>
 			
 			
-			<Anchor>//api/name/bHEVCCodec</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfoProber/bHEVCCodec</TokenIdentifier>
-			<Abstract type="html">编码类型是否是hevc</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) BOOL bHEVCCodec</Declaration>
-			
-			
-			<Anchor>//api/name/bHEVCCodec</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/setBAACCodec:</TokenIdentifier>
-			<Abstract type="html">编码类型是否是aac</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) BOOL bAACCodec</Declaration>
-			
-			
-			<Anchor>//api/name/bAACCodec</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/bAACCodec</TokenIdentifier>
-			<Abstract type="html">编码类型是否是aac</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) BOOL bAACCodec</Declaration>
-			
-			
-			<Anchor>//api/name/bAACCodec</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfoProber/bAACCodec</TokenIdentifier>
-			<Abstract type="html">编码类型是否是aac</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) BOOL bAACCodec</Declaration>
-			
-			
-			<Anchor>//api/name/bAACCodec</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/setBMP3Codec:</TokenIdentifier>
-			<Abstract type="html">编码类型是否是mp3</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) BOOL bMP3Codec</Declaration>
-			
-			
-			<Anchor>//api/name/bMP3Codec</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/bMP3Codec</TokenIdentifier>
-			<Abstract type="html">编码类型是否是mp3</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) BOOL bMP3Codec</Declaration>
-			
-			
-			<Anchor>//api/name/bMP3Codec</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfoProber/bMP3Codec</TokenIdentifier>
-			<Abstract type="html">编码类型是否是mp3</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) BOOL bMP3Codec</Declaration>
-			
-			
-			<Anchor>//api/name/bMP3Codec</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/setKsyMediaInfo:</TokenIdentifier>
-			<Abstract type="html">媒体信息, 具体对象类型为KSYMediaInfo</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) KSYMediaInfo *ksyMediaInfo</Declaration>
-			
-			
-			<Anchor>//api/name/ksyMediaInfo</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/ksyMediaInfo</TokenIdentifier>
-			<Abstract type="html">媒体信息, 具体对象类型为KSYMediaInfo</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) KSYMediaInfo *ksyMediaInfo</Declaration>
-			
-			
-			<Anchor>//api/name/ksyMediaInfo</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfoProber/ksyMediaInfo</TokenIdentifier>
-			<Abstract type="html">媒体信息, 具体对象类型为KSYMediaInfo</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) KSYMediaInfo *ksyMediaInfo</Declaration>
-			
-			
-			<Anchor>//api/name/ksyMediaInfo</Anchor>
-            <NodeRef refid="28"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/getVideoThumbnailImageAtTime:width:height:</TokenIdentifier>
-			<Abstract type="html">获取视频缩略图</Abstract>
-			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
-			
-			<Declaration>- (UIImage *)getVideoThumbnailImageAtTime:(NSTimeInterval)seekTime width:(int)width height:(int)height</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>seekTime</Name>
-					<Abstract type="html">指定的时间位置，单位为s, 小于0时无法截图</Abstract>
-				</Parameter><Parameter>
-					<Name>width</Name>
-					<Abstract type="html">缩略图的宽度</Abstract>
-				</Parameter><Parameter>
-					<Name>height</Name>
-					<Abstract type="html">缩略图的高度</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">返回UIImage对象，即为缩略图</Abstract></ReturnValue>
-			<Anchor>//api/name/getVideoThumbnailImageAtTime:width:height:</Anchor>
+			<Anchor>//api/name/audios</Anchor>
             <NodeRef refid="28"/>
 		</Token>
 		

@@ -18,6 +18,7 @@
 #import "KSYNetTrackerVC.h"
 #import "KSYSimplestStreamerVC.h"
 #import "KSYHorScreenStreamerVC.h"
+#import "KSYBgpStreamerVC.h"
 #import "KSYVideoListVC.h"
 
 @interface KSYLiveVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>{
@@ -102,6 +103,7 @@
                     @"推流demo",
                     @"极简推流",
                     @"半屏推流",
+                    @"背景图片推流",
                     @"视频列表",
                     nil];
 }
@@ -244,6 +246,9 @@
                 vc = [[KSYHorScreenStreamerVC alloc] initWithUrl:_textFiled.text];
             }
             else if(indexPath.row == 9){
+                vc = [[KSYBgpStreamerVC alloc] initWithUrl:_textFiled.text];
+            }
+            else if(indexPath.row == 10){
                 vc = [[KSYVideoListVC alloc] init];
             }
             if (vc){
