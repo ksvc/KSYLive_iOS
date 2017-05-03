@@ -303,7 +303,7 @@ typedef NS_ENUM(NSInteger, KSYRecordError) {
 };
 
 
-/**
+/*!
  * 推流的Qos信息
  */
 typedef struct KSYStreamerQosInfo {
@@ -325,6 +325,19 @@ typedef struct KSYStreamerQosInfo {
     /// 从开始推流到当前时间点已编码的音频数据大小, 单位是Bytes
     int64_t videoTotalDataSize;
 }KSYStreamerQosInfo;
+
+/*!
+ * @abstract  网络链接状态
+ */
+typedef NS_ENUM(NSInteger, KSYNetReachState) {
+    /// 未知
+    KSYNetReachState_Unknown,
+    /// 联网
+    KSYNetReachState_OK,
+    /// 断网
+    KSYNetReachState_Bad,
+};
+
 
 #pragma mark - KSY_EXTERN
 #ifndef KSY_EXTERN

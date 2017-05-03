@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>MPMovieReloadMode Constants Reference</title>
+	<title>KSYNetReachState Constants Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -59,13 +59,13 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">MPMovieReloadMode Constants Reference</h1>
+					<h1 class="title">KSYNetReachState Constants Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<th>Declared in</th>
-	<td>KSYMoviePlayerDefines.h</td>
+	<td>KSYTypeDef.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -75,23 +75,21 @@
 					
 
                     
-                    <h3 class="subsubtitle method-title">MPMovieReloadMode</h3>
+                    <h3 class="subsubtitle method-title">KSYNetReachState</h3>
                     
-					
-					<div class="section section-overview">
-                        <p>reload模式</p>
-					</div>
 					
 					
                     <div class="section">
                         <!-- display enum values -->
                         
                         <h4 class="method-subtitle">Definition</h4>
-                        <code>typedef NS_ENUM(NSUInteger, MPMovieReloadMode ) {<br>
+                        <code>typedef NS_ENUM(NSInteger, KSYNetReachState ) {<br>
                             
-                            &nbsp;&nbsp; <a href="">MPMovieReloadMode_Fast</a>,<br>
+                            &nbsp;&nbsp; <a href="">KSYNetReachState_Unknown</a>,<br>
                             
-                            &nbsp;&nbsp; <a href="">MPMovieReloadMode_Accurate</a>,<br>
+                            &nbsp;&nbsp; <a href="">KSYNetReachState_OK</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYNetReachState_Bad</a>,<br>
                             
                             };</code>
                     
@@ -101,11 +99,11 @@
                         <h4 class="method-subtitle">Constants</h4>
                         <dl class="termdef">
                             
-                            <dt><a name="" title="MPMovieReloadMode_Fast"></a><code>MPMovieReloadMode_Fast</code></dt>
+                            <dt><a name="" title="KSYNetReachState_Unknown"></a><code>KSYNetReachState_Unknown</code></dt>
 <dd>
 
 
-<p>加速播放模式</p>
+<p>未知</p>
 
 
 
@@ -113,16 +111,16 @@
 
     
 	<p>
-		Declared In <code class="declared-in-ref">KSYMoviePlayerDefines.h</code>.
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
 	</p>
 	
 </dd>
                             
-                            <dt><a name="" title="MPMovieReloadMode_Accurate"></a><code>MPMovieReloadMode_Accurate</code></dt>
+                            <dt><a name="" title="KSYNetReachState_OK"></a><code>KSYNetReachState_OK</code></dt>
 <dd>
 
 
-<p>精确检测模式</p>
+<p>联网</p>
 
 
 
@@ -130,7 +128,24 @@
 
     
 	<p>
-		Declared In <code class="declared-in-ref">KSYMoviePlayerDefines.h</code>.
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="KSYNetReachState_Bad"></a><code>KSYNetReachState_Bad</code></dt>
+<dd>
+
+
+<p>断网</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
 	</p>
 	
 </dd>
@@ -147,7 +162,7 @@
                     
                     <div class="method-subsection declared-in-section">
                         <h4 class="method-subtitle">Declared In</h4>
-                        <p><code class="declared-in-ref">KSYMoviePlayerDefines.h</code></p>
+                        <p><code class="declared-in-ref">KSYTypeDef.h</code></p>
                     </div>
                     
                     
