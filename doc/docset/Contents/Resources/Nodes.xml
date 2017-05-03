@@ -110,6 +110,7 @@
 						<NodeRef refid="70"/>
 						<NodeRef refid="71"/>
 						<NodeRef refid="72"/>
+						<NodeRef refid="73"/>
 						
 					</Subnodes>
 				</Node>
@@ -119,13 +120,13 @@
                     <Name>Blocks</Name>
                     <Path>index.html</Path>
                     <Subnodes>
-                        <NodeRef refid="73"/>
                         <NodeRef refid="74"/>
                         <NodeRef refid="75"/>
                         <NodeRef refid="76"/>
                         <NodeRef refid="77"/>
                         <NodeRef refid="78"/>
                         <NodeRef refid="79"/>
+                        <NodeRef refid="80"/>
                         
                     </Subnodes>
                 </Node>
@@ -1513,137 +1514,142 @@
             
         </Node>
 		<Node id="53" type="file" documentType="reference">
+            <Name>KSYNetReachState</Name>
+            <Path>Constants/KSYNetReachState.html</Path>
+            
+        </Node>
+		<Node id="54" type="file" documentType="reference">
             <Name>KSYNetStateCode</Name>
             <Path>Constants/KSYNetStateCode.html</Path>
             
         </Node>
-		<Node id="54" type="file" documentType="reference">
+		<Node id="55" type="file" documentType="reference">
             <Name>KSYNetworkStatus</Name>
             <Path>Constants/KSYNetworkStatus.html</Path>
             
         </Node>
-		<Node id="55" type="file" documentType="reference">
+		<Node id="56" type="file" documentType="reference">
             <Name>KSYPlayRecordScheme</Name>
             <Path>Constants/KSYPlayRecordScheme.html</Path>
             
         </Node>
-		<Node id="56" type="file" documentType="reference">
+		<Node id="57" type="file" documentType="reference">
             <Name>KSYRecScene</Name>
             <Path>Constants/KSYRecScene.html</Path>
             
         </Node>
-		<Node id="57" type="file" documentType="reference">
+		<Node id="58" type="file" documentType="reference">
             <Name>KSYRecordError</Name>
             <Path>Constants/KSYRecordError.html</Path>
             
         </Node>
-		<Node id="58" type="file" documentType="reference">
+		<Node id="59" type="file" documentType="reference">
             <Name>KSYRecordState</Name>
             <Path>Constants/KSYRecordState.html</Path>
             
         </Node>
-		<Node id="59" type="file" documentType="reference">
+		<Node id="60" type="file" documentType="reference">
             <Name>KSYStreamErrorCode</Name>
             <Path>Constants/KSYStreamErrorCode.html</Path>
             
         </Node>
-		<Node id="60" type="file" documentType="reference">
+		<Node id="61" type="file" documentType="reference">
             <Name>KSYStreamState</Name>
             <Path>Constants/KSYStreamState.html</Path>
             
         </Node>
-		<Node id="61" type="file" documentType="reference">
+		<Node id="62" type="file" documentType="reference">
             <Name>KSYVideoCodec</Name>
             <Path>Constants/KSYVideoCodec.html</Path>
             
         </Node>
-		<Node id="62" type="file" documentType="reference">
+		<Node id="63" type="file" documentType="reference">
             <Name>KSYVideoDimension</Name>
             <Path>Constants/KSYVideoDimension.html</Path>
             
         </Node>
-		<Node id="63" type="file" documentType="reference">
+		<Node id="64" type="file" documentType="reference">
             <Name>KSYVideoEncodePerformance</Name>
             <Path>Constants/KSYVideoEncodePerformance.html</Path>
             
         </Node>
-		<Node id="64" type="file" documentType="reference">
+		<Node id="65" type="file" documentType="reference">
             <Name>KSY_NETTRACKER_ACTION</Name>
             <Path>Constants/KSY_NETTRACKER_ACTION.html</Path>
             
         </Node>
-		<Node id="65" type="file" documentType="reference">
+		<Node id="66" type="file" documentType="reference">
             <Name>MEDIAINFO_CODEC_ID</Name>
             <Path>Constants/MEDIAINFO_CODEC_ID.html</Path>
             
         </Node>
-		<Node id="66" type="file" documentType="reference">
+		<Node id="67" type="file" documentType="reference">
             <Name>MEDIAINFO_MUX_TYPE</Name>
             <Path>Constants/MEDIAINFO_MUX_TYPE.html</Path>
             
         </Node>
-		<Node id="67" type="file" documentType="reference">
+		<Node id="68" type="file" documentType="reference">
             <Name>MEDIAINFO_SAMPLE_FMT</Name>
             <Path>Constants/MEDIAINFO_SAMPLE_FMT.html</Path>
             
         </Node>
-		<Node id="68" type="file" documentType="reference">
+		<Node id="69" type="file" documentType="reference">
             <Name>MPMovieAudioPan</Name>
             <Path>Constants/MPMovieAudioPan.html</Path>
             
         </Node>
-		<Node id="69" type="file" documentType="reference">
+		<Node id="70" type="file" documentType="reference">
             <Name>MPMovieReloadMode</Name>
             <Path>Constants/MPMovieReloadMode.html</Path>
             
         </Node>
-		<Node id="70" type="file" documentType="reference">
+		<Node id="71" type="file" documentType="reference">
             <Name>MPMovieStatus</Name>
             <Path>Constants/MPMovieStatus.html</Path>
             
         </Node>
-		<Node id="71" type="file" documentType="reference">
+		<Node id="72" type="file" documentType="reference">
             <Name>MPMovieVideoDecoderMode</Name>
             <Path>Constants/MPMovieVideoDecoderMode.html</Path>
             
         </Node>
-		<Node id="72" type="file" documentType="reference">
+		<Node id="73" type="file" documentType="reference">
             <Name>MPMovieVideoDeinterlaceMode</Name>
             <Path>Constants/MPMovieVideoDeinterlaceMode.html</Path>
             
         </Node>
 		
-        <Node id="73" type="file" documentType="reference">
+        <Node id="74" type="file" documentType="reference">
             <Name>KSYPlyAudioDataBlock</Name>
             <Path>Blocks/KSYPlyAudioDataBlock.html</Path>
             
         </Node>
-        <Node id="74" type="file" documentType="reference">
+        <Node id="75" type="file" documentType="reference">
             <Name>KSYPlyMessageDataBlock</Name>
             <Path>Blocks/KSYPlyMessageDataBlock.html</Path>
             
         </Node>
-        <Node id="75" type="file" documentType="reference">
+        <Node id="76" type="file" documentType="reference">
             <Name>KSYPlyTextureBlock</Name>
             <Path>Blocks/KSYPlyTextureBlock.html</Path>
             
         </Node>
-        <Node id="76" type="file" documentType="reference">
+        <Node id="77" type="file" documentType="reference">
             <Name>KSYPlyVideoDataBlock</Name>
             <Path>Blocks/KSYPlyVideoDataBlock.html</Path>
             
         </Node>
-        <Node id="77" type="file" documentType="reference">
+        <Node id="78" type="file" documentType="reference">
             <Name>NetworkReachability</Name>
             <Path>Blocks/NetworkReachability.html</Path>
             
         </Node>
-        <Node id="78" type="file" documentType="reference">
+        <Node id="79" type="file" documentType="reference">
             <Name>NetworkReachable</Name>
             <Path>Blocks/NetworkReachable.html</Path>
             
         </Node>
-        <Node id="79" type="file" documentType="reference">
+        <Node id="80" type="file" documentType="reference">
             <Name>NetworkUnreachable</Name>
             <Path>Blocks/NetworkUnreachable.html</Path>
             

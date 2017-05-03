@@ -2167,38 +2167,74 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setIsReachable:</TokenIdentifier>
-			<Abstract type="html">/ 是否能连通外网 (使用 www.kingsoft.com 作为检测目标)</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setNetReachState:</TokenIdentifier>
+			<Abstract type="html">是否能连通外网</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) BOOL isReachable</Declaration>
+			<Declaration>@property (nonatomic, readonly) KSYNetReachState netReachState</Declaration>
 			
 			
-			<Anchor>//api/name/isReachable</Anchor>
+			<Anchor>//api/name/netReachState</Anchor>
             <NodeRef refid="38"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/isReachable</TokenIdentifier>
-			<Abstract type="html">/ 是否能连通外网 (使用 www.kingsoft.com 作为检测目标)</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/netReachState</TokenIdentifier>
+			<Abstract type="html">是否能连通外网</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) BOOL isReachable</Declaration>
+			<Declaration>@property (nonatomic, readonly) KSYNetReachState netReachState</Declaration>
 			
 			
-			<Anchor>//api/name/isReachable</Anchor>
+			<Anchor>//api/name/netReachState</Anchor>
             <NodeRef refid="38"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/isReachable</TokenIdentifier>
-			<Abstract type="html">/ 是否能连通外网 (使用 www.kingsoft.com 作为检测目标)</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/netReachState</TokenIdentifier>
+			<Abstract type="html">是否能连通外网</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) BOOL isReachable</Declaration>
+			<Declaration>@property (nonatomic, readonly) KSYNetReachState netReachState</Declaration>
 			
 			
-			<Anchor>//api/name/isReachable</Anchor>
+			<Anchor>//api/name/netReachState</Anchor>
+            <NodeRef refid="38"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setReachabilityDetectURL:</TokenIdentifier>
+			<Abstract type="html">用于检测网络连通性的地址，默认使用地址为“www.baidu.com”</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) NSString *reachabilityDetectURL</Declaration>
+			
+			
+			<Anchor>//api/name/reachabilityDetectURL</Anchor>
+            <NodeRef refid="38"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/reachabilityDetectURL</TokenIdentifier>
+			<Abstract type="html">用于检测网络连通性的地址，默认使用地址为“www.baidu.com”</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) NSString *reachabilityDetectURL</Declaration>
+			
+			
+			<Anchor>//api/name/reachabilityDetectURL</Anchor>
+            <NodeRef refid="38"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/reachabilityDetectURL</TokenIdentifier>
+			<Abstract type="html">用于检测网络连通性的地址，默认使用地址为“www.baidu.com”</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) NSString *reachabilityDetectURL</Declaration>
+			
+			
+			<Anchor>//api/name/reachabilityDetectURL</Anchor>
             <NodeRef refid="38"/>
 		</Token>
 		

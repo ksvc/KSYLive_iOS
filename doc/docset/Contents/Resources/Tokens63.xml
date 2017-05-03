@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYVideoEncodePerformance.html">
+	<File path="Constants/KSYVideoDimension.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYVideoEncodePerformance</TokenIdentifier>
-			<Abstract type="html">视频编码性能档次 (视频质量 和 设备资源之间的权衡)</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYVideoDimension</TokenIdentifier>
+			<Abstract type="html">采集分辨率</Abstract>
 			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoEncodePer_LowPower</TokenIdentifier>
-            <Abstract type="html">低功耗:  cpu资源消耗低一些,视频质量差一些</Abstract>
-            <Declaration>KSYVideoEncodePer_LowPower</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_16_9__1280x720</TokenIdentifier>
+            <Abstract type="html">16 : 9 宽高比，1280 x 720 分辨率</Abstract>
+            <Declaration>KSYVideoDimension_16_9__1280x720</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -24,9 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoEncodePer_Balance</TokenIdentifier>
-            <Abstract type="html">均衡档次: 性价比比较高</Abstract>
-            <Declaration>KSYVideoEncodePer_Balance</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_16_9__960x540</TokenIdentifier>
+            <Abstract type="html">16 : 9 宽高比，960 x 540 分辨率</Abstract>
+            <Declaration>KSYVideoDimension_16_9__960x540</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -34,9 +34,59 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoEncodePer_HighPerformance</TokenIdentifier>
-            <Abstract type="html">高性能: 画面质量高</Abstract>
-            <Declaration>KSYVideoEncodePer_HighPerformance</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_4_3__640x480</TokenIdentifier>
+            <Abstract type="html">4 : 3 宽高比，640 x 480 分辨率</Abstract>
+            <Declaration>KSYVideoDimension_4_3__640x480</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="63"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_16_9__640x360</TokenIdentifier>
+            <Abstract type="html">16 : 9 宽高比，640 x 360 分辨率</Abstract>
+            <Declaration>KSYVideoDimension_16_9__640x360</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="63"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_5_4__352x288</TokenIdentifier>
+            <Abstract type="html">4 : 3 宽高比，320 x 240 分辨率</Abstract>
+            <Declaration>KSYVideoDimension_5_4__352x288</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="63"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_UserDefine_Scale</TokenIdentifier>
+            <Abstract type="html">缩放自定义分辨率 从设备支持的最近分辨率缩放获得, 若设备没有对应宽高比的分辨率，则裁剪后进行缩放</Abstract>
+            <Declaration>KSYVideoDimension_UserDefine_Scale</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="63"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_UserDefine_Crop</TokenIdentifier>
+            <Abstract type="html">裁剪自定义分辨率 从设备支持的最近分辨率裁剪获得</Abstract>
+            <Declaration>KSYVideoDimension_UserDefine_Crop</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="63"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_Default</TokenIdentifier>
+            <Abstract type="html">默认分辨率，默认为 4 : 3 宽高比，640 x 480 分辨率</Abstract>
+            <Declaration>KSYVideoDimension_Default</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             

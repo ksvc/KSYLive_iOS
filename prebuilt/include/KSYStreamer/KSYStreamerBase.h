@@ -484,6 +484,17 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 //// 网络状态监控 (当SDK内部发现网络不可用时主动发出connet_break的错误码)
 @property (nonatomic, readonly) KSYReachability* netReachability;
 
-//// 是否能连通外网 (使用 www.kingsoft.com 作为检测目标)
-@property (nonatomic, readonly) BOOL isReachable;
+/**
+ @abstract 是否能连通外网
+ @discussion networkDetectURL为nil或未探测到结果前，该值为KSYNetReachState_Unknown
+ */
+@property (nonatomic, readonly) KSYNetReachState netReachState;
+
+/**
+ @abstract 用于检测网络连通性的地址，默认使用地址为“www.baidu.com”
+ @discussion 用户可自定义地址，但不可设置无效地址，如果不清楚规则，建议使用默认值
+ @discussion 设置为nil时，则关闭网络连通性的检测, netReachability为nil，netReachState为KSYNetReachState_Unknown
+ @since Available in KSYLive_iOS 2.1.1 and later
+ */
+@property (nonatomic, readwrite) NSString* reachabilityDetectURL;
 @end
