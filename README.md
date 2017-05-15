@@ -7,6 +7,14 @@
 [![CocoaPods version](https://img.shields.io/cocoapods/v/libksygpulive_ks3.svg?label=pod_ks3)](https://cocoapods.org/pods/libksygpulive_ks3)
 
 ## 一. 功能特性
+
+[金山云直播SDK][libksygpulive]是金山云提供的直播解决方案的一部分，完成了iOS端音视频数据采集、处理、推流和播放的工作，[金山云直播SDK][libksygpulive]**不限制**用户的推流、拉流地址。用户可以只使用[金山云直播SDK][libksygpulive]而不使用金山云的云服务。
+
+[金山云直播SDK][libksygpulive]不收取任何授权使用费用，不含任何失效时间或者远程下发关闭的后门。同时[金山云直播SDK][libksygpulive]也不要求ak/sk等鉴权，没有任何用户标识信息。
+
+[金山云直播SDK][libksygpulive]提供了业内一流的H.265编码、解码能力，免费使用，欢迎试用评估。
+
+
 ### 1.1 推流功能
 - [x] AAC 音频编码（支持软、硬编）
 - [x] H.264 视频编码（支持软编/硬编,支持baseline/main/high profile）
@@ -240,3 +248,5 @@ pod repo update
 * Issues:<https://github.com/ksvc/KSYLive_iOS/issues>
 
 <a href="http://www.ksyun.com/"><img src="https://raw.githubusercontent.com/wiki/ksvc/KSYLive_Android/images/logo.png" border="0" alt="金山云计算" /></a>
+
+[libksygpulive]:https://github.com/ksvc/KSYLive_iOS
