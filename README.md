@@ -106,6 +106,7 @@
 
 ### 3.2 下载工程
 本SDK 提供如下列出获取方式:     
+
 #### 3.2.1 从[github](https://github.com/ksvc/KSYLive_iOS.git) clone
 
 目录结构如下所示:  
@@ -120,11 +121,11 @@
 $ git clone https://github.com/ksvc/KSYLive_iOS.git KSYLive_iOS --depth 1
 ```
 
-#### 3.2.2 从[csdn](https://code.csdn.net/ksvc/ksylive_ios) clone
+#### 3.2.2 从[bitbucket](https://bitbucket.org/ksvc/ksylive_ios.git) clone
 
-对于部分地方访问github比较慢的情况，可以从csdn clone，获取的库内容和github一致。
+对于部分地方访问github比较慢的情况，可以从bitbucket clone，获取的库内容和github一致。
 ```
-$ git clone https://code.csdn.net/ksvc/ksylive_ios.git  --depth 1
+$ git clone https://bitbucket.org/ksvc/ksylive_ios.git  --depth 1
 ```
 
 #### 3.2.3 使用Cocoapods 进行安装    
