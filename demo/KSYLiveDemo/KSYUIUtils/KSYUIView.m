@@ -146,7 +146,7 @@
              and:(UIView*)subV1{
     CGFloat btnW = (_winWdt/2) - _gap*2;
     CGFloat y = _yPos > self.height ? _yPos - self.height : _yPos;
-    CGFloat x = [self getXStart]+_gap;
+    CGFloat x = [self getXStart];
     subV0.frame = CGRectMake(x, y, btnW, _btnH);
     subV1.frame = CGRectMake(x+_gap*2+btnW, y, btnW, _btnH);
     _yPos += (_btnH + _gap);
@@ -157,7 +157,7 @@
              and:(UIView*)subV2 {
     CGFloat btnW = (_winWdt/3) - _gap*2;
     
-    CGFloat x = [self getXStart]+_gap;
+    CGFloat x = [self getXStart];
     CGFloat y = _yPos > self.height ? _yPos - self.height : _yPos;
     CGFloat xPos[3] = {x, x+_gap*2+btnW, x+_gap*4+btnW*2};
     if (subV0){
@@ -176,7 +176,7 @@
 //(firstV 使用内容宽度, 剩余宽度全部分配给secondV)
 - (void) putNarrow:(UIView*)firstV
            andWide:(UIView*)secondV {
-    CGFloat x = [self getXStart]+_gap;
+    CGFloat x = [self getXStart];
     CGFloat y = _yPos > self.height ? _yPos - self.height : _yPos;
     [firstV sizeToFit];
     CGRect rect = firstV.frame;
@@ -192,7 +192,7 @@
 //(secondV 使用内容宽度, 剩余宽度全部分配给firstV)
 - (void) putWide:(UIView*)firstV
        andNarrow:(UIView*)secondV {
-    CGFloat x = [self getXStart]+_gap;
+    CGFloat x = [self getXStart];
     CGFloat y = _yPos > self.height ? _yPos - self.height : _yPos;
     
     [secondV sizeToFit];

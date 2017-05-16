@@ -876,6 +876,7 @@
     return [_vPreviewMixer getPicRectOfLayer:_logoPicLayer];
 }
 - (void) setLogoRect:(CGRect)logoRect{
+    _logoRect = logoRect;
     [_vPreviewMixer setPicRect:logoRect
                        ofLayer:_logoPicLayer];
     [_vStreamMixer setPicRect:logoRect
@@ -896,6 +897,7 @@
     return [_vPreviewMixer getPicRectOfLayer:_logoTxtLayer];
 }
 - (void) setTextRect:(CGRect)rect{
+    _textRect = rect;
     [_vPreviewMixer setPicRect:rect
                        ofLayer:_logoTxtLayer];
     [_vStreamMixer setPicRect:rect
@@ -1069,14 +1071,22 @@ kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRota
         return;
     }
     if (_videoOrientation == orie || _vCapDev.isRunning == NO) {
-        [_gpuToStr setInputRotation:kGPUImageNoRotation atIndex:0];
+        int capOri = UIOrienToIdx(_videoOrientation);
+        int appOri = UIOrienToIdx(orie);
+        GPUImageRotationMode mode = KSYRotateMode[capOri][appOri];
+        _capToGpu.outputRotation = mode;
+        [_preview setInputRotation:mode atIndex:0];
     }
     else {
         int capOri = UIOrienToIdx(_videoOrientation);
         int appOri = UIOrienToIdx(orie);
         GPUImageRotationMode mode = KSYRotateMode[capOri][appOri];
-        [_gpuToStr setInputRotation: mode  atIndex:0];
+        GPUImageRotationMode oppositeMode = KSYRotateMode[appOri][capOri];
+        _capToGpu.outputRotation = mode;
+        [_preview setInputRotation:oppositeMode atIndex:0];
     }
+    
+    [self updatePreDimension];
     [self updateStrDimension:orie];
     [self setStreamerMirrored: _streamerMirrored];
 }

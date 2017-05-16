@@ -42,6 +42,7 @@
     _reach = [KSYReachability reachabilityWithHostName:@"http://www.kingsoft.com"];
     [_reach startNotifier];
 }
+
 - (void)netWorkChange{
     KSYNetworkStatus currentStatus = [_reach currentReachabilityStatus];
     if (currentStatus == _preStatue) {
@@ -240,6 +241,8 @@
     }
     return taskInfo.resident_size / 1024.0 / 1024.0;
 }
+
+#pragma mark - save Image
 // 将UIImage 保存到path对应的文件
 + (void)saveImage: (UIImage *)image
                to: (NSString*)path {
@@ -248,5 +251,31 @@
     NSData *imageData = UIImagePNGRepresentation(image);
     BOOL ret = [imageData writeToFile:file atomically:YES];
     NSLog(@"write %@ %@", file, ret ? @"OK":@"failed");
+}
+
++ (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
+    
+    if (error == nil) {
+        UIAlertView *toast = [[UIAlertView alloc] initWithTitle:@"O(∩_∩)O~~"
+                                                        message:@"图像已保存至手机相册"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil, nil];
+        [toast show];
+        
+    }else{
+        
+        UIAlertView *toast = [[UIAlertView alloc] initWithTitle:@"￣へ￣"
+                                                        message:@"图像保存手机相册失败！"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil, nil];
+        [toast show];
+    }
+}
+
++ (void)saveImageToPhotosAlbum:(UIImage *)image
+{
+    UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
 }
 @end

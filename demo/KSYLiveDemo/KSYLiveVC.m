@@ -10,7 +10,7 @@
 #import "QRViewController.h"
 #import "KSYPlayerVC.h"
 #import "KSYProberVC.h"
-#import "MonkeyTestViewController.h"
+#import "KSYMonkeyTestVC.h"
 #import "KSYSQLite.h"
 #import "KSYDBCreater.h"
 #import "KSYPresetCfgVC.h"
@@ -217,11 +217,11 @@
             }
             UIViewController* vc = nil;
             if (indexPath.row == 0) {
-                vc = [[KSYPlayerVC alloc]initWithURL:url];
+                vc = [[KSYPlayerCfgVC alloc]initWithURL:url fileList:nil];
             }else if (indexPath.row == 1){
                 vc = [[KSYProberVC alloc]initWithURL:url];
             }else if(indexPath.row == 2){
-                vc = [[MonkeyTestViewController alloc] init];
+                vc = [[KSYMonkeyTestVC alloc] init];
             }
             else if (indexPath.row == 3){
                 vc = [[KSYNetTrackerVC alloc]init];

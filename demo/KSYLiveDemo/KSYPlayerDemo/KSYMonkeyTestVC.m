@@ -1,12 +1,13 @@
 //
-//  MonkeyTestViewController.m
+//  KSYMonkeyTestVC.m
 //  KSYPlayerDemo
 //
 //  Created by isExist on 16/8/24.
 //  Copyright © 2016年 kingsoft. All rights reserved.
 //
-#import "MonkeyTestViewController.h"
-#import "URLTableViewController.h"
+#import "KSYUIView.h"
+#import "KSYMonkeyTestVC.h"
+#import "KSYURLTableVC.h"
 #import "QRViewController.h"
 
 #define dispatch_main_sync_safe(block)\
@@ -24,10 +25,11 @@ dispatch_sync(dispatch_get_main_queue(), block);\
 
 #define UseResetToStop 1
 
-static const CGFloat kViewSpacing = 10.f;
-static const CGFloat kButtonHeight = 30.f;
+#define ELEMENT_GAP  10
 
-@interface MonkeyTestViewController () <UITextViewDelegate>
+static const CGFloat kViewSpacing = 10.f;
+
+@interface KSYMonkeyTestVC () <UITextViewDelegate>
 
 @property (nonatomic, strong) KSYMoviePlayerController *player;
 @property (nonatomic, strong) NSMutableArray<NSURL *> *URLs;
@@ -36,30 +38,23 @@ static const CGFloat kButtonHeight = 30.f;
 
 @end
 
-@implementation MonkeyTestViewController {
-    UIView *        _videoView;
-    UITextView *    _logView;
-    UIButton *      _controlButton;
-    UIButton *      _quitButton;
-    UIButton *      _scanButton;
+@implementation KSYMonkeyTestVC {
+    KSYUIView *ctrlView;
+    UIView *_videoView;
+    UITextView *_logView;
+    UIButton *_controlButton;
+    UIButton * _quitButton;
+    UIButton *_scanButton;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self setupUI];
     
     _URLs = [NSMutableArray arrayWithObjects:
-             [NSURL URLWithString:@"http://maichang.kssws.ks-cdn.com/upload20150716161913.mp4"],
-//             [NSURL URLWithString:@"rtmp://live.hkstv.hk.lxdns.com/live/hks"],
-//             [NSURL URLWithString:@"http://cxy.kss.ksyun.com/h265_56c1f0717c63f102.mp4"],
+             [NSURL URLWithString:@"rtmp://live.hkstv.hk.lxdns.com/live/hks"],
              nil];
-    
-    self.view.frame = [UIScreen mainScreen].bounds;
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    [self initUI];
-    
-    [self layoutUI];
     
     [self addObserver:self forKeyPath:@"isRunning" options:NSKeyValueObservingOptionNew context:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self
@@ -88,42 +83,40 @@ static const CGFloat kButtonHeight = 30.f;
 }
 
 #pragma mark - Private methods
-
-- (void)initUI {
+- (void) setupUI {
+    ctrlView = [[KSYUIView alloc] initWithFrame:self.view.bounds];
+    ctrlView.backgroundColor = [UIColor whiteColor];
+    ctrlView.gap = ELEMENT_GAP;
+    
+    @WeakObj(self);
+    ctrlView.onBtnBlock = ^(id sender){
+        [selfWeak  onBtn:sender];
+    };
+    
     _videoView = [[UIView alloc] init];
     _videoView.layer.borderColor = [UIColor blackColor].CGColor;
     _videoView.layer.borderWidth = 1.f;
-    [self.view addSubview:_videoView];
-    
-    _controlButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [_controlButton setTitle:@"运行" forState:UIControlStateNormal];
-    _controlButton.layer.borderColor = [UIColor blackColor].CGColor;
-    _controlButton.layer.borderWidth = 1.f;
-    [self.view addSubview:_controlButton];
-    [_controlButton addTarget:self action:@selector(onControlButton:) forControlEvents:UIControlEventTouchUpInside];
-    
-    _quitButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [_quitButton setTitle:@"退出" forState:UIControlStateNormal];
-    _quitButton.layer.borderColor = [UIColor blackColor].CGColor;
-    _quitButton.layer.borderWidth = 1.f;
-    [self.view addSubview:_quitButton];
-    [_quitButton addTarget:self action:@selector(onQuitButton:) forControlEvents:UIControlEventTouchUpInside];
-    
-    _scanButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [_scanButton setTitle:@"扫码" forState:UIControlStateNormal];
-    _scanButton.layer.borderColor = [UIColor blackColor].CGColor;
-    _scanButton.layer.borderWidth = 1.f;
-    [self.view addSubview:_scanButton];
-    [_scanButton addTarget:self action:@selector(onScanButton:) forControlEvents:UIControlEventTouchUpInside];
+    [ctrlView addSubview:_videoView];
     
     _logView = [[UITextView alloc] init];
     _logView.layer.borderColor = [UIColor blackColor].CGColor;
     _logView.layer.borderWidth = 1.f;
-    [self.view addSubview:_logView];
+    [ctrlView addSubview:_logView];
     _logView.delegate = self;
+    
+    _controlButton = [ctrlView addButton:@"运行"];
+    _scanButton = [ctrlView addButton:@"扫码"];
+    _quitButton = [ctrlView addButton:@"退出"];
+    
+    [self layoutUI];
+    
+    [self.view addSubview: ctrlView];
 }
 
 - (void)layoutUI {
+    ctrlView.frame = self.view.frame;
+    [ctrlView layoutUI];
+    
     CGFloat statusBarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
     CGFloat totalWidth = self.view.frame.size.width;
     CGFloat totalHeight = self.view.frame.size.height;
@@ -132,24 +125,12 @@ static const CGFloat kButtonHeight = 30.f;
                                   totalWidth - 2 * kViewSpacing,
                                   totalHeight / 3);
     
-    _controlButton.frame = CGRectMake(kViewSpacing,
-                                      totalHeight - kViewSpacing - kButtonHeight,
-                                      (totalWidth - 4 * kViewSpacing) / 3,
-                                      kButtonHeight);
-    
-    _scanButton.frame = CGRectMake(_controlButton.frame.origin.x + _controlButton.frame.size.width + kViewSpacing,
-                                   totalHeight - kViewSpacing - kButtonHeight,
-                                   _controlButton.frame.size.width,
-                                   kButtonHeight);
-    
-    _quitButton.frame = CGRectMake(_scanButton.frame.origin.x + _scanButton.frame.size.width + kViewSpacing,
-                                   totalHeight - kViewSpacing - kButtonHeight,
-                                   _controlButton.frame.size.width,
-                                   kButtonHeight);
-    
     CGFloat logViewOriginY = _videoView.frame.origin.y + _videoView.frame.size.height + kViewSpacing;
     CGFloat logViewHeight = _controlButton.frame.origin.y - kViewSpacing - logViewOriginY;
     _logView.frame = CGRectMake(kViewSpacing, logViewOriginY, totalWidth - 2 * kViewSpacing, logViewHeight);
+    
+    ctrlView.yPos  = ctrlView.frame.size.height -  ctrlView.btnH - ELEMENT_GAP;
+    [ctrlView putRow:@[_controlButton, _scanButton, _quitButton]];
 }
 
 - (void)appendDebugInfoWithString:(NSString *)infoString {
@@ -167,6 +148,16 @@ static const CGFloat kButtonHeight = 30.f;
         if ([_player isPreparedToPlay]) {
             [_player play];
         }
+    }
+}
+
+- (void)onBtn:(UIButton *)btn{
+    if (btn == _controlButton) {
+        [self onControlButton:btn];
+    }else if (btn == _scanButton){
+        [self onScanButton:btn];
+    }else if (btn == _quitButton){
+        [self onQuitButton:btn];
     }
 }
 
@@ -335,11 +326,11 @@ static const CGFloat kButtonHeight = 30.f;
     [self stopPlaying];
     [_repeatTimer invalidate];
     self.isRunning = NO;
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (IBAction)onScanButton:(id)sender {
-    URLTableViewController *URLTableVC = [[URLTableViewController alloc] initWithURLs:_URLs];
+    KSYURLTableVC *URLTableVC = [[KSYURLTableVC alloc] initWithURLs:_URLs];
     URLTableVC.getURLs = ^(NSArray<NSURL *> *scannedURLs){
         [_URLs removeAllObjects];
         for (NSURL *url in scannedURLs) {

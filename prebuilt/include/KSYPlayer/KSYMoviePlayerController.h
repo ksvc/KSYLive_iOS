@@ -277,6 +277,14 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
  */
 @property (nonatomic, readonly) CGSize naturalSize;
 
+/**
+ @abstract 当前视频自带旋转（逆时针）角度
+ @discussion  rotateDegress 是人为旋转角度，naturalRotate是文件meta信息中自带的旋转角度
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 2.2.0 and later.
+ */
+ @property (nonatomic, readonly) NSInteger naturalRotate;
+
 #pragma mark KSYMoviePlayerController New Feature
 
 /**
@@ -542,7 +550,7 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
 @property(nonatomic) MPMovieAudioPan audioPan;
 
 /**
- @abstract 用于检测网络连通性的地址，默认使用地址为“www.kingsoft.com”
+ @abstract 用于检测网络连通性的地址，默认使用地址为“www.baidu.com”
  @discussion 用户可自定义地址，但不可设置无效地址，如果不清楚规则，建议使用默认值
  @discussion 设置为nil时，则关闭网络连通性的检测, networkStatus属性值为-1
  @discussion 建议在创建对象后设置一次或不设置，不推荐在播放过程中动态配置

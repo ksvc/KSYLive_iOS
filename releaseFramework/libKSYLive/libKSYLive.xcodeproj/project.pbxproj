@@ -26,6 +26,7 @@
 		06A646C01D8652C000D1C620 /* KSYAVAudioSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A646BE1D8652A400D1C620 /* KSYAVAudioSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06A646D21D865B3B00D1C620 /* KSYGPUStreamerKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A646CE1D865B2C00D1C620 /* KSYGPUStreamerKit.m */; };
 		06A646DA1D865D3200D1C620 /* KSYGPUStreamerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A646CF1D865B2C00D1C620 /* KSYGPUStreamerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06CC32271EC4868A00B81609 /* KSYClipWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = C3F7345F1EC466E000D36B35 /* KSYClipWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06E3D1B91E00402D00E2AEA8 /* KSYBeautifyProFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E3D1B51E00402600E2AEA8 /* KSYBeautifyProFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06E3D1BA1E00402D00E2AEA8 /* KSYGPUPicInput.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E3D1B61E00402600E2AEA8 /* KSYGPUPicInput.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06E670751DEC376E0015E3BD /* KSYDummyAudioSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E670731DEC37570015E3BD /* KSYDummyAudioSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -65,6 +66,7 @@
 		580C1C2F1E2897F100B386D5 /* KSYNetTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 580C1C2D1E2897DF00B386D5 /* KSYNetTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		583682961EADDEF0002D3CB9 /* KSYReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 0623D6F11E78184200AEF51E /* KSYReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5837E1921E6469600044EA17 /* KSYMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 5837E1911E6469600044EA17 /* KSYMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3F734601EC466E000D36B35 /* KSYClipWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = C3F7345F1EC466E000D36B35 /* KSYClipWriter.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,6 +139,7 @@
 		58048A231D79C92A00232F6E /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		580C1C2D1E2897DF00B386D5 /* KSYNetTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYNetTracker.h; path = ../../../../prebuilt/include/KSYPlayer/KSYNetTracker.h; sourceTree = "<group>"; };
 		5837E1911E6469600044EA17 /* KSYMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSYMessage.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYMessage.h; sourceTree = "<group>"; };
+		C3F7345F1EC466E000D36B35 /* KSYClipWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYClipWriter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYClipWriter.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +318,7 @@
 				5800DCAF1D82BAA800B1A884 /* KSYGPUPicOutput.h */,
 				5800DCB41D82BAA800B1A884 /* KSYMovieWriter.h */,
 				5800DCB51D82BAA800B1A884 /* KSYStreamerBase.h */,
+				C3F7345F1EC466E000D36B35 /* KSYClipWriter.h */,
 				5800DCB61D82BAA800B1A884 /* KSYTypeDef.h */,
 				5800DCB81D82BAA800B1A884 /* libksygpulive.h */,
 			);
@@ -335,6 +339,7 @@
 				5800DC881D82B9AA00B1A884 /* KSYMoviePlayerController.h in Headers */,
 				5800DC891D82B9AA00B1A884 /* KSYMoviePlayerDefines.h in Headers */,
 				5800DC8A1D82B9AA00B1A884 /* KSYQosInfo.h in Headers */,
+				C3F734601EC466E000D36B35 /* KSYClipWriter.h in Headers */,
 				580C1C2E1E2897DF00B386D5 /* KSYNetTracker.h in Headers */,
 				583682961EADDEF0002D3CB9 /* KSYReachability.h in Headers */,
 			);
@@ -387,6 +392,7 @@
 				063254BD1E6810C600638EC8 /* KSYAQPlayer.h in Headers */,
 				0623D6F31E78185400AEF51E /* KSYReachability.h in Headers */,
 				063254BE1E6810C600638EC8 /* KSYBgmReader.h in Headers */,
+				06CC32271EC4868A00B81609 /* KSYClipWriter.h in Headers */,
 				052B29421EAB316300BFECB0 /* KSYGPUBgpStreamerKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

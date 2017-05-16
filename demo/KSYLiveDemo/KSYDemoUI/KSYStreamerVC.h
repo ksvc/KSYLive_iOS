@@ -56,6 +56,11 @@
 /// 其他功能配置页面
 @property (nonatomic, readonly) KSYMiscView   *miscView;
 
+#pragma mark - preview rotation
+/// 预览视图父控件（用于处理转屏，保持画面相对手机静止）
+@property (nonatomic, strong) UIView *bgView;
+@property (nonatomic, strong) UITraitCollection *curCollection;
+
 #pragma mark - kit instance
 @property (nonatomic, retain) KSYGPUStreamerKit * kit;
 

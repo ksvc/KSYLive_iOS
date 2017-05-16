@@ -94,9 +94,7 @@ static NSString *           kFontName = @"Helvetica";
 }
 
 - (void)dragSliderDidEnd {
-    if (_dragingSliderCallback) {
-        _dragingSliderCallback(_slider.value);
-    }
+    self.dragingSliderCallback(_slider.value);
 }
 
 - (NSString *)convertToMinutes:(float)seconds {

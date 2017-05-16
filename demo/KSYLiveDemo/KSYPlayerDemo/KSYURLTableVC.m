@@ -1,23 +1,23 @@
 //
-//  URLTableViewController.m
+//  KSYURLTableVC.m
 //  KSYPlayerDemo
 //
 //  Created by isExist on 16/8/22.
 //  Copyright © 2016年 kingsoft. All rights reserved.
 //
 
-#import "URLTableViewController.h"
+#import "KSYURLTableVC.h"
 #import "QRViewController.h"
 
 static NSString *kCellWithIdentifier = @"reuseIdentifier";
 
-@interface URLTableViewController ()
+@interface KSYURLTableVC ()
 
 @property (nonatomic, strong) NSMutableArray<NSString *> *stringURLs;
 
 @end
 
-@implementation URLTableViewController
+@implementation KSYURLTableVC
 
 - (instancetype)initWithURLs:(NSArray<NSURL *> *)urls {
     if (self = [super init]) {

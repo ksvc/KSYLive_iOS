@@ -6,15 +6,24 @@
 //  Copyright © 2017年 kingsoft. All rights reserved.
 //
 
+#import "KSYUIView.h"
 #import "KSYNetTrackerVC.h"
 
+#define ELEMENT_GAP  15
+
+@interface KSYNetTrackerVC() <UITextViewDelegate>
+
+@end
+
 @implementation KSYNetTrackerVC{
+    KSYUIView *ctrlView;
+    
     UILabel *lbDomain;
     UITextField *tfDomain;
     UIView * tfDomainLine;
     
-    UIButton *btnMTR;
     UIButton *btnPing;
+    UIButton *btnMTR;
     UIButton *btnQuit;
     
     UITextView *txtView_ret;
@@ -35,7 +44,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initUI];
+
+    [self setupUI];
+    
     [self initNetTracker];
     
     infoLog = @"";
@@ -43,67 +54,35 @@
     displayStr = @"";
 }
 
-- (void) initUI {
-    CGFloat wdt = self.view.bounds.size.width;
-    CGFloat hgt = self.view.bounds.size.height;
-    int xPos  = 0, yPos = 0;
-    int elem_width = 100, elem_height = 40;
+- (void)setupUI {
+    ctrlView = [[KSYUIView alloc] initWithFrame:self.view.bounds];
+    ctrlView.backgroundColor = [UIColor whiteColor];
+    ctrlView.gap = ELEMENT_GAP;
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    @WeakObj(self);
+    ctrlView.onBtnBlock = ^(id sender){
+        [selfWeak  onBtn:sender];
+    };
     
-    xPos = wdt / 8;
-    yPos = hgt / 15;
+    btnPing = [ctrlView addButton:@"Ping"];
+    [btnPing setTag:KSY_NETTRACKER_ACTION_PING];
     
-    lbDomain = [[UILabel alloc] initWithFrame:CGRectMake(xPos, yPos, wdt * 4 / 5, elem_height)];
-    lbDomain.textColor = [UIColor blackColor];
-    lbDomain.text = @"请输入待探测地址：";
-    [self.view addSubview:lbDomain];
+    btnMTR = [ctrlView addButton:@"MTR"];
+    [btnMTR setTag:KSY_NETTRACKER_ACTION_MTR];
     
-    xPos += 20;
-    yPos += elem_height;
-    tfDomain = [[UITextField alloc] initWithFrame:CGRectMake(xPos, yPos, wdt * 3 / 5,  elem_height)];
+    btnQuit = [ctrlView addButton:@"Quit"];
+
+    lbDomain = [ctrlView addLable:@"请输入待探测地址："];
+    lbDomain.backgroundColor = [UIColor whiteColor];
+    
+    tfDomain = [ctrlView addTextField:@"www.baidu.com"];
+    tfDomain.borderStyle = UITextBorderStyleNone;
     tfDomain.returnKeyType = UIReturnKeyDone;
-    tfDomain.text = @"www.baidu.com";
+    tfDomain.delegate = self;
     
-    tfDomainLine = [[UIView alloc]initWithFrame:CGRectMake(0 ,  elem_height, tfDomain.frame.size.width, 2)];
+    tfDomainLine = [ctrlView addLable:nil];
     tfDomainLine.backgroundColor = [UIColor blackColor];
-    [self.view addSubview:tfDomain];
-    [tfDomain addSubview:tfDomainLine];
     
-    xPos = wdt / 12;
-    yPos += elem_height + 25;
-    btnPing = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnPing.accessibilityLabel = @"Ping";
-    btnPing.frame = CGRectMake(xPos, yPos, elem_width, elem_height);
-    [btnPing setBackgroundColor:[UIColor lightGrayColor]];
-    [btnPing setTitle:@"Ping" forState:UIControlStateNormal];
-    [btnPing addTarget:self
-                action:@selector(startNetDiagnosis:)
-      forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btnPing];
-    
-    xPos += (elem_width + 25);
-    btnMTR = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnMTR.accessibilityLabel = @"MTR";
-    btnMTR.frame = CGRectMake(xPos, yPos, elem_width, elem_height);
-    [btnMTR setBackgroundColor:[UIColor lightGrayColor]];
-    [btnMTR setTitle:@"MTR" forState:UIControlStateNormal];
-    [btnMTR addTarget:self
-               action:@selector(startNetDiagnosis:)
-     forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btnMTR];
-    
-    xPos += (elem_width + 25);
-    btnQuit = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnQuit.frame = CGRectMake(xPos, yPos, elem_width, elem_height);
-    [btnQuit setBackgroundColor:[UIColor lightGrayColor]];
-    [btnQuit setTitle:@"Quit" forState:UIControlStateNormal];
-    [btnQuit addTarget:self
-               action:@selector(onQuit:)
-     forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btnQuit];
-    
-    yPos += elem_height + 25;
     txtView_ret = [[UITextView alloc] initWithFrame:CGRectZero];
     txtView_ret.layer.borderWidth = 1.0f;
     txtView_ret.layer.borderColor = [UIColor lightGrayColor].CGColor;
@@ -112,8 +91,45 @@
     txtView_ret.textAlignment = NSTextAlignmentLeft;
     txtView_ret.scrollEnabled = YES;
     txtView_ret.editable = NO;
-    txtView_ret.frame = CGRectMake(0.0f, yPos, wdt, hgt - yPos);
-    [self.view addSubview:txtView_ret];
+    [ctrlView addSubview:txtView_ret];
+    
+    [self layoutUI];
+    
+    [self.view addSubview: ctrlView];
+}
+
+- (void)layoutUI {
+    CGFloat wdt = self.view.frame.size.width;
+    CGFloat hgt = self.view.frame.size.height;
+    int xPos = 0, yPos = 0;
+    
+    ctrlView.frame = self.view.frame;
+    [ctrlView layoutUI];
+    
+    xPos = wdt / 8;
+    yPos = hgt / 15;
+    lbDomain.frame = CGRectMake(xPos, yPos, wdt * 4 / 5, ctrlView.btnH);
+    
+    xPos += 20;
+    yPos += ctrlView.btnH + ELEMENT_GAP;
+    tfDomain.frame = CGRectMake(xPos, yPos, wdt * 3 / 5, ctrlView.btnH);
+    
+    tfDomainLine.frame = CGRectMake(xPos ,  yPos + ctrlView.btnH, tfDomain.frame.size.width, 2);
+    
+    yPos += ctrlView.btnH + 2 * ELEMENT_GAP;
+    ctrlView.yPos  = yPos;
+    [ctrlView putRow:@[btnPing, btnMTR, btnQuit]];
+
+    yPos += ctrlView.btnH + ELEMENT_GAP;
+    txtView_ret.frame = CGRectMake(0, yPos, wdt, hgt - yPos);
+}
+
+- (void)onBtn:(UIButton *)btn{
+    if (btn == btnPing || btn == btnMTR) {
+        [self startNetDiagnosis: btn];
+    }else if (btn == btnQuit){
+        [self onQuit];
+    }
 }
 
 - (void) initNetTracker {
@@ -158,7 +174,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)onQuit:(id)sender {
+- (void)onQuit {
     displayStr = @"";
     [self displayInfo];
     [self stopNetDiagnosis];
@@ -169,13 +185,10 @@
 {
     if(!isRunning){
         displayStr = @"";
-        
-        if([button.accessibilityLabel isEqualToString:@"Ping"])
-            action = KSY_NETTRACKER_ACTION_PING;
-        else
-            action = KSY_NETTRACKER_ACTION_MTR;
-        
+
+        action = button.tag;
         tracker.action = action;
+        
         if([tracker start:tfDomain.text])
         {
             displayStr = @"启动探测失败，请检查网络或待探测地址!";
@@ -183,18 +196,11 @@
             return ;
         }
         [button setTitle:@"stop" forState:UIControlStateNormal];
-        if([button.accessibilityLabel isEqualToString:@"Ping"])
-        {
-            action = KSY_NETTRACKER_ACTION_PING;
-            btnMTR.alpha = 0.4;
+
+        if(action == KSY_NETTRACKER_ACTION_PING)
             btnMTR.enabled = NO;
-        }
         else
-        {
-            action = KSY_NETTRACKER_ACTION_MTR;
-            btnPing.alpha = 0.4;
             btnPing.enabled = NO;
-        }
         
         isRunning = !isRunning;
         displayStr  = stateStr = @"开始探测......\n\n";
@@ -218,8 +224,6 @@
 {
     [btnPing setTitle:@"Ping" forState:UIControlStateNormal];
     [btnMTR setTitle:@"MTR" forState:UIControlStateNormal];
-    btnMTR.alpha = 1;
-    btnPing.alpha = 1;
     btnMTR.enabled = YES;
     btnPing.enabled = YES;
     
@@ -268,8 +272,6 @@
         
         [btnPing setTitle:@"Ping" forState:UIControlStateNormal];
         [btnMTR setTitle:@"MTR" forState:UIControlStateNormal];
-        btnMTR.alpha = 1;
-        btnPing.alpha = 1;
         btnMTR.enabled = YES;
         btnPing.enabled = YES;
         isRunning = NO;
@@ -353,6 +355,13 @@
         }
         i++;
     }
+}
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField.returnKeyType == UIReturnKeyDone) {
+        [textField resignFirstResponder];
+    }
+    return YES;
 }
 
 @end

@@ -7,10 +7,11 @@
 
 #import <UIKit/UIKit.h>
 #import "KSYTypeDef.h"
+#import "KSYClipWriter.h"
 #import "KSYStreamerBase.h"
 #import "KSYMovieWriter.h"
 #import "KSYAVMuxer.h"
 #import "KSYMessage.h"
 
-#define KSYSTREAMERBASE_VER 2.1.1
-#define KSYSTREAMERBASE_ID 923276767e0ce5068f3d4068004f7bc1a80d4946
+#define KSYSTREAMERBASE_VER 2.2.0
+#define KSYSTREAMERBASE_ID 8e3d5804379acfcb3fae8f78f83611d2cd2b8986

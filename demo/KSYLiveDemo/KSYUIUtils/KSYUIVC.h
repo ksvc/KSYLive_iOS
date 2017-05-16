@@ -54,4 +54,5 @@
 // 将UIImage 保存到path对应的文件
 + (void)saveImage: (UIImage *)image
                to: (NSString*)path;
++ (void)saveImageToPhotosAlbum:(UIImage *)image;
 @end

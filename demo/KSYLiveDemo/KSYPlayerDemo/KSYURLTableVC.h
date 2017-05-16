@@ -1,5 +1,5 @@
 //
-//  URLTableViewController.h
+//  KSYURLTableVC.h
 //  KSYPlayerDemo
 //
 //  Created by isExist on 16/8/22.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface URLTableViewController : UITableViewController
+@interface KSYURLTableVC : UITableViewController
 
 @property (nonatomic, copy) void (^getURLs)(NSArray<NSURL *> *scannedURLs);
 
