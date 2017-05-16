@@ -36,3 +36,5 @@ KSYLiveDemo.xcworkspace/
 Podfile.lock
 Pods/
 libksylivedep/
+ffmpeg/
+gas-preprocessor/

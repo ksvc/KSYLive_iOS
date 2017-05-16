@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "KSYTypeDef.h"
 @class KSYReachability;
-
 /**
  金山云直播推流SDK iOS版提供了iOS移动设备上的推流功能
 
@@ -370,6 +369,12 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
  @discussion 从开始推流到现在，发送出去的数据字节数，单位为KByte
  */
 @property (nonatomic, readonly) int uploadedKByte;
+
+/**
+ @abstract   查询当前上传的码率大小 (每秒更新)
+ @discussion 该码率为实际上传的速度, 也就是每秒上传的字节数，单位为kbps
+ */
+@property (nonatomic, readonly) double currentUploadingKbps;
 
 /**
  @abstract   查询当前编码的平均视频帧率

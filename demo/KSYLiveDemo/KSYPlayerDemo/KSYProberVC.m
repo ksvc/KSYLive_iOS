@@ -5,98 +5,97 @@
 //  Created by 施雪梅 on 16/7/10.
 //  Copyright © 2016年 kingsoft. All rights reserved.
 //
-
-#import <Foundation/Foundation.h>
-#import <CommonCrypto/CommonDigest.h>
+#import "KSYUIView.h"
 #import "KSYProberVC.h"
 
-@interface KSYProberVC ()
-@property (strong, nonatomic) NSURL *url;
-@property (strong, nonatomic) KSYMediaInfoProber *prober;
-@end
+#define ELEMENT_GAP  10
 
-@implementation KSYProberVC{
-        UILabel *stat;
+@implementation KSYProberVC {
+    KSYUIView *ctrlView;
+    UILabel *stat;
+    UIButton *btnProbe;
+    UIButton *btnThumbnail;
+    UIButton *btnQuit;
     
-        UIButton *btnProbe;
-        UIButton *btnThumbnail;
-        UIButton *btnQuit;
+    NSURL *_url;
+    KSYMediaInfoProber *_prober;
 }
 
 - (instancetype)initWithURL:(NSURL *)url {
     if((self = [super init])) {
-        self.url = url;
+        _url = url;
     }
     return self;
 }
 
-
 - (void)viewDidLoad {
-    self.view.backgroundColor = [UIColor whiteColor];
     [super viewDidLoad];
-    [self initUI];
-}
-
-- (void) initUI {
-    //add play button
-    btnProbe= [self addButtonWithTitle:@"probe" action:@selector(onProbeMediaInfo:)];
     
-    //add Thumbnail button
-    btnThumbnail = [self addButtonWithTitle:@"Thumbnail" action:@selector(onThumbnail:)];
+    [self setupUI];
     
-    //add quit button
-    btnQuit = [self addButtonWithTitle:@"quit" action:@selector(onQuit:)];
-    
-    stat = [[UILabel alloc] init];
-    stat.backgroundColor = [UIColor clearColor];
-    stat.textColor = [UIColor redColor];
-    stat.numberOfLines = -1;
-    stat.textAlignment = NSTextAlignmentLeft;
-    [self.view addSubview:stat];
-    [self layoutUI];
-    
-    NSString *aUrlString = [_url isFileURL] ? [_url path] : [_url absoluteString];
-    stat.text = [NSString stringWithFormat:@"url is : %@", aUrlString];
+    stat.text = [NSString stringWithFormat:@"url is : %@", [_url isFileURL] ? [_url path] : [_url absoluteString]];
     _prober = [[KSYMediaInfoProber alloc] initWithContentURL: _url];
     _prober.timeout = 10;
 }
 
-- (UIButton *)addButtonWithTitle:(NSString *)title action:(SEL)action{
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle:title forState: UIControlStateNormal];
-    button.backgroundColor = [UIColor lightGrayColor];
-    [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
-    button.layer.masksToBounds  = YES;
-    button.layer.cornerRadius   = 5;
-    button.layer.borderColor    = [UIColor blackColor].CGColor;
-    button.layer.borderWidth    = 1;
-    [self.view addSubview:button];
-    return button;
+- (void)setupUI {
+    ctrlView = [[KSYUIView alloc] initWithFrame:self.view.bounds];
+    ctrlView.backgroundColor = [UIColor whiteColor];
+    ctrlView.gap = ELEMENT_GAP;
+    
+    @WeakObj(self);
+    ctrlView.onBtnBlock = ^(id sender){
+        [selfWeak  onBtn:sender];
+    };
+    
+    btnProbe = [ctrlView addButton:@"探测格式"];
+    btnThumbnail = [ctrlView addButton:@"缩略图"];
+    btnQuit = [ctrlView addButton:@"退出"];
+
+    stat = [ctrlView addLable:nil];
+    stat.backgroundColor = [UIColor clearColor];
+    stat.textColor = [UIColor redColor];
+    stat.numberOfLines = -1;
+    stat.textAlignment = NSTextAlignmentLeft;
+    
+    [self layoutUI];
+    
+    [self.view addSubview: ctrlView];
 }
 
-- (void) layoutUI {
-    CGFloat wdt = self.view.bounds.size.width;
-    CGFloat hgt = self.view.bounds.size.height;
+- (void)layoutUI {
+    ctrlView.frame = self.view.frame;
+    [ctrlView layoutUI];
     
-    CGFloat gap = 20;
-    CGFloat btnWdt = ( (wdt-gap) / 3) - gap;
-    CGFloat btnHgt = 30;
-    
-    CGFloat xPos = gap;
-    CGFloat yPos = hgt - btnHgt - gap;
+    ctrlView.yPos  = ctrlView.frame.size.height -  ctrlView.btnH - ELEMENT_GAP;
+    [ctrlView putRow:@[btnProbe, btnThumbnail, btnQuit]];
 
-    btnProbe.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    
-    xPos += gap + btnWdt;
-    btnThumbnail.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    
-    xPos += gap + btnWdt;
-    btnQuit.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    
-    stat.frame = CGRectMake(20, 0, wdt, hgt);
+    stat.frame = ctrlView.frame;
 }
 
-- (IBAction)onProbeMediaInfo:(id)sender {
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField.returnKeyType == UIReturnKeyDone) {
+        [textField resignFirstResponder];
+    }
+    return YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
+
+- (void)onBtn:(UIButton *)btn{
+    if (btn == btnProbe) {
+        [self onProbeMediaInfo];
+    }else if (btn == btnThumbnail){
+        [self onThumbnail];
+    }else if (btn == btnQuit){
+        [self onQuit];
+    }
+}
+
+- (void)onProbeMediaInfo {
 
     if(nil == _prober)
         return ;
@@ -139,35 +138,14 @@
     stat.text = [NSString stringWithFormat:@"%@", result];
 }
 
-- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
-    if (error == nil) {
-        UIAlertView *toast = [[UIAlertView alloc] initWithTitle:@"O(∩_∩)O~~"
-                                                        message:@"缩略图已保存至手机相册"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"确定"
-                                              otherButtonTitles:nil, nil];
-        [toast show];
-        
-    }else{
-        
-        UIAlertView *toast = [[UIAlertView alloc] initWithTitle:@"￣へ￣"
-                                                        message:@"缩略图截取失败！"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"确定"
-                                              otherButtonTitles:nil, nil];
-        [toast show];
-    }
-
-}
-
-- (IBAction)onThumbnail:(id)sender {
+- (void)onThumbnail{
     
     if(nil == _prober)
         return ;
     
     UIImage *thumbnailImage = [_prober getVideoThumbnailImageAtTime:0 width:0 height:0];
     if(thumbnailImage)
-        UIImageWriteToSavedPhotosAlbum(thumbnailImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+        [KSYUIVC saveImageToPhotosAlbum:thumbnailImage];
     else
     {
         UIAlertView *toast = [[UIAlertView alloc] initWithTitle:@"￣へ￣"
@@ -179,7 +157,7 @@
     }
 }
 
-- (IBAction)onQuit:(id)sender {
+- (void)onQuit {
     [self dismissViewControllerAnimated:FALSE completion:nil];
 }
 

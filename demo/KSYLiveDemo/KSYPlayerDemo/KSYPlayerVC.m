@@ -5,228 +5,109 @@
 //  Copyright (c) 2015 zengfanping. All rights reserved.
 //
 
+#import "KSYUIView.h"
 #import "KSYPlayerVC.h"
-#import <CommonCrypto/CommonDigest.h>
-#import "QRViewController.h"
-#import "URLTableViewController.h"
 #import "KSYProgressView.h"
-#import "KSYPlayerConfigureVC.h"
 #import "KSYFloatVC.h"
 
-@interface KSYPlayerVC () <UITextFieldDelegate>
+#define ELEMENT_GAP  6
+
+@interface KSYPlayerVC()
 @property (strong, nonatomic) NSURL *url;
 @property (strong, nonatomic) NSURL *reloadUrl;
 @property(strong, nonatomic) NSArray *fileList;
+@property (nonatomic, readwrite) KSYPlayerCfgVC *config;
 @end
 
 @implementation KSYPlayerVC{
-    UILabel *stat;
-    UILabel *msg;
-    NSTimer* timer;
-    double lastSize;
-    NSTimeInterval lastCheckTime;
-    NSString* serverIp;
+    KSYUIView *ctrlView;
+    
     UIView *videoView;
+    
+    UIButton *btnVideo;
+    UILabel *labelContenMode;
+    UISegmentedControl *segContentMode;             //画面填充模式
+    UILabel *labelRotate;
+    UISegmentedControl *segRotate;                         //旋转
+    UILabel *labelMirror;
+    UISegmentedControl *segMirror;                         //镜像
+    UIButton *btnShotScreen;
+    NSMutableArray *arrayBtnVideo;
+    
+    UIButton *btnAudio;
+    UILabel *labelMute;
+    UISwitch *switchMute;                                           ///静音
+    KSYNameSlider *sliderVolume;
+    UILabel *labelAudioPan;
+    UISegmentedControl  *segAudioPan;
+    NSMutableArray *arrayBtnAudio;
+    
+    UIButton *btnOthers;
+    UIButton *btnReload;
+    UIButton *btnFloat;
+    NSMutableArray *arrayBtnOthers;
+    
+    UILabel *labelStat;
+    UILabel *labelMsg;
     UIButton *btnPlay;
     UIButton *btnPause;
     UIButton *btnResume;
     UIButton *btnStop;
     UIButton *btnQuit;
-    UIButton *btnRotate;
-    UIButton *btnContentMode;
-    UIButton *btnReload;
-    UIButton *btnMute;
-    UIButton *btnShotScreen;
-    UIButton *btnMirror;
-    UIButton *btnConfig;
-    UIButton *btnFloat;
-    
-    UILabel *labelVolume;
-    UISlider *sliderVolume;
-    
-    UILabel *labelAudioPan;
-    UISegmentedControl  *segAudioPan;
-    
+
     KSYProgressView *progressView;
     
-    BOOL usingReset;
-    BOOL shouldMute;
+    double lastSize;
+    NSTimeInterval lastCheckTime;
+    NSString* serverIp;
     
     BOOL reloading;
     
     long long int prepared_time;
     int fvr_costtime;
     int far_costtime;
-	int rotate_degress;
-	int content_mode;
     
     int msgNum;
-    PlayerConfigure config;
     
-    KSYFloatVC *_floatVC;
+    BOOL bStopped;
+    
+    NSMutableArray *registeredNotifications;
 }
 
-- (instancetype)initWithURL:(NSURL *)url {
-    return [self initWithURL:url fileList:_fileList];
-}
-
-- (instancetype)initWithURL:(NSURL *)url fileList:(NSArray *)fileList{
+- (instancetype)initWithURLAndConfigure:(NSURL *)url fileList:(NSArray *)fileList config:(KSYPlayerCfgVC *)config{
     if((self = [super init])) {
         self.url = url;
         self.reloadUrl = url;
         self.fileList = fileList;
+        self.config = config;
     }
-    
-    config.decodeMode = MPMovieVideoDecoderMode_Hardware;
-    config.deinterlaceMode = MPMovieVideoDeinterlaceMode_Auto;
-    config.bLoop = NO;
-    config.bAudioInterrupt = YES;
-    config.connectTimeout = 10;
-    config.readTimeout = 60;
-    config.bufferSizeMax = -1;
-    config.bufferTimeMax = -1;
+
     return self;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self initUI];
-    
-    [self addObserver:self forKeyPath:@"player" options:NSKeyValueObservingOptionNew context:nil];
-    
-    UISwipeGestureRecognizer *leftSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
-    leftSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
-    UISwipeGestureRecognizer *rightSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
-    rightSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
-    UISwipeGestureRecognizer *upSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
-    upSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionUp;
-    UISwipeGestureRecognizer *downSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
-    downSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionDown;
-    [self.view addGestureRecognizer:leftSwipeRecognizer];
-    [self.view addGestureRecognizer:rightSwipeRecognizer];
-    [self.view addGestureRecognizer:upSwipeRecognizer];
-    [self.view addGestureRecognizer:downSwipeRecognizer];
-    
-    //捏合缩放
-    UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchView:)];
-    [self.view addGestureRecognizer:pinchGesture];
-    //旋转
-    UIRotationGestureRecognizer *rotationGesture = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(rotateView:)];
-    [self.view addGestureRecognizer:rotationGesture];
-    
-    // 该变量决定停止播放时使用的接口，YES时调用reset接口，NO时调用stop接口
-    usingReset = YES;
-    
-    shouldMute = NO;
-    
-    progressView.hidden = YES;
-    
-    _floatVC = [[KSYFloatVC alloc] init];
-    _floatVC.playerVC = self;
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    if(_player)
-    {
-        [_player.view setFrame: videoView.bounds]; 
-        [videoView addSubview: _player.view];
-    }
 }
 
 - (void)dealloc {
     [self removeObserver:self forKeyPath:@"player"];
 }
 
-- (void) initUI {
-    //add UIView for player
-    videoView = [[UIView alloc] init];
-    videoView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:videoView];
+#pragma mark layout
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
-    //add play button
-    btnPlay = [self addButtonWithTitle:@"播放" action:@selector(onPlayVideo:)];
-
-    //add pause button
-    btnPause = [self addButtonWithTitle:@"暂停" action:@selector(onPauseVideo:)];
-
-    //add resume button
-    btnResume = [self addButtonWithTitle:@"继续" action:@selector(onResumeVideo:)];
+    [self setupUI];
     
-    //add stop button
-    btnStop = [self addButtonWithTitle:@"停止" action:@selector(onStopVideo:)];
-
-    //add quit button
-    btnQuit = [self addButtonWithTitle:@"退出" action:@selector(onQuit:)];
+    [self registerHandGesture];
     
-    //add rotate button
-    btnRotate = [self addButtonWithTitle:@"旋转" action:@selector(onRotate:)];
-   
-	//add content mode buttpn
-	btnContentMode = [self addButtonWithTitle:@"缩放" action:@selector(onContentMode:)];
+    [self addObserver:self forKeyPath:@"player" options:NSKeyValueObservingOptionNew context:nil];
     
-    //add reload button
-    btnReload = [self addButtonWithTitle:@"reload" action:@selector(onReloadVideo:)];
-    
-    btnShotScreen = [self addButtonWithTitle:@"截图" action:@selector(onShotScreen:)];
-    
-    btnMute = [self addButtonWithTitle:@"mute" action:@selector(onMute:)];
-    
-    btnMirror = [self addButtonWithTitle:@"镜像" action:@selector(onMirror:)];
-    btnConfig = [self addButtonWithTitle:@"配置" action:@selector(onConfig:)];
-    
-    btnFloat = [self addButtonWithTitle:@"悬窗" action:@selector(onFloat:)];
-
-    labelVolume = [self addLabelWithText:@"音量" textColor:[UIColor lightGrayColor]];
-    
-    sliderVolume = [[UISlider alloc] init];
-    sliderVolume.minimumValue = 0;
-    sliderVolume.maximumValue = 100;
-    sliderVolume.value = 100;
-    [sliderVolume addTarget:self action:@selector(onVolumeChanged:) forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:sliderVolume];
-    
-    labelAudioPan = [self addLabelWithText:@"立体声平衡" textColor:[UIColor lightGrayColor]];
-    segAudioPan = [self addSegCtrlWithItems:@[@"左声道", @"立体声", @"右声道"] action:@selector(onAudioPan:)];
-    segAudioPan.selectedSegmentIndex = 1;
-    
-    stat = [self addLabelWithText:nil textColor:[UIColor redColor]];
-    msg = [self addLabelWithText:nil textColor:[UIColor blueColor]];
-    
-    progressView = [[KSYProgressView alloc] init];
-    [self.view addSubview:progressView];
-
-    [self layoutUI];
-    
-    [self.view bringSubviewToFront:stat];
-    stat.frame = [UIScreen mainScreen].bounds;
-    
-    [self.view bringSubviewToFront:msg];
-    msg.frame = [UIScreen mainScreen].bounds;
+    [self initPlayerWithURL:_url fileList:_fileList config:_config];
 }
 
-- (UIButton *)addButtonWithTitle:(NSString *)title action:(SEL)action{
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle:title forState: UIControlStateNormal];
-    button.backgroundColor = [UIColor lightGrayColor];
-    [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
-    button.layer.masksToBounds  = YES;
-    button.layer.cornerRadius   = 5;
-    button.layer.borderColor    = [UIColor blackColor].CGColor;
-    button.layer.borderWidth    = 1;
-    [self.view addSubview:button];
-    return button;
-}
-
-- (UISegmentedControl *)addSegCtrlWithItems: (NSArray *) items action:(SEL)action{
-    UISegmentedControl * segC;
-    segC = [[UISegmentedControl alloc] initWithItems:items];
-    segC.selectedSegmentIndex = 0;
-    segC.layer.cornerRadius = 5;
-    segC.backgroundColor = [UIColor lightGrayColor];
-    [segC addTarget:self action:action forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:segC];
-    return segC;
+- (void)viewDidAppear:(BOOL)animated {
+    if(_player)
+    {
+        [_player.view setFrame: videoView.bounds];
+        [videoView addSubview: _player.view];
+    }
 }
 
 - (UILabel *)addLabelWithText:(NSString *)text textColor:(UIColor*)textColor {
@@ -240,110 +121,251 @@
     return label;
 }
 
-- (void) layoutUI {
-    CGFloat wdt = self.view.bounds.size.width;
-    CGFloat hgt = self.view.bounds.size.height;
-    CGFloat gap =15;
-    CGFloat btnWdt = ( (wdt-gap) / 5) - gap;
-    CGFloat btnHgt = 30;
-    CGFloat xPos = 0;
-    CGFloat yPos = 0;
+- (void) setupUI {
+    ctrlView = [[KSYUIView alloc] initWithFrame:self.view.bounds];
+    ctrlView.backgroundColor = [UIColor blackColor];
+    ctrlView.gap = ELEMENT_GAP;
+    
+    @WeakObj(self);
+    ctrlView.onBtnBlock = ^(id sender){
+        [selfWeak  onBtn:sender];
+    };
+    ctrlView.onSliderBlock = ^(id sender){
+        [selfWeak onSlider:sender];
+    };
+    ctrlView.onSwitchBlock = ^(id sender){
+        [selfWeak onSwitch:sender];
+    };
+    ctrlView.onSegCtrlBlock = ^(id sender){
+        [selfWeak onSeg:sender];
+    };
+    
+    //add UIView for player
+    videoView = [[UIView alloc] init];
+    videoView.backgroundColor = [UIColor whiteColor];
+    [ctrlView addSubview:videoView];
+    
+    btnVideo = [ctrlView addButton:@"图像"];
+    labelContenMode = [ctrlView addLable:@"填充模式"];
+    segContentMode = [ctrlView addSegCtrlWithItems:@[@"无", @"同比", @"裁剪", @"满屏"]];
+    segContentMode.selectedSegmentIndex = 1;
+    labelRotate = [ctrlView addLable:@"旋转"];
+    segRotate = [ctrlView addSegCtrlWithItems:@[@"0", @"90", @"180", @"270"]];
+    labelMirror = [ctrlView addLable:@"镜像"];
+    segMirror = [ctrlView addSegCtrlWithItems:@[@"正向", @"反向"]];
+    btnShotScreen = [ctrlView addButton:@"截图"];
+    arrayBtnVideo = [NSMutableArray arrayWithObjects:labelContenMode,segContentMode, labelRotate, segRotate, labelMirror, segMirror, btnShotScreen, nil];
+    [self showElements:arrayBtnVideo bShow:NO];
+    
+    btnAudio = [ctrlView addButton:@"声音"];
+    labelMute = [ctrlView addLable:@"静音"];
+    switchMute = [ctrlView addSwitch:NO];
+    sliderVolume =  [ctrlView addSliderName:@"音量" From:0 To:200 Init:100];
+    labelAudioPan = [ctrlView addLable:@"立体声平衡"];
+    segAudioPan = [ctrlView addSegCtrlWithItems:@[@"左声道", @"立体声", @"右声道"]];
+    segAudioPan.selectedSegmentIndex = 1;
+    arrayBtnAudio = [NSMutableArray arrayWithObjects:labelMute, switchMute, sliderVolume, labelAudioPan, segAudioPan, nil];
+     [self showElements:arrayBtnAudio bShow:NO];
+    
+    btnOthers = [ctrlView addButton:@"其它"];
+    btnReload = [ctrlView addButton:@"reload"];
+    btnFloat = [ctrlView addButton:@"悬窗"];
+    arrayBtnOthers = [NSMutableArray arrayWithObjects:btnReload, btnFloat, nil];
+    [self showElements:arrayBtnOthers bShow:NO];
+    
+    btnPlay = [ctrlView addButton:@"播放"];
+    btnPause = [ctrlView addButton:@"暂停"];
+    btnResume = [ctrlView addButton:@"继续"];
+    btnStop = [ctrlView addButton:@"停止"];
+    btnQuit = [ctrlView addButton:@"退出"];
 
-    videoView.frame = CGRectMake(0, 0, wdt, hgt);
+    progressView = [[KSYProgressView alloc] init];
+    [ctrlView addSubview:progressView];
     
-    yPos = 2 * gap;
-    xPos = gap;
-    labelVolume.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    xPos += btnWdt + gap;
-    sliderVolume.frame  = CGRectMake(xPos, yPos, wdt - 3 * gap - btnWdt, btnHgt);
+    labelStat = [self addLabelWithText:nil textColor:[UIColor redColor]];
+    [ctrlView addSubview:labelStat];
     
-    xPos = gap;
-    yPos += btnHgt + gap;
-    labelAudioPan.frame = CGRectMake(xPos, yPos, btnWdt * 1.5, btnHgt);
-    xPos += btnWdt * 1.5 + gap;
-    segAudioPan.frame = CGRectMake(xPos, yPos, btnWdt * 3, btnHgt);
+    labelMsg = [self addLabelWithText:nil textColor:[UIColor blueColor]];
+    [ctrlView addSubview:labelMsg];
     
-    xPos = gap;
-    yPos = hgt - btnHgt - gap;
-    btnPlay.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    xPos += gap + btnWdt;
-    btnPause.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    xPos += gap + btnWdt;
-    btnResume.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    xPos += gap + btnWdt;
-    btnStop.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    xPos += gap + btnWdt;
-    btnQuit.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    
-    xPos = gap;
-	yPos -= (btnHgt + gap);
-    btnRotate.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    xPos += gap + btnWdt;
-    btnContentMode.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    xPos += gap + btnWdt;
-    btnShotScreen.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    xPos += gap + btnWdt;
-    btnReload.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    xPos += gap + btnWdt;
-    btnMute.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    
-    xPos = gap;
-    yPos -= (btnHgt + gap);
-    btnMirror.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    
-    xPos += gap + btnWdt;
-    btnConfig.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    
-    xPos += gap + btnWdt;
-    btnFloat.frame = CGRectMake(xPos, yPos, btnWdt, btnHgt);
-    
-    xPos = gap;
-    yPos = btnMirror.frame.origin.y - btnHgt - gap;
-    progressView.frame = CGRectMake(xPos, yPos, wdt - 2 * gap, btnHgt);
-}
-
-- (BOOL)shouldAutorotate {
     [self layoutUI];
-    return YES;
+
+    [self.view addSubview: ctrlView];
 }
 
--(void)onVolumeChanged:(UISlider *)slider
+- (void) layoutUI {
+    CGFloat yPos = 0;
+    
+    ctrlView.frame = self.view.frame;
+    [ctrlView layoutUI];
+    
+    videoView.frame  = ctrlView.frame;
+    [ctrlView putRow:@[btnVideo, btnAudio, btnOthers]];
+    
+    yPos  = ctrlView.yPos;
+    [ctrlView putLable:labelContenMode andView:segContentMode];
+    [ctrlView putLable:labelRotate andView:segRotate];
+    [ctrlView putLable:labelMirror andView:segMirror];
+    [ctrlView putRow1:btnShotScreen];
+   
+    ctrlView.yPos = yPos;
+    [ctrlView putLable:labelMute andView:switchMute];
+    [ctrlView putRow1:sliderVolume];
+    [ctrlView putLable:labelAudioPan andView:segAudioPan];
+    
+    ctrlView.yPos = yPos;
+    [ctrlView putRow:arrayBtnOthers];
+    
+    //下部控件为3行
+    ctrlView.yPos = ctrlView.frame.size.height - ctrlView.gap * 2 - ctrlView.btnH * 2;
+    [ctrlView putRow:@[progressView]];
+    [ctrlView putRow:@[btnPlay, btnPause, btnResume, btnStop, btnQuit]];
+    
+    labelStat.frame = self.view.frame;
+    labelMsg.frame = self.view.frame;
+}
+
+- (void) showElements:(NSMutableArray*)elems bShow:(BOOL)bShow
 {
-    if (_player){
-        [_player setVolume:slider.value/100 rigthVolume:slider.value/100];
-    }
+    for(UIControl *elem in elems)
+        elem.hidden = !bShow;
 }
 
-- (void)switchMuteEvent:(UISwitch *)switchControl
-{
-    if (_player) {
-        _player.shouldMute = switchControl.isOn;
-        
-    }
-}
-
-- (NSString *)MD5:(NSString*)raw {
-    
-    const char * pointer = [raw UTF8String];
-    unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
-    
-    CC_MD5(pointer, (CC_LONG)strlen(pointer), md5Buffer);
-    
-    NSMutableString *string = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
-    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
-        [string appendFormat:@"%02x",md5Buffer[i]];
-    
-    return string;
-}
-
+#pragma mark common
 - (NSTimeInterval) getCurrentTime{
     return [[NSDate date] timeIntervalSince1970];
 }
 
+- (void) toast:(NSString*)message{
+    UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
+                                                    message:message
+                                                   delegate:nil
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:nil, nil];
+    [toast show];
+    
+    double duration = 0.5; // duration in seconds
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [toast dismissWithClickedButtonIndex:0 animated:YES];
+    });
+}
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSString *) netStatus2Str:(KSYNetworkStatus)networkStatus{
+    NSString *netString = nil;
+    if(networkStatus == KSYNotReachable)
+        netString = @"NO INTERNET";
+    else if(networkStatus == KSYReachableViaWiFi)
+        netString = @"WIFI";
+    else if(networkStatus == KSYReachableViaWWAN)
+        netString = @"WWAN";
+    else
+        netString = @"Unknown";
+    return netString;
+}
+
+#pragma mark init player
+- (void)initPlayerWithURL:(NSURL *)aURL fileList:(NSArray *)fileList config:(KSYPlayerCfgVC *)config{
+    lastSize = 0.0;
+    self.player = [[KSYMoviePlayerController alloc] initWithContentURL: aURL fileList:fileList sharegroup:nil];
+    [self setupObservers:_player];
+    
+    _player.logBlock = ^(NSString *logJson){
+        NSLog(@"logJson is %@",logJson);
+    };
+    
+#if 0
+    _player.videoDataBlock = ^(CMSampleBufferRef sampleBuffer){
+        CMItemCount count;
+        CMSampleTimingInfo timing_info;
+        OSErr ret = CMSampleBufferGetOutputSampleTimingInfoArray(sampleBuffer, 1, &timing_info, &count);
+        if ( ret == noErr) {
+            NSLog(@"video Pts %d %lld",  timing_info.presentationTimeStamp.timescale, timing_info.presentationTimeStamp.value );
+        }
+    };
+    
+    _player.audioDataBlock = ^(CMSampleBufferRef sampleBuffer){
+        CMItemCount count;
+        CMSampleTimingInfo timing_info;
+        OSErr ret = CMSampleBufferGetOutputSampleTimingInfoArray(sampleBuffer, 1, &timing_info, &count);
+        if ( ret == noErr) {
+            NSLog(@"audio Pts %d %lld",  timing_info.presentationTimeStamp.timescale, timing_info.presentationTimeStamp.value );
+        }
+    };
+#endif
+    __weak KSYPlayerVC *weakSelf = self;
+    _player.messageDataBlock = ^(NSDictionary *message, int64_t pts, int64_t param){
+        if(message)
+        {
+            NSMutableString *msgString = [[NSMutableString alloc] init];
+            NSEnumerator * enumeratorKey = [message keyEnumerator];
+            //快速枚举遍历所有KEY的值
+            for (NSObject *object in enumeratorKey) {
+                [msgString appendFormat:@"\"%@\":\"%@\"\n", object, [message objectForKey:object]];
+            }
+            
+            if(weakSelf)
+                [weakSelf updateMsg:msgString];
+        }
+    };
+    
+    labelStat.text = [NSString stringWithFormat:@"url %@", aURL];
+    _player.controlStyle = MPMovieControlStyleNone;
+    [_player.view setFrame: videoView.bounds];  // player's frame must match parent's
+    [videoView addSubview: _player.view];
+    [videoView bringSubviewToFront:labelStat];
+    videoView.autoresizesSubviews = TRUE;
+    _player.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    if(config)
+    {
+        _player.videoDecoderMode = config.decodeMode;
+        _player.scalingMode = config.contentMode;
+        _player.shouldAutoplay = config.bAutoPlay;
+        _player.deinterlaceMode = config.deinterlaceMode;
+        _player.shouldLoop = config.bLoop;
+        _player.bInterruptOtherAudio = config.bAudioInterrupt;
+        _player.bufferTimeMax = config.bufferTimeMax;
+        _player.bufferSizeMax = config.bufferSizeMax;
+        [_player setTimeout:config.connectTimeout readTimeout:config.readTimeout];
+    }
+    
+    NSKeyValueObservingOptions opts = NSKeyValueObservingOptionNew;
+    [_player addObserver:self forKeyPath:@"currentPlaybackTime" options:opts context:nil];
+    [_player addObserver:self forKeyPath:@"clientIP" options:opts context:nil];
+    [_player addObserver:self forKeyPath:@"localDNSIP" options:opts context:nil];
+
+    prepared_time = (long long int)([self getCurrentTime] * 1000);
+    [_player prepareToPlay];
+}
+
+- (void)registerObserver:(NSString *)notification player:(KSYMoviePlayerController*)player {
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(handlePlayerNotify:)
+                                                name:(notification)
+                                              object:player];
+}
+
+- (void)setupObservers:(KSYMoviePlayerController*)player
+{
+    [self registerObserver:MPMediaPlaybackIsPreparedToPlayDidChangeNotification player:player];
+    [self registerObserver:MPMoviePlayerPlaybackStateDidChangeNotification player:player];
+    [self registerObserver:MPMoviePlayerPlaybackDidFinishNotification player:player];
+    [self registerObserver:MPMoviePlayerLoadStateDidChangeNotification player:player];
+    [self registerObserver:MPMovieNaturalSizeAvailableNotification player:player];
+    [self registerObserver:MPMoviePlayerFirstVideoFrameRenderedNotification player:player];
+    [self registerObserver:MPMoviePlayerFirstAudioFrameRenderedNotification player:player];
+    [self registerObserver:MPMoviePlayerSuggestReloadNotification player:player];
+    [self registerObserver:MPMoviePlayerPlaybackStatusNotification player:player];
+    [self registerObserver:MPMoviePlayerNetworkStatusChangeNotification player:player];
+}
+
+- (void)releaseObservers:(KSYMoviePlayerController*)player
+{
+    for (NSString *name in registeredNotifications) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                        name:name
+                                                      object:player];
+    }
 }
 
 -(void)handlePlayerNotify:(NSNotification*)notify
@@ -352,12 +374,12 @@
         return;
     }
     if (MPMediaPlaybackIsPreparedToPlayDidChangeNotification ==  notify.name) {
-        stat.text = [NSString stringWithFormat:@"player prepared"];
-        // using autoPlay to start live stream
-        //        [_player play];
+        labelStat.text = [NSString stringWithFormat:@"player prepared"];
+        progressView.totalTimeInSeconds = _player.duration;
+        if(_player.shouldAutoplay == NO)
+            [_player play];
         serverIp = [_player serverAddress];
         NSLog(@"KSYPlayerVC: %@ -- ip:%@", [[_player contentURL] absoluteString], serverIp);
-        [self StartTimer];
         reloading = NO;
     }
     if (MPMoviePlayerPlaybackStateDidChangeNotification ==  notify.name) {
@@ -368,7 +390,7 @@
     if (MPMoviePlayerLoadStateDidChangeNotification ==  notify.name) {
         NSLog(@"player load state: %ld", (long)_player.loadState);
         if (MPMovieLoadStateStalled & _player.loadState) {
-            stat.text = [NSString stringWithFormat:@"player start caching"];
+            labelStat.text = [NSString stringWithFormat:@"player start caching"];
             NSLog(@"player start caching");
         }
         
@@ -390,29 +412,33 @@
               _player.bufferEmptyDuration);
         int reason = [[[notify userInfo] valueForKey:MPMoviePlayerPlaybackDidFinishReasonUserInfoKey] intValue];
         if (reason ==  MPMovieFinishReasonPlaybackEnded) {
-            stat.text = [NSString stringWithFormat:@"player finish"];
+            labelStat.text = [NSString stringWithFormat:@"player finish"];
         }else if (reason == MPMovieFinishReasonPlaybackError){
-            stat.text = [NSString stringWithFormat:@"player Error : %@", [[notify userInfo] valueForKey:@"error"]];
+            labelStat.text = [NSString stringWithFormat:@"player Error : %@", [[notify userInfo] valueForKey:@"error"]];
         }else if (reason == MPMovieFinishReasonUserExited){
-            stat.text = [NSString stringWithFormat:@"player userExited"];
-
+            labelStat.text = [NSString stringWithFormat:@"player userExited"];
+            
         }
-        [self StopTimer];
     }
     if (MPMovieNaturalSizeAvailableNotification ==  notify.name) {
-        NSLog(@"video size %.0f-%.0f", _player.naturalSize.width, _player.naturalSize.height);
+        NSLog(@"video size %.0f-%.0f, rotate:%ld\n", _player.naturalSize.width, _player.naturalSize.height, (long)_player.naturalRotate);
+        if(((_player.naturalRotate / 90) % 2  == 0 && _player.naturalSize.width > _player.naturalSize.height) ||
+            ((_player.naturalRotate / 90) % 2 != 0 && _player.naturalSize.width < _player.naturalSize.height))
+        {
+            //如果想要在宽大于高的时候横屏播放，你可以在这里旋转
+        }
     }
-	if (MPMoviePlayerFirstVideoFrameRenderedNotification == notify.name)
-	{
+    if (MPMoviePlayerFirstVideoFrameRenderedNotification == notify.name)
+    {
         fvr_costtime = (int)((long long int)([self getCurrentTime] * 1000) - prepared_time);
-		NSLog(@"first video frame show, cost time : %dms!\n", fvr_costtime);
-	}
-	
-	if (MPMoviePlayerFirstAudioFrameRenderedNotification == notify.name)
-	{
+        NSLog(@"first video frame show, cost time : %dms!\n", fvr_costtime);
+    }
+    
+    if (MPMoviePlayerFirstAudioFrameRenderedNotification == notify.name)
+    {
         far_costtime = (int)((long long int)([self getCurrentTime] * 1000) - prepared_time);
-		NSLog(@"first audio frame render, cost time : %dms!\n", far_costtime);
-	}
+        NSLog(@"first audio frame render, cost time : %dms!\n", far_costtime);
+    }
     
     if (MPMoviePlayerSuggestReloadNotification == notify.name)
     {
@@ -427,7 +453,7 @@
                 }
             });
         }
-	}
+    }
     
     if(MPMoviePlayerPlaybackStatusNotification == notify.name)
     {
@@ -453,239 +479,66 @@
     {
         int currStatus = [[[notify userInfo] valueForKey:MPMoviePlayerCurrNetworkStatusUserInfoKey] intValue];
         int lastStatus = [[[notify userInfo] valueForKey:MPMoviePlayerLastNetworkStatusUserInfoKey] intValue];
-        if(KSYNotReachable == currStatus)
-        {
-            NSLog(@"network not reachable\n");
-        }
-        else if((KSYReachableViaWiFi == currStatus || KSYReachableViaWWAN == currStatus) && KSYNotReachable == lastStatus)
-        {
-            NSLog(@"network reachable via %s\n", currStatus == KSYReachableViaWiFi ? "WIFI" : "WWAN");
-        }
-        else if(currStatus != lastStatus)
-        {
-            NSLog(@"network reachable change from %s to %s\n", lastStatus == KSYReachableViaWiFi ? "WIFI" : "WWAN", currStatus == KSYReachableViaWiFi ? "WIFI" : "WWAN");
-        }
-    }
-}
-- (void) toast:(NSString*)message{
-    UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
-                                                    message:message
-                                                   delegate:nil
-                                          cancelButtonTitle:nil
-                                          otherButtonTitles:nil, nil];
-    [toast show];
-    
-    double duration = 0.5; // duration in seconds
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [toast dismissWithClickedButtonIndex:0 animated:YES];
-    });
-}
-
-- (void)setupObservers
-{
-    [[NSNotificationCenter defaultCenter]addObserver:self
-                                            selector:@selector(handlePlayerNotify:)
-                                                name:(MPMediaPlaybackIsPreparedToPlayDidChangeNotification)
-                                              object:_player];
-    [[NSNotificationCenter defaultCenter]addObserver:self
-                                            selector:@selector(handlePlayerNotify:)
-                                                name:(MPMoviePlayerPlaybackStateDidChangeNotification)
-                                              object:_player];
-    [[NSNotificationCenter defaultCenter]addObserver:self
-                                            selector:@selector(handlePlayerNotify:)
-                                                name:(MPMoviePlayerPlaybackDidFinishNotification)
-                                              object:_player];
-    [[NSNotificationCenter defaultCenter]addObserver:self
-                                            selector:@selector(handlePlayerNotify:)
-                                                name:(MPMoviePlayerLoadStateDidChangeNotification)
-                                              object:_player];
-    [[NSNotificationCenter defaultCenter]addObserver:self
-                                            selector:@selector(handlePlayerNotify:)
-                                                name:(MPMovieNaturalSizeAvailableNotification)
-                                              object:_player];
-    [[NSNotificationCenter defaultCenter]addObserver:self
-                                            selector:@selector(handlePlayerNotify:)
-                                                name:(MPMoviePlayerFirstVideoFrameRenderedNotification)
-                                              object:_player];
-    [[NSNotificationCenter defaultCenter]addObserver:self
-                                            selector:@selector(handlePlayerNotify:)
-                                                name:(MPMoviePlayerFirstAudioFrameRenderedNotification)
-                                              object:_player];
-    [[NSNotificationCenter defaultCenter]addObserver:self
-                                            selector:@selector(handlePlayerNotify:)
-                                                name:(MPMoviePlayerSuggestReloadNotification)
-                                              object:_player];
-    [[NSNotificationCenter defaultCenter]addObserver:self
-                                            selector:@selector(handlePlayerNotify:)
-                                                name:(MPMoviePlayerPlaybackStatusNotification)
-                                              object:_player];
-    [[NSNotificationCenter defaultCenter]addObserver:self
-                                            selector:@selector(handlePlayerNotify:)
-                                                name:(MPMoviePlayerNetworkStatusChangeNotification)
-                                              object:_player];
-}
-
-- (void)releaseObservers
-{
-    [[NSNotificationCenter defaultCenter]removeObserver:self
-                                                   name:MPMediaPlaybackIsPreparedToPlayDidChangeNotification
-                                                 object:_player];
-    [[NSNotificationCenter defaultCenter]removeObserver:self
-                                                   name:MPMoviePlayerPlaybackStateDidChangeNotification
-                                                 object:_player];
-    [[NSNotificationCenter defaultCenter]removeObserver:self
-                                                   name:MPMoviePlayerPlaybackDidFinishNotification
-                                                 object:_player];
-    [[NSNotificationCenter defaultCenter]removeObserver:self
-                                                   name:MPMoviePlayerLoadStateDidChangeNotification
-                                                 object:_player];
-    [[NSNotificationCenter defaultCenter]removeObserver:self
-                                                   name:MPMovieNaturalSizeAvailableNotification
-                                                 object:_player];
-    [[NSNotificationCenter defaultCenter]removeObserver:self
-                                                   name:MPMoviePlayerFirstVideoFrameRenderedNotification
-                                                 object:_player];
-    [[NSNotificationCenter defaultCenter]removeObserver:self
-                                                   name:MPMoviePlayerFirstAudioFrameRenderedNotification
-                                                 object:_player];
-    [[NSNotificationCenter defaultCenter]removeObserver:self
-                                                   name:MPMoviePlayerSuggestReloadNotification
-                                                 object:_player];
-    [[NSNotificationCenter defaultCenter]removeObserver:self
-                                                   name:MPMoviePlayerPlaybackStatusNotification
-                                                 object:_player];
-    [[NSNotificationCenter defaultCenter]removeObserver:self
-                                                   name:MPMoviePlayerNetworkStatusChangeNotification
-                                                 object:_player];
-}
-
-- (void)initPlayerWithURL:(NSURL *)aURL fileList:(NSArray *)fileList{
-    lastSize = 0.0;
-    self.player = [[KSYMoviePlayerController alloc] initWithContentURL: aURL fileList:fileList sharegroup:nil];
-    [self setupObservers];
-    
-    _player.logBlock = ^(NSString *logJson){
-        NSLog(@"logJson is %@",logJson);
-    };
-    
-#if 0
-    _player.videoDataBlock = ^(CMSampleBufferRef sampleBuffer){
-        CMItemCount count;
-        CMSampleTimingInfo timing_info;
-        OSErr ret = CMSampleBufferGetOutputSampleTimingInfoArray(sampleBuffer, 1, &timing_info, &count);
-        if ( ret == noErr) {
-            NSLog(@"video Pts %d %lld",  timing_info.presentationTimeStamp.timescale, timing_info.presentationTimeStamp.value );
-        }
-    };
-    
-    _player.audioDataBlock = ^(CMSampleBufferRef sampleBuffer){
-        CMItemCount count;
-        CMSampleTimingInfo timing_info;
-        OSErr ret = CMSampleBufferGetOutputSampleTimingInfoArray(sampleBuffer, 1, &timing_info, &count);
-        if ( ret == noErr) {
-            NSLog(@"audio Pts %d %lld",  timing_info.presentationTimeStamp.timescale, timing_info.presentationTimeStamp.value );
-        }
-    };
-#endif
-        __weak KSYPlayerVC *weakSelf = self;
-        _player.messageDataBlock = ^(NSDictionary *message, int64_t pts, int64_t param){
-            if(message)
-            {
-                NSMutableString *msgString = [[NSMutableString alloc] init];
-                NSEnumerator * enumeratorKey = [message keyEnumerator];
-                //快速枚举遍历所有KEY的值
-                for (NSObject *object in enumeratorKey) {
-                    [msgString appendFormat:@"\"%@\":\"%@\"\n", object, [message objectForKey:object]];
-                }
-
-                if(weakSelf)
-                    [weakSelf updateMsg:msgString];
-            }
-        };
-        
-    stat.text = [NSString stringWithFormat:@"url %@", aURL];
-    _player.controlStyle = MPMovieControlStyleNone;
-    [_player.view setFrame: videoView.bounds];  // player's frame must match parent's
-    [videoView addSubview: _player.view];
-    [videoView bringSubviewToFront:stat];
-    videoView.autoresizesSubviews = TRUE;
-    _player.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-    _player.shouldAutoplay = TRUE;
-    _player.scalingMode = MPMovieScalingModeAspectFit;
-    content_mode = _player.scalingMode + 1;
-    if(content_mode > MPMovieScalingModeFill)
-        content_mode = MPMovieScalingModeNone;
-    
-    _player.videoDecoderMode = config.decodeMode;
-    _player.shouldMute = shouldMute;
-//    _player.rotateDegress = 90;
-//    _player.mirror = YES;
-    _player.shouldLoop = config.bLoop;
-    _player.deinterlaceMode = config.deinterlaceMode;
-    _player.bInterruptOtherAudio = config.bAudioInterrupt;
-    if(config.bufferTimeMax != -1)
-    {
-        _player.bufferTimeMax = config.bufferTimeMax;
-    }
-    if(config.bufferSizeMax != -1){
-        _player.bufferSizeMax = config.bufferSizeMax;
-    }
-    [_player setTimeout:config.connectTimeout readTimeout:config.readTimeout];
-    
-    NSKeyValueObservingOptions opts = NSKeyValueObservingOptionNew;
-    [_player addObserver:self forKeyPath:@"currentPlaybackTime" options:opts context:nil];
-    [_player addObserver:self forKeyPath:@"clientIP" options:opts context:nil];
-    [_player addObserver:self forKeyPath:@"localDNSIP" options:opts context:nil];
-    
-    NSLog(@"sdk version:%@", [_player getVersion]);
-    prepared_time = (long long int)([self getCurrentTime] * 1000);
-    [_player prepareToPlay];
-}
-
-- (IBAction)onShotScreen:(id)sender {
-    if (_player) {
-        UIImage *thumbnailImage = _player.thumbnailImageAtCurrentTime;
-        UIImageWriteToSavedPhotosAlbum(thumbnailImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+        NSLog(@"network reachable change from %@ to %@\n", [self netStatus2Str:lastStatus], [self netStatus2Str:currStatus]);
     }
 }
 
-- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
-    
-    if (error == nil) {
-        UIAlertView *toast = [[UIAlertView alloc] initWithTitle:@"O(∩_∩)O~~"
-                                                        message:@"截图已保存至手机相册"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"确定"
-                                              otherButtonTitles:nil, nil];
-        [toast show];
-        
-    }else{
-        
-        UIAlertView *toast = [[UIAlertView alloc] initWithTitle:@"￣へ￣"
-                                                        message:@"截图失败！"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"确定"
-                                              otherButtonTitles:nil, nil];
-        [toast show];
+#pragma mark on Button
+- (void)onBtn:(UIButton *)btn{
+    if(btn == btnPlay)
+        [self onPlayVideo:btn];
+    else if(btn == btnPause)
+        [self onPauseVideo:btn];
+    else if(btn == btnResume)
+        [self onResumeVideo:btn];
+    else if(btn == btnStop)
+        [self onStopVideo:btn];
+    else if(btn == btnQuit)
+        [self onQuit:btn];
+    else if(btn == btnVideo) {
+        [self showElements:arrayBtnAudio bShow:NO];
+        btnAudio.selected = NO;
+        [self showElements:arrayBtnOthers bShow:NO];
+        btnOthers.selected = NO;
+        [self showElements:arrayBtnVideo bShow:!btn.selected];
+        btn.selected = !btn.selected;
     }
-    
+    else if(btn == btnAudio) {
+        [self showElements:arrayBtnVideo bShow:NO];
+        btnVideo.selected = NO;
+        [self showElements:arrayBtnOthers bShow:NO];
+        btnOthers.selected = NO;
+        [self showElements:arrayBtnAudio bShow:!btn.selected];
+        btn.selected = !btn.selected;
+    }
+    else if(btn == btnOthers) {
+        [self showElements:arrayBtnVideo bShow:NO];
+        btnVideo.selected = NO;
+        [self showElements:arrayBtnAudio bShow:NO];
+        btnAudio.selected = NO;
+        [self showElements:arrayBtnOthers bShow:!btn.selected];
+        btn.selected = !btn.selected;
+    }
+    else if(btn == btnShotScreen)
+        [self onShotScreen:btn];
+    else if(btn == btnReload)
+        [self onReloadVideo:btn];
+    else if(btn == btnFloat)
+        [self onFloat:btn];
 }
 
 - (IBAction)onPlayVideo:(id)sender {
-    
     if(nil == _player)
+        [self initPlayerWithURL:_url fileList:_fileList config:_config];
+    if(_player)
     {
-        [self initPlayerWithURL:_url fileList:_fileList];
-    } else {
-        [_player setUrl:[NSURL URLWithString:@"rtmp://live.hkstv.hk.lxdns.com/live/hks"]];
+        NSLog(@"sdk version:%@", [_player getVersion]);
+        //如果再次播放的话，设置下次播放的地址
+        if(bStopped == YES)
+             [_player setUrl:_url];
+        prepared_time = (long long int)([self getCurrentTime] * 1000);
         [_player prepareToPlay];
-    }
-}
-
-- (IBAction)onReloadVideo:(id)sender {
-    if (_player) {
-        [_player reload:_reloadUrl flush:YES mode:MPMovieReloadMode_Accurate];
+        bStopped = NO;
     }
 }
 
@@ -698,7 +551,6 @@
 - (IBAction)onResumeVideo:(id)sender {
     if (_player) {
         [_player play];
-        [self StartTimer];
     }
 }
 
@@ -709,42 +561,139 @@
               (int)_player.bufferEmptyCount,
               _player.bufferEmptyDuration);
         
-        if(usingReset)
-            [_player reset:NO];
-        else
-        {
-            [_player stop];
-            
-            [_player removeObserver:self forKeyPath:@"currentPlaybackTime" context:nil];
-            [_player removeObserver:self forKeyPath:@"clientIP" context:nil];
-            [_player removeObserver:self forKeyPath:@"localDNSIP" context:nil];
-            
-            [self releaseObservers];
-            
-            [_player.view removeFromSuperview];
-            self.player = nil;
-        }
-        [self StopTimer];
+        [_player reset:NO];
+        bStopped = YES;
     }
 }
 
-- (void)StartTimer
-{
-    progressView.totalTimeInSeconds = _player.duration;
-    if(timer != nil){
-        return;
+- (IBAction)onQuit:(id)sender {
+    if(_player)
+    {
+        [_player stop];
+        
+        [_player removeObserver:self forKeyPath:@"currentPlaybackTime" context:nil];
+        [_player removeObserver:self forKeyPath:@"clientIP" context:nil];
+        [_player removeObserver:self forKeyPath:@"localDNSIP" context:nil];
+        
+        [self releaseObservers:_player];
+        
+        [_player.view removeFromSuperview];
+        self.player = nil;
     }
-    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateStat:) userInfo:nil repeats:YES];
+    
+    [self dismissViewControllerAnimated:FALSE completion:nil];
+    labelStat.text = nil;
+    labelStat.text = nil;
 }
-- (void)StopTimer
-{
-    if (nil == timer) {
-        return;
+
+- (IBAction)onShotScreen:(id)sender {
+    if (_player) {
+        UIImage *thumbnailImage = _player.thumbnailImageAtCurrentTime;
+        [KSYUIVC saveImageToPhotosAlbum:thumbnailImage];
     }
-    [timer invalidate];
-    timer = nil;
 }
-- (void)updateStat:(NSTimer *)t
+
+- (IBAction)onReloadVideo:(id)sender {
+    if (_player) {
+        [_player reload:_reloadUrl flush:YES mode:MPMovieReloadMode_Accurate];
+    }
+}
+
+- (IBAction)onFloat:(id)sender {
+    KSYFloatVC *_floatVC = [[KSYFloatVC alloc] init];
+    _floatVC.playerVC = self;
+    [self presentViewController:_floatVC animated:NO completion:nil];
+}
+
+#pragma mark on Switch
+- (void)onSwitch:(UISwitch *)_switch{
+    if(_switch == switchMute)
+        [self onMute];
+}
+
+- (void)onMute{
+    if(_player)
+        _player.shouldMute = switchMute.isOn;
+}
+
+#pragma mark on Slider
+- (void)onSlider:(UISlider *)slider{
+    if(slider == sliderVolume)
+        [self onVolumeChanged:slider];
+}
+
+-(void)onVolumeChanged:(UISlider *)slider
+{
+    if (_player){
+        [_player setVolume:slider.value/100 rigthVolume:slider.value/100];
+    }
+}
+
+#pragma mark on SegmentedControl
+- (void)onSeg:(UISegmentedControl *)seg{
+    if(seg == segContentMode)
+        [self onContentMode];
+    else if(seg == segRotate)
+        [self onRotate];
+    else if(seg == segMirror)
+        [self onMirror];
+    else if(seg == segAudioPan)
+        [self onAudioPan];
+}
+
+- (void)onContentMode{
+    MPMovieScalingMode contentMode = MPMovieScalingModeNone;
+    switch(segContentMode.selectedSegmentIndex) {
+        case 0:
+            contentMode = MPMovieScalingModeNone;
+            break;
+        case 1:
+            contentMode = MPMovieScalingModeAspectFit;
+            break;
+        case 2:
+            contentMode = MPMovieScalingModeAspectFill;
+            break;
+        case 3:
+            contentMode = MPMovieScalingModeFill;
+            break;
+        default:
+            contentMode = MPMovieScalingModeNone;
+            break;
+    }
+    
+    if (_player) {
+        _player.scalingMode = contentMode;
+    }
+}
+
+- (void)onRotate{
+    int degress = (int)segRotate.selectedSegmentIndex * 90;
+    if (_player) {
+        _player.rotateDegress = degress;
+    }
+}
+
+- (void)onMirror{
+    if (_player) {
+        _player.mirror = segMirror.selectedSegmentIndex;
+    }
+}
+
+- (void)onAudioPan{
+    MPMovieAudioPan pan = MPMovieAudioPan_Stereo;
+    if(0 == segAudioPan.selectedSegmentIndex)
+        pan  = MPMovieAudioPan_Left;
+    else if(1 == segAudioPan.selectedSegmentIndex)
+        pan = MPMovieAudioPan_Stereo;
+    else if(2 == segAudioPan.selectedSegmentIndex)
+        pan = MPMoviveAudioPan_Right;
+    if(_player) {
+        _player.audioPan = pan;
+    }
+}
+
+#pragma mark update label
+- (void)onTimer:(NSTimer *)t
 {
     if ( 0 == lastCheckTime) {
         lastCheckTime = [self getCurrentTime];
@@ -753,77 +702,81 @@
     if (nil == _player) {
         return;
     }
-    double flowSize = [_player readSize];
-    NSDictionary *meta = [_player getMetadata];
-    KSYQosInfo *info = _player.qosInfo;
-    NSString *netStatus = nil;
-    if(_player.networkStatus == KSYNotReachable)
-        netStatus = @"NO";
-    else if(_player.networkStatus == KSYReachableViaWiFi)
-        netStatus = @"WIFI";
-    else if(_player.networkStatus == KSYReachableViaWWAN)
-        netStatus = @"WWAN";
-    else
-        netStatus = @"Unknown";
-    stat.text = [NSString stringWithFormat:@
-                 "SDK版本:v%@\n"
-                 "播放器实例:%p\n"
-                 "拉流URL:%@\n"
-                 "服务器IP:%@\n"
-                 "客户端IP:%@\n"
-                 "本地DNS IP:%@\n"
-                 "分辨率:(宽-高: %.0f-%.0f)\n"
-                 "已播时长:%.1fs\n"
-                 "缓存时长:%.1fs\n"
-                 "视频总长%.1fs\n"
-                 "cache次数:%.1fs/%ld\n"
-                 "最大缓冲时长:%.1fs\n"
-                 "速度: %0.1f kbps\n视频/音频渲染用时:%dms/%dms\n"
-                 "HTTP连接用时:%ldms\n"
-                 "DNS解析用时:%ldms\n"
-                 "首包到达用时（连接建立后）:%ldms\n"
-                 "音频缓冲队列长度:%.1fMB\n"
-                 "音频缓冲队列时长:%.1fs\n"
-                 "已下载音频数据量:%.1fMB\n"
-                 "视频缓冲队列长度:%.1fMB\n"
-                 "视频缓冲队列时长:%.1fs\n"
-                 "已下载视频数据量:%.1fMB\n"
-                 "已下载总数据量%.1fMB\n"
-                 "解码帧率:%.2f 显示帧率:%.2f\n"
-                 "网络连通性:%@\n",
-
-                 [_player getVersion],
-                 _player,
-                 [[_player contentURL] absoluteString],
-                 serverIp,
-                 _player.clientIP,
-                 _player.localDNSIP,
-                 _player.naturalSize.width,_player.naturalSize.height,
-                 _player.currentPlaybackTime,
-                 _player.playableDuration,
-                 _player.duration,
-                 _player.bufferEmptyDuration,
-                 (long)_player.bufferEmptyCount,
-                 _player.bufferTimeMax,
-                 8*1024.0*(flowSize - lastSize)/([self getCurrentTime] - lastCheckTime),
-                 fvr_costtime, far_costtime,
-                 (long)[(NSNumber *)[meta objectForKey:kKSYPLYHttpConnectTime] integerValue],
-                 (long)[(NSNumber *)[meta objectForKey:kKSYPLYHttpAnalyzeDns] integerValue],
-                 (long)[(NSNumber *)[meta objectForKey:kKSYPLYHttpFirstDataTime] integerValue],
-                 (float)info.audioBufferByteLength / 1e6,
-                 (float)info.audioBufferTimeLength / 1e3,
-                 (float)info.audioTotalDataSize / 1e6,
-                 (float)info.videoBufferByteLength / 1e6,
-                 (float)info.videoBufferTimeLength / 1e3,
-                 (float)info.videoTotalDataSize / 1e6,
-                 (float)info.totalDataSize / 1e6,
-                 info.videoDecodeFPS,
-                 info.videoRefreshFPS,
-                 netStatus];
-    lastCheckTime = [self getCurrentTime];
-    lastSize = flowSize;
+    
+    if(_player.isPreparedToPlay)
+    {
+        double flowSize = [_player readSize];
+        NSDictionary *meta = [_player getMetadata];
+        KSYQosInfo *info = _player.qosInfo;
+        labelStat.text = [NSString stringWithFormat:@
+                          "SDK版本:v%@\n"
+                          "播放器实例:%p\n"
+                          "拉流URL:%@\n"
+                          "服务器IP:%@\n"
+                          "客户端IP:%@\n"
+                          "本地DNS IP:%@\n"
+                          "分辨率:(宽-高: %.0f-%.0f)\n"
+                          "已播时长:%.1fs\n"
+                          "缓存时长:%.1fs\n"
+                          "视频总长%.1fs\n"
+                          "cache次数:%.1fs/%ld\n"
+                          "最大缓冲时长:%.1fs\n"
+                          "速度: %0.1f kbps\n视频/音频渲染用时:%dms/%dms\n"
+                          "HTTP连接用时:%ldms\n"
+                          "DNS解析用时:%ldms\n"
+                          "首包到达用时（连接建立后）:%ldms\n"
+                          "音频缓冲队列长度:%.1fMB\n"
+                          "音频缓冲队列时长:%.1fs\n"
+                          "已下载音频数据量:%.1fMB\n"
+                          "视频缓冲队列长度:%.1fMB\n"
+                          "视频缓冲队列时长:%.1fs\n"
+                          "已下载视频数据量:%.1fMB\n"
+                          "已下载总数据量%.1fMB\n"
+                          "解码帧率:%.2f 显示帧率:%.2f\n"
+                          "网络连通性:%@\n",
+                          
+                          [_player getVersion],
+                          _player,
+                          [[_player contentURL] absoluteString],
+                          serverIp,
+                          _player.clientIP,
+                          _player.localDNSIP,
+                          _player.naturalSize.width,_player.naturalSize.height,
+                          _player.currentPlaybackTime,
+                          _player.playableDuration,
+                          _player.duration,
+                          _player.bufferEmptyDuration,
+                          (long)_player.bufferEmptyCount,
+                          _player.bufferTimeMax,
+                          8*1024.0*(flowSize - lastSize)/([self getCurrentTime] - lastCheckTime),
+                          fvr_costtime, far_costtime,
+                          (long)[(NSNumber *)[meta objectForKey:kKSYPLYHttpConnectTime] integerValue],
+                          (long)[(NSNumber *)[meta objectForKey:kKSYPLYHttpAnalyzeDns] integerValue],
+                          (long)[(NSNumber *)[meta objectForKey:kKSYPLYHttpFirstDataTime] integerValue],
+                          (float)info.audioBufferByteLength / 1e6,
+                          (float)info.audioBufferTimeLength / 1e3,
+                          (float)info.audioTotalDataSize / 1e6,
+                          (float)info.videoBufferByteLength / 1e6,
+                          (float)info.videoBufferTimeLength / 1e3,
+                          (float)info.videoTotalDataSize / 1e6,
+                          (float)info.totalDataSize / 1e6,
+                          info.videoDecodeFPS,
+                          info.videoRefreshFPS,
+                          [self netStatus2Str:_player.networkStatus]];
+        lastCheckTime = [self getCurrentTime];
+        lastSize = flowSize;
+    }
     
     [self updateCacheProgress];
+}
+
+- (void)updateMsg : (NSString *)msgString {
+    if(msgNum == 0)
+        labelMsg.text = @"message is : \n";
+    labelMsg.text = [labelMsg.text stringByAppendingString:@"\n"];
+    labelMsg.text = [labelMsg.text stringByAppendingString:msgString];
+    if(++msgNum >= 3)
+        msgNum  = 0;
 }
 
 - (void)updateCacheProgress {
@@ -837,103 +790,7 @@
     }
 }
 
-- (IBAction)onQuit:(id)sender {
-    if(_player)
-    {
-        [_player stop];
-        
-        [_player removeObserver:self forKeyPath:@"currentPlaybackTime" context:nil];
-        [_player removeObserver:self forKeyPath:@"clientIP" context:nil];
-        [_player removeObserver:self forKeyPath:@"localDNSIP" context:nil];
-        
-        [self releaseObservers];
-        
-        [_player.view removeFromSuperview];
-        self.player = nil;
-    }
-    
-    [self StopTimer];
-    [self dismissViewControllerAnimated:FALSE completion:nil];
-    stat.text = nil;
-    msg.text = nil;
-}
-
-- (IBAction)onRotate:(id)sender {
-    if (_player) {
-        rotate_degress = _player.rotateDegress;
-        rotate_degress += 90;
-        if(rotate_degress >= 360)
-            rotate_degress = 0;
-
-        _player.rotateDegress = rotate_degress;
-    }
-}
-
-- (IBAction)onMute:(id)sender {
-    if (_player) {
-        shouldMute = shouldMute ? NO : YES;
-        _player.shouldMute = shouldMute;
-    }
-}
-
-- (IBAction)onMirror:(id)sender {
-    if (_player) {
-        _player.mirror = (!_player.mirror);
-    }
-}
-
-- (IBAction)onContentMode:(id)sender {
-
-	if (_player) {
-        _player.scalingMode = content_mode;
-    }
-	content_mode++;
-	if(content_mode > MPMovieScalingModeFill)
-		content_mode = MPMovieScalingModeNone;
-}
-                       
-- (IBAction)onAudioPan:(id)sender {
-    MPMovieAudioPan pan = MPMovieAudioPan_Stereo;
-    if(0 == segAudioPan.selectedSegmentIndex)
-        pan  = MPMovieAudioPan_Left;
-    else if(1 == segAudioPan.selectedSegmentIndex)
-        pan = MPMovieAudioPan_Stereo;
-    else if(2 == segAudioPan.selectedSegmentIndex)
-        pan = MPMoviveAudioPan_Right;
-    if(_player) {
-        _player.audioPan = pan;
-    }
-}
-
-- (void) remoteControlReceivedWithEvent: (UIEvent *) receivedEvent {
-    if (receivedEvent.type == UIEventTypeRemoteControl) {
-        
-        switch (receivedEvent.subtype) {
-                
-            case UIEventSubtypeRemoteControlPlay:
-                [_player play];
-                NSLog(@"play");
-                break;
-                
-            case UIEventSubtypeRemoteControlPause:
-                [_player pause];
-                NSLog(@"pause");
-                break;
-                
-            case UIEventSubtypeRemoteControlPreviousTrack:
-                
-                break;
-                
-            case UIEventSubtypeRemoteControlNextTrack:
-                
-                break;
-                
-            default:
-                break;
-        }
-    }
-}
-
+#pragma mark kvo
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
@@ -941,8 +798,6 @@
 {
     if([keyPath isEqual:@"currentPlaybackTime"])
     {
-//        NSTimeInterval position = [[change objectForKey:NSKeyValueChangeNewKey] floatValue];
-        //NSLog(@"current playback position is:%.1fs\n", position);
         progressView.playProgress = _player.currentPlaybackTime / _player.duration;
     }
     else if([keyPath isEqual:@"clientIP"])
@@ -971,22 +826,46 @@
     }
 }
 
+#pragma mark on hand gesture
+- (void)registerHandGesture{
+    UISwipeGestureRecognizer *leftSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
+    leftSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    UISwipeGestureRecognizer *rightSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
+    rightSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    UISwipeGestureRecognizer *upSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
+    upSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionUp;
+    UISwipeGestureRecognizer *downSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeGesture:)];
+    downSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionDown;
+    [self.view addGestureRecognizer:leftSwipeRecognizer];
+    [self.view addGestureRecognizer:rightSwipeRecognizer];
+    [self.view addGestureRecognizer:upSwipeRecognizer];
+    [self.view addGestureRecognizer:downSwipeRecognizer];
+    
+    //捏合缩放
+    UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchView:)];
+    [self.view addGestureRecognizer:pinchGesture];
+    //旋转
+    UIRotationGestureRecognizer *rotationGesture = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(rotateView:)];
+    [self.view addGestureRecognizer:rotationGesture];
+}
+
+//上下左右滑动
 - (void)handleSwipeGesture:(UISwipeGestureRecognizer *)swpie {
     if (swpie.direction == UISwipeGestureRecognizerDirectionRight) {
-        CGRect originalFrame = stat.frame;
-        stat.frame = CGRectMake(0, originalFrame.origin.y, originalFrame.size.width, originalFrame.size.height);
+        CGRect originalFrame = labelStat.frame;
+        labelStat.frame = CGRectMake(0, originalFrame.origin.y, originalFrame.size.width, originalFrame.size.height);
     }
     if (swpie.direction == UISwipeGestureRecognizerDirectionLeft) {
-        CGRect originalFrame = stat.frame;
-        stat.frame = CGRectMake(-originalFrame.size.width, originalFrame.origin.y, originalFrame.size.width, originalFrame.size.height);
+        CGRect originalFrame = labelStat.frame;
+        labelStat.frame = CGRectMake(-originalFrame.size.width, originalFrame.origin.y, originalFrame.size.width, originalFrame.size.height);
     }
     if(swpie.direction == UISwipeGestureRecognizerDirectionDown) {
-        CGRect originalFrame = msg.frame;
-        msg.frame =  CGRectMake(0, originalFrame.origin.y, originalFrame.size.width, originalFrame.size.height);
+        CGRect originalFrame = labelMsg.frame;
+        labelMsg.frame =  CGRectMake(0, originalFrame.origin.y, originalFrame.size.width, originalFrame.size.height);
     }
     if(swpie.direction == UISwipeGestureRecognizerDirectionUp) {
-        CGRect originalFrame = msg.frame;
-        msg.frame =  CGRectMake(-originalFrame.size.width, originalFrame.origin.y, originalFrame.size.width, originalFrame.size.height);
+        CGRect originalFrame = labelMsg.frame;
+        labelMsg.frame =  CGRectMake(-originalFrame.size.width, originalFrame.origin.y, originalFrame.size.width, originalFrame.size.height);
     }
 }
 
@@ -1014,25 +893,4 @@
         [rotationGestureRecognizer setRotation:0];
     }
 }
-
-- (void)updateMsg : (NSString *)msgString {
-    if(msgNum == 0)
-        msg.text = @"message is : \n";
-    msg.text = [msg.text stringByAppendingString:@"\n"];
-    msg.text = [msg.text stringByAppendingString:msgString];
-    if(++msgNum >= 3)
-        msgNum  = 0;
-}
-
-- (IBAction)onConfig:(id)sender {
-    KSYPlayerConfigureVC* vc = [[KSYPlayerConfigureVC alloc]initWithConfig:config confirm:^(PlayerConfigure newConfig){
-        config = newConfig;
-    }];
-    [self presentViewController:vc animated:NO completion:nil];
-}
-
-- (IBAction)onFloat:(id)sender {
-    [self presentViewController:_floatVC animated:NO completion:nil];
-}
-
 @end

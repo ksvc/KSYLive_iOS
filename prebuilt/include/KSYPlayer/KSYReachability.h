@@ -29,16 +29,16 @@ typedef NS_ENUM(NSInteger, KSYNetworkStatus) {
 
 @class KSYReachability;
 
-typedef void (^NetworkReachable)(KSYReachability * reachability);
-typedef void (^NetworkUnreachable)(KSYReachability * reachability);
-typedef void (^NetworkReachability)(KSYReachability * reachability, SCNetworkConnectionFlags flags);
+typedef void (^KSYNetworkReachable)(KSYReachability * reachability);
+typedef void (^KSYNetworkUnreachable)(KSYReachability * reachability);
+typedef void (^KSYNetworkReachability)(KSYReachability * reachability, SCNetworkConnectionFlags flags);
 
 
 @interface KSYReachability : NSObject
 
-@property (nonatomic, copy) NetworkReachable    reachableBlock;
-@property (nonatomic, copy) NetworkUnreachable  unreachableBlock;
-@property (nonatomic, copy) NetworkReachability reachabilityBlock;
+@property (nonatomic, copy) KSYNetworkReachable    reachableBlock;
+@property (nonatomic, copy) KSYNetworkUnreachable  unreachableBlock;
+@property (nonatomic, copy) KSYNetworkReachability reachabilityBlock;
 
 @property (nonatomic, assign) BOOL reachableOnWWAN;
 

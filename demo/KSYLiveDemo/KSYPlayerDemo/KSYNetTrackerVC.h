@@ -1,20 +1,13 @@
 //
-//  KSYNetTrackerVC.h
-//  KSYLiveDemo
+//  KSYNetworkVC.h
+//  KSYPlayerDemo
 //
-//  Created by 施雪梅 on 2017/1/13.
-//  Copyright © 2017年 qyvideo. All rights reserved.
+//  Created by 施雪梅 on 2017/1/4.
+//  Copyright © 2017年 kingsoft. All rights reserved.
 //
-
-#ifndef KSYNetTrackerVC_h
-#define KSYNetTrackerVC_h
-
-
-#import <UIKit/UIKit.h>
+#import "KSYUIVC.h"
 #import <libksygpulive/KSYNetTracker.h>
 
-@interface KSYNetTrackerVC : UIViewController
+@interface KSYNetTrackerVC : KSYUIVC
 
 @end
-
-#endif /* KSYNetTrackerVC_h */

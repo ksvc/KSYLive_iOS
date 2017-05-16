@@ -5,10 +5,10 @@
 //  Created by 施雪梅 on 2017/3/10.
 //  Copyright © 2017年 kingsoft. All rights reserved.
 //
-#import <UIKit/UIKit.h>
+#import "KSYUIVC.h"
 #import "KSYPlayerVC.h"
 
-@interface KSYFloatVC : UIViewController
+@interface KSYFloatVC : KSYUIVC
 
 @property KSYPlayerVC *playerVC;
 @end

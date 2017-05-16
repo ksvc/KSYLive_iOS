@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'libksygpulive'
-  s.version      = '2.1.1.1'
+  s.version      = '2.2.0'
   s.license      = {
 :type => 'Proprietary',
 :text => <<-LICENSE
@@ -34,7 +34,10 @@ Pod::Spec.new do |s|
               'mediacore_dec_vod',
               'mediacore_enc_lite',
               'mediacore_enc_265',
-              'mediacore_enc_base']
+              'mediacore_enc_base',
+              'streamerbase',
+              'streamerengine',
+              'gpufilter']
   subLibs.each do |subName|
     s.subspec subName do |sub|
       sub.vendored_library = 'prebuilt/libs/libksy%s.a' % subName
@@ -57,37 +60,43 @@ Pod::Spec.new do |s|
   s.subspec 'libksygpulive' do |sub|
     sub.source_files =  ['prebuilt/include/**/*.h',
                          'source/*.{h,m}']
-    sub.vendored_library = ['prebuilt/libs/libksyplayer.a',
-                            'prebuilt/libs/libksystreamer.a'];
+    sub.vendored_library = ['prebuilt/libs/libksyplayer.a'];
     sub.dependency 'GPUImage'
     sub.dependency '%s/base' % s.name
     sub.dependency '%s/yuv' % s.name
     sub.dependency '%s/mediacodec' % s.name
     sub.dependency '%s/mediacore_enc_base' % s.name
     sub.dependency '%s/mediacore_enc_lite' % s.name
+    sub.dependency '%s/streamerbase' % s.name
+    sub.dependency '%s/streamerengine' % s.name
+    sub.dependency '%s/gpufilter' % s.name
   end
   s.subspec 'libksygpulive_noKit' do |sub|
     sub.source_files =  ['prebuilt/include/**/*.h']
-    sub.vendored_library = ['prebuilt/libs/libksyplayer.a',
-                            'prebuilt/libs/libksystreamer.a'];
+    sub.vendored_library = ['prebuilt/libs/libksyplayer.a'];
     sub.dependency 'GPUImage'
     sub.dependency '%s/base' % s.name
     sub.dependency '%s/yuv' % s.name
     sub.dependency '%s/mediacodec' % s.name
     sub.dependency '%s/mediacore_enc_base' % s.name
     sub.dependency '%s/mediacore_enc_lite' % s.name
+    sub.dependency '%s/streamerbase' % s.name
+    sub.dependency '%s/streamerengine' % s.name
+    sub.dependency '%s/gpufilter' % s.name
   end
   s.subspec 'libksygpulive_265' do |sub|
     sub.source_files =  ['prebuilt/include/**/*.h',
                          'source/*.{h,m}']
-    sub.vendored_library = ['prebuilt/libs/libksyplayer.a',
-                            'prebuilt/libs/libksystreamer.a'];
+    sub.vendored_library = ['prebuilt/libs/libksyplayer.a'];
     sub.dependency 'GPUImage'
     sub.dependency '%s/base' % s.name
     sub.dependency '%s/yuv' % s.name
     sub.dependency '%s/mediacodec' % s.name
     sub.dependency '%s/mediacore_enc_base' % s.name
     sub.dependency '%s/mediacore_enc_265' % s.name
+    sub.dependency '%s/streamerbase' % s.name
+    sub.dependency '%s/streamerengine' % s.name
+    sub.dependency '%s/gpufilter' % s.name
   end
   s.subspec 'KSYGPUResource' do |sub|
     sub.resource = 'resource/KSYGPUResource.bundle'

@@ -1,0 +1,2081 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>KSYClipWriter Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">KSYLive_iOS </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Kingsoft</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/audioCodec">audioCodec</option>
+		
+		<option value="//api/name/audiokBPS">audiokBPS</option>
+		
+		<option value="//api/name/bWithAudio">bWithAudio</option>
+		
+		<option value="//api/name/bWithVideo">bWithVideo</option>
+		
+		<option value="//api/name/encodeAKbps">encodeAKbps</option>
+		
+		<option value="//api/name/encodeVKbps">encodeVKbps</option>
+		
+		<option value="//api/name/encodedFrames">encodedFrames</option>
+		
+		<option value="//api/name/encodingFPS">encodingFPS</option>
+		
+		<option value="//api/name/hostURL">hostURL</option>
+		
+		<option value="//api/name/liveScene">liveScene</option>
+		
+		<option value="//api/name/logBlock">logBlock</option>
+		
+		<option value="//api/name/maxKeyInterval">maxKeyInterval</option>
+		
+		<option value="//api/name/recScene">recScene</option>
+		
+		<option value="//api/name/shouldEnableKSYDropModule">shouldEnableKSYDropModule</option>
+		
+		<option value="//api/name/streamErrorCode">streamErrorCode</option>
+		
+		<option value="//api/name/streamMetaData">streamMetaData</option>
+		
+		<option value="//api/name/videoCodec">videoCodec</option>
+		
+		<option value="//api/name/videoCrf">videoCrf</option>
+		
+		<option value="//api/name/videoEncodePerf">videoEncodePerf</option>
+		
+		<option value="//api/name/videoFPS">videoFPS</option>
+		
+		<option value="//api/name/videoFPSChange">videoFPSChange</option>
+		
+		<option value="//api/name/videoInitBitrate">videoInitBitrate</option>
+		
+		<option value="//api/name/videoMetaData">videoMetaData</option>
+		
+		<option value="//api/name/writeState">writeState</option>
+		
+		<option value="//api/name/writeStateChange">writeStateChange</option>
+		
+	</optgroup>
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/getCurKSYWriteErrorCodeName">- getCurKSYWriteErrorCodeName</option>
+		
+		<option value="//api/name/getCurWriteStateName">- getCurWriteStateName</option>
+		
+		<option value="//api/name/getKSYVersion">- getKSYVersion</option>
+		
+		<option value="//api/name/getKSYWriteErrorCodeName:">- getKSYWriteErrorCodeName:</option>
+		
+		<option value="//api/name/getWriteStateName:">- getWriteStateName:</option>
+		
+		<option value="//api/name/initWithDefaultCfg">- initWithDefaultCfg</option>
+		
+		<option value="//api/name/isWriting">- isWriting</option>
+		
+		<option value="//api/name/muteStream:">- muteStream:</option>
+		
+		<option value="//api/name/processAudioSampleBuffer:">- processAudioSampleBuffer:</option>
+		
+		<option value="//api/name/processVideoPixelBuffer:timeInfo:onComplete:">- processVideoPixelBuffer:timeInfo:onComplete:</option>
+		
+		<option value="//api/name/processVideoSampleBuffer:onComplete:">- processVideoSampleBuffer:onComplete:</option>
+		
+		<option value="//api/name/startWritingWith:">- startWritingWith:</option>
+		
+		<option value="//api/name/stopWriting">- stopWriting</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">KSYClipWriter Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>KSYClipWriter.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>金山云转码SDK iOS版提供了iOS移动设备上的转码合成功能</p>
+
+<ul>
+<li>音频编码采用AAC编码，码率可配置;</li>
+<li>视频频编码采用H.264、H.265编码，码率可配置;</li>
+<li>支持写入本地flv和mp4文件;</li>
+</ul>
+
+
+<p><strong>Found</strong>: 2017-4-7</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/getKSYVersion" title="getKSYVersion"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getKSYVersion">&ndash;&nbsp;getKSYVersion</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取SDK版本号</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)getKSYVersion</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/hostURL" title="hostURL"></a>
+	<h3 class="method-title"><code><a href="#//api/name/hostURL">&nbsp;&nbsp;hostURL</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>本地录制,输出路径</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSURL *hostURL</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>将音视频流写入本地文件
+eg: /var/xxxxx/xxx.mp4  /var/xxxxx/xxx.flv</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoFPS" title="videoFPS"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoFPS">&nbsp;&nbsp;videoFPS</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视频帧率</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int videoFPS</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>本地录制的视频帧率，开启编码前丢帧时，帧率生效</p><p>编码前丢帧shouldEnableKSYDropModule为YES时，帧率设置生效</p><p>编码前丢帧shouldEnableKSYDropModule为NO时，帧率保持与输入帧率一致</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoCodec" title="videoCodec"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoCodec">&nbsp;&nbsp;videoCodec</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视频编码器 默认为 自动选择</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) KSYVideoCodec videoCodec</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>video codec used for encode</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Constants/KSYVideoCodec.html">KSYVideoCodec</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/audioCodec" title="audioCodec"></a>
+	<h3 class="method-title"><code><a href="#//api/name/audioCodec">&nbsp;&nbsp;audioCodec</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>音频编码器 (默认为AAC-HE)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) KSYAudioCodec audioCodec</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>audio codec used for encode</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Constants/KSYAudioCodec.html">KSYAudioCodec</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoInitBitrate" title="videoInitBitrate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoInitBitrate">&nbsp;&nbsp;videoInitBitrate</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视频编码码率（单位:kbps, 默认:500）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int videoInitBitrate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/streamMetaData" title="streamMetaData"></a>
+	<h3 class="method-title"><code><a href="#//api/name/streamMetaData">&nbsp;&nbsp;streamMetaData</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>写入全局附带的metadata (默认为nil)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (atomic, copy) NSDictionary *streamMetaData</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>key 一定要是 NSString* 类型的</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoMetaData" title="videoMetaData"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoMetaData">&nbsp;&nbsp;videoMetaData</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视频流附带的metadata (默认为nil)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (atomic, copy) NSDictionary *videoMetaData</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>key 一定要是 NSString* 类型的; 目前有效</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoCrf" title="videoCrf"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoCrf">&nbsp;&nbsp;videoCrf</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>质量等级（默认:20）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int videoCrf</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>视频恒定质量等级，范围0～51，值越小，质量越好</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/maxKeyInterval" title="maxKeyInterval"></a>
+	<h3 class="method-title"><code><a href="#//api/name/maxKeyInterval">&nbsp;&nbsp;maxKeyInterval</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>最大关键帧间隔（单位:秒, 默认:3）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) float maxKeyInterval</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>即GOP长度 画面静止时,隔n秒插入一个关键帧</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/audiokBPS" title="audiokBPS"></a>
+	<h3 class="method-title"><code><a href="#//api/name/audiokBPS">&nbsp;&nbsp;audiokBPS</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>音频编码码率（单位:kbps）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int audiokBPS</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>音频目标编码码率 (比如48,96,128等)</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/liveScene" title="liveScene"></a>
+	<h3 class="method-title"><code><a href="#//api/name/liveScene">&nbsp;&nbsp;liveScene</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>待编码的视频场景 (默认为KSYLiveScene_Default)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) KSYLiveScene liveScene</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>KSY内部会根据场景的特征进行参数调优,开始录制前设置有效</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/recScene" title="recScene"></a>
+	<h3 class="method-title"><code><a href="#//api/name/recScene">&nbsp;&nbsp;recScene</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>编码的目标场景 (默认为KSYRecScene_ConstantBitRate)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) KSYRecScene recScene</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>开始编码前设置有效</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoEncodePerf" title="videoEncodePerf"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoEncodePerf">&nbsp;&nbsp;videoEncodePerf</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视频编码性能档次 ( 默认为 KSYVideoEncodePer_LowPower)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) KSYVideoEncodePerformance videoEncodePerf</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>视频质量和设备资源之间的权衡,开始写入前设置有效</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bWithVideo" title="bWithVideo"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bWithVideo">&nbsp;&nbsp;bWithVideo</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>是否处理视频的图像数据 (默认YES)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL bWithVideo</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<div class="warning"><p><strong>Warning:</strong> 启动合成前设置为NO, 则在转码过程中无法再开启图像</p></div><p>启动合成前设置为NO, 写入过程中修改本属性无效</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bWithAudio" title="bWithAudio"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bWithAudio">&nbsp;&nbsp;bWithAudio</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>是否处理音频数据 (默认YES)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL bWithAudio</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/writeState" title="writeState"></a>
+	<h3 class="method-title"><code><a href="#//api/name/writeState">&nbsp;&nbsp;writeState</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>当前写入状态</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) KSYStreamState writeState</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>可以通过该属性获取写入的工作状态</p><p>通知：
+* KSYStreamStateDidChangeNotification 当写入工作状态发生变化时提供通知
+* 收到通知后，通过本属性查询新的状态，并作出相应的动作</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getWriteStateName:" title="getWriteStateName:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getWriteStateName:">&ndash;&nbsp;getWriteStateName:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取写入状态对应的字符串</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)getWriteStateName:(KSYStreamState)<em>stat</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>stat</code></th>
+						<td><p>状态码</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>状态名称</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getCurWriteStateName" title="getCurWriteStateName"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getCurWriteStateName">&ndash;&nbsp;getCurWriteStateName</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取当前写入状态对应的字符串</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)getCurWriteStateName</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>当前状态名称</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/streamErrorCode" title="streamErrorCode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/streamErrorCode">&nbsp;&nbsp;streamErrorCode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>当前转码/写入的错误码</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) KSYStreamErrorCode streamErrorCode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>可以通过该属性获取写入失败的原因</p><p>当streamState 为KSYStreamStateError时可查询</p><p>KSYStreamErrorCode_KSYAUTHFAILED 除外</p><p>在streamState 为KSYStreamStateConnected 时查询到</p><p>状态变化后清0</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/writeStateChange" title="writeStateChange"></a>
+	<h3 class="method-title"><code><a href="#//api/name/writeStateChange">&nbsp;&nbsp;writeStateChange</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>数据流写入状态变化时的回调函数</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) void ( ^ ) ( KSYStreamState newState ) writeStateChange</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>参数为新状态</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getKSYWriteErrorCodeName:" title="getKSYWriteErrorCodeName:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getKSYWriteErrorCodeName:">&ndash;&nbsp;getKSYWriteErrorCodeName:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取错误码对应的字符串</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)getKSYWriteErrorCodeName:(KSYStreamErrorCode)<em>code</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>code</code></th>
+						<td><p>错误码</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getCurKSYWriteErrorCodeName" title="getCurKSYWriteErrorCodeName"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getCurKSYWriteErrorCodeName">&ndash;&nbsp;getCurKSYWriteErrorCodeName</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取当前错误码对应的字符串</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)getCurKSYWriteErrorCodeName</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoFPSChange" title="videoFPSChange"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoFPSChange">&nbsp;&nbsp;videoFPSChange</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>帧率应发生变化时的回调函数</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) void ( ^ ) ( int32_t newVideoFPS ) videoFPSChange</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>参数为建议设定的fps</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithDefaultCfg" title="initWithDefaultCfg"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithDefaultCfg">&ndash;&nbsp;initWithDefaultCfg</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>初始化方法 （step1）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithDefaultCfg</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>初始化，将下列属性设置为默认值</p>
+
+<ul>
+<li>_<a href="#//api/name/videoFPS">videoFPS</a>         = 15;</li>
+<li><em><a href="#//api/name/videoCodec">videoCodec</a>       = <a href="../Constants/KSYVideoCodec.html">KSYVideoCodec</a></em>X264;</li>
+<li>_<a href="#//api/name/audiokBPS">audiokBPS</a>        = 32;</li>
+<li>_<a href="#//api/name/videoInitBitrate">videoInitBitrate</a> = 500;</li>
+</ul>
+<div class="warning"><p><strong>Warning:</strong> KSYClipWriter只支持单实例写入，构造多个实例会出现异常</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/startWritingWith:" title="startWritingWith:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/startWritingWith:">&ndash;&nbsp;startWritingWith:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>启动写入文件 （step2）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)startWritingWith:(NSURL *)<em>url</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>本地写入支持mp4和flv两种输出格式,通过url的文件后缀指定</p><p>&ldquo;/var/xxx/xx.mp4&rdquo;, &ldquo;/var/xxx/xx.flv&rdquo;</p><p>写入参数主要是视频编码器，音视频码率的设置</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/hostURL">@property hostURL</a>, <a href="#//api/name/videoCodec">@property videoCodec</a>,videokBPS,<a href="#//api/name/audiokBPS">@property audiokBPS</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/stopWriting" title="stopWriting"></a>
+	<h3 class="method-title"><code><a href="#//api/name/stopWriting">&ndash;&nbsp;stopWriting</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>停止写入 （step3）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)stopWriting</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>停止文件写入</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/muteStream:" title="muteStream:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/muteStream:">&ndash;&nbsp;muteStream:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>静音 (仍然有音频，只是音量为0)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)muteStream:(BOOL)<em>bMute</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>bMute</code></th>
+						<td><p>YES / ON</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/processVideoSampleBuffer:onComplete:" title="processVideoSampleBuffer:onComplete:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/processVideoSampleBuffer:onComplete:">&ndash;&nbsp;processVideoSampleBuffer:onComplete:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>处理一个视频帧(只支持编码前的原始图像数据)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)processVideoSampleBuffer:(CMSampleBufferRef)<em>sampleBuffer</em> onComplete:(void ( ^ ) ( BOOL ))<em>completion</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>sampleBuffer</code></th>
+						<td><p>Buffer to process</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completion</code></th>
+						<td><p>当前视频帧处理完成的回调</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>应当在开始写入前定期调用此接口，比如按照采集帧率调用</p><p>支持的图像格式包括: BGR0,NV12,YUVA444P,YUV420P</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/processVideoPixelBuffer:timeInfo:onComplete:" title="processVideoPixelBuffer:timeInfo:onComplete:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/processVideoPixelBuffer:timeInfo:onComplete:">&ndash;&nbsp;processVideoPixelBuffer:timeInfo:onComplete:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>处理一个视频帧(只支持编码前的原始图像数据)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)processVideoPixelBuffer:(CVPixelBufferRef)<em>pixelBuffer</em> timeInfo:(CMTime)<em>timeStamp</em> onComplete:(void ( ^ ) ( BOOL ))<em>completion</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>pixelBuffer</code></th>
+						<td><p>待编码的像素数据</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>timeStamp</code></th>
+						<td><p>待编码的时间戳</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completion</code></th>
+						<td><p>当前视频帧处理完成的回调</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>应当在开始写入前定期调用此接口，比如按照采集帧率调用</p><p>支持的图像格式包括: BGR0,NV12,YUVA444P,YUV420P</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/processAudioSampleBuffer:" title="processAudioSampleBuffer:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/processAudioSampleBuffer:">&ndash;&nbsp;processAudioSampleBuffer:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>处理一段音频数据</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)processAudioSampleBuffer:(CMSampleBufferRef)<em>sampleBuffer</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>sampleBuffer</code></th>
+						<td><p>Buffer to process</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>应当在开始写入前定期调用此接口，与processVideoSampleBuffer 交错进行</p><div class="warning"><p><strong>Warning:</strong> 目前只支持 单通道  S16 格式的PCM数据</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isWriting" title="isWriting"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isWriting">&ndash;&nbsp;isWriting</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>查询当前是否处于写入状态 (connecting, 或connected)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)isWriting</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/encodeVKbps" title="encodeVKbps"></a>
+	<h3 class="method-title"><code><a href="#//api/name/encodeVKbps">&nbsp;&nbsp;encodeVKbps</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>查询当前编码的视频码率大小（每秒更新）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) double encodeVKbps</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>该码率为编码器产生的视频码率大小，单位为kbps</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/encodeAKbps" title="encodeAKbps"></a>
+	<h3 class="method-title"><code><a href="#//api/name/encodeAKbps">&nbsp;&nbsp;encodeAKbps</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>查询当前编码的音频码率大小（每秒更新）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) double encodeAKbps</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>该码率为编码器产生的音频码率大小，单位为kbps</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/audiokBPS">@property audiokBPS</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/encodingFPS" title="encodingFPS"></a>
+	<h3 class="method-title"><code><a href="#//api/name/encodingFPS">&nbsp;&nbsp;encodingFPS</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>查询当前编码的平均视频帧率</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) double encodingFPS</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>采集设备的输出帧率为videoFPS，约等于编码的目标帧率</p><p>编码的视频帧率不会高于采集帧率，但是当CPU资源不足时，编码帧率会低于采集帧率</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/videoFPS">@property videoFPS</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/encodedFrames" title="encodedFrames"></a>
+	<h3 class="method-title"><code><a href="#//api/name/encodedFrames">&nbsp;&nbsp;encodedFrames</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>查询本次视频写入已经编码的总帧数</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) int encodedFrames</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>从开始写入到现在，编码过的视频总帧数</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/logBlock" title="logBlock"></a>
+	<h3 class="method-title"><code><a href="#//api/name/logBlock">&nbsp;&nbsp;logBlock</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>clip writer</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) void ( ^ ) ( NSString *logJson ) logBlock</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>相关字段说明请联系金山云技术支持</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/shouldEnableKSYDropModule" title="shouldEnableKSYDropModule"></a>
+	<h3 class="method-title"><code><a href="#//api/name/shouldEnableKSYDropModule">&nbsp;&nbsp;shouldEnableKSYDropModule</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>是否允许编码前丢帧，默认开启（videoFPS生效）
+@warnning 离线转码需要输出所有帧的情况下开启，videoFPS将不生效，根据输入源的fps保持一致</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL shouldEnableKSYDropModule</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYClipWriter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2017 Kingsoft. All rights reserved. Updated: 2017-05-16</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>
