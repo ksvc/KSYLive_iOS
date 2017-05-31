@@ -73,6 +73,7 @@
 }
 
 - (void)setupUI {
+    //初始化各个控件
     ctrlView = [[KSYUIView alloc] initWithFrame:self.view.bounds];
     ctrlView.backgroundColor = [UIColor whiteColor];
     ctrlView.gap = ELEMENT_GAP;
@@ -93,7 +94,8 @@
     
     //放置硬解码和swich开关
     labelHWCodec = [ctrlView addLable:@"解码方式"];
-    segHWCodec = [ctrlView addSegCtrlWithItems:@[@"自动",@"硬解码",@"软解码"]];
+    segHWCodec = [ctrlView addSegCtrlWithItems:@[@"高级硬解", @"自动",@"硬解",@"软解"]];
+    segHWCodec.selectedSegmentIndex = 1;
     
     labelContentMode = [ctrlView addLable:@"填充模式"];
     segContentMode = [ctrlView addSegCtrlWithItems:@[@"无", @"同比", @"裁剪", @"满屏"]];
@@ -110,6 +112,7 @@
     
     labelLoop = [ctrlView addLable:@"循环播放"];
     segLoop = [ctrlView addSegCtrlWithItems:@[@"开启",@"关闭"]];
+    segLoop.selectedSegmentIndex = 1;
     
     labelMode = [ctrlView addLable:@"播放类型"];
     segMode = [ctrlView addSegCtrlWithItems:@[@"直播", @"点播"]];
@@ -133,6 +136,7 @@
 }
 
 - (void)layoutUI {
+    //设置各个控件的fram
     ctrlView.frame = self.view.frame;
     [ctrlView layoutUI];
     
@@ -196,12 +200,15 @@
 }
 
 - (MPMovieVideoDecoderMode)decodeMode {
+    //返回解码方式
     switch(segHWCodec.selectedSegmentIndex) {
         case 0:
-            return MPMovieVideoDecoderMode_AUTO;
+            return MPMovieVideoDecoderMode_DisplayLayer;
         case 1:
-            return MPMovieVideoDecoderMode_Hardware;
+            return MPMovieVideoDecoderMode_AUTO;
         case 2:
+            return MPMovieVideoDecoderMode_Hardware;
+        case 3:
             return MPMovieVideoDecoderMode_Software;
         default:
             return MPMovieVideoDecoderMode_AUTO;
@@ -209,6 +216,7 @@
 }
 
 - (MPMovieScalingMode)contentMode {
+    //返回填充方式
     switch(segContentMode.selectedSegmentIndex) {
         case 0:
             return MPMovieScalingModeNone;

@@ -23,6 +23,10 @@
 
 @property (nonatomic) UILabel * lbUiRotate;
 @property (nonatomic) UILabel * lbStrRotate;
+
+@property KSYNameSlider *proFilterLevel;
+@property UIStepper *proFilterLevelStep;
+
 @end
 
 @implementation KSYFilterView
@@ -40,6 +44,20 @@
     _filterParam3 = [self addSliderName:@"红润" From:0 To:100 Init:50];
     _filterParam2.hidden = YES;
     _filterParam3.hidden = YES;
+    
+    _proFilterLevel    = [self addSliderName:@"类型" From:1 To:4 Init:1];
+    _proFilterLevel.precision = 0;
+    _proFilterLevel.slider.enabled = NO;
+    _proFilterLevelStep  = [[UIStepper alloc] init];
+    _proFilterLevelStep.continuous = NO;
+    _proFilterLevelStep.maximumValue = 4;
+    _proFilterLevelStep.minimumValue = 1;
+    [self addSubview:_proFilterLevelStep];
+    [_proFilterLevelStep addTarget:self
+                   action:@selector(onStep:)
+         forControlEvents:UIControlEventValueChanged];
+    _proFilterLevel.hidden = YES;
+    _proFilterLevelStep.hidden = YES;
     
     _lblSeg = [self addLable:@"滤镜"];
     _filterGroupType = [self addSegCtrlWithItems:
@@ -87,6 +105,7 @@
     [self putRow1:_filterParam1];
     [self putRow1:_filterParam2];
     [self putRow1:_filterParam3];
+    [self putWide:_proFilterLevel andNarrow:_proFilterLevelStep];
     
     if ( self.width > self.height){
         _effectPicker.frame = CGRectMake( self.winWdt, paramYPos, self.winWdt, 162);
@@ -95,6 +114,14 @@
         self.btnH = 162;
         [self putRow1:_effectPicker];
     }
+}
+
+- (IBAction)onStep:(id)sender {
+    if (sender == _proFilterLevelStep) {
+        _proFilterLevel.value = _proFilterLevelStep.value;
+        [self selectFilter: _filterGroupType.selectedSegmentIndex];
+    }
+    [super onSegCtrl:sender];
 }
 
 - (IBAction)onSwitch:(id)sender {
@@ -115,13 +142,12 @@
     [super onSegCtrl:sender];
 }
 - (void) selectFilter:(NSInteger)idx {
-    if (idx == _curIdx){
-        return;
-    }
     _curIdx = idx;
     _filterParam1.hidden = YES;
     _filterParam2.hidden = YES;
     _filterParam3.hidden = YES;
+    _proFilterLevel.hidden = YES;
+    _proFilterLevelStep.hidden = YES;
     _effectPicker.hidden = YES;
     // 标识当前被选择的滤镜
     if (idx == 0){
@@ -133,10 +159,12 @@
         _curFilter = [[KSYGPUBeautifyExtFilter alloc] init];
     }
     else if (idx == 2){ // 美颜pro
-        KSYBeautifyProFilter * f = [[KSYBeautifyProFilter alloc] init];
         _filterParam1.hidden = NO;
         _filterParam2.hidden = NO;
         _filterParam3.hidden = NO;
+        _proFilterLevel.hidden = NO;
+        _proFilterLevelStep.hidden = NO;
+        KSYBeautifyProFilter * f = [[KSYBeautifyProFilter alloc] initWithIdx:_proFilterLevel.value];
         _filterParam1.nameL.text = @"磨皮";
         f.grindRatio  = _filterParam1.normalValue;
         f.whitenRatio = _filterParam2.normalValue;
@@ -163,8 +191,10 @@
         _filterParam2.hidden = NO;
         _filterParam3.hidden = NO;
         _effectPicker.hidden = NO;
+        _proFilterLevel.hidden = NO;
+        _proFilterLevelStep.hidden = NO;
         // 构造美颜滤镜 和  特效滤镜
-        KSYBeautifyProFilter    * bf = [[KSYBeautifyProFilter alloc] init];
+        KSYBeautifyProFilter    * bf = [[KSYBeautifyProFilter alloc] initWithIdx:_proFilterLevel.value];
         KSYBuildInSpecialEffects * sf = [[KSYBuildInSpecialEffects alloc] initWithIdx:_curEffectIdx];
         bf.grindRatio  = _filterParam1.normalValue;
         bf.whitenRatio = _filterParam2.normalValue;

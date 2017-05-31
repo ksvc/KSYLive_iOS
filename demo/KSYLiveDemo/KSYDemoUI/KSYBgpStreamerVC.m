@@ -9,16 +9,16 @@
 #import "KSYBgpStreamerVC.h"
 #import "KSYUIView.h"
 @interface KSYBgpStreamerVC ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
-    UIButton *selectFileBtn;
-    UIButton *captureBtn;
-    UIButton *streamBtn;
-    UIButton *quitBtn;
+    UIButton *selectFileBtn;//选择背景图片
+    UIButton *captureBtn;//预览按钮
+    UIButton *streamBtn;//推流按钮
+    UIButton *quitBtn;//返回按钮
     KSYUIView *ctrlView;
     BOOL _capFlag;
 }
 
 @property NSURL             *url;
-@property UILabel           *streamState;
+@property UILabel           *streamState;//推流状态
 
 @end
 
@@ -31,12 +31,14 @@
     return self;
 }
 - (void)addObserver{
+    //监听推流状态改变
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(streamStateChanged) name:KSYStreamStateDidChangeNotification object:nil];
 }
 - (void)removeObserver{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)streamStateChanged{
+    //显示当前推流状态
     switch (_kit.streamerBase.streamState) {
         case KSYStreamStateIdle:
         _streamState.text = @"空闲状态";
@@ -60,17 +62,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _kit = [[KSYGPUBgpStreamerKit alloc] init];
+    //推流分辨率
     _kit.streamDimension = CGSizeMake(720, 1280);
+    //视频编码器
     _kit.streamerBase.videoCodec = KSYVideoCodec_AUTO;
+    //音频编码器
     _kit.streamerBase.audioCodec = KSYAudioCodec_AT_AAC;
+    //带宽估计模式（网络自适应）
     _kit.streamerBase.bwEstimateMode = KSYBWEstMode_Default;
+    //视频帧率最小值
     _kit.streamerBase.videoMinFPS = 10;
+    //视频帧率最大值
     _kit.streamerBase.videoMaxFPS = 25;
+    //视频的帧率
     _kit.videoFPS = 20;
+    //视频编码最高码率
     _kit.streamerBase.videoMaxBitrate = 1024;
+    //视频编码起始码率
     _kit.streamerBase.videoInitBitrate = _kit.streamerBase.videoMaxBitrate*6/10;
+    //视频编码最低码率
     _kit.streamerBase.videoMinBitrate  = 0;
+    //音频编码码率
     _kit.streamerBase.audiokBPS = 64;
+    //最大重连次数
     _kit.maxAutoRetry = 3;
     _capFlag = 0;
     self.view.backgroundColor = [UIColor whiteColor];
@@ -126,6 +140,7 @@
 }
 
 - (void)onSelectFile{
+    //从相册获取照片
     UIImagePickerController *picker = [[UIImagePickerController alloc]init];
     picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     picker.delegate = self;
@@ -142,6 +157,7 @@
         [_kit.bgPic removeAllTargets];
         _kit.bgPic = nil;
     }
+    //设置输出图像的像素格式
     _kit.gpuOutputPixelFormat = kCVPixelFormatType_32BGRA;
     //校正图片朝向
     _kit.previewDimension = image.size;
@@ -151,8 +167,10 @@
     //推流过程中切换图片
     if (_capFlag == 0) {
         _capFlag = 1;
+        //开始预览（启动推流前必须开始预览）
         [_kit startPreview:self.view];
     }
+    //开启视频配置和采集
     [_kit startVideoCap];
     [picker dismissViewControllerAnimated:YES completion:nil];
 }

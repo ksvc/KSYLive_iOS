@@ -39,6 +39,7 @@
 		3991D0F21DD5674200032EC0 /* KSYRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3991D0EF1DD5674200032EC0 /* KSYRecordVC.m */; };
 		5806F5A71E7FF8B100FDB488 /* KSYFloatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5806F5A61E7FF8B100FDB488 /* KSYFloatVC.m */; };
 		580C1C311E289BC800B386D5 /* KSYNetTrackerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C1C301E289BC800B386D5 /* KSYNetTrackerVC.m */; };
+		58288AEE1ED5927200F6FECD /* KSYAVWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58288AED1ED5927200F6FECD /* KSYAVWriter.m */; };
 		585ABE2B1EC4614400315A5C /* KSYMonkeyTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 585ABE261EC4614400315A5C /* KSYMonkeyTestVC.m */; };
 		585ABE2C1EC4614400315A5C /* KSYPlayerCfgVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 585ABE281EC4614400315A5C /* KSYPlayerCfgVC.m */; };
 		585ABE2D1EC4614400315A5C /* KSYURLTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 585ABE2A1EC4614400315A5C /* KSYURLTableVC.m */; };
@@ -168,6 +169,8 @@
 		5806F5A61E7FF8B100FDB488 /* KSYFloatVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYFloatVC.m; path = KSYLiveDemo/KSYPlayerDemo/KSYFloatVC.m; sourceTree = "<group>"; };
 		580C1C301E289BC800B386D5 /* KSYNetTrackerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYNetTrackerVC.m; path = KSYLiveDemo/KSYPlayerDemo/KSYNetTrackerVC.m; sourceTree = "<group>"; };
 		580C1C321E289C1600B386D5 /* KSYNetTrackerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSYNetTrackerVC.h; path = KSYLiveDemo/KSYPlayerDemo/KSYNetTrackerVC.h; sourceTree = "<group>"; };
+		58288AEC1ED5927200F6FECD /* KSYAVWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYAVWriter.h; path = KSYLiveDemo/KSYPlayerDemo/KSYAVWriter.h; sourceTree = "<group>"; };
+		58288AED1ED5927200F6FECD /* KSYAVWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYAVWriter.m; path = KSYLiveDemo/KSYPlayerDemo/KSYAVWriter.m; sourceTree = "<group>"; };
 		585ABE251EC4614400315A5C /* KSYMonkeyTestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYMonkeyTestVC.h; path = KSYLiveDemo/KSYPlayerDemo/KSYMonkeyTestVC.h; sourceTree = "<group>"; };
 		585ABE261EC4614400315A5C /* KSYMonkeyTestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYMonkeyTestVC.m; path = KSYLiveDemo/KSYPlayerDemo/KSYMonkeyTestVC.m; sourceTree = "<group>"; };
 		585ABE271EC4614400315A5C /* KSYPlayerCfgVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYPlayerCfgVC.h; path = KSYLiveDemo/KSYPlayerDemo/KSYPlayerCfgVC.h; sourceTree = "<group>"; };
@@ -274,6 +277,8 @@
 			isa = PBXGroup;
 			children = (
 				585ABE251EC4614400315A5C /* KSYMonkeyTestVC.h */,
+				58288AEC1ED5927200F6FECD /* KSYAVWriter.h */,
+				58288AED1ED5927200F6FECD /* KSYAVWriter.m */,
 				585ABE261EC4614400315A5C /* KSYMonkeyTestVC.m */,
 				585ABE271EC4614400315A5C /* KSYPlayerCfgVC.h */,
 				585ABE281EC4614400315A5C /* KSYPlayerCfgVC.m */,
@@ -629,6 +634,7 @@
 				06A646B81D8459C800D1C620 /* KSYPlayerVC.m in Sources */,
 				052B29371EAA2DC000BFECB0 /* KSYBgpStreamerVC.m in Sources */,
 				3991D0F21DD5674200032EC0 /* KSYRecordVC.m in Sources */,
+				58288AEE1ED5927200F6FECD /* KSYAVWriter.m in Sources */,
 				E3B007391CE31547009AF074 /* KSYDBCreater.m in Sources */,
 				585ABE2B1EC4614400315A5C /* KSYMonkeyTestVC.m in Sources */,
 				056FE3801E1BA730002FC22F /* KSYPipStreamerVC.m in Sources */,

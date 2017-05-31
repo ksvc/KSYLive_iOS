@@ -33,8 +33,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    //init
+    //初始化
     [self initVariable];
+    //添加控件
     [self addViews];
     [self startReading];
 }
@@ -88,17 +89,20 @@
         [self reScan];
     }
     else if (sender == _backBtn){
+        //返回
         [self dismissViewControllerAnimated:FALSE completion:nil];
     }
 }
 - (void)reScan{
     if (!_isReading) {
+        //开始扫描
         if ([self startReading]) {
             [_scanBtn setTitle:@"正在扫描..." forState:UIControlStateNormal];
             [_QRLabel setText:@"Scanning for QR Code"];
         }
     }
     else{
+        //停止扫描
         [self stopReading];
         [_scanBtn setTitle:@"重新扫描" forState:UIControlStateNormal];
     }

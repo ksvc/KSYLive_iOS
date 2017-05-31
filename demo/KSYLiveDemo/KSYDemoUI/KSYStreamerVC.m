@@ -33,9 +33,10 @@
     UIImageView *_foucsCursor;//对焦框
     CGFloat _currentPinchZoomFactor;//当前触摸缩放因子
     UIView *_bgView;        // 预览视图父控件（用于处理转屏，保持画面相对手机不变）
-    
+    BOOL _bOutputInfo;//是否输出推流过程中的统计信息
     CXCallObserver *_callObserver;
 }
+
 @end
 
 @implementation KSYStreamerVC
@@ -61,7 +62,7 @@
     [self addPinchGestureRecognizer];
     if (_presetCfgView.profileUI.selectedSegmentIndex){
         [self setCustomizeCfg];//自定义
-    }else{
+    }else{//预设等级
         _kit.streamerProfile = _presetCfgView.curProfileIdx;//配置profile
     }
     // 采集相关设置初始化
@@ -74,6 +75,7 @@
     [self setupLogo];
     _bypassRecFile =[NSHomeDirectory() stringByAppendingString:@"/Library/Caches/rec.mp4"];
     _kit.streamerBase.bypassRecordStateChange = ^(KSYRecordState state) {
+        //旁路录制状态改变会调用该block
         [self onBypassRecordStateChange:state];
     };
 }
@@ -283,7 +285,7 @@
     _kit.streamerBase.bwEstimateMode   = [_presetCfgView bwEstMode];
     _kit.streamerBase.bWithMessage     = [_presetCfgView withMessage];
     _kit.streamerBase.videoInitBitrate = _kit.streamerBase.videoMaxBitrate*6/10;//60%
-    _kit.streamerBase.videoMinBitrate  = 0; //
+    _kit.streamerBase.videoMinBitrate  = 0;
 }
 
 - (void) setCaptureCfg {
@@ -319,6 +321,7 @@
     if (_kit.streamerBase == nil) {
         return;
     }
+    _bOutputInfo = YES;
     if (_presetCfgView){ // cfg from presetcfgview
         _kit.streamerBase.logBlock = ^(NSString* str){
             //NSLog(@"%@", str);
@@ -379,7 +382,9 @@
 #pragma mark -  state change
 - (void) onCaptureStateChange:(NSNotification *)notification{
     NSLog(@"new capStat: %@", _kit.getCurCaptureStateName );
-    self.ctrlView.lblStat.text = [_kit getCurCaptureStateName];
+    if (_bOutputInfo){
+        self.ctrlView.lblStat.text = [_kit getCurCaptureStateName];
+    }
     if (_kit.captureState == KSYCaptureStateIdle) {
         self.ctrlView.btnCapture.backgroundColor = [UIColor darkGrayColor];
     }
@@ -389,6 +394,7 @@
 }
 
 - (void) onNetStateEvent     :(NSNotification *)notification{
+    //记录网络拥塞等事件所发生的次数
     switch (_kit.streamerBase.netStateCode) {
         case KSYNetStateCode_SEND_PACKET_SLOW: {
             _ctrlView.lblStat.notGoodCnt++;
@@ -424,7 +430,9 @@
     if (_kit.streamerBase){
         NSLog(@"stream State %@", [_kit.streamerBase getCurStreamStateName]);
     }
-    _ctrlView.lblStat.text = [_kit.streamerBase getCurStreamStateName];
+    if (_bOutputInfo){
+        _ctrlView.lblStat.text = [_kit.streamerBase getCurStreamStateName];
+    }
     if(_kit.streamerBase.streamState == KSYStreamStateError) {
         [self onStreamError:_kit.streamerBase.streamErrorCode];
     }
@@ -447,7 +455,9 @@
 }
 
 - (void) onStreamError:(KSYStreamErrorCode) errCode{
-    _ctrlView.lblStat.text  = [_kit.streamerBase getCurKSYStreamErrorCodeName];
+    if (_bOutputInfo){
+        _ctrlView.lblStat.text  = [_kit.streamerBase getCurKSYStreamErrorCodeName];
+    }
     if (errCode == KSYStreamErrorCode_CONNECT_BREAK) {
         // Reconnect
         [self tryReconnect];
@@ -489,7 +499,7 @@
 }
 #pragma mark - timer respond per second
 - (void)onTimer:(NSTimer *)theTimer{
-    if (_kit.streamerBase.streamState == KSYStreamStateConnected ) {
+    if (_kit.streamerBase.streamState == KSYStreamStateConnected && _bOutputInfo) {
         [_ctrlView.lblStat updateState: _kit.streamerBase];
     }
     if (_kit.bgmPlayer && _kit.bgmPlayer.bgmPlayerState ==KSYBgmPlayerStatePlaying ) {
@@ -565,7 +575,7 @@
 - (void)onBgmCtrSle:(UISegmentedControl*)sender {
     if ( sender == _ksyBgmView.loopType){
         weakObj(self);
-        if ( sender.selectedSegmentIndex == 0) { // signal play
+        if ( sender.selectedSegmentIndex == 0) { //单曲播放
             _kit.bgmPlayer.bgmFinishBlock = ^{};
         }
         else { // loop to next
@@ -685,10 +695,8 @@
 
 #pragma mark - UI respond : gpu filters
 - (void) onFilterChange:(id)sender{
-    if (self.ksyFilterView.curFilter != _kit.filter){
-        // use a new filter
-        [_kit setupFilter:self.ksyFilterView.curFilter];
-    }
+    // use a new filter
+    [_kit setupFilter:self.ksyFilterView.curFilter];
 }
 - (void) onFilterBtn:(id)sender{
 }
@@ -948,7 +956,7 @@
     }
     [KSYUIVC toast:message time:3];
 }
-//删除文件,保证保存到相册里面的视频时间是更新的
+//删除文件,保证保存到相册里面的视频时间是最新的
 -(void)deleteFile:(NSString *)file{
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if ([fileManager fileExistsAtPath:file]) {
@@ -1026,6 +1034,7 @@
 
 #pragma mark - CXCallObserverDelegate method
 - (void)callObserver:(CXCallObserver *)callObserver callChanged:(CXCall *)call {
+    //处理来电事件
     NSMutableDictionary *message = [[NSMutableDictionary alloc] init];
     BOOL needSendMsg = YES;
     

@@ -24,27 +24,27 @@
 @end
 
 @implementation KSYRecordVC{
-    UILabel *stat;
+    UILabel *stat;//状态
     UIView *videoView;
-    UIButton *btnPlay;
-    UIButton *btnPause;
-    UIButton *btnResume;
-    UIButton *btnStop;
-    UIButton *btnQuit;
-    
+    UIButton *btnPlay;//播放
+    UIButton *btnPause;//暂停
+    UIButton *btnResume;//继续
+    UIButton *btnStop;//停止
+    UIButton *btnQuit;//返回
+    //硬解码
     UILabel  *lableHWCodec;
     UISwitch  *switchHwCodec;
-    
+    //音量
     UILabel *labelVolume;
     UISlider *sliderVolume;
-    
+    //录屏方案
     UILabel *labelRecord;
     UISegmentedControl  *segRecord;
     
-    UIButton *btnStartRecord;
-    UIButton *btnStopRecord;
+    UIButton *btnStartRecord;//开始录屏
+    UIButton *btnStopRecord;//停止录屏
     
-    NSString *recordFilePath;
+    NSString *recordFilePath;//保存路径
     
     CADisplayLink *displayLink;
     dispatch_queue_t queue;
@@ -68,6 +68,7 @@
 }
 
 - (void) initUI {
+    //初始化各个控件
     videoView = [[UIView alloc] init];
     videoView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:videoView];
@@ -142,6 +143,7 @@
 }
 
 - (void) layoutUI {
+    //设置各个控件的fram
     CGFloat wdt = self.view.bounds.size.width;
     CGFloat hgt = self.view.bounds.size.height;
     CGFloat gap =15;
@@ -241,6 +243,7 @@
 
 - (void)setupObservers
 {
+    //监听消息的改变
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(handlePlayerNotify:)
                                                 name:(MPMoviePlayerPlaybackDidFinishNotification)
@@ -268,6 +271,7 @@
 - (void)initPlayerWithURL:(NSURL *)aURL {
     if(recordScheme == KSYPlayerRecord_PicMix_Scheme)
     {
+        //UI和视频一起录制
         self.player = [[KSYMoviePlayerController alloc] initWithContentURL:_url sharegroup:[[[GPUImageContext sharedImageProcessingContext] context] sharegroup]];
         @WeakObj(_kit);
         //player视频数据输入
@@ -287,26 +291,29 @@
         CMTime pts = CMSampleBufferGetPresentationTimeStamp(buf);
         if(pts.value < 0)
         {
+            //无效音频帧丢掉
             NSLog(@"audio pts < 0");
             return;
         }
         if(_kitWeak)
+            //接收音频帧
             [_kitWeak processAudioSampleBuffer:buf];
     };
-    
+    //获取解码方式
     _player.videoDecoderMode = switchHwCodec.isOn? MPMovieVideoDecoderMode_Hardware : MPMovieVideoDecoderMode_Software;
     [_player.view setFrame: videoView.bounds];
     [videoView addSubview: _player.view];
     [videoView bringSubviewToFront:stat];
     
     [self setupObservers];
-    
+    //准备视频播放
     [_player prepareToPlay];
 }
 
 - (IBAction)onPlayVideo:(id)sender {
     if(recordScheme != KSYPlayerRecord_ScreenShot_Scheme && recordScheme != KSYPlayerRecord_PicMix_Scheme)
     {
+        //没有设置录屏模式
         NSString *message = @"请先选择录制类型!";
         [self toast:message];
         return ;
@@ -324,6 +331,7 @@
 }
 - (IBAction)onPauseVideo:(id)sender {
     if (_player) {
+        //暂停
         [_player pause];
     }
 }
@@ -336,11 +344,13 @@
 
 - (IBAction)onStopVideo:(id)sender {
     if (_player) {
+        //从Runloop中删除之前绑定的target
         [self stopTimer];
+        //停止写入文件
         [_kit stopRecord];
         btnStartRecord.enabled = YES;
         btnStopRecord.enabled = NO;
-        
+        //停止视频播放
         [_player stop];
         [self releaseObservers];
         [_player.view removeFromSuperview];
@@ -379,28 +389,33 @@
 - (IBAction)onRecScheme:(id)sender {
     if(1 == segRecord.selectedSegmentIndex)
     {
+        //录屏模式为UI和视频混合
         recordScheme = KSYPlayerRecord_PicMix_Scheme;
         _kit = [[KSYUIRecorderKit alloc]init];
         [self addUIToKit];
     }
     else if(2 == segRecord.selectedSegmentIndex)
     {
+        //录屏模式为截屏
         recordScheme = KSYPlayerRecord_ScreenShot_Scheme;
         _kit = [[KSYUIRecorderKit alloc]initWithScheme:KSYPlayerRecord_ScreenShot_Scheme];
         queue = dispatch_queue_create("com.ksyun.playerRecord", DISPATCH_QUEUE_SERIAL);
     }
+    //文件保存路径
     recordFilePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/RecordAv.mp4"];
     segRecord.enabled = NO;
 }
 
 #pragma wite file
 -(IBAction)onStartRecordVideo:(id)sender{
+    //开始写入前删除掉旧的文件
     [self deleteFile:recordFilePath];
     NSURL * path =[[NSURL alloc] initWithString:recordFilePath];
     if(_kit)
     {
         if(recordScheme == KSYPlayerRecord_ScreenShot_Scheme)
             [self setupTimer];
+        //开始写入文件
         [_kit startRecord:path];
     }
     
@@ -411,7 +426,9 @@
 -(IBAction)onStopRecordVideo:(id)sender{
     if(_kit)
     {
+        //停止写入文件
         [_kit stopRecord];
+        //从Runloop中删除之前绑定的target
         [self stopTimer];
     }
     btnStartRecord.enabled = YES;
@@ -420,14 +437,16 @@
 
 - (void) onStreamError:(KSYStreamErrorCode) errCode{
     if (errCode == KSYStreamErrorCode_CONNECT_BREAK) {
-        // Reconnect
+        // 网络连接中断，进行重连
         [self tryReconnect];
     }
     else if (errCode == KSYStreamErrorCode_AV_SYNC_ERROR) {
+        //音视频同步失败
         NSLog(@"audio video is not synced, please check timestamp");
         [self tryReconnect];
     }
     else if (errCode == KSYStreamErrorCode_CODEC_OPEN_FAILED) {
+        //无法打开CODEC
         NSLog(@"video codec open failed, try software codec");
         _kit.writer.videoCodec = KSYVideoCodec_X264;
         [self tryReconnect];
@@ -444,14 +463,16 @@
 
 - (void) onStreamStateChange :(NSNotification *)notification{
     if (_kit.writer){
+        //显示推流状态
         NSLog(@"stream State %@", [_kit.writer getCurStreamStateName]);
     }
-    //状态为KSYStreamStateIdle且_bRecord为ture时，录制视频
+    //状态为KSYStreamStateIdle且_bRecord为ture时，录制视频到相薄
     if (_kit.writer.streamState == KSYStreamStateIdle && _kit.bPlayRecord == NO){
         [self saveVideoToAlbum: recordFilePath];
     }
     
     if (_kit.writer.streamState == KSYStreamStateError){
+        //推流出错
         [self onStreamError:_kit.writer.streamErrorCode];
     }
 }
@@ -464,6 +485,7 @@
     }
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path)) {
+                //能够保存到相册
                 SEL onDone = @selector(video:didFinishSavingWithError:contextInfo:);
                 UISaveVideoAtPathToSavedPhotosAlbum(path, self, onDone, nil);
             }
@@ -482,7 +504,7 @@
     [self toast:message];
 }
 
-//删除文件,保证保存到相册里面的视频时间是更新的
+//删除文件,保证保存到相册里面的视频时间是最新的
 -(void)deleteFile:(NSString *)file{
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if ([fileManager fileExistsAtPath:file]) {
@@ -503,6 +525,7 @@
         return nil;
     
     NSMutableDictionary *options = [[NSMutableDictionary alloc]init];
+    //设置要输出的CVPixelBufferRef的参数
     [options setObject:[NSNumber numberWithBool:YES] forKey:(NSString *)kCVPixelBufferCGImageCompatibilityKey];
     [options setObject:[NSNumber numberWithBool:YES] forKey:(NSString *)kCVPixelBufferCGBitmapContextCompatibilityKey];
     if(SYSTEM_VERSION_LESS_THAN(@"9.0"))
@@ -510,7 +533,7 @@
     
     imageWidth = CGImageGetWidth(image);
     imageHeight = CGImageGetHeight(image);
-    
+    //按指定参数创建一个单一的PixelBuffer
     status = CVPixelBufferCreate(kCFAllocatorDefault,
                                  imageWidth,
                                  imageHeight,
@@ -520,12 +543,13 @@
     
     if(status != kCVReturnSuccess || !pixelBuffer)
         return nil;
-    
+    //锁定pixelBuffer的基地址
     CVPixelBufferLockBaseAddress(pixelBuffer, 0);
+    // 得到pixelBuffer的基地址
     void *pixelData = CVPixelBufferGetBaseAddress(pixelBuffer);
-    
+    //创建一个依赖于设备的RGB颜色空间
     CGColorSpaceRef rgbColorSpace = CGColorSpaceCreateDeviceRGB();
-    
+    //用抽样缓存的数据创建一个位图格式的图形上下文对象
     CGContextRef context = CGBitmapContextCreate(pixelData,
                                                  imageWidth,
                                                  imageHeight,
@@ -536,10 +560,10 @@
     
     CGContextConcatCTM(context, CGAffineTransformIdentity);
     CGContextDrawImage(context, CGRectMake(0, 0, imageWidth, imageHeight), image);
-    
+    //释放上下文和颜色空间
     CGColorSpaceRelease(rgbColorSpace);
     CGContextRelease(context);
-    
+    //解锁基地址
     CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
     
     return pixelBuffer;
@@ -569,10 +593,14 @@
 {
     if(!displayLink)
     {
+        //调用截图方法
         displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(captureScreen:)];
         if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"10.0"))
+            //如果系统版本大于等于10.0
+            //设定回调速率
             displayLink.preferredFramesPerSecond = 15;
         else
+            //设置间隔多少帧调用一次selector 方法
             displayLink.frameInterval = 4;
         [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
     }

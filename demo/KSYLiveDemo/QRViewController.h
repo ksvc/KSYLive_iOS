@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface QRViewController : UIViewController
+//得到二维码后回调，传出stringQR
 @property (nonatomic, copy) void (^getQrCode)(NSString *stringQR);
 @end

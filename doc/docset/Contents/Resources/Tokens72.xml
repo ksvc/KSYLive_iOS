@@ -53,6 +53,16 @@
             <NodeRef refid="72"/>
         </Token>
         
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieStatusDLCodecUsed</TokenIdentifier>
+            <Abstract type="html">使用AVSampleBufferDisplayLayer解码渲染</Abstract>
+            <Declaration>MPMovieStatusDLCodecUsed</Declaration>
+            
+            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+            <NodeRef refid="72"/>
+        </Token>
+        
         
 	</File>
 </Tokens>

@@ -400,6 +400,7 @@ class KSYPlayerVC: UIViewController {
                 print("Hardware Codec used!")
             case MPMovieStatus.swCodecUsed:
                 print("Software Codec used!")
+            default: break
             }
         default:
             ()

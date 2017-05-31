@@ -90,12 +90,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    //返回流地址个数
     return _videoUrls.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     KSYVideoListCell *cell = [tableView dequeueReusableCellWithIdentifier:kVideoListCellReuseId forIndexPath:indexPath];
-    
+    //视频标题
     cell.textLabel.text = [NSString stringWithFormat:@"视频-%ld    封面图",(long)indexPath.row];
     
     return cell;
@@ -107,18 +108,22 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //取出所选视频的播放地址
     NSString *urlStr = _videoUrls[indexPath.row];
 
     KSYVideoListCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 
     if (!_player){
+        //初始化播放器
         _player = [[KSYMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:urlStr]];
         _player.scalingMode = MPMovieScalingModeAspectFill;
         _player.view.frame = cell.bounds;
         [cell.contentView addSubview:_player.view];
         [cell.contentView sendSubviewToBack:_player.view];
+        //准备视频播放
         [_player prepareToPlay];
     }else if (_curPlayingIdx == indexPath){
+        //如果选中的视频为当前已经在播放的视频
         if (_player.isPlaying) {
             [_player pause];
             // 记录播放时长
@@ -135,7 +140,7 @@
             }
             [_player prepareToPlay];
         }
-    }else{
+    }else{//选择播放一个新的视频
         // 重置播放器
         [_player reset:NO];
         // 设置新URL
@@ -174,6 +179,7 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    //将返回按钮放置在tableView的上部
     if (section == 0) {
         UIButton *quitBtn = [[UIButton alloc] init];
         [quitBtn addTarget:self action:@selector(onQuit:) forControlEvents:UIControlEventTouchUpInside];

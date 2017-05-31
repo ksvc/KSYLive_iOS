@@ -23,13 +23,19 @@
 
 @interface KSYLiveVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>{
     UITextField     *_textFiled;
+    //扫描二维码按钮
     UIButton        *_buttonQR;
+    //关闭键盘按钮
     UIButton        *_buttonClose;
+    //控制器栏
     UITableView     *_ctrTableView;
+    //首页地址栏（推流地址、拉流地址、录制文件）
     UITableView     *_addressTable;
+    //存放控制器栏的多个按钮的名称
     NSArray         *_controllers;
     CGFloat         _width;
     CGFloat         _height;
+    //存放推流地址、拉流地址、录制文件名
     NSMutableArray  *_addressMulArray;
 }
 
@@ -44,19 +50,26 @@
     _addressMulArray = [NSMutableArray new];
     NSString * uuidStr =[[[UIDevice currentDevice] identifierForVendor] UUIDString];
     NSString *devCode  = [[uuidStr substringToIndex:3] lowercaseString];
+    //推流地址
     NSString *streamSrv  = @"rtmp://test.uplive.ks-cdn.com/live";
     NSString *streamUrl      = [ NSString stringWithFormat:@"%@/%@", streamSrv, devCode];
+    //拉流地址
     NSString *playUrl  = @"rtmp://live.hkstv.hk.lxdns.com/live/hks";
+    //录制文件名
     NSString *recordFile = @"RecordAv.mp4";
+    //将推流地址、拉流地址、文件名放到地址数组中
     [_addressMulArray addObject:streamUrl];
     [_addressMulArray addObject:playUrl];
     [_addressMulArray addObject:recordFile];
     [self initVariable];
+    //布局UI
     [self initLiveVCUI];
+    //zw
     [KSYDBCreater initDatabase];
 }
 
 - (UITextField *)addTextField{
+    //添加文本框
     UITextField *text = [[UITextField alloc]init];
     text.delegate     = self;
     [self.view addSubview:text];
@@ -68,6 +81,7 @@
 }
 
 - (UITableView *)addTableView{
+    //生成一个UITableView
     UITableView *teble = [[UITableView alloc]init];
     teble.layer.masksToBounds = YES;
     teble.layer.borderColor   = [UIColor blackColor].CGColor;
@@ -79,6 +93,7 @@
 }
 
 - (UIButton*)addButton:(NSString*)title{
+    //添加一个按钮
     UIButton * button;
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button setTitle: title forState: UIControlStateNormal];
@@ -110,6 +125,7 @@
 
 
 - (void)initFrame{
+    //设置各个空间的fram
     CGFloat textY   = [[UIApplication sharedApplication] statusBarFrame].size.height;
     CGFloat btnH    = 30;
     CGFloat btnW    = 80;
@@ -137,6 +153,7 @@
     _ctrTableView.frame = tableRect;
 }
 - (void)initLiveVCUI{
+    //初始化UI控件
     _textFiled    = [self addTextField];
     _addressTable = [self addTableView];
     _ctrTableView = [self addTableView];
@@ -147,14 +164,17 @@
 
 - (IBAction)onBtn:(id)sender {
     if (sender == _buttonQR){
+        //进入到扫描二维码的视图
         [self scanQR];
     }
     else if (sender == _buttonClose){
+        //关闭弹出的键盘
         [self closeKeyBoard];
     }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    //返回不同tableView的section的个数
     if (tableView == _ctrTableView) {
         return 1;
     }else if(tableView == _addressTable){
@@ -165,6 +185,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    //返回不同tableView的cell数量
     if (tableView == _ctrTableView) {
         return _controllers.count;
     }else if(tableView == _addressTable){
@@ -175,6 +196,7 @@
     
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    //设置不同tableView的cell的内容
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"identify"];
     if (!cell) {
@@ -217,16 +239,21 @@
             }
             UIViewController* vc = nil;
             if (indexPath.row == 0) {
+                //播放Demo
                 vc = [[KSYPlayerCfgVC alloc]initWithURL:url fileList:nil];
             }else if (indexPath.row == 1){
+                //文件格式探测
                 vc = [[KSYProberVC alloc]initWithURL:url];
             }else if(indexPath.row == 2){
+                //自动化测试
                 vc = [[KSYMonkeyTestVC alloc] init];
             }
             else if (indexPath.row == 3){
+                //网络连通性探测
                 vc = [[KSYNetTrackerVC alloc]init];
             }
             else if (indexPath.row == 4){
+                //录制推流短视频
                 KSYPresetCfgVC *preVC = [[KSYPresetCfgVC alloc]initWithURL:[dir stringByAppendingPathComponent:_textFiled.text]];
                 [preVC.cfgView.btn0 setTitle:@"开始录制" forState:UIControlStateNormal];
                 preVC.cfgView.btn1.enabled = NO;
@@ -234,21 +261,27 @@
                 vc = preVC;
             }
             else if(indexPath.row == 5){
+                //录制播放短视频
                 vc = [[KSYRecordVC alloc]initWithURL:url];
             }
             else if(indexPath.row == 6){
+                //推流Demo
                 vc = [[KSYPresetCfgVC alloc]initWithURL:_textFiled.text];
             }
             else if(indexPath.row == 7){
+                //极简推流
                 vc = [[KSYSimplestStreamerVC alloc] initWithUrl:_textFiled.text];
             }
             else if(indexPath.row == 8){
+                //半屏推流
                 vc = [[KSYHorScreenStreamerVC alloc] initWithUrl:_textFiled.text];
             }
             else if(indexPath.row == 9){
+                //背景图片推流
                 vc = [[KSYBgpStreamerVC alloc] initWithUrl:_textFiled.text];
             }
             else if(indexPath.row == 10){
+                //视频列表
                 vc = [[KSYVideoListVC alloc] init];
             }
             if (vc){
@@ -256,6 +289,7 @@
             }
         }
     }else if(tableView == _addressTable){
+        //修改地址
         if (indexPath.section == 0) {
             _textFiled.text = _addressMulArray[indexPath.section];
         }
@@ -288,12 +322,15 @@
     return 30;
 }
 - (void)closeKeyBoard{
+    //收回键盘
     [_textFiled resignFirstResponder];
 }
 - (void)scanQR{
+    //扫描二维码
     __weak __typeof(self)wself = self;
     QRViewController *QRview = [[QRViewController alloc]init];
     QRview.getQrCode = ^(NSString *stringQR){
+        //扫描完成后显示地址
         [wself showAddress:stringQR];
     };
     [self presentViewController:QRview animated:YES completion:nil];
