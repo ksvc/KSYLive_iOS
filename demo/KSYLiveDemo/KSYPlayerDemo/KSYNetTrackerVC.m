@@ -46,7 +46,7 @@
     [super viewDidLoad];
 
     [self setupUI];
-    
+    //初始化NetTracker
     [self initNetTracker];
     
     infoLog = @"";
@@ -57,19 +57,20 @@
 - (void)setupUI {
     ctrlView = [[KSYUIView alloc] initWithFrame:self.view.bounds];
     ctrlView.backgroundColor = [UIColor whiteColor];
+    //设置按钮间间距
     ctrlView.gap = ELEMENT_GAP;
     
     @WeakObj(self);
     ctrlView.onBtnBlock = ^(id sender){
         [selfWeak  onBtn:sender];
     };
-    
+    //按钮btnPing执行ping命令
     btnPing = [ctrlView addButton:@"Ping"];
     [btnPing setTag:KSY_NETTRACKER_ACTION_PING];
-    
+    //按钮btnMTR执行MTR命令
     btnMTR = [ctrlView addButton:@"MTR"];
     [btnMTR setTag:KSY_NETTRACKER_ACTION_MTR];
-    
+    //退出按钮
     btnQuit = [ctrlView addButton:@"Quit"];
 
     lbDomain = [ctrlView addLable:@"请输入待探测地址："];
@@ -99,6 +100,7 @@
 }
 
 - (void)layoutUI {
+    //设置各个空间的fram
     CGFloat wdt = self.view.frame.size.width;
     CGFloat hgt = self.view.frame.size.height;
     int xPos = 0, yPos = 0;
@@ -126,6 +128,7 @@
 
 - (void)onBtn:(UIButton *)btn{
     if (btn == btnPing || btn == btnMTR) {
+        //开始探测
         [self startNetDiagnosis: btn];
     }else if (btn == btnQuit){
         [self onQuit];
@@ -133,27 +136,29 @@
 }
 
 - (void) initNetTracker {
+    //创建探测对象KSYNetTracker
     tracker =  [[KSYNetTracker alloc] init];
     if(tracker == nil)
         NSLog(@"init tracker failed\n");
+    //监听消息
     [self setupObserver];
 }
 
 - (void) setupObserver {
     _registeredNotifications = [[NSMutableArray alloc] init];
-    
+    //完成一次探测时收到一次通知
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(handleTrackerNotify:)
                                                 name:(KSYNetTrackerOnceDoneNotification)
                                               object:tracker];
     [_registeredNotifications addObject:KSYNetTrackerOnceDoneNotification];
-    
+    //完成所有探测通知时收到此消息
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(handleTrackerNotify:)
                                                 name:(KSYNetTrackerFinishedNotification)
                                               object:tracker];
     [_registeredNotifications addObject:KSYNetTrackerFinishedNotification];
-    
+    //探测过程中出现错误时收到此消息
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(handleTrackerNotify:)
                                                 name:(KSYNetTrackerErrorNotification)
@@ -162,6 +167,7 @@
 }
 
 - (void) unregisterObserver {
+    //取消消息监听
     for (NSString *name in _registeredNotifications) {
         [[NSNotificationCenter defaultCenter] removeObserver:self
                                                         name:name
@@ -185,13 +191,15 @@
 {
     if(!isRunning){
         displayStr = @"";
-
+        //设置探测方式
         action = button.tag;
         tracker.action = action;
-        
+        //开始探测
         if([tracker start:tfDomain.text])
         {
+            //启动探测失败
             displayStr = @"启动探测失败，请检查网络或待探测地址!";
+            //显示探测结果
             [self displayInfo];
             return ;
         }
@@ -208,8 +216,10 @@
     }
     else
     {
+        //结束探测
         [self stopNetDiagnosis];
         if(action == KSY_NETTRACKER_ACTION_PING)
+            //得到ping探测的结果
             displayStr = [displayStr stringByAppendingString:[self getPingRetStr]];
         else
         {
@@ -226,7 +236,7 @@
     [btnMTR setTitle:@"MTR" forState:UIControlStateNormal];
     btnMTR.enabled = YES;
     btnPing.enabled = YES;
-    
+    //结束探测
     [tracker stop];
     isRunning = NO;
 }
@@ -238,14 +248,17 @@
     
     if(KSYNetTrackerOnceDoneNotification == notify.name)
     {
+        //完成一次探测时执行下面代码
         if(action == KSY_NETTRACKER_ACTION_PING)
         {
+            //本次探测消耗的时间
             float rtt = [[[notify userInfo] valueForKey:@"rtt"] floatValue];
             NSInteger count = [[[notify userInfo] valueForKey:@"count"] integerValue];
             if(rtt < 0.00000001)
                 displayStr = [displayStr stringByAppendingFormat:@"Request timeout for icmp_seq %ld\n", count];
             else
             {
+                //获取探测结果
                 KSYNetRouterInfo  *pingRet = tracker.routerInfo[0];
                 displayStr = [displayStr stringByAppendingFormat:@"ping %@ icmp_seq %ld time=%0.3f ms\n", pingRet.ips[0], count, rtt];
             }
@@ -260,6 +273,7 @@
     }
     else if(KSYNetTrackerFinishedNotification == notify.name)
     {
+        //探测完成
         if(action == KSY_NETTRACKER_ACTION_PING)
             displayStr = [displayStr stringByAppendingString:[self getPingRetStr]];
         else
@@ -279,19 +293,21 @@
     }
     else if(KSYNetTrackerErrorNotification == notify.name)
     {
-        
+        //探测出现错误
     }
     
     [self displayInfo];
 }
 
 - (void) displayInfo{
+    //显示探测结果
     dispatch_async(dispatch_get_main_queue(), ^{
         txtView_ret.text = displayStr;
     });
 }
 
 - (NSString *) getPingRetStr{
+    //返回ping探测的结果
     NSString *pingRetStr= @"";
     KSYNetRouterInfo  *pingRet = tracker.routerInfo[0];
     pingRetStr = [pingRetStr stringByAppendingFormat:@"\n ------ping statics-----\n"];
@@ -304,6 +320,7 @@
 }
 
 - (NSString *) getInfoHeader{
+    //包含的各个属性名称
     NSString *header = @"";
     header = [header stringByAppendingFormat:@"%-8s", "idx"];
     header = [header stringByAppendingFormat:@"%-10s", "ip"];
@@ -317,6 +334,7 @@
 }
 
 - (void)getRouterInfo{
+    //得到全部统计结果
     infoLog = [self getInfoHeader];
     int i = 1, j = 0;
     for(KSYNetRouterInfo  *netInfo in tracker.routerInfo)

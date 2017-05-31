@@ -12,6 +12,8 @@
 #import "KSYQosInfo.h"
 #import "KSYMoviePlayerDefines.h"
 #import "KSYReachability.h"
+#import "KSYMediaInfo.h"
+
 /**
  金山云播放内核提供了跨终端平台的播放器SDK，支持Android/iOS/Flash平台的视频播放需求。金山云播放内核集成有业界一流的高性能H.265/HEVC解码器，提供流畅、低功耗的播放体验。同时SDK提供和系统播放器一致的音视频播放、控制接口，极大地降低了开发门槛。
  
@@ -387,6 +389,14 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
  @since Available in KSYMoviePlayerController 1.0 and later.
  */
 @property (nonatomic, strong) KSYQosInfo *qosInfo;
+
+/**
+ @abstract 视频流媒体信息
+ @discussion 当前播放内容的媒体信息，prepare完成后调用
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 2.3.0 and later.
+ */
+@property (nonatomic, strong) KSYMediaInfo *mediaInfo;
 
 /**
  @abstract 截图

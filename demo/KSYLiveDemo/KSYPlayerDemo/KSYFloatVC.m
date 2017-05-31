@@ -111,7 +111,7 @@ static NSString *backgroudText4 = {@"    金山云推流SDK支持H.264/H.265编�
     UITouch *touch = [touches anyObject];
     
     CGPoint point = [touch locationInView:self.view];
-    
+    //判断触摸点是否在画中画上
     CALayer *touchedLayer = [self.view.layer hitTest:point];
     
     if(touchedLayer == _playerVC.player.view.layer){

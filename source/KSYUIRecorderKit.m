@@ -25,7 +25,7 @@
 //图层1 UI
 @property  GPUImageUIElement* uiElementInput;
 @property  NSInteger uiLayer;
-//伟大的混流器
+//混流器
 @property  KSYGPUPicMixer* uiMixer;
 @property  KSYAudioMixer *aMixer;
 
@@ -248,9 +248,11 @@
         if(!_bPlayRecord || _bBackground || _scheme != KSYPlayerRecord_PicMix_Scheme)
             return;
         
-        if(_uiMixer)
+        if(_uiMixer)//_uiMixer是混流器
         {
+            //图层0，视频层
             _textureInput = [[GPUImageTextureInput alloc]initWithTexture:InputTexture size:TextureSize];
+            //清除_playerLayer层的画面内容
             [_uiMixer clearPicOfLayer:_playerLayer];
             [_textureInput addTarget:_uiMixer atTextureLocation:_playerLayer];
             [_textureInput processTextureWithFrameTime:time];

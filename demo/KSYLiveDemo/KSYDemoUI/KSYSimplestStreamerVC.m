@@ -11,18 +11,18 @@
 
 @interface KSYSimplestStreamerVC ()<UIPickerViewDataSource,
 UIPickerViewDelegate>{
-    NSArray * _profileNames;
-    UIButton *captureBtn;
-    UIButton *streamBtn;
-    UIButton *cameraBtn;
-    UIButton *quitBtn;
+    NSArray * _profileNames;//存放各个清晰度标签
+    UIButton *captureBtn;//预览按钮
+    UIButton *streamBtn;//开始推流
+    UIButton *cameraBtn;//前后摄像头
+    UIButton *quitBtn;//返回按钮
     KSYUIView *ctrlView;
     UIView *_bgView;        // 预览视图父控件（用于处理转屏，保持画面相对手机不变）
 }
 
 @property NSInteger         curProfileIdx;
 @property NSURL             *url;
-@property UILabel           *streamState;
+@property UILabel           *streamState;//推流状态
 @property GPUImageOutput<GPUImageInput>* curFilter;
 
 @end
@@ -36,9 +36,11 @@ UIPickerViewDelegate>{
     return self;
 }
 - (void)addObserver{
+    //监听推流状态改变的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(streamStateChanged) name:KSYStreamStateDidChangeNotification object:nil];
 }
 - (void)removeObserver{
+    //移除观察者
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)streamStateChanged{
@@ -66,8 +68,11 @@ UIPickerViewDelegate>{
     [super viewDidLoad];
     _kit = [[KSYGPUStreamerKit alloc] init];
     _curFilter = [[KSYGPUBeautifyExtFilter alloc] init];
+    //摄像头位置
     _kit.cameraPosition = AVCaptureDevicePositionFront;
+    //视频输出格式
     _kit.gpuOutputPixelFormat = kCVPixelFormatType_32BGRA;
+    //采集格式
     _kit.capturePixelFormat   = kCVPixelFormatType_32BGRA;
     self.view.backgroundColor = [UIColor whiteColor];
     _profileNames = [NSArray arrayWithObjects:@"360p_auto",@"360p_1",@"360p_2",@"360p_3",@"540p_auto",
@@ -268,17 +273,22 @@ UIPickerViewDelegate>{
 
 - (void)onBtn:(UIButton *)btn{
     if (btn == captureBtn) {
+        //预览
         [self onCapture];
     }else if (btn == streamBtn){
+        //推流
         [self onStream];
     }else if (btn == cameraBtn){
+        //切换摄像头
         [self onCamera];
     }else if (btn == quitBtn){
+        //退出
         [self onQuit];
     }
 }
 
 - (void)onCamera{
+    //切换摄像头
     [_kit switchCamera];
 }
 
@@ -287,6 +297,7 @@ UIPickerViewDelegate>{
     if (!_kit.vCapDev.isRunning){
         _kit.videoOrientation = [[UIApplication sharedApplication] statusBarOrientation];
         [_kit setupFilter:_curFilter];
+        //启动预览
         [_kit startPreview:_bgView];
     }
     else {
@@ -296,9 +307,11 @@ UIPickerViewDelegate>{
 - (void)onStream{
     if (_kit.streamerBase.streamState == KSYStreamStateIdle ||
         _kit.streamerBase.streamState == KSYStreamStateError) {
+        //启动推流
         [_kit.streamerBase startStream:_url];
     }
     else {
+        //停止推流
         [_kit.streamerBase stopStream];
     }
 }

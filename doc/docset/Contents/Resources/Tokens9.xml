@@ -26,7 +26,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyProFilter/initWithIdx:</TokenIdentifier>
-			<Abstract type="html">初始化并指定 1~2 的index来创建对应美颜滤镜</Abstract>
+			<Abstract type="html">初始化并指定 1~4 的index来创建对应美颜滤镜</Abstract>
 			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
 			
 			<Declaration>- (id)initWithIdx:(NSInteger)idx</Declaration>

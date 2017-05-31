@@ -67,7 +67,9 @@ typedef NS_ENUM(NSInteger, MPMovieStatus) {
     ///使用硬件解码
     MPMovieStatusHWCodecUsed,
     ///使用软件解码
-    MPMovieStatusSWCodecUsed
+    MPMovieStatusSWCodecUsed,
+    ///使用AVSampleBufferDisplayLayer解码渲染
+    MPMovieStatusDLCodecUsed,
 };
 
 /**
@@ -80,6 +82,8 @@ typedef NS_ENUM(NSUInteger, MPMovieVideoDecoderMode) {
     MPMovieVideoDecoderMode_Hardware,
     ///自动选择解码方式，8.0以上的系统优先选择硬解
     MPMovieVideoDecoderMode_AUTO,
+    ///使用系统接口进行解码和渲染，只适用于8.0及以上系统，低于8.0的系统自动使用软解
+    MPMovieVideoDecoderMode_DisplayLayer,
 };
 
 
@@ -152,6 +156,7 @@ MP_EXTERN NSString * const MPMoviePlayerNetworkStatusChangeNotification;
 MP_EXTERN NSString * const MPMoviePlayerCurrNetworkStatusUserInfoKey; // NSNumber (KSYNetworkStatus)
 MP_EXTERN NSString * const MPMoviePlayerLastNetworkStatusUserInfoKey; // NSNumber (KSYNetworkStatus)
 
+MP_EXTERN NSString * const MPMoviePlayerSeekCompleteNotification;
 /**
  * getMetadata方法对应的关键字
  */

@@ -9,6 +9,7 @@
 #import "KSYPlayerVC.h"
 #import "KSYProgressView.h"
 #import "KSYFloatVC.h"
+#import "KSYAVWriter.h"
 
 #define ELEMENT_GAP  6
 
@@ -17,6 +18,8 @@
 @property (strong, nonatomic) NSURL *reloadUrl;
 @property(strong, nonatomic) NSArray *fileList;
 @property (nonatomic, readwrite) KSYPlayerCfgVC *config;
+@property(nonatomic,strong) KSYAVWriter *AVWriter;
+@property (nonatomic, readwrite)  BOOL bRecording;
 @end
 
 @implementation KSYPlayerVC{
@@ -45,6 +48,8 @@
     UIButton *btnOthers;
     UIButton *btnReload;
     UIButton *btnFloat;
+    UILabel   *labelRec;
+    UISwitch *switchRec;
     NSMutableArray *arrayBtnOthers;
     
     UILabel *labelStat;
@@ -94,7 +99,7 @@
     [super viewDidLoad];
     
     [self setupUI];
-    
+    //添加手势操作
     [self registerHandGesture];
     
     [self addObserver:self forKeyPath:@"player" options:NSKeyValueObservingOptionNew context:nil];
@@ -170,7 +175,9 @@
     btnOthers = [ctrlView addButton:@"其它"];
     btnReload = [ctrlView addButton:@"reload"];
     btnFloat = [ctrlView addButton:@"悬窗"];
-    arrayBtnOthers = [NSMutableArray arrayWithObjects:btnReload, btnFloat, nil];
+    labelRec = [ctrlView addLable:@"开启/关闭录制"];
+    switchRec = [ctrlView addSwitch:NO];
+    arrayBtnOthers = [NSMutableArray arrayWithObjects:btnReload, btnFloat, labelRec, switchRec, nil];
     [self showElements:arrayBtnOthers bShow:NO];
     
     btnPlay = [ctrlView addButton:@"播放"];
@@ -214,7 +221,8 @@
     [ctrlView putLable:labelAudioPan andView:segAudioPan];
     
     ctrlView.yPos = yPos;
-    [ctrlView putRow:arrayBtnOthers];
+    [ctrlView putRow:@[btnReload, btnFloat]];
+    [ctrlView putLable:labelRec andView:switchRec];
     
     //下部控件为3行
     ctrlView.yPos = ctrlView.frame.size.height - ctrlView.gap * 2 - ctrlView.btnH * 2;
@@ -267,6 +275,7 @@
 #pragma mark init player
 - (void)initPlayerWithURL:(NSURL *)aURL fileList:(NSArray *)fileList config:(KSYPlayerCfgVC *)config{
     lastSize = 0.0;
+    //初始化播放器并设置播放地址
     self.player = [[KSYMoviePlayerController alloc] initWithContentURL: aURL fileList:fileList sharegroup:nil];
     [self setupObservers:_player];
     
@@ -274,26 +283,18 @@
         NSLog(@"logJson is %@",logJson);
     };
     
-#if 0
+    __weak typeof(self) weakSelf = self;
     _player.videoDataBlock = ^(CMSampleBufferRef sampleBuffer){
-        CMItemCount count;
-        CMSampleTimingInfo timing_info;
-        OSErr ret = CMSampleBufferGetOutputSampleTimingInfoArray(sampleBuffer, 1, &timing_info, &count);
-        if ( ret == noErr) {
-            NSLog(@"video Pts %d %lld",  timing_info.presentationTimeStamp.timescale, timing_info.presentationTimeStamp.value );
-        }
+        //写入视频sampleBuffer
+        if(weakSelf && weakSelf.AVWriter && weakSelf.bRecording)
+            [weakSelf.AVWriter processVideoSampleBuffer:sampleBuffer];
     };
     
     _player.audioDataBlock = ^(CMSampleBufferRef sampleBuffer){
-        CMItemCount count;
-        CMSampleTimingInfo timing_info;
-        OSErr ret = CMSampleBufferGetOutputSampleTimingInfoArray(sampleBuffer, 1, &timing_info, &count);
-        if ( ret == noErr) {
-            NSLog(@"audio Pts %d %lld",  timing_info.presentationTimeStamp.timescale, timing_info.presentationTimeStamp.value );
-        }
+        //写入音频sampleBuffer
+        if(weakSelf && weakSelf.AVWriter && weakSelf.bRecording)
+            [weakSelf.AVWriter processAudioSampleBuffer:sampleBuffer];
     };
-#endif
-    __weak KSYPlayerVC *weakSelf = self;
     _player.messageDataBlock = ^(NSDictionary *message, int64_t pts, int64_t param){
         if(message)
         {
@@ -308,7 +309,7 @@
                 [weakSelf updateMsg:msgString];
         }
     };
-    
+    //播放视频的实时信息
     labelStat.text = [NSString stringWithFormat:@"url %@", aURL];
     _player.controlStyle = MPMovieControlStyleNone;
     [_player.view setFrame: videoView.bounds];  // player's frame must match parent's
@@ -318,6 +319,7 @@
     _player.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     if(config)
     {
+        //设置播放参数
         _player.videoDecoderMode = config.decodeMode;
         _player.scalingMode = config.contentMode;
         _player.shouldAutoplay = config.bAutoPlay;
@@ -357,6 +359,7 @@
     [self registerObserver:MPMoviePlayerSuggestReloadNotification player:player];
     [self registerObserver:MPMoviePlayerPlaybackStatusNotification player:player];
     [self registerObserver:MPMoviePlayerNetworkStatusChangeNotification player:player];
+    [self registerObserver:MPMoviePlayerSeekCompleteNotification player:player];
 }
 
 - (void)releaseObservers:(KSYMoviePlayerController*)player
@@ -410,6 +413,7 @@
         NSLog(@"buffer monitor  result: \n   empty count: %d, lasting: %f seconds",
               (int)_player.bufferEmptyCount,
               _player.bufferEmptyDuration);
+        //结束播放的原因
         int reason = [[[notify userInfo] valueForKey:MPMoviePlayerPlaybackDidFinishReasonUserInfoKey] intValue];
         if (reason ==  MPMovieFinishReasonPlaybackEnded) {
             labelStat.text = [NSString stringWithFormat:@"player finish"];
@@ -459,27 +463,25 @@
     {
         int status = [[[notify userInfo] valueForKey:MPMoviePlayerPlaybackStatusUserInfoKey] intValue];
         if(MPMovieStatusVideoDecodeWrong == status)
-        {
             NSLog(@"Video Decode Wrong!\n");
-        }
         else if(MPMovieStatusAudioDecodeWrong == status)
-        {
             NSLog(@"Audio Decode Wrong!\n");
-        }
         else if (MPMovieStatusHWCodecUsed == status )
-        {
             NSLog(@"Hardware Codec used\n");
-        }
         else if (MPMovieStatusSWCodecUsed == status )
-        {
             NSLog(@"Software Codec used\n");
-        }
+        else if(MPMovieStatusDLCodecUsed == status)
+            NSLog(@"AVSampleBufferDisplayLayer  Codec used");
     }
     if(MPMoviePlayerNetworkStatusChangeNotification == notify.name)
     {
         int currStatus = [[[notify userInfo] valueForKey:MPMoviePlayerCurrNetworkStatusUserInfoKey] intValue];
         int lastStatus = [[[notify userInfo] valueForKey:MPMoviePlayerLastNetworkStatusUserInfoKey] intValue];
         NSLog(@"network reachable change from %@ to %@\n", [self netStatus2Str:lastStatus], [self netStatus2Str:currStatus]);
+    }
+    if(MPMoviePlayerSeekCompleteNotification == notify.name)
+    {
+        NSLog(@"Seek complete");
     }
 }
 
@@ -556,6 +558,8 @@
 
 - (IBAction)onStopVideo:(id)sender {
     if (_player) {
+        [switchRec setOn:NO];
+        [self onRec];
         NSLog(@"player download flow size: %f MB", _player.readSize);
         NSLog(@"buffer monitor  result: \n   empty count: %d, lasting: %f seconds",
               (int)_player.bufferEmptyCount,
@@ -569,8 +573,9 @@
 - (IBAction)onQuit:(id)sender {
     if(_player)
     {
+        [switchRec setOn:NO];
+        [self onRec];
         [_player stop];
-        
         [_player removeObserver:self forKeyPath:@"currentPlaybackTime" context:nil];
         [_player removeObserver:self forKeyPath:@"clientIP" context:nil];
         [_player removeObserver:self forKeyPath:@"localDNSIP" context:nil];
@@ -600,6 +605,7 @@
 }
 
 - (IBAction)onFloat:(id)sender {
+    //悬浮窗
     KSYFloatVC *_floatVC = [[KSYFloatVC alloc] init];
     _floatVC.playerVC = self;
     [self presentViewController:_floatVC animated:NO completion:nil];
@@ -609,11 +615,38 @@
 - (void)onSwitch:(UISwitch *)_switch{
     if(_switch == switchMute)
         [self onMute];
+    else if(_switch == switchRec)
+        [self onRec];
 }
 
 - (void)onMute{
     if(_player)
         _player.shouldMute = switchMute.isOn;
+}
+
+- (void)onRec{
+    if(switchRec.isOn)
+    {
+        if(!_bRecording && _player.isPreparedToPlay)
+        {
+            //初始化KSYAVWriter类
+            _AVWriter = [[KSYAVWriter alloc]initWithDefaultCfg];
+            //设置待写入的文件名
+            [_AVWriter setUrl:[NSURL URLWithString:[NSString stringWithFormat:@"%@%s", NSHomeDirectory(), "/Documents/PlayerRec.mp4"]]];
+            //开始写入
+            [_AVWriter setMediaInfo:_player.mediaInfo];
+            //_AVWriter.bWithVideo = NO;
+            [_AVWriter startRecord];
+            _bRecording = YES;
+        }
+    }
+    else
+    {
+        if(_bRecording)
+                [_AVWriter stopRecord];
+        _AVWriter = nil;
+        _bRecording = NO;
+    }
 }
 
 #pragma mark on Slider
@@ -703,7 +736,7 @@
         return;
     }
     
-    if(_player.isPreparedToPlay)
+    if(_player.playbackState != MPMoviePlaybackStateStopped && _player.isPreparedToPlay)
     {
         double flowSize = [_player readSize];
         NSDictionary *meta = [_player getMetadata];

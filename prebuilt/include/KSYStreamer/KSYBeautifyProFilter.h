@@ -13,7 +13,7 @@
 - (id)init;
 
 /**
- @abstract   初始化并指定 1~2 的index来创建对应美颜滤镜
+ @abstract   初始化并指定 1~4 的index来创建对应美颜滤镜
  @param      idx 效果的索引 (非法值无效)
  */
 - (id)initWithIdx:(NSInteger)idx;
@@ -34,7 +34,7 @@
 
 /**
 几组推荐的效果参数  美白：whitenRatio=1.0,ruddyRatio=0.0;
-                粉嫩：whitenRatio=0.5,ruddyRatio=-0.3；
+                粉嫩：whitenRatio=0.3,ruddyRatio=-0.3；
                 红润：whitenRatio=0.3,ruddyRatio=0.4；
 其中init 效果参数默认是粉嫩，磨皮参数默认是0.5；
 */
