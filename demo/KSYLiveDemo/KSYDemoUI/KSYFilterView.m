@@ -64,8 +64,9 @@
   @[ @"关",
      @"旧美颜",
      @"美颜pro",
-     @"红润美颜",
-     @"美颜特效",
+     @"natural",
+     @"红润",
+     @"特效",
      ]];
     _filterGroupType.selectedSegmentIndex = 1;
     [self selectFilter:1];
@@ -171,7 +172,18 @@
         f.ruddyRatio  = _filterParam3.normalValue;
         _curFilter    = f;
     }
-    else if (idx == 3){ // 红润 + 美颜
+    else if (idx == 3){ // natural
+        _filterParam1.hidden = NO;
+        _filterParam2.hidden = NO;
+        _filterParam3.hidden = NO;
+        KSYBeautifyProFilter * nf = [[KSYBeautifyProFilter alloc] initWithIdx:3];
+        _filterParam1.nameL.text = @"磨皮";
+        nf.grindRatio  = _filterParam1.normalValue;
+        nf.whitenRatio = _filterParam2.normalValue;
+        nf.ruddyRatio  = _filterParam3.normalValue;
+        _curFilter    = nf;
+    }
+    else if (idx == 4){ // 红润 + 美颜
         _filterParam1.nameL.text = @"磨皮";
         _filterParam3.nameL.text = @"红润";
         _filterParam1.hidden = NO;
@@ -184,7 +196,7 @@
         bf.ruddyRatio  = _filterParam3.normalValue;
         _curFilter = bf;
     }
-    else if (idx == 4){ // 美颜 + 特效 滤镜组合
+    else if (idx == 5){ // 美颜 + 特效 滤镜组合
         _filterParam1.nameL.text = @"磨皮";
         _filterParam3.nameL.text = @"特效";
         _filterParam1.hidden = NO;
@@ -227,7 +239,7 @@
         int val = (nalVal*5) + 1; // level 1~5
         [(KSYGPUBeautifyExtFilter *)_curFilter setBeautylevel: val];
     }
-    else if (_curIdx == 2 ) {
+    else if (_curIdx == 2 || _curIdx == 3) {
         KSYBeautifyProFilter * f =(KSYBeautifyProFilter*)_curFilter;
         if (sender == _filterParam1 ){
             f.grindRatio = _filterParam1.normalValue;
@@ -239,7 +251,7 @@
             f.ruddyRatio = _filterParam3.normalValue;
         }
     }
-    else if (_curIdx == 3 ){ // 美颜
+    else if (_curIdx == 4 ){ // 美颜
         KSYBeautifyFaceFilter * f =(KSYBeautifyFaceFilter*)_curFilter;
         if (sender == _filterParam1 ){
             f.grindRatio = _filterParam1.normalValue;
@@ -251,7 +263,7 @@
             f.ruddyRatio = _filterParam3.normalValue;
         }
     }
-    else if ( _curIdx == 4 ){
+    else if ( _curIdx == 5 ){
         GPUImageFilterGroup * fg = (GPUImageFilterGroup *)_curFilter;
         KSYBeautifyProFilter    * bf = (KSYBeautifyProFilter *)[fg filterAtIndex:0];
         KSYBuildInSpecialEffects * sf = (KSYBuildInSpecialEffects *)[fg filterAtIndex:1];
