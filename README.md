@@ -5,6 +5,8 @@
 [![CocoaPods doc](https://img.shields.io/cocoapods/metrics/doc-percent/libksygpulive.svg)](http://cocoadocs.org/docsets/libksygpulive/)
 [![CocoaPods version](https://img.shields.io/cocoapods/v/libksygpulive.svg?label=pod_github)](https://cocoapods.org/pods/libksygpulive)
 [![CocoaPods version](https://img.shields.io/cocoapods/v/libksygpulive_ks3.svg?label=pod_ks3)](https://cocoapods.org/pods/libksygpulive_ks3)
+## 阅读对象
+本文档面向所有使用[金山云直播SDK][libksygpulive]的开发、测试人员等, 要求读者具有一定的iOS编程开发经验，并且要求读者具备阅读[wiki][wiki]的习惯。
 
 ## 一. 功能特性
 
@@ -261,3 +263,4 @@ pod repo update
 
 [libksygpulive]:https://github.com/ksvc/KSYLive_iOS
 [ksyun]:https://www.ksyun.com/about/aboutcontact
+[wiki]:https://github.com/ksvc/KSYLive_iOS/wiki
