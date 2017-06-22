@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYBuildInSpecialEffects.html">
+	<File path="Classes/KSYBgmReader.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYBuildInSpecialEffects</TokenIdentifier>
-			<Abstract type="html">KSY 特效滤镜</Abstract>
-			<DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYBgmReader</TokenIdentifier>
+			<Abstract type="html">背景音乐文件解码</Abstract>
+			<DeclaredIn>KSYBgmReader.h</DeclaredIn>
             
 			
 			<NodeRef refid="12"/>
@@ -13,36 +13,288 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBuildInSpecialEffects/initWithIdx:</TokenIdentifier>
-			<Abstract type="html">初始化并指定 1~13 的index来创建对应效果</Abstract>
-			<DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmReader/initWithFile:isLoop:</TokenIdentifier>
+			<Abstract type="html">构造音乐文件对应的reader</Abstract>
+			<DeclaredIn>KSYBgmReader.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithIdx:(NSInteger)idx</Declaration>
+			<Declaration>- (id)initWithFile:(NSString *)path isLoop:(BOOL)loop</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>idx</Name>
-					<Abstract type="html">效果的索引 (非法值无效)</Abstract>
+					<Name>path</Name>
+					<Abstract type="html">本地音乐的路径</Abstract>
+				</Parameter><Parameter>
+					<Name>loop</Name>
+					<Abstract type="html">是否循环播放此音乐</Abstract>
 				</Parameter>
 			</Parameters>
-			
-			<Anchor>//api/name/initWithIdx:</Anchor>
+			<ReturnValue><Abstract type="html">self</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithFile:isLoop:</Anchor>
             <NodeRef refid="12"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBuildInSpecialEffects/setSpecialEffectsIdx:</TokenIdentifier>
-			<Abstract type="html">指定 1~6 的index来创建对应效果</Abstract>
-			<DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmReader/reloadFile:</TokenIdentifier>
+			<Abstract type="html">reload 一个新的文件到reader中</Abstract>
+			<DeclaredIn>KSYBgmReader.h</DeclaredIn>
 			
-			<Declaration>- (void)setSpecialEffectsIdx:(NSInteger)idx</Declaration>
+			<Declaration>- (BOOL)reloadFile:(NSString *)path</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>idx</Name>
-					<Abstract type="html">效果的索引 (非法值无效)</Abstract>
+					<Name>path</Name>
+					<Abstract type="html">本地音乐的路径</Abstract>
 				</Parameter>
 			</Parameters>
+			<ReturnValue><Abstract type="html">path对应的文件是否有效</Abstract></ReturnValue>
+			<Anchor>//api/name/reloadFile:</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmReader/closeFile</TokenIdentifier>
+			<Abstract type="html">关闭文件</Abstract>
+			<DeclaredIn>KSYBgmReader.h</DeclaredIn>
 			
-			<Anchor>//api/name/setSpecialEffectsIdx:</Anchor>
+			<Declaration>- (void)closeFile</Declaration>
+			
+			
+			<Anchor>//api/name/closeFile</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmReader/seekTo:</TokenIdentifier>
+			<Abstract type="html">seek到指定时间 (拖动进度条)</Abstract>
+			<DeclaredIn>KSYBgmReader.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)seekTo:(float)time</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>time</Name>
+					<Abstract type="html">时间, 请参考 bgmDuration (单位,秒)</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">是否seek 成功</Abstract></ReturnValue>
+			<Anchor>//api/name/seekTo:</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmReader/setBgmFmt:</TokenIdentifier>
+			<Abstract type="html">音乐的格式信息 (一定为S16的数据格式)</Abstract>
+			<DeclaredIn>KSYBgmReader.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) AudioStreamBasicDescription bgmFmt</Declaration>
+			
+			
+			<Anchor>//api/name/bgmFmt</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmReader/bgmFmt</TokenIdentifier>
+			<Abstract type="html">音乐的格式信息 (一定为S16的数据格式)</Abstract>
+			<DeclaredIn>KSYBgmReader.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) AudioStreamBasicDescription bgmFmt</Declaration>
+			
+			
+			<Anchor>//api/name/bgmFmt</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmReader/bgmFmt</TokenIdentifier>
+			<Abstract type="html">音乐的格式信息 (一定为S16的数据格式)</Abstract>
+			<DeclaredIn>KSYBgmReader.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) AudioStreamBasicDescription bgmFmt</Declaration>
+			
+			
+			<Anchor>//api/name/bgmFmt</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmReader/readPCMData:nbSample:</TokenIdentifier>
+			<Abstract type="html">从文件中读取一段音频数据 (二选一)</Abstract>
+			<DeclaredIn>KSYBgmReader.h</DeclaredIn>
+			
+			<Declaration>- (int)readPCMData:(AudioBufferList *)buf nbSample:(UInt32)cnt</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>buf,</Name>
+					<Abstract type="html">待填充的音频数据 请保证buf.mDataByteSize 先设置为需要读取的字节数</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">-1: 解码遇到错误, 请检查音乐文件是否有效
+             0: 文件读取完毕, 无法提供更多数据 (loop时不会返回0)
+             1: 读取正常</Abstract></ReturnValue>
+			<Anchor>//api/name/readPCMData:nbSample:</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmReader/readPCMData:capacity:</TokenIdentifier>
+			<Abstract type="html">从文件中读取一段音频数据 (二选一)</Abstract>
+			<DeclaredIn>KSYBgmReader.h</DeclaredIn>
+			
+			<Declaration>- (int)readPCMData:(void *)buf capacity:(UInt32)cap</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>buf,</Name>
+					<Abstract type="html">待填充的音频数据(只会输出交织后的数据, 因此只有一个数据指针)</Abstract>
+				</Parameter><Parameter>
+					<Name>cap,</Name>
+					<Abstract type="html">buf的空间大小</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">-1: 解码遇到错误, 请检查音乐文件是否有效
+            &gt;0: 读取正常, 数值为实际取到的数据字节数</Abstract></ReturnValue>
+			<Anchor>//api/name/readPCMData:capacity:</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmReader/setBgmDuration:</TokenIdentifier>
+			<Abstract type="html">背景音的duration信息（总时长, 单位:秒）</Abstract>
+			<DeclaredIn>KSYBgmReader.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) float bgmDuration</Declaration>
+			
+			
+			<Anchor>//api/name/bgmDuration</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmReader/bgmDuration</TokenIdentifier>
+			<Abstract type="html">背景音的duration信息（总时长, 单位:秒）</Abstract>
+			<DeclaredIn>KSYBgmReader.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) float bgmDuration</Declaration>
+			
+			
+			<Anchor>//api/name/bgmDuration</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmReader/bgmDuration</TokenIdentifier>
+			<Abstract type="html">背景音的duration信息（总时长, 单位:秒）</Abstract>
+			<DeclaredIn>KSYBgmReader.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) float bgmDuration</Declaration>
+			
+			
+			<Anchor>//api/name/bgmDuration</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmReader/setBgmPlayTime:</TokenIdentifier>
+			<Abstract type="html">背景音的已经播放长度 (单位:秒)</Abstract>
+			<DeclaredIn>KSYBgmReader.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) float bgmPlayTime</Declaration>
+			
+			
+			<Anchor>//api/name/bgmPlayTime</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmReader/bgmPlayTime</TokenIdentifier>
+			<Abstract type="html">背景音的已经播放长度 (单位:秒)</Abstract>
+			<DeclaredIn>KSYBgmReader.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) float bgmPlayTime</Declaration>
+			
+			
+			<Anchor>//api/name/bgmPlayTime</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmReader/bgmPlayTime</TokenIdentifier>
+			<Abstract type="html">背景音的已经播放长度 (单位:秒)</Abstract>
+			<DeclaredIn>KSYBgmReader.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) float bgmPlayTime</Declaration>
+			
+			
+			<Anchor>//api/name/bgmPlayTime</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmReader/setBgmProcess:</TokenIdentifier>
+			<Abstract type="html">音频的播放进度</Abstract>
+			<DeclaredIn>KSYBgmReader.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) float bgmProcess</Declaration>
+			
+			
+			<Anchor>//api/name/bgmProcess</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmReader/bgmProcess</TokenIdentifier>
+			<Abstract type="html">音频的播放进度</Abstract>
+			<DeclaredIn>KSYBgmReader.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) float bgmProcess</Declaration>
+			
+			
+			<Anchor>//api/name/bgmProcess</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmReader/bgmProcess</TokenIdentifier>
+			<Abstract type="html">音频的播放进度</Abstract>
+			<DeclaredIn>KSYBgmReader.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) float bgmProcess</Declaration>
+			
+			
+			<Anchor>//api/name/bgmProcess</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmReader/setBLoop:</TokenIdentifier>
+			<Abstract type="html">单曲循环</Abstract>
+			<DeclaredIn>KSYBgmReader.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bLoop</Declaration>
+			
+			
+			<Anchor>//api/name/bLoop</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmReader/bLoop</TokenIdentifier>
+			<Abstract type="html">单曲循环</Abstract>
+			<DeclaredIn>KSYBgmReader.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bLoop</Declaration>
+			
+			
+			<Anchor>//api/name/bLoop</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmReader/bLoop</TokenIdentifier>
+			<Abstract type="html">单曲循环</Abstract>
+			<DeclaredIn>KSYBgmReader.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bLoop</Declaration>
+			
+			
+			<Anchor>//api/name/bLoop</Anchor>
             <NodeRef refid="12"/>
 		</Token>
 		

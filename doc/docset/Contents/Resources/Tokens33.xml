@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYMovieWriter.html">
+	<File path="Classes/KSYMessage.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYMovieWriter</TokenIdentifier>
-			<Abstract type="html">视频文件录制类</Abstract>
-			<DeclaredIn>KSYMovieWriter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYMessage</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYMessage.h</DeclaredIn>
             
 			
 			<NodeRef refid="33"/>
@@ -13,31 +13,54 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMovieWriter/startWrite:</TokenIdentifier>
-			<Abstract type="html">write video stream to local files</Abstract>
-			<DeclaredIn>KSYMovieWriter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMessage/processMessageData:</TokenIdentifier>
+			<Abstract type="html">处理消息数据
+@param      消息数据</Abstract>
+			<DeclaredIn>KSYMessage.h</DeclaredIn>
 			
-			<Declaration>- (void)startWrite:(NSURL *)filePath</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>filePath</Name>
-					<Abstract type="html">is local file path</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>- (BOOL)processMessageData:(NSMutableDictionary *)messageData</Declaration>
 			
-			<Anchor>//api/name/startWrite:</Anchor>
+			
+			<Anchor>//api/name/processMessageData:</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMovieWriter/stopWrite</TokenIdentifier>
-			<Abstract type="html">stop wirte file</Abstract>
-			<DeclaredIn>KSYMovieWriter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMessage/setMessageProcessingCallback:</TokenIdentifier>
+			<Abstract type="html">消息处理回调接口
+@param      消息数据</Abstract>
+			<DeclaredIn>KSYMessage.h</DeclaredIn>
 			
-			<Declaration>- (void)stopWrite</Declaration>
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( NSDictionary *messageData ) messageProcessingCallback</Declaration>
 			
 			
-			<Anchor>//api/name/stopWrite</Anchor>
+			<Anchor>//api/name/messageProcessingCallback</Anchor>
+            <NodeRef refid="33"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMessage/messageProcessingCallback</TokenIdentifier>
+			<Abstract type="html">消息处理回调接口
+@param      消息数据</Abstract>
+			<DeclaredIn>KSYMessage.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( NSDictionary *messageData ) messageProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/messageProcessingCallback</Anchor>
+            <NodeRef refid="33"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMessage/messageProcessingCallback</TokenIdentifier>
+			<Abstract type="html">消息处理回调接口
+@param      消息数据</Abstract>
+			<DeclaredIn>KSYMessage.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( NSDictionary *messageData ) messageProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/messageProcessingCallback</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		

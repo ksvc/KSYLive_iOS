@@ -47,6 +47,8 @@
 //cpu use rate
 + (float) cpu_usage;
 + (float) memory_usage;
++ (int)getCurrentBatteryLevel;
+
 // 网络状态
 @property NSString* networkStatus;
 @property(nonatomic, copy) void(^onNetworkChange)(NSString* msg);

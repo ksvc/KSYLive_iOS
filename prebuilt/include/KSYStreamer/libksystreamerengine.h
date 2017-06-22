@@ -23,9 +23,12 @@
 // mixer
 #import "KSYGPUPicMixer.h"
 #import "KSYAudioMixer.h"
+#import "KSYAudioFilter.h"
+
 // streamer
 #import "KSYGPUPicOutput.h"
+#import "KSYGPUView.h"
 
 
-#define KSYSTREAMERENGINE_VER 2.3.0
-#define KSYSTREAMERENGINE_ID 72c540022458bc0e64e402bde54f59f0bffed1bd
+#define KSYSTREAMERENGINE_VER 2.4.0
+#define KSYSTREAMERENGINE_ID a58fc00c017d112a0d6ce3052e35500e8f3c293f

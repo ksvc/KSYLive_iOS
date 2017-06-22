@@ -82,7 +82,7 @@
  @abstract   预览视图
  @discussion 通过此指针可以对预览视图进行操作
  */
-@property (nonatomic, readonly) GPUImageView          *preview;
+@property (nonatomic, readonly) KSYGPUView          *preview;
 
 /**
  @abstract   采集到的图像上传GPU

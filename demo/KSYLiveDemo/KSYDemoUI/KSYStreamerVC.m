@@ -14,6 +14,7 @@
 #import "KSYBgmView.h"
 #import "KSYPipView.h"
 #import "KSYNameSlider.h"
+#import "KSYQRCode.h"
 
 #import <CallKit/CXCallObserver.h>
 #import <CallKit/CallKit.h>
@@ -814,6 +815,23 @@
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
         picker.delegate = self;
         [self presentViewController:picker animated:YES completion:nil];
+    }
+    //弹出拉流地址及二维码
+    else if(sender == _miscView.buttonPlayUrlAndQR){
+        KSYQRCode *playUrlQRCodeVc = [[KSYQRCode alloc] init];
+        if (_bRecord) {
+            //状态为录制视频
+            playUrlQRCodeVc.url = [_presetCfgView.hostUrlUI.text lastPathComponent];
+        }else{
+            //状态为直播视频
+            //推流地址对应的拉流地址
+            NSString * uuidStr =[[[UIDevice currentDevice] identifierForVendor] UUIDString];
+            NSString *devCode  = [[uuidStr substringToIndex:3] lowercaseString];
+            NSString *streamPlaySrv = @"http://test.hdllive.ks-cdn.com/live";
+            NSString *streamPlayPostfix = @".flv";
+            playUrlQRCodeVc.url = [ NSString stringWithFormat:@"%@/%@%@", streamPlaySrv, devCode,streamPlayPostfix];
+        }
+        [self presentViewController:playUrlQRCodeVc animated:YES completion:nil];
     }
 }
 

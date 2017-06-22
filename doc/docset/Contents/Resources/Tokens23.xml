@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUPicInput.html">
+	<File path="Classes/KSYGPUFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUPicInput</TokenIdentifier>
-			<Abstract type="html">GPU图像输输入</Abstract>
-			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUFilter</TokenIdentifier>
+			<Abstract type="html">KSY的滤镜基类</Abstract>
+			<DeclaredIn>KSYGPUFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="23"/>
@@ -13,11 +13,11 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/init</TokenIdentifier>
-			<Abstract type="html">Initialization and teardown</Abstract>
-			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUFilter/init</TokenIdentifier>
+			<Abstract type="html">构造</Abstract>
+			<DeclaredIn>KSYGPUFilter.h</DeclaredIn>
 			
-			<Declaration>- (id)init</Declaration>
+			<Declaration>- (instancetype)init</Declaration>
 			
 			
 			<Anchor>//api/name/init</Anchor>
@@ -25,244 +25,19 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/initWithFmt:</TokenIdentifier>
-			<Abstract type="html">设置输入图像的像素格式</Abstract>
-			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUFilter/reload:</TokenIdentifier>
+			<Abstract type="html">重新载入纹理shader的代码</Abstract>
+			<DeclaredIn>KSYGPUFilter.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithFmt:(OSType)fmt</Declaration>
+			<Declaration>- (void)reload:(NSString *)fragmentShaderString</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>fmt</Name>
-					<Abstract type="html">像素格式</Abstract>
+					<Name>fragmentShaderString</Name>
+					<Abstract type="html">新的纹理shader的代码</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/initWithFmt:</Anchor>
-            <NodeRef refid="23"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/setCropRegion:</TokenIdentifier>
-			<Abstract type="html">裁剪区域 将输入的图像按照区域裁剪出中间的一块</Abstract>
-			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
-			
-			<Declaration>@property (readwrite, nonatomic) CGRect cropRegion</Declaration>
-			
-			
-			<Anchor>//api/name/cropRegion</Anchor>
-            <NodeRef refid="23"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/cropRegion</TokenIdentifier>
-			<Abstract type="html">裁剪区域 将输入的图像按照区域裁剪出中间的一块</Abstract>
-			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
-			
-			<Declaration>@property (readwrite, nonatomic) CGRect cropRegion</Declaration>
-			
-			
-			<Anchor>//api/name/cropRegion</Anchor>
-            <NodeRef refid="23"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicInput/cropRegion</TokenIdentifier>
-			<Abstract type="html">裁剪区域 将输入的图像按照区域裁剪出中间的一块</Abstract>
-			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
-			
-			<Declaration>@property (readwrite, nonatomic) CGRect cropRegion</Declaration>
-			
-			
-			<Anchor>//api/name/cropRegion</Anchor>
-            <NodeRef refid="23"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/forceProcessingAtSize:</TokenIdentifier>
-			<Abstract type="html">输出图像的尺寸</Abstract>
-			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
-			
-			<Declaration>- (void)forceProcessingAtSize:(CGSize)frameSize</Declaration>
-			
-			
-			<Anchor>//api/name/forceProcessingAtSize:</Anchor>
-            <NodeRef refid="23"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/setOutputSize:</TokenIdentifier>
-			<Abstract type="html">实际输出图像的尺寸</Abstract>
-			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic) CGSize outputSize</Declaration>
-			
-			
-			<Anchor>//api/name/outputSize</Anchor>
-            <NodeRef refid="23"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/outputSize</TokenIdentifier>
-			<Abstract type="html">实际输出图像的尺寸</Abstract>
-			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic) CGSize outputSize</Declaration>
-			
-			
-			<Anchor>//api/name/outputSize</Anchor>
-            <NodeRef refid="23"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicInput/outputSize</TokenIdentifier>
-			<Abstract type="html">实际输出图像的尺寸</Abstract>
-			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic) CGSize outputSize</Declaration>
-			
-			
-			<Anchor>//api/name/outputSize</Anchor>
-            <NodeRef refid="23"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/setOutputRotation:</TokenIdentifier>
-			<Abstract type="html">输出画面的朝向</Abstract>
-			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) GPUImageRotationMode outputRotation</Declaration>
-			
-			
-			<Anchor>//api/name/outputRotation</Anchor>
-            <NodeRef refid="23"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/outputRotation</TokenIdentifier>
-			<Abstract type="html">输出画面的朝向</Abstract>
-			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) GPUImageRotationMode outputRotation</Declaration>
-			
-			
-			<Anchor>//api/name/outputRotation</Anchor>
-            <NodeRef refid="23"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicInput/outputRotation</TokenIdentifier>
-			<Abstract type="html">输出画面的朝向</Abstract>
-			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) GPUImageRotationMode outputRotation</Declaration>
-			
-			
-			<Anchor>//api/name/outputRotation</Anchor>
-            <NodeRef refid="23"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/setAlwaysDiscardsLateVideoFrames:</TokenIdentifier>
-			<Abstract type="html">是否允许超时丢帧</Abstract>
-			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL alwaysDiscardsLateVideoFrames</Declaration>
-			
-			
-			<Anchor>//api/name/alwaysDiscardsLateVideoFrames</Anchor>
-            <NodeRef refid="23"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/alwaysDiscardsLateVideoFrames</TokenIdentifier>
-			<Abstract type="html">是否允许超时丢帧</Abstract>
-			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL alwaysDiscardsLateVideoFrames</Declaration>
-			
-			
-			<Anchor>//api/name/alwaysDiscardsLateVideoFrames</Anchor>
-            <NodeRef refid="23"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicInput/alwaysDiscardsLateVideoFrames</TokenIdentifier>
-			<Abstract type="html">是否允许超时丢帧</Abstract>
-			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL alwaysDiscardsLateVideoFrames</Declaration>
-			
-			
-			<Anchor>//api/name/alwaysDiscardsLateVideoFrames</Anchor>
-            <NodeRef refid="23"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/processSampleBuffer:</TokenIdentifier>
-			<Abstract type="html">输入图像数据</Abstract>
-			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
-			
-			<Declaration>- (void)processSampleBuffer:(CMSampleBufferRef)sampleBuffer</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>sampleBuffer</Name>
-					<Abstract type="html">图像数据和时间信息</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/processSampleBuffer:</Anchor>
-            <NodeRef refid="23"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/processPixelBuffer:time:</TokenIdentifier>
-			<Abstract type="html">输入图像数据</Abstract>
-			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
-			
-			<Declaration>- (void)processPixelBuffer:(CVPixelBufferRef)pixelBuffer time:(CMTime)timeInfo</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>pixelBuffer</Name>
-					<Abstract type="html">图像数据</Abstract>
-				</Parameter><Parameter>
-					<Name>timeInfo</Name>
-					<Abstract type="html">时间信息</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/processPixelBuffer:time:</Anchor>
-            <NodeRef refid="23"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/processPixelData:format:width:height:stride:time:</TokenIdentifier>
-			<Abstract type="html">输入图像数据</Abstract>
-			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
-			
-			<Declaration>- (void)processPixelData:(void **)pData format:(OSType)pixelFmt width:(size_t)width height:(size_t)height stride:(size_t *)strides time:(CMTime)timeInfo</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>pData</Name>
-					<Abstract type="html">图像数据每个分量的指针, 比如pData[0]为Y分量的指针</Abstract>
-				</Parameter><Parameter>
-					<Name>pixelFmt</Name>
-					<Abstract type="html">图像数据类型, 必须与init时指定的格式一致</Abstract>
-				</Parameter><Parameter>
-					<Name>width</Name>
-					<Abstract type="html">图像宽度</Abstract>
-				</Parameter><Parameter>
-					<Name>height</Name>
-					<Abstract type="html">图像高度</Abstract>
-				</Parameter><Parameter>
-					<Name>strides</Name>
-					<Abstract type="html">图像数据每个分量的行偏移, 比如 stride[0] 为Y分量的行偏移</Abstract>
-				</Parameter><Parameter>
-					<Name>timeInfo</Name>
-					<Abstract type="html">时间信息</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/processPixelData:format:width:height:stride:time:</Anchor>
+			<Anchor>//api/name/reload:</Anchor>
             <NodeRef refid="23"/>
 		</Token>
 		

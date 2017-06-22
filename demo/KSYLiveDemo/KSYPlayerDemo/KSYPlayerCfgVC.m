@@ -9,6 +9,7 @@
 #import "KSYUIView.h"
 #import "KSYPlayerCfgVC.h"
 #import "KSYPlayerVC.h"
+#import "KSYSimplePlayVC.h"
 
 #define ELEMENT_GAP  5
 
@@ -57,6 +58,8 @@
     UIButton *btnPlay;
     //退出按钮
     UIButton *btnQuit;
+    //极简播放按钮
+    UIButton *btnSamplestPlay;
 }
 
 - (instancetype)initWithURL:(NSURL *)url  fileList:(NSArray *)fileList{
@@ -129,6 +132,7 @@
     btnPlay = [ctrlView addButton:@"播放"];
     //添加一个退出按钮
     btnQuit = [ctrlView addButton:@"退出"];
+    btnSamplestPlay = [ctrlView addButton:@"极简播放"];
     
     [self layoutUI];
     
@@ -159,7 +163,7 @@
     ctrlView.btnH = (ctrlView.height - yPos - ctrlView.gap*2) ;
     
     //放置播放和退出按钮
-    [ctrlView putRow2:btnPlay and:btnQuit];
+    [ctrlView putRow3:btnPlay and:btnSamplestPlay and:btnQuit];
 }
 
 - (void)onBtn:(UIButton *)btn{
@@ -167,6 +171,8 @@
     if(btn == btnPlay)
     {
         vc  = [[KSYPlayerVC alloc]initWithURLAndConfigure:[NSURL URLWithString:textHostUrl.text] fileList:_fileList config:self];
+    }else if(btn == btnSamplestPlay){
+        vc = [[KSYSimplePlayVC alloc]initWithURLAndConfigure:[NSURL URLWithString:textHostUrl.text] fileList:_fileList config:self];
     }
     else if(btn == btnQuit)
         [self dismissViewControllerAnimated:FALSE

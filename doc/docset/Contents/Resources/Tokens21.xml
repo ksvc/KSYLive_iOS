@@ -1,16 +1,205 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUDnoiseFilter.html">
+	<File path="Classes/KSYGPUCamera.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUDnoiseFilter</TokenIdentifier>
-			<Abstract type="html">去噪滤镜</Abstract>
-			<DeclaredIn>KSYGPUDnoiseFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUCamera</TokenIdentifier>
+			<Abstract type="html">基于 AVFoundation的 音视频采集模块</Abstract>
+			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
             
 			
 			<NodeRef refid="21"/>
 		</Token>
 		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/initWithSessionPreset:cameraPosition:</TokenIdentifier>
+			<Abstract type="html">Begin a capture session</Abstract>
+			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithSessionPreset:(NSString *)sessionPreset cameraPosition:(AVCaptureDevicePosition)cameraPosition</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sessionPreset</Name>
+					<Abstract type="html">Session preset to use</Abstract>
+				</Parameter><Parameter>
+					<Name>cameraPosition</Name>
+					<Abstract type="html">Camera to capture from</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">nil 表明cameraPosition对应的sessionPreset不支持，初始化不成功</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithSessionPreset:cameraPosition:</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/isTorchSupported</TokenIdentifier>
+			<Abstract type="html">当前采集设备是否支持闪光灯</Abstract>
+			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isTorchSupported</Declaration>
+			
+			<ReturnValue><Abstract type="html">YES / NO</Abstract></ReturnValue>
+			<Anchor>//api/name/isTorchSupported</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/toggleTorch</TokenIdentifier>
+			<Abstract type="html">开关闪光灯</Abstract>
+			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
+			
+			<Declaration>- (void)toggleTorch</Declaration>
+			
+			
+			<Anchor>//api/name/toggleTorch</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/setTorchMode:</TokenIdentifier>
+			<Abstract type="html">设置闪光灯</Abstract>
+			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
+			
+			<Declaration>- (void)setTorchMode:(AVCaptureTorchMode)mode</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>mode</Name>
+					<Abstract type="html">AVCaptureTorchModeOn/Off</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setTorchMode:</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/setIsRunning:</TokenIdentifier>
+			<Abstract type="html">判断是否运行
+  </Abstract>
+			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, nonatomic) BOOL isRunning</Declaration>
+			
+			
+			<Anchor>//api/name/isRunning</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/isRunning</TokenIdentifier>
+			<Abstract type="html">判断是否运行
+  </Abstract>
+			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, nonatomic) BOOL isRunning</Declaration>
+			
+			
+			<Anchor>//api/name/isRunning</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUCamera/isRunning</TokenIdentifier>
+			<Abstract type="html">判断是否运行
+  </Abstract>
+			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, nonatomic) BOOL isRunning</Declaration>
+			
+			
+			<Anchor>//api/name/isRunning</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/setAudioProcessingCallback:</TokenIdentifier>
+			<Abstract type="html">音频处理回调接口</Abstract>
+			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/audioProcessingCallback</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/audioProcessingCallback</TokenIdentifier>
+			<Abstract type="html">音频处理回调接口</Abstract>
+			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/audioProcessingCallback</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUCamera/audioProcessingCallback</TokenIdentifier>
+			<Abstract type="html">音频处理回调接口</Abstract>
+			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/audioProcessingCallback</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/setVideoProcessingCallback:</TokenIdentifier>
+			<Abstract type="html">视频处理回调接口</Abstract>
+			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) videoProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/videoProcessingCallback</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUCamera/videoProcessingCallback</TokenIdentifier>
+			<Abstract type="html">视频处理回调接口</Abstract>
+			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) videoProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/videoProcessingCallback</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUCamera/videoProcessingCallback</TokenIdentifier>
+			<Abstract type="html">视频处理回调接口</Abstract>
+			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) videoProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/videoProcessingCallback</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KSYGPUCamera/getCapOrientation:</TokenIdentifier>
+			<Abstract type="html">UIInterfaceOrientation 转 AVCaptureVideoOrientation</Abstract>
+			<DeclaredIn>KSYGPUCamera.h</DeclaredIn>
+			
+			<Declaration>+ (AVCaptureVideoOrientation)getCapOrientation:(UIInterfaceOrientation)orien</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>orien</Name>
+					<Abstract type="html">UI的朝向</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/getCapOrientation:</Anchor>
+            <NodeRef refid="21"/>
+		</Token>
 		
         
         

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYAudioMixer.html">
+	<File path="Classes/KSYAudioInfo.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYAudioMixer</TokenIdentifier>
-			<Abstract type="html">多路pcm混音</Abstract>
-			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYAudioInfo</TokenIdentifier>
+			<Abstract type="html">音频信息</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
 			
 			<NodeRef refid="7"/>
@@ -13,305 +13,254 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/getMaxMixTrack</TokenIdentifier>
-			<Abstract type="html">获取最大支持的混合路数
-*</Abstract>
-			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/setAcodec:</TokenIdentifier>
+			<Abstract type="html">音频编码格式,  具体类型为MEDIAINFOCODECID</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>- (int)getMaxMixTrack</Declaration>
+			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID acodec</Declaration>
 			
 			
-			<Anchor>//api/name/getMaxMixTrack</Anchor>
+			<Anchor>//api/name/acodec</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/setMixVolume:of:</TokenIdentifier>
-			<Abstract type="html">设置混音音量（默认音量为1.0）</Abstract>
-			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/acodec</TokenIdentifier>
+			<Abstract type="html">音频编码格式,  具体类型为MEDIAINFOCODECID</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)setMixVolume:(float)vol of:(int)trackId</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>vol</Name>
-					<Abstract type="html">音量比例（0.0~2.0） (&lt;1.0 为缩小, &gt; 1.0为放大)</Abstract>
-				</Parameter><Parameter>
-					<Name>trackId</Name>
-					<Abstract type="html">设置对应track的</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">NO为设置失败，如track不存在，或vol超出范围</Abstract></ReturnValue>
-			<Anchor>//api/name/setMixVolume:of:</Anchor>
+			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID acodec</Declaration>
+			
+			
+			<Anchor>//api/name/acodec</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/getMixVolume:</TokenIdentifier>
-			<Abstract type="html">查询track的音量</Abstract>
-			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioInfo/acodec</TokenIdentifier>
+			<Abstract type="html">音频编码格式,  具体类型为MEDIAINFOCODECID</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>- (float)getMixVolume:(int)trackId</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>trackId</Name>
-					<Abstract type="html">设置对应track的</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">负数为查询失败，如track不存在
-*</Abstract></ReturnValue>
-			<Anchor>//api/name/getMixVolume:</Anchor>
+			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID acodec</Declaration>
+			
+			
+			<Anchor>//api/name/acodec</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/setTrack:enable:</TokenIdentifier>
-			<Abstract type="html">开启/关闭一路声音</Abstract>
-			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/setLanguage:</TokenIdentifier>
+			<Abstract type="html">音频语言, 如chinese, english...</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)setTrack:(int)trackId enable:(BOOL)onOff</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>trackId</Name>
-					<Abstract type="html">开关对应track</Abstract>
-				</Parameter><Parameter>
-					<Name>onOff</Name>
-					<Abstract type="html">开关， 0号track默认开启</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">NO为设置失败，比如trackID不存在
-*</Abstract></ReturnValue>
-			<Anchor>//api/name/setTrack:enable:</Anchor>
+			<Declaration>@property (nonatomic) NSString *language</Declaration>
+			
+			
+			<Anchor>//api/name/language</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/getTrackEnable:</TokenIdentifier>
-			<Abstract type="html">查询track是否开启</Abstract>
-			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/language</TokenIdentifier>
+			<Abstract type="html">音频语言, 如chinese, english...</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)getTrackEnable:(int)trackId</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>trackId</Name>
-					<Abstract type="html">开关对应track
-*</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic) NSString *language</Declaration>
 			
-			<Anchor>//api/name/getTrackEnable:</Anchor>
+			
+			<Anchor>//api/name/language</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/getBufLength:</TokenIdentifier>
-			<Abstract type="html">查询track中缓存数据的长度（单位为一次输出的samplebuffer数）</Abstract>
-			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioInfo/language</TokenIdentifier>
+			<Abstract type="html">音频语言, 如chinese, english...</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>- (int)getBufLength:(int)trackId</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>trackId</Name>
-					<Abstract type="html">开关对应track</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">&lt;0, 表示查询失败
-            =0，表示残余的数据不足一次输出
-            &gt;0, 表示可以buffer中的数据还可以输出n次
-*</Abstract></ReturnValue>
-			<Anchor>//api/name/getBufLength:</Anchor>
+			<Declaration>@property (nonatomic) NSString *language</Declaration>
+			
+			
+			<Anchor>//api/name/language</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/processAudioSampleBuffer:of:</TokenIdentifier>
-			<Abstract type="html">输入音频PCM</Abstract>
-			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/setBitrate:</TokenIdentifier>
+			<Abstract type="html">音频码率</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)processAudioSampleBuffer:(CMSampleBufferRef)sampleBuffer of:(int)trackId</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>sampleBuffer</Name>
-					<Abstract type="html">音频数据</Abstract>
-				</Parameter><Parameter>
-					<Name>trackId</Name>
-					<Abstract type="html">设置对应track的</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">NO为设置失败，比如trackID不存在</Abstract></ReturnValue>
-			<Anchor>//api/name/processAudioSampleBuffer:of:</Anchor>
+			<Declaration>@property (nonatomic, assign) int64_t bitrate</Declaration>
+			
+			
+			<Anchor>//api/name/bitrate</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/processAudioData:nbSample:withFormat:timeinfo:of:</TokenIdentifier>
-			<Abstract type="html">输入音频PCM</Abstract>
-			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/bitrate</TokenIdentifier>
+			<Abstract type="html">音频码率</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)processAudioData:(uint8_t **)pData nbSample:(int)len withFormat:(const AudioStreamBasicDescription *)fmt timeinfo:(CMTime)pts of:(int)trackId</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>pData</Name>
-					<Abstract type="html">原始数据</Abstract>
-				</Parameter><Parameter>
-					<Name>len</Name>
-					<Abstract type="html">数据的长度，单位为字节</Abstract>
-				</Parameter><Parameter>
-					<Name>fmt</Name>
-					<Abstract type="html">原始数据的格式</Abstract>
-				</Parameter><Parameter>
-					<Name>pts</Name>
-					<Abstract type="html">原始数据的时间戳</Abstract>
-				</Parameter><Parameter>
-					<Name>trackId</Name>
-					<Abstract type="html">设置对应track的</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">NO为设置失败，比如trackID不存在</Abstract></ReturnValue>
-			<Anchor>//api/name/processAudioData:nbSample:withFormat:timeinfo:of:</Anchor>
+			<Declaration>@property (nonatomic, assign) int64_t bitrate</Declaration>
+			
+			
+			<Anchor>//api/name/bitrate</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/setAudioProcessingCallback:</TokenIdentifier>
-			<Abstract type="html">音频处理回调接口</Abstract>
-			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioInfo/bitrate</TokenIdentifier>
+			<Abstract type="html">音频码率</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
+			<Declaration>@property (nonatomic, assign) int64_t bitrate</Declaration>
 			
 			
-			<Anchor>//api/name/audioProcessingCallback</Anchor>
+			<Anchor>//api/name/bitrate</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/audioProcessingCallback</TokenIdentifier>
-			<Abstract type="html">音频处理回调接口</Abstract>
-			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/setChannels:</TokenIdentifier>
+			<Abstract type="html">声道数</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
+			<Declaration>@property (nonatomic, assign) int32_t channels</Declaration>
 			
 			
-			<Anchor>//api/name/audioProcessingCallback</Anchor>
+			<Anchor>//api/name/channels</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioMixer/audioProcessingCallback</TokenIdentifier>
-			<Abstract type="html">音频处理回调接口</Abstract>
-			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/channels</TokenIdentifier>
+			<Abstract type="html">声道数</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
+			<Declaration>@property (nonatomic, assign) int32_t channels</Declaration>
 			
 			
-			<Anchor>//api/name/audioProcessingCallback</Anchor>
+			<Anchor>//api/name/channels</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/setMainTrack:</TokenIdentifier>
-			<Abstract type="html">主轨的trackId （默认为0）</Abstract>
-			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioInfo/channels</TokenIdentifier>
+			<Abstract type="html">声道数</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int mainTrack</Declaration>
+			<Declaration>@property (nonatomic, assign) int32_t channels</Declaration>
 			
 			
-			<Anchor>//api/name/mainTrack</Anchor>
+			<Anchor>//api/name/channels</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/mainTrack</TokenIdentifier>
-			<Abstract type="html">主轨的trackId （默认为0）</Abstract>
-			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/setSamplerate:</TokenIdentifier>
+			<Abstract type="html">音频采样率</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int mainTrack</Declaration>
+			<Declaration>@property (nonatomic, assign) int32_t samplerate</Declaration>
 			
 			
-			<Anchor>//api/name/mainTrack</Anchor>
+			<Anchor>//api/name/samplerate</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioMixer/mainTrack</TokenIdentifier>
-			<Abstract type="html">主轨的trackId （默认为0）</Abstract>
-			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/samplerate</TokenIdentifier>
+			<Abstract type="html">音频采样率</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int mainTrack</Declaration>
+			<Declaration>@property (nonatomic, assign) int32_t samplerate</Declaration>
 			
 			
-			<Anchor>//api/name/mainTrack</Anchor>
+			<Anchor>//api/name/samplerate</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/setBStereo:</TokenIdentifier>
-			<Abstract type="html">输出音频是否为双声道立体声 (默认为NO)</Abstract>
-			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioInfo/samplerate</TokenIdentifier>
+			<Abstract type="html">音频采样率</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL bStereo</Declaration>
+			<Declaration>@property (nonatomic, assign) int32_t samplerate</Declaration>
 			
 			
-			<Anchor>//api/name/bStereo</Anchor>
+			<Anchor>//api/name/samplerate</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/bStereo</TokenIdentifier>
-			<Abstract type="html">输出音频是否为双声道立体声 (默认为NO)</Abstract>
-			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/setSample_format:</TokenIdentifier>
+			<Abstract type="html">音频采样格式, 具体类型为MEDIAINFOSAMPLEFMT</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL bStereo</Declaration>
+			<Declaration>@property (nonatomic, assign) MEDIAINFO_SAMPLE_FMT sample_format</Declaration>
 			
 			
-			<Anchor>//api/name/bStereo</Anchor>
+			<Anchor>//api/name/sample_format</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioMixer/bStereo</TokenIdentifier>
-			<Abstract type="html">输出音频是否为双声道立体声 (默认为NO)</Abstract>
-			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/sample_format</TokenIdentifier>
+			<Abstract type="html">音频采样格式, 具体类型为MEDIAINFOSAMPLEFMT</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL bStereo</Declaration>
+			<Declaration>@property (nonatomic, assign) MEDIAINFO_SAMPLE_FMT sample_format</Declaration>
 			
 			
-			<Anchor>//api/name/bStereo</Anchor>
+			<Anchor>//api/name/sample_format</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/setOutFmtDes:</TokenIdentifier>
-			<Abstract type="html">混音后输出PCM的格式</Abstract>
-			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioInfo/sample_format</TokenIdentifier>
+			<Abstract type="html">音频采样格式, 具体类型为MEDIAINFOSAMPLEFMT</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) AudioStreamBasicDescription *outFmtDes</Declaration>
+			<Declaration>@property (nonatomic, assign) MEDIAINFO_SAMPLE_FMT sample_format</Declaration>
 			
 			
-			<Anchor>//api/name/outFmtDes</Anchor>
+			<Anchor>//api/name/sample_format</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/outFmtDes</TokenIdentifier>
-			<Abstract type="html">混音后输出PCM的格式</Abstract>
-			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/setFramesize:</TokenIdentifier>
+			<Abstract type="html">音频帧大小</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) AudioStreamBasicDescription *outFmtDes</Declaration>
+			<Declaration>@property (nonatomic, assign) int32_t framesize</Declaration>
 			
 			
-			<Anchor>//api/name/outFmtDes</Anchor>
+			<Anchor>//api/name/framesize</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioMixer/outFmtDes</TokenIdentifier>
-			<Abstract type="html">混音后输出PCM的格式</Abstract>
-			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioInfo/framesize</TokenIdentifier>
+			<Abstract type="html">音频帧大小</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) AudioStreamBasicDescription *outFmtDes</Declaration>
+			<Declaration>@property (nonatomic, assign) int32_t framesize</Declaration>
 			
 			
-			<Anchor>//api/name/outFmtDes</Anchor>
+			<Anchor>//api/name/framesize</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioInfo/framesize</TokenIdentifier>
+			<Abstract type="html">音频帧大小</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int32_t framesize</Declaration>
+			
+			
+			<Anchor>//api/name/framesize</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		

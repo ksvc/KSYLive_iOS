@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUPipStreamerKit.html">
+	<File path="Classes/KSYGPUPicOutput.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUPipStreamerKit</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUPicOutput</TokenIdentifier>
+			<Abstract type="html">GPU图像输出</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
             
 			
 			<NodeRef refid="26"/>
@@ -13,418 +13,387 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/setPipTrack:</TokenIdentifier>
-			<Abstract type="html">画中画通道</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/init</TokenIdentifier>
+			<Abstract type="html">初始化方法</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) int pipTrack</Declaration>
+			<Declaration>- (id)init</Declaration>
 			
 			
-			<Anchor>//api/name/pipTrack</Anchor>
+			<Anchor>//api/name/init</Anchor>
             <NodeRef refid="26"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/pipTrack</TokenIdentifier>
-			<Abstract type="html">画中画通道</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/initWithOutFmt:</TokenIdentifier>
+			<Abstract type="html">指定输出格式的初始化</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) int pipTrack</Declaration>
-			
-			
-			<Anchor>//api/name/pipTrack</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/outputPixelFormat</TokenIdentifier>
 		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPipStreamerKit/pipTrack</TokenIdentifier>
-			<Abstract type="html">画中画通道</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) int pipTrack</Declaration>
-			
-			
-			<Anchor>//api/name/pipTrack</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/setBgPicLayer:</TokenIdentifier>
-			<Abstract type="html">背景图片图层</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSInteger bgPicLayer</Declaration>
-			
-			
-			<Anchor>//api/name/bgPicLayer</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/bgPicLayer</TokenIdentifier>
-			<Abstract type="html">背景图片图层</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSInteger bgPicLayer</Declaration>
-			
-			
-			<Anchor>//api/name/bgPicLayer</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPipStreamerKit/bgPicLayer</TokenIdentifier>
-			<Abstract type="html">背景图片图层</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSInteger bgPicLayer</Declaration>
-			
-			
-			<Anchor>//api/name/bgPicLayer</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/setPipLayer:</TokenIdentifier>
-			<Abstract type="html">画中画图层</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSInteger pipLayer</Declaration>
-			
-			
-			<Anchor>//api/name/pipLayer</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/pipLayer</TokenIdentifier>
-			<Abstract type="html">画中画图层</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSInteger pipLayer</Declaration>
-			
-			
-			<Anchor>//api/name/pipLayer</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPipStreamerKit/pipLayer</TokenIdentifier>
-			<Abstract type="html">画中画图层</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSInteger pipLayer</Declaration>
-			
-			
-			<Anchor>//api/name/pipLayer</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/startPipWithPlayerUrl:bgPic:</TokenIdentifier>
-			<Abstract type="html">开启画中画
-@param playerUrl:播放视频的url
-@param bgUrl:背景图片的url</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>- (void)startPipWithPlayerUrl:(NSURL *_Nullable)playerUrl bgPic:(NSURL *_Nullable)bgUrl</Declaration>
-			
-			
-			<Anchor>//api/name/startPipWithPlayerUrl:bgPic:</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/stopPip</TokenIdentifier>
-			<Abstract type="html">停止画中画
-*</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>- (void)stopPip</Declaration>
-			
-			
-			<Anchor>//api/name/stopPip</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/setPlayer:</TokenIdentifier>
-			<Abstract type="html">背景播放器</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) KSYMoviePlayerController *player</Declaration>
-			
-			
-			<Anchor>//api/name/player</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/player</TokenIdentifier>
-			<Abstract type="html">背景播放器</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) KSYMoviePlayerController *player</Declaration>
-			
-			
-			<Anchor>//api/name/player</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPipStreamerKit/player</TokenIdentifier>
-			<Abstract type="html">背景播放器</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) KSYMoviePlayerController *player</Declaration>
-			
-			
-			<Anchor>//api/name/player</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/setBgPic:</TokenIdentifier>
-			<Abstract type="html">背景图片</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) GPUImagePicture *bgPic</Declaration>
-			
-			
-			<Anchor>//api/name/bgPic</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/bgPic</TokenIdentifier>
-			<Abstract type="html">背景图片</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) GPUImagePicture *bgPic</Declaration>
-			
-			
-			<Anchor>//api/name/bgPic</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPipStreamerKit/bgPic</TokenIdentifier>
-			<Abstract type="html">背景图片</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) GPUImagePicture *bgPic</Declaration>
-			
-			
-			<Anchor>//api/name/bgPic</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/setYuvInput:</TokenIdentifier>
-			<Abstract type="html">画中画图像输入</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYGPUPicInput *yuvInput</Declaration>
-			
-			
-			<Anchor>//api/name/yuvInput</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/yuvInput</TokenIdentifier>
-			<Abstract type="html">画中画图像输入</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYGPUPicInput *yuvInput</Declaration>
-			
-			
-			<Anchor>//api/name/yuvInput</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPipStreamerKit/yuvInput</TokenIdentifier>
-			<Abstract type="html">画中画图像输入</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYGPUPicInput *yuvInput</Declaration>
-			
-			
-			<Anchor>//api/name/yuvInput</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/setBgPicRect:</TokenIdentifier>
-			<Abstract type="html">背景图片的位置和大小</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) CGRect bgPicRect</Declaration>
-			
-			
-			<Anchor>//api/name/bgPicRect</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/bgPicRect</TokenIdentifier>
-			<Abstract type="html">背景图片的位置和大小</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) CGRect bgPicRect</Declaration>
-			
-			
-			<Anchor>//api/name/bgPicRect</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPipStreamerKit/bgPicRect</TokenIdentifier>
-			<Abstract type="html">背景图片的位置和大小</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) CGRect bgPicRect</Declaration>
-			
-			
-			<Anchor>//api/name/bgPicRect</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/setPipRect:</TokenIdentifier>
-			<Abstract type="html">画中画的位置和大小</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) CGRect pipRect</Declaration>
-			
-			
-			<Anchor>//api/name/pipRect</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/pipRect</TokenIdentifier>
-			<Abstract type="html">画中画的位置和大小</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) CGRect pipRect</Declaration>
-			
-			
-			<Anchor>//api/name/pipRect</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPipStreamerKit/pipRect</TokenIdentifier>
-			<Abstract type="html">画中画的位置和大小</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) CGRect pipRect</Declaration>
-			
-			
-			<Anchor>//api/name/pipRect</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/setCameraRect:</TokenIdentifier>
-			<Abstract type="html">相机的位置和大小</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) CGRect cameraRect</Declaration>
-			
-			
-			<Anchor>//api/name/cameraRect</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/cameraRect</TokenIdentifier>
-			<Abstract type="html">相机的位置和大小</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) CGRect cameraRect</Declaration>
-			
-			
-			<Anchor>//api/name/cameraRect</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPipStreamerKit/cameraRect</TokenIdentifier>
-			<Abstract type="html">相机的位置和大小</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) CGRect cameraRect</Declaration>
-			
-			
-			<Anchor>//api/name/cameraRect</Anchor>
-            <NodeRef refid="26"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/getPipStateName:</TokenIdentifier>
-			<Abstract type="html">获取状态对应的字符串</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
-			
-			<Declaration>- (NSString *)getPipStateName:(MPMoviePlaybackState)stat</Declaration>
+	</RelatedTokens>
+	
+			<Declaration>- (id)initWithOutFmt:(OSType)fmt</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>stat</Name>
-					<Abstract type="html">状态</Abstract>
+					<Name>fmt</Name>
+					<Abstract type="html">输出格式</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/getPipStateName:</Anchor>
+			<Anchor>//api/name/initWithOutFmt:</Anchor>
             <NodeRef refid="26"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/getCurPipStateName</TokenIdentifier>
-			<Abstract type="html">获取当前状态对应的字符串</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setOutputPixelFormat:</TokenIdentifier>
+			<Abstract type="html">output format (默认:kCVPixelFormatType_32BGRA)</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
 			
-			<Declaration>- (NSString *)getCurPipStateName</Declaration>
+			<Declaration>@property (nonatomic, readonly) OSType outputPixelFormat</Declaration>
 			
 			
-			<Anchor>//api/name/getCurPipStateName</Anchor>
+			<Anchor>//api/name/outputPixelFormat</Anchor>
             <NodeRef refid="26"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/setPipState:</TokenIdentifier>
-			<Abstract type="html">播放状态</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/outputPixelFormat</TokenIdentifier>
+			<Abstract type="html">output format (默认:kCVPixelFormatType_32BGRA)</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) MPMoviePlaybackState PipState</Declaration>
+			<Declaration>@property (nonatomic, readonly) OSType outputPixelFormat</Declaration>
 			
 			
-			<Anchor>//api/name/PipState</Anchor>
+			<Anchor>//api/name/outputPixelFormat</Anchor>
             <NodeRef refid="26"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPipStreamerKit/PipState</TokenIdentifier>
-			<Abstract type="html">播放状态</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/outputPixelFormat</TokenIdentifier>
+			<Abstract type="html">output format (默认:kCVPixelFormatType_32BGRA)</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) MPMoviePlaybackState PipState</Declaration>
+			<Declaration>@property (nonatomic, readonly) OSType outputPixelFormat</Declaration>
 			
 			
-			<Anchor>//api/name/PipState</Anchor>
+			<Anchor>//api/name/outputPixelFormat</Anchor>
             <NodeRef refid="26"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPipStreamerKit/PipState</TokenIdentifier>
-			<Abstract type="html">播放状态</Abstract>
-			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setEnabled:</TokenIdentifier>
+			<Abstract type="html">GPUImageInput - (BOOL)enabled;</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) MPMoviePlaybackState PipState</Declaration>
+			<Declaration>@property (nonatomic) BOOL enabled</Declaration>
 			
 			
-			<Anchor>//api/name/PipState</Anchor>
+			<Anchor>//api/name/enabled</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/enabled</TokenIdentifier>
+			<Abstract type="html">GPUImageInput - (BOOL)enabled;</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL enabled</Declaration>
+			
+			
+			<Anchor>//api/name/enabled</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/enabled</TokenIdentifier>
+			<Abstract type="html">GPUImageInput - (BOOL)enabled;</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL enabled</Declaration>
+			
+			
+			<Anchor>//api/name/enabled</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setBCustomOutputSize:</TokenIdentifier>
+			<Abstract type="html">是否使用自定义输出尺寸 (默认为NO)</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bCustomOutputSize</Declaration>
+			
+			
+			<Anchor>//api/name/bCustomOutputSize</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/bCustomOutputSize</TokenIdentifier>
+			<Abstract type="html">是否使用自定义输出尺寸 (默认为NO)</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bCustomOutputSize</Declaration>
+			
+			
+			<Anchor>//api/name/bCustomOutputSize</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/bCustomOutputSize</TokenIdentifier>
+			<Abstract type="html">是否使用自定义输出尺寸 (默认为NO)</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bCustomOutputSize</Declaration>
+			
+			
+			<Anchor>//api/name/bCustomOutputSize</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setOutputSize:</TokenIdentifier>
+			<Abstract type="html">output picture size</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/bCustomOutputSize</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, assign) CGSize outputSize</Declaration>
+			
+			
+			<Anchor>//api/name/outputSize</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/outputSize</TokenIdentifier>
+			<Abstract type="html">output picture size</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/bCustomOutputSize</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, assign) CGSize outputSize</Declaration>
+			
+			
+			<Anchor>//api/name/outputSize</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/outputSize</TokenIdentifier>
+			<Abstract type="html">output picture size</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/bCustomOutputSize</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, assign) CGSize outputSize</Declaration>
+			
+			
+			<Anchor>//api/name/outputSize</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setCropRegion:</TokenIdentifier>
+			<Abstract type="html">裁剪区域 将输入的图像按照区域裁剪出中间的一块</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGRect cropRegion</Declaration>
+			
+			
+			<Anchor>//api/name/cropRegion</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/cropRegion</TokenIdentifier>
+			<Abstract type="html">裁剪区域 将输入的图像按照区域裁剪出中间的一块</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGRect cropRegion</Declaration>
+			
+			
+			<Anchor>//api/name/cropRegion</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/cropRegion</TokenIdentifier>
+			<Abstract type="html">裁剪区域 将输入的图像按照区域裁剪出中间的一块</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGRect cropRegion</Declaration>
+			
+			
+			<Anchor>//api/name/cropRegion</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setInputSize:</TokenIdentifier>
+			<Abstract type="html">input picture size</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) CGSize inputSize</Declaration>
+			
+			
+			<Anchor>//api/name/inputSize</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/inputSize</TokenIdentifier>
+			<Abstract type="html">input picture size</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) CGSize inputSize</Declaration>
+			
+			
+			<Anchor>//api/name/inputSize</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/inputSize</TokenIdentifier>
+			<Abstract type="html">input picture size</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) CGSize inputSize</Declaration>
+			
+			
+			<Anchor>//api/name/inputSize</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setBAutoRepeat:</TokenIdentifier>
+			<Abstract type="html">是否冻结图像(主动提供重复图像)</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) BOOL bAutoRepeat</Declaration>
+			
+			
+			<Anchor>//api/name/bAutoRepeat</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/bAutoRepeat</TokenIdentifier>
+			<Abstract type="html">是否冻结图像(主动提供重复图像)</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) BOOL bAutoRepeat</Declaration>
+			
+			
+			<Anchor>//api/name/bAutoRepeat</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/bAutoRepeat</TokenIdentifier>
+			<Abstract type="html">是否冻结图像(主动提供重复图像)</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) BOOL bAutoRepeat</Declaration>
+			
+			
+			<Anchor>//api/name/bAutoRepeat</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setTargetFps:</TokenIdentifier>
+			<Abstract type="html">0表示根据过去输入的图像来猜测帧率, 1~30 表示按照设定的帧率提供重复的帧, 默认为0</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) int targetFps</Declaration>
+			
+			
+			<Anchor>//api/name/targetFps</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/targetFps</TokenIdentifier>
+			<Abstract type="html">0表示根据过去输入的图像来猜测帧率, 1~30 表示按照设定的帧率提供重复的帧, 默认为0</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) int targetFps</Declaration>
+			
+			
+			<Anchor>//api/name/targetFps</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/targetFps</TokenIdentifier>
+			<Abstract type="html">0表示根据过去输入的图像来猜测帧率, 1~30 表示按照设定的帧率提供重复的帧, 默认为0</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) int targetFps</Declaration>
+			
+			
+			<Anchor>//api/name/targetFps</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/getInputRotation</TokenIdentifier>
+			<Abstract type="html">input roation mode</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>- (GPUImageRotationMode)getInputRotation</Declaration>
+			
+			<ReturnValue><Abstract type="html">图像的旋转模式</Abstract></ReturnValue>
+			<Anchor>//api/name/getInputRotation</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/setVideoProcessingCallback:</TokenIdentifier>
+			<Abstract type="html">视频处理回调接口</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CVPixelBufferRef pixelBuffer , CMTime timeInfo ) videoProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/videoProcessingCallback</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicOutput/videoProcessingCallback</TokenIdentifier>
+			<Abstract type="html">视频处理回调接口</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CVPixelBufferRef pixelBuffer , CMTime timeInfo ) videoProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/videoProcessingCallback</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicOutput/videoProcessingCallback</TokenIdentifier>
+			<Abstract type="html">视频处理回调接口</Abstract>
+			<DeclaredIn>KSYGPUPicOutput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CVPixelBufferRef pixelBuffer , CMTime timeInfo ) videoProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/videoProcessingCallback</Anchor>
             <NodeRef refid="26"/>
 		</Token>
 		

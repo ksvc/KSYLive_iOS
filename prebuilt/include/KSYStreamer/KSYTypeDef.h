@@ -92,6 +92,8 @@ typedef NS_ENUM(NSUInteger, KSYVideoCodec) {
     KSYVideoCodec_VT264,
     /// 视频编码器 - 由SDK自动选择（ VT264 > X264）
     KSYVideoCodec_AUTO = 100,
+    /// 视频编码器 - gif
+    KSYVideoCodec_GIF,
 };
 
 /*!

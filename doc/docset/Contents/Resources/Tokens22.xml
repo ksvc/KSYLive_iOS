@@ -1,45 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUFilter.html">
+	<File path="Classes/KSYGPUDnoiseFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUFilter</TokenIdentifier>
-			<Abstract type="html">KSY的滤镜基类</Abstract>
-			<DeclaredIn>KSYGPUFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUDnoiseFilter</TokenIdentifier>
+			<Abstract type="html">去噪滤镜</Abstract>
+			<DeclaredIn>KSYGPUDnoiseFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="22"/>
 		</Token>
 		
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUFilter/init</TokenIdentifier>
-			<Abstract type="html">构造</Abstract>
-			<DeclaredIn>KSYGPUFilter.h</DeclaredIn>
-			
-			<Declaration>- (instancetype)init</Declaration>
-			
-			
-			<Anchor>//api/name/init</Anchor>
-            <NodeRef refid="22"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUFilter/reload:</TokenIdentifier>
-			<Abstract type="html">重新载入纹理shader的代码</Abstract>
-			<DeclaredIn>KSYGPUFilter.h</DeclaredIn>
-			
-			<Declaration>- (void)reload:(NSString *)fragmentShaderString</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>fragmentShaderString</Name>
-					<Abstract type="html">新的纹理shader的代码</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/reload:</Anchor>
-            <NodeRef refid="22"/>
-		</Token>
 		
         
         

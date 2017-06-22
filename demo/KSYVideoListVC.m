@@ -55,17 +55,14 @@
 
 @implementation KSYVideoListVC
 
+- (id)initWithUrl:(NSString *)videoListUrl{
+    if (self = [super init]) {
+        _videoUrls = @[videoListUrl,videoListUrl,videoListUrl,videoListUrl,videoListUrl];
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // 1.请在此处添加流地址
-    _videoUrls = @[@"rtmp://live.hkstv.hk.lxdns.com/live/hks",
-                   @"rtmp://live.hkstv.hk.lxdns.com/live/hks",
-                   @"rtmp://live.hkstv.hk.lxdns.com/live/hks",
-                   @"rtmp://live.hkstv.hk.lxdns.com/live/hks",
-                   @"rtmp://live.hkstv.hk.lxdns.com/live/hks",
-                   ];
-    
     // 此处初始化为0，也可根据其他方式保存的历史记录，进行初始化
     _playbackTimes = [NSMutableArray array];
     for (NSInteger i = 0; i < _videoUrls.count; ++i) {

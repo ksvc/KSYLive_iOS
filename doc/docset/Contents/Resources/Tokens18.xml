@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUBgmStreamerKit.html">
+	<File path="Classes/KSYGPUBeautifyPlusFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUBgmStreamerKit</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUBgmStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUBeautifyPlusFilter</TokenIdentifier>
+			<Abstract type="html">增强美颜滤镜</Abstract>
+			<DeclaredIn>KSYGPUBeautifyPlusFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="18"/>
@@ -13,132 +13,19 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBgmStreamerKit/setKsyBgmPlayer:</TokenIdentifier>
-			<Abstract type="html">背景音乐播放器</Abstract>
-			<DeclaredIn>KSYGPUBgmStreamerKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyPlusFilter/setBeautylevel:</TokenIdentifier>
+			<Abstract type="html">美颜的等级</Abstract>
+			<DeclaredIn>KSYGPUBeautifyPlusFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) KSYMoviePlayerController *ksyBgmPlayer</Declaration>
-			
-			
-			<Anchor>//api/name/ksyBgmPlayer</Anchor>
-            <NodeRef refid="18"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBgmStreamerKit/ksyBgmPlayer</TokenIdentifier>
-			<Abstract type="html">背景音乐播放器</Abstract>
-			<DeclaredIn>KSYGPUBgmStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) KSYMoviePlayerController *ksyBgmPlayer</Declaration>
-			
-			
-			<Anchor>//api/name/ksyBgmPlayer</Anchor>
-            <NodeRef refid="18"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUBgmStreamerKit/ksyBgmPlayer</TokenIdentifier>
-			<Abstract type="html">背景音乐播放器</Abstract>
-			<DeclaredIn>KSYGPUBgmStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) KSYMoviePlayerController *ksyBgmPlayer</Declaration>
-			
-			
-			<Anchor>//api/name/ksyBgmPlayer</Anchor>
-            <NodeRef refid="18"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBgmStreamerKit/startPlayBgm:</TokenIdentifier>
-			<Abstract type="html">开始播放背景音乐</Abstract>
-			<DeclaredIn>KSYGPUBgmStreamerKit.h</DeclaredIn>
-			
-			<Declaration>- (void)startPlayBgm:(NSString *)path</Declaration>
+			<Declaration>- (void)setBeautylevel:(int)level</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>path</Name>
-					<Abstract type="html">背景音乐的路径</Abstract>
+					<Name>level</Name>
+					<Abstract type="html">1 ~ 5，逐级增强, 默认为3</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/startPlayBgm:</Anchor>
-            <NodeRef refid="18"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBgmStreamerKit/stopPlayBgm</TokenIdentifier>
-			<Abstract type="html">停止播放背景音乐</Abstract>
-			<DeclaredIn>KSYGPUBgmStreamerKit.h</DeclaredIn>
-			
-			<Declaration>- (void)stopPlayBgm</Declaration>
-			
-			
-			<Anchor>//api/name/stopPlayBgm</Anchor>
-            <NodeRef refid="18"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBgmStreamerKit/getBgmStateName:</TokenIdentifier>
-			<Abstract type="html">获取状态对应的字符串</Abstract>
-			<DeclaredIn>KSYGPUBgmStreamerKit.h</DeclaredIn>
-			
-			<Declaration>- (NSString *)getBgmStateName:(MPMoviePlaybackState)stat</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>stat</Name>
-					<Abstract type="html">状态</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/getBgmStateName:</Anchor>
-            <NodeRef refid="18"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBgmStreamerKit/getCurBgmStateName</TokenIdentifier>
-			<Abstract type="html">获取当前状态对应的字符串</Abstract>
-			<DeclaredIn>KSYGPUBgmStreamerKit.h</DeclaredIn>
-			
-			<Declaration>- (NSString *)getCurBgmStateName</Declaration>
-			
-			
-			<Anchor>//api/name/getCurBgmStateName</Anchor>
-            <NodeRef refid="18"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBgmStreamerKit/setBgmState:</TokenIdentifier>
-			<Abstract type="html">播放状态</Abstract>
-			<DeclaredIn>KSYGPUBgmStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) MPMoviePlaybackState BgmState</Declaration>
-			
-			
-			<Anchor>//api/name/BgmState</Anchor>
-            <NodeRef refid="18"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBgmStreamerKit/BgmState</TokenIdentifier>
-			<Abstract type="html">播放状态</Abstract>
-			<DeclaredIn>KSYGPUBgmStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) MPMoviePlaybackState BgmState</Declaration>
-			
-			
-			<Anchor>//api/name/BgmState</Anchor>
-            <NodeRef refid="18"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUBgmStreamerKit/BgmState</TokenIdentifier>
-			<Abstract type="html">播放状态</Abstract>
-			<DeclaredIn>KSYGPUBgmStreamerKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) MPMoviePlaybackState BgmState</Declaration>
-			
-			
-			<Anchor>//api/name/BgmState</Anchor>
+			<Anchor>//api/name/setBeautylevel:</Anchor>
             <NodeRef refid="18"/>
 		</Token>
 		

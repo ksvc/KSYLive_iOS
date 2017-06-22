@@ -242,6 +242,18 @@
     return taskInfo.resident_size / 1024.0 / 1024.0;
 }
 
++ (int)getCurrentBatteryLevel{
+    //拿到当前设备
+    UIDevice * device = [UIDevice currentDevice];
+    //是否允许监测电池
+    //要想获取电池电量信息和监控电池电量 必须允许
+    device.batteryMonitoringEnabled = true;
+    float level = device.batteryLevel;
+    //换算为百分比
+    int result = level * 100;
+    return result;
+}
+
 #pragma mark - save Image
 // 将UIImage 保存到path对应的文件
 + (void)saveImage: (UIImage *)image

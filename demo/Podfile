@@ -3,11 +3,16 @@ inhibit_all_warnings!
 use_frameworks!
 
 target 'KSYLiveDemo' do
-	pod 'Bugly'
-	pod 'GPUImage'
-	pod 'libksygpulive/KSYGPUResource', :path => '../'
-	pod 'libksygpulive/libksygpulive', :path => '../'
- 	#pod 'libksygpulive/libksygpulive_265', :path => '../'
+  pod 'Bugly'
+  pod 'GPUImage'
+  pod 'libksygpulive/KSYGPUResource',      :path => '../'
+  pod 'libksygpulive/libksygpulive',       :path => '../'
+  # pod 'libksygpulive/libksygpulive_265', :path => '../'
+
+  # libksygpulive_ks3 和 libksygpulive 的库完全相同
+  # 只是ks3的库存放在国内的云盘上, 比从github clone速度快一些
+  # pod 'libksygpulive_ks3/KSYGPUResource'
+  # pod 'libksygpulive_ks3/libksygpulive'
 end
 
 target 'KSYLiveDemo_Swift' do

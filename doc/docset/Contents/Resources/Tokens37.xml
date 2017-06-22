@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYReachability.html">
+	<File path="Classes/KSYNetTracker.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYReachability</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYNetTracker</TokenIdentifier>
+			<Abstract type="html">网络链路探测器类</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
             
 			
 			<NodeRef refid="37"/>
@@ -13,374 +13,211 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/setReachableBlock:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/start:</TokenIdentifier>
+			<Abstract type="html">开始探测</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) KSYNetworkReachable reachableBlock</Declaration>
-			
-			
-			<Anchor>//api/name/reachableBlock</Anchor>
+			<Declaration>- (int)start:(NSString *__nonnull)domain</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>domain</Name>
+					<Abstract type="html">探测地址</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">成功开始返回0, 否则返回非0</Abstract></ReturnValue>
+			<Anchor>//api/name/start:</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/reachableBlock</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/stop</TokenIdentifier>
+			<Abstract type="html">停止探测</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) KSYNetworkReachable reachableBlock</Declaration>
+			<Declaration>- (void)stop</Declaration>
 			
 			
-			<Anchor>//api/name/reachableBlock</Anchor>
+			<Anchor>//api/name/stop</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYReachability/reachableBlock</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setAction:</TokenIdentifier>
+			<Abstract type="html">探测方式</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) KSYNetworkReachable reachableBlock</Declaration>
+			<Declaration>@property (nonatomic, assign) KSY_NETTRACKER_ACTION action</Declaration>
 			
 			
-			<Anchor>//api/name/reachableBlock</Anchor>
+			<Anchor>//api/name/action</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/setUnreachableBlock:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/action</TokenIdentifier>
+			<Abstract type="html">探测方式</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) KSYNetworkUnreachable unreachableBlock</Declaration>
+			<Declaration>@property (nonatomic, assign) KSY_NETTRACKER_ACTION action</Declaration>
 			
 			
-			<Anchor>//api/name/unreachableBlock</Anchor>
+			<Anchor>//api/name/action</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/unreachableBlock</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/action</TokenIdentifier>
+			<Abstract type="html">探测方式</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) KSYNetworkUnreachable unreachableBlock</Declaration>
+			<Declaration>@property (nonatomic, assign) KSY_NETTRACKER_ACTION action</Declaration>
 			
 			
-			<Anchor>//api/name/unreachableBlock</Anchor>
+			<Anchor>//api/name/action</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYReachability/unreachableBlock</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setTimeout:</TokenIdentifier>
+			<Abstract type="html">探测超时时间，单位是ms，默认值是1000ms</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) KSYNetworkUnreachable unreachableBlock</Declaration>
+			<Declaration>@property (nonatomic, assign) int timeout</Declaration>
 			
 			
-			<Anchor>//api/name/unreachableBlock</Anchor>
+			<Anchor>//api/name/timeout</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/setReachabilityBlock:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/timeout</TokenIdentifier>
+			<Abstract type="html">探测超时时间，单位是ms，默认值是1000ms</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) KSYNetworkReachability reachabilityBlock</Declaration>
+			<Declaration>@property (nonatomic, assign) int timeout</Declaration>
 			
 			
-			<Anchor>//api/name/reachabilityBlock</Anchor>
+			<Anchor>//api/name/timeout</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/reachabilityBlock</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/timeout</TokenIdentifier>
+			<Abstract type="html">探测超时时间，单位是ms，默认值是1000ms</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) KSYNetworkReachability reachabilityBlock</Declaration>
+			<Declaration>@property (nonatomic, assign) int timeout</Declaration>
 			
 			
-			<Anchor>//api/name/reachabilityBlock</Anchor>
+			<Anchor>//api/name/timeout</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYReachability/reachabilityBlock</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setMaxttl:</TokenIdentifier>
+			<Abstract type="html">探测使用的最大ttl值，默认值是64</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) KSYNetworkReachability reachabilityBlock</Declaration>
+			<Declaration>@property (nonatomic, assign) int maxttl</Declaration>
 			
 			
-			<Anchor>//api/name/reachabilityBlock</Anchor>
+			<Anchor>//api/name/maxttl</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/setReachableOnWWAN:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/maxttl</TokenIdentifier>
+			<Abstract type="html">探测使用的最大ttl值，默认值是64</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL reachableOnWWAN</Declaration>
+			<Declaration>@property (nonatomic, assign) int maxttl</Declaration>
 			
 			
-			<Anchor>//api/name/reachableOnWWAN</Anchor>
+			<Anchor>//api/name/maxttl</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/reachableOnWWAN</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/maxttl</TokenIdentifier>
+			<Abstract type="html">探测使用的最大ttl值，默认值是64</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL reachableOnWWAN</Declaration>
+			<Declaration>@property (nonatomic, assign) int maxttl</Declaration>
 			
 			
-			<Anchor>//api/name/reachableOnWWAN</Anchor>
+			<Anchor>//api/name/maxttl</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYReachability/reachableOnWWAN</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setNumber:</TokenIdentifier>
+			<Abstract type="html">探测次数，默认值是10</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL reachableOnWWAN</Declaration>
+			<Declaration>@property (nonatomic, assign) int number</Declaration>
 			
 			
-			<Anchor>//api/name/reachableOnWWAN</Anchor>
+			<Anchor>//api/name/number</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KSYReachability/reachabilityWithHostname:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/number</TokenIdentifier>
+			<Abstract type="html">探测次数，默认值是10</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>+ (instancetype)reachabilityWithHostname:(NSString *)hostname</Declaration>
+			<Declaration>@property (nonatomic, assign) int number</Declaration>
 			
 			
-			<Anchor>//api/name/reachabilityWithHostname:</Anchor>
+			<Anchor>//api/name/number</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KSYReachability/reachabilityWithHostName:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/number</TokenIdentifier>
+			<Abstract type="html">探测次数，默认值是10</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>+ (instancetype)reachabilityWithHostName:(NSString *)hostname</Declaration>
+			<Declaration>@property (nonatomic, assign) int number</Declaration>
 			
 			
-			<Anchor>//api/name/reachabilityWithHostName:</Anchor>
+			<Anchor>//api/name/number</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KSYReachability/reachabilityForInternetConnection</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setRouterInfo:</TokenIdentifier>
+			<Abstract type="html">链路状况</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>+ (instancetype)reachabilityForInternetConnection</Declaration>
+			<Declaration>@property (nonatomic, readonly) NSMutableArray *routerInfo</Declaration>
 			
 			
-			<Anchor>//api/name/reachabilityForInternetConnection</Anchor>
+			<Anchor>//api/name/routerInfo</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KSYReachability/reachabilityWithAddress:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/routerInfo</TokenIdentifier>
+			<Abstract type="html">链路状况</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>+ (instancetype)reachabilityWithAddress:(void *)hostAddress</Declaration>
+			<Declaration>@property (nonatomic, readonly) NSMutableArray *routerInfo</Declaration>
 			
 			
-			<Anchor>//api/name/reachabilityWithAddress:</Anchor>
+			<Anchor>//api/name/routerInfo</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KSYReachability/reachabilityForLocalWiFi</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/routerInfo</TokenIdentifier>
+			<Abstract type="html">链路状况</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>+ (instancetype)reachabilityForLocalWiFi</Declaration>
-			
-			
-			<Anchor>//api/name/reachabilityForLocalWiFi</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/initWithReachabilityRef:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
-			
-			<Declaration>- (instancetype)initWithReachabilityRef:(SCNetworkReachabilityRef)ref</Declaration>
+			<Declaration>@property (nonatomic, readonly) NSMutableArray *routerInfo</Declaration>
 			
 			
-			<Anchor>//api/name/initWithReachabilityRef:</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/startNotifier</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
-			
-			<Declaration>- (BOOL)startNotifier</Declaration>
-			
-			
-			<Anchor>//api/name/startNotifier</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/stopNotifier</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
-			
-			<Declaration>- (void)stopNotifier</Declaration>
-			
-			
-			<Anchor>//api/name/stopNotifier</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/isReachable</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
-			
-			<Declaration>- (BOOL)isReachable</Declaration>
-			
-			
-			<Anchor>//api/name/isReachable</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/isReachableViaWWAN</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
-			
-			<Declaration>- (BOOL)isReachableViaWWAN</Declaration>
-			
-			
-			<Anchor>//api/name/isReachableViaWWAN</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/isReachableViaWiFi</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
-			
-			<Declaration>- (BOOL)isReachableViaWiFi</Declaration>
-			
-			
-			<Anchor>//api/name/isReachableViaWiFi</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/isConnectionRequired</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
-			
-			<Declaration>- (BOOL)isConnectionRequired</Declaration>
-			
-			
-			<Anchor>//api/name/isConnectionRequired</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/connectionRequired</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
-			
-			<Declaration>- (BOOL)connectionRequired</Declaration>
-			
-			
-			<Anchor>//api/name/connectionRequired</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/isConnectionOnDemand</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
-			
-			<Declaration>- (BOOL)isConnectionOnDemand</Declaration>
-			
-			
-			<Anchor>//api/name/isConnectionOnDemand</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/isInterventionRequired</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
-			
-			<Declaration>- (BOOL)isInterventionRequired</Declaration>
-			
-			
-			<Anchor>//api/name/isInterventionRequired</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/currentReachabilityStatus</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
-			
-			<Declaration>- (KSYNetworkStatus)currentReachabilityStatus</Declaration>
-			
-			
-			<Anchor>//api/name/currentReachabilityStatus</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/reachabilityFlags</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
-			
-			<Declaration>- (SCNetworkReachabilityFlags)reachabilityFlags</Declaration>
-			
-			
-			<Anchor>//api/name/reachabilityFlags</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/currentReachabilityString</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
-			
-			<Declaration>- (NSString *)currentReachabilityString</Declaration>
-			
-			
-			<Anchor>//api/name/currentReachabilityString</Anchor>
-            <NodeRef refid="37"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/currentReachabilityFlags</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
-			
-			<Declaration>- (NSString *)currentReachabilityFlags</Declaration>
-			
-			
-			<Anchor>//api/name/currentReachabilityFlags</Anchor>
+			<Anchor>//api/name/routerInfo</Anchor>
             <NodeRef refid="37"/>
 		</Token>
 		
