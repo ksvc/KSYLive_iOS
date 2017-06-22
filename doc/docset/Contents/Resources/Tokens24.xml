@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUPicMixer.html">
+	<File path="Classes/KSYGPUPicInput.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUPicMixer</TokenIdentifier>
-			<Abstract type="html">  图像混合filter</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUPicInput</TokenIdentifier>
+			<Abstract type="html">GPU图像输输入</Abstract>
+			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
             
 			
 			<NodeRef refid="24"/>
@@ -13,9 +13,9 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/init</TokenIdentifier>
-			<Abstract type="html">初始化</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/init</TokenIdentifier>
+			<Abstract type="html">Initialization and teardown</Abstract>
+			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
 			
 			<Declaration>- (id)init</Declaration>
 			
@@ -25,183 +25,244 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/initWithOutputSize:</TokenIdentifier>
-			<Abstract type="html">初始化,并制定输出图像的大小</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/initWithFmt:</TokenIdentifier>
+			<Abstract type="html">设置输入图像的像素格式</Abstract>
+			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithOutputSize:(CGSize)sz</Declaration>
+			<Declaration>- (id)initWithFmt:(OSType)fmt</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>sz</Name>
-					<Abstract type="html">输出图像的大小</Abstract>
+					<Name>fmt</Name>
+					<Abstract type="html">像素格式</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/initWithOutputSize:</Anchor>
+			<Anchor>//api/name/initWithFmt:</Anchor>
             <NodeRef refid="24"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/setMasterLayer:</TokenIdentifier>
-			<Abstract type="html">设置主要图层 (默认为0)</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/setCropRegion:</TokenIdentifier>
+			<Abstract type="html">裁剪区域 将输入的图像按照区域裁剪出中间的一块</Abstract>
+			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) NSUInteger masterLayer</Declaration>
+			<Declaration>@property (readwrite, nonatomic) CGRect cropRegion</Declaration>
 			
 			
-			<Anchor>//api/name/masterLayer</Anchor>
+			<Anchor>//api/name/cropRegion</Anchor>
             <NodeRef refid="24"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/masterLayer</TokenIdentifier>
-			<Abstract type="html">设置主要图层 (默认为0)</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/cropRegion</TokenIdentifier>
+			<Abstract type="html">裁剪区域 将输入的图像按照区域裁剪出中间的一块</Abstract>
+			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) NSUInteger masterLayer</Declaration>
+			<Declaration>@property (readwrite, nonatomic) CGRect cropRegion</Declaration>
 			
 			
-			<Anchor>//api/name/masterLayer</Anchor>
+			<Anchor>//api/name/cropRegion</Anchor>
             <NodeRef refid="24"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicMixer/masterLayer</TokenIdentifier>
-			<Abstract type="html">设置主要图层 (默认为0)</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicInput/cropRegion</TokenIdentifier>
+			<Abstract type="html">裁剪区域 将输入的图像按照区域裁剪出中间的一块</Abstract>
+			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) NSUInteger masterLayer</Declaration>
+			<Declaration>@property (readwrite, nonatomic) CGRect cropRegion</Declaration>
 			
 			
-			<Anchor>//api/name/masterLayer</Anchor>
+			<Anchor>//api/name/cropRegion</Anchor>
             <NodeRef refid="24"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/setPicRect:ofLayer:</TokenIdentifier>
-			<Abstract type="html">设置图层的位置和大小 (单位为: 像素值 或者百分比)</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/forceProcessingAtSize:</TokenIdentifier>
+			<Abstract type="html">输出图像的尺寸</Abstract>
+			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
 			
-			<Declaration>- (void)setPicRect:(CGRect)rect ofLayer:(NSInteger)idx</Declaration>
+			<Declaration>- (void)forceProcessingAtSize:(CGSize)frameSize</Declaration>
+			
+			
+			<Anchor>//api/name/forceProcessingAtSize:</Anchor>
+            <NodeRef refid="24"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/setOutputSize:</TokenIdentifier>
+			<Abstract type="html">实际输出图像的尺寸</Abstract>
+			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) CGSize outputSize</Declaration>
+			
+			
+			<Anchor>//api/name/outputSize</Anchor>
+            <NodeRef refid="24"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/outputSize</TokenIdentifier>
+			<Abstract type="html">实际输出图像的尺寸</Abstract>
+			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) CGSize outputSize</Declaration>
+			
+			
+			<Anchor>//api/name/outputSize</Anchor>
+            <NodeRef refid="24"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicInput/outputSize</TokenIdentifier>
+			<Abstract type="html">实际输出图像的尺寸</Abstract>
+			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) CGSize outputSize</Declaration>
+			
+			
+			<Anchor>//api/name/outputSize</Anchor>
+            <NodeRef refid="24"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/setOutputRotation:</TokenIdentifier>
+			<Abstract type="html">输出画面的朝向</Abstract>
+			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) GPUImageRotationMode outputRotation</Declaration>
+			
+			
+			<Anchor>//api/name/outputRotation</Anchor>
+            <NodeRef refid="24"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/outputRotation</TokenIdentifier>
+			<Abstract type="html">输出画面的朝向</Abstract>
+			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) GPUImageRotationMode outputRotation</Declaration>
+			
+			
+			<Anchor>//api/name/outputRotation</Anchor>
+            <NodeRef refid="24"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicInput/outputRotation</TokenIdentifier>
+			<Abstract type="html">输出画面的朝向</Abstract>
+			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) GPUImageRotationMode outputRotation</Declaration>
+			
+			
+			<Anchor>//api/name/outputRotation</Anchor>
+            <NodeRef refid="24"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/setAlwaysDiscardsLateVideoFrames:</TokenIdentifier>
+			<Abstract type="html">是否允许超时丢帧</Abstract>
+			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL alwaysDiscardsLateVideoFrames</Declaration>
+			
+			
+			<Anchor>//api/name/alwaysDiscardsLateVideoFrames</Anchor>
+            <NodeRef refid="24"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/alwaysDiscardsLateVideoFrames</TokenIdentifier>
+			<Abstract type="html">是否允许超时丢帧</Abstract>
+			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL alwaysDiscardsLateVideoFrames</Declaration>
+			
+			
+			<Anchor>//api/name/alwaysDiscardsLateVideoFrames</Anchor>
+            <NodeRef refid="24"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicInput/alwaysDiscardsLateVideoFrames</TokenIdentifier>
+			<Abstract type="html">是否允许超时丢帧</Abstract>
+			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL alwaysDiscardsLateVideoFrames</Declaration>
+			
+			
+			<Anchor>//api/name/alwaysDiscardsLateVideoFrames</Anchor>
+            <NodeRef refid="24"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/processSampleBuffer:</TokenIdentifier>
+			<Abstract type="html">输入图像数据</Abstract>
+			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
+			
+			<Declaration>- (void)processSampleBuffer:(CMSampleBufferRef)sampleBuffer</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>rect</Name>
-					<Abstract type="html">大小和位置</Abstract>
+					<Name>sampleBuffer</Name>
+					<Abstract type="html">图像数据和时间信息</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/processSampleBuffer:</Anchor>
+            <NodeRef refid="24"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/processPixelBuffer:time:</TokenIdentifier>
+			<Abstract type="html">输入图像数据</Abstract>
+			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
+			
+			<Declaration>- (void)processPixelBuffer:(CVPixelBufferRef)pixelBuffer time:(CMTime)timeInfo</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>pixelBuffer</Name>
+					<Abstract type="html">图像数据</Abstract>
 				</Parameter><Parameter>
-					<Name>idx</Name>
-					<Abstract type="html">图层的索引</Abstract>
+					<Name>timeInfo</Name>
+					<Abstract type="html">时间信息</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/setPicRect:ofLayer:</Anchor>
+			<Anchor>//api/name/processPixelBuffer:time:</Anchor>
             <NodeRef refid="24"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/getPicRectOfLayer:</TokenIdentifier>
-			<Abstract type="html">获取图层的位置和大小 (单位为: 像素值 或者百分比)</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicInput/processPixelData:format:width:height:stride:time:</TokenIdentifier>
+			<Abstract type="html">输入图像数据</Abstract>
+			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
 			
-			<Declaration>- (CGRect)getPicRectOfLayer:(NSInteger)idx</Declaration>
+			<Declaration>- (void)processPixelData:(void **)pData format:(OSType)pixelFmt width:(size_t)width height:(size_t)height stride:(size_t *)strides time:(CMTime)timeInfo</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>idx</Name>
-					<Abstract type="html">图层的索引</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">位置和大小</Abstract></ReturnValue>
-			<Anchor>//api/name/getPicRectOfLayer:</Anchor>
-            <NodeRef refid="24"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/setPicAlpha:ofLayer:</TokenIdentifier>
-			<Abstract type="html">设置图层的透明度 (默认为1.0)</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
-			
-			<Declaration>- (void)setPicAlpha:(CGFloat)alpha ofLayer:(NSInteger)idx</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>alpha</Name>
-					<Abstract type="html">透明度(0~1.0), 0为全透明</Abstract>
+					<Name>pData</Name>
+					<Abstract type="html">图像数据每个分量的指针, 比如pData[0]为Y分量的指针</Abstract>
 				</Parameter><Parameter>
-					<Name>idx</Name>
-					<Abstract type="html">图层的索引</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/setPicAlpha:ofLayer:</Anchor>
-            <NodeRef refid="24"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/getPicAlphaOfLayer:</TokenIdentifier>
-			<Abstract type="html">获取图层的透明度</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
-			
-			<Declaration>- (CGFloat)getPicAlphaOfLayer:(NSInteger)idx</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>idx</Name>
-					<Abstract type="html">图层的索引</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">透明度</Abstract></ReturnValue>
-			<Anchor>//api/name/getPicAlphaOfLayer:</Anchor>
-            <NodeRef refid="24"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/setPicRotation:ofLayer:</TokenIdentifier>
-			<Abstract type="html">设置图层的旋转 (默认为norotation)</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
-			
-			<Declaration>- (void)setPicRotation:(GPUImageRotationMode)rotation ofLayer:(NSInteger)idx</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>rotation</Name>
-					<Abstract type="html">透明度(0~1.0), 0为全透明</Abstract>
+					<Name>pixelFmt</Name>
+					<Abstract type="html">图像数据类型, 必须与init时指定的格式一致</Abstract>
 				</Parameter><Parameter>
-					<Name>idx</Name>
-					<Abstract type="html">图层的索引</Abstract>
+					<Name>width</Name>
+					<Abstract type="html">图像宽度</Abstract>
+				</Parameter><Parameter>
+					<Name>height</Name>
+					<Abstract type="html">图像高度</Abstract>
+				</Parameter><Parameter>
+					<Name>strides</Name>
+					<Abstract type="html">图像数据每个分量的行偏移, 比如 stride[0] 为Y分量的行偏移</Abstract>
+				</Parameter><Parameter>
+					<Name>timeInfo</Name>
+					<Abstract type="html">时间信息</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/setPicRotation:ofLayer:</Anchor>
-            <NodeRef refid="24"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/getPicRotationOfLayer:</TokenIdentifier>
-			<Abstract type="html">获取图层的旋转模式</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
-			
-			<Declaration>- (GPUImageRotationMode)getPicRotationOfLayer:(NSInteger)idx</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>idx</Name>
-					<Abstract type="html">图层的索引</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">旋转模式</Abstract></ReturnValue>
-			<Anchor>//api/name/getPicRotationOfLayer:</Anchor>
-            <NodeRef refid="24"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/clearPicOfLayer:</TokenIdentifier>
-			<Abstract type="html">清除特定图层的画面内容</Abstract>
-			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
-			
-			<Declaration>- (void)clearPicOfLayer:(NSInteger)index</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>index</Name>
-					<Abstract type="html">指定被清除的图层</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/clearPicOfLayer:</Anchor>
+			<Anchor>//api/name/processPixelData:format:width:height:stride:time:</Anchor>
             <NodeRef refid="24"/>
 		</Token>
 		

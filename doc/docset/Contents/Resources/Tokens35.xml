@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYNetTracker.html">
+	<File path="Classes/KSYMovieWriter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYNetTracker</TokenIdentifier>
-			<Abstract type="html">网络链路探测器类</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYMovieWriter</TokenIdentifier>
+			<Abstract type="html">视频文件录制类</Abstract>
+			<DeclaredIn>KSYMovieWriter.h</DeclaredIn>
             
 			
 			<NodeRef refid="35"/>
@@ -13,211 +13,31 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/start:</TokenIdentifier>
-			<Abstract type="html">开始探测</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMovieWriter/startWrite:</TokenIdentifier>
+			<Abstract type="html">write video stream to local files</Abstract>
+			<DeclaredIn>KSYMovieWriter.h</DeclaredIn>
 			
-			<Declaration>- (int)start:(NSString *__nonnull)domain</Declaration>
+			<Declaration>- (void)startWrite:(NSURL *)filePath</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>domain</Name>
-					<Abstract type="html">探测地址</Abstract>
+					<Name>filePath</Name>
+					<Abstract type="html">is local file path</Abstract>
 				</Parameter>
 			</Parameters>
-			<ReturnValue><Abstract type="html">成功开始返回0, 否则返回非0</Abstract></ReturnValue>
-			<Anchor>//api/name/start:</Anchor>
+			
+			<Anchor>//api/name/startWrite:</Anchor>
             <NodeRef refid="35"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/stop</TokenIdentifier>
-			<Abstract type="html">停止探测</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMovieWriter/stopWrite</TokenIdentifier>
+			<Abstract type="html">stop wirte file</Abstract>
+			<DeclaredIn>KSYMovieWriter.h</DeclaredIn>
 			
-			<Declaration>- (void)stop</Declaration>
-			
-			
-			<Anchor>//api/name/stop</Anchor>
-            <NodeRef refid="35"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setAction:</TokenIdentifier>
-			<Abstract type="html">探测方式</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) KSY_NETTRACKER_ACTION action</Declaration>
+			<Declaration>- (void)stopWrite</Declaration>
 			
 			
-			<Anchor>//api/name/action</Anchor>
-            <NodeRef refid="35"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/action</TokenIdentifier>
-			<Abstract type="html">探测方式</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) KSY_NETTRACKER_ACTION action</Declaration>
-			
-			
-			<Anchor>//api/name/action</Anchor>
-            <NodeRef refid="35"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/action</TokenIdentifier>
-			<Abstract type="html">探测方式</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) KSY_NETTRACKER_ACTION action</Declaration>
-			
-			
-			<Anchor>//api/name/action</Anchor>
-            <NodeRef refid="35"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setTimeout:</TokenIdentifier>
-			<Abstract type="html">探测超时时间，单位是ms，默认值是1000ms</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int timeout</Declaration>
-			
-			
-			<Anchor>//api/name/timeout</Anchor>
-            <NodeRef refid="35"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/timeout</TokenIdentifier>
-			<Abstract type="html">探测超时时间，单位是ms，默认值是1000ms</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int timeout</Declaration>
-			
-			
-			<Anchor>//api/name/timeout</Anchor>
-            <NodeRef refid="35"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/timeout</TokenIdentifier>
-			<Abstract type="html">探测超时时间，单位是ms，默认值是1000ms</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int timeout</Declaration>
-			
-			
-			<Anchor>//api/name/timeout</Anchor>
-            <NodeRef refid="35"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setMaxttl:</TokenIdentifier>
-			<Abstract type="html">探测使用的最大ttl值，默认值是64</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int maxttl</Declaration>
-			
-			
-			<Anchor>//api/name/maxttl</Anchor>
-            <NodeRef refid="35"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/maxttl</TokenIdentifier>
-			<Abstract type="html">探测使用的最大ttl值，默认值是64</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int maxttl</Declaration>
-			
-			
-			<Anchor>//api/name/maxttl</Anchor>
-            <NodeRef refid="35"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/maxttl</TokenIdentifier>
-			<Abstract type="html">探测使用的最大ttl值，默认值是64</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int maxttl</Declaration>
-			
-			
-			<Anchor>//api/name/maxttl</Anchor>
-            <NodeRef refid="35"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setNumber:</TokenIdentifier>
-			<Abstract type="html">探测次数，默认值是10</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int number</Declaration>
-			
-			
-			<Anchor>//api/name/number</Anchor>
-            <NodeRef refid="35"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/number</TokenIdentifier>
-			<Abstract type="html">探测次数，默认值是10</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int number</Declaration>
-			
-			
-			<Anchor>//api/name/number</Anchor>
-            <NodeRef refid="35"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/number</TokenIdentifier>
-			<Abstract type="html">探测次数，默认值是10</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int number</Declaration>
-			
-			
-			<Anchor>//api/name/number</Anchor>
-            <NodeRef refid="35"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setRouterInfo:</TokenIdentifier>
-			<Abstract type="html">链路状况</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSMutableArray *routerInfo</Declaration>
-			
-			
-			<Anchor>//api/name/routerInfo</Anchor>
-            <NodeRef refid="35"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/routerInfo</TokenIdentifier>
-			<Abstract type="html">链路状况</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSMutableArray *routerInfo</Declaration>
-			
-			
-			<Anchor>//api/name/routerInfo</Anchor>
-            <NodeRef refid="35"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/routerInfo</TokenIdentifier>
-			<Abstract type="html">链路状况</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSMutableArray *routerInfo</Declaration>
-			
-			
-			<Anchor>//api/name/routerInfo</Anchor>
+			<Anchor>//api/name/stopWrite</Anchor>
             <NodeRef refid="35"/>
 		</Token>
 		

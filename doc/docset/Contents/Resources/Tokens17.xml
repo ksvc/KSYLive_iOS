@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUBeautifyPlusFilter.html">
+	<File path="Classes/KSYGPUBeautifyFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUBeautifyPlusFilter</TokenIdentifier>
-			<Abstract type="html">增强美颜滤镜</Abstract>
-			<DeclaredIn>KSYGPUBeautifyPlusFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUBeautifyFilter</TokenIdentifier>
+			<Abstract type="html">金山云美颜滤镜</Abstract>
+			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="17"/>
@@ -13,9 +13,9 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyPlusFilter/setBeautylevel:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyFilter/setBeautylevel:</TokenIdentifier>
 			<Abstract type="html">美颜的等级</Abstract>
-			<DeclaredIn>KSYGPUBeautifyPlusFilter.h</DeclaredIn>
+			<DeclaredIn>KSYGPUBeautifyFilter.h</DeclaredIn>
 			
 			<Declaration>- (void)setBeautylevel:(int)level</Declaration>
 			<Parameters>

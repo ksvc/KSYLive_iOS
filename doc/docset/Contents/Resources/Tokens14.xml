@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYDummyAudioSource.html">
+	<File path="Classes/KSYClipWriter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYDummyAudioSource</TokenIdentifier>
-			<Abstract type="html">静音音频数据源</Abstract>
-			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYClipWriter</TokenIdentifier>
+			<Abstract type="html">金山云转码SDK iOS版提供了iOS移动设备上的转码合成功能</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
             
 			
 			<NodeRef refid="14"/>
@@ -13,210 +13,1182 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/initWithAudioFmt:</TokenIdentifier>
-			<Abstract type="html">构造函数</Abstract>
-			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/getKSYVersion</TokenIdentifier>
+			<Abstract type="html">获取SDK版本号</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithAudioFmt:(AudioStreamBasicDescription)asbd</Declaration>
+			<Declaration>- (NSString *)getKSYVersion</Declaration>
+			
+			
+			<Anchor>//api/name/getKSYVersion</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setHostURL:</TokenIdentifier>
+			<Abstract type="html">本地录制,输出路径</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSURL *hostURL</Declaration>
+			
+			
+			<Anchor>//api/name/hostURL</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/hostURL</TokenIdentifier>
+			<Abstract type="html">本地录制,输出路径</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSURL *hostURL</Declaration>
+			
+			
+			<Anchor>//api/name/hostURL</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/hostURL</TokenIdentifier>
+			<Abstract type="html">本地录制,输出路径</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSURL *hostURL</Declaration>
+			
+			
+			<Anchor>//api/name/hostURL</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setVideoFPS:</TokenIdentifier>
+			<Abstract type="html">视频帧率</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int videoFPS</Declaration>
+			
+			
+			<Anchor>//api/name/videoFPS</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/videoFPS</TokenIdentifier>
+			<Abstract type="html">视频帧率</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int videoFPS</Declaration>
+			
+			
+			<Anchor>//api/name/videoFPS</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/videoFPS</TokenIdentifier>
+			<Abstract type="html">视频帧率</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int videoFPS</Declaration>
+			
+			
+			<Anchor>//api/name/videoFPS</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setVideoCodec:</TokenIdentifier>
+			<Abstract type="html">视频编码器 默认为 自动选择</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/c/tdef/KSYVideoCodec</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, assign) KSYVideoCodec videoCodec</Declaration>
+			
+			
+			<Anchor>//api/name/videoCodec</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/videoCodec</TokenIdentifier>
+			<Abstract type="html">视频编码器 默认为 自动选择</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/c/tdef/KSYVideoCodec</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, assign) KSYVideoCodec videoCodec</Declaration>
+			
+			
+			<Anchor>//api/name/videoCodec</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/videoCodec</TokenIdentifier>
+			<Abstract type="html">视频编码器 默认为 自动选择</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/c/tdef/KSYVideoCodec</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, assign) KSYVideoCodec videoCodec</Declaration>
+			
+			
+			<Anchor>//api/name/videoCodec</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setAudioCodec:</TokenIdentifier>
+			<Abstract type="html">音频编码器 (默认为AAC-HE)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/c/tdef/KSYAudioCodec</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, assign) KSYAudioCodec audioCodec</Declaration>
+			
+			
+			<Anchor>//api/name/audioCodec</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/audioCodec</TokenIdentifier>
+			<Abstract type="html">音频编码器 (默认为AAC-HE)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/c/tdef/KSYAudioCodec</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, assign) KSYAudioCodec audioCodec</Declaration>
+			
+			
+			<Anchor>//api/name/audioCodec</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/audioCodec</TokenIdentifier>
+			<Abstract type="html">音频编码器 (默认为AAC-HE)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/c/tdef/KSYAudioCodec</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, assign) KSYAudioCodec audioCodec</Declaration>
+			
+			
+			<Anchor>//api/name/audioCodec</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setVideoInitBitrate:</TokenIdentifier>
+			<Abstract type="html">视频编码码率（单位:kbps, 默认:500）</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int videoInitBitrate</Declaration>
+			
+			
+			<Anchor>//api/name/videoInitBitrate</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/videoInitBitrate</TokenIdentifier>
+			<Abstract type="html">视频编码码率（单位:kbps, 默认:500）</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int videoInitBitrate</Declaration>
+			
+			
+			<Anchor>//api/name/videoInitBitrate</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/videoInitBitrate</TokenIdentifier>
+			<Abstract type="html">视频编码码率（单位:kbps, 默认:500）</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int videoInitBitrate</Declaration>
+			
+			
+			<Anchor>//api/name/videoInitBitrate</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setStreamMetaData:</TokenIdentifier>
+			<Abstract type="html">写入全局附带的metadata (默认为nil)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (atomic, copy) NSDictionary *streamMetaData</Declaration>
+			
+			
+			<Anchor>//api/name/streamMetaData</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/streamMetaData</TokenIdentifier>
+			<Abstract type="html">写入全局附带的metadata (默认为nil)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (atomic, copy) NSDictionary *streamMetaData</Declaration>
+			
+			
+			<Anchor>//api/name/streamMetaData</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/streamMetaData</TokenIdentifier>
+			<Abstract type="html">写入全局附带的metadata (默认为nil)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (atomic, copy) NSDictionary *streamMetaData</Declaration>
+			
+			
+			<Anchor>//api/name/streamMetaData</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setVideoMetaData:</TokenIdentifier>
+			<Abstract type="html">视频流附带的metadata (默认为nil)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (atomic, copy) NSDictionary *videoMetaData</Declaration>
+			
+			
+			<Anchor>//api/name/videoMetaData</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/videoMetaData</TokenIdentifier>
+			<Abstract type="html">视频流附带的metadata (默认为nil)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (atomic, copy) NSDictionary *videoMetaData</Declaration>
+			
+			
+			<Anchor>//api/name/videoMetaData</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/videoMetaData</TokenIdentifier>
+			<Abstract type="html">视频流附带的metadata (默认为nil)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (atomic, copy) NSDictionary *videoMetaData</Declaration>
+			
+			
+			<Anchor>//api/name/videoMetaData</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setVideoCrf:</TokenIdentifier>
+			<Abstract type="html">质量等级（默认:20）</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int videoCrf</Declaration>
+			
+			
+			<Anchor>//api/name/videoCrf</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/videoCrf</TokenIdentifier>
+			<Abstract type="html">质量等级（默认:20）</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int videoCrf</Declaration>
+			
+			
+			<Anchor>//api/name/videoCrf</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/videoCrf</TokenIdentifier>
+			<Abstract type="html">质量等级（默认:20）</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int videoCrf</Declaration>
+			
+			
+			<Anchor>//api/name/videoCrf</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setMaxKeyInterval:</TokenIdentifier>
+			<Abstract type="html">最大关键帧间隔（单位:秒, 默认:3）</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) float maxKeyInterval</Declaration>
+			
+			
+			<Anchor>//api/name/maxKeyInterval</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/maxKeyInterval</TokenIdentifier>
+			<Abstract type="html">最大关键帧间隔（单位:秒, 默认:3）</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) float maxKeyInterval</Declaration>
+			
+			
+			<Anchor>//api/name/maxKeyInterval</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/maxKeyInterval</TokenIdentifier>
+			<Abstract type="html">最大关键帧间隔（单位:秒, 默认:3）</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) float maxKeyInterval</Declaration>
+			
+			
+			<Anchor>//api/name/maxKeyInterval</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setAudiokBPS:</TokenIdentifier>
+			<Abstract type="html">音频编码码率（单位:kbps）</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int audiokBPS</Declaration>
+			
+			
+			<Anchor>//api/name/audiokBPS</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/audiokBPS</TokenIdentifier>
+			<Abstract type="html">音频编码码率（单位:kbps）</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int audiokBPS</Declaration>
+			
+			
+			<Anchor>//api/name/audiokBPS</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/audiokBPS</TokenIdentifier>
+			<Abstract type="html">音频编码码率（单位:kbps）</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int audiokBPS</Declaration>
+			
+			
+			<Anchor>//api/name/audiokBPS</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setLiveScene:</TokenIdentifier>
+			<Abstract type="html">待编码的视频场景 (默认为KSYLiveScene_Default)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) KSYLiveScene liveScene</Declaration>
+			
+			
+			<Anchor>//api/name/liveScene</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/liveScene</TokenIdentifier>
+			<Abstract type="html">待编码的视频场景 (默认为KSYLiveScene_Default)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) KSYLiveScene liveScene</Declaration>
+			
+			
+			<Anchor>//api/name/liveScene</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/liveScene</TokenIdentifier>
+			<Abstract type="html">待编码的视频场景 (默认为KSYLiveScene_Default)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) KSYLiveScene liveScene</Declaration>
+			
+			
+			<Anchor>//api/name/liveScene</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setRecScene:</TokenIdentifier>
+			<Abstract type="html">编码的目标场景 (默认为KSYRecScene_ConstantBitRate)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) KSYRecScene recScene</Declaration>
+			
+			
+			<Anchor>//api/name/recScene</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/recScene</TokenIdentifier>
+			<Abstract type="html">编码的目标场景 (默认为KSYRecScene_ConstantBitRate)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) KSYRecScene recScene</Declaration>
+			
+			
+			<Anchor>//api/name/recScene</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/recScene</TokenIdentifier>
+			<Abstract type="html">编码的目标场景 (默认为KSYRecScene_ConstantBitRate)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) KSYRecScene recScene</Declaration>
+			
+			
+			<Anchor>//api/name/recScene</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setVideoEncodePerf:</TokenIdentifier>
+			<Abstract type="html">视频编码性能档次 ( 默认为 KSYVideoEncodePer_LowPower)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) KSYVideoEncodePerformance videoEncodePerf</Declaration>
+			
+			
+			<Anchor>//api/name/videoEncodePerf</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/videoEncodePerf</TokenIdentifier>
+			<Abstract type="html">视频编码性能档次 ( 默认为 KSYVideoEncodePer_LowPower)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) KSYVideoEncodePerformance videoEncodePerf</Declaration>
+			
+			
+			<Anchor>//api/name/videoEncodePerf</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/videoEncodePerf</TokenIdentifier>
+			<Abstract type="html">视频编码性能档次 ( 默认为 KSYVideoEncodePer_LowPower)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) KSYVideoEncodePerformance videoEncodePerf</Declaration>
+			
+			
+			<Anchor>//api/name/videoEncodePerf</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setBWithVideo:</TokenIdentifier>
+			<Abstract type="html">是否处理视频的图像数据 (默认YES)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bWithVideo</Declaration>
+			
+			
+			<Anchor>//api/name/bWithVideo</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/bWithVideo</TokenIdentifier>
+			<Abstract type="html">是否处理视频的图像数据 (默认YES)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bWithVideo</Declaration>
+			
+			
+			<Anchor>//api/name/bWithVideo</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/bWithVideo</TokenIdentifier>
+			<Abstract type="html">是否处理视频的图像数据 (默认YES)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bWithVideo</Declaration>
+			
+			
+			<Anchor>//api/name/bWithVideo</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setBWithAudio:</TokenIdentifier>
+			<Abstract type="html">是否处理音频数据 (默认YES)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bWithAudio</Declaration>
+			
+			
+			<Anchor>//api/name/bWithAudio</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/bWithAudio</TokenIdentifier>
+			<Abstract type="html">是否处理音频数据 (默认YES)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bWithAudio</Declaration>
+			
+			
+			<Anchor>//api/name/bWithAudio</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/bWithAudio</TokenIdentifier>
+			<Abstract type="html">是否处理音频数据 (默认YES)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bWithAudio</Declaration>
+			
+			
+			<Anchor>//api/name/bWithAudio</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setWriteState:</TokenIdentifier>
+			<Abstract type="html">当前写入状态</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) KSYStreamState writeState</Declaration>
+			
+			
+			<Anchor>//api/name/writeState</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/writeState</TokenIdentifier>
+			<Abstract type="html">当前写入状态</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) KSYStreamState writeState</Declaration>
+			
+			
+			<Anchor>//api/name/writeState</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/writeState</TokenIdentifier>
+			<Abstract type="html">当前写入状态</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) KSYStreamState writeState</Declaration>
+			
+			
+			<Anchor>//api/name/writeState</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/getWriteStateName:</TokenIdentifier>
+			<Abstract type="html">获取写入状态对应的字符串</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)getWriteStateName:(KSYStreamState)stat</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>asbd</Name>
-					<Abstract type="html">输入的音频格式</Abstract>
+					<Name>stat</Name>
+					<Abstract type="html">状态码</Abstract>
 				</Parameter>
 			</Parameters>
-			<ReturnValue><Abstract type="html">新实例</Abstract></ReturnValue>
-			<Anchor>//api/name/initWithAudioFmt:</Anchor>
+			<ReturnValue><Abstract type="html">状态名称</Abstract></ReturnValue>
+			<Anchor>//api/name/getWriteStateName:</Anchor>
             <NodeRef refid="14"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/start</TokenIdentifier>
-			<Abstract type="html">启动产生数据</Abstract>
-			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/getCurWriteStateName</TokenIdentifier>
+			<Abstract type="html">获取当前写入状态对应的字符串</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)start</Declaration>
+			<Declaration>- (NSString *)getCurWriteStateName</Declaration>
 			
-			<ReturnValue><Abstract type="html">是否启动成功</Abstract></ReturnValue>
-			<Anchor>//api/name/start</Anchor>
+			<ReturnValue><Abstract type="html">当前状态名称</Abstract></ReturnValue>
+			<Anchor>//api/name/getCurWriteStateName</Anchor>
             <NodeRef refid="14"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/startAt:</TokenIdentifier>
-			<Abstract type="html">启动产生数据</Abstract>
-			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setStreamErrorCode:</TokenIdentifier>
+			<Abstract type="html">当前转码/写入的错误码</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)startAt:(CMTime)initPts</Declaration>
+			<Declaration>@property (nonatomic, readonly) KSYStreamErrorCode streamErrorCode</Declaration>
+			
+			
+			<Anchor>//api/name/streamErrorCode</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/streamErrorCode</TokenIdentifier>
+			<Abstract type="html">当前转码/写入的错误码</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) KSYStreamErrorCode streamErrorCode</Declaration>
+			
+			
+			<Anchor>//api/name/streamErrorCode</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/streamErrorCode</TokenIdentifier>
+			<Abstract type="html">当前转码/写入的错误码</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) KSYStreamErrorCode streamErrorCode</Declaration>
+			
+			
+			<Anchor>//api/name/streamErrorCode</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setWriteStateChange:</TokenIdentifier>
+			<Abstract type="html">数据流写入状态变化时的回调函数</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( KSYStreamState newState ) writeStateChange</Declaration>
+			
+			
+			<Anchor>//api/name/writeStateChange</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/writeStateChange</TokenIdentifier>
+			<Abstract type="html">数据流写入状态变化时的回调函数</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( KSYStreamState newState ) writeStateChange</Declaration>
+			
+			
+			<Anchor>//api/name/writeStateChange</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/writeStateChange</TokenIdentifier>
+			<Abstract type="html">数据流写入状态变化时的回调函数</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( KSYStreamState newState ) writeStateChange</Declaration>
+			
+			
+			<Anchor>//api/name/writeStateChange</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/getKSYWriteErrorCodeName:</TokenIdentifier>
+			<Abstract type="html">获取错误码对应的字符串</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)getKSYWriteErrorCodeName:(KSYStreamErrorCode)code</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>initPts</Name>
-					<Abstract type="html">设置启动时间戳</Abstract>
+					<Name>code</Name>
+					<Abstract type="html">错误码</Abstract>
 				</Parameter>
 			</Parameters>
-			<ReturnValue><Abstract type="html">是否启动采集成功</Abstract></ReturnValue>
-			<Anchor>//api/name/startAt:</Anchor>
+			
+			<Anchor>//api/name/getKSYWriteErrorCodeName:</Anchor>
             <NodeRef refid="14"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/stop</TokenIdentifier>
-			<Abstract type="html">停止产生数据</Abstract>
-			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/getCurKSYWriteErrorCodeName</TokenIdentifier>
+			<Abstract type="html">获取当前错误码对应的字符串</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
 			
-			<Declaration>- (void)stop</Declaration>
+			<Declaration>- (NSString *)getCurKSYWriteErrorCodeName</Declaration>
 			
 			
-			<Anchor>//api/name/stop</Anchor>
+			<Anchor>//api/name/getCurKSYWriteErrorCodeName</Anchor>
             <NodeRef refid="14"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/setAudioProcessingCallback:</TokenIdentifier>
-			<Abstract type="html">静音音频数据输出回调函数</Abstract>
-			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setVideoFPSChange:</TokenIdentifier>
+			<Abstract type="html">帧率应发生变化时的回调函数</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( int32_t newVideoFPS ) videoFPSChange</Declaration>
 			
 			
-			<Anchor>//api/name/audioProcessingCallback</Anchor>
+			<Anchor>//api/name/videoFPSChange</Anchor>
             <NodeRef refid="14"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/audioProcessingCallback</TokenIdentifier>
-			<Abstract type="html">静音音频数据输出回调函数</Abstract>
-			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/videoFPSChange</TokenIdentifier>
+			<Abstract type="html">帧率应发生变化时的回调函数</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( int32_t newVideoFPS ) videoFPSChange</Declaration>
 			
 			
-			<Anchor>//api/name/audioProcessingCallback</Anchor>
+			<Anchor>//api/name/videoFPSChange</Anchor>
             <NodeRef refid="14"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYDummyAudioSource/audioProcessingCallback</TokenIdentifier>
-			<Abstract type="html">静音音频数据输出回调函数</Abstract>
-			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/videoFPSChange</TokenIdentifier>
+			<Abstract type="html">帧率应发生变化时的回调函数</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( int32_t newVideoFPS ) videoFPSChange</Declaration>
 			
 			
-			<Anchor>//api/name/audioProcessingCallback</Anchor>
+			<Anchor>//api/name/videoFPSChange</Anchor>
             <NodeRef refid="14"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/setAsbd:</TokenIdentifier>
-			<Abstract type="html">format description for audio data
-默认PCM格式为: (Float32), 单声道, 44100Hz</Abstract>
-			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/initWithDefaultCfg</TokenIdentifier>
+			<Abstract type="html">初始化方法 （step1）</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) AudioStreamBasicDescription asbd</Declaration>
+			<Declaration>- (instancetype)initWithDefaultCfg</Declaration>
 			
 			
-			<Anchor>//api/name/asbd</Anchor>
+			<Anchor>//api/name/initWithDefaultCfg</Anchor>
             <NodeRef refid="14"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/asbd</TokenIdentifier>
-			<Abstract type="html">format description for audio data
-默认PCM格式为: (Float32), 单声道, 44100Hz</Abstract>
-			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/startWritingWith:</TokenIdentifier>
+			<Abstract type="html">启动写入文件 （step2）</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) AudioStreamBasicDescription asbd</Declaration>
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/audiokBPS</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>- (void)startWritingWith:(NSURL *)url</Declaration>
 			
 			
-			<Anchor>//api/name/asbd</Anchor>
+			<Anchor>//api/name/startWritingWith:</Anchor>
             <NodeRef refid="14"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYDummyAudioSource/asbd</TokenIdentifier>
-			<Abstract type="html">format description for audio data
-默认PCM格式为: (Float32), 单声道, 44100Hz</Abstract>
-			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/stopWriting</TokenIdentifier>
+			<Abstract type="html">停止写入 （step3）</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) AudioStreamBasicDescription asbd</Declaration>
+			<Declaration>- (void)stopWriting</Declaration>
 			
 			
-			<Anchor>//api/name/asbd</Anchor>
+			<Anchor>//api/name/stopWriting</Anchor>
             <NodeRef refid="14"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/setNbSample:</TokenIdentifier>
-			<Abstract type="html">每次尝试产生的数据长度 (sample数, 默认为1024)
-实际每次产生的音频的数据长度不确定, 应该是在nbSample附近波动</Abstract>
-			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/stopWriting:</TokenIdentifier>
+			<Abstract type="html">停止写入 （step3）</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int nbSample</Declaration>
+			<Declaration>- (void)stopWriting:(void ( ^ ) ( ))complete</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>complete</Name>
+					<Abstract type="html">完成回调</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/nbSample</Anchor>
+			<Anchor>//api/name/stopWriting:</Anchor>
             <NodeRef refid="14"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/nbSample</TokenIdentifier>
-			<Abstract type="html">每次尝试产生的数据长度 (sample数, 默认为1024)
-实际每次产生的音频的数据长度不确定, 应该是在nbSample附近波动</Abstract>
-			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/muteStream:</TokenIdentifier>
+			<Abstract type="html">静音 (仍然有音频，只是音量为0)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int nbSample</Declaration>
+			<Declaration>- (void)muteStream:(BOOL)bMute</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>bMute</Name>
+					<Abstract type="html">YES / ON</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/nbSample</Anchor>
+			<Anchor>//api/name/muteStream:</Anchor>
             <NodeRef refid="14"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYDummyAudioSource/nbSample</TokenIdentifier>
-			<Abstract type="html">每次尝试产生的数据长度 (sample数, 默认为1024)
-实际每次产生的音频的数据长度不确定, 应该是在nbSample附近波动</Abstract>
-			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/processVideoSampleBuffer:onComplete:</TokenIdentifier>
+			<Abstract type="html">处理一个视频帧(只支持编码前的原始图像数据)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int nbSample</Declaration>
+			<Declaration>- (void)processVideoSampleBuffer:(CMSampleBufferRef)sampleBuffer onComplete:(void ( ^ ) ( BOOL ))completion</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sampleBuffer</Name>
+					<Abstract type="html">Buffer to process</Abstract>
+				</Parameter><Parameter>
+					<Name>completion</Name>
+					<Abstract type="html">当前视频帧处理完成的回调</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/nbSample</Anchor>
+			<Anchor>//api/name/processVideoSampleBuffer:onComplete:</Anchor>
             <NodeRef refid="14"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/setBRunning:</TokenIdentifier>
-			<Abstract type="html">当前是否正在工作</Abstract>
-			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/processVideoPixelBuffer:timeInfo:onComplete:</TokenIdentifier>
+			<Abstract type="html">处理一个视频帧(只支持编码前的原始图像数据)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) BOOL bRunning</Declaration>
+			<Declaration>- (void)processVideoPixelBuffer:(CVPixelBufferRef)pixelBuffer timeInfo:(CMTime)timeStamp onComplete:(void ( ^ ) ( BOOL ))completion</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>pixelBuffer</Name>
+					<Abstract type="html">待编码的像素数据</Abstract>
+				</Parameter><Parameter>
+					<Name>timeStamp</Name>
+					<Abstract type="html">待编码的时间戳</Abstract>
+				</Parameter><Parameter>
+					<Name>completion</Name>
+					<Abstract type="html">当前视频帧处理完成的回调</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/bRunning</Anchor>
+			<Anchor>//api/name/processVideoPixelBuffer:timeInfo:onComplete:</Anchor>
             <NodeRef refid="14"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/bRunning</TokenIdentifier>
-			<Abstract type="html">当前是否正在工作</Abstract>
-			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/processAudioSampleBuffer:</TokenIdentifier>
+			<Abstract type="html">处理一段音频数据</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) BOOL bRunning</Declaration>
+			<Declaration>- (void)processAudioSampleBuffer:(CMSampleBufferRef)sampleBuffer</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sampleBuffer</Name>
+					<Abstract type="html">Buffer to process</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/bRunning</Anchor>
+			<Anchor>//api/name/processAudioSampleBuffer:</Anchor>
             <NodeRef refid="14"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYDummyAudioSource/bRunning</TokenIdentifier>
-			<Abstract type="html">当前是否正在工作</Abstract>
-			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/isWriting</TokenIdentifier>
+			<Abstract type="html">查询当前是否处于写入状态 (connecting, 或connected)</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) BOOL bRunning</Declaration>
+			<Declaration>- (BOOL)isWriting</Declaration>
 			
 			
-			<Anchor>//api/name/bRunning</Anchor>
+			<Anchor>//api/name/isWriting</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setEncodeVKbps:</TokenIdentifier>
+			<Abstract type="html">查询当前编码的视频码率大小（每秒更新）</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) double encodeVKbps</Declaration>
+			
+			
+			<Anchor>//api/name/encodeVKbps</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/encodeVKbps</TokenIdentifier>
+			<Abstract type="html">查询当前编码的视频码率大小（每秒更新）</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) double encodeVKbps</Declaration>
+			
+			
+			<Anchor>//api/name/encodeVKbps</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/encodeVKbps</TokenIdentifier>
+			<Abstract type="html">查询当前编码的视频码率大小（每秒更新）</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) double encodeVKbps</Declaration>
+			
+			
+			<Anchor>//api/name/encodeVKbps</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setEncodeAKbps:</TokenIdentifier>
+			<Abstract type="html">查询当前编码的音频码率大小（每秒更新）</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/audiokBPS</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, readonly) double encodeAKbps</Declaration>
+			
+			
+			<Anchor>//api/name/encodeAKbps</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/encodeAKbps</TokenIdentifier>
+			<Abstract type="html">查询当前编码的音频码率大小（每秒更新）</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/audiokBPS</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, readonly) double encodeAKbps</Declaration>
+			
+			
+			<Anchor>//api/name/encodeAKbps</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/encodeAKbps</TokenIdentifier>
+			<Abstract type="html">查询当前编码的音频码率大小（每秒更新）</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/audiokBPS</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, readonly) double encodeAKbps</Declaration>
+			
+			
+			<Anchor>//api/name/encodeAKbps</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setEncodingFPS:</TokenIdentifier>
+			<Abstract type="html">查询当前编码的平均视频帧率</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/videoFPS</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, readonly) double encodingFPS</Declaration>
+			
+			
+			<Anchor>//api/name/encodingFPS</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/encodingFPS</TokenIdentifier>
+			<Abstract type="html">查询当前编码的平均视频帧率</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/videoFPS</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, readonly) double encodingFPS</Declaration>
+			
+			
+			<Anchor>//api/name/encodingFPS</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/encodingFPS</TokenIdentifier>
+			<Abstract type="html">查询当前编码的平均视频帧率</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/videoFPS</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, readonly) double encodingFPS</Declaration>
+			
+			
+			<Anchor>//api/name/encodingFPS</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setEncodedFrames:</TokenIdentifier>
+			<Abstract type="html">查询本次视频写入已经编码的总帧数</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) int encodedFrames</Declaration>
+			
+			
+			<Anchor>//api/name/encodedFrames</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/encodedFrames</TokenIdentifier>
+			<Abstract type="html">查询本次视频写入已经编码的总帧数</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) int encodedFrames</Declaration>
+			
+			
+			<Anchor>//api/name/encodedFrames</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/encodedFrames</TokenIdentifier>
+			<Abstract type="html">查询本次视频写入已经编码的总帧数</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) int encodedFrames</Declaration>
+			
+			
+			<Anchor>//api/name/encodedFrames</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setLogBlock:</TokenIdentifier>
+			<Abstract type="html">clip writer</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( NSString *logJson ) logBlock</Declaration>
+			
+			
+			<Anchor>//api/name/logBlock</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/logBlock</TokenIdentifier>
+			<Abstract type="html">clip writer</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( NSString *logJson ) logBlock</Declaration>
+			
+			
+			<Anchor>//api/name/logBlock</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/logBlock</TokenIdentifier>
+			<Abstract type="html">clip writer</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( NSString *logJson ) logBlock</Declaration>
+			
+			
+			<Anchor>//api/name/logBlock</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/setShouldEnableKSYDropModule:</TokenIdentifier>
+			<Abstract type="html">是否允许编码前丢帧，默认开启（videoFPS生效）
+@warnning 离线转码需要输出所有帧的情况下开启，videoFPS将不生效，根据输入源的fps保持一致</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL shouldEnableKSYDropModule</Declaration>
+			
+			
+			<Anchor>//api/name/shouldEnableKSYDropModule</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYClipWriter/shouldEnableKSYDropModule</TokenIdentifier>
+			<Abstract type="html">是否允许编码前丢帧，默认开启（videoFPS生效）
+@warnning 离线转码需要输出所有帧的情况下开启，videoFPS将不生效，根据输入源的fps保持一致</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL shouldEnableKSYDropModule</Declaration>
+			
+			
+			<Anchor>//api/name/shouldEnableKSYDropModule</Anchor>
+            <NodeRef refid="14"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYClipWriter/shouldEnableKSYDropModule</TokenIdentifier>
+			<Abstract type="html">是否允许编码前丢帧，默认开启（videoFPS生效）
+@warnning 离线转码需要输出所有帧的情况下开启，videoFPS将不生效，根据输入源的fps保持一致</Abstract>
+			<DeclaredIn>KSYClipWriter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL shouldEnableKSYDropModule</Declaration>
+			
+			
+			<Anchor>//api/name/shouldEnableKSYDropModule</Anchor>
             <NodeRef refid="14"/>
 		</Token>
 		

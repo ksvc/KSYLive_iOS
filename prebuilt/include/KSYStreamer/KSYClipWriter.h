@@ -210,7 +210,14 @@ FOUNDATION_EXPORT NSString *const KSYWriteStateDidChangeNotification NS_AVAILABL
  @abstract   停止写入 （step3）
  @discussion 停止文件写入
  */
+
 - (void)stopWriting;
+/**
+ @abstract   停止写入 （step3）
+ @discussion 停止文件写入
+ @param complete 完成回调
+ */
+- (void)stopWriting:(void(^)())complete;
 
 /**
  @abstract   静音 (仍然有音频，只是音量为0)

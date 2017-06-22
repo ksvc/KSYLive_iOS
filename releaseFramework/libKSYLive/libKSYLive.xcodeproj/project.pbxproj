@@ -32,6 +32,8 @@
 		06E670751DEC376E0015E3BD /* KSYDummyAudioSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E670731DEC37570015E3BD /* KSYDummyAudioSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06E742A71D90FEC300C3E780 /* KSYSpecialEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E742A31D90FEB700C3E780 /* KSYSpecialEffects.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06E742A81D90FEC300C3E780 /* KSYBuildInSpecialEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E742A41D90FEB700C3E780 /* KSYBuildInSpecialEffects.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06FBE52E1EF800E0000C98F7 /* KSYAudioFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 06FBE52D1EF800E0000C98F7 /* KSYAudioFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06FBE5301EF800ED000C98F7 /* KSYGPUView.h in Headers */ = {isa = PBXBuildFile; fileRef = 06FBE52F1EF800ED000C98F7 /* KSYGPUView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5800A0591D76E50100AB55F7 /* KSYMediaPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800A0181D76BFA600AB55F7 /* KSYMediaPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5800DC851D82B9AA00B1A884 /* KSYMediaInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC7F1D82B9AA00B1A884 /* KSYMediaInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5800DC861D82B9AA00B1A884 /* KSYMediaInfoProber.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC801D82B9AA00B1A884 /* KSYMediaInfoProber.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -94,6 +96,8 @@
 		06E670731DEC37570015E3BD /* KSYDummyAudioSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYDummyAudioSource.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYDummyAudioSource.h; sourceTree = "<group>"; };
 		06E742A31D90FEB700C3E780 /* KSYSpecialEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYSpecialEffects.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYSpecialEffects.h; sourceTree = "<group>"; };
 		06E742A41D90FEB700C3E780 /* KSYBuildInSpecialEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYBuildInSpecialEffects.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYBuildInSpecialEffects.h; sourceTree = "<group>"; };
+		06FBE52D1EF800E0000C98F7 /* KSYAudioFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYAudioFilter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYAudioFilter.h; sourceTree = "<group>"; };
+		06FBE52F1EF800ED000C98F7 /* KSYGPUView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUView.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPUView.h; sourceTree = "<group>"; };
 		5800A0161D76BFA600AB55F7 /* KSYMediaPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KSYMediaPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5800A0181D76BFA600AB55F7 /* KSYMediaPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSYMediaPlayer.h; sourceTree = "<group>"; };
 		5800A01A1D76BFA600AB55F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -289,6 +293,7 @@
 		580489E11D799FF200232F6E /* include */ = {
 			isa = PBXGroup;
 			children = (
+				06FBE52D1EF800E0000C98F7 /* KSYAudioFilter.h */,
 				063254B61E6810B200638EC8 /* AVAudioSession+KSY.h */,
 				063254B71E6810B200638EC8 /* KSYAQPlayer.h */,
 				063254B81E6810B200638EC8 /* KSYBgmReader.h */,
@@ -302,6 +307,7 @@
 				067E953A1E165A5400512363 /* libksygpufilter.h */,
 				067E953B1E165A5400512363 /* libksystreamerbase.h */,
 				067E953C1E165A5400512363 /* libksystreamerengine.h */,
+				06FBE52F1EF800ED000C98F7 /* KSYGPUView.h */,
 				06E3D1B61E00402600E2AEA8 /* KSYGPUPicInput.h */,
 				5800DCA21D82BAA800B1A884 /* KSYAUAudioCapture.h */,
 				5800DCA31D82BAA800B1A884 /* KSYAudioMixer.h */,
@@ -393,6 +399,8 @@
 				0623D6F31E78185400AEF51E /* KSYReachability.h in Headers */,
 				063254BE1E6810C600638EC8 /* KSYBgmReader.h in Headers */,
 				06CC32271EC4868A00B81609 /* KSYClipWriter.h in Headers */,
+				06FBE52E1EF800E0000C98F7 /* KSYAudioFilter.h in Headers */,
+				06FBE5301EF800ED000C98F7 /* KSYGPUView.h in Headers */,
 				052B29421EAB316300BFECB0 /* KSYGPUBgpStreamerKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

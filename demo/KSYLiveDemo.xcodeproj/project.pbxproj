@@ -36,9 +36,11 @@
 		06FBBD671D2E17E00065ED55 /* KSYNameSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD461D2E17E00065ED55 /* KSYNameSlider.m */; };
 		06FBBD691D2E17E00065ED55 /* KSYUIVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD481D2E17E00065ED55 /* KSYUIVC.m */; };
 		06FBBD6B1D2E17E00065ED55 /* KSYUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FBBD4A1D2E17E00065ED55 /* KSYUIView.m */; };
+		31F5D1DE1ED683A900588B8E /* KSYQRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F5D1DD1ED683A900588B8E /* KSYQRCode.m */; };
 		3991D0F21DD5674200032EC0 /* KSYRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3991D0EF1DD5674200032EC0 /* KSYRecordVC.m */; };
 		5806F5A71E7FF8B100FDB488 /* KSYFloatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5806F5A61E7FF8B100FDB488 /* KSYFloatVC.m */; };
 		580C1C311E289BC800B386D5 /* KSYNetTrackerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C1C301E289BC800B386D5 /* KSYNetTrackerVC.m */; };
+		58149AD21EF80FB200A3BC8B /* KSYSimplePlayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 58149AD11EF80FB200A3BC8B /* KSYSimplePlayVC.m */; };
 		58288AEE1ED5927200F6FECD /* KSYAVWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58288AED1ED5927200F6FECD /* KSYAVWriter.m */; };
 		585ABE2B1EC4614400315A5C /* KSYMonkeyTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 585ABE261EC4614400315A5C /* KSYMonkeyTestVC.m */; };
 		585ABE2C1EC4614400315A5C /* KSYPlayerCfgVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 585ABE281EC4614400315A5C /* KSYPlayerCfgVC.m */; };
@@ -163,12 +165,16 @@
 		06FBBD481D2E17E00065ED55 /* KSYUIVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYUIVC.m; sourceTree = "<group>"; };
 		06FBBD491D2E17E00065ED55 /* KSYUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYUIView.h; sourceTree = "<group>"; };
 		06FBBD4A1D2E17E00065ED55 /* KSYUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYUIView.m; sourceTree = "<group>"; };
+		31F5D1DC1ED683A900588B8E /* KSYQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYQRCode.h; path = KSYDemoUI/KSYQRCode.h; sourceTree = "<group>"; };
+		31F5D1DD1ED683A900588B8E /* KSYQRCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYQRCode.m; path = KSYDemoUI/KSYQRCode.m; sourceTree = "<group>"; };
 		3991D0EE1DD5674200032EC0 /* KSYRecordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYRecordVC.h; path = KSYLiveDemo/KSYPlayerDemo/KSYRecordVC.h; sourceTree = "<group>"; };
 		3991D0EF1DD5674200032EC0 /* KSYRecordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYRecordVC.m; path = KSYLiveDemo/KSYPlayerDemo/KSYRecordVC.m; sourceTree = "<group>"; };
 		5806F5A51E7FF8B100FDB488 /* KSYFloatVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYFloatVC.h; path = KSYLiveDemo/KSYPlayerDemo/KSYFloatVC.h; sourceTree = "<group>"; };
 		5806F5A61E7FF8B100FDB488 /* KSYFloatVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYFloatVC.m; path = KSYLiveDemo/KSYPlayerDemo/KSYFloatVC.m; sourceTree = "<group>"; };
 		580C1C301E289BC800B386D5 /* KSYNetTrackerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYNetTrackerVC.m; path = KSYLiveDemo/KSYPlayerDemo/KSYNetTrackerVC.m; sourceTree = "<group>"; };
 		580C1C321E289C1600B386D5 /* KSYNetTrackerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSYNetTrackerVC.h; path = KSYLiveDemo/KSYPlayerDemo/KSYNetTrackerVC.h; sourceTree = "<group>"; };
+		58149AD11EF80FB200A3BC8B /* KSYSimplePlayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYSimplePlayVC.m; path = KSYLiveDemo/KSYPlayerDemo/KSYSimplePlayVC.m; sourceTree = "<group>"; };
+		58149AD31EF80FFE00A3BC8B /* KSYSimplePlayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYSimplePlayVC.h; path = KSYLiveDemo/KSYPlayerDemo/KSYSimplePlayVC.h; sourceTree = "<group>"; };
 		58288AEC1ED5927200F6FECD /* KSYAVWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYAVWriter.h; path = KSYLiveDemo/KSYPlayerDemo/KSYAVWriter.h; sourceTree = "<group>"; };
 		58288AED1ED5927200F6FECD /* KSYAVWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYAVWriter.m; path = KSYLiveDemo/KSYPlayerDemo/KSYAVWriter.m; sourceTree = "<group>"; };
 		585ABE251EC4614400315A5C /* KSYMonkeyTestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYMonkeyTestVC.h; path = KSYLiveDemo/KSYPlayerDemo/KSYMonkeyTestVC.h; sourceTree = "<group>"; };
@@ -276,6 +282,8 @@
 		067F7E4F1D4762AC00F54FEA /* KSYPlayerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				58149AD31EF80FFE00A3BC8B /* KSYSimplePlayVC.h */,
+				58149AD11EF80FB200A3BC8B /* KSYSimplePlayVC.m */,
 				585ABE251EC4614400315A5C /* KSYMonkeyTestVC.h */,
 				58288AEC1ED5927200F6FECD /* KSYAVWriter.h */,
 				58288AED1ED5927200F6FECD /* KSYAVWriter.m */,
@@ -331,6 +339,8 @@
 		06B2B1A51BE8F0D900E0CC85 /* KSYLiveDemo */ = {
 			isa = PBXGroup;
 			children = (
+				31F5D1DC1ED683A900588B8E /* KSYQRCode.h */,
+				31F5D1DD1ED683A900588B8E /* KSYQRCode.m */,
 				E3B007371CE31547009AF074 /* KSYDBCreater.h */,
 				E3B007381CE31547009AF074 /* KSYDBCreater.m */,
 				95B4A3E91CBF6CC700CB6804 /* KSYSQLite.h */,
@@ -629,6 +639,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06A646B61D8459C800D1C620 /* KSYProgressView.m in Sources */,
+				58149AD21EF80FB200A3BC8B /* KSYSimplePlayVC.m in Sources */,
 				0530DE591E484C6100EEAD32 /* KSYBgmStreamerVC.m in Sources */,
 				06A646B71D8459C800D1C620 /* KSYProberVC.m in Sources */,
 				06A646B81D8459C800D1C620 /* KSYPlayerVC.m in Sources */,
@@ -662,6 +673,7 @@
 				C323BC1E1E794C2900D4682C /* KSYFloatStreamerVC.m in Sources */,
 				E33527ED1E49986400DB6DD1 /* KSYSimplestStreamerVC.m in Sources */,
 				06FBBD671D2E17E00065ED55 /* KSYNameSlider.m in Sources */,
+				31F5D1DE1ED683A900588B8E /* KSYQRCode.m in Sources */,
 				06B2B1A91BE8F0D900E0CC85 /* main.m in Sources */,
 				95B4A3EF1CBF6CC700CB6804 /* KSYSQLite.m in Sources */,
 				06FBBD5D1D2E17E00065ED55 /* KSYPresetCfgVC.m in Sources */,

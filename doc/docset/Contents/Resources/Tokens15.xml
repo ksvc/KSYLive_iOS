@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUBeautifyExtFilter.html">
+	<File path="Classes/KSYDummyAudioSource.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUBeautifyExtFilter</TokenIdentifier>
-			<Abstract type="html">扩展增强美颜滤镜</Abstract>
-			<DeclaredIn>KSYGPUBeautifyExtFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYDummyAudioSource</TokenIdentifier>
+			<Abstract type="html">静音音频数据源</Abstract>
+			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
             
 			
 			<NodeRef refid="15"/>
@@ -13,19 +13,210 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBeautifyExtFilter/setBeautylevel:</TokenIdentifier>
-			<Abstract type="html">美颜的等级</Abstract>
-			<DeclaredIn>KSYGPUBeautifyExtFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/initWithAudioFmt:</TokenIdentifier>
+			<Abstract type="html">构造函数</Abstract>
+			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
 			
-			<Declaration>- (void)setBeautylevel:(int)level</Declaration>
+			<Declaration>- (id)initWithAudioFmt:(AudioStreamBasicDescription)asbd</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>level</Name>
-					<Abstract type="html">1 ~ 5，逐级增强, 默认为3</Abstract>
+					<Name>asbd</Name>
+					<Abstract type="html">输入的音频格式</Abstract>
 				</Parameter>
 			</Parameters>
+			<ReturnValue><Abstract type="html">新实例</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithAudioFmt:</Anchor>
+            <NodeRef refid="15"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/start</TokenIdentifier>
+			<Abstract type="html">启动产生数据</Abstract>
+			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
 			
-			<Anchor>//api/name/setBeautylevel:</Anchor>
+			<Declaration>- (BOOL)start</Declaration>
+			
+			<ReturnValue><Abstract type="html">是否启动成功</Abstract></ReturnValue>
+			<Anchor>//api/name/start</Anchor>
+            <NodeRef refid="15"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/startAt:</TokenIdentifier>
+			<Abstract type="html">启动产生数据</Abstract>
+			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)startAt:(CMTime)initPts</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>initPts</Name>
+					<Abstract type="html">设置启动时间戳</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">是否启动采集成功</Abstract></ReturnValue>
+			<Anchor>//api/name/startAt:</Anchor>
+            <NodeRef refid="15"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/stop</TokenIdentifier>
+			<Abstract type="html">停止产生数据</Abstract>
+			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			
+			<Declaration>- (void)stop</Declaration>
+			
+			
+			<Anchor>//api/name/stop</Anchor>
+            <NodeRef refid="15"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/setAudioProcessingCallback:</TokenIdentifier>
+			<Abstract type="html">静音音频数据输出回调函数</Abstract>
+			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/audioProcessingCallback</Anchor>
+            <NodeRef refid="15"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/audioProcessingCallback</TokenIdentifier>
+			<Abstract type="html">静音音频数据输出回调函数</Abstract>
+			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/audioProcessingCallback</Anchor>
+            <NodeRef refid="15"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYDummyAudioSource/audioProcessingCallback</TokenIdentifier>
+			<Abstract type="html">静音音频数据输出回调函数</Abstract>
+			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/audioProcessingCallback</Anchor>
+            <NodeRef refid="15"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/setAsbd:</TokenIdentifier>
+			<Abstract type="html">format description for audio data
+默认PCM格式为: (Float32), 单声道, 44100Hz</Abstract>
+			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) AudioStreamBasicDescription asbd</Declaration>
+			
+			
+			<Anchor>//api/name/asbd</Anchor>
+            <NodeRef refid="15"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/asbd</TokenIdentifier>
+			<Abstract type="html">format description for audio data
+默认PCM格式为: (Float32), 单声道, 44100Hz</Abstract>
+			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) AudioStreamBasicDescription asbd</Declaration>
+			
+			
+			<Anchor>//api/name/asbd</Anchor>
+            <NodeRef refid="15"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYDummyAudioSource/asbd</TokenIdentifier>
+			<Abstract type="html">format description for audio data
+默认PCM格式为: (Float32), 单声道, 44100Hz</Abstract>
+			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) AudioStreamBasicDescription asbd</Declaration>
+			
+			
+			<Anchor>//api/name/asbd</Anchor>
+            <NodeRef refid="15"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/setNbSample:</TokenIdentifier>
+			<Abstract type="html">每次尝试产生的数据长度 (sample数, 默认为1024)
+实际每次产生的音频的数据长度不确定, 应该是在nbSample附近波动</Abstract>
+			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int nbSample</Declaration>
+			
+			
+			<Anchor>//api/name/nbSample</Anchor>
+            <NodeRef refid="15"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/nbSample</TokenIdentifier>
+			<Abstract type="html">每次尝试产生的数据长度 (sample数, 默认为1024)
+实际每次产生的音频的数据长度不确定, 应该是在nbSample附近波动</Abstract>
+			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int nbSample</Declaration>
+			
+			
+			<Anchor>//api/name/nbSample</Anchor>
+            <NodeRef refid="15"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYDummyAudioSource/nbSample</TokenIdentifier>
+			<Abstract type="html">每次尝试产生的数据长度 (sample数, 默认为1024)
+实际每次产生的音频的数据长度不确定, 应该是在nbSample附近波动</Abstract>
+			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int nbSample</Declaration>
+			
+			
+			<Anchor>//api/name/nbSample</Anchor>
+            <NodeRef refid="15"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/setBRunning:</TokenIdentifier>
+			<Abstract type="html">当前是否正在工作</Abstract>
+			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL bRunning</Declaration>
+			
+			
+			<Anchor>//api/name/bRunning</Anchor>
+            <NodeRef refid="15"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYDummyAudioSource/bRunning</TokenIdentifier>
+			<Abstract type="html">当前是否正在工作</Abstract>
+			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL bRunning</Declaration>
+			
+			
+			<Anchor>//api/name/bRunning</Anchor>
+            <NodeRef refid="15"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYDummyAudioSource/bRunning</TokenIdentifier>
+			<Abstract type="html">当前是否正在工作</Abstract>
+			<DeclaredIn>KSYDummyAudioSource.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL bRunning</Declaration>
+			
+			
+			<Anchor>//api/name/bRunning</Anchor>
             <NodeRef refid="15"/>
 		</Token>
 		

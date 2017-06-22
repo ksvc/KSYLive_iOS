@@ -106,6 +106,14 @@
     _previewOrientation =
     _videoOrientation   =
     _streamOrientation  = UIInterfaceOrientationPortrait;
+    // 设置 AudioSession的属性为直播需要的默认值, 具体如下:
+    // bInterruptOtherAudio : NO  不打断其他播放器
+    // bDefaultToSpeaker : YES    背景音乐从外放播放
+    // bAllowBluetooth : YES      启用蓝牙
+    // AVAudioSessionCategory : AVAudioSessionCategoryPlayAndRecord  允许录音
+    // 设置不打断其他播放器时，需要放在_aCapDev初始化前设置，否则没效果
+    [[AVAudioSession sharedInstance] setDefaultCfg];
+    [AVAudioSession sharedInstance].bInterruptOtherAudio = bInter;
     // 创建背景音乐播放模块
     _bgmPlayer = [[KSYBgmPlayer   alloc] init];
     // 音频采集模块
@@ -125,7 +133,7 @@
     // 创建 推流模块
     _streamerBase = [[KSYStreamerBase alloc] initWithDefaultCfg];
     // 创建 预览模块, 并放到视图底部
-    _preview = [[GPUImageView alloc] init];
+    _preview = [[KSYGPUView alloc] init];
     _preview.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
     
     ///// 3. 数据处理和通路 ///////////
@@ -148,13 +156,6 @@
     
     // 组装音频通道
     [self setupAudioPath];
-    // 设置 AudioSession的属性为直播需要的默认值, 具体如下:
-    // bInterruptOtherAudio : NO  不打断其他播放器
-    // bDefaultToSpeaker : YES    背景音乐从外放播放
-    // bAllowBluetooth : YES      启用蓝牙
-    // AVAudioSessionCategory : AVAudioSessionCategoryPlayAndRecord  允许录音
-    [[AVAudioSession sharedInstance] setDefaultCfg];
-    [AVAudioSession sharedInstance].bInterruptOtherAudio = bInter;
     
     //消息通道
     _msgStreamer = [[KSYMessage alloc] init];
@@ -185,6 +186,7 @@
            selector:@selector(onNetEvent)
                name:KSYNetStateEventNotification
              object:nil];
+
     return self;
 }
 - (instancetype)init {
@@ -1098,10 +1100,10 @@ kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRota
     AVCaptureDevice *dev = _vCapDev.inputCamera;
     NSError *error;
     
-    if ([dev isExposurePointOfInterestSupported] && [dev isExposureModeSupported:AVCaptureExposureModeAutoExpose]) {
+    if ([dev isExposurePointOfInterestSupported] && [dev isExposureModeSupported:AVCaptureExposureModeContinuousAutoExposure]) {
         if ([dev lockForConfiguration:&error]) {
             [dev setExposurePointOfInterest:point];  // 曝光点
-            [dev setExposureMode:AVCaptureExposureModeAutoExpose];
+            [dev setExposureMode:AVCaptureExposureModeContinuousAutoExposure];
             [dev unlockForConfiguration];
             return YES;
         }

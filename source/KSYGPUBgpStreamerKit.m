@@ -94,7 +94,7 @@
     // 创建 推流模块
     _streamerBase = [[KSYStreamerBase alloc] initWithDefaultCfg];
     // 创建 预览模块, 并放到视图底部
-    _preview = [[GPUImageView alloc] init];
+    _preview = [[KSYGPUView alloc] init];
     _preview.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
     
     ///// 3. 数据处理和通路 ///////////

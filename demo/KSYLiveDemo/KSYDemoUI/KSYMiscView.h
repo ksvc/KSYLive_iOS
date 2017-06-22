@@ -18,6 +18,8 @@
 @property UIButton* btn2;
 @property UIButton* btn3;
 @property UIButton* btn4;
+//显示拉流地址并获取二维码
+@property UIButton *buttonPlayUrlAndQR;
 
 @property UISwitch* swBypassRec; // 旁路录制
 @property UILabel*  lblRecDur;   // 旁路录制的时长

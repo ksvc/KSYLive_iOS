@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYBgmPlayer.html">
+	<File path="Classes/KSYBeautifyProFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYBgmPlayer</TokenIdentifier>
-			<Abstract type="html">背景音乐播放器</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYBeautifyProFilter</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="10"/>
@@ -13,566 +13,151 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/startPlayBgm:isLoop:</TokenIdentifier>
-			<Abstract type="html">开始播放背景音乐</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyProFilter/init</TokenIdentifier>
+			<Abstract type="html">init</Abstract>
+			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)startPlayBgm:(NSString *)path isLoop:(BOOL)loop</Declaration>
+			<Declaration>- (id)init</Declaration>
+			
+			
+			<Anchor>//api/name/init</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyProFilter/initWithIdx:</TokenIdentifier>
+			<Abstract type="html">初始化并指定 1~4 的index来创建对应美颜滤镜</Abstract>
+			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithIdx:(NSInteger)idx</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>path</Name>
-					<Abstract type="html">本地音乐的路径</Abstract>
-				</Parameter><Parameter>
-					<Name>loop</Name>
-					<Abstract type="html">是否循环播放此音乐</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">是否能够开始播放</Abstract></ReturnValue>
-			<Anchor>//api/name/startPlayBgm:isLoop:</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/stopPlayBgm</TokenIdentifier>
-			<Abstract type="html">停止播放背景音乐</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>- (void)stopPlayBgm</Declaration>
-			
-			
-			<Anchor>//api/name/stopPlayBgm</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/stopPlayBgm:</TokenIdentifier>
-			<Abstract type="html">停止播放背景音乐
-@param      停止完成的回调函数</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>- (void)stopPlayBgm:(void ( ^ ) ( ))completion</Declaration>
-			
-			
-			<Anchor>//api/name/stopPlayBgm:</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/pauseBgm</TokenIdentifier>
-			<Abstract type="html">暂停播放背景音乐</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>- (void)pauseBgm</Declaration>
-			
-			
-			<Anchor>//api/name/pauseBgm</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/resumeBgm</TokenIdentifier>
-			<Abstract type="html">恢复播放背景音乐</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>- (void)resumeBgm</Declaration>
-			
-			
-			<Anchor>//api/name/resumeBgm</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/seekToTime:</TokenIdentifier>
-			<Abstract type="html">seek到指定时间 (拖动进度条)</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>- (BOOL)seekToTime:(float)time</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>time</Name>
-					<Abstract type="html">时间, 请参考 bgmDuration (单位,秒)</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">是否seek 成功</Abstract></ReturnValue>
-			<Anchor>//api/name/seekToTime:</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/seekToProgress:</TokenIdentifier>
-			<Abstract type="html">seek到指定进度 (拖动进度条)</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>- (BOOL)seekToProgress:(float)prog</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>prog</Name>
-					<Abstract type="html">进度, 请参考 bgmProgress</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">是否seek 成功</Abstract></ReturnValue>
-			<Anchor>//api/name/seekToProgress:</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/setBgmVolume:</TokenIdentifier>
-			<Abstract type="html">背景音乐的音量</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) double bgmVolume</Declaration>
-			
-			
-			<Anchor>//api/name/bgmVolume</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/bgmVolume</TokenIdentifier>
-			<Abstract type="html">背景音乐的音量</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) double bgmVolume</Declaration>
-			
-			
-			<Anchor>//api/name/bgmVolume</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmPlayer/bgmVolume</TokenIdentifier>
-			<Abstract type="html">背景音乐的音量</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) double bgmVolume</Declaration>
-			
-			
-			<Anchor>//api/name/bgmVolume</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/setBgmPitch:</TokenIdentifier>
-			<Abstract type="html">播放声音的音调</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) double bgmPitch</Declaration>
-			
-			
-			<Anchor>//api/name/bgmPitch</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/bgmPitch</TokenIdentifier>
-			<Abstract type="html">播放声音的音调</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) double bgmPitch</Declaration>
-			
-			
-			<Anchor>//api/name/bgmPitch</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmPlayer/bgmPitch</TokenIdentifier>
-			<Abstract type="html">播放声音的音调</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) double bgmPitch</Declaration>
-			
-			
-			<Anchor>//api/name/bgmPitch</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/setBMuteBgmPlay:</TokenIdentifier>
-			<Abstract type="html">背景音乐播放静音</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL bMuteBgmPlay</Declaration>
-			
-			
-			<Anchor>//api/name/bMuteBgmPlay</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/bMuteBgmPlay</TokenIdentifier>
-			<Abstract type="html">背景音乐播放静音</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL bMuteBgmPlay</Declaration>
-			
-			
-			<Anchor>//api/name/bMuteBgmPlay</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmPlayer/bMuteBgmPlay</TokenIdentifier>
-			<Abstract type="html">背景音乐播放静音</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL bMuteBgmPlay</Declaration>
-			
-			
-			<Anchor>//api/name/bMuteBgmPlay</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/setAudioDataBlock:</TokenIdentifier>
-			<Abstract type="html">音频数据输出回调</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) BOOL ( ^ ) ( uint8_t **pData , int len , const AudioStreamBasicDescription *fmt , CMTime pts ) audioDataBlock</Declaration>
-			
-			
-			<Anchor>//api/name/audioDataBlock</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/audioDataBlock</TokenIdentifier>
-			<Abstract type="html">音频数据输出回调</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) BOOL ( ^ ) ( uint8_t **pData , int len , const AudioStreamBasicDescription *fmt , CMTime pts ) audioDataBlock</Declaration>
-			
-			
-			<Anchor>//api/name/audioDataBlock</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmPlayer/audioDataBlock</TokenIdentifier>
-			<Abstract type="html">音频数据输出回调</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) BOOL ( ^ ) ( uint8_t **pData , int len , const AudioStreamBasicDescription *fmt , CMTime pts ) audioDataBlock</Declaration>
-			
-			
-			<Anchor>//api/name/audioDataBlock</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/setBgmFinishBlock:</TokenIdentifier>
-			<Abstract type="html">当背景音乐播放完成时，调用此回调函数</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( void ) bgmFinishBlock</Declaration>
-			
-			
-			<Anchor>//api/name/bgmFinishBlock</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/bgmFinishBlock</TokenIdentifier>
-			<Abstract type="html">当背景音乐播放完成时，调用此回调函数</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( void ) bgmFinishBlock</Declaration>
-			
-			
-			<Anchor>//api/name/bgmFinishBlock</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmPlayer/bgmFinishBlock</TokenIdentifier>
-			<Abstract type="html">当背景音乐播放完成时，调用此回调函数</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( void ) bgmFinishBlock</Declaration>
-			
-			
-			<Anchor>//api/name/bgmFinishBlock</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/setBgmDuration:</TokenIdentifier>
-			<Abstract type="html">背景音的duration信息（总时长, 单位:秒）</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float bgmDuration</Declaration>
-			
-			
-			<Anchor>//api/name/bgmDuration</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/bgmDuration</TokenIdentifier>
-			<Abstract type="html">背景音的duration信息（总时长, 单位:秒）</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float bgmDuration</Declaration>
-			
-			
-			<Anchor>//api/name/bgmDuration</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmPlayer/bgmDuration</TokenIdentifier>
-			<Abstract type="html">背景音的duration信息（总时长, 单位:秒）</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float bgmDuration</Declaration>
-			
-			
-			<Anchor>//api/name/bgmDuration</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/setBgmPlayTime:</TokenIdentifier>
-			<Abstract type="html">背景音的已经播放长度 (单位:秒)</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float bgmPlayTime</Declaration>
-			
-			
-			<Anchor>//api/name/bgmPlayTime</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/bgmPlayTime</TokenIdentifier>
-			<Abstract type="html">背景音的已经播放长度 (单位:秒)</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float bgmPlayTime</Declaration>
-			
-			
-			<Anchor>//api/name/bgmPlayTime</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmPlayer/bgmPlayTime</TokenIdentifier>
-			<Abstract type="html">背景音的已经播放长度 (单位:秒)</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float bgmPlayTime</Declaration>
-			
-			
-			<Anchor>//api/name/bgmPlayTime</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/setBgmProcess:</TokenIdentifier>
-			<Abstract type="html">音频的播放进度</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float bgmProcess</Declaration>
-			
-			
-			<Anchor>//api/name/bgmProcess</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/bgmProcess</TokenIdentifier>
-			<Abstract type="html">音频的播放进度</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float bgmProcess</Declaration>
-			
-			
-			<Anchor>//api/name/bgmProcess</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmPlayer/bgmProcess</TokenIdentifier>
-			<Abstract type="html">音频的播放进度</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float bgmProcess</Declaration>
-			
-			
-			<Anchor>//api/name/bgmProcess</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/setIsRunning:</TokenIdentifier>
-			<Abstract type="html">音频播放是否运行</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) BOOL isRunning</Declaration>
-			
-			
-			<Anchor>//api/name/isRunning</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/isRunning</TokenIdentifier>
-			<Abstract type="html">音频播放是否运行</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) BOOL isRunning</Declaration>
-			
-			
-			<Anchor>//api/name/isRunning</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmPlayer/isRunning</TokenIdentifier>
-			<Abstract type="html">音频播放是否运行</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) BOOL isRunning</Declaration>
-			
-			
-			<Anchor>//api/name/isRunning</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/setAudioErrorCode:</TokenIdentifier>
-			<Abstract type="html">播放错误码</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) OSStatus audioErrorCode</Declaration>
-			
-			
-			<Anchor>//api/name/audioErrorCode</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/audioErrorCode</TokenIdentifier>
-			<Abstract type="html">播放错误码</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) OSStatus audioErrorCode</Declaration>
-			
-			
-			<Anchor>//api/name/audioErrorCode</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmPlayer/audioErrorCode</TokenIdentifier>
-			<Abstract type="html">播放错误码</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) OSStatus audioErrorCode</Declaration>
-			
-			
-			<Anchor>//api/name/audioErrorCode</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/setBgmPlayerState:</TokenIdentifier>
-			<Abstract type="html">播放状态</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYBgmPlayerState bgmPlayerState</Declaration>
-			
-			
-			<Anchor>//api/name/bgmPlayerState</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/bgmPlayerState</TokenIdentifier>
-			<Abstract type="html">播放状态</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYBgmPlayerState bgmPlayerState</Declaration>
-			
-			
-			<Anchor>//api/name/bgmPlayerState</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmPlayer/bgmPlayerState</TokenIdentifier>
-			<Abstract type="html">播放状态</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) KSYBgmPlayerState bgmPlayerState</Declaration>
-			
-			
-			<Anchor>//api/name/bgmPlayerState</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/setBLoop:</TokenIdentifier>
-			<Abstract type="html">单曲循环</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL bLoop</Declaration>
-			
-			
-			<Anchor>//api/name/bLoop</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/bLoop</TokenIdentifier>
-			<Abstract type="html">单曲循环</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL bLoop</Declaration>
-			
-			
-			<Anchor>//api/name/bLoop</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmPlayer/bLoop</TokenIdentifier>
-			<Abstract type="html">单曲循环</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) BOOL bLoop</Declaration>
-			
-			
-			<Anchor>//api/name/bLoop</Anchor>
-            <NodeRef refid="10"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/getBgmStateName:</TokenIdentifier>
-			<Abstract type="html">获取状态对应的字符串</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
-			
-			<Declaration>- (NSString *)getBgmStateName:(KSYBgmPlayerState)stat</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>stat</Name>
-					<Abstract type="html">状态</Abstract>
+					<Name>idx</Name>
+					<Abstract type="html">效果的索引 (非法值无效)</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/getBgmStateName:</Anchor>
+			<Anchor>//api/name/initWithIdx:</Anchor>
             <NodeRef refid="10"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/getCurBgmStateName</TokenIdentifier>
-			<Abstract type="html">获取当前状态对应的字符串</Abstract>
-			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/clm/KSYBeautifyProFilter/showVersion</TokenIdentifier>
+			<Abstract type="html">show version of this filter</Abstract>
+			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
 			
-			<Declaration>- (NSString *)getCurBgmStateName</Declaration>
+			<Declaration>+ (void)showVersion</Declaration>
 			
 			
-			<Anchor>//api/name/getCurBgmStateName</Anchor>
+			<Anchor>//api/name/showVersion</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyProFilter/setGrindRatio:</TokenIdentifier>
+			<Abstract type="html">grindRatio ranges from 0.0 to 1.0, with 0.5 as the normal level</Abstract>
+			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGFloat grindRatio</Declaration>
+			
+			
+			<Anchor>//api/name/grindRatio</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyProFilter/grindRatio</TokenIdentifier>
+			<Abstract type="html">grindRatio ranges from 0.0 to 1.0, with 0.5 as the normal level</Abstract>
+			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGFloat grindRatio</Declaration>
+			
+			
+			<Anchor>//api/name/grindRatio</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYBeautifyProFilter/grindRatio</TokenIdentifier>
+			<Abstract type="html">grindRatio ranges from 0.0 to 1.0, with 0.5 as the normal level</Abstract>
+			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGFloat grindRatio</Declaration>
+			
+			
+			<Anchor>//api/name/grindRatio</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyProFilter/setWhitenRatio:</TokenIdentifier>
+			<Abstract type="html">whitenRatio ranges from 0.0 to 1.0, with 0.3 as the normal level</Abstract>
+			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGFloat whitenRatio</Declaration>
+			
+			
+			<Anchor>//api/name/whitenRatio</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyProFilter/whitenRatio</TokenIdentifier>
+			<Abstract type="html">whitenRatio ranges from 0.0 to 1.0, with 0.3 as the normal level</Abstract>
+			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGFloat whitenRatio</Declaration>
+			
+			
+			<Anchor>//api/name/whitenRatio</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYBeautifyProFilter/whitenRatio</TokenIdentifier>
+			<Abstract type="html">whitenRatio ranges from 0.0 to 1.0, with 0.3 as the normal level</Abstract>
+			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGFloat whitenRatio</Declaration>
+			
+			
+			<Anchor>//api/name/whitenRatio</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyProFilter/setRuddyRatio:</TokenIdentifier>
+			<Abstract type="html">ruddyRatio ranges from -1.0 to 1.0, with -0.3 as the normal level</Abstract>
+			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGFloat ruddyRatio</Declaration>
+			
+			
+			<Anchor>//api/name/ruddyRatio</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBeautifyProFilter/ruddyRatio</TokenIdentifier>
+			<Abstract type="html">ruddyRatio ranges from -1.0 to 1.0, with -0.3 as the normal level</Abstract>
+			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGFloat ruddyRatio</Declaration>
+			
+			
+			<Anchor>//api/name/ruddyRatio</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYBeautifyProFilter/ruddyRatio</TokenIdentifier>
+			<Abstract type="html">ruddyRatio ranges from -1.0 to 1.0, with -0.3 as the normal level</Abstract>
+			<DeclaredIn>KSYBeautifyProFilter.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGFloat ruddyRatio</Declaration>
+			
+			
+			<Anchor>//api/name/ruddyRatio</Anchor>
             <NodeRef refid="10"/>
 		</Token>
 		

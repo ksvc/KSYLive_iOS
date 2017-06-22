@@ -11,7 +11,7 @@
 @interface FloatingView : KSYUIView
 
 @property UIButton * quitBtn;
-@property GPUImageView * preView;
+@property KSYGPUView * preView;
 @property UILabel * text;
 @property CGPoint loc_in;
 
@@ -25,7 +25,7 @@
     _text.textAlignment = NSTextAlignmentCenter;
     _text.numberOfLines = 0;
 
-    _preView = [[GPUImageView alloc] init];
+    _preView = [[KSYGPUView alloc] init];
     
     UIPanGestureRecognizer *panGes = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
     [_preView addGestureRecognizer:panGes];
