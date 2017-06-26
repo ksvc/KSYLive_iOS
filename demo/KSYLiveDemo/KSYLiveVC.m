@@ -18,6 +18,7 @@
 #import "KSYNetTrackerVC.h"
 #import "KSYSimplestStreamerVC.h"
 #import "KSYHorScreenStreamerVC.h"
+#import "KSYBrushStreamerVC.h"
 #import "KSYBgpStreamerVC.h"
 #import "KSYVideoListVC.h"
 
@@ -198,17 +199,17 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
             _type = KSYDemoMenuType_PLAY;
             _labelAddress.text = @"播放地址列表";
             _currentSelectUrl = _arrayPlayAddress[0];
-        }else if(row >= 5 && row <= 8){
+        }else if(row >= 5 && row <= 9){
             //类型为推流
             _type = KSYDemoMenuType_STREAM;
             _labelAddress.text = @"推流地址列表";
             _currentSelectUrl = _arrayStreamAddress[0];
-        }else if(row == 9){
+        }else if(row == 10){
             //类型为录制
             _type = KSYDemoMenuType_RECORD;
             _labelAddress.text = @"录制文件名";
             _currentSelectUrl = _arrayRecordFileName[0];
-        }else if(row == 4 || row == 10){
+        }else if(row == 4 || row == 11){
             //类型为测试
             _type = KSYDemoMenuType_TEST;
         }
@@ -290,6 +291,7 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
                     @"推流demo",
                     @"极简推流",
                     @"半屏推流",
+                    @"画笔推流",
                     @"背景图片推流",
                     @"录制推流短视频",
                     @"网络探测",
@@ -391,10 +393,14 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
             vc = [[KSYHorScreenStreamerVC alloc] initWithUrl:_currentSelectUrl];
         }
         else if(selectMenuRow == 8){
+            //半屏推流
+            vc = [[KSYBrushStreamerVC alloc] initWithUrl:_currentSelectUrl];
+        }
+        else if(selectMenuRow == 9){
             //背景图片推流
             vc = [[KSYBgpStreamerVC alloc] initWithUrl:_currentSelectUrl];
         }
-        else if(selectMenuRow == 9){
+        else if(selectMenuRow == 10){
             //录制推流短视频
             KSYPresetCfgVC *preVC = [[KSYPresetCfgVC alloc]initWithURL:_currentSelectUrl];
             [preVC.cfgView.btn0 setTitle:@"开始录制" forState:UIControlStateNormal];
@@ -402,7 +408,7 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
             preVC.cfgView.btn3.enabled = NO;
             vc = preVC;
         }
-        else if(selectMenuRow == 10){
+        else if(selectMenuRow == 11){
             //网络连通性探测
             vc = [[KSYNetTrackerVC alloc]init];
         }

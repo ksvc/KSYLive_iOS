@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYPlayRecordScheme.html">
+	<File path="Constants/KSYNetworkStatus.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYPlayRecordScheme</TokenIdentifier>
-			<Abstract type="html">录制方案</Abstract>
-			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYNetworkStatus</TokenIdentifier>
+			<Abstract type="html">Create NS_ENUM macro if it does not exist on the targeted version of iOS or OS X.</Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
             
 			
 			<NodeRef refid="59"/>
@@ -14,21 +14,31 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYPlayerRecord_PicMix_Scheme</TokenIdentifier>
-            <Abstract type="html">UI+Video混合方案</Abstract>
-            <Declaration>KSYPlayerRecord_PicMix_Scheme</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNotReachable</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>KSYNotReachable</Declaration>
             
-            <DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+            <DeclaredIn>KSYReachability.h</DeclaredIn>
             
             <NodeRef refid="59"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYPlayerRecord_ScreenShot_Scheme</TokenIdentifier>
-            <Abstract type="html">截屏式方案</Abstract>
-            <Declaration>KSYPlayerRecord_ScreenShot_Scheme</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYReachableViaWiFi</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>KSYReachableViaWiFi</Declaration>
             
-            <DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+            <DeclaredIn>KSYReachability.h</DeclaredIn>
+            
+            <NodeRef refid="59"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYReachableViaWWAN</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>KSYReachableViaWWAN</Declaration>
+            
+            <DeclaredIn>KSYReachability.h</DeclaredIn>
             
             <NodeRef refid="59"/>
         </Token>

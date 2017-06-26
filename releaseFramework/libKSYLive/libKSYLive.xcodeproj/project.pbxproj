@@ -11,6 +11,8 @@
 		052B29431EAB316800BFECB0 /* KSYGPUBgpStreamerKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 052B293F1EAB315100BFECB0 /* KSYGPUBgpStreamerKit.m */; };
 		0530DE5E1E489CC800EEAD32 /* KSYGPUBgmStreamerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0530DE5A1E489CC200EEAD32 /* KSYGPUBgmStreamerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0530DE5F1E489CCD00EEAD32 /* KSYGPUBgmStreamerKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0530DE5B1E489CC200EEAD32 /* KSYGPUBgmStreamerKit.m */; };
+		0556959E1EFA6DE900206460 /* KSYGPUBrushStreamerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0556959A1EFA6DDF00206460 /* KSYGPUBrushStreamerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0556959F1EFA6DEE00206460 /* KSYGPUBrushStreamerKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0556959B1EFA6DDF00206460 /* KSYGPUBrushStreamerKit.m */; };
 		056FE3831E1BC9B1002FC22F /* KSYGPUPipStreamerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 056FE3811E1BC9B1002FC22F /* KSYGPUPipStreamerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		056FE3841E1BC9B1002FC22F /* KSYGPUPipStreamerKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 056FE3821E1BC9B1002FC22F /* KSYGPUPipStreamerKit.m */; };
 		057364D51E67CB73006EC5FA /* KSYUIRecorderKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 057364D31E67CB73006EC5FA /* KSYUIRecorderKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -76,6 +78,8 @@
 		052B293F1EAB315100BFECB0 /* KSYGPUBgpStreamerKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYGPUBgpStreamerKit.m; path = ../../source/KSYGPUBgpStreamerKit.m; sourceTree = "<group>"; };
 		0530DE5A1E489CC200EEAD32 /* KSYGPUBgmStreamerKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUBgmStreamerKit.h; path = ../../source/KSYGPUBgmStreamerKit.h; sourceTree = "<group>"; };
 		0530DE5B1E489CC200EEAD32 /* KSYGPUBgmStreamerKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYGPUBgmStreamerKit.m; path = ../../source/KSYGPUBgmStreamerKit.m; sourceTree = "<group>"; };
+		0556959A1EFA6DDF00206460 /* KSYGPUBrushStreamerKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUBrushStreamerKit.h; path = ../../source/KSYGPUBrushStreamerKit.h; sourceTree = "<group>"; };
+		0556959B1EFA6DDF00206460 /* KSYGPUBrushStreamerKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYGPUBrushStreamerKit.m; path = ../../source/KSYGPUBrushStreamerKit.m; sourceTree = "<group>"; };
 		056FE3811E1BC9B1002FC22F /* KSYGPUPipStreamerKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUPipStreamerKit.h; path = ../../source/KSYGPUPipStreamerKit.h; sourceTree = "<group>"; };
 		056FE3821E1BC9B1002FC22F /* KSYGPUPipStreamerKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYGPUPipStreamerKit.m; path = ../../source/KSYGPUPipStreamerKit.m; sourceTree = "<group>"; };
 		057364D31E67CB73006EC5FA /* KSYUIRecorderKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYUIRecorderKit.h; path = ../../source/KSYUIRecorderKit.h; sourceTree = "<group>"; };
@@ -177,6 +181,8 @@
 				057364D41E67CB73006EC5FA /* KSYUIRecorderKit.m */,
 				052B293E1EAB315100BFECB0 /* KSYGPUBgpStreamerKit.h */,
 				052B293F1EAB315100BFECB0 /* KSYGPUBgpStreamerKit.m */,
+				0556959A1EFA6DDF00206460 /* KSYGPUBrushStreamerKit.h */,
+				0556959B1EFA6DDF00206460 /* KSYGPUBrushStreamerKit.m */,
 			);
 			name = KSYGPUStreamerKit;
 			sourceTree = "<group>";
@@ -402,6 +408,7 @@
 				06FBE52E1EF800E0000C98F7 /* KSYAudioFilter.h in Headers */,
 				06FBE5301EF800ED000C98F7 /* KSYGPUView.h in Headers */,
 				052B29421EAB316300BFECB0 /* KSYGPUBgpStreamerKit.h in Headers */,
+				0556959E1EFA6DE900206460 /* KSYGPUBrushStreamerKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,6 +520,7 @@
 				0530DE5F1E489CCD00EEAD32 /* KSYGPUBgmStreamerKit.m in Sources */,
 				056FE3841E1BC9B1002FC22F /* KSYGPUPipStreamerKit.m in Sources */,
 				06A646D21D865B3B00D1C620 /* KSYGPUStreamerKit.m in Sources */,
+				0556959F1EFA6DEE00206460 /* KSYGPUBrushStreamerKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

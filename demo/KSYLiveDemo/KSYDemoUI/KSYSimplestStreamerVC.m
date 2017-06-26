@@ -7,7 +7,6 @@
 //
 
 #import "KSYSimplestStreamerVC.h"
-#import "KSYUIView.h"
 
 @interface KSYSimplestStreamerVC ()<UIPickerViewDataSource,
 UIPickerViewDelegate>{
@@ -16,14 +15,12 @@ UIPickerViewDelegate>{
     UIButton *streamBtn;//开始推流
     UIButton *cameraBtn;//前后摄像头
     UIButton *quitBtn;//返回按钮
-    KSYUIView *ctrlView;
     UIView *_bgView;        // 预览视图父控件（用于处理转屏，保持画面相对手机不变）
 }
 
 @property NSInteger         curProfileIdx;
 @property NSURL             *url;
 @property UILabel           *streamState;//推流状态
-@property GPUImageOutput<GPUImageInput>* curFilter;
 
 @end
 
@@ -66,7 +63,9 @@ UIPickerViewDelegate>{
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _kit = [[KSYGPUStreamerKit alloc] init];
+    if (!_kit){
+        _kit = [[KSYGPUStreamerKit alloc] init];
+    }
     _curFilter = [[KSYGPUBeautifyExtFilter alloc] init];
     //摄像头位置
     _kit.cameraPosition = AVCaptureDevicePositionFront;
@@ -85,18 +84,18 @@ UIPickerViewDelegate>{
     _bgView = [[UIView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:_bgView];
     
-    ctrlView = [[KSYUIView alloc] initWithFrame:self.view.bounds];
+    _ctrlView = [[KSYUIView alloc] initWithFrame:self.view.bounds];
     @WeakObj(self);
-    ctrlView.onBtnBlock = ^(id sender){
+    _ctrlView.onBtnBlock = ^(id sender){
         [selfWeak  onBtn:sender];
     };
     
     // top view
-    quitBtn = [ctrlView addButton:@"退出"];
-    _streamState = [ctrlView addLable:@"空闲状态"];
+    quitBtn = [_ctrlView addButton:@"退出"];
+    _streamState = [_ctrlView addLable:@"空闲状态"];
     _streamState.textColor = [UIColor redColor];
     _streamState.textAlignment = NSTextAlignmentCenter;
-    cameraBtn = [ctrlView addButton:@"前后摄像头"];
+    cameraBtn = [_ctrlView addButton:@"前后摄像头"];
     
     // profile picker
     _profilePicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 200, self.view.frame.size.width, 200)];
@@ -107,11 +106,11 @@ UIPickerViewDelegate>{
     [_profilePicker selectRow:7 inComponent:0 animated:YES];
     
     // bottom view
-    captureBtn = [ctrlView addButton:@"开始预览"];
-    streamBtn = [ctrlView addButton:@"开始推流"];
+    captureBtn = [_ctrlView addButton:@"开始预览"];
+    streamBtn = [_ctrlView addButton:@"开始推流"];
 
-    [self.view addSubview:ctrlView];
-    [ctrlView addSubview:_profilePicker];
+    [self.view addSubview:_ctrlView];
+    [_ctrlView addSubview:_profilePicker];
     
     [self layoutPreviewBgView];
 
@@ -119,12 +118,12 @@ UIPickerViewDelegate>{
 }
 
 - (void)layoutUI{
-    ctrlView.frame = self.view.frame;
-    [ctrlView layoutUI];
-    [ctrlView putRow:@[quitBtn, _streamState, cameraBtn]];
+    _ctrlView.frame = self.view.frame;
+    [_ctrlView layoutUI];
+    [_ctrlView putRow:@[quitBtn, _streamState, cameraBtn]];
     
-    ctrlView.yPos = self.view.frame.size.height - 30;
-    [ctrlView putRow:@[captureBtn, [UIView new], streamBtn]];
+    _ctrlView.yPos = self.view.frame.size.height - 30;
+    [_ctrlView putRow:@[captureBtn, [UIView new], streamBtn]];
 }
 
 // 根据状态栏方向初始化预览的bgView
