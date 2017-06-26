@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYQosInfo.html">
+	<File path="Classes/KSYNetTracker.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYQosInfo</TokenIdentifier>
-			<Abstract type="html">Qos信息</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYNetTracker</TokenIdentifier>
+			<Abstract type="html">网络链路探测器类</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
             
 			
 			<NodeRef refid="38"/>
@@ -13,326 +13,211 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setAudioBufferByteLength:</TokenIdentifier>
-			<Abstract type="html">    audio queue size in bytes</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/start:</TokenIdentifier>
+			<Abstract type="html">开始探测</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int audioBufferByteLength</Declaration>
-			
-			
-			<Anchor>//api/name/audioBufferByteLength</Anchor>
+			<Declaration>- (int)start:(NSString *__nonnull)domain</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>domain</Name>
+					<Abstract type="html">探测地址</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">成功开始返回0, 否则返回非0</Abstract></ReturnValue>
+			<Anchor>//api/name/start:</Anchor>
             <NodeRef refid="38"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/audioBufferByteLength</TokenIdentifier>
-			<Abstract type="html">    audio queue size in bytes</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/stop</TokenIdentifier>
+			<Abstract type="html">停止探测</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int audioBufferByteLength</Declaration>
+			<Declaration>- (void)stop</Declaration>
 			
 			
-			<Anchor>//api/name/audioBufferByteLength</Anchor>
+			<Anchor>//api/name/stop</Anchor>
             <NodeRef refid="38"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/audioBufferByteLength</TokenIdentifier>
-			<Abstract type="html">    audio queue size in bytes</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setAction:</TokenIdentifier>
+			<Abstract type="html">探测方式</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int audioBufferByteLength</Declaration>
+			<Declaration>@property (nonatomic, assign) KSY_NETTRACKER_ACTION action</Declaration>
 			
 			
-			<Anchor>//api/name/audioBufferByteLength</Anchor>
+			<Anchor>//api/name/action</Anchor>
             <NodeRef refid="38"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setAudioBufferTimeLength:</TokenIdentifier>
-			<Abstract type="html">    audio queue time length in ms</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/action</TokenIdentifier>
+			<Abstract type="html">探测方式</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int audioBufferTimeLength</Declaration>
+			<Declaration>@property (nonatomic, assign) KSY_NETTRACKER_ACTION action</Declaration>
 			
 			
-			<Anchor>//api/name/audioBufferTimeLength</Anchor>
+			<Anchor>//api/name/action</Anchor>
             <NodeRef refid="38"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/audioBufferTimeLength</TokenIdentifier>
-			<Abstract type="html">    audio queue time length in ms</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/action</TokenIdentifier>
+			<Abstract type="html">探测方式</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int audioBufferTimeLength</Declaration>
+			<Declaration>@property (nonatomic, assign) KSY_NETTRACKER_ACTION action</Declaration>
 			
 			
-			<Anchor>//api/name/audioBufferTimeLength</Anchor>
+			<Anchor>//api/name/action</Anchor>
             <NodeRef refid="38"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/audioBufferTimeLength</TokenIdentifier>
-			<Abstract type="html">    audio queue time length in ms</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setTimeout:</TokenIdentifier>
+			<Abstract type="html">探测超时时间，单位是ms，默认值是1000ms</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int audioBufferTimeLength</Declaration>
+			<Declaration>@property (nonatomic, assign) int timeout</Declaration>
 			
 			
-			<Anchor>//api/name/audioBufferTimeLength</Anchor>
+			<Anchor>//api/name/timeout</Anchor>
             <NodeRef refid="38"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setAudioTotalDataSize:</TokenIdentifier>
-			<Abstract type="html">    size of data have arrived at audio queue since playing. unit:byte</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/timeout</TokenIdentifier>
+			<Abstract type="html">探测超时时间，单位是ms，默认值是1000ms</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int64_t audioTotalDataSize</Declaration>
+			<Declaration>@property (nonatomic, assign) int timeout</Declaration>
 			
 			
-			<Anchor>//api/name/audioTotalDataSize</Anchor>
+			<Anchor>//api/name/timeout</Anchor>
             <NodeRef refid="38"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/audioTotalDataSize</TokenIdentifier>
-			<Abstract type="html">    size of data have arrived at audio queue since playing. unit:byte</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/timeout</TokenIdentifier>
+			<Abstract type="html">探测超时时间，单位是ms，默认值是1000ms</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int64_t audioTotalDataSize</Declaration>
+			<Declaration>@property (nonatomic, assign) int timeout</Declaration>
 			
 			
-			<Anchor>//api/name/audioTotalDataSize</Anchor>
+			<Anchor>//api/name/timeout</Anchor>
             <NodeRef refid="38"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/audioTotalDataSize</TokenIdentifier>
-			<Abstract type="html">    size of data have arrived at audio queue since playing. unit:byte</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setMaxttl:</TokenIdentifier>
+			<Abstract type="html">探测使用的最大ttl值，默认值是64</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int64_t audioTotalDataSize</Declaration>
+			<Declaration>@property (nonatomic, assign) int maxttl</Declaration>
 			
 			
-			<Anchor>//api/name/audioTotalDataSize</Anchor>
+			<Anchor>//api/name/maxttl</Anchor>
             <NodeRef refid="38"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setVideoBufferByteLength:</TokenIdentifier>
-			<Abstract type="html">    video queue size in bytes</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/maxttl</TokenIdentifier>
+			<Abstract type="html">探测使用的最大ttl值，默认值是64</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int videoBufferByteLength</Declaration>
+			<Declaration>@property (nonatomic, assign) int maxttl</Declaration>
 			
 			
-			<Anchor>//api/name/videoBufferByteLength</Anchor>
+			<Anchor>//api/name/maxttl</Anchor>
             <NodeRef refid="38"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/videoBufferByteLength</TokenIdentifier>
-			<Abstract type="html">    video queue size in bytes</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/maxttl</TokenIdentifier>
+			<Abstract type="html">探测使用的最大ttl值，默认值是64</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int videoBufferByteLength</Declaration>
+			<Declaration>@property (nonatomic, assign) int maxttl</Declaration>
 			
 			
-			<Anchor>//api/name/videoBufferByteLength</Anchor>
+			<Anchor>//api/name/maxttl</Anchor>
             <NodeRef refid="38"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/videoBufferByteLength</TokenIdentifier>
-			<Abstract type="html">    video queue size in bytes</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setNumber:</TokenIdentifier>
+			<Abstract type="html">探测次数，默认值是10</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int videoBufferByteLength</Declaration>
+			<Declaration>@property (nonatomic, assign) int number</Declaration>
 			
 			
-			<Anchor>//api/name/videoBufferByteLength</Anchor>
+			<Anchor>//api/name/number</Anchor>
             <NodeRef refid="38"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setVideoBufferTimeLength:</TokenIdentifier>
-			<Abstract type="html">    video queue time length in ms</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/number</TokenIdentifier>
+			<Abstract type="html">探测次数，默认值是10</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int videoBufferTimeLength</Declaration>
+			<Declaration>@property (nonatomic, assign) int number</Declaration>
 			
 			
-			<Anchor>//api/name/videoBufferTimeLength</Anchor>
+			<Anchor>//api/name/number</Anchor>
             <NodeRef refid="38"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/videoBufferTimeLength</TokenIdentifier>
-			<Abstract type="html">    video queue time length in ms</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/number</TokenIdentifier>
+			<Abstract type="html">探测次数，默认值是10</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int videoBufferTimeLength</Declaration>
+			<Declaration>@property (nonatomic, assign) int number</Declaration>
 			
 			
-			<Anchor>//api/name/videoBufferTimeLength</Anchor>
+			<Anchor>//api/name/number</Anchor>
             <NodeRef refid="38"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/videoBufferTimeLength</TokenIdentifier>
-			<Abstract type="html">    video queue time length in ms</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setRouterInfo:</TokenIdentifier>
+			<Abstract type="html">链路状况</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int videoBufferTimeLength</Declaration>
+			<Declaration>@property (nonatomic, readonly) NSMutableArray *routerInfo</Declaration>
 			
 			
-			<Anchor>//api/name/videoBufferTimeLength</Anchor>
+			<Anchor>//api/name/routerInfo</Anchor>
             <NodeRef refid="38"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setVideoTotalDataSize:</TokenIdentifier>
-			<Abstract type="html">    size of data have arrived at video queue since playing. unit:byte</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/routerInfo</TokenIdentifier>
+			<Abstract type="html">链路状况</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int64_t videoTotalDataSize</Declaration>
+			<Declaration>@property (nonatomic, readonly) NSMutableArray *routerInfo</Declaration>
 			
 			
-			<Anchor>//api/name/videoTotalDataSize</Anchor>
+			<Anchor>//api/name/routerInfo</Anchor>
             <NodeRef refid="38"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/videoTotalDataSize</TokenIdentifier>
-			<Abstract type="html">    size of data have arrived at video queue since playing. unit:byte</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/routerInfo</TokenIdentifier>
+			<Abstract type="html">链路状况</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int64_t videoTotalDataSize</Declaration>
-			
-			
-			<Anchor>//api/name/videoTotalDataSize</Anchor>
-            <NodeRef refid="38"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/videoTotalDataSize</TokenIdentifier>
-			<Abstract type="html">    size of data have arrived at video queue since playing. unit:byte</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int64_t videoTotalDataSize</Declaration>
+			<Declaration>@property (nonatomic, readonly) NSMutableArray *routerInfo</Declaration>
 			
 			
-			<Anchor>//api/name/videoTotalDataSize</Anchor>
-            <NodeRef refid="38"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setTotalDataSize:</TokenIdentifier>
-			<Abstract type="html">    size of total audio and video data since playing. unit: byte</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int64_t totalDataSize</Declaration>
-			
-			
-			<Anchor>//api/name/totalDataSize</Anchor>
-            <NodeRef refid="38"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/totalDataSize</TokenIdentifier>
-			<Abstract type="html">    size of total audio and video data since playing. unit: byte</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int64_t totalDataSize</Declaration>
-			
-			
-			<Anchor>//api/name/totalDataSize</Anchor>
-            <NodeRef refid="38"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/totalDataSize</TokenIdentifier>
-			<Abstract type="html">    size of total audio and video data since playing. unit: byte</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int64_t totalDataSize</Declaration>
-			
-			
-			<Anchor>//api/name/totalDataSize</Anchor>
-            <NodeRef refid="38"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setVideoDecodeFPS:</TokenIdentifier>
-			<Abstract type="html">    video decode frame count per second</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) float videoDecodeFPS</Declaration>
-			
-			
-			<Anchor>//api/name/videoDecodeFPS</Anchor>
-            <NodeRef refid="38"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/videoDecodeFPS</TokenIdentifier>
-			<Abstract type="html">    video decode frame count per second</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) float videoDecodeFPS</Declaration>
-			
-			
-			<Anchor>//api/name/videoDecodeFPS</Anchor>
-            <NodeRef refid="38"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/videoDecodeFPS</TokenIdentifier>
-			<Abstract type="html">    video decode frame count per second</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) float videoDecodeFPS</Declaration>
-			
-			
-			<Anchor>//api/name/videoDecodeFPS</Anchor>
-            <NodeRef refid="38"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setVideoRefreshFPS:</TokenIdentifier>
-			<Abstract type="html">    video refresh frame count per second</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) float videoRefreshFPS</Declaration>
-			
-			
-			<Anchor>//api/name/videoRefreshFPS</Anchor>
-            <NodeRef refid="38"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/videoRefreshFPS</TokenIdentifier>
-			<Abstract type="html">    video refresh frame count per second</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) float videoRefreshFPS</Declaration>
-			
-			
-			<Anchor>//api/name/videoRefreshFPS</Anchor>
-            <NodeRef refid="38"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/videoRefreshFPS</TokenIdentifier>
-			<Abstract type="html">    video refresh frame count per second</Abstract>
-			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) float videoRefreshFPS</Declaration>
-			
-			
-			<Anchor>//api/name/videoRefreshFPS</Anchor>
+			<Anchor>//api/name/routerInfo</Anchor>
             <NodeRef refid="38"/>
 		</Token>
 		

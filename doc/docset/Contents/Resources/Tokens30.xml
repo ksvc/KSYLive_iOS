@@ -1,17 +1,162 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUYUVInput.html">
+	<File path="Classes/KSYGPUView.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUYUVInput</TokenIdentifier>
-			<Abstract type="html">GPU图像输输入
-过期的类, 请使用KSYGPUPicInput</Abstract>
-			<DeclaredIn>KSYGPUPicInput.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUView</TokenIdentifier>
+			<Abstract type="html">UIView subclass to use as an endpoint for displaying GPUImage outputs</Abstract>
+			<DeclaredIn>KSYGPUView.h</DeclaredIn>
             
 			
 			<NodeRef refid="30"/>
 		</Token>
 		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUView/setFillMode:</TokenIdentifier>
+			<Abstract type="html">画面填充模式, 默认值为kGPUImageFillModePreserveAspectRatio</Abstract>
+			<DeclaredIn>KSYGPUView.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) GPUImageFillModeType fillMode</Declaration>
+			
+			
+			<Anchor>//api/name/fillMode</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUView/fillMode</TokenIdentifier>
+			<Abstract type="html">画面填充模式, 默认值为kGPUImageFillModePreserveAspectRatio</Abstract>
+			<DeclaredIn>KSYGPUView.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) GPUImageFillModeType fillMode</Declaration>
+			
+			
+			<Anchor>//api/name/fillMode</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUView/fillMode</TokenIdentifier>
+			<Abstract type="html">画面填充模式, 默认值为kGPUImageFillModePreserveAspectRatio</Abstract>
+			<DeclaredIn>KSYGPUView.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) GPUImageFillModeType fillMode</Declaration>
+			
+			
+			<Anchor>//api/name/fillMode</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUView/setSizeInPixels:</TokenIdentifier>
+			<Abstract type="html">This calculates the current display size, in pixels, taking into account Retina scaling factors</Abstract>
+			<DeclaredIn>KSYGPUView.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, nonatomic) CGSize sizeInPixels</Declaration>
+			
+			
+			<Anchor>//api/name/sizeInPixels</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUView/sizeInPixels</TokenIdentifier>
+			<Abstract type="html">This calculates the current display size, in pixels, taking into account Retina scaling factors</Abstract>
+			<DeclaredIn>KSYGPUView.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, nonatomic) CGSize sizeInPixels</Declaration>
+			
+			
+			<Anchor>//api/name/sizeInPixels</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUView/sizeInPixels</TokenIdentifier>
+			<Abstract type="html">This calculates the current display size, in pixels, taking into account Retina scaling factors</Abstract>
+			<DeclaredIn>KSYGPUView.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, nonatomic) CGSize sizeInPixels</Declaration>
+			
+			
+			<Anchor>//api/name/sizeInPixels</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUView/setEnabled:</TokenIdentifier>
+			<Abstract type="html">GPUImageInput 启用</Abstract>
+			<DeclaredIn>KSYGPUView.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL enabled</Declaration>
+			
+			
+			<Anchor>//api/name/enabled</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUView/enabled</TokenIdentifier>
+			<Abstract type="html">GPUImageInput 启用</Abstract>
+			<DeclaredIn>KSYGPUView.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL enabled</Declaration>
+			
+			
+			<Anchor>//api/name/enabled</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUView/enabled</TokenIdentifier>
+			<Abstract type="html">GPUImageInput 启用</Abstract>
+			<DeclaredIn>KSYGPUView.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) BOOL enabled</Declaration>
+			
+			
+			<Anchor>//api/name/enabled</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUView/setBackgroundColorRed:green:blue:alpha:</TokenIdentifier>
+			<Abstract type="html">Handling fill mode</Abstract>
+			<DeclaredIn>KSYGPUView.h</DeclaredIn>
+			
+			<Declaration>- (void)setBackgroundColorRed:(GLfloat)redComponent green:(GLfloat)greenComponent blue:(GLfloat)blueComponent alpha:(GLfloat)alphaComponent</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>redComponent</Name>
+					<Abstract type="html">Red component for background color</Abstract>
+				</Parameter><Parameter>
+					<Name>greenComponent</Name>
+					<Abstract type="html">Green component for background color</Abstract>
+				</Parameter><Parameter>
+					<Name>blueComponent</Name>
+					<Abstract type="html">Blue component for background color</Abstract>
+				</Parameter><Parameter>
+					<Name>alphaComponent</Name>
+					<Abstract type="html">Alpha component for background color</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setBackgroundColorRed:green:blue:alpha:</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUView/setCurrentlyReceivingMonochromeInput:</TokenIdentifier>
+			<Abstract type="html">是否接收单通道输入</Abstract>
+			<DeclaredIn>KSYGPUView.h</DeclaredIn>
+			
+			<Declaration>- (void)setCurrentlyReceivingMonochromeInput:(BOOL)newValue</Declaration>
+			
+			
+			<Anchor>//api/name/setCurrentlyReceivingMonochromeInput:</Anchor>
+            <NodeRef refid="30"/>
+		</Token>
 		
         
         

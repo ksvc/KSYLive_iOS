@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		050C69D61EF80949008C93E3 /* KSYDrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 050C69D51EF80949008C93E3 /* KSYDrawingView.m */; };
 		050E1CFC1E76409600653275 /* KSYHorScreenStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 050E1CFB1E76409600653275 /* KSYHorScreenStreamerVC.m */; };
 		052B29371EAA2DC000BFECB0 /* KSYBgpStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 052B29361EAA2DC000BFECB0 /* KSYBgpStreamerVC.m */; };
 		0530DE591E484C6100EEAD32 /* KSYBgmStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0530DE581E484C6100EEAD32 /* KSYBgmStreamerVC.m */; };
+		055695951EF91D3200206460 /* KSYBrushStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 055695941EF91D3200206460 /* KSYBrushStreamerVC.m */; };
 		056FE3801E1BA730002FC22F /* KSYPipStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 056FE37F1E1BA730002FC22F /* KSYPipStreamerVC.m */; };
 		060AE9C51D4653010064DD65 /* KSYFileSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 060AE9C41D4653010064DD65 /* KSYFileSelector.m */; };
 		064980251DAFB8AB00AA5A0A /* KSYAudioCtrlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 064980231DAFB8AB00AA5A0A /* KSYAudioCtrlView.m */; };
@@ -109,12 +111,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		050C69D41EF80949008C93E3 /* KSYDrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYDrawingView.h; sourceTree = "<group>"; };
+		050C69D51EF80949008C93E3 /* KSYDrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYDrawingView.m; sourceTree = "<group>"; };
 		050E1CFA1E76409600653275 /* KSYHorScreenStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYHorScreenStreamerVC.h; sourceTree = "<group>"; };
 		050E1CFB1E76409600653275 /* KSYHorScreenStreamerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYHorScreenStreamerVC.m; sourceTree = "<group>"; };
 		052B29351EAA2DC000BFECB0 /* KSYBgpStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYBgpStreamerVC.h; sourceTree = "<group>"; };
 		052B29361EAA2DC000BFECB0 /* KSYBgpStreamerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYBgpStreamerVC.m; sourceTree = "<group>"; };
 		0530DE571E484C6100EEAD32 /* KSYBgmStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYBgmStreamerVC.h; sourceTree = "<group>"; };
 		0530DE581E484C6100EEAD32 /* KSYBgmStreamerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYBgmStreamerVC.m; sourceTree = "<group>"; };
+		055695931EF91D0C00206460 /* KSYBrushStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYBrushStreamerVC.h; sourceTree = "<group>"; };
+		055695941EF91D3200206460 /* KSYBrushStreamerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYBrushStreamerVC.m; sourceTree = "<group>"; };
 		056FE37E1E1BA730002FC22F /* KSYPipStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYPipStreamerVC.h; sourceTree = "<group>"; };
 		056FE37F1E1BA730002FC22F /* KSYPipStreamerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYPipStreamerVC.m; sourceTree = "<group>"; };
 		060AE9C31D4653010064DD65 /* KSYFileSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYFileSelector.h; sourceTree = "<group>"; };
@@ -401,6 +407,8 @@
 				C323BC1D1E794C2900D4682C /* KSYFloatStreamerVC.m */,
 				052B29351EAA2DC000BFECB0 /* KSYBgpStreamerVC.h */,
 				052B29361EAA2DC000BFECB0 /* KSYBgpStreamerVC.m */,
+				055695931EF91D0C00206460 /* KSYBrushStreamerVC.h */,
+				055695941EF91D3200206460 /* KSYBrushStreamerVC.m */,
 				06FBBD8E1D2E23110065ED55 /* subviews */,
 			);
 			name = KSYDemoUI;
@@ -418,6 +426,8 @@
 				06FBBD481D2E17E00065ED55 /* KSYUIVC.m */,
 				06FBBD491D2E17E00065ED55 /* KSYUIView.h */,
 				06FBBD4A1D2E17E00065ED55 /* KSYUIView.m */,
+				050C69D41EF80949008C93E3 /* KSYDrawingView.h */,
+				050C69D51EF80949008C93E3 /* KSYDrawingView.m */,
 			);
 			name = KSYUIUtils;
 			path = KSYLiveDemo/KSYUIUtils;
@@ -669,12 +679,14 @@
 				06FBBD5F1D2E17E00065ED55 /* KSYPresetCfgView.m in Sources */,
 				06FBBD651D2E17E00065ED55 /* KSYStreamerVC.m in Sources */,
 				06FBBD6B1D2E17E00065ED55 /* KSYUIView.m in Sources */,
+				055695951EF91D3200206460 /* KSYBrushStreamerVC.m in Sources */,
 				F296EC001D3527FF001C4120 /* KSYMiscView.m in Sources */,
 				C323BC1E1E794C2900D4682C /* KSYFloatStreamerVC.m in Sources */,
 				E33527ED1E49986400DB6DD1 /* KSYSimplestStreamerVC.m in Sources */,
 				06FBBD671D2E17E00065ED55 /* KSYNameSlider.m in Sources */,
 				31F5D1DE1ED683A900588B8E /* KSYQRCode.m in Sources */,
 				06B2B1A91BE8F0D900E0CC85 /* main.m in Sources */,
+				050C69D61EF80949008C93E3 /* KSYDrawingView.m in Sources */,
 				95B4A3EF1CBF6CC700CB6804 /* KSYSQLite.m in Sources */,
 				06FBBD5D1D2E17E00065ED55 /* KSYPresetCfgVC.m in Sources */,
 				060AE9C51D4653010064DD65 /* KSYFileSelector.m in Sources */,
