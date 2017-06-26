@@ -2,7 +2,6 @@
 
 [![Build Status](https://travis-ci.org/ksvc/KSYLive_iOS.svg?branch=master)](https://travis-ci.org/ksvc/KSYLive_iOS)
 [![CocoaPods platform](https://img.shields.io/cocoapods/p/libksygpulive.svg)](https://cocoapods.org/pods/libksygpulive)
-[![CocoaPods doc](https://img.shields.io/cocoapods/metrics/doc-percent/libksygpulive.svg)](http://cocoadocs.org/docsets/libksygpulive/)
 [![CocoaPods version](https://img.shields.io/cocoapods/v/libksygpulive.svg?label=pod_github)](https://cocoapods.org/pods/libksygpulive)
 [![CocoaPods version](https://img.shields.io/cocoapods/v/libksygpulive_ks3.svg?label=pod_ks3)](https://cocoapods.org/pods/libksygpulive_ks3)
 ## 阅读对象
