@@ -1645,6 +1645,42 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setPlaybackSpeed:</TokenIdentifier>
+			<Abstract type="html">设置播放速度，取值范围(0.5~2.0)，默认1.0</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) float playbackSpeed</Declaration>
+			
+			
+			<Anchor>//api/name/playbackSpeed</Anchor>
+            <NodeRef refid="35"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/playbackSpeed</TokenIdentifier>
+			<Abstract type="html">设置播放速度，取值范围(0.5~2.0)，默认1.0</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) float playbackSpeed</Declaration>
+			
+			
+			<Anchor>//api/name/playbackSpeed</Anchor>
+            <NodeRef refid="35"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/playbackSpeed</TokenIdentifier>
+			<Abstract type="html">设置播放速度，取值范围(0.5~2.0)，默认1.0</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) float playbackSpeed</Declaration>
+			
+			
+			<Anchor>//api/name/playbackSpeed</Anchor>
+            <NodeRef refid="35"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setTimeout:readTimeout:</TokenIdentifier>
 			<Abstract type="html">timeout指定拉流超时时间,单位是秒</Abstract>
 			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
