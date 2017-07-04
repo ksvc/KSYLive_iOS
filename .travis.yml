@@ -7,8 +7,6 @@ script:
 - mkdir -p framework/static
 - wget https://github.com/ksvc/KSYLive_iOS/releases/download/v2.0.0/staticGPUImage.zip
 - unzip -q staticGPUImage.zip -d framework/static/
-- wget https://github.com/ksvc/KSYLive_iOS/releases/download/v2.0.0/dynamicGPUImage.zip
-- unzip -q dynamicGPUImage.zip -d framework/dynamic/
 - wget https://github.com/ksvc/KSYLive_iOS/releases/download/v2.0.0/Bugly.zip
 - unzip -q Bugly.zip -d framework/
 - cd releaseFramework
@@ -16,6 +14,8 @@ script:
 - cd ../
 - zip -q --symlinks -r framework_${TRAVIS_TAG}.zip framework/*
 - rm -rf framework/static/*
+- wget https://github.com/ksvc/KSYLive_iOS/releases/download/v2.0.0/dynamicGPUImage.zip
+- unzip -q dynamicGPUImage.zip -d framework/dynamic/
 - cd releaseFramework
 - "./release-libKSYLive.sh libksygpulive lite dy"
 - cd ../
