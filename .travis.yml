@@ -4,6 +4,12 @@ xcode_workspace: demo/KSYLiveDemo.xcworkspace
 xcode_scheme: KSYLiveDemo
 script:
 - echo "release to framework_${TRAVIS_TAG}.zip - $TRAVIS_TAG"
+- DST_DIR=framework/static
+- mkdir -p ${DST_DIR}
+- IOS_URL=https://github.com/ksvc/KSYLive_iOS/releases/download/v2.0.0/staticGPUImage.zip
+- ZIP_FILE=${DST_DIR}/staticGPUImage.zip
+- curl ${IOS_URL} -o ${ZIP_FILE}
+- unzip -q ${ZIP_FILE} -d ${DST_DIR}/
 - cd releaseFramework
 - "./release-libKSYLive.sh libksygpulive lite"
 - cd ../
