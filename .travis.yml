@@ -7,6 +7,10 @@ script:
 - mkdir -p framework/static
 - wget https://github.com/ksvc/KSYLive_iOS/releases/download/v2.0.0/staticGPUImage.zip
 - unzip -q staticGPUImage.zip -d framework/static/
+- wget https://github.com/ksvc/KSYLive_iOS/releases/download/v2.0.0/dynamicGPUImage
+- unzip -q dynamicGPUImage -d framework/dynamic/
+- wget https://github.com/ksvc/KSYLive_iOS/releases/download/v2.0.0/Bugly.zip
+- unzip -q Bugly.zip -d framework/
 - cd releaseFramework
 - "./release-libKSYLive.sh libksygpulive lite"
 - cd ../
