@@ -171,11 +171,12 @@ OUT_F=${OUT_D}/${TARG}.framework
 
 cp -R ${DEV_F} ${OUT_D}
 $XCODE_STRIP -S "${DEV_F}/${TARG}" 2> /dev/null
+file "${DEV_F}/${TARG}"
 $XCODE_STRIP -S "${SIM_F}/${TARG}" 2> /dev/null
+file "${SIM_F}/${TARG}"
 xcrun lipo -create -output "${OUT_F}/${TARG}" \
                            "${DEV_F}/${TARG}" \
                            "${SIM_F}/${TARG}"
-$XCODE_STRIP -S "${OUT_F}/${TARG}"  >> $LOG_F 2>&1
 xcrun lipo -info "${OUT_F}/${TARG}"
 file "${OUT_F}/${TARG}"
 }
