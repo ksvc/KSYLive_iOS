@@ -102,8 +102,11 @@
 1. 2016.2.22 支持[动态帧率](https://github.com/ksvc/KSYLive_iOS/wiki/dynamicFPS)
 1. 2016.3.1 支持主播音频[采集变声](http://ksvc.github.io/KSYLive_iOS/doc/html/Classes/KSYAUAudioCapture.html#//api/name/effectTyped)
 1. 2017.3.14 支持[立体声](https://github.com/ksvc/KSYLive_iOS/wiki/stereo)推流
+1. 2017.5.16 支持[涂鸦推流]（https://github.com/ksvc/KSYLive_iOS/wiki/BrushStream）
+1. 2017.7.7 支持[桌面录制、手游直播](https://github.com/ksvc/KSYAirStreamer_iOS)
 
-### 2.2 近期工作  
+### 2.2 近期工作   
+
 1. 2017.03.xx 多视角直播;
 1. 2017.03.xx 背景音降噪;
 
