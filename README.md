@@ -52,7 +52,8 @@
 - [x] [在线API 文档支持](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
 - [x] 支持[边推边录](https://github.com/ksvc/KSYLive_iOS/wiki/bypassRecord)，在直播推流过程中同时保存录像文件
 - [x] 支持[立体声](https://github.com/ksvc/KSYLive_iOS/wiki/stereo)推流（双声道）
-
+- [x] 支持[涂鸦推流](https://github.com/ksvc/KSYLive_iOS/wiki/BrushStream)
+- [x] 支持[桌面录制、手游直播](https://github.com/ksvc/KSYAirStreamer_iOS)
 
 ### 1.3 播放特点
 - [x] 与系统播放器MPMoviePlayerController接口一致，可以无缝快速切换至KSYMediaPlayer；
@@ -102,7 +103,7 @@
 1. 2016.2.22 支持[动态帧率](https://github.com/ksvc/KSYLive_iOS/wiki/dynamicFPS)
 1. 2016.3.1 支持主播音频[采集变声](http://ksvc.github.io/KSYLive_iOS/doc/html/Classes/KSYAUAudioCapture.html#//api/name/effectTyped)
 1. 2017.3.14 支持[立体声](https://github.com/ksvc/KSYLive_iOS/wiki/stereo)推流
-1. 2017.5.16 支持[涂鸦推流]（https://github.com/ksvc/KSYLive_iOS/wiki/BrushStream）
+1. 2017.5.16 支持[涂鸦推流](https://github.com/ksvc/KSYLive_iOS/wiki/BrushStream)
 1. 2017.7.7 支持[桌面录制、手游直播](https://github.com/ksvc/KSYAirStreamer_iOS)
 
 ### 2.2 近期工作   
