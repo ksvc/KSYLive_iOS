@@ -5,7 +5,8 @@
 //  Created by ksyun on 2017/1/4.
 //  Copyright © 2017年 ksyun. All rights reserved.
 //
-
+#ifndef _KSYReachability_H_
+#define _KSYReachability_H_
 #import <Foundation/Foundation.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 
@@ -75,3 +76,5 @@ typedef void (^KSYNetworkReachability)(KSYReachability * reachability, SCNetwork
 -(NSString*)currentReachabilityFlags;
 
 @end
+
+#endif  // _KSYReachability_H_

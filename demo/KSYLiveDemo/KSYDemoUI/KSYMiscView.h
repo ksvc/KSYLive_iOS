@@ -18,6 +18,7 @@
 @property UIButton* btn2;
 @property UIButton* btn3;
 @property UIButton* btn4;
+@property UIButton* btn5;
 //显示拉流地址并获取二维码
 @property UIButton *buttonPlayUrlAndQR;
 

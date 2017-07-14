@@ -58,19 +58,19 @@
     
     NSString* liveTime =[KSYUIVC timeFormatted: (int)(curState.timeSecond-_startTime) ] ;
     NSString *uploadDateSize = [KSYUIVC sizeFormatted:curState.uploadKByte];
-    NSString* stateurl  = [NSString stringWithFormat:@"%@", [str.hostURL absoluteString]];
+    NSString* stateurl  = [NSString stringWithFormat:@"%@\n", [str.hostURL absoluteString]];
     //显示拉流地址
     NSString *playUrl = @"http://test.hdllive.ks-cdn.com/live/";
     if (![[str.hostURL scheme] isEqualToString:@"rtmp"]) {
         //录制到本地
         NSString *fileName = [[stateurl componentsSeparatedByString:@"/"]lastObject];
-        playUrl = [NSString stringWithFormat:@"\n拉流地址：%@\n",fileName];
+        playUrl = [NSString stringWithFormat:@"拉流地址:%@\n",fileName];
     }else{
         //推流
         NSString *fileName = [[stateurl componentsSeparatedByString:@"/"]lastObject];
         NSString *playUrlPostfix = @".flv";
         playUrl = [NSString stringWithFormat:@"%@%@%@",playUrl,fileName,playUrlPostfix];
-        playUrl = [NSString stringWithFormat:@"\n拉流地址：%@\n",playUrl];
+        playUrl = [NSString stringWithFormat:@"拉流地址:%@\n",playUrl];
     }
     NSString* statekbps = [NSString stringWithFormat:@"实时码率(kbps)%4.1f\tA%4.1f\tV%4.1f\n", realTKbps, [str encodeAKbps], [str encodeVKbps] ];
     NSString* statefps  = [NSString stringWithFormat:@"实时帧率(fps)%2.1f\t总上传:%@\n", encFps, uploadDateSize ];

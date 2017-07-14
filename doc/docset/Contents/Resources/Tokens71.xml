@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/MEDIAINFO_MUX_TYPE.html">
+	<File path="Constants/MEDIAINFO_CODEC_ID.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/MEDIAINFO_MUX_TYPE</TokenIdentifier>
-			<Abstract type="html">封装格式</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/MEDIAINFO_CODEC_ID</TokenIdentifier>
+			<Abstract type="html">音视频格式</Abstract>
 			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_UNKNOWN</TokenIdentifier>
-            <Abstract type="html">未知的文件封装格式</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_UNKNOWN</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_CODEC_ID_UNKNOWN</TokenIdentifier>
+            <Abstract type="html">未知的音视频编码格式</Abstract>
+            <Declaration>MEDIAINFO_CODEC_ID_UNKNOWN</Declaration>
             
             <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
@@ -24,9 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_MP2T</TokenIdentifier>
-            <Abstract type="html">封装格式为TS</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_MP2T</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_CODEC_MPEG2VIDEO</TokenIdentifier>
+            <Abstract type="html">视频编码格式MPEG2</Abstract>
+            <Declaration>MEDIAINFO_CODEC_MPEG2VIDEO</Declaration>
             
             <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
@@ -34,9 +34,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_MOV</TokenIdentifier>
-            <Abstract type="html">封装格式为MOV</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_MOV</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_CODEC_MPEG4</TokenIdentifier>
+            <Abstract type="html">视频编码格式MPEG4</Abstract>
+            <Declaration>MEDIAINFO_CODEC_MPEG4</Declaration>
             
             <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
@@ -44,9 +44,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_AVI</TokenIdentifier>
-            <Abstract type="html">封装格式为AVI</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_AVI</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_CODEC_MJPEG</TokenIdentifier>
+            <Abstract type="html">视频编码格式MJPEG</Abstract>
+            <Declaration>MEDIAINFO_CODEC_MJPEG</Declaration>
             
             <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
@@ -54,9 +54,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_FLV</TokenIdentifier>
-            <Abstract type="html">封装格式为FLV</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_FLV</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_CODEC_JPEG2000</TokenIdentifier>
+            <Abstract type="html">视频编码格式JPEG2000</Abstract>
+            <Declaration>MEDIAINFO_CODEC_JPEG2000</Declaration>
             
             <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
@@ -64,9 +64,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_MKV</TokenIdentifier>
-            <Abstract type="html">封装格式为MKV</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_MKV</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_CODEC_H264</TokenIdentifier>
+            <Abstract type="html">视频编码格式H264</Abstract>
+            <Declaration>MEDIAINFO_CODEC_H264</Declaration>
             
             <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
@@ -74,9 +74,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_ASF</TokenIdentifier>
-            <Abstract type="html">封装格式为ASF</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_ASF</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_CODEC_HEVC</TokenIdentifier>
+            <Abstract type="html">视频编码格式HEVC</Abstract>
+            <Declaration>MEDIAINFO_CODEC_HEVC</Declaration>
             
             <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
@@ -84,9 +84,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_RM</TokenIdentifier>
-            <Abstract type="html">封装格式为RM</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_RM</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_CODEC_VC1</TokenIdentifier>
+            <Abstract type="html">视频编码格式VC1</Abstract>
+            <Declaration>MEDIAINFO_CODEC_VC1</Declaration>
             
             <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
@@ -94,9 +94,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_WAV</TokenIdentifier>
-            <Abstract type="html">封装格式为WAV</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_WAV</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_CODEC_ID_FIRST_AUDIO</TokenIdentifier>
+            <Abstract type="html">首个音频编码格式定义(不对应具体的编码格式)</Abstract>
+            <Declaration>MEDIAINFO_CODEC_ID_FIRST_AUDIO</Declaration>
             
             <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
@@ -104,9 +104,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_OGG</TokenIdentifier>
-            <Abstract type="html">封装格式为OGG</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_OGG</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_CODEC_AAC</TokenIdentifier>
+            <Abstract type="html">音频编码格式AAC</Abstract>
+            <Declaration>MEDIAINFO_CODEC_AAC</Declaration>
             
             <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
@@ -114,9 +114,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_APE</TokenIdentifier>
-            <Abstract type="html">封装格式为APE</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_APE</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_CODEC_AC3</TokenIdentifier>
+            <Abstract type="html">音频编码格式AC3</Abstract>
+            <Declaration>MEDIAINFO_CODEC_AC3</Declaration>
             
             <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
@@ -124,9 +124,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_RAWVIDEO</TokenIdentifier>
-            <Abstract type="html">封装格式为RAWVIDEO</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_RAWVIDEO</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_CODEC_MP3</TokenIdentifier>
+            <Abstract type="html">音频编码格式MP3</Abstract>
+            <Declaration>MEDIAINFO_CODEC_MP3</Declaration>
             
             <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
@@ -134,9 +134,29 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_HLS</TokenIdentifier>
-            <Abstract type="html">封装格式为HLS</Abstract>
-            <Declaration>MEDIAINFO_MUXTYPE_HLS</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_CODEC_PCM</TokenIdentifier>
+            <Abstract type="html">音频编码格式PCM</Abstract>
+            <Declaration>MEDIAINFO_CODEC_PCM</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="71"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_CODEC_DTS</TokenIdentifier>
+            <Abstract type="html">音频编码格式DTS</Abstract>
+            <Declaration>MEDIAINFO_CODEC_DTS</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="71"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_CODEC_NELLYMOSER</TokenIdentifier>
+            <Abstract type="html">音频编码格式NELLYMOSER</Abstract>
+            <Declaration>MEDIAINFO_CODEC_NELLYMOSER</Declaration>
             
             <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             

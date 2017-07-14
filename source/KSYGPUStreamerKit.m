@@ -276,13 +276,15 @@
 
 // 添加图层到 vMixer 中
 - (void) addPic:(GPUImageOutput*)pic ToMixerAt: (NSInteger)idx{
+    KSYGPUPicMixer * vMixer[2] = {_vPreviewMixer, _vStreamMixer};
+    for (int i = 0; i<2; ++i) {
+        [vMixer[i]  clearPicOfLayer:idx];
+    }
     if (pic == nil){
         return;
     }
     [pic removeAllTargets];
-    KSYGPUPicMixer * vMixer[2] = {_vPreviewMixer, _vStreamMixer};
     for (int i = 0; i<2; ++i) {
-        [vMixer[i]  clearPicOfLayer:idx];
         [pic addTarget:vMixer[i] atTextureLocation:idx];
     }
 }
@@ -867,6 +869,11 @@
     return image;
 }
 #pragma mark - pictures & logo
+@synthesize textPic = _textPic;
+-(void) setTextPic:(GPUImagePicture *)textPic{
+    _textPic = textPic;
+    [self addPic:_textPic ToMixerAt:_logoTxtLayer];
+}
 @synthesize logoPic = _logoPic;
 -(void) setLogoPic:(GPUImagePicture *)pic{
     _logoPic = pic;

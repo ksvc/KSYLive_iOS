@@ -340,6 +340,19 @@ typedef NS_ENUM(NSInteger, KSYNetReachState) {
     KSYNetReachState_Bad,
 };
 
+/*!
+ * @abstract  KSYStreamerBase鉴权错误码
+ */
+typedef NS_ENUM(NSInteger, KSYStreamerBaseTokenError) {
+    /// 无错误
+    KSYStreamerBaseTokenErrorNone = 0,
+    /// 传入的token未经我司授权
+    KSYStreamerBaseTokenErrorParse,
+    /// 传入的token格式有问题
+    KSYStreamerBaseTokenErrorFormat,
+    /// 传入的token为空
+    KSYStreamerBaseTokenErrorNULL,
+};
 
 #pragma mark - KSY_EXTERN
 #ifndef KSY_EXTERN

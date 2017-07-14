@@ -816,6 +816,9 @@
         picker.delegate = self;
         [self presentViewController:picker animated:YES completion:nil];
     }
+    else if (sender == _miscView.btn5) {
+        _kit.logoPic = nil;
+    }
     //弹出拉流地址及二维码
     else if(sender == _miscView.buttonPlayUrlAndQR){
         KSYQRCode *playUrlQRCodeVc = [[KSYQRCode alloc] init];

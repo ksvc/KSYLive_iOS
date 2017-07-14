@@ -16,6 +16,10 @@
     NSInteger _curIdx;
     NSArray * _effectNames;
     NSInteger _curEffectIdx;
+    //GPUResource非必备资源名称列表
+    NSArray *_effectResourceNames;
+    //GPUResource资源的存储路径
+    NSString *_downloadGPUResourcePath;
 }
 
 @property (nonatomic) UILabel * lbPrevewFlip;
@@ -37,6 +41,23 @@
                     @"3 甜美可人",  @"4 怀旧",  @"5 蓝调",  @"6 老照片" ,
                     @"7 樱花", @"8 樱花（光线较暗）", @"9 红润（光线较暗）",
                     @"10 阳光（光线较暗）", @"11 红润", @"12 阳光", @"13 自然", nil];
+    _effectResourceNames = [NSArray arrayWithObjects:
+                             @"null",
+                             @"1_xiaoqingxin.png",
+                             @"2_liangli.png",
+                             @"3_tianmeikeren.png",
+                             @"4_huaijiu.png",
+                             @"5_landiao.png",
+                             @"6_laozhaop.png",
+                             @"7_yinghua.png",
+                             @"8_yinghua_night.png",
+                             @"9_hongrun_night.png",
+                             @"10_yangguang_night.png",
+                             @"11_hongrun.png",
+                             @"12_yangguang.png",
+                             @"13_ziran.png",nil];
+    [self creatGPUResourceFile];
+    [self downloadGPUResource];
     _curEffectIdx = 1;
     // 修改美颜参数
     _filterParam1 = [self addSliderName:@"参数" From:0 To:100 Init:50];
@@ -189,8 +210,8 @@
         _filterParam1.hidden = NO;
         _filterParam2.hidden = NO;
         _filterParam3.hidden = NO;
-        UIImage * rubbyMat = [[self class] KSYGPUImageNamed:@"3_tianmeikeren.png"];
-        KSYBeautifyFaceFilter * bf = [[KSYBeautifyFaceFilter alloc] initWithRubbyMaterial:rubbyMat];
+        UIImage *rubbyMat = [self getGPUResourceImageAt:_effectResourceNames[3]];
+        KSYBeautifyFaceFilter *bf = [[KSYBeautifyFaceFilter alloc] initWithRubbyMaterial:rubbyMat];
         bf.grindRatio  = _filterParam1.normalValue;
         bf.whitenRatio = _filterParam2.normalValue;
         bf.ruddyRatio  = _filterParam3.normalValue;
@@ -207,21 +228,28 @@
         _proFilterLevelStep.hidden = NO;
         // 构造美颜滤镜 和  特效滤镜
         KSYBeautifyProFilter    * bf = [[KSYBeautifyProFilter alloc] initWithIdx:_proFilterLevel.value];
-        KSYBuildInSpecialEffects * sf = [[KSYBuildInSpecialEffects alloc] initWithIdx:_curEffectIdx];
         bf.grindRatio  = _filterParam1.normalValue;
         bf.whitenRatio = _filterParam2.normalValue;
         bf.ruddyRatio  = 0.5;
-        sf.intensity   = _filterParam3.normalValue;
-        [bf addTarget:sf];
         
-        // 用滤镜组 将 滤镜 串联成整体
-        GPUImageFilterGroup * fg = [[GPUImageFilterGroup alloc] init];
-        [fg addFilter:bf];
-        [fg addFilter:sf];
-        
-        [fg setInitialFilters:[NSArray arrayWithObject:bf]];
-        [fg setTerminalFilter:sf];
-        _curFilter = fg;
+        UIImage *downloadImage = [self getGPUResourceImageAt:_effectResourceNames[_curEffectIdx]];
+        if(downloadImage == nil) {
+            _curFilter = bf;
+        }
+        else {
+            KSYBuildInSpecialEffects * sf = [[KSYBuildInSpecialEffects alloc] initWithUIImage:downloadImage];
+            sf.intensity   = _filterParam3.normalValue;
+            [bf addTarget:sf];
+            
+            // 用滤镜组 将 滤镜 串联成整体
+            GPUImageFilterGroup * fg = [[GPUImageFilterGroup alloc] init];
+            [fg addFilter:bf];
+            [fg addFilter:sf];
+            
+            [fg setInitialFilters:[NSArray arrayWithObject:bf]];
+            [fg setTerminalFilter:sf];
+            _curFilter = fg;
+        }
     }
     else {
         _curFilter = nil;
@@ -300,27 +328,71 @@ numberOfRowsInComponent:(NSInteger)component {
     if ( [_curFilter isMemberOfClass:[GPUImageFilterGroup class]]){
         GPUImageFilterGroup * fg = (GPUImageFilterGroup *)_curFilter;
         KSYBuildInSpecialEffects * sf = (KSYBuildInSpecialEffects *)[fg filterAtIndex:1];
-        [sf setSpecialEffectsIdx: _curEffectIdx];
+        UIImage *downloadImage = [self getGPUResourceImageAt:_effectResourceNames[_curEffectIdx]];
+        if (downloadImage) {
+            [sf setSpecialEffectsUIImage:downloadImage];
+        }
     }
 }
 
-#pragma mark - load resource from resource bundle
-+ (NSBundle*)KSYGPUResourceBundle {
-    static dispatch_once_t onceToken;
-    static NSBundle *resBundle = nil;
-    dispatch_once(&onceToken, ^{
-        resBundle = [NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:@"KSYGPUResource" withExtension:@"bundle"]];
+-(UIImage *)getGPUResourceImageAt:(NSString *)effectName{
+    NSString * path = [[NSBundle mainBundle] pathForResource:@"KSYGPUResource" ofType:@"bundle"];
+    path = [path stringByAppendingPathComponent:effectName];
+    if ([UIImage imageWithContentsOfFile:path]) {
+        return [UIImage imageWithContentsOfFile:path];
+    }
+    UIImage *dwnloadImage = [self getDocumentImageName:effectName];
+    if (!dwnloadImage) {
+        //当前选中的资源还没有下载好
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"特效资源正在下载，请稍后重试" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+        alert.alertViewStyle = UIAlertViewStyleDefault;
+        [alert show];
+        return nil;
+    }
+    return dwnloadImage;
+}
+
+-(UIImage *)getDocumentImageName:(NSString *)name{
+    // 读取沙盒路径图片
+    NSString *pathDocuments = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *downloadGPUResourcePath = [NSString stringWithFormat:@"%@/GPUResource", pathDocuments];
+    NSString *aPath3=[downloadGPUResourcePath stringByAppendingFormat:@"/%@",name];
+    // 拿到沙盒路径图片
+    UIImage *imgFromUrl3=[[UIImage alloc]initWithContentsOfFile:aPath3];
+    return imgFromUrl3;
+}
+
+-(void)creatGPUResourceFile{
+    NSFileManager *fileManager = [[NSFileManager alloc] init];
+    NSString *pathDocuments = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    _downloadGPUResourcePath = [NSString stringWithFormat:@"%@/GPUResource", pathDocuments];
+    // 判断文件夹是否存在，如果不存在，则创建
+    if (![[NSFileManager defaultManager] fileExistsAtPath:_downloadGPUResourcePath]) {
+        [fileManager createDirectoryAtPath:_downloadGPUResourcePath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+}
+
+-(void)downloadGPUResource{
+    //下载没有下载好的图片
+    NSString *strPre = @"https://ks3-cn-beijing.ksyun.com/ksy.vcloud.sdk/Ios/KSYLive_iOS_Resource/";
+    //当前图片不存在，需要下载
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        for(int i = 1; i < _effectResourceNames.count - 1; i++){
+            NSString *GPUResourceFilePath = [_downloadGPUResourcePath stringByAppendingFormat:@"/%@",_effectResourceNames[i]];
+            UIImage *savedImage = [[UIImage alloc] initWithContentsOfFile:GPUResourceFilePath];
+            if(!savedImage){
+                //当前图片不存在，需要下载
+                NSString *strUrl = [strPre stringByAppendingFormat:@"%@",_effectResourceNames[i]];
+                NSURL *url =[NSURL URLWithString:strUrl];
+                NSData *data =[NSData dataWithContentsOfURL:url];
+                UIImage *image = [UIImage imageWithData:data];
+                //设置一个图片的存储路径
+                NSString *imagePath = [_downloadGPUResourcePath stringByAppendingFormat:@"/%@",_effectResourceNames[i]];
+                //把图片直接保存到指定的路径
+                [UIImagePNGRepresentation(image) writeToFile:imagePath atomically:YES];
+            }
+        }
     });
-    return resBundle;
-}
-
-+ (UIImage*)KSYGPUImageNamed:(NSString*)name {
-    UIImage *imageFromMainBundle = [UIImage imageNamed:name];
-    if (imageFromMainBundle) {
-        return imageFromMainBundle;
-    }
-    UIImage *imageFromKSYBundle = [UIImage imageWithContentsOfFile:[[[KSYFilterView KSYGPUResourceBundle] resourcePath] stringByAppendingPathComponent:name]];
-    return imageFromKSYBundle;
 }
 
 @end

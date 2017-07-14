@@ -28,6 +28,7 @@
     
     _btn3  = [self addButton:@"选择Logo"];
     _btn4  = [self addButton:@"拍摄Logo"];
+    _btn5  = [self addButton:@"清除Logo"];
     
     _lblRec       = [self addLable:@"旁路录制"];
     _swBypassRec  = [self addSwitch:NO];
@@ -60,7 +61,7 @@
            andView:_recSceneSeg];
     [self putLable:_lblPerf
            andView:_vEncPerfSeg];
-    [self putRow:@[_btn4,_btn3]];
+    [self putRow:@[_btn4,_btn3,_btn5]];
     [self putNarrow:_layerSeg andWide:_alphaSl];
     [self putRow:@[_lblRec, _swBypassRec, _lblRecDur]];
     [self putRow1:_autoReconnect];
