@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>KSYBWEstimateMode Constants Reference</title>
+	<title>KSYStreamerBaseTokenError Constants Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -59,7 +59,7 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">KSYBWEstimateMode Constants Reference</h1>
+					<h1 class="title">KSYStreamerBaseTokenError Constants Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
@@ -75,7 +75,7 @@
 					
 
                     
-                    <h3 class="subsubtitle method-title">KSYBWEstimateMode</h3>
+                    <h3 class="subsubtitle method-title">KSYStreamerBaseTokenError</h3>
                     
 					
 					
@@ -83,13 +83,15 @@
                         <!-- display enum values -->
                         
                         <h4 class="method-subtitle">Definition</h4>
-                        <code>typedef NS_ENUM(NSUInteger, KSYBWEstimateMode ) {<br>
+                        <code>typedef NS_ENUM(NSInteger, KSYStreamerBaseTokenError ) {<br>
                             
-                            &nbsp;&nbsp; <a href="">KSYBWEstMode_Default</a> = 0,<br>
+                            &nbsp;&nbsp; <a href="">KSYStreamerBaseTokenErrorNone</a> = 0,<br>
                             
-                            &nbsp;&nbsp; <a href="">KSYBWEstMode_Negtive</a>,<br>
+                            &nbsp;&nbsp; <a href="">KSYStreamerBaseTokenErrorParse</a>,<br>
                             
-                            &nbsp;&nbsp; <a href="">KSYBWEstMode_Disable</a> = 1000,<br>
+                            &nbsp;&nbsp; <a href="">KSYStreamerBaseTokenErrorFormat</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">KSYStreamerBaseTokenErrorNULL</a>,<br>
                             
                             };</code>
                     
@@ -99,11 +101,11 @@
                         <h4 class="method-subtitle">Constants</h4>
                         <dl class="termdef">
                             
-                            <dt><a name="" title="KSYBWEstMode_Default"></a><code>KSYBWEstMode_Default</code></dt>
+                            <dt><a name="" title="KSYStreamerBaseTokenErrorNone"></a><code>KSYStreamerBaseTokenErrorNone</code></dt>
 <dd>
 
 
-<p>默认模式 (综合模式,比较平稳)</p>
+<p>无错误</p>
 
 
 
@@ -116,11 +118,11 @@
 	
 </dd>
                             
-                            <dt><a name="" title="KSYBWEstMode_Negtive"></a><code>KSYBWEstMode_Negtive</code></dt>
+                            <dt><a name="" title="KSYStreamerBaseTokenErrorParse"></a><code>KSYStreamerBaseTokenErrorParse</code></dt>
 <dd>
 
 
-<p>流畅优先模式(消极上调, 极速下调)</p>
+<p>传入的token未经我司授权</p>
 
 
 
@@ -133,11 +135,28 @@
 	
 </dd>
                             
-                            <dt><a name="" title="KSYBWEstMode_Disable"></a><code>KSYBWEstMode_Disable</code></dt>
+                            <dt><a name="" title="KSYStreamerBaseTokenErrorFormat"></a><code>KSYStreamerBaseTokenErrorFormat</code></dt>
 <dd>
 
 
-<p>禁用网络自适应网络调整</p>
+<p>传入的token格式有问题</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="KSYStreamerBaseTokenErrorNULL"></a><code>KSYStreamerBaseTokenErrorNULL</code></dt>
+<dd>
+
+
+<p>传入的token为空</p>
 
 
 

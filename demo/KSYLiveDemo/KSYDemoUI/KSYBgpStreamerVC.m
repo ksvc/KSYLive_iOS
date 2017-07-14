@@ -159,10 +159,14 @@
     }
     //设置输出图像的像素格式
     _kit.gpuOutputPixelFormat = kCVPixelFormatType_32BGRA;
-    //校正图片朝向
-    _kit.previewDimension = image.size;
     _kit.bgPicRotate = [[_kit class] getRotationMode:image];
+    //校正图片朝向
     _kit.bgPic  = [[GPUImagePicture alloc] initWithImage:image];
+    if (image.imageOrientation == UIImageOrientationLeft || image.imageOrientation == UIImageOrientationRight){
+        _kit.previewDimension = CGSizeMake(_kit.bgPic.outputImageSize.height, _kit.bgPic.outputImageSize.width);
+    }else{
+        _kit.previewDimension = _kit.bgPic.outputImageSize;
+    }
     image = nil;
     //推流过程中切换图片
     if (_capFlag == 0) {

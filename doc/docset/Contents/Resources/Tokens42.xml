@@ -1322,6 +1322,45 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setClientAk:</TokenIdentifier>
+			<Abstract type="html">获取当前用户的ak
+@warnning 默认是空的，只有在需要鉴权时，才能获取到</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSString *clientAk</Declaration>
+			
+			
+			<Anchor>//api/name/clientAk</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/clientAk</TokenIdentifier>
+			<Abstract type="html">获取当前用户的ak
+@warnning 默认是空的，只有在需要鉴权时，才能获取到</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSString *clientAk</Declaration>
+			
+			
+			<Anchor>//api/name/clientAk</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/clientAk</TokenIdentifier>
+			<Abstract type="html">获取当前用户的ak
+@warnning 默认是空的，只有在需要鉴权时，才能获取到</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) NSString *clientAk</Declaration>
+			
+			
+			<Anchor>//api/name/clientAk</Anchor>
+            <NodeRef refid="42"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setStreamID:</TokenIdentifier>
 			<Abstract type="html">查询当前推流的事件ID</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>

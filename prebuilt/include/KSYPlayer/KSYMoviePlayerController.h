@@ -579,7 +579,6 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
 
 /**
  @abstract 设置播放速度，取值范围(0.5~2.0)，默认1.0
- @warning 该属性目前只支持软解播放，不支持硬解播放，且播放直播流时请勿修改该属性
  @warning 该属性由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 2.4.1 and later.
  */

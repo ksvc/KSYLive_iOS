@@ -338,6 +338,12 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 
 #pragma mark - Status property
 /**
+ @abstract 获取当前用户的ak
+ @warnning 默认是空的，只有在需要鉴权时，才能获取到
+ */
+@property (nonatomic, assign) NSString *clientAk;
+
+/**
  @abstract   查询当前推流的事件ID
  @discussion md5(hostURL+timestamp) 对本次推流活动的标识
  @discussion timestamp 为建立连接时的事件戳

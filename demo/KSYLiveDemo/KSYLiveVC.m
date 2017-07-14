@@ -32,8 +32,8 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
 @interface KSYLiveVC ()<UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource>{
     //扫描二维码按钮
     UIButton        *_buttonQR;
-    //帮助按钮
-    UIButton        *_buttonHelp;
+    //关于按钮
+    UIButton        *_buttonAbout;
     CGFloat         _width;
     CGFloat         _height;
     //功能列表
@@ -228,13 +228,13 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
 -(void)UIAtType:(KSYDemoMenuType)type{
     if (type == KSYDemoMenuType_PLAY || type ==KSYDemoMenuType_STREAM || type == KSYDemoMenuType_RECORD) {
         _pickerAddress.hidden = NO;
-        _buttonHelp.hidden = NO;
+        _buttonAbout.hidden = NO;
         _buttonQR.hidden = NO;
         _labelAddress.hidden = NO;
         _buttonDone.frame = CGRectMake(1, CGRectGetMaxY(_pickerAddress.frame), _width - 2, _height- CGRectGetMaxY(_pickerAddress.frame));
     }else{
         _pickerAddress.hidden = YES;
-        _buttonHelp.hidden = YES;
+        _buttonAbout.hidden = YES;
         _buttonQR.hidden = YES;
         _labelAddress.hidden = YES;
         _buttonDone.frame = CGRectMake(1, CGRectGetMaxY(_pickerMenu.frame), _width - 2, _height - CGRectGetMaxY(_pickerMenu.frame));
@@ -304,7 +304,7 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
     CGFloat btnH    = 30;
     CGFloat btnW   = 80;
     _buttonQR.frame = CGRectMake(20, textY + 5, btnW, btnH);
-    _buttonHelp.frame = CGRectMake(_width - 20 - btnW, textY + 5, btnW, btnH);
+    _buttonAbout.frame = CGRectMake(_width - 20 - btnW, textY + 5, btnW, btnH);
     
     textY += (btnH+10);
     
@@ -335,7 +335,7 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
     _pickerMenu = [self addPickerView];
     _pickerAddress = [self addPickerView];
     _buttonQR     = [self addButton:@"扫描二维码"];
-    _buttonHelp  = [self addButton:@"帮助"];
+    _buttonAbout  = [self addButton:@"关于"];
     [self initFrame];
 }
 
@@ -344,9 +344,15 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
         //进入到扫描二维码的视图
         [self scanQR];
     }
-    else if (sender == _buttonHelp){
+    else if (sender == _buttonAbout){
+        NSString *build = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
         //进入帮助页面
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"金山云直播SDK网址" message:@"(iOS)https://github.com/ksvc/KSYLive_iOS\n(Android)https://github.com/ksvc/KSYLive_Android" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"金山云直播SDK" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+        NSString * fmt = @"版本: %@\n"
+        @"QQ群: 574179720 \n"
+        @"(iOS)https://github.com/ksvc/KSYLive_iOS \n"
+        @"(Android)https://github.com/ksvc/KSYLive_Android";
+        alert.message = [NSString stringWithFormat:fmt, build];
         alert.alertViewStyle = UIAlertViewStyleDefault;
         [alert show];
    }else if(sender == _buttonDone){
