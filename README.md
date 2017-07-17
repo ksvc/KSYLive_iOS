@@ -110,6 +110,7 @@
 1. 2017.3.14 支持[立体声](https://github.com/ksvc/KSYLive_iOS/wiki/stereo)推流
 1. 2017.5.16 支持[涂鸦推流](https://github.com/ksvc/KSYLive_iOS/wiki/BrushStream)
 1. 2017.7.7 支持[桌面录制、手游直播](https://github.com/ksvc/KSYAirStreamer_iOS)
+1. 2017.7.7 支持[iOS 11 HEVC 硬编推流](https://github.com/ksvc/KSYLive_iOS/wiki/enableH265)
 
 ### 2.2 近期工作   
 
