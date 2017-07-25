@@ -4,6 +4,11 @@ use_frameworks!
 
 target 'KSYLiveDemo' do
   pod 'Bugly'
+  # YYImage 仅demo中用于导入gif和apng的格式的图片用到了
+  # 不需要支持这些格式的话,不需要添加YYImage的依赖
+  pod 'YYImage'
+  
+  
   pod 'GPUImage'
   pod 'libksygpulive/KSYGPUResource',      :path => '../'
   pod 'libksygpulive/libksygpulive',       :path => '../'

@@ -37,6 +37,15 @@ typedef NS_ENUM(NSUInteger, KSYAudioEffectType){
  */
 @interface KSYAUAudioCapture : NSObject
 
+/**
+ 指定采集音频的采样率
+
+ @param sampleRate 指定的采样率 , 默认为44100Hz
+ @return  采集设备实例
+ @warning 请尽量使用默认的44100, 使用其他的采样率可能导致混响和变声等功能异常
+ */
+- (id) initWithSampleRate:(double)sampleRate;
+
 /** Start Audio capturing
  @abstract  启动音频采集, 占据麦克风资源
  @return    是否启动采集成功
@@ -123,5 +132,10 @@ typedef NS_ENUM(NSUInteger, KSYAudioEffectType){
  @return     是/否有耳机麦克风
  */
 + (BOOL)isHeadsetPluggedIn;
+
+/**
+ 设备是否正在采集音频数据
+ */
+@property (nonatomic, readonly) BOOL isRunning;
 
 @end

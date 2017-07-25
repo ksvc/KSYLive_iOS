@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/MPMovieAudioPan.html">
+	<File path="Constants/KSY_NETTRACKER_ACTION.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/MPMovieAudioPan</TokenIdentifier>
-			<Abstract type="html">立体声平衡</Abstract>
-			<DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSY_NETTRACKER_ACTION</TokenIdentifier>
+			<Abstract type="html">探测方式</Abstract>
+			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
             
 			
 			<NodeRef refid="74"/>
@@ -14,31 +14,21 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieAudioPan_Left</TokenIdentifier>
-            <Abstract type="html">完全左声道</Abstract>
-            <Declaration>MPMovieAudioPan_Left</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSY_NETTRACKER_ACTION_MTR</TokenIdentifier>
+            <Abstract type="html">mtr方式，探测链路上每个节点</Abstract>
+            <Declaration>KSY_NETTRACKER_ACTION_MTR</Declaration>
             
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="74"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieAudioPan_Stereo</TokenIdentifier>
-            <Abstract type="html">左右声道平衡</Abstract>
-            <Declaration>MPMovieAudioPan_Stereo</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            <DeclaredIn>KSYNetTracker.h</DeclaredIn>
             
             <NodeRef refid="74"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMoviveAudioPan_Right</TokenIdentifier>
-            <Abstract type="html">完全右声道</Abstract>
-            <Declaration>MPMoviveAudioPan_Right</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSY_NETTRACKER_ACTION_PING</TokenIdentifier>
+            <Abstract type="html">ping方式，直接探测终点</Abstract>
+            <Declaration>KSY_NETTRACKER_ACTION_PING</Declaration>
             
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            <DeclaredIn>KSYNetTracker.h</DeclaredIn>
             
             <NodeRef refid="74"/>
         </Token>

@@ -60,6 +60,10 @@
 		
 		<option value="//api/name/aMixer">aMixer</option>
 		
+		<option value="//api/name/aeLayer">aeLayer</option>
+		
+		<option value="//api/name/aePic">aePic</option>
+		
 		<option value="//api/name/audioCaptureType">audioCaptureType</option>
 		
 		<option value="//api/name/audioProcessingCallback">audioProcessingCallback</option>
@@ -117,6 +121,8 @@
 		<option value="//api/name/previewMirrored">previewMirrored</option>
 		
 		<option value="//api/name/previewOrientation">previewOrientation</option>
+		
+		<option value="//api/name/stabilizationMode">stabilizationMode</option>
 		
 		<option value="//api/name/streamDimension">streamDimension</option>
 		
@@ -1189,6 +1195,47 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 		    
 
 			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSInteger logoTxtLayer</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/aeLayer" title="aeLayer"></a>
+	<h3 class="method-title"><code><a href="#//api/name/aeLayer">&nbsp;&nbsp;aeLayer</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>贴纸的图层</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSInteger aeLayer</code></div>
 
 		    
 			
@@ -3017,8 +3064,7 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>设置为nil为清除水印图片</p><p>请注意背景图片的尺寸, 太大的图片会导致内存占用过高
-@see</p>
+				<p>设置为nil为清除水印图片</p><p>请注意背景图片的尺寸, 太大的图片会导致内存占用过高</p>
 			</div>
 			
 
@@ -3064,8 +3110,53 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>设置为nil为清除内容图片
-@see</p>
+				<p>设置为nil为清除内容图片</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/aePic" title="aePic"></a>
+	<h3 class="method-title"><code><a href="#//api/name/aePic">&nbsp;&nbsp;aePic</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>贴纸的图片</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite) GPUImageUIElement *aePic</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置为nil为清除贴纸图片</p>
 			</div>
 			
 
@@ -3157,8 +3248,7 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>alpha为透明度(0-1),0完全透明，1完全不透明
-@see</p>
+				<p>alpha为透明度(0-1),0完全透明，1完全不透明</p>
 			</div>
 			
 
@@ -3516,6 +3606,52 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/stabilizationMode" title="stabilizationMode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/stabilizationMode">&nbsp;&nbsp;stabilizationMode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>摄像头防抖模式，切换摄像头后需要进行重新设置</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) AVCaptureVideoStabilizationMode stabilizationMode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>(iPhone前置摄像头不支持防抖功能)</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/processMessageData:" title="processMessageData:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/processMessageData:">&ndash;&nbsp;processMessageData:</a></code>
 </h3>
@@ -3577,7 +3713,7 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 Kingsoft. All rights reserved. Updated: 2017-07-14</p>
+						<p class="copyright">Copyright &copy; 2017 Kingsoft. All rights reserved. Updated: 2017-07-25</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

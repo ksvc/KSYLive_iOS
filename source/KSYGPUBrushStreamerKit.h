@@ -27,7 +27,6 @@
 /**
  @abstract   绘制的图片
  @discussion 设置为nil为清除内容图片
- @see
  */
 @property (nonatomic, readwrite) GPUImagePicture      *drawPic;
 

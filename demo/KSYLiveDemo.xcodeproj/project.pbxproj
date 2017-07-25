@@ -13,6 +13,10 @@
 		0530DE591E484C6100EEAD32 /* KSYBgmStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0530DE581E484C6100EEAD32 /* KSYBgmStreamerVC.m */; };
 		055695951EF91D3200206460 /* KSYBrushStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 055695941EF91D3200206460 /* KSYBrushStreamerVC.m */; };
 		056FE3801E1BA730002FC22F /* KSYPipStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 056FE37F1E1BA730002FC22F /* KSYPipStreamerVC.m */; };
+		0577A8101F1CBEBE00FADC5B /* KSYDecalBGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0577A80D1F1CBEBE00FADC5B /* KSYDecalBGView.m */; };
+		0577A8111F1CBEBE00FADC5B /* KSYDecalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0577A80F1F1CBEBE00FADC5B /* KSYDecalView.m */; };
+		0577A87C1F1DDE9100FADC5B /* KSYCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0577A87B1F1DDE9100FADC5B /* KSYCollectionView.m */; };
+		0577A8801F1DDF7100FADC5B /* KSYCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0577A87E1F1DDF7100FADC5B /* KSYCollectionCell.m */; };
 		060AE9C51D4653010064DD65 /* KSYFileSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 060AE9C41D4653010064DD65 /* KSYFileSelector.m */; };
 		064980251DAFB8AB00AA5A0A /* KSYAudioCtrlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 064980231DAFB8AB00AA5A0A /* KSYAudioCtrlView.m */; };
 		069E428A1C10357D00392B5E /* KSYLiveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 069E42881C10357D00392B5E /* KSYLiveVC.m */; };
@@ -123,6 +127,14 @@
 		055695941EF91D3200206460 /* KSYBrushStreamerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYBrushStreamerVC.m; sourceTree = "<group>"; };
 		056FE37E1E1BA730002FC22F /* KSYPipStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYPipStreamerVC.h; sourceTree = "<group>"; };
 		056FE37F1E1BA730002FC22F /* KSYPipStreamerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYPipStreamerVC.m; sourceTree = "<group>"; };
+		0577A80C1F1CBEBE00FADC5B /* KSYDecalBGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYDecalBGView.h; sourceTree = "<group>"; };
+		0577A80D1F1CBEBE00FADC5B /* KSYDecalBGView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYDecalBGView.m; sourceTree = "<group>"; };
+		0577A80E1F1CBEBE00FADC5B /* KSYDecalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYDecalView.h; sourceTree = "<group>"; };
+		0577A80F1F1CBEBE00FADC5B /* KSYDecalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYDecalView.m; sourceTree = "<group>"; };
+		0577A87A1F1DDE9100FADC5B /* KSYCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYCollectionView.h; sourceTree = "<group>"; };
+		0577A87B1F1DDE9100FADC5B /* KSYCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYCollectionView.m; sourceTree = "<group>"; };
+		0577A87D1F1DDF7100FADC5B /* KSYCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYCollectionCell.h; sourceTree = "<group>"; };
+		0577A87E1F1DDF7100FADC5B /* KSYCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYCollectionCell.m; sourceTree = "<group>"; };
 		060AE9C31D4653010064DD65 /* KSYFileSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYFileSelector.h; sourceTree = "<group>"; };
 		060AE9C41D4653010064DD65 /* KSYFileSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYFileSelector.m; sourceTree = "<group>"; };
 		064980231DAFB8AB00AA5A0A /* KSYAudioCtrlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYAudioCtrlView.m; sourceTree = "<group>"; };
@@ -450,6 +462,14 @@
 				06FBBD2B1D2E17E00065ED55 /* KSYBgmView.m */,
 				06FBBD301D2E17E00065ED55 /* KSYFilterView.h */,
 				06FBBD311D2E17E00065ED55 /* KSYFilterView.m */,
+				0577A80C1F1CBEBE00FADC5B /* KSYDecalBGView.h */,
+				0577A80D1F1CBEBE00FADC5B /* KSYDecalBGView.m */,
+				0577A80E1F1CBEBE00FADC5B /* KSYDecalView.h */,
+				0577A80F1F1CBEBE00FADC5B /* KSYDecalView.m */,
+				0577A87A1F1DDE9100FADC5B /* KSYCollectionView.h */,
+				0577A87B1F1DDE9100FADC5B /* KSYCollectionView.m */,
+				0577A87D1F1DDF7100FADC5B /* KSYCollectionCell.h */,
+				0577A87E1F1DDF7100FADC5B /* KSYCollectionCell.m */,
 			);
 			name = subviews;
 			sourceTree = "<group>";
@@ -652,6 +672,7 @@
 				58149AD21EF80FB200A3BC8B /* KSYSimplePlayVC.m in Sources */,
 				0530DE591E484C6100EEAD32 /* KSYBgmStreamerVC.m in Sources */,
 				06A646B71D8459C800D1C620 /* KSYProberVC.m in Sources */,
+				0577A8111F1CBEBE00FADC5B /* KSYDecalView.m in Sources */,
 				06A646B81D8459C800D1C620 /* KSYPlayerVC.m in Sources */,
 				052B29371EAA2DC000BFECB0 /* KSYBgpStreamerVC.m in Sources */,
 				3991D0F21DD5674200032EC0 /* KSYRecordVC.m in Sources */,
@@ -661,6 +682,7 @@
 				056FE3801E1BA730002FC22F /* KSYPipStreamerVC.m in Sources */,
 				585ABE2D1EC4614400315A5C /* KSYURLTableVC.m in Sources */,
 				06FBBD5B1D2E17E00065ED55 /* KSYPipView.m in Sources */,
+				0577A87C1F1DDE9100FADC5B /* KSYCollectionView.m in Sources */,
 				06B2B1AC1BE8F0D900E0CC85 /* AppDelegate.m in Sources */,
 				06FBBD691D2E17E00065ED55 /* KSYUIVC.m in Sources */,
 				C323BC211E794DEB00D4682C /* KSYFloatingWindowVC.m in Sources */,
@@ -687,8 +709,10 @@
 				31F5D1DE1ED683A900588B8E /* KSYQRCode.m in Sources */,
 				06B2B1A91BE8F0D900E0CC85 /* main.m in Sources */,
 				050C69D61EF80949008C93E3 /* KSYDrawingView.m in Sources */,
+				0577A8101F1CBEBE00FADC5B /* KSYDecalBGView.m in Sources */,
 				95B4A3EF1CBF6CC700CB6804 /* KSYSQLite.m in Sources */,
 				06FBBD5D1D2E17E00065ED55 /* KSYPresetCfgVC.m in Sources */,
+				0577A8801F1DDF7100FADC5B /* KSYCollectionCell.m in Sources */,
 				060AE9C51D4653010064DD65 /* KSYFileSelector.m in Sources */,
 				580C1C311E289BC800B386D5 /* KSYNetTrackerVC.m in Sources */,
 			);

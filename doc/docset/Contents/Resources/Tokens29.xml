@@ -697,6 +697,42 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setAeLayer:</TokenIdentifier>
+			<Abstract type="html">贴纸的图层</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSInteger aeLayer</Declaration>
+			
+			
+			<Anchor>//api/name/aeLayer</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/aeLayer</TokenIdentifier>
+			<Abstract type="html">贴纸的图层</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSInteger aeLayer</Declaration>
+			
+			
+			<Anchor>//api/name/aeLayer</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/aeLayer</TokenIdentifier>
+			<Abstract type="html">贴纸的图层</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSInteger aeLayer</Declaration>
+			
+			
+			<Anchor>//api/name/aeLayer</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setMicTrack:</TokenIdentifier>
 			<Abstract type="html">麦克风通道</Abstract>
 			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
@@ -1753,6 +1789,42 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setAePic:</TokenIdentifier>
+			<Abstract type="html">贴纸的图片</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) GPUImageUIElement *aePic</Declaration>
+			
+			
+			<Anchor>//api/name/aePic</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/aePic</TokenIdentifier>
+			<Abstract type="html">贴纸的图片</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) GPUImageUIElement *aePic</Declaration>
+			
+			
+			<Anchor>//api/name/aePic</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/aePic</TokenIdentifier>
+			<Abstract type="html">贴纸的图片</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) GPUImageUIElement *aePic</Declaration>
+			
+			
+			<Anchor>//api/name/aePic</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setLogoRect:</TokenIdentifier>
 			<Abstract type="html">水印logo的图片的位置和大小</Abstract>
 			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
@@ -2018,6 +2090,42 @@
 			
 			
 			<Anchor>//api/name/streamerProfile</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setStabilizationMode:</TokenIdentifier>
+			<Abstract type="html">摄像头防抖模式，切换摄像头后需要进行重新设置</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) AVCaptureVideoStabilizationMode stabilizationMode</Declaration>
+			
+			
+			<Anchor>//api/name/stabilizationMode</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/stabilizationMode</TokenIdentifier>
+			<Abstract type="html">摄像头防抖模式，切换摄像头后需要进行重新设置</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) AVCaptureVideoStabilizationMode stabilizationMode</Declaration>
+			
+			
+			<Anchor>//api/name/stabilizationMode</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/stabilizationMode</TokenIdentifier>
+			<Abstract type="html">摄像头防抖模式，切换摄像头后需要进行重新设置</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) AVCaptureVideoStabilizationMode stabilizationMode</Declaration>
+			
+			
+			<Anchor>//api/name/stabilizationMode</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		

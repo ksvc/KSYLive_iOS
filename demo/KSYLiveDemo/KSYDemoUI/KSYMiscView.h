@@ -19,8 +19,17 @@
 @property UIButton* btn3;
 @property UIButton* btn4;
 @property UIButton* btn5;
+
+// 动态logo的
+@property UIButton* btnAnimate;
+@property UIButton* btnNext;
+@property UILabel*  lblAnimate;
+@property NSString* animatePath;
+
 //显示拉流地址并获取二维码
 @property UIButton *buttonPlayUrlAndQR;
+
+@property UIButton *buttonAe;
 
 @property UISwitch* swBypassRec; // 旁路录制
 @property UILabel*  lblRecDur;   // 旁路录制的时长

@@ -13,6 +13,23 @@
 		
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/initWithSampleRate:</TokenIdentifier>
+			<Abstract type="html">指定采集音频的采样率</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithSampleRate:(double)sampleRate</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sampleRate</Name>
+					<Abstract type="html">指定的采样率 , 默认为44100Hz</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">采集设备实例</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithSampleRate:</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/startCapture</TokenIdentifier>
 			<Abstract type="html">启动音频采集, 占据麦克风资源</Abstract>
 			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
@@ -405,6 +422,42 @@
 			
 			<ReturnValue><Abstract type="html">是/否有耳机麦克风</Abstract></ReturnValue>
 			<Anchor>//api/name/isHeadsetPluggedIn</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/setIsRunning:</TokenIdentifier>
+			<Abstract type="html">设备是否正在采集音频数据</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL isRunning</Declaration>
+			
+			
+			<Anchor>//api/name/isRunning</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/isRunning</TokenIdentifier>
+			<Abstract type="html">设备是否正在采集音频数据</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL isRunning</Declaration>
+			
+			
+			<Anchor>//api/name/isRunning</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAUAudioCapture/isRunning</TokenIdentifier>
+			<Abstract type="html">设备是否正在采集音频数据</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) BOOL isRunning</Declaration>
+			
+			
+			<Anchor>//api/name/isRunning</Anchor>
             <NodeRef refid="2"/>
 		</Token>
 		

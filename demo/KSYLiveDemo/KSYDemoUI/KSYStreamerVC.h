@@ -19,6 +19,8 @@
 #import "KSYAudioCtrlView.h"
 #import "KSYMiscView.h"
 #import "KSYStateLableView.h"
+#import "KSYDecalBGView.h"
+#import "KSYCollectionView.h"
 
 #import <libksygpulive/KSYGPUStreamerKit.h>
 
@@ -55,6 +57,10 @@
 @property (nonatomic, readonly) KSYAudioCtrlView * audioView;
 /// 其他功能配置页面
 @property (nonatomic, readonly) KSYMiscView   *miscView;
+//贴纸页面
+@property (nonatomic, readonly)KSYCollectionView *colView;
+//所有decal添加到该view上
+@property (nonatomic, readonly) KSYDecalBGView *decalBGView;
 
 #pragma mark - preview rotation
 /// 预览视图父控件（用于处理转屏，保持画面相对手机静止）

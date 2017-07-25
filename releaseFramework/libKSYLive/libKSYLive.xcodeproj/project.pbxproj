@@ -7,70 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		052B29421EAB316300BFECB0 /* KSYGPUBgpStreamerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 052B293E1EAB315100BFECB0 /* KSYGPUBgpStreamerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		052B29431EAB316800BFECB0 /* KSYGPUBgpStreamerKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 052B293F1EAB315100BFECB0 /* KSYGPUBgpStreamerKit.m */; };
-		0530DE5E1E489CC800EEAD32 /* KSYGPUBgmStreamerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0530DE5A1E489CC200EEAD32 /* KSYGPUBgmStreamerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0530DE5F1E489CCD00EEAD32 /* KSYGPUBgmStreamerKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0530DE5B1E489CC200EEAD32 /* KSYGPUBgmStreamerKit.m */; };
-		0556959E1EFA6DE900206460 /* KSYGPUBrushStreamerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0556959A1EFA6DDF00206460 /* KSYGPUBrushStreamerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0556959F1EFA6DEE00206460 /* KSYGPUBrushStreamerKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0556959B1EFA6DDF00206460 /* KSYGPUBrushStreamerKit.m */; };
-		056FE3831E1BC9B1002FC22F /* KSYGPUPipStreamerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 056FE3811E1BC9B1002FC22F /* KSYGPUPipStreamerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		056FE3841E1BC9B1002FC22F /* KSYGPUPipStreamerKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 056FE3821E1BC9B1002FC22F /* KSYGPUPipStreamerKit.m */; };
-		057364D51E67CB73006EC5FA /* KSYUIRecorderKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 057364D31E67CB73006EC5FA /* KSYUIRecorderKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		057364D61E67CB73006EC5FA /* KSYUIRecorderKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 057364D41E67CB73006EC5FA /* KSYUIRecorderKit.m */; };
-		0623D6F31E78185400AEF51E /* KSYReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 0623D6F11E78184200AEF51E /* KSYReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		063254BC1E6810C600638EC8 /* AVAudioSession+KSY.h in Headers */ = {isa = PBXBuildFile; fileRef = 063254B61E6810B200638EC8 /* AVAudioSession+KSY.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		063254BD1E6810C600638EC8 /* KSYAQPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 063254B71E6810B200638EC8 /* KSYAQPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		063254BE1E6810C600638EC8 /* KSYBgmReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 063254B81E6810B200638EC8 /* KSYBgmReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0655BF511DF595B1004B94D3 /* KSYAVFCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 0655BF4F1DF593BF004B94D3 /* KSYAVFCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		067E95401E165A6000512363 /* libksygpufilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 067E953A1E165A5400512363 /* libksygpufilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		067E95411E165A6000512363 /* libksystreamerbase.h in Headers */ = {isa = PBXBuildFile; fileRef = 067E953B1E165A5400512363 /* libksystreamerbase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		067E95421E165A6000512363 /* libksystreamerengine.h in Headers */ = {isa = PBXBuildFile; fileRef = 067E953C1E165A5400512363 /* libksystreamerengine.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		06A646C01D8652C000D1C620 /* KSYAVAudioSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A646BE1D8652A400D1C620 /* KSYAVAudioSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0659AAD71F21CD5300A2F882 /* KSYGPUStreamerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A646CF1D865B2C00D1C620 /* KSYGPUStreamerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0659AAD81F21CD5300A2F882 /* KSYGPUPipStreamerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 056FE3811E1BC9B1002FC22F /* KSYGPUPipStreamerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0659AAD91F21CD5300A2F882 /* KSYGPUBgmStreamerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0530DE5A1E489CC200EEAD32 /* KSYGPUBgmStreamerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0659AADA1F21CD5300A2F882 /* KSYUIRecorderKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 057364D31E67CB73006EC5FA /* KSYUIRecorderKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0659AADB1F21CD5300A2F882 /* KSYGPUBgpStreamerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 052B293E1EAB315100BFECB0 /* KSYGPUBgpStreamerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0659AADC1F21CD5300A2F882 /* KSYGPUBrushStreamerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0556959A1EFA6DDF00206460 /* KSYGPUBrushStreamerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06A646D21D865B3B00D1C620 /* KSYGPUStreamerKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A646CE1D865B2C00D1C620 /* KSYGPUStreamerKit.m */; };
-		06A646DA1D865D3200D1C620 /* KSYGPUStreamerKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A646CF1D865B2C00D1C620 /* KSYGPUStreamerKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		06CC32271EC4868A00B81609 /* KSYClipWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = C3F7345F1EC466E000D36B35 /* KSYClipWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		06E3D1B91E00402D00E2AEA8 /* KSYBeautifyProFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E3D1B51E00402600E2AEA8 /* KSYBeautifyProFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		06E3D1BA1E00402D00E2AEA8 /* KSYGPUPicInput.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E3D1B61E00402600E2AEA8 /* KSYGPUPicInput.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		06E670751DEC376E0015E3BD /* KSYDummyAudioSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E670731DEC37570015E3BD /* KSYDummyAudioSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		06E742A71D90FEC300C3E780 /* KSYSpecialEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E742A31D90FEB700C3E780 /* KSYSpecialEffects.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		06E742A81D90FEC300C3E780 /* KSYBuildInSpecialEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 06E742A41D90FEB700C3E780 /* KSYBuildInSpecialEffects.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		06FBE52E1EF800E0000C98F7 /* KSYAudioFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 06FBE52D1EF800E0000C98F7 /* KSYAudioFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		06FBE5301EF800ED000C98F7 /* KSYGPUView.h in Headers */ = {isa = PBXBuildFile; fileRef = 06FBE52F1EF800ED000C98F7 /* KSYGPUView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5800A0591D76E50100AB55F7 /* KSYMediaPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800A0181D76BFA600AB55F7 /* KSYMediaPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DC851D82B9AA00B1A884 /* KSYMediaInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC7F1D82B9AA00B1A884 /* KSYMediaInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DC861D82B9AA00B1A884 /* KSYMediaInfoProber.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC801D82B9AA00B1A884 /* KSYMediaInfoProber.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DC871D82B9AA00B1A884 /* KSYMediaPlayback.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC811D82B9AA00B1A884 /* KSYMediaPlayback.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DC881D82B9AA00B1A884 /* KSYMoviePlayerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC821D82B9AA00B1A884 /* KSYMoviePlayerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DC891D82B9AA00B1A884 /* KSYMoviePlayerDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC831D82B9AA00B1A884 /* KSYMoviePlayerDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DC8A1D82B9AA00B1A884 /* KSYQosInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC841D82B9AA00B1A884 /* KSYQosInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCD61D82BAF500B1A884 /* KSYAUAudioCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA21D82BAA800B1A884 /* KSYAUAudioCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCD71D82BAF500B1A884 /* KSYAudioMixer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA31D82BAA800B1A884 /* KSYAudioMixer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCD91D82BAF500B1A884 /* KSYAVMuxer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA51D82BAA800B1A884 /* KSYAVMuxer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCDA1D82BAF500B1A884 /* KSYBeautifyFaceFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA61D82BAA800B1A884 /* KSYBeautifyFaceFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCDB1D82BAF500B1A884 /* KSYBgmPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA71D82BAA800B1A884 /* KSYBgmPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCDC1D82BAF500B1A884 /* KSYGPUBeautifyExtFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA81D82BAA800B1A884 /* KSYGPUBeautifyExtFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCDD1D82BAF500B1A884 /* KSYGPUBeautifyFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCA91D82BAA800B1A884 /* KSYGPUBeautifyFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCDE1D82BAF500B1A884 /* KSYGPUBeautifyPlusFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCAA1D82BAA800B1A884 /* KSYGPUBeautifyPlusFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCDF1D82BAF500B1A884 /* KSYGPUCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCAB1D82BAA800B1A884 /* KSYGPUCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCE01D82BAF500B1A884 /* KSYGPUDnoiseFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCAC1D82BAA800B1A884 /* KSYGPUDnoiseFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCE11D82BAF500B1A884 /* KSYGPUFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCAD1D82BAA800B1A884 /* KSYGPUFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCE21D82BAF500B1A884 /* KSYGPUPicMixer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCAE1D82BAA800B1A884 /* KSYGPUPicMixer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCE31D82BAF500B1A884 /* KSYGPUPicOutput.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCAF1D82BAA800B1A884 /* KSYGPUPicOutput.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCE81D82BAF500B1A884 /* KSYMovieWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCB41D82BAA800B1A884 /* KSYMovieWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCE91D82BAF500B1A884 /* KSYStreamerBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCB51D82BAA800B1A884 /* KSYStreamerBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCEA1D82BAF500B1A884 /* KSYTypeDef.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCB61D82BAA800B1A884 /* KSYTypeDef.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCEC1D82BAF500B1A884 /* libksygpulive.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DCB81D82BAA800B1A884 /* libksygpulive.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCED1D82BAFF00B1A884 /* KSYMediaInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC7F1D82B9AA00B1A884 /* KSYMediaInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCEE1D82BAFF00B1A884 /* KSYMediaInfoProber.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC801D82B9AA00B1A884 /* KSYMediaInfoProber.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCEF1D82BAFF00B1A884 /* KSYMediaPlayback.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC811D82B9AA00B1A884 /* KSYMediaPlayback.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCF01D82BAFF00B1A884 /* KSYMoviePlayerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC821D82B9AA00B1A884 /* KSYMoviePlayerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCF11D82BAFF00B1A884 /* KSYMoviePlayerDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC831D82B9AA00B1A884 /* KSYMoviePlayerDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5800DCF21D82BAFF00B1A884 /* KSYQosInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 5800DC841D82B9AA00B1A884 /* KSYQosInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		580C1C2E1E2897DF00B386D5 /* KSYNetTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 580C1C2D1E2897DF00B386D5 /* KSYNetTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		580C1C2F1E2897F100B386D5 /* KSYNetTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 580C1C2D1E2897DF00B386D5 /* KSYNetTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		583682961EADDEF0002D3CB9 /* KSYReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 0623D6F11E78184200AEF51E /* KSYReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5837E1921E6469600044EA17 /* KSYMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 5837E1911E6469600044EA17 /* KSYMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C3F734601EC466E000D36B35 /* KSYClipWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = C3F7345F1EC466E000D36B35 /* KSYClipWriter.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,35 +33,13 @@
 		056FE3821E1BC9B1002FC22F /* KSYGPUPipStreamerKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYGPUPipStreamerKit.m; path = ../../source/KSYGPUPipStreamerKit.m; sourceTree = "<group>"; };
 		057364D31E67CB73006EC5FA /* KSYUIRecorderKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYUIRecorderKit.h; path = ../../source/KSYUIRecorderKit.h; sourceTree = "<group>"; };
 		057364D41E67CB73006EC5FA /* KSYUIRecorderKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYUIRecorderKit.m; path = ../../source/KSYUIRecorderKit.m; sourceTree = "<group>"; };
-		0623D6F11E78184200AEF51E /* KSYReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYReachability.h; path = ../../../../prebuilt/include/KSYPlayer/KSYReachability.h; sourceTree = "<group>"; };
-		063254B61E6810B200638EC8 /* AVAudioSession+KSY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AVAudioSession+KSY.h"; path = "../../../../../prebuilt/include/KSYStreamer/AVAudioSession+KSY.h"; sourceTree = "<group>"; };
-		063254B71E6810B200638EC8 /* KSYAQPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYAQPlayer.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYAQPlayer.h; sourceTree = "<group>"; };
-		063254B81E6810B200638EC8 /* KSYBgmReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYBgmReader.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYBgmReader.h; sourceTree = "<group>"; };
-		0655BF4F1DF593BF004B94D3 /* KSYAVFCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYAVFCapture.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYAVFCapture.h; sourceTree = "<group>"; };
-		067E953A1E165A5400512363 /* libksygpufilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libksygpufilter.h; path = ../../../../../prebuilt/include/KSYStreamer/libksygpufilter.h; sourceTree = "<group>"; };
-		067E953B1E165A5400512363 /* libksystreamerbase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libksystreamerbase.h; path = ../../../../../prebuilt/include/KSYStreamer/libksystreamerbase.h; sourceTree = "<group>"; };
-		067E953C1E165A5400512363 /* libksystreamerengine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libksystreamerengine.h; path = ../../../../../prebuilt/include/KSYStreamer/libksystreamerengine.h; sourceTree = "<group>"; };
-		06A646BE1D8652A400D1C620 /* KSYAVAudioSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYAVAudioSession.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYAVAudioSession.h; sourceTree = "<group>"; };
 		06A646CE1D865B2C00D1C620 /* KSYGPUStreamerKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSYGPUStreamerKit.m; path = ../../source/KSYGPUStreamerKit.m; sourceTree = "<group>"; };
 		06A646CF1D865B2C00D1C620 /* KSYGPUStreamerKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUStreamerKit.h; path = ../../source/KSYGPUStreamerKit.h; sourceTree = "<group>"; };
-		06E3D1B51E00402600E2AEA8 /* KSYBeautifyProFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYBeautifyProFilter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYBeautifyProFilter.h; sourceTree = "<group>"; };
-		06E3D1B61E00402600E2AEA8 /* KSYGPUPicInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUPicInput.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPUPicInput.h; sourceTree = "<group>"; };
-		06E670731DEC37570015E3BD /* KSYDummyAudioSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYDummyAudioSource.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYDummyAudioSource.h; sourceTree = "<group>"; };
-		06E742A31D90FEB700C3E780 /* KSYSpecialEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYSpecialEffects.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYSpecialEffects.h; sourceTree = "<group>"; };
-		06E742A41D90FEB700C3E780 /* KSYBuildInSpecialEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYBuildInSpecialEffects.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYBuildInSpecialEffects.h; sourceTree = "<group>"; };
-		06FBE52D1EF800E0000C98F7 /* KSYAudioFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYAudioFilter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYAudioFilter.h; sourceTree = "<group>"; };
-		06FBE52F1EF800ED000C98F7 /* KSYGPUView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUView.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPUView.h; sourceTree = "<group>"; };
 		5800A0161D76BFA600AB55F7 /* KSYMediaPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KSYMediaPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5800A0181D76BFA600AB55F7 /* KSYMediaPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSYMediaPlayer.h; sourceTree = "<group>"; };
 		5800A01A1D76BFA600AB55F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5800A09F1D76EC1600AB55F7 /* libksygpulive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = libksygpulive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5800A0A31D76EC1600AB55F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5800DC7F1D82B9AA00B1A884 /* KSYMediaInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSYMediaInfo.h; path = ../../../../prebuilt/include/KSYPlayer/KSYMediaInfo.h; sourceTree = "<group>"; };
-		5800DC801D82B9AA00B1A884 /* KSYMediaInfoProber.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSYMediaInfoProber.h; path = ../../../../prebuilt/include/KSYPlayer/KSYMediaInfoProber.h; sourceTree = "<group>"; };
-		5800DC811D82B9AA00B1A884 /* KSYMediaPlayback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSYMediaPlayback.h; path = ../../../../prebuilt/include/KSYPlayer/KSYMediaPlayback.h; sourceTree = "<group>"; };
-		5800DC821D82B9AA00B1A884 /* KSYMoviePlayerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSYMoviePlayerController.h; path = ../../../../prebuilt/include/KSYPlayer/KSYMoviePlayerController.h; sourceTree = "<group>"; };
-		5800DC831D82B9AA00B1A884 /* KSYMoviePlayerDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSYMoviePlayerDefines.h; path = ../../../../prebuilt/include/KSYPlayer/KSYMoviePlayerDefines.h; sourceTree = "<group>"; };
-		5800DC841D82B9AA00B1A884 /* KSYQosInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSYQosInfo.h; path = ../../../../prebuilt/include/KSYPlayer/KSYQosInfo.h; sourceTree = "<group>"; };
 		5800DC8B1D82B9F600B1A884 /* libksyplayer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksyplayer.a; path = ../../../../prebuilt/libs/libksyplayer.a; sourceTree = "<group>"; };
 		5800DC8E1D82BA4900B1A884 /* libksystreamer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksystreamer.a; path = ../../../../../prebuilt/libs/libksystreamer.a; sourceTree = "<group>"; };
 		5800DC901D82BA7200B1A884 /* libksybase.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksybase.a; path = ../../../prebuilt/libs/libksybase.a; sourceTree = "<group>"; };
@@ -124,30 +51,10 @@
 		5800DC961D82BA7200B1A884 /* libksymediacore_enc_lite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksymediacore_enc_lite.a; path = ../../../prebuilt/libs/libksymediacore_enc_lite.a; sourceTree = "<group>"; };
 		5800DC971D82BA7200B1A884 /* libksymediacore_enc_lite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksymediacore_enc_lite.a; path = ../../../prebuilt/libs/libksymediacore_enc_lite.a; sourceTree = "<group>"; };
 		5800DCA01D82BA8400B1A884 /* libksyyuv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksyyuv.a; path = ../../../prebuilt/libs/libksyyuv.a; sourceTree = "<group>"; };
-		5800DCA21D82BAA800B1A884 /* KSYAUAudioCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYAUAudioCapture.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYAUAudioCapture.h; sourceTree = "<group>"; };
-		5800DCA31D82BAA800B1A884 /* KSYAudioMixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYAudioMixer.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYAudioMixer.h; sourceTree = "<group>"; };
-		5800DCA51D82BAA800B1A884 /* KSYAVMuxer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYAVMuxer.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYAVMuxer.h; sourceTree = "<group>"; };
-		5800DCA61D82BAA800B1A884 /* KSYBeautifyFaceFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYBeautifyFaceFilter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYBeautifyFaceFilter.h; sourceTree = "<group>"; };
-		5800DCA71D82BAA800B1A884 /* KSYBgmPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYBgmPlayer.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYBgmPlayer.h; sourceTree = "<group>"; };
-		5800DCA81D82BAA800B1A884 /* KSYGPUBeautifyExtFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUBeautifyExtFilter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPUBeautifyExtFilter.h; sourceTree = "<group>"; };
-		5800DCA91D82BAA800B1A884 /* KSYGPUBeautifyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUBeautifyFilter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPUBeautifyFilter.h; sourceTree = "<group>"; };
-		5800DCAA1D82BAA800B1A884 /* KSYGPUBeautifyPlusFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUBeautifyPlusFilter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPUBeautifyPlusFilter.h; sourceTree = "<group>"; };
-		5800DCAB1D82BAA800B1A884 /* KSYGPUCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUCamera.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPUCamera.h; sourceTree = "<group>"; };
-		5800DCAC1D82BAA800B1A884 /* KSYGPUDnoiseFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUDnoiseFilter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPUDnoiseFilter.h; sourceTree = "<group>"; };
-		5800DCAD1D82BAA800B1A884 /* KSYGPUFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUFilter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPUFilter.h; sourceTree = "<group>"; };
-		5800DCAE1D82BAA800B1A884 /* KSYGPUPicMixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUPicMixer.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPUPicMixer.h; sourceTree = "<group>"; };
-		5800DCAF1D82BAA800B1A884 /* KSYGPUPicOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYGPUPicOutput.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYGPUPicOutput.h; sourceTree = "<group>"; };
-		5800DCB41D82BAA800B1A884 /* KSYMovieWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYMovieWriter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYMovieWriter.h; sourceTree = "<group>"; };
-		5800DCB51D82BAA800B1A884 /* KSYStreamerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYStreamerBase.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYStreamerBase.h; sourceTree = "<group>"; };
-		5800DCB61D82BAA800B1A884 /* KSYTypeDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYTypeDef.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYTypeDef.h; sourceTree = "<group>"; };
-		5800DCB81D82BAA800B1A884 /* libksygpulive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libksygpulive.h; path = ../../../../../prebuilt/include/KSYStreamer/libksygpulive.h; sourceTree = "<group>"; };
 		580489C41D798C8400232F6E /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		58048A1D1D79C81F00232F6E /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GPUImage.framework; path = ../../../framework/GPUImage.framework; sourceTree = "<group>"; };
 		58048A201D79C8EC00232F6E /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		58048A231D79C92A00232F6E /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		580C1C2D1E2897DF00B386D5 /* KSYNetTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYNetTracker.h; path = ../../../../prebuilt/include/KSYPlayer/KSYNetTracker.h; sourceTree = "<group>"; };
-		5837E1911E6469600044EA17 /* KSYMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSYMessage.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYMessage.h; sourceTree = "<group>"; };
-		C3F7345F1EC466E000D36B35 /* KSYClipWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSYClipWriter.h; path = ../../../../../prebuilt/include/KSYStreamer/KSYClipWriter.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,25 +164,9 @@
 		580489CF1D798DF800232F6E /* KSYPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				580489D01D798E0B00232F6E /* include */,
 				580489D11D798E2800232F6E /* libs */,
 			);
 			path = KSYPlayer;
-			sourceTree = "<group>";
-		};
-		580489D01D798E0B00232F6E /* include */ = {
-			isa = PBXGroup;
-			children = (
-				0623D6F11E78184200AEF51E /* KSYReachability.h */,
-				580C1C2D1E2897DF00B386D5 /* KSYNetTracker.h */,
-				5800DC7F1D82B9AA00B1A884 /* KSYMediaInfo.h */,
-				5800DC801D82B9AA00B1A884 /* KSYMediaInfoProber.h */,
-				5800DC811D82B9AA00B1A884 /* KSYMediaPlayback.h */,
-				5800DC821D82B9AA00B1A884 /* KSYMoviePlayerController.h */,
-				5800DC831D82B9AA00B1A884 /* KSYMoviePlayerDefines.h */,
-				5800DC841D82B9AA00B1A884 /* KSYQosInfo.h */,
-			);
-			path = include;
 			sourceTree = "<group>";
 		};
 		580489D11D798E2800232F6E /* libs */ = {
@@ -290,51 +181,9 @@
 			isa = PBXGroup;
 			children = (
 				5800DC8D1D82BA2700B1A884 /* libs */,
-				580489E11D799FF200232F6E /* include */,
 			);
 			name = KSYStreamer;
 			path = KSYPlayer/KSYStreamer;
-			sourceTree = "<group>";
-		};
-		580489E11D799FF200232F6E /* include */ = {
-			isa = PBXGroup;
-			children = (
-				06FBE52D1EF800E0000C98F7 /* KSYAudioFilter.h */,
-				063254B61E6810B200638EC8 /* AVAudioSession+KSY.h */,
-				063254B71E6810B200638EC8 /* KSYAQPlayer.h */,
-				063254B81E6810B200638EC8 /* KSYBgmReader.h */,
-				0655BF4F1DF593BF004B94D3 /* KSYAVFCapture.h */,
-				06E670731DEC37570015E3BD /* KSYDummyAudioSource.h */,
-				06E742A31D90FEB700C3E780 /* KSYSpecialEffects.h */,
-				5837E1911E6469600044EA17 /* KSYMessage.h */,
-				06E742A41D90FEB700C3E780 /* KSYBuildInSpecialEffects.h */,
-				06A646BE1D8652A400D1C620 /* KSYAVAudioSession.h */,
-				06E3D1B51E00402600E2AEA8 /* KSYBeautifyProFilter.h */,
-				067E953A1E165A5400512363 /* libksygpufilter.h */,
-				067E953B1E165A5400512363 /* libksystreamerbase.h */,
-				067E953C1E165A5400512363 /* libksystreamerengine.h */,
-				06FBE52F1EF800ED000C98F7 /* KSYGPUView.h */,
-				06E3D1B61E00402600E2AEA8 /* KSYGPUPicInput.h */,
-				5800DCA21D82BAA800B1A884 /* KSYAUAudioCapture.h */,
-				5800DCA31D82BAA800B1A884 /* KSYAudioMixer.h */,
-				5800DCA51D82BAA800B1A884 /* KSYAVMuxer.h */,
-				5800DCA61D82BAA800B1A884 /* KSYBeautifyFaceFilter.h */,
-				5800DCA71D82BAA800B1A884 /* KSYBgmPlayer.h */,
-				5800DCA81D82BAA800B1A884 /* KSYGPUBeautifyExtFilter.h */,
-				5800DCA91D82BAA800B1A884 /* KSYGPUBeautifyFilter.h */,
-				5800DCAA1D82BAA800B1A884 /* KSYGPUBeautifyPlusFilter.h */,
-				5800DCAB1D82BAA800B1A884 /* KSYGPUCamera.h */,
-				5800DCAC1D82BAA800B1A884 /* KSYGPUDnoiseFilter.h */,
-				5800DCAD1D82BAA800B1A884 /* KSYGPUFilter.h */,
-				5800DCAE1D82BAA800B1A884 /* KSYGPUPicMixer.h */,
-				5800DCAF1D82BAA800B1A884 /* KSYGPUPicOutput.h */,
-				5800DCB41D82BAA800B1A884 /* KSYMovieWriter.h */,
-				5800DCB51D82BAA800B1A884 /* KSYStreamerBase.h */,
-				C3F7345F1EC466E000D36B35 /* KSYClipWriter.h */,
-				5800DCB61D82BAA800B1A884 /* KSYTypeDef.h */,
-				5800DCB81D82BAA800B1A884 /* libksygpulive.h */,
-			);
-			path = include;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,15 +194,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5800A0591D76E50100AB55F7 /* KSYMediaPlayer.h in Headers */,
-				5800DC851D82B9AA00B1A884 /* KSYMediaInfo.h in Headers */,
-				5800DC861D82B9AA00B1A884 /* KSYMediaInfoProber.h in Headers */,
-				5800DC871D82B9AA00B1A884 /* KSYMediaPlayback.h in Headers */,
-				5800DC881D82B9AA00B1A884 /* KSYMoviePlayerController.h in Headers */,
-				5800DC891D82B9AA00B1A884 /* KSYMoviePlayerDefines.h in Headers */,
-				5800DC8A1D82B9AA00B1A884 /* KSYQosInfo.h in Headers */,
-				C3F734601EC466E000D36B35 /* KSYClipWriter.h in Headers */,
-				580C1C2E1E2897DF00B386D5 /* KSYNetTracker.h in Headers */,
-				583682961EADDEF0002D3CB9 /* KSYReachability.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,54 +201,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06A646DA1D865D3200D1C620 /* KSYGPUStreamerKit.h in Headers */,
-				056FE3831E1BC9B1002FC22F /* KSYGPUPipStreamerKit.h in Headers */,
-				0530DE5E1E489CC800EEAD32 /* KSYGPUBgmStreamerKit.h in Headers */,
-				5800DCED1D82BAFF00B1A884 /* KSYMediaInfo.h in Headers */,
-				5800DCEE1D82BAFF00B1A884 /* KSYMediaInfoProber.h in Headers */,
-				5800DCEF1D82BAFF00B1A884 /* KSYMediaPlayback.h in Headers */,
-				5800DCF01D82BAFF00B1A884 /* KSYMoviePlayerController.h in Headers */,
-				5800DCF11D82BAFF00B1A884 /* KSYMoviePlayerDefines.h in Headers */,
-				5800DCF21D82BAFF00B1A884 /* KSYQosInfo.h in Headers */,
-				5800DCD61D82BAF500B1A884 /* KSYAUAudioCapture.h in Headers */,
-				06E670751DEC376E0015E3BD /* KSYDummyAudioSource.h in Headers */,
-				5800DCD71D82BAF500B1A884 /* KSYAudioMixer.h in Headers */,
-				5800DCD91D82BAF500B1A884 /* KSYAVMuxer.h in Headers */,
-				5800DCDA1D82BAF500B1A884 /* KSYBeautifyFaceFilter.h in Headers */,
-				5800DCDB1D82BAF500B1A884 /* KSYBgmPlayer.h in Headers */,
-				5800DCDC1D82BAF500B1A884 /* KSYGPUBeautifyExtFilter.h in Headers */,
-				5800DCDD1D82BAF500B1A884 /* KSYGPUBeautifyFilter.h in Headers */,
-				5800DCDE1D82BAF500B1A884 /* KSYGPUBeautifyPlusFilter.h in Headers */,
-				5800DCDF1D82BAF500B1A884 /* KSYGPUCamera.h in Headers */,
-				5800DCE01D82BAF500B1A884 /* KSYGPUDnoiseFilter.h in Headers */,
-				5800DCE11D82BAF500B1A884 /* KSYGPUFilter.h in Headers */,
-				5800DCE21D82BAF500B1A884 /* KSYGPUPicMixer.h in Headers */,
-				057364D51E67CB73006EC5FA /* KSYUIRecorderKit.h in Headers */,
-				5800DCE31D82BAF500B1A884 /* KSYGPUPicOutput.h in Headers */,
-				5800DCE81D82BAF500B1A884 /* KSYMovieWriter.h in Headers */,
-				5800DCE91D82BAF500B1A884 /* KSYStreamerBase.h in Headers */,
-				5800DCEA1D82BAF500B1A884 /* KSYTypeDef.h in Headers */,
-				5800DCEC1D82BAF500B1A884 /* libksygpulive.h in Headers */,
-				067E95401E165A6000512363 /* libksygpufilter.h in Headers */,
-				067E95411E165A6000512363 /* libksystreamerbase.h in Headers */,
-				067E95421E165A6000512363 /* libksystreamerengine.h in Headers */,
-				06A646C01D8652C000D1C620 /* KSYAVAudioSession.h in Headers */,
-				06E742A71D90FEC300C3E780 /* KSYSpecialEffects.h in Headers */,
-				06E3D1B91E00402D00E2AEA8 /* KSYBeautifyProFilter.h in Headers */,
-				06E3D1BA1E00402D00E2AEA8 /* KSYGPUPicInput.h in Headers */,
-				06E742A81D90FEC300C3E780 /* KSYBuildInSpecialEffects.h in Headers */,
-				0655BF511DF595B1004B94D3 /* KSYAVFCapture.h in Headers */,
-				580C1C2F1E2897F100B386D5 /* KSYNetTracker.h in Headers */,
-				5837E1921E6469600044EA17 /* KSYMessage.h in Headers */,
-				063254BC1E6810C600638EC8 /* AVAudioSession+KSY.h in Headers */,
-				063254BD1E6810C600638EC8 /* KSYAQPlayer.h in Headers */,
-				0623D6F31E78185400AEF51E /* KSYReachability.h in Headers */,
-				063254BE1E6810C600638EC8 /* KSYBgmReader.h in Headers */,
-				06CC32271EC4868A00B81609 /* KSYClipWriter.h in Headers */,
-				06FBE52E1EF800E0000C98F7 /* KSYAudioFilter.h in Headers */,
-				06FBE5301EF800ED000C98F7 /* KSYGPUView.h in Headers */,
-				052B29421EAB316300BFECB0 /* KSYGPUBgpStreamerKit.h in Headers */,
-				0556959E1EFA6DE900206460 /* KSYGPUBrushStreamerKit.h in Headers */,
+				0659AAD71F21CD5300A2F882 /* KSYGPUStreamerKit.h in Headers */,
+				0659AAD81F21CD5300A2F882 /* KSYGPUPipStreamerKit.h in Headers */,
+				0659AAD91F21CD5300A2F882 /* KSYGPUBgmStreamerKit.h in Headers */,
+				0659AADA1F21CD5300A2F882 /* KSYUIRecorderKit.h in Headers */,
+				0659AADB1F21CD5300A2F882 /* KSYGPUBgpStreamerKit.h in Headers */,
+				0659AADC1F21CD5300A2F882 /* KSYGPUBrushStreamerKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,6 +468,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = ../../framework;
 				HEADER_SEARCH_PATHS = (
+					../../prebuilt/include/,
 					../../prebuilt/include/KSYPlayer,
 					../../prebuilt/include/KSYStreamer,
 				);
@@ -696,6 +495,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = ../../framework;
 				HEADER_SEARCH_PATHS = (
+					../../prebuilt/include/,
 					../../prebuilt/include/KSYPlayer,
 					../../prebuilt/include/KSYStreamer,
 				);

@@ -12,6 +12,7 @@
 #import "KSYMovieWriter.h"
 #import "KSYAVMuxer.h"
 #import "KSYMessage.h"
+#import "KSYTranscoder.h"
 
-#define KSYSTREAMERBASE_VER 2.5.0
-#define KSYSTREAMERBASE_ID  6b39c2a61b4d7b42863e4215c20c33296d1fa738
+#define KSYSTREAMERBASE_VER 2.5.1
+#define KSYSTREAMERBASE_ID  2175865c7fd206d384e097d6e80e3c0cf26459ac

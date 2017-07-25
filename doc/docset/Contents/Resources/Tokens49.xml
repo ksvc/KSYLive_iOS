@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYAudioEffectType.html">
+	<File path="Constants/KSYAVMuxerStatus.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYAudioEffectType</TokenIdentifier>
-			<Abstract type="html">音效类型</Abstract>
-			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYAVMuxerStatus</TokenIdentifier>
+			<Abstract type="html">交织处理状态</Abstract>
+			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
             
 			
 			<NodeRef refid="49"/>
@@ -14,51 +14,51 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioEffectType_NONE</TokenIdentifier>
-            <Abstract type="html">初始化时状态为空闲</Abstract>
-            <Declaration>KSYAudioEffectType_NONE</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusIdle</TokenIdentifier>
+            <Abstract type="html">初始状态</Abstract>
+            <Declaration>KSYAVMuxerStatusIdle</Declaration>
             
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
-            
-            <NodeRef refid="49"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioEffectType_MALE</TokenIdentifier>
-            <Abstract type="html">大叔</Abstract>
-            <Declaration>KSYAudioEffectType_MALE</Declaration>
-            
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
             
             <NodeRef refid="49"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioEffectType_FEMALE</TokenIdentifier>
-            <Abstract type="html">萝莉</Abstract>
-            <Declaration>KSYAudioEffectType_FEMALE</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusMuxing</TokenIdentifier>
+            <Abstract type="html">处理中</Abstract>
+            <Declaration>KSYAVMuxerStatusMuxing</Declaration>
             
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
-            
-            <NodeRef refid="49"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioEffectType_HEROIC</TokenIdentifier>
-            <Abstract type="html">宏大</Abstract>
-            <Declaration>KSYAudioEffectType_HEROIC</Declaration>
-            
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
             
             <NodeRef refid="49"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioEffectType_ROBOT</TokenIdentifier>
-            <Abstract type="html">机器人</Abstract>
-            <Declaration>KSYAudioEffectType_ROBOT</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusCompleted</TokenIdentifier>
+            <Abstract type="html">处理完成</Abstract>
+            <Declaration>KSYAVMuxerStatusCompleted</Declaration>
             
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+            
+            <NodeRef refid="49"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusFailed</TokenIdentifier>
+            <Abstract type="html">处理失败</Abstract>
+            <Declaration>KSYAVMuxerStatusFailed</Declaration>
+            
+            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+            
+            <NodeRef refid="49"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusCancelled</TokenIdentifier>
+            <Abstract type="html">处理任务被取消</Abstract>
+            <Declaration>KSYAVMuxerStatusCancelled</Declaration>
+            
+            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
             
             <NodeRef refid="49"/>
         </Token>
