@@ -49,7 +49,10 @@
     _progressBar = [[KSYProgressView alloc] init];
     [self addSubview:_progressBar];
     if (_cnt == 0) {
-        [self downloadBgm];
+        NSString *urlStr = @"https://ks3-cn-beijing.ksyun.com/ksy.vcloud.sdk/Ios/bgm.aac";
+        [_bgmSel downloadFile:urlStr name:@"bgm.aac" ];
+        urlStr = @"https://ks3-cn-beijing.ksyun.com/ksy.vcloud.sdk/Ios/test1.mp3";
+        [_bgmSel downloadFile:urlStr name:@"test1.mp3"];
     }
     return self;
 }
@@ -110,38 +113,5 @@
     [_bgmSel reload];
     _bgmPath = _bgmSel.filePath;
     _cnt     = _bgmSel.fileList.count;
-}
-
-- (void) downloadBgm {
-    NSString *urlStr = @"https://ks3-cn-beijing.ksyun.com/ksy.vcloud.sdk/Ios/bgm.aac";
-    urlStr = [urlStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    NSURL *Url = [NSURL URLWithString:urlStr];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:Url];
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDownloadTask *downLoadTask;
-    weakObj(self);
-    downLoadTask = [session downloadTaskWithRequest:request completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (!error) {
-            NSError *saveError;
-            NSString * saveDir = [NSHomeDirectory() stringByAppendingString:@"/Documents/bgms"];
-            NSString * savePath = [saveDir stringByAppendingString:@"/bgm.aac"];
-            NSURL *saveURL = [NSURL fileURLWithPath:savePath];
-            NSFileManager * fm = [NSFileManager defaultManager];
-            [fm createDirectoryAtPath:saveDir
-          withIntermediateDirectories:YES
-                           attributes:nil
-                                error:nil];
-            [fm copyItemAtURL:location toURL:saveURL error:&saveError];
-            if (!saveError) {
-                NSLog(@"bgm.aac 下载成功");
-                [selfWeak relaodFile];
-            } else {
-                NSLog(@"error is %@", saveError.localizedDescription);
-            }
-        } else {
-            NSLog(@"error is : %@", error.localizedDescription);
-        }
-    }];
-    [downLoadTask resume];
 }
 @end

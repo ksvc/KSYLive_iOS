@@ -15,6 +15,7 @@
 #import "KSYPipView.h"
 #import "KSYNameSlider.h"
 #import "KSYQRCode.h"
+#import <YYImage/YYImage.h>
 
 #import <CallKit/CXCallObserver.h>
 #import <CallKit/CallKit.h>
@@ -36,8 +37,14 @@
     UIView *_bgView;        // 预览视图父控件（用于处理转屏，保持画面相对手机不变）
     BOOL _bOutputInfo;//是否输出推流过程中的统计信息
     CXCallObserver *_callObserver;
+    
+    YYImageDecoder  * _animateDecoder;
+    int _animateIdx;
+    CADisplayLink   *_displayLink;
+    NSTimeInterval   _dlTime;
+    NSLock          *_dlLock;
+    GPUImagePicture *_logoPicure;
 }
-
 @end
 
 @implementation KSYStreamerVC
@@ -48,6 +55,7 @@
     [self initObservers];
     _menuNames = @[@"背景音乐", @"图像/美颜",@"声音", @"消息", @"其他"];
     self.view.backgroundColor = [UIColor whiteColor];
+    _dlLock = [[NSLock alloc] init];
     return self;
 }
 
@@ -75,9 +83,10 @@
 
     [self setupLogo];
     _bypassRecFile =[NSHomeDirectory() stringByAppendingString:@"/Library/Caches/rec.mp4"];
+    weakObj(self);
     _kit.streamerBase.bypassRecordStateChange = ^(KSYRecordState state) {
         //旁路录制状态改变会调用该block
-        [self onBypassRecordStateChange:state];
+        [selfWeak onBypassRecordStateChange:state];
     };
 }
 
@@ -131,10 +140,18 @@
 
 - (void)addSubViews{
     _bgView = [[UIView alloc] initWithFrame:self.view.bounds];
-    [self.view addSubview:_bgView];
     _ctrlView  = [[KSYCtrlView alloc] initWithMenu:_menuNames];
-    [self.view addSubview:_ctrlView];
+    _colView = [[KSYCollectionView alloc] init];
+    _decalBGView = [[KSYDecalBGView alloc] init];
     _ctrlView.frame = self.view.frame;
+    _colView.frame = self.view.frame;
+    _decalBGView.frame = self.view.frame;
+    [self.view addSubview:_bgView];
+    [self.view addSubview:_ctrlView];
+    [self.view addSubview:_colView];
+    [self.colView addSubview:_decalBGView];
+    [self.colView sendSubviewToBack:_decalBGView];
+    _colView.hidden = YES;
     _ksyFilterView  = [[KSYFilterView alloc]initWithParent:_ctrlView];
     _ksyBgmView     = [[KSYBgmView alloc]initWithParent:_ctrlView];
     _audioView      = [[KSYAudioCtrlView alloc]initWithParent:_ctrlView];
@@ -142,6 +159,9 @@
     
     // connect UI
     weakObj(self);
+    _colView.DEBlock = ^(NSString *imgName){
+        [selfWeak genDecalViewWithImgName:imgName];
+    };
     _ctrlView.onBtnBlock = ^(id btn){
         [selfWeak onBasicCtrl:btn];
     };
@@ -191,6 +211,9 @@
     _miscView.onSegCtrlBlock=^(id sender){
         [selfWeak onMisxSegCtrl:sender];
     };
+    _colView.onBtnBlock=^(id sender){
+        [selfWeak onColBtns:sender];
+    };
     self.onNetworkChange = ^(NSString * msg){
         selfWeak.ctrlView.lblNetwork.text = msg;
     };
@@ -232,6 +255,10 @@
         _ctrlView.frame = self.view.frame;
         [_ctrlView layoutUI];
     }
+    if(_colView){
+        _colView.frame = self.view.frame;
+        [_colView layoutUI];
+    }
 }
 - (NSString *) timeStr {
     if (_dateFormatter == nil) {
@@ -248,8 +275,8 @@
     CGFloat scale = MAX(_bgView.frame.size.width, _bgView.frame.size.height) / self.view.frame.size.height;
     CGFloat hgt  = 0.1 * scale; // logo图片的高度是预览画面的十分之一
     UIImage * logoImg = [UIImage imageNamed:@"ksvc"];
-    
-    _kit.logoPic  = [[GPUImagePicture alloc] initWithImage:logoImg];
+    _logoPicure   =  [[GPUImagePicture alloc] initWithImage:logoImg];
+    _kit.logoPic  = _logoPicure;
     _kit.logoRect = CGRectMake(0.05, yPos, 0, hgt);
     _kit.logoAlpha= 0.5;
     yPos += hgt;
@@ -273,6 +300,50 @@
     [_kit updateTextLabel];
 }
 
+- (void) setupAnimateLogo:(NSString*)path {
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    [_dlLock lock];
+    _animateDecoder = [YYImageDecoder decoderWithData:data scale:2.0];
+    [_dlLock unlock];
+    _animateIdx = 0;
+    _dlTime = 0;
+    if(!_displayLink){
+        _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkCallBack:)];
+        [_displayLink addToRunLoop:[NSRunLoop currentRunLoop]
+                           forMode:NSRunLoopCommonModes];
+    }
+}
+
+- (void) updateAnimateLogo {
+    if (_animateDecoder==nil) {
+        return;
+    }
+    [_dlLock lock];
+    YYImageFrame* frame = [_animateDecoder frameAtIndex:_animateIdx
+                                       decodeForDisplay:NO];
+    if (frame.image) {
+        _kit.logoPic = [[GPUImagePicture alloc] initWithImage:frame.image];
+    }
+    _animateIdx = (_animateIdx+1)%_animateDecoder.frameCount;
+    [_dlLock unlock];
+}
+
+- (void)displayLinkCallBack:(CADisplayLink *)link {
+    dispatch_async( dispatch_get_global_queue(0, 0), ^(){
+        if (_animateDecoder) {
+            _dlTime += link.duration;
+            // 读取 图像的 duration 来决定下一帧的刷新时间
+            // 也可以固定设置为一个值来调整动画的快慢程度
+            NSTimeInterval delay = [_animateDecoder frameDurationAtIndex:_animateIdx];
+            if (delay < 0.04) {
+                delay = 0.04;
+            }
+            if (_dlTime < delay) return;
+            _dlTime -= delay;
+            [self updateAnimateLogo];
+        }
+    });
+}
 #pragma mark - Capture & stream setup
 - (void) setCustomizeCfg {
     _kit.capPreset        = [self.presetCfgView capResolution];
@@ -313,6 +384,18 @@
     _kit.streamerBase.videoMaxBitrate  = 1000;
     _kit.streamerBase.videoMinBitrate  =    0;
     _kit.streamerBase.audiokBPS        =   48;
+    // 设置编码的场景
+    _kit.streamerBase.liveScene       = KSYLiveScene_Default;
+    // 设置编码码率控制
+    _kit.streamerBase.recScene        = KSYRecScene_ConstantQuality;
+    // 视频编码性能档次 (硬编码建议用HighPerformance)
+    if(_kit.streamerBase.videoCodec == KSYVideoCodec_AUTO ||
+       _kit.streamerBase.videoCodec == KSYVideoCodec_VT264) {
+        _kit.streamerBase.videoEncodePerf = KSYVideoEncodePer_HighPerformance;
+    }
+    else { // 软编码建议用 lowpower
+        _kit.streamerBase.videoEncodePerf = KSYVideoEncodePer_LowPower;
+    }
     _kit.streamerBase.logBlock = ^(NSString* str){
         NSLog(@"%@", str);
     };
@@ -338,6 +421,7 @@
     _kit.streamerBase.liveScene       = self.miscView.liveScene;
     _kit.streamerBase.recScene        = self.miscView.recScene;
     _kit.streamerBase.videoEncodePerf = self.miscView.vEncPerf;
+    
     _strSeconds = 0;
     self.miscView.liveSceneSeg.enabled = !bStart;
     self.miscView.recSceneSeg.enabled = !bStart;
@@ -562,6 +646,9 @@
 }
 
 - (void)swipeController:(UISwipeGestureRecognizer *)swipGestRec{
+    if (_ctrlView.hidden == YES){
+        return;
+    }
     if (swipGestRec == _swipeGest){
         CGRect rect = self.view.frame;
         if ( CGRectEqualToRect(rect, _ctrlView.frame)){
@@ -819,6 +906,25 @@
     else if (sender == _miscView.btn5) {
         _kit.logoPic = nil;
     }
+    else if (sender == _miscView.btnAnimate) {
+        if (_miscView.btnAnimate.selected) {
+            [self setupAnimateLogo:_miscView.animatePath];
+        }
+        else {
+            [_dlLock lock];
+            _animateDecoder = nil;
+            _kit.logoPic = _logoPicure;
+            [_dlLock unlock];
+        }
+    }
+    else if (sender == _miscView.btnNext) {
+        if (_miscView.btnAnimate.selected) {
+            [self setupAnimateLogo:_miscView.animatePath];
+        }
+        else {
+            _animateDecoder = nil;
+        }
+    }
     //弹出拉流地址及二维码
     else if(sender == _miscView.buttonPlayUrlAndQR){
         KSYQRCode *playUrlQRCodeVc = [[KSYQRCode alloc] init];
@@ -836,6 +942,16 @@
         }
         [self presentViewController:playUrlQRCodeVc animated:YES completion:nil];
     }
+    else if(sender == _miscView.buttonAe){
+        _ctrlView.hidden = YES;
+        _colView.hidden = NO;
+        if(_decalBGView){
+            [_decalBGView removeFromSuperview];
+            [self.colView addSubview:_decalBGView];
+            [self.colView sendSubviewToBack:_decalBGView];
+            _decalBGView.interactionEnabled = YES;
+        }
+    }
 }
 
 - (void)onMiscSwitch:(UISwitch *)sw{
@@ -845,10 +961,11 @@
 }
 
 - (void)onMiscSlider:(KSYNameSlider *)slider {
-    NSInteger layerIdx = _miscView.layerSeg.selectedSegmentIndex + 1;
     if (slider == _miscView.alphaSl){
+        NSInteger layerIdx = _miscView.layerSeg.selectedSegmentIndex;
+        NSString * title = [_miscView.layerSeg titleForSegmentAtIndex:layerIdx];
         float flt = slider.normalValue;
-        if (layerIdx == _kit.logoPicLayer) {
+        if ([ title isEqualToString:@"logo"]){
             _kit.logoAlpha = flt;
         }
         else {
@@ -858,9 +975,10 @@
     }
 }
 - (void)onMisxSegCtrl:(UISegmentedControl *)seg {
-    NSInteger layerIdx = _miscView.layerSeg.selectedSegmentIndex + 1;
     if (seg == _miscView.layerSeg) {
-        if (layerIdx == _kit.logoPicLayer) {
+        NSInteger layerIdx = _miscView.layerSeg.selectedSegmentIndex;
+        NSString * title = [_miscView.layerSeg titleForSegmentAtIndex:layerIdx];
+        if ([ title isEqualToString:@"logo"]){
             _miscView.alphaSl.normalValue = [_kit logoAlpha];
         }
         else {
@@ -868,13 +986,26 @@
         }
     }
 }
+- (void)onColBtns:(id)sender {
+    if (sender == _colView.btn0){
+        _colView.hidden = YES;
+        _ctrlView.hidden = NO;
+        if(_decalBGView){
+            [_decalBGView removeFromSuperview];
+            [self.view insertSubview:_decalBGView belowSubview:_ctrlView];
+            _decalBGView.interactionEnabled = NO;
+        }
+        [self updateAePicView];
+    }
+}
 
 #pragma mark - UIImagePickerControllerDelegate methods
 -(void)imagePickerController:(UIImagePickerController *)picker
        didFinishPickingImage:(UIImage *)image
                  editingInfo:(NSDictionary *)editingInfo {
-    _kit.logoPic  = [[GPUImagePicture alloc] initWithImage:image
-                                       smoothlyScaleOutput:YES];
+    _logoPicure = [[GPUImagePicture alloc] initWithImage:image
+                                     smoothlyScaleOutput:YES];
+    _kit.logoPic = _logoPicure;
     [picker dismissViewControllerAnimated:YES completion:nil];
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
         [_kit.vPreviewMixer setPicRotation:kGPUImageRotateRight
@@ -1027,6 +1158,9 @@
     UITouch *touch = [touches anyObject];
     CGPoint current = [touch locationInView:self.view];
     CGPoint point = [self convertToPointOfInterestFromViewCoordinates:current];
+    if (_ctrlView.hidden == YES){
+        return;
+    }
     [_kit exposureAtPoint:point];
     [_kit focusAtPoint:point];
     _foucsCursor.center = current;
@@ -1046,6 +1180,9 @@
 }
 
 - (void)pinchDetected:(UIPinchGestureRecognizer *)recognizer{
+    if (_ctrlView.hidden == YES){
+        return;
+    }
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         _currentPinchZoomFactor = _kit.pinchZoomFactor;
     }
@@ -1077,5 +1214,17 @@
     
     if(needSendMsg == YES)
         [_kit processMessageData:message];
+}
+
+#pragma mark - Decal 相关
+- (void)genDecalViewWithImgName:(NSString *)imgName{
+    [_decalBGView genDecalViewWithImgName:imgName];
+}
+
+//刷新贴纸view
+- (void) updateAePicView{
+    if (_decalBGView){
+        _kit.aePic = [[GPUImageUIElement alloc] initWithView:_decalBGView];
+    }
 }
 @end

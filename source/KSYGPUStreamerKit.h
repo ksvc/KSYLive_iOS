@@ -166,6 +166,8 @@ typedef NS_ENUM(NSInteger, KSYAudioCapType){
 @property (nonatomic, readonly) NSInteger logoPicLayer;
 /** logo 文字的图层 */
 @property (nonatomic, readonly) NSInteger logoTxtLayer;
+/** 贴纸的图层 */
+@property (nonatomic, readonly) NSInteger aeLayer;
 
 /** 麦克风通道 */
 @property (nonatomic, readonly) int micTrack;
@@ -461,16 +463,21 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  @abstract   水印logo的图片
  @discussion 设置为nil为清除水印图片
  @discussion 请注意背景图片的尺寸, 太大的图片会导致内存占用过高
- @see
  */
 @property (nonatomic, readwrite) GPUImagePicture      *logoPic;
 
 /**
  @abstract   文字内容的图片
  @discussion 设置为nil为清除内容图片
- @see
  */
 @property (nonatomic, readwrite) GPUImagePicture      *textPic;
+
+/**
+ @abstract   贴纸的图片
+ @discussion 设置为nil为清除贴纸图片
+ */
+@property (nonatomic, readwrite) GPUImageUIElement      *aePic;
+
 
 /**
  @abstract   水印logo的图片的位置和大小
@@ -483,7 +490,6 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
 /**
  @abstract   水印logo的图片的位置
  @discussion alpha为透明度(0-1),0完全透明，1完全不透明
- @see
  */
 @property (nonatomic, readwrite) CGFloat              logoAlpha;
 
@@ -561,6 +567,12 @@ typedef NS_ENUM(NSInteger, KSYStreamerProfile) {
  @discussion 选择profile类型后, 采集和编码参数会自动配置进去, 默认的profile类型是KSYStreamerProfile_540p_3
  */
 @property (nonatomic, assign)   KSYStreamerProfile streamerProfile;
+
+/**
+ @abstract   摄像头防抖模式，切换摄像头后需要进行重新设置
+ @discussion (iPhone前置摄像头不支持防抖功能)
+ */
+@property (nonatomic, assign) AVCaptureVideoStabilizationMode stabilizationMode;
 
 #pragma mark - message
 

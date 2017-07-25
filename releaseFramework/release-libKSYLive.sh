@@ -16,6 +16,7 @@ PROJECT_BUILD_ROOT=`pwd`
 CONFIGURATION=Release
 PROJECT_NAME=libKSYLive
 BUILD_DIR=build
+KSY_INC_DIR=${PROJECT_BUILD_ROOT}/../prebuilt/include/
 
 function print_usage() {
 echo "USAGE:"
@@ -97,13 +98,13 @@ if [ $FRAMEWORKNAME = "libksygpulive" ]; then
     if [ ! -d $FRAMEWORK_DIR ]; then
         mkdir $FRAMEWORK_DIR
     fi
-	
-	xDownload GPUImage $TYPE
-	xDownload Bugly    ""
+    
+    xDownload GPUImage $TYPE
+    xDownload Bugly    ""
+    xDownload YYImage  ""
 fi
 
 TARGET_NAME=$FRAMEWORKNAME
-LOG_F=${TARGET_NAME}_build.log
 
 PLAYER_DEPS="-lksybase -lksyplayer -lksymediacore_dec"
 LIVE_DEPS="-lksybase  -lksyyuv -lksyplayer"
@@ -146,21 +147,21 @@ PROJ=$1
 TARG=$2
 SDK=$3
 
-XCODE_BUILD="xcrun xcodebuild"
+XCODE_BUILD="xcrun xcodebuild -quiet "
 XCODE_BUILD="$XCODE_BUILD  -configuration Release"
 XCODE_BUILD="$XCODE_BUILD  -project ${PROJ}.xcodeproj"
 XCODE_BUILD="$XCODE_BUILD  -target  ${TARG}"
 XCODE_BUILD="$XCODE_BUILD  -sdk     ${SDK}"
 
-echo "=====  building ${PROJ} - ${TARG} - ${SDK} @ `date` " | tee -a $LOG_F
+echo "=====  building ${PROJ} - ${TARG} - ${SDK} @ `date` "
 xGenConfig ${XCODE_CONFIG}
-$XCODE_BUILD clean build -xcconfig ${XCODE_CONFIG}  >> $LOG_F
+$XCODE_BUILD clean build -xcconfig ${XCODE_CONFIG}
 }
 
 function xUniversal() {
 TARG=$1
 CTYPE=$2
-echo "=====  strip & universal - $1 @ `date` " | tee -a $LOG_F
+echo "=====  strip & universal - $1 @ `date` "
 DEV_F=${BUILD_DIR}/${CONFIGURATION}-iphoneos/${TARG}.framework
 SIM_F=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${TARG}.framework
 OUT_D=../../framework/$CTYPE
@@ -170,6 +171,10 @@ fi
 OUT_F=${OUT_D}/${TARG}.framework
 
 cp -R ${DEV_F} ${OUT_D}
+cp ${KSY_INC_DIR}/KSYPlayer/*.h ${OUT_F}/Headers/
+if [ $FRAMEWORKNAME == "libksygpulive" ]; then
+    cp ${KSY_INC_DIR}/KSYStreamer/*.h ${OUT_F}/Headers/
+fi
 $XCODE_STRIP -S "${DEV_F}/${TARG}" 2> /dev/null
 file "${DEV_F}/${TARG}"
 $XCODE_STRIP -S "${SIM_F}/${TARG}" 2> /dev/null
@@ -185,7 +190,12 @@ cd $PROJECT_NAME
 echo "======================"
 echo "== build framework ==="
 echo "======================"
-
+mkdir -p ${KSY_INC_DIR}/libksygpulive
+if [ $FRAMEWORKNAME == "libksygpulive" ]; then
+    cp ${KSY_INC_DIR}/KSYPlayer/*.h   ${KSY_INC_DIR}/libksygpulive
+    cp ${KSY_INC_DIR}/KSYStreamer/*.h ${KSY_INC_DIR}/libksygpulive
+fi
 xBuild  libKSYLive  $TARGET_NAME iphoneos
 xBuild  libKSYLive  $TARGET_NAME iphonesimulator
 xUniversal $TARGET_NAME $TYPE 
+rm -rf ${KSY_INC_DIR}/libksygpulive

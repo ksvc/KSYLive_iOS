@@ -114,8 +114,18 @@
 @property(nonatomic, assign) BOOL bStereo;
 
 /**
+ @abstract   每一次输出数据(Frame)的sample数, 默认为1024
+ */
+@property (nonatomic, assign) int frameSize;
+
+/**
+ @abstract   输出音频的采样率, 默认为44100
+ */
+@property (nonatomic, assign) int sampleRate;
+/**
  @abstract   混音后输出PCM的格式
  @discussion 暂时为固定一种格式 (44.1KHz, S16)
  */
 @property (nonatomic, readonly) AudioStreamBasicDescription* outFmtDes;
+
 @end

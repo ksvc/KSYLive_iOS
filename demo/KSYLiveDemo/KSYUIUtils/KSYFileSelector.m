@@ -8,9 +8,9 @@
 
 #import "KSYFileSelector.h"
 @interface KSYFileSelector(){
-    NSString* _fullDir;
+    
 }
-
+@property (nonatomic, copy) NSString* fullDir;
 @end
 
 @implementation KSYFileSelector
@@ -92,4 +92,36 @@
     _filePath = [_fullDir stringByAppendingString:name];
     return YES;
 }
+
+- (void) downloadFile:(NSString*)urlStr name:(NSString*)name {
+    urlStr = [urlStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NSURL *Url = [NSURL URLWithString:urlStr];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:Url];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDownloadTask *downLoadTask;
+    __weak typeof (self) selfWeak = self;
+    downLoadTask = [session downloadTaskWithRequest:request completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (!error) {
+            NSError *saveError;
+            NSString * savePath = [NSString stringWithFormat:@"%@/%@",selfWeak.fullDir, name];
+            NSURL *saveURL = [NSURL fileURLWithPath:savePath];
+            NSFileManager * fm = [NSFileManager defaultManager];
+            [fm createDirectoryAtPath:selfWeak.fullDir
+          withIntermediateDirectories:YES
+                           attributes:nil
+                                error:nil];
+            [fm copyItemAtURL:location toURL:saveURL error:&saveError];
+            if (!saveError) {
+                NSLog(@"下载成功");
+                [selfWeak reload];
+            } else {
+                NSLog(@"error is %@", saveError.localizedDescription);
+            }
+        } else {
+            NSLog(@"error is : %@", error.localizedDescription);
+        }
+    }];
+    [downLoadTask resume];
+}
+
 @end

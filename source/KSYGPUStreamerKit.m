@@ -90,6 +90,8 @@
     _cameraLayer  = 2;
     _logoPicLayer = 3;
     _logoTxtLayer = 4;
+    _aeLayer = 6;
+
     _micTrack = 0;
     _bgmTrack = 1;
 
@@ -121,6 +123,7 @@
     // 各种图片
     _logoPic = nil;
     _textPic = nil;
+    _aePic = nil;
     _textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 360, 640)];
     _textLabel.textColor = [UIColor whiteColor];
     _textLabel.font = [UIFont fontWithName:@"Courier" size:20.0];
@@ -217,6 +220,7 @@
     [_filter      removeAllTargets];
     [_logoPic     removeAllTargets];
     [_textPic     removeAllTargets];
+    [_aePic       removeAllTargets];
     [_vPreviewMixer  removeAllTargets];
     [_vStreamMixer   removeAllTargets];
 }
@@ -248,6 +252,7 @@
     [self addPic:src       ToMixerAt:_cameraLayer];
     [self addPic:_logoPic  ToMixerAt:_logoPicLayer];
     [self addPic:_textPic  ToMixerAt:_logoTxtLayer];
+    self.aePic = _aePic;
 }
 
 - (void) setupVMixer {
@@ -277,10 +282,10 @@
 // 添加图层到 vMixer 中
 - (void) addPic:(GPUImageOutput*)pic ToMixerAt: (NSInteger)idx{
     KSYGPUPicMixer * vMixer[2] = {_vPreviewMixer, _vStreamMixer};
-    for (int i = 0; i<2; ++i) {
-        [vMixer[i]  clearPicOfLayer:idx];
-    }
     if (pic == nil){
+        for (int i = 0; i<2; ++i) {
+            [vMixer[i]  clearPicOfLayer:idx];
+        }
         return;
     }
     [pic removeAllTargets];
@@ -879,6 +884,16 @@
     _logoPic = pic;
     [self addPic:_logoPic ToMixerAt:_logoPicLayer];
 }
+@synthesize aePic = _aePic;
+-(void) setAePic:(GPUImageUIElement *)aePic{
+    _aePic = aePic;
+    [self.vStreamMixer  clearPicOfLayer:_aeLayer];
+    if (_aePic == nil){
+        return;
+    }
+    [_aePic removeAllTargets];
+    [_aePic addTarget:self.vStreamMixer atTextureLocation:_aeLayer];
+}
 // 水印logo的图片的位置和大小
 @synthesize logoRect = _logoRect;
 - (CGRect) logoRect {
@@ -930,6 +945,7 @@
     [self addPic:_textPic ToMixerAt:_logoTxtLayer];
     [_textPic processImage];
 }
+
 @synthesize capturePixelFormat = _capturePixelFormat;
 - (void)setCapturePixelFormat: (OSType) fmt {
     if (_vCapDev.isRunning){
@@ -1168,7 +1184,7 @@ kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRota
     _streamerBase.bwEstimateMode = KSYBWEstMode_Default;
     _streamerBase.videoMinFPS = 10;
     _streamerBase.videoMaxFPS = 25;
-    
+    _streamerBase.videoEncodePerf = KSYVideoEncodePer_HighPerformance;
     switch (profile) {
         case KSYStreamerProfile_360p_auto:
             _capPreset = AVCaptureSessionPreset640x480;
@@ -1308,5 +1324,33 @@ kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRota
         };
     }
 }
+
+- (BOOL)setStabilizationMode:(AVCaptureVideoStabilizationMode)stabilizationMode{
+    _stabilizationMode = stabilizationMode;
+    __block BOOL supported = NO;
+    
+    __weak typeof(self) weakSelf = self;
+    NSArray<AVCaptureOutput *> *outputs = _vCapDev.captureSession.outputs;
+    [outputs enumerateObjectsUsingBlock:^(AVCaptureOutput *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[AVCaptureVideoDataOutput class]]) {
+            if ([weakSelf.vCapDev.inputCamera.activeFormat isVideoStabilizationModeSupported:stabilizationMode]){
+                AVCaptureConnection *connection = [obj connectionWithMediaType:AVMediaTypeVideo];
+                
+                if ([connection isVideoStabilizationSupported]) {
+                    if ([[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch] != NSOrderedAscending) {
+                        [connection setPreferredVideoStabilizationMode:stabilizationMode];
+                    }else{
+                        [connection setEnablesVideoStabilizationWhenAvailable:YES];
+                    }
+                    supported = YES;
+                }
+            }
+        }
+    }];
+    
+    return supported;
+}
+
+
 
 @end

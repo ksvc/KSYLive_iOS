@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSY_NETTRACKER_ACTION.html">
+	<File path="Constants/KSYTranscodeState.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSY_NETTRACKER_ACTION</TokenIdentifier>
-			<Abstract type="html">探测方式</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYTranscodeState</TokenIdentifier>
+			<Abstract type="html">转码状态</Abstract>
+			<DeclaredIn>KSYTranscoder.h</DeclaredIn>
             
 			
 			<NodeRef refid="70"/>
@@ -14,21 +14,41 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSY_NETTRACKER_ACTION_MTR</TokenIdentifier>
-            <Abstract type="html">mtr方式，探测链路上每个节点</Abstract>
-            <Declaration>KSY_NETTRACKER_ACTION_MTR</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeState_Idle</TokenIdentifier>
+            <Abstract type="html">初始状态</Abstract>
+            <Declaration>KSYTranscodeState_Idle</Declaration>
             
-            <DeclaredIn>KSYNetTracker.h</DeclaredIn>
+            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
             
             <NodeRef refid="70"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSY_NETTRACKER_ACTION_PING</TokenIdentifier>
-            <Abstract type="html">ping方式，直接探测终点</Abstract>
-            <Declaration>KSY_NETTRACKER_ACTION_PING</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeState_Transcoding</TokenIdentifier>
+            <Abstract type="html">转码中</Abstract>
+            <Declaration>KSYTranscodeState_Transcoding</Declaration>
             
-            <DeclaredIn>KSYNetTracker.h</DeclaredIn>
+            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            
+            <NodeRef refid="70"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeState_Completed</TokenIdentifier>
+            <Abstract type="html">转码完成</Abstract>
+            <Declaration>KSYTranscodeState_Completed</Declaration>
+            
+            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            
+            <NodeRef refid="70"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeState_Error</TokenIdentifier>
+            <Abstract type="html">转码失败</Abstract>
+            <Declaration>KSYTranscodeState_Error</Declaration>
+            
+            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
             
             <NodeRef refid="70"/>
         </Token>
