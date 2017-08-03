@@ -253,6 +253,8 @@
     [self addPic:_logoPic  ToMixerAt:_logoPicLayer];
     [self addPic:_textPic  ToMixerAt:_logoTxtLayer];
     self.aePic = _aePic;
+    [self setPreviewMirrored: _previewMirrored];
+    [self setStreamerMirrored: _streamerMirrored];
 }
 
 - (void) setupVMixer {
@@ -982,13 +984,19 @@
     if(_vPreviewMixer){
         GPUImageRotationMode ro = kGPUImageNoRotation;
         if (bMirrored) {
-            if (FLOAT_EQ(_previewRotateAng, M_PI_2*1) ||
-                FLOAT_EQ(_previewRotateAng, M_PI_2*3)) {
-                ro = kGPUImageFlipVertical;
+            GPUImageRotationMode inRo = _capToGpu.outputRotation;
+            if (inRo == kGPUImageRotateLeft) {
+                ro = _filter ? kGPUImageFlipHorizonal : kGPUImageRotateRightFlipHorizontal;
+            }
+            else if (inRo == kGPUImageRotateRight ) {
+                ro = _filter ? kGPUImageFlipHorizonal : kGPUImageRotateRightFlipVertical;
             }
             else {
                 ro = kGPUImageFlipHorizonal;
             }
+        }
+        else if (!_filter){
+            ro = _capToGpu.outputRotation;
         }
         [_vPreviewMixer setPicRotation:ro ofLayer:_cameraLayer];
     }
@@ -1000,14 +1008,19 @@
     if (_vStreamMixer){
         GPUImageRotationMode ro = kGPUImageNoRotation;
         if( bMirrored ) {
-            GPUImageRotationMode inRo = [_gpuToStr getInputRotation];
-            if (inRo == kGPUImageRotateLeft ||
-                inRo == kGPUImageRotateRight ) {
-                ro = kGPUImageFlipVertical;
+            GPUImageRotationMode inRo = _capToGpu.outputRotation;
+            if (inRo == kGPUImageRotateLeft) {
+                ro = _filter ? kGPUImageFlipHorizonal : kGPUImageRotateRightFlipHorizontal;
+            }
+            else if (inRo == kGPUImageRotateRight ) {
+                ro = _filter ? kGPUImageFlipHorizonal : kGPUImageRotateRightFlipVertical;
             }
             else {
                 ro = kGPUImageFlipHorizonal;
             }
+        }
+        else if (!_filter){
+            ro = _capToGpu.outputRotation;
         }
         [_vStreamMixer setPicRotation:ro ofLayer:_cameraLayer];
     }
@@ -1110,7 +1123,6 @@ kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRota
         _capToGpu.outputRotation = mode;
         [_preview setInputRotation:oppositeMode atIndex:0];
     }
-    
     [self updatePreDimension];
     [self updateStrDimension:orie];
     [self setStreamerMirrored: _streamerMirrored];

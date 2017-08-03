@@ -87,6 +87,12 @@
 @property (nonatomic, readonly) BOOL isRunning;
 
 /**
+ @abstract    音频播放是否暂停
+ @discussion  通过 pause/resume 改变状态
+ */
+@property (nonatomic, readonly) BOOL isPaused;
+
+/**
  @abstract    播放错误码
  @discussion  播放错误码具体内容可以参考AudioQueue的Apple文档。
  */

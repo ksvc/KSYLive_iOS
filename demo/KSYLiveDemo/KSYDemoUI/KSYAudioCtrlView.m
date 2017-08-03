@@ -47,6 +47,8 @@
     _swPlayCapture  = [self addSwitch:NO];
     _playCapVol= [self addSliderName:@"耳返音量"  From:0.0 To:1.0 Init:0.5];
     _effectType  = [self addSegCtrlWithItems:@[@"关闭变声",@"大叔", @"萝莉", @"庄严", @"机器人"]];
+    _noiseSuppressSeg = [self addSegCtrlWithItems:@[@"关闭去噪",@"低", @"中", @"高", @"很高"]];
+    _noiseSuppressSeg.selectedSegmentIndex = 3;
     return self;
 }
 - (void)layoutUI{
@@ -65,6 +67,7 @@
     [self putRow1:_playCapVol];
     [self putRow1:_effectType];
     [self putRowFit:@[_lblStereo, _stereoStream]];
+    [self putRow1:_noiseSuppressSeg];
 }
 - (void) initMicInput {
     BOOL bHS = [AVAudioSession isHeadsetInputAvaible];
@@ -125,5 +128,10 @@ static KSYMicType int2MicType( int t) {
 - (KSYAudioEffectType) audioEffect {
     _audioEffect =  _effectType.selectedSegmentIndex;
     return _audioEffect;
+}
+
+@synthesize noiseSuppress = _noiseSuppress;
+- (KSYAudioNoiseSuppress) noiseSuppress {
+    return _noiseSuppressSeg.selectedSegmentIndex - 1; // off is -1
 }
 @end

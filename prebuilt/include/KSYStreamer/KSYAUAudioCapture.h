@@ -25,15 +25,31 @@ typedef NS_ENUM(NSUInteger, KSYAudioEffectType){
     KSYAudioEffectType_ROBOT,
 };
 
+
+/*!
+ * @abstract  噪声抑制等级
+ */
+typedef NS_ENUM(NSInteger, KSYAudioNoiseSuppress){
+    /// 关闭
+    KSYAudioNoiseSuppress_OFF = -1,
+    /// 温和
+    KSYAudioNoiseSuppress_LOW = 0,
+    /// 中等
+    KSYAudioNoiseSuppress_MEDIUM = 1,
+    /// 激进
+    KSYAudioNoiseSuppress_HIGH = 2,
+    /// 非常激进
+    KSYAudioNoiseSuppress_VERYHIGH = 3,
+};
+
 /** 音频采集模块
  
  1. 基于 AudioUnit 实现的低延时音频采集模块
- 2. 能够对采集的语音添加混响音效 (目前提供了4种类型的混响场景)
- 3. 能够将采集的声音低延时播放,帮助主播选择音效 (又称"耳返")
- 4. 采集的声音通过回调函数提供出来
- 
- 注意: 当使用本模块时, 需要禁用KSYGPUCamera中的音频采集
-
+ 2. 支持对采集的语音添加混响音效 (目前提供了4种类型的混响场景)
+ 3. 支持将采集的声音低延时播放,帮助主播选择音效 (又称"耳返")
+ 4. 支持对采集的音频进行降噪处理
+ 5. 采集的声音通过回调函数提供出来
+ 6. 当启用噪声抑制功能时,输出音频数据的采样率为16K(重采样得到,与采集的采样率无关)
  */
 @interface KSYAUAudioCapture : NSObject
 
@@ -80,6 +96,12 @@ typedef NS_ENUM(NSUInteger, KSYAudioEffectType){
  @discussion 此属性为YES时, 启动采集一定会打断其他音乐播放
  */
 @property(nonatomic, assign) BOOL enableVoiceProcess;
+
+/**
+ @abstract 噪声抑制处理的等级(默认为KSYAudioNoiseSuppress_HIGH)
+ @discussion 当启用噪声抑制处理后, 内部会进行输出音频数据的
+ */
+@property(nonatomic, assign) KSYAudioNoiseSuppress noiseSuppressionLevel;
 
 /**
  @abstract 是否强制设置AVAudioSession的类别为PlayAndRecord(默认为YES)

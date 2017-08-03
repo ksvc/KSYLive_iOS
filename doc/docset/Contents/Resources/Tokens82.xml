@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/MPMovieVideoDeinterlaceMode.html">
+	<File path="Constants/MPMovieVideoDecoderMode.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/MPMovieVideoDeinterlaceMode</TokenIdentifier>
-			<Abstract type="html">视频反交错模式</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/MPMovieVideoDecoderMode</TokenIdentifier>
+			<Abstract type="html">视频解码模式</Abstract>
 			<DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDeinterlaceMode_None</TokenIdentifier>
-            <Abstract type="html">关闭反交错</Abstract>
-            <Declaration>MPMovieVideoDeinterlaceMode_None</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDecoderMode_Software</TokenIdentifier>
+            <Abstract type="html">视频解码方式采用软解</Abstract>
+            <Declaration>MPMovieVideoDecoderMode_Software</Declaration>
             
             <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
@@ -24,9 +24,29 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDeinterlaceMode_Auto</TokenIdentifier>
-            <Abstract type="html">自动判断是否打开反交错</Abstract>
-            <Declaration>MPMovieVideoDeinterlaceMode_Auto</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDecoderMode_Hardware</TokenIdentifier>
+            <Abstract type="html">视频解码方式采用硬解</Abstract>
+            <Declaration>MPMovieVideoDecoderMode_Hardware</Declaration>
+            
+            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+            <NodeRef refid="82"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDecoderMode_AUTO</TokenIdentifier>
+            <Abstract type="html">自动选择解码方式，8.0以上的系统优先选择硬解</Abstract>
+            <Declaration>MPMovieVideoDecoderMode_AUTO</Declaration>
+            
+            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+            <NodeRef refid="82"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDecoderMode_DisplayLayer</TokenIdentifier>
+            <Abstract type="html">使用系统接口进行解码和渲染，只适用于8.0及以上系统，低于8.0的系统自动使用软解</Abstract>
+            <Declaration>MPMovieVideoDecoderMode_DisplayLayer</Declaration>
             
             <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             

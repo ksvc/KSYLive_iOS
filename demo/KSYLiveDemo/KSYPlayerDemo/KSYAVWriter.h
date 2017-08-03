@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
-#import <libksygpulive/KSYMediaInfo.h>
+#import <libksygpulive/KSYMoviePlayerController.h>
 
 /**
  * status类型
@@ -20,6 +20,18 @@ typedef NS_ENUM(NSInteger, KSYAVWriterStatus) {
     KSYAVWriter_Status_Preparing,
     ///正常状态
     KSYAVWriter_Status_OK,
+    ///停止中状态
+    KSYAVWriter_Status_Stoping,
+};
+
+/**
+ * meta类型
+ */
+typedef NS_ENUM(NSInteger, KSYAVWriterMetaType) {
+    ///video meta
+    KSYAVWriter_MetaType_Video,
+    ///audio meta
+    KSYAVWriter_MetaType_Audio,
 };
 
 @interface KSYAVWriter : NSObject
@@ -39,7 +51,7 @@ typedef NS_ENUM(NSInteger, KSYAVWriterStatus) {
 -(void)setUrl:(NSURL *)url;
 
 //设置medidaInfo
--(void)setMediaInfo:(KSYMediaInfo *)mediaInfo;
+-(void)setMeta:(NSDictionary *)meta type:(KSYAVWriterMetaType)type;
 
 //开始写入
 -(void)startRecord;

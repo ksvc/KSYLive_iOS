@@ -24,6 +24,7 @@
     _previousBtn= [self addButton:@"上一首"];
     _playBtn    = [self addButton:@"播放"];
     _pauseBtn   = [self addButton:@"暂停"];
+    [_pauseBtn setTitle: @"继续" forState: UIControlStateSelected];
     _stopBtn    = [self addButton:@"停止"];
     _volumSl    = [self addSliderName:@"音量" From:0 To:100 Init:50];
     _pitchSl    = [self addSliderName:@"音调" From:-3 To:3 Init:0];

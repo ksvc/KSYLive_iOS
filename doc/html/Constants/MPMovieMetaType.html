@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>KSYStreamerBaseTokenError Constants Reference</title>
+	<title>MPMovieMetaType Constants Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -59,13 +59,13 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">KSYStreamerBaseTokenError Constants Reference</h1>
+					<h1 class="title">MPMovieMetaType Constants Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<th>Declared in</th>
-	<td>KSYTypeDef.h</td>
+	<td>KSYMoviePlayerDefines.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -75,23 +75,27 @@
 					
 
                     
-                    <h3 class="subsubtitle method-title">KSYStreamerBaseTokenError</h3>
+                    <h3 class="subsubtitle method-title">MPMovieMetaType</h3>
                     
+					
+					<div class="section section-overview">
+                        <p>Meta类型</p>
+					</div>
 					
 					
                     <div class="section">
                         <!-- display enum values -->
                         
                         <h4 class="method-subtitle">Definition</h4>
-                        <code>typedef NS_ENUM(NSInteger, KSYStreamerBaseTokenError ) {<br>
+                        <code>typedef NS_ENUM(NSInteger, MPMovieMetaType ) {<br>
                             
-                            &nbsp;&nbsp; <a href="">KSYStreamerBaseTokenErrorNone</a> = 0,<br>
+                            &nbsp;&nbsp; <a href="">MPMovieMetaType_Media</a> = 0,<br>
                             
-                            &nbsp;&nbsp; <a href="">KSYStreamerBaseTokenErrorParse</a>,<br>
+                            &nbsp;&nbsp; <a href="">MPMovieMetaType_Video</a>,<br>
                             
-                            &nbsp;&nbsp; <a href="">KSYStreamerBaseTokenErrorFormat</a>,<br>
+                            &nbsp;&nbsp; <a href="">MPMovieMetaType_Audio</a>,<br>
                             
-                            &nbsp;&nbsp; <a href="">KSYStreamerBaseTokenErrorNULL</a>,<br>
+                            &nbsp;&nbsp; <a href="">MPMovieMetaType_Subtitle</a>,<br>
                             
                             };</code>
                     
@@ -101,11 +105,11 @@
                         <h4 class="method-subtitle">Constants</h4>
                         <dl class="termdef">
                             
-                            <dt><a name="" title="KSYStreamerBaseTokenErrorNone"></a><code>KSYStreamerBaseTokenErrorNone</code></dt>
+                            <dt><a name="" title="MPMovieMetaType_Media"></a><code>MPMovieMetaType_Media</code></dt>
 <dd>
 
 
-<p>无错误</p>
+<p>当前播放文件的Meta</p>
 
 
 
@@ -113,16 +117,16 @@
 
     
 	<p>
-		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+		Declared In <code class="declared-in-ref">KSYMoviePlayerDefines.h</code>.
 	</p>
 	
 </dd>
                             
-                            <dt><a name="" title="KSYStreamerBaseTokenErrorParse"></a><code>KSYStreamerBaseTokenErrorParse</code></dt>
+                            <dt><a name="" title="MPMovieMetaType_Video"></a><code>MPMovieMetaType_Video</code></dt>
 <dd>
 
 
-<p>传入的token未经我司授权</p>
+<p>当前播放的视频Meta</p>
 
 
 
@@ -130,16 +134,16 @@
 
     
 	<p>
-		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+		Declared In <code class="declared-in-ref">KSYMoviePlayerDefines.h</code>.
 	</p>
 	
 </dd>
                             
-                            <dt><a name="" title="KSYStreamerBaseTokenErrorFormat"></a><code>KSYStreamerBaseTokenErrorFormat</code></dt>
+                            <dt><a name="" title="MPMovieMetaType_Audio"></a><code>MPMovieMetaType_Audio</code></dt>
 <dd>
 
 
-<p>传入的token格式有问题</p>
+<p>当前播放的音频Meta</p>
 
 
 
@@ -147,16 +151,16 @@
 
     
 	<p>
-		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+		Declared In <code class="declared-in-ref">KSYMoviePlayerDefines.h</code>.
 	</p>
 	
 </dd>
                             
-                            <dt><a name="" title="KSYStreamerBaseTokenErrorNULL"></a><code>KSYStreamerBaseTokenErrorNULL</code></dt>
+                            <dt><a name="" title="MPMovieMetaType_Subtitle"></a><code>MPMovieMetaType_Subtitle</code></dt>
 <dd>
 
 
-<p>传入的token为空</p>
+<p>当前播放的字幕Meta</p>
 
 
 
@@ -164,7 +168,7 @@
 
     
 	<p>
-		Declared In <code class="declared-in-ref">KSYTypeDef.h</code>.
+		Declared In <code class="declared-in-ref">KSYMoviePlayerDefines.h</code>.
 	</p>
 	
 </dd>
@@ -181,7 +185,7 @@
                     
                     <div class="method-subsection declared-in-section">
                         <h4 class="method-subtitle">Declared In</h4>
-                        <p><code class="declared-in-ref">KSYTypeDef.h</code></p>
+                        <p><code class="declared-in-ref">KSYMoviePlayerDefines.h</code></p>
                     </div>
                     
                     
@@ -193,7 +197,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 Kingsoft. All rights reserved. Updated: 2017-07-25</p>
+						<p class="copyright">Copyright &copy; 2017 Kingsoft. All rights reserved. Updated: 2017-08-03</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

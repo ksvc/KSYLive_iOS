@@ -54,4 +54,8 @@
 @property UISegmentedControl * effectType;
 @property (atomic, readwrite) KSYAudioEffectType  audioEffect;
 
+/// 降噪等级选择
+@property UISegmentedControl  * noiseSuppressSeg;
+@property (atomic, readonly) KSYAudioNoiseSuppress  noiseSuppress;
+
 @end
