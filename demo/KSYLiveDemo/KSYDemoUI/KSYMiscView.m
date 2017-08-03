@@ -63,7 +63,6 @@
     _recSceneSeg  = [self addSegCtrlWithItems:@[ @"恒定码率", @"恒定质量"]];
     _lblPerf       = [self addLable:@"编码性能"];
     _vEncPerfSeg   = [self addSegCtrlWithItems:@[ @"低功耗", @"均衡", @"高性能"]];
-    _vEncPerfSeg.selectedSegmentIndex = 2;
     _autoReconnect = [self addSliderName:@"自动重连次数" From:0.0 To:10 Init:3];
     //添加一个显示拉流地址和对应二维码的按钮
     _buttonPlayUrlAndQR = [self addButton:@"拉流地址及二维码"];
@@ -157,19 +156,26 @@
     }
 }
 
+static KSYVideoEncodePerformance perfArray[] = {
+    KSYVideoEncodePer_LowPower,
+    KSYVideoEncodePer_Balance,
+    KSYVideoEncodePer_HighPerformance
+};
 @synthesize vEncPerf =  _vEncPerf;
 - (KSYVideoEncodePerformance) vEncPerf{
-    if ( _vEncPerfSeg.selectedSegmentIndex == 0){
-        return KSYVideoEncodePer_LowPower;
-    }
-    else if ( _vEncPerfSeg.selectedSegmentIndex == 1){
-        return KSYVideoEncodePer_Balance;
-    }
-    else if ( _vEncPerfSeg.selectedSegmentIndex == 2){
-        return KSYVideoEncodePer_HighPerformance;
+    long idx = _vEncPerfSeg.selectedSegmentIndex;
+    if ( idx >= 0 && idx < 3 ) {
+        return perfArray[idx];
     }
     else {
         return KSYVideoEncodePer_Balance;
+    }
+}
+- (void) setVEncPerf:(KSYVideoEncodePerformance)vEncPerf {
+    for (int i = 0 ; i< 3; ++i) {
+        if ( vEncPerf == perfArray[i] ) {
+            _vEncPerfSeg.selectedSegmentIndex = i;
+        }
     }
 }
 @end

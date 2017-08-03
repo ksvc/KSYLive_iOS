@@ -280,8 +280,6 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
 }
 
 - (void)initVariable{
-    _width  = self.view.frame.size.width;
-    _height = self.view.frame.size.height;
     _controllers = [NSArray arrayWithObjects:
                     @"播放demo",
                     @"视频列表",
@@ -299,34 +297,41 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
 }
 
 - (void)initFrame{
+    _width  = self.view.frame.size.width;
+    _height = self.view.frame.size.height;
     //设置各个空间的fram
     CGFloat textY   = [[UIApplication sharedApplication] statusBarFrame].size.height;
     CGFloat btnH    = 30;
     CGFloat btnW   = 80;
+    
     _buttonQR.frame = CGRectMake(20, textY + 5, btnW, btnH);
     _buttonAbout.frame = CGRectMake(_width - 20 - btnW, textY + 5, btnW, btnH);
-    
     textY += (btnH+10);
-    
+    UIInterfaceOrientation ori = [[UIApplication sharedApplication] statusBarOrientation];
+    BOOL bLandscape = UIInterfaceOrientationIsLandscape(ori);
     CGFloat textX   = 1;
-    CGFloat textWdh = _width - 2;
-    CGFloat textHgh = btnH;
-    CGRect textRect = CGRectMake(textX, textY, textWdh, textHgh);
+    CGFloat textWdh = bLandscape ? (_width-4)/2: _width - 2;
+    CGRect textRect = CGRectMake(textX, textY, textWdh, btnH);
     _labelMenu.frame = textRect;
-    
+    textY += btnH;
     //设置功能列表的picker的frame
-    CGFloat adTaHgh = (_height  -  CGRectGetMaxY(_labelMenu.frame)) / 2 - textHgh;
-   _pickerMenu.frame = CGRectMake(textX, CGRectGetMaxY(_labelMenu.frame), textWdh, adTaHgh);
-    
+    CGFloat adTaHgh = 216.0;
+   _pickerMenu.frame = CGRectMake(textX, textY, textWdh, adTaHgh);
+    textY += adTaHgh;
+    if (bLandscape) {
+        textY =_labelMenu.frame.origin.y;
+        textX = textWdh+2;
+    }
     //设置播放地址的标题frame
-    _labelAddress.frame = CGRectMake(textX,  CGRectGetMaxY(_pickerMenu.frame), textWdh, textHgh);
-    
+    _labelAddress.frame = CGRectMake(textX,  textY, textWdh, btnH);
+    textY += btnH;
     //设置地址列表的picker的frame
-    _pickerAddress.frame = CGRectMake(textX, CGRectGetMaxY(_labelAddress.frame), textWdh, adTaHgh);
-    
+    _pickerAddress.frame = CGRectMake(textX, textY, textWdh, adTaHgh);
+    textY += adTaHgh;
+    textY = _pickerAddress.isHidden ? CGRectGetMaxY(_pickerMenu.frame) : textY;
+    btnH = _height - textY;
     //设置开始按钮
-    _buttonDone = [self addButton:@"开始"];
-    _buttonDone.frame = CGRectMake(textX, CGRectGetMaxY(_pickerAddress.frame), textWdh,  btnH);
+    _buttonDone.frame = CGRectMake(1, textY, _width,  btnH);
 }
 
 - (void)initLiveVCUI{
@@ -445,5 +450,10 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
         [wself dismissViewControllerAnimated:FALSE completion:nil];
     };
     [self presentViewController:QRview animated:YES completion:nil];
+}
+
+- (BOOL) shouldAutorotate {
+    [self initFrame];
+    return YES;
 }
 @end

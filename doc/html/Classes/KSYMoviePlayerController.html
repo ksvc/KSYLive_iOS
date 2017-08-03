@@ -88,8 +88,6 @@
 		
 		<option value="//api/name/logBlock">logBlock</option>
 		
-		<option value="//api/name/mediaInfo">mediaInfo</option>
-		
 		<option value="//api/name/messageDataBlock">messageDataBlock</option>
 		
 		<option value="//api/name/mirror">mirror</option>
@@ -152,6 +150,8 @@
 		
 		<option value="//api/name/getMetadata">- getMetadata</option>
 		
+		<option value="//api/name/getMetadata:">- getMetadata:</option>
+		
 		<option value="//api/name/getVersion">- getVersion</option>
 		
 		<option value="//api/name/initWithContentURL:">- initWithContentURL:</option>
@@ -172,9 +172,13 @@
 		
 		<option value="//api/name/seekTo:accurate:">- seekTo:accurate:</option>
 		
+		<option value="//api/name/setExtSubtitleFilePath:">- setExtSubtitleFilePath:</option>
+		
 		<option value="//api/name/setHttpHeaders:">- setHttpHeaders:</option>
 		
 		<option value="//api/name/setTimeout:readTimeout:">- setTimeout:readTimeout:</option>
+		
+		<option value="//api/name/setTrackSelected:selected:">- setTrackSelected:selected:</option>
 		
 		<option value="//api/name/setUrl:">- setUrl:</option>
 		
@@ -1728,57 +1732,6 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/mediaInfo" title="mediaInfo"></a>
-	<h3 class="method-title"><code><a href="#//api/name/mediaInfo">&nbsp;&nbsp;mediaInfo</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>视频流媒体信息</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) KSYMediaInfo *mediaInfo</code></div>
-
-		    
-			
-
-			
-
-			
-			<div class="method-subsection availability">
-				<h4 class="method-subtitle parameter-title">Availability</h4>
-				<p>Available in KSYMoviePlayerController 2.3.0 and later.</p>
-			</div>
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>当前播放内容的媒体信息，prepare完成后调用</p><div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">KSYMoviePlayerController.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
 	<a name="//api/name/thumbnailImageAtCurrentTime" title="thumbnailImageAtCurrentTime"></a>
 	<h3 class="method-title"><code><a href="#//api/name/thumbnailImageAtCurrentTime">&ndash;&nbsp;thumbnailImageAtCurrentTime</a></code>
 </h3>
@@ -3066,6 +3019,63 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/getMetadata:" title="getMetadata:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getMetadata:">&ndash;&nbsp;getMetadata:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取播放Meta</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSDictionary *)getMetadata:(MPMovieMetaType)<em>metaType</em></code></div>
+
+		    
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in KSYMoviePlayerController 2.5.2 and later.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>收到MPMediaPlaybackIsPreparedToPlayDidChangeNotification通知后才能获取到数据</p><p>暂时支持的查询包括</p>
+
+<ul>
+<li>当metaType为MPMovieMetaType_Media时，所得到的结果与getMetadata方法相同</li>
+<li>当metaType为其他类型时，得到的当前播放的视频/音频/字幕流的meta信息</li>
+</ul>
+<div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/isPlaying" title="isPlaying"></a>
 	<h3 class="method-title"><code><a href="#//api/name/isPlaying">&ndash;&nbsp;isPlaying</a></code>
 </h3>
@@ -3706,6 +3716,18 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 
 		    
 			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>header</code></th>
+						<td><p>自定义http header字段</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
 
 			
 
@@ -3720,6 +3742,143 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>在调用prepareToPlay方法前调用生效</p><div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setTrackSelected:selected:" title="setTrackSelected:selected:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setTrackSelected:selected:">&ndash;&nbsp;setTrackSelected:selected:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置开启/关闭指定的媒体轨道</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setTrackSelected:(NSInteger)<em>trackIndex</em> selected:(BOOL)<em>selected</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>trackIndex</code></th>
+						<td><ul>
+<li>轨道的stream index</li>
+</ul>
+</td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>selected</code></th>
+						<td><ul>
+<li>开启/关闭指定媒体轨道</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in KSYMoviePlayerController 2.5.2 and later.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setExtSubtitleFilePath:" title="setExtSubtitleFilePath:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setExtSubtitleFilePath:">&ndash;&nbsp;setExtSubtitleFilePath:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置本地字幕文件的地址</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setExtSubtitleFilePath:(NSString *)<em>subtitleFilePath</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>subtitleFilePath</code></th>
+						<td><p>本地字幕文件地址</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in KSYMoviePlayerController 2.5.2 and later.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>在播放过程中调用</p><div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div>
 			</div>
 			
 
@@ -3751,7 +3910,7 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 Kingsoft. All rights reserved. Updated: 2017-07-25</p>
+						<p class="copyright">Copyright &copy; 2017 Kingsoft. All rights reserved. Updated: 2017-08-03</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

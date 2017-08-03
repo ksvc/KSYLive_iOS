@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYRecordState.html">
+	<File path="Constants/KSYRecordError.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYRecordState</TokenIdentifier>
-			<Abstract type="html">旁路录制状态</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYRecordError</TokenIdentifier>
+			<Abstract type="html">旁路录制错误码</Abstract>
 			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYRecordStateIdle</TokenIdentifier>
-            <Abstract type="html">初始状态</Abstract>
-            <Declaration>KSYRecordStateIdle</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYRecordErrorNone</TokenIdentifier>
+            <Abstract type="html">无错误</Abstract>
+            <Declaration>KSYRecordErrorNone</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -24,9 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYRecordStateRecording</TokenIdentifier>
-            <Abstract type="html">录像中</Abstract>
-            <Declaration>KSYRecordStateRecording</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYRecordErrorPathInvalid</TokenIdentifier>
+            <Abstract type="html">地址错误</Abstract>
+            <Declaration>KSYRecordErrorPathInvalid</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -34,9 +34,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYRecordStateStopped</TokenIdentifier>
-            <Abstract type="html">录像停止</Abstract>
-            <Declaration>KSYRecordStateStopped</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYRecordErrorFormatNotSupport</TokenIdentifier>
+            <Abstract type="html">格式不支持</Abstract>
+            <Declaration>KSYRecordErrorFormatNotSupport</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -44,9 +44,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYRecordStateError</TokenIdentifier>
-            <Abstract type="html">录像失败</Abstract>
-            <Declaration>KSYRecordStateError</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYRecordErrorInternal</TokenIdentifier>
+            <Abstract type="html">内部错误</Abstract>
+            <Declaration>KSYRecordErrorInternal</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             

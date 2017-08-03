@@ -86,7 +86,6 @@ typedef NS_ENUM(NSUInteger, MPMovieVideoDecoderMode) {
     MPMovieVideoDecoderMode_DisplayLayer,
 };
 
-
 /**
  * reload模式
  */
@@ -116,8 +115,23 @@ typedef NS_ENUM(NSInteger, MPMovieAudioPan) {
     ///左右声道平衡
     MPMovieAudioPan_Stereo,
     ///完全右声道
-    MPMoviveAudioPan_Right,
+    MPMovieAudioPan_Right,
 };
+
+/**
+ * Meta类型
+ */
+typedef NS_ENUM(NSInteger, MPMovieMetaType) {
+    ///当前播放文件的Meta
+    MPMovieMetaType_Media = 0,
+    ///当前播放的视频Meta
+    MPMovieMetaType_Video,
+    ///当前播放的音频Meta
+    MPMovieMetaType_Audio,
+    ///当前播放的字幕Meta
+    MPMovieMetaType_Subtitle,
+};
+
 //----------------------------------------------
 
 /**
@@ -157,6 +171,10 @@ MP_EXTERN NSString * const MPMoviePlayerCurrNetworkStatusUserInfoKey; // NSNumbe
 MP_EXTERN NSString * const MPMoviePlayerLastNetworkStatusUserInfoKey; // NSNumber (KSYNetworkStatus)
 
 MP_EXTERN NSString * const MPMoviePlayerSeekCompleteNotification;
+
+MP_EXTERN NSString *const MPMoviePlayerPlaybackTimedTextNotification;
+MP_EXTERN NSString *const MPMoviePlayerPlaybackTimedTextUserInfoKey;
+
 /**
  * getMetadata方法对应的关键字
  */
@@ -164,3 +182,13 @@ MP_EXTERN const NSString *const kKSYPLYFormat;
 MP_EXTERN const NSString *const kKSYPLYHttpFirstDataTime;
 MP_EXTERN const NSString *const kKSYPLYHttpAnalyzeDns;
 MP_EXTERN const NSString *const kKSYPLYHttpConnectTime;
+MP_EXTERN const NSString *const kKSYPLYStreams;
+MP_EXTERN const NSString *const kKSYPLYStreamType;
+MP_EXTERN const NSString *const kKSYPLYCodecName;
+MP_EXTERN const NSString *const kKSYPLYStreamIndex;
+MP_EXTERN const NSString *const kKSYPLYVideoWidth;
+MP_EXTERN const NSString *const kKSYPLYVideoHeight;
+MP_EXTERN const NSString *const kKSYPLYAudioSampleRate;
+MP_EXTERN const NSString *const kKSYPLYAudioChannelLayout;
+MP_EXTERN const NSString *const kKSYPLYAudioChannels;
+

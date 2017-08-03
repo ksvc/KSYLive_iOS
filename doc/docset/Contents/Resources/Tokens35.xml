@@ -919,42 +919,6 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setMediaInfo:</TokenIdentifier>
-			<Abstract type="html">视频流媒体信息</Abstract>
-			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) KSYMediaInfo *mediaInfo</Declaration>
-			
-			
-			<Anchor>//api/name/mediaInfo</Anchor>
-            <NodeRef refid="35"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/mediaInfo</TokenIdentifier>
-			<Abstract type="html">视频流媒体信息</Abstract>
-			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) KSYMediaInfo *mediaInfo</Declaration>
-			
-			
-			<Anchor>//api/name/mediaInfo</Anchor>
-            <NodeRef refid="35"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/mediaInfo</TokenIdentifier>
-			<Abstract type="html">视频流媒体信息</Abstract>
-			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, strong) KSYMediaInfo *mediaInfo</Declaration>
-			
-			
-			<Anchor>//api/name/mediaInfo</Anchor>
-            <NodeRef refid="35"/>
-		</Token>
-		
-		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/thumbnailImageAtCurrentTime</TokenIdentifier>
 			<Abstract type="html">截图</Abstract>
 			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
@@ -1745,6 +1709,18 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/getMetadata:</TokenIdentifier>
+			<Abstract type="html">获取播放Meta</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>- (NSDictionary *)getMetadata:(MPMovieMetaType)metaType</Declaration>
+			
+			
+			<Anchor>//api/name/getMetadata:</Anchor>
+            <NodeRef refid="35"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/isPlaying</TokenIdentifier>
 			<Abstract type="html">当前播放器是否在播放</Abstract>
 			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
@@ -1913,9 +1889,51 @@
 			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
 			
 			<Declaration>- (void)setHttpHeaders:(NSDictionary *)headers</Declaration>
-			
+			<Parameters>
+				<Parameter>
+					<Name>header</Name>
+					<Abstract type="html">自定义http header字段</Abstract>
+				</Parameter>
+			</Parameters>
 			
 			<Anchor>//api/name/setHttpHeaders:</Anchor>
+            <NodeRef refid="35"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setTrackSelected:selected:</TokenIdentifier>
+			<Abstract type="html">设置开启/关闭指定的媒体轨道</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>- (void)setTrackSelected:(NSInteger)trackIndex selected:(BOOL)selected</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>trackIndex</Name>
+					<Abstract type="html">- 轨道的stream index</Abstract>
+				</Parameter><Parameter>
+					<Name>selected</Name>
+					<Abstract type="html">- 开启/关闭指定媒体轨道</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setTrackSelected:selected:</Anchor>
+            <NodeRef refid="35"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setExtSubtitleFilePath:</TokenIdentifier>
+			<Abstract type="html">设置本地字幕文件的地址</Abstract>
+			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
+			
+			<Declaration>- (void)setExtSubtitleFilePath:(NSString *)subtitleFilePath</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>subtitleFilePath</Name>
+					<Abstract type="html">本地字幕文件地址</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setExtSubtitleFilePath:</Anchor>
             <NodeRef refid="35"/>
 		</Token>
 		

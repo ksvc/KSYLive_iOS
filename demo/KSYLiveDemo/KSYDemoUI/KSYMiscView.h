@@ -45,7 +45,7 @@
 
 @property (nonatomic, readonly) KSYLiveScene liveScene;
 @property (nonatomic, readonly) KSYRecScene recScene;
-@property (nonatomic, readonly) KSYVideoEncodePerformance  vEncPerf;
+@property (nonatomic, readwrite) KSYVideoEncodePerformance  vEncPerf;
 
 @property KSYNameSlider       * autoReconnect;
 

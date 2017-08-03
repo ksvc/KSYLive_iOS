@@ -20,8 +20,9 @@
         return;
     }
     if (self.ksyFilterView.swStrRotate.on) {
-        // 1. 旋转推流方向
+        // 1. 旋转方向
         UIInterfaceOrientation orie = [[UIApplication sharedApplication] statusBarOrientation];
+        [self.kit rotatePreviewTo:orie];
         [self.kit rotateStreamTo:orie];
         
         // 注意 : traitCollection不变时不需要更改logo和水印的尺寸大小

@@ -13,14 +13,22 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerPublic/initAuthentication</TokenIdentifier>
-			<Abstract type="html">KSYStreamerBase鉴权成功后初始化</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerPublic/initWithToken:error:</TokenIdentifier>
+			<Abstract type="html">带鉴权的构造实例</Abstract>
 			<DeclaredIn>KSYStreamerPublic.h</DeclaredIn>
 			
-			<Declaration>- (instancetype)initAuthentication</Declaration>
-			
-			
-			<Anchor>//api/name/initAuthentication</Anchor>
+			<Declaration>- (instancetype)initWithToken:(NSString *)token error:(NSError **)error</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>token</Name>
+					<Abstract type="html">鉴权信息, 请联系商务获取</Abstract>
+				</Parameter><Parameter>
+					<Name>error</Name>
+					<Abstract type="html">鉴权过程中的错误信息</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">新构造的实例</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithToken:error:</Anchor>
             <NodeRef refid="43"/>
 		</Token>
 		
@@ -33,26 +41,6 @@
 			
 			
 			<Anchor>//api/name/setStreamerCfg</Anchor>
-            <NodeRef refid="43"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KSYStreamerPublic/sendStreamerBaseSDKAuthRequestWithToken:complete:</TokenIdentifier>
-			<Abstract type="html">KSYStreamerBase鉴权</Abstract>
-			<DeclaredIn>KSYStreamerPublic.h</DeclaredIn>
-			
-			<Declaration>+ (void)sendStreamerBaseSDKAuthRequestWithToken:(NSString *)token complete:(void ( ^ ) ( KSYStreamerBaseTokenError sb ))complete</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>token</Name>
-					<Abstract type="html">联系商务获取</Abstract>
-				</Parameter><Parameter>
-					<Name>complete</Name>
-					<Abstract type="html">鉴权结果</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/sendStreamerBaseSDKAuthRequestWithToken:complete:</Anchor>
             <NodeRef refid="43"/>
 		</Token>
 		

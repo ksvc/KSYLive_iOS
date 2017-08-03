@@ -12,7 +12,6 @@
 #import "KSYQosInfo.h"
 #import "KSYMoviePlayerDefines.h"
 #import "KSYReachability.h"
-#import "KSYMediaInfo.h"
 
 /**
  金山云播放内核提供了跨终端平台的播放器SDK，支持Android/iOS/Flash平台的视频播放需求。金山云播放内核集成有业界一流的高性能H.265/HEVC解码器，提供流畅、低功耗的播放体验。同时SDK提供和系统播放器一致的音视频播放、控制接口，极大地降低了开发门槛。
@@ -391,14 +390,6 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
 @property (nonatomic, strong) KSYQosInfo *qosInfo;
 
 /**
- @abstract 视频流媒体信息
- @discussion 当前播放内容的媒体信息，prepare完成后调用
- @warning 该方法由金山云引入，不是原生系统接口
- @since Available in KSYMoviePlayerController 2.3.0 and later.
- */
-@property (nonatomic, strong) KSYMediaInfo *mediaInfo;
-
-/**
  @abstract 截图
  @warning 该方法由金山云引入，不是原生系统接口
  @return 当前时刻的视频UIImage 图像
@@ -632,6 +623,19 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
 - (NSDictionary *)getMetadata;
 
 /**
+ @abstract 获取播放Meta
+ @discussion 收到MPMediaPlaybackIsPreparedToPlayDidChangeNotification通知后才能获取到数据
+ @discussion 暂时支持的查询包括
+ 
+ * 当metaType为MPMovieMetaType_Media时，所得到的结果与getMetadata方法相同
+ * 当metaType为其他类型时，得到的当前播放的视频/音频/字幕流的meta信息
+ 
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 2.5.2 and later.
+ */
+- (NSDictionary *)getMetadata:(MPMovieMetaType)metaType;
+
+/**
  @abstract 当前播放器是否在播放
  @return 获取[playbackState]([KSYMoviePlayerController playbackState])信息，如果当前状态为MPMoviePlaybackStatePlaying，则返回TRUE。其他情况返回FASLE。
  @warning 该方法由金山云引入，不是原生系统接口
@@ -746,10 +750,29 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
 
 /**
  @abstract 发送http请求时需要header带上的字段
+ @param header 自定义http header字段
  @discussion 在调用prepareToPlay方法前调用生效
  @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 2.0.3 and later.
  */
 -(void)setHttpHeaders:(NSDictionary *)headers;
+
+/**
+ @abstract 设置开启/关闭指定的媒体轨道
+ @param trackIndex - 轨道的stream index
+ @param selected - 开启/关闭指定媒体轨道
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 2.5.2 and later.
+ */
+- (void) setTrackSelected:(NSInteger)trackIndex selected:(BOOL)selected;
+
+/**
+ @abstract 设置本地字幕文件的地址
+ @param subtitleFilePath 本地字幕文件地址
+ @discussion 在播放过程中调用
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 2.5.2 and later.
+ */
+- (void)setExtSubtitleFilePath:(NSString *)subtitleFilePath;
 
 @end

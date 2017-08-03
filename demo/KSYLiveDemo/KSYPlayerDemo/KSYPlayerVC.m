@@ -10,6 +10,10 @@
 #import "KSYProgressView.h"
 #import "KSYFloatVC.h"
 #import "KSYAVWriter.h"
+#import "KSYPlayerPicView.h"
+#import "KSYPlayerAudioView.h"
+#import "KSYPlayerSubtitleView.h"
+#import "KSYPlayerOtherView.h"
 
 #define ELEMENT_GAP  6
 
@@ -28,32 +32,13 @@
     UIView *videoView;
     
     UIButton *btnVideo;
-    UILabel *labelContenMode;
-    UISegmentedControl *segContentMode;             //画面填充模式
-    UILabel *labelRotate;
-    UISegmentedControl *segRotate;                         //旋转
-    UILabel *labelMirror;
-    UISegmentedControl *segMirror;                         //镜像
-    UIButton *btnShotScreen;
-    NSMutableArray *arrayBtnVideo;
-    
     UIButton *btnAudio;
-    UILabel *labelMute;
-    UISwitch *switchMute;                                           ///静音
-    KSYNameSlider *sliderVolume;
-    UILabel *labelAudioPan;
-    UISegmentedControl  *segAudioPan;
-    NSMutableArray *arrayBtnAudio;
-    
+    UIButton *btnSubtitle;
     UIButton *btnOthers;
-    UIButton *btnReload;
-    UIButton *btnFloat;
-    UILabel   *labelRec;
-    UISwitch *switchRec;
-    NSMutableArray *arrayBtnOthers;
     
     UILabel *labelStat;
     UILabel *labelMsg;
+    
     UIButton *btnPlay;
     UIButton *btnPause;
     UIButton *btnResume;
@@ -77,6 +62,14 @@
     BOOL bStopped;
     
     NSMutableArray *registeredNotifications;
+    NSDictionary  *mediaMeta;
+    
+    UILabel *labelSubtitle;
+    
+    KSYPlayerPicView *picView;
+    KSYPlayerAudioView *audioView;
+    KSYPlayerSubtitleView *subtitleView;
+    KSYPlayerOtherView *otherView;
 }
 
 - (instancetype)initWithURLAndConfigure:(NSURL *)url fileList:(NSArray *)fileList config:(KSYPlayerCfgVC *)config{
@@ -99,6 +92,9 @@
     [super viewDidLoad];
     
     [self setupUI];
+    
+    [self addSubViews];
+    
     //添加手势操作
     [self registerHandGesture];
     
@@ -122,7 +118,6 @@
     label.numberOfLines = -1;
     label.text = text;
     label .textAlignment = NSTextAlignmentLeft;
-    [self.view addSubview:label];
     return label;
 }
 
@@ -135,15 +130,6 @@
     ctrlView.onBtnBlock = ^(id sender){
         [selfWeak  onBtn:sender];
     };
-    ctrlView.onSliderBlock = ^(id sender){
-        [selfWeak onSlider:sender];
-    };
-    ctrlView.onSwitchBlock = ^(id sender){
-        [selfWeak onSwitch:sender];
-    };
-    ctrlView.onSegCtrlBlock = ^(id sender){
-        [selfWeak onSeg:sender];
-    };
     
     //add UIView for player
     videoView = [[UIView alloc] init];
@@ -151,34 +137,9 @@
     [ctrlView addSubview:videoView];
     
     btnVideo = [ctrlView addButton:@"图像"];
-    labelContenMode = [ctrlView addLable:@"填充模式"];
-    segContentMode = [ctrlView addSegCtrlWithItems:@[@"无", @"同比", @"裁剪", @"满屏"]];
-    segContentMode.selectedSegmentIndex = 1;
-    labelRotate = [ctrlView addLable:@"旋转"];
-    segRotate = [ctrlView addSegCtrlWithItems:@[@"0", @"90", @"180", @"270"]];
-    labelMirror = [ctrlView addLable:@"镜像"];
-    segMirror = [ctrlView addSegCtrlWithItems:@[@"正向", @"反向"]];
-    btnShotScreen = [ctrlView addButton:@"截图"];
-    arrayBtnVideo = [NSMutableArray arrayWithObjects:labelContenMode,segContentMode, labelRotate, segRotate, labelMirror, segMirror, btnShotScreen, nil];
-    [self showElements:arrayBtnVideo bShow:NO];
-    
     btnAudio = [ctrlView addButton:@"声音"];
-    labelMute = [ctrlView addLable:@"静音"];
-    switchMute = [ctrlView addSwitch:NO];
-    sliderVolume =  [ctrlView addSliderName:@"音量" From:0 To:200 Init:100];
-    labelAudioPan = [ctrlView addLable:@"立体声平衡"];
-    segAudioPan = [ctrlView addSegCtrlWithItems:@[@"左声道", @"立体声", @"右声道"]];
-    segAudioPan.selectedSegmentIndex = 1;
-    arrayBtnAudio = [NSMutableArray arrayWithObjects:labelMute, switchMute, sliderVolume, labelAudioPan, segAudioPan, nil];
-     [self showElements:arrayBtnAudio bShow:NO];
-    
+    btnSubtitle = [ctrlView addButton:@"字幕"];
     btnOthers = [ctrlView addButton:@"其它"];
-    btnReload = [ctrlView addButton:@"reload"];
-    btnFloat = [ctrlView addButton:@"悬窗"];
-    labelRec = [ctrlView addLable:@"开启/关闭录制"];
-    switchRec = [ctrlView addSwitch:NO];
-    arrayBtnOthers = [NSMutableArray arrayWithObjects:btnReload, btnFloat, labelRec, switchRec, nil];
-    [self showElements:arrayBtnOthers bShow:NO];
     
     btnPlay = [ctrlView addButton:@"播放"];
     btnPause = [ctrlView addButton:@"暂停"];
@@ -195,34 +156,24 @@
     labelMsg = [self addLabelWithText:nil textColor:[UIColor blueColor]];
     [ctrlView addSubview:labelMsg];
     
+    labelSubtitle = [self addLabelWithText:nil textColor:[UIColor greenColor]];
+    labelSubtitle.textAlignment = NSTextAlignmentCenter;
+    labelSubtitle.font =  [UIFont systemFontOfSize:16];
+    labelSubtitle.numberOfLines = 0;
+    [ctrlView addSubview:labelSubtitle];
+    
     [self layoutUI];
 
     [self.view addSubview: ctrlView];
 }
 
 - (void) layoutUI {
-    CGFloat yPos = 0;
-    
     ctrlView.frame = self.view.frame;
     [ctrlView layoutUI];
     
+    videoView.transform = CGAffineTransformIdentity;
     videoView.frame  = ctrlView.frame;
-    [ctrlView putRow:@[btnVideo, btnAudio, btnOthers]];
-    
-    yPos  = ctrlView.yPos;
-    [ctrlView putLable:labelContenMode andView:segContentMode];
-    [ctrlView putLable:labelRotate andView:segRotate];
-    [ctrlView putLable:labelMirror andView:segMirror];
-    [ctrlView putRow1:btnShotScreen];
-   
-    ctrlView.yPos = yPos;
-    [ctrlView putLable:labelMute andView:switchMute];
-    [ctrlView putRow1:sliderVolume];
-    [ctrlView putLable:labelAudioPan andView:segAudioPan];
-    
-    ctrlView.yPos = yPos;
-    [ctrlView putRow:@[btnReload, btnFloat]];
-    [ctrlView putLable:labelRec andView:switchRec];
+    [ctrlView putRow:@[btnVideo, btnAudio, btnSubtitle, btnOthers]];
     
     //下部控件为3行
     ctrlView.yPos = ctrlView.frame.size.height - ctrlView.gap * 2 - ctrlView.btnH * 2;
@@ -231,12 +182,81 @@
     
     labelStat.frame = self.view.frame;
     labelMsg.frame = self.view.frame;
+    labelSubtitle.frame = CGRectMake(0, CGRectGetMaxY(btnVideo.frame), self.view.frame.size.width, CGRectGetMinY(progressView.frame) - CGRectGetMaxY(btnVideo.frame));
 }
 
-- (void) showElements:(NSMutableArray*)elems bShow:(BOOL)bShow
-{
-    for(UIControl *elem in elems)
-        elem.hidden = !bShow;
+- (void)addSubViews {
+    picView = [[KSYPlayerPicView alloc] initWithParent:ctrlView];
+    audioView = [[KSYPlayerAudioView alloc] initWithParent:ctrlView];
+    subtitleView = [[KSYPlayerSubtitleView alloc] initWithParent:ctrlView];
+    otherView = [[KSYPlayerOtherView alloc] initWithParent:ctrlView];
+    
+    weakObj(self);
+    // 图像控制页面
+    picView.onBtnBlock = ^(id sender) {
+        [selfWeak onPicBtnPress:sender];
+    };
+    picView.onSegCtrlBlock = ^(id sender) {
+        [selfWeak onPicSegCtrl:sender];
+    };
+    
+    // 声音控制页面
+    audioView.onSegCtrlBlock = ^(id sender) {
+        [selfWeak onAudioSegCtrl:sender];
+    };
+    audioView.onSliderBlock = ^(id sender) {
+        [selfWeak onAudioSlider:sender];
+    };
+    audioView.onSwitchBlock = ^(id sender) {
+        [selfWeak onAudioSwitch:sender];
+    };
+    
+    subtitleView.onSliderBlock = ^(id sender) {
+        [selfWeak onSubtitleSlider:sender];
+    };
+    
+    subtitleView.fontColorBlock = ^(UIColor *fontColor) {
+        [selfWeak onSubtitleFontColor:fontColor];
+    };
+    
+    subtitleView.fontBlock = ^(NSString *font) {
+        [selfWeak onSubtitleFont:font];
+    };
+    
+    subtitleView.subtitleFileSelectedBlock = ^(NSString *subtitleFilePath) {
+        [selfWeak subtitleFileSelectd:subtitleFilePath];
+    };
+    
+    subtitleView.closeSubtitleBlock = ^(){
+        [selfWeak closeSubtitle];
+    };
+    
+    subtitleView.onSegCtrlBlock = ^(id sender) {
+        [selfWeak onSubtitleSegCtrl:sender];
+    };
+    
+    subtitleView.subtitleNumBlock = ^() {
+        [selfWeak getSubtitleInfo];
+    };
+    
+    //其他控制页面
+    otherView.onBtnBlock = ^(id sender) {
+        [selfWeak onOtherBtnPress:sender];
+    };
+    otherView.onSwitchBlock = ^(id sender) {
+        [selfWeak onOtherSwitch:sender];
+    };
+}
+
+- (void)rmSubViews {
+    [picView removeFromSuperview];
+    picView = nil;
+    [audioView removeFromSuperview];
+    audioView = nil;
+    [subtitleView removeFromSuperview];
+    subtitleView = nil;
+    [otherView removeFromSuperview];
+    otherView = nil;
 }
 
 #pragma mark common
@@ -277,6 +297,7 @@
     lastSize = 0.0;
     //初始化播放器并设置播放地址
     self.player = [[KSYMoviePlayerController alloc] initWithContentURL: aURL fileList:fileList sharegroup:nil];
+    registeredNotifications = [[NSMutableArray alloc] init];
     [self setupObservers:_player];
     
     _player.logBlock = ^(NSString *logJson){
@@ -322,6 +343,7 @@
         //设置播放参数
         _player.videoDecoderMode = config.decodeMode;
         _player.scalingMode = config.contentMode;
+        picView.contentMode = _player.scalingMode;
         _player.shouldAutoplay = config.bAutoPlay;
         _player.deinterlaceMode = config.deinterlaceMode;
         _player.shouldLoop = config.bLoop;
@@ -345,6 +367,7 @@
                                             selector:@selector(handlePlayerNotify:)
                                                 name:(notification)
                                               object:player];
+    [registeredNotifications addObject:notification];
 }
 
 - (void)setupObservers:(KSYMoviePlayerController*)player
@@ -360,6 +383,7 @@
     [self registerObserver:MPMoviePlayerPlaybackStatusNotification player:player];
     [self registerObserver:MPMoviePlayerNetworkStatusChangeNotification player:player];
     [self registerObserver:MPMoviePlayerSeekCompleteNotification player:player];
+    [self registerObserver:MPMoviePlayerPlaybackTimedTextNotification player:player];
 }
 
 - (void)releaseObservers:(KSYMoviePlayerController*)player
@@ -383,6 +407,7 @@
             [_player play];
         serverIp = [_player serverAddress];
         NSLog(@"KSYPlayerVC: %@ -- ip:%@", [[_player contentURL] absoluteString], serverIp);
+        mediaMeta  = [_player getMetadata];
         reloading = NO;
     }
     if (MPMoviePlayerPlaybackStateDidChangeNotification ==  notify.name) {
@@ -483,9 +508,234 @@
     {
         NSLog(@"Seek complete");
     }
+    
+    if (MPMoviePlayerPlaybackTimedTextNotification == notify.name)
+    {
+        NSString *timedText = [[notify userInfo] valueForKey:MPMoviePlayerPlaybackTimedTextUserInfoKey];
+        
+        NSDictionary *attrs = @{NSFontAttributeName : labelSubtitle.font};
+        CGSize size = [timedText boundingRectWithSize:CGSizeMake(labelSubtitle.frame.size.width, MAXFLOAT)
+                                                  options:NSStringDrawingUsesLineFragmentOrigin
+                                                   attributes:attrs context:nil].size;
+        [labelSubtitle setFrame:CGRectMake(labelSubtitle.frame.origin.x, CGRectGetMinY(progressView.frame) - size.height, labelSubtitle.frame.size.width, size.height)];
+        
+        labelSubtitle.text = timedText;
+    }
 }
 
-#pragma mark on Button
+#pragma mark on picSubView
+- (void)onPicBtnPress:(UIButton *)btn{
+    if(!_player)
+        return ;
+    
+    if(picView.btnShotScreen == btn)
+    {
+        UIImage *thumbnailImage = _player.thumbnailImageAtCurrentTime;
+        [KSYUIVC saveImageToPhotosAlbum:thumbnailImage];
+     }
+}
+
+- (void)onPicSegCtrl:(UISegmentedControl *)sender {
+    if (!_player)
+        return ;
+    
+    if(picView.segContentMode == sender)
+        _player.scalingMode = picView.contentMode;
+    else if(picView.segRotate == sender)
+        _player.rotateDegress = picView.rotateDegress;
+    else if(picView.segMirror == sender)
+        _player.mirror = picView.bMirror;
+}
+
+#pragma mark on audioSubView
+- (void)onAudioSegCtrl:(UISegmentedControl *)sender {
+    if (!_player)
+        return ;
+    
+    if(audioView.segAudioPan == sender)
+        _player.audioPan = audioView.audioPan;
+}
+
+- (void)onAudioSlider:(UISlider *)sender {
+    if(!_player)
+        return ;
+    
+    if(audioView.sliderVolume.slider == sender)
+         [_player setVolume:sender.value/100 rigthVolume:sender.value/100];
+}
+
+- (void)onAudioSwitch:(UISwitch *)sender {
+    if(!_player)
+        return ;
+    
+    if(audioView.switchMute == sender)
+        _player.shouldMute = sender.isOn;
+}
+
+#pragma mark on subtitleSubView
+- (void)onSubtitleSlider:(UISlider *)sender {
+    if(!_player)
+        return ;
+    
+    if(subtitleView.sliderFontSize.slider == sender)
+        labelSubtitle.font = [labelSubtitle.font fontWithSize:sender.value];
+}
+
+- (void)onSubtitleFontColor:(UIColor *) color {
+    if(!_player)
+        return ;
+    
+    labelSubtitle.textColor = color;
+}
+
+- (void)onSubtitleFont:(NSString *) font {
+    if(!_player)
+        return ;
+    
+    labelSubtitle.font = [UIFont fontWithName:font size:subtitleView.sliderFontSize.slider.value];
+}
+
+- (void)subtitleFileSelectd:(NSString *)subtitleFilePath {
+    if(!_player)
+        return ;
+    [_player setExtSubtitleFilePath:subtitleFilePath];
+}
+
+- (void)closeSubtitle{
+    if(!_player)
+        return ;
+    NSDictionary *subtitleMeta = [_player getMetadata:MPMovieMetaType_Subtitle];
+    if(subtitleMeta)
+    {
+        [ _player setTrackSelected:[[subtitleMeta objectForKey:kKSYPLYStreamIndex] integerValue] selected:NO];
+        labelSubtitle.text = @"";
+    }
+}
+
+- (void)onSubtitleSegCtrl:(UISegmentedControl *)sender {
+    if (!_player)
+        return ;
+    
+    //先关闭当前字幕，内嵌字幕间切换可以直接忽略这一步骤，但是由外挂字幕切换到内嵌字幕必须要有这一步骤！
+    NSDictionary *subtitleMeta = [_player getMetadata:MPMovieMetaType_Subtitle];
+    if(subtitleMeta)
+        [_player setTrackSelected:[[subtitleMeta objectForKey:kKSYPLYStreamIndex] integerValue] selected:NO];
+        
+    int stream_index = -1;
+    int subtitle_index = 0;
+    NSDictionary *meta = [_player getMetadata];
+    NSMutableArray *streams = [meta objectForKey:kKSYPLYStreams];
+    for(NSDictionary *stream in streams)
+    {
+        if([[stream objectForKey:kKSYPLYStreamType] isEqualToString:@"subtitle"])
+        {
+            if(subtitle_index == subtitleView.segSubtitle.selectedSegmentIndex)
+            {
+                stream_index = (int)[[stream objectForKey:kKSYPLYStreamIndex] integerValue];
+                break;
+            }
+             subtitle_index++;
+        }
+    }
+    if(stream_index >= 0)
+        [_player setTrackSelected:stream_index selected:YES];
+}
+
+- (void)getSubtitleInfo {
+    if(mediaMeta)
+    {
+        subtitleView.selectedSubtitleIndex = 0;
+        subtitleView.subtitleNum = 0;
+        NSDictionary *subtitleMeta = [_player getMetadata:MPMovieMetaType_Subtitle];
+        NSMutableArray *streams = [mediaMeta objectForKey:kKSYPLYStreams];
+        for(NSDictionary *stream in streams)
+        {
+            if([[stream objectForKey:kKSYPLYStreamType] isEqualToString:@"subtitle"])
+                subtitleView.subtitleNum ++;
+        }
+        
+        if(subtitleMeta)
+        {
+            for(NSDictionary *stream in streams)
+            {
+                if([[stream objectForKey:kKSYPLYStreamType] isEqualToString:@"subtitle"])
+                {
+                    if([[subtitleMeta objectForKey:kKSYPLYStreamIndex] integerValue] ==
+                       [[stream objectForKey:kKSYPLYStreamIndex] integerValue])
+                        break;
+                    subtitleView.selectedSubtitleIndex ++;
+                }
+            }
+        }
+    }
+}
+
+#pragma mark on OtherSubView
+- (void)onOtherBtnPress:(UIButton *)btn{
+    if(!_player)
+        return ;
+    
+    if(otherView.btnFloat == btn)
+    {
+        //悬浮窗
+        KSYFloatVC *_floatVC = [[KSYFloatVC alloc] init];
+        _floatVC.playerVC = self;
+        [self presentViewController:_floatVC animated:NO completion:nil];
+    }
+    else if(otherView.btnReload == btn)
+    {
+         [_player reload:_reloadUrl flush:YES mode:MPMovieReloadMode_Accurate];
+    }
+    else if(otherView.btnPrintMeta == btn)
+    {
+        otherView.btnPrintMeta.selected = !otherView.btnPrintMeta.selected;
+        otherView.labelMeta.hidden = !otherView.btnPrintMeta.selected;
+        if(otherView.btnPrintMeta.selected)
+            [self printfMeta];
+    }
+}
+
+- (void)onOtherSwitch:(UISwitch *)sender {
+    if(!_player)
+        return ;
+    
+    [self onRec];
+}
+
+- (void)printfMeta{
+    NSDictionary *meta = [_player getMetadata];
+    if(meta){
+        NSString *metaString = [NSString stringWithFormat:@"format:%@\n", [mediaMeta objectForKey:kKSYPLYFormat]];
+        NSMutableArray *streams = [meta objectForKey:kKSYPLYStreams];
+        for(NSDictionary *stream in streams) {
+            NSString *streamType = [stream objectForKey:kKSYPLYStreamType];
+            NSString *codecName = [stream objectForKey:kKSYPLYCodecName];
+            NSInteger streamIndex = [[stream objectForKey:kKSYPLYStreamIndex] integerValue];
+            if([streamType isEqualToString:@"video"]) {
+                NSInteger width = [[stream objectForKey:kKSYPLYVideoWidth] integerValue];
+                NSInteger height = [[stream objectForKey:kKSYPLYVideoHeight] integerValue];
+                metaString = [metaString stringByAppendingFormat:@"video: %ld %@ %ld*%ld\n", streamIndex, codecName, width, height];
+            }else if([streamType isEqualToString:@"audio"]) {
+                NSInteger channels = [[stream objectForKey:kKSYPLYAudioChannels] integerValue];
+                NSInteger samplerate = [[stream objectForKey:kKSYPLYAudioSampleRate] integerValue];
+                metaString = [metaString stringByAppendingFormat:@"Audio: %ld %@ %ld %ld\n", streamIndex, codecName, channels, samplerate];
+            }else if([streamType isEqualToString:@"subtitle"])
+               metaString = [metaString stringByAppendingFormat:@"Subtitle: %ld %@\n", streamIndex, codecName];
+            else if([streamType isEqualToString:@"external_timed_text"])
+                metaString = [metaString stringByAppendingFormat:@"external_timed_text: %ld %@\n", streamIndex, codecName];
+        }
+        
+        NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:metaString
+                                                         attributes:@{NSFontAttributeName:otherView.labelMeta.font}];
+        CGSize size = [attributedText boundingRectWithSize:CGSizeMake(otherView.labelMeta.frame.size.width, MAXFLOAT)
+                                                        options:NSStringDrawingUsesLineFragmentOrigin
+                                            context:nil].size;
+        
+       [otherView.labelMeta setFrame:CGRectMake(otherView.labelMeta.frame.origin.x, otherView.labelMeta.frame.origin.y, otherView.labelMeta.frame.size.width, size.height)];
+        otherView.labelMeta.text = metaString;
+    }
+}
+
 - (void)onBtn:(UIButton *)btn{
     if(btn == btnPlay)
         [self onPlayVideo:btn];
@@ -497,36 +747,41 @@
         [self onStopVideo:btn];
     else if(btn == btnQuit)
         [self onQuit:btn];
-    else if(btn == btnVideo) {
-        [self showElements:arrayBtnAudio bShow:NO];
-        btnAudio.selected = NO;
-        [self showElements:arrayBtnOthers bShow:NO];
-        btnOthers.selected = NO;
-        [self showElements:arrayBtnVideo bShow:!btn.selected];
-        btn.selected = !btn.selected;
+    else if(btn == btnVideo || btn == btnAudio || btn == btnSubtitle || btn == btnOthers) {
+        KSYUIView *subView = nil;
+        if(btn == btnVideo)
+            subView = picView;
+        else if(btn == btnAudio)
+            subView = audioView;
+        else if(btn == btnSubtitle)
+            subView = subtitleView;
+        else
+            subView = otherView;
+        [self hideElements:btn view:subView];
     }
-    else if(btn == btnAudio) {
-        [self showElements:arrayBtnVideo bShow:NO];
-        btnVideo.selected = NO;
-        [self showElements:arrayBtnOthers bShow:NO];
-        btnOthers.selected = NO;
-        [self showElements:arrayBtnAudio bShow:!btn.selected];
-        btn.selected = !btn.selected;
+}
+
+- (void) hideElements:(UIControl *)button view:(KSYUIView*)subView
+{
+    NSMutableArray *arrayBtn = [NSMutableArray arrayWithObjects:btnVideo, btnAudio, btnSubtitle, btnOthers, nil];
+    NSMutableArray *arrayView = [NSMutableArray arrayWithObjects:picView, audioView, subtitleView, otherView, nil];
+    
+    [arrayBtn removeObject:button];
+    [arrayView removeObject:subView];
+    
+    for(UIControl *btn in arrayBtn)
+        btn.selected = NO;
+    
+    for(UIView *view in arrayView)
+        view.hidden = YES;
+    
+    button.selected = !button.selected;
+    subView.hidden = !button.selected;
+    if(button.selected == YES)
+    {
+        subView.frame = CGRectMake(0,  ctrlView.gap + CGRectGetMaxY(btnVideo.frame), ctrlView.width, CGRectGetMinY(progressView.frame) - ctrlView.gap - CGRectGetMaxY(btnVideo.frame));
+        [subView layoutUI];
     }
-    else if(btn == btnOthers) {
-        [self showElements:arrayBtnVideo bShow:NO];
-        btnVideo.selected = NO;
-        [self showElements:arrayBtnAudio bShow:NO];
-        btnAudio.selected = NO;
-        [self showElements:arrayBtnOthers bShow:!btn.selected];
-        btn.selected = !btn.selected;
-    }
-    else if(btn == btnShotScreen)
-        [self onShotScreen:btn];
-    else if(btn == btnReload)
-        [self onReloadVideo:btn];
-    else if(btn == btnFloat)
-        [self onFloat:btn];
 }
 
 - (IBAction)onPlayVideo:(id)sender {
@@ -558,7 +813,7 @@
 
 - (IBAction)onStopVideo:(id)sender {
     if (_player) {
-        [switchRec setOn:NO];
+        [otherView.switchRec setOn:NO];
         [self onRec];
         NSLog(@"player download flow size: %f MB", _player.readSize);
         NSLog(@"buffer monitor  result: \n   empty count: %d, lasting: %f seconds",
@@ -566,6 +821,7 @@
               _player.bufferEmptyDuration);
         
         [_player reset:NO];
+        labelSubtitle.text = @"";
         bStopped = YES;
     }
 }
@@ -573,7 +829,7 @@
 - (IBAction)onQuit:(id)sender {
     if(_player)
     {
-        [switchRec setOn:NO];
+        [otherView.switchRec setOn:NO];
         [self onRec];
         [_player stop];
         [_player removeObserver:self forKeyPath:@"currentPlaybackTime" context:nil];
@@ -584,48 +840,16 @@
         
         [_player.view removeFromSuperview];
         self.player = nil;
+        [self rmSubViews];
     }
     
     [self dismissViewControllerAnimated:FALSE completion:nil];
+    [self rmObservers];
     labelStat.text = nil;
-    labelStat.text = nil;
-}
-
-- (IBAction)onShotScreen:(id)sender {
-    if (_player) {
-        UIImage *thumbnailImage = _player.thumbnailImageAtCurrentTime;
-        [KSYUIVC saveImageToPhotosAlbum:thumbnailImage];
-    }
-}
-
-- (IBAction)onReloadVideo:(id)sender {
-    if (_player) {
-        [_player reload:_reloadUrl flush:YES mode:MPMovieReloadMode_Accurate];
-    }
-}
-
-- (IBAction)onFloat:(id)sender {
-    //悬浮窗
-    KSYFloatVC *_floatVC = [[KSYFloatVC alloc] init];
-    _floatVC.playerVC = self;
-    [self presentViewController:_floatVC animated:NO completion:nil];
-}
-
-#pragma mark on Switch
-- (void)onSwitch:(UISwitch *)_switch{
-    if(_switch == switchMute)
-        [self onMute];
-    else if(_switch == switchRec)
-        [self onRec];
-}
-
-- (void)onMute{
-    if(_player)
-        _player.shouldMute = switchMute.isOn;
 }
 
 - (void)onRec{
-    if(switchRec.isOn)
+    if(otherView.switchRec.isOn)
     {
         if(!_bRecording && _player.isPreparedToPlay)
         {
@@ -634,7 +858,8 @@
             //设置待写入的文件名
             [_AVWriter setUrl:[NSURL URLWithString:[NSString stringWithFormat:@"%@%s", NSHomeDirectory(), "/Documents/PlayerRec.mp4"]]];
             //开始写入
-            [_AVWriter setMediaInfo:_player.mediaInfo];
+            [_AVWriter setMeta:[_player getMetadata:MPMovieMetaType_Audio] type:KSYAVWriter_MetaType_Audio];
+            [_AVWriter setMeta:[_player getMetadata:MPMovieMetaType_Video] type:KSYAVWriter_MetaType_Video];
             //_AVWriter.bWithVideo = NO;
             [_AVWriter startRecord];
             _bRecording = YES;
@@ -643,103 +868,26 @@
     else
     {
         if(_bRecording)
-                [_AVWriter stopRecord];
+            [_AVWriter stopRecord];
         _AVWriter = nil;
         _bRecording = NO;
-    }
-}
-
-#pragma mark on Slider
-- (void)onSlider:(UISlider *)slider{
-    if(slider == sliderVolume)
-        [self onVolumeChanged:slider];
-}
-
--(void)onVolumeChanged:(UISlider *)slider
-{
-    if (_player){
-        [_player setVolume:slider.value/100 rigthVolume:slider.value/100];
-    }
-}
-
-#pragma mark on SegmentedControl
-- (void)onSeg:(UISegmentedControl *)seg{
-    if(seg == segContentMode)
-        [self onContentMode];
-    else if(seg == segRotate)
-        [self onRotate];
-    else if(seg == segMirror)
-        [self onMirror];
-    else if(seg == segAudioPan)
-        [self onAudioPan];
-}
-
-- (void)onContentMode{
-    MPMovieScalingMode contentMode = MPMovieScalingModeNone;
-    switch(segContentMode.selectedSegmentIndex) {
-        case 0:
-            contentMode = MPMovieScalingModeNone;
-            break;
-        case 1:
-            contentMode = MPMovieScalingModeAspectFit;
-            break;
-        case 2:
-            contentMode = MPMovieScalingModeAspectFill;
-            break;
-        case 3:
-            contentMode = MPMovieScalingModeFill;
-            break;
-        default:
-            contentMode = MPMovieScalingModeNone;
-            break;
-    }
-    
-    if (_player) {
-        _player.scalingMode = contentMode;
-    }
-}
-
-- (void)onRotate{
-    int degress = (int)segRotate.selectedSegmentIndex * 90;
-    if (_player) {
-        _player.rotateDegress = degress;
-    }
-}
-
-- (void)onMirror{
-    if (_player) {
-        _player.mirror = segMirror.selectedSegmentIndex;
-    }
-}
-
-- (void)onAudioPan{
-    MPMovieAudioPan pan = MPMovieAudioPan_Stereo;
-    if(0 == segAudioPan.selectedSegmentIndex)
-        pan  = MPMovieAudioPan_Left;
-    else if(1 == segAudioPan.selectedSegmentIndex)
-        pan = MPMovieAudioPan_Stereo;
-    else if(2 == segAudioPan.selectedSegmentIndex)
-        pan = MPMoviveAudioPan_Right;
-    if(_player) {
-        _player.audioPan = pan;
     }
 }
 
 #pragma mark update label
 - (void)onTimer:(NSTimer *)t
 {
+    if (nil == _player)
+        return;
+    
     if ( 0 == lastCheckTime) {
         lastCheckTime = [self getCurrentTime];
-        return;
-    }
-    if (nil == _player) {
         return;
     }
     
     if(_player.playbackState != MPMoviePlaybackStateStopped && _player.isPreparedToPlay)
     {
         double flowSize = [_player readSize];
-        NSDictionary *meta = [_player getMetadata];
         KSYQosInfo *info = _player.qosInfo;
         labelStat.text = [NSString stringWithFormat:@
                           "SDK版本:v%@\n"
@@ -783,9 +931,9 @@
                           _player.bufferTimeMax,
                           8*1024.0*(flowSize - lastSize)/([self getCurrentTime] - lastCheckTime),
                           fvr_costtime, far_costtime,
-                          (long)[(NSNumber *)[meta objectForKey:kKSYPLYHttpConnectTime] integerValue],
-                          (long)[(NSNumber *)[meta objectForKey:kKSYPLYHttpAnalyzeDns] integerValue],
-                          (long)[(NSNumber *)[meta objectForKey:kKSYPLYHttpFirstDataTime] integerValue],
+                          (long)[(NSNumber *)[mediaMeta objectForKey:kKSYPLYHttpConnectTime] integerValue],
+                          (long)[(NSNumber *)[mediaMeta objectForKey:kKSYPLYHttpAnalyzeDns] integerValue],
+                          (long)[(NSNumber *)[mediaMeta objectForKey:kKSYPLYHttpFirstDataTime] integerValue],
                           (float)info.audioBufferByteLength / 1e6,
                           (float)info.audioBufferTimeLength / 1e3,
                           (float)info.audioTotalDataSize / 1e6,

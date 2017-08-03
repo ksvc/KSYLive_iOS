@@ -34,9 +34,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMoviveAudioPan_Right</TokenIdentifier>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieAudioPan_Right</TokenIdentifier>
             <Abstract type="html">完全右声道</Abstract>
-            <Declaration>MPMoviveAudioPan_Right</Declaration>
+            <Declaration>MPMovieAudioPan_Right</Declaration>
             
             <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             

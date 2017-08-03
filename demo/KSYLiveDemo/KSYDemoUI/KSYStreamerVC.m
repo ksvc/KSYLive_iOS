@@ -74,6 +74,8 @@
     }else{//预设等级
         _kit.streamerProfile = _presetCfgView.curProfileIdx;//配置profile
     }
+    // load default value
+    _miscView.vEncPerf = _kit.streamerBase.videoEncodePerf;
     // 采集相关设置初始化
     [self setCaptureCfg];
     //推流相关设置初始化
@@ -507,8 +509,12 @@
 - (void) onBgmPlayerStateChange  :(NSNotification *)notification{
     NSString * st = [_kit.bgmPlayer getCurBgmStateName];
     _ksyBgmView.bgmStatus = [st substringFromIndex:17];
+    _ksyBgmView.pauseBtn.selected = NO;
     if (_kit.bgmPlayer.bgmPlayerState == KSYBgmPlayerStatePlaying) {
         _ksyBgmView.progressBar.totalTimeInSeconds = _kit.bgmPlayer.bgmDuration;
+    }
+    else if (_kit.bgmPlayer.bgmPlayerState == KSYBgmPlayerStatePaused) {
+        _ksyBgmView.pauseBtn.selected = YES;
     }
 }
 - (void) onStreamStateChange :(NSNotification *)notification{
@@ -837,6 +843,10 @@
     }
     else if (seg == _audioView.effectType) {
         _kit.aCapDev.effectType = _audioView.audioEffect;
+        return;
+    }
+    else if (seg == _audioView.noiseSuppressSeg) {
+        _kit.aCapDev.noiseSuppressionLevel = _audioView.noiseSuppress;
         return;
     }
 }

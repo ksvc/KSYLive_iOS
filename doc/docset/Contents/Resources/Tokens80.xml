@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/MPMovieStatus.html">
+	<File path="Constants/MPMovieReloadMode.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/MPMovieStatus</TokenIdentifier>
-			<Abstract type="html">status类型</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/MPMovieReloadMode</TokenIdentifier>
+			<Abstract type="html">reload模式</Abstract>
 			<DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieStatusVideoDecodeWrong</TokenIdentifier>
-            <Abstract type="html">视频解码出错</Abstract>
-            <Declaration>MPMovieStatusVideoDecodeWrong</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieReloadMode_Fast</TokenIdentifier>
+            <Abstract type="html">加速播放模式</Abstract>
+            <Declaration>MPMovieReloadMode_Fast</Declaration>
             
             <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
@@ -24,39 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieStatusAudioDecodeWrong</TokenIdentifier>
-            <Abstract type="html">音频解码出错</Abstract>
-            <Declaration>MPMovieStatusAudioDecodeWrong</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="80"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieStatusHWCodecUsed</TokenIdentifier>
-            <Abstract type="html">使用硬件解码</Abstract>
-            <Declaration>MPMovieStatusHWCodecUsed</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="80"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieStatusSWCodecUsed</TokenIdentifier>
-            <Abstract type="html">使用软件解码</Abstract>
-            <Declaration>MPMovieStatusSWCodecUsed</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="80"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieStatusDLCodecUsed</TokenIdentifier>
-            <Abstract type="html">使用AVSampleBufferDisplayLayer解码渲染</Abstract>
-            <Declaration>MPMovieStatusDLCodecUsed</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieReloadMode_Accurate</TokenIdentifier>
+            <Abstract type="html">精确检测模式</Abstract>
+            <Declaration>MPMovieReloadMode_Accurate</Declaration>
             
             <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             

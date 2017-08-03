@@ -174,7 +174,7 @@
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/c/tdef/KSYVideoCodec</TokenIdentifier>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/videoEncodePerf</TokenIdentifier>
 		
 	</RelatedTokens>
 	
@@ -191,7 +191,7 @@
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/c/tdef/KSYVideoCodec</TokenIdentifier>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/videoEncodePerf</TokenIdentifier>
 		
 	</RelatedTokens>
 	
@@ -208,7 +208,7 @@
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/c/tdef/KSYVideoCodec</TokenIdentifier>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/videoEncodePerf</TokenIdentifier>
 		
 	</RelatedTokens>
 	
@@ -713,7 +713,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setVideoEncodePerf:</TokenIdentifier>
-			<Abstract type="html">视频编码性能档次 ( 默认为 KSYVideoEncodePer_LowPower)</Abstract>
+			<Abstract type="html">视频编码性能档次</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) KSYVideoEncodePerformance videoEncodePerf</Declaration>
@@ -725,7 +725,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/videoEncodePerf</TokenIdentifier>
-			<Abstract type="html">视频编码性能档次 ( 默认为 KSYVideoEncodePer_LowPower)</Abstract>
+			<Abstract type="html">视频编码性能档次</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) KSYVideoEncodePerformance videoEncodePerf</Declaration>
@@ -737,7 +737,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/videoEncodePerf</TokenIdentifier>
-			<Abstract type="html">视频编码性能档次 ( 默认为 KSYVideoEncodePer_LowPower)</Abstract>
+			<Abstract type="html">视频编码性能档次</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) KSYVideoEncodePerformance videoEncodePerf</Declaration>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/MPMovieVideoDecoderMode.html">
+	<File path="Constants/MPMovieStatus.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/MPMovieVideoDecoderMode</TokenIdentifier>
-			<Abstract type="html">视频解码模式</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/MPMovieStatus</TokenIdentifier>
+			<Abstract type="html">status类型</Abstract>
 			<DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDecoderMode_Software</TokenIdentifier>
-            <Abstract type="html">视频解码方式采用软解</Abstract>
-            <Declaration>MPMovieVideoDecoderMode_Software</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieStatusVideoDecodeWrong</TokenIdentifier>
+            <Abstract type="html">视频解码出错</Abstract>
+            <Declaration>MPMovieStatusVideoDecodeWrong</Declaration>
             
             <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
@@ -24,9 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDecoderMode_Hardware</TokenIdentifier>
-            <Abstract type="html">视频解码方式采用硬解</Abstract>
-            <Declaration>MPMovieVideoDecoderMode_Hardware</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieStatusAudioDecodeWrong</TokenIdentifier>
+            <Abstract type="html">音频解码出错</Abstract>
+            <Declaration>MPMovieStatusAudioDecodeWrong</Declaration>
             
             <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
@@ -34,9 +34,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDecoderMode_AUTO</TokenIdentifier>
-            <Abstract type="html">自动选择解码方式，8.0以上的系统优先选择硬解</Abstract>
-            <Declaration>MPMovieVideoDecoderMode_AUTO</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieStatusHWCodecUsed</TokenIdentifier>
+            <Abstract type="html">使用硬件解码</Abstract>
+            <Declaration>MPMovieStatusHWCodecUsed</Declaration>
             
             <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
@@ -44,9 +44,19 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDecoderMode_DisplayLayer</TokenIdentifier>
-            <Abstract type="html">使用系统接口进行解码和渲染，只适用于8.0及以上系统，低于8.0的系统自动使用软解</Abstract>
-            <Declaration>MPMovieVideoDecoderMode_DisplayLayer</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieStatusSWCodecUsed</TokenIdentifier>
+            <Abstract type="html">使用软件解码</Abstract>
+            <Declaration>MPMovieStatusSWCodecUsed</Declaration>
+            
+            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+            <NodeRef refid="81"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieStatusDLCodecUsed</TokenIdentifier>
+            <Abstract type="html">使用AVSampleBufferDisplayLayer解码渲染</Abstract>
+            <Declaration>MPMovieStatusDLCodecUsed</Declaration>
             
             <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
