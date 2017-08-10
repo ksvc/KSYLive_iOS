@@ -95,13 +95,12 @@
 1. 2016.05.18 [耳返](https://github.com/ksvc/KSYLive_iOS/wiki/micMonitor)上线；
 1. 2016.06.12 [画中画](https://github.com/ksvc/KSYLive_iOS/wiki/pip)推流上线；
 1. 2016.06.27 支持短视频录制；
-1. 2016.08.04 [两人连麦](https://github.com/ksvc/KSYLive_iOS/wiki/rtc)内测；
 1. 2016.08.24 支持[纯音频](https://github.com/ksvc/KSYLive_iOS/wiki/pureAudioStream)推流，支持[后台推流](https://github.com/ksvc/KSYLive_iOS/wiki/backgroupStream)，支持视频动态发送开关；
 1. 2016.08.31 [场景编码](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)，有效提升直播画质；
 1. 2016.09.07 内建[新美颜](https://github.com/ksvc/KSYLive_iOS/wiki/filter)上线； 
 1. 2016.09.12 [kit类顶层代码开源](https://github.com/ksvc/KSYLive_iOS/tree/master/source), podspec 中将集成framework改为集成静态库
 1. 2016.09.21 特效滤镜上线;
-1. 2016.09.26 [双人连麦](https://github.com/ksvc/KSYRTCLive_iOS/releases/tag/v1.8.5)稳定版本上线;
+1. 2016.09.26 [双人连麦](https://github.com/ksvc/KSYDiversityLive_Android/tree/master/Agora)稳定版本上线;
 1. 2016.09.28 视频硬编[性能编码模式](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)上线。音频AAC硬编功能上线。网络自适应场景上线；
 1. 2016.10.19 支持[推流横竖屏动态变化](https://github.com/ksvc/KSYLive_iOS/wiki/dynamicOrientation)；
 1. 2016.10.20 支持[replaykit录屏推流](https://github.com/ksvc/KSYDiversityLive_iOS/tree/master/KSYReplayKit)；
@@ -112,6 +111,7 @@
 1. 2017.5.16 支持[涂鸦推流](https://github.com/ksvc/KSYLive_iOS/wiki/BrushStream)
 1. 2017.7.7 支持[桌面录制、手游直播](https://github.com/ksvc/KSYAirStreamer_iOS)
 1. 2017.7.7 支持[iOS 11 HEVC 硬编推流](https://github.com/ksvc/KSYLive_iOS/wiki/enableH265)
+1. 2017.8.3 支持采集降噪
 
 ### 2.2 近期工作   
 
