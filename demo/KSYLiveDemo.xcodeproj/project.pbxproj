@@ -56,7 +56,6 @@
 		58BCC14C1F2F406500D77E5E /* KSYPlayerPicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BCC1471F2F406500D77E5E /* KSYPlayerPicView.m */; };
 		58BCC14D1F2F406500D77E5E /* KSYPlayerSubtitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BCC1491F2F406500D77E5E /* KSYPlayerSubtitleView.m */; };
 		625EF3B51C9A95BE00DBA1CC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 625EF3B41C9A95BE00DBA1CC /* libsqlite3.tbd */; };
-		95B4A3EF1CBF6CC700CB6804 /* KSYSQLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B4A3EA1CBF6CC700CB6804 /* KSYSQLite.m */; };
 		95B4A3F11CBF6CC700CB6804 /* QRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B4A3EE1CBF6CC700CB6804 /* QRViewController.m */; };
 		C323BC1E1E794C2900D4682C /* KSYFloatStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C323BC1D1E794C2900D4682C /* KSYFloatStreamerVC.m */; };
 		C323BC211E794DEB00D4682C /* KSYFloatingWindowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C323BC201E794DEB00D4682C /* KSYFloatingWindowVC.m */; };
@@ -100,7 +99,6 @@
 		C3ECDD441E72BE81007203E5 /* KSYGPUResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 06E742AB1D90FFD600C3E780 /* KSYGPUResource.bundle */; };
 		C3ECDD451E72BE81007203E5 /* KSYLiveDemo-dy-framework.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 06CF36E71DE5D14C00BCE88C /* KSYLiveDemo-dy-framework.xcconfig */; };
 		E33527ED1E49986400DB6DD1 /* KSYSimplestStreamerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E33527EC1E49986400DB6DD1 /* KSYSimplestStreamerVC.m */; };
-		E3B007391CE31547009AF074 /* KSYDBCreater.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B007381CE31547009AF074 /* KSYDBCreater.m */; };
 		E3EDA85B1D17BBCE00B54437 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3EDA85A1D17BBCE00B54437 /* SystemConfiguration.framework */; };
 		E3EDA85D1D17BBDA00B54437 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3EDA85C1D17BBDA00B54437 /* Security.framework */; };
 		F296EC001D3527FF001C4120 /* KSYMiscView.m in Sources */ = {isa = PBXBuildFile; fileRef = F296EBFF1D3527FF001C4120 /* KSYMiscView.m */; };
@@ -214,8 +212,6 @@
 		58BCC1481F2F406500D77E5E /* KSYPlayerSubtitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYPlayerSubtitleView.h; sourceTree = "<group>"; };
 		58BCC1491F2F406500D77E5E /* KSYPlayerSubtitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYPlayerSubtitleView.m; sourceTree = "<group>"; };
 		625EF3B41C9A95BE00DBA1CC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		95B4A3E91CBF6CC700CB6804 /* KSYSQLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYSQLite.h; sourceTree = "<group>"; };
-		95B4A3EA1CBF6CC700CB6804 /* KSYSQLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYSQLite.m; sourceTree = "<group>"; };
 		95B4A3ED1CBF6CC700CB6804 /* QRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRViewController.h; sourceTree = "<group>"; };
 		95B4A3EE1CBF6CC700CB6804 /* QRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRViewController.m; sourceTree = "<group>"; };
 		C323BC1C1E794C2900D4682C /* KSYFloatStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYFloatStreamerVC.h; sourceTree = "<group>"; };
@@ -266,8 +262,6 @@
 		C3ECDD0D1E6FFA34007203E5 /* KSYHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYHelper.m; sourceTree = "<group>"; };
 		E33527EB1E49986400DB6DD1 /* KSYSimplestStreamerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYSimplestStreamerVC.h; sourceTree = "<group>"; };
 		E33527EC1E49986400DB6DD1 /* KSYSimplestStreamerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYSimplestStreamerVC.m; sourceTree = "<group>"; };
-		E3B007371CE31547009AF074 /* KSYDBCreater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYDBCreater.h; sourceTree = "<group>"; };
-		E3B007381CE31547009AF074 /* KSYDBCreater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYDBCreater.m; sourceTree = "<group>"; };
 		E3EDA85A1D17BBCE00B54437 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E3EDA85C1D17BBDA00B54437 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		F296EBFE1D3527FF001C4120 /* KSYMiscView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYMiscView.h; sourceTree = "<group>"; };
@@ -372,10 +366,6 @@
 			children = (
 				31F5D1DC1ED683A900588B8E /* KSYQRCode.h */,
 				31F5D1DD1ED683A900588B8E /* KSYQRCode.m */,
-				E3B007371CE31547009AF074 /* KSYDBCreater.h */,
-				E3B007381CE31547009AF074 /* KSYDBCreater.m */,
-				95B4A3E91CBF6CC700CB6804 /* KSYSQLite.h */,
-				95B4A3EA1CBF6CC700CB6804 /* KSYSQLite.m */,
 				95B4A3ED1CBF6CC700CB6804 /* QRViewController.h */,
 				95B4A3EE1CBF6CC700CB6804 /* QRViewController.m */,
 				069E42891C10357D00392B5E /* KSYLiveVC.h */,
@@ -632,7 +622,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = qyvideo;
 				TargetAttributes = {
 					06B2B1A21BE8F0D900E0CC85 = {
@@ -707,7 +697,6 @@
 				052B29371EAA2DC000BFECB0 /* KSYBgpStreamerVC.m in Sources */,
 				3991D0F21DD5674200032EC0 /* KSYRecordVC.m in Sources */,
 				58288AEE1ED5927200F6FECD /* KSYAVWriter.m in Sources */,
-				E3B007391CE31547009AF074 /* KSYDBCreater.m in Sources */,
 				585ABE2B1EC4614400315A5C /* KSYMonkeyTestVC.m in Sources */,
 				056FE3801E1BA730002FC22F /* KSYPipStreamerVC.m in Sources */,
 				585ABE2D1EC4614400315A5C /* KSYURLTableVC.m in Sources */,
@@ -743,7 +732,6 @@
 				06B2B1A91BE8F0D900E0CC85 /* main.m in Sources */,
 				050C69D61EF80949008C93E3 /* KSYDrawingView.m in Sources */,
 				0577A8101F1CBEBE00FADC5B /* KSYDecalBGView.m in Sources */,
-				95B4A3EF1CBF6CC700CB6804 /* KSYSQLite.m in Sources */,
 				06FBBD5D1D2E17E00065ED55 /* KSYPresetCfgVC.m in Sources */,
 				0577A8801F1DDF7100FADC5B /* KSYCollectionCell.m in Sources */,
 				060AE9C51D4653010064DD65 /* KSYFileSelector.m in Sources */,
@@ -840,14 +828,17 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -888,8 +879,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -912,6 +905,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

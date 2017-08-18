@@ -14,5 +14,5 @@
 #import "KSYMessage.h"
 #import "KSYTranscoder.h"
 
-#define KSYSTREAMERBASE_VER 2.5.2
-#define KSYSTREAMERBASE_ID  1b433558633517e228f17ed7efb379b6d1e9777c
+#define KSYSTREAMERBASE_VER 2.6.0
+#define KSYSTREAMERBASE_ID  19b2aea7b764ca6fbdcea013d5db0a34c84774aa

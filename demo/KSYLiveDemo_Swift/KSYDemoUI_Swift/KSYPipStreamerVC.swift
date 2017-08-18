@@ -89,9 +89,9 @@ class KSYPipStreamerVC: KSYStreamerVC {
             return
         }
         
-        if pipKit!.player!.playbackState == .playing {
-            if pipKit!.player!.duration > 0 {
-                ksyPipView?.progressV?.progress = Float(pipKit!.player!.currentPlaybackTime / pipKit!.player!.duration)
+        if pipKit!.player.playbackState == .playing {
+            if pipKit!.player.duration > 0 {
+                ksyPipView?.progressV?.progress = Float(pipKit!.player.currentPlaybackTime / pipKit!.player.duration)
             }
         }
     }
@@ -149,9 +149,9 @@ class KSYPipStreamerVC: KSYStreamerVC {
         guard let _ = pipKit?.player else {
             return
         }
-        if pipKit!.player!.playbackState == .playing {
+        if pipKit!.player.playbackState == .playing {
             pipKit?.player.pause()
-        }else if pipKit!.player!.playbackState == .paused {
+        }else if pipKit!.player.playbackState == .paused {
             pipKit?.player.play()
         }
     }

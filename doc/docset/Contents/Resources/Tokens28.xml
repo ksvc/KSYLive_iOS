@@ -152,7 +152,7 @@
 			<Abstract type="html">背景播放器</Abstract>
 			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) KSYMoviePlayerController *player</Declaration>
+			<Declaration>@property (nonatomic, readonly) KSYMoviePlayerController *player</Declaration>
 			
 			
 			<Anchor>//api/name/player</Anchor>
@@ -164,7 +164,7 @@
 			<Abstract type="html">背景播放器</Abstract>
 			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) KSYMoviePlayerController *player</Declaration>
+			<Declaration>@property (nonatomic, readonly) KSYMoviePlayerController *player</Declaration>
 			
 			
 			<Anchor>//api/name/player</Anchor>
@@ -176,7 +176,7 @@
 			<Abstract type="html">背景播放器</Abstract>
 			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, strong) KSYMoviePlayerController *player</Declaration>
+			<Declaration>@property (nonatomic, readonly) KSYMoviePlayerController *player</Declaration>
 			
 			
 			<Anchor>//api/name/player</Anchor>
@@ -368,7 +368,7 @@
 			<Abstract type="html">获取状态对应的字符串</Abstract>
 			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>- (NSString *)getPipStateName:(MPMoviePlaybackState)stat</Declaration>
+			<Declaration>- (NSString *_Nonnull)getPipStateName:(MPMoviePlaybackState)stat</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>stat</Name>
@@ -385,7 +385,7 @@
 			<Abstract type="html">获取当前状态对应的字符串</Abstract>
 			<DeclaredIn>KSYGPUPipStreamerKit.h</DeclaredIn>
 			
-			<Declaration>- (NSString *)getCurPipStateName</Declaration>
+			<Declaration>- (NSString *_Nonnull)getCurPipStateName</Declaration>
 			
 			
 			<Anchor>//api/name/getCurPipStateName</Anchor>

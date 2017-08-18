@@ -7,15 +7,18 @@
 
 #import "KSYPlayerSubtitleView.h"
 
+#define COLOR_NUMBER 5
+#define FONT_NUMBER 3
+
 @interface KSYPlayerSubtitleView()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIGestureRecognizerDelegate>{
     UILabel *_labelColor;
     UILabel *_labelFont;
     
-    NSMutableArray *_colorArray;
     NSMutableArray *_colorPosArray;
+    UILabel *_labelColorArray[COLOR_NUMBER];
     
-    NSArray *_fontArray;
     NSMutableArray *_fontPosArray;
+    UILabel *_labelFontArray[COLOR_NUMBER];
     
     UILabel *_labelSubtitle;
     
@@ -26,8 +29,6 @@
     NSMutableArray *_extSubtitleFiles;
     
     NSString *_documentDir;
-    
-    
 }
 @end
 
@@ -36,15 +37,23 @@
 - (id)init{
     self = [super init];
     
-    _colorArray = [NSMutableArray array];
     _colorPosArray = [NSMutableArray array];
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < COLOR_NUMBER; i++) {
         UIColor *color = [UIColor colorWithHue:i / (float)5 saturation:1.0 brightness:1.0 alpha:1.0];
-        [_colorArray addObject:color];
+        _labelColorArray[i] = [[UILabel alloc] init];
+        _labelColorArray[i].backgroundColor = color;
     }
     
-    _fontArray = [[NSArray alloc] initWithObjects:@"Georgia-Italic", @"Times New Roman", @"Zapfino", nil];
+    NSArray *fontArray = [[NSArray alloc] initWithObjects:@"Georgia-Italic", @"Times New Roman", @"Zapfino", nil];
     _fontPosArray = [NSMutableArray array];
+    for(int i = 0; i < FONT_NUMBER; i++)
+    {
+        _labelFontArray[i] = [[UILabel alloc] init];
+        _labelFontArray[i].backgroundColor = [UIColor whiteColor];
+        _labelFontArray[i].text = [fontArray objectAtIndex:i];
+        _labelFontArray[i].textAlignment = NSTextAlignmentCenter;
+        _labelFontArray[i].font = [UIFont fontWithName:_labelFontArray[i].text size:12];
+    }
     
     _documentDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     _extSubtitleFiles = [NSMutableArray array];
@@ -86,37 +95,30 @@
     
     [self putNarrow:_labelColor andWide:nil];
     
-    for (int i = 0; i < _colorArray.count; i++) {
-        UILabel *label = [[UILabel alloc] init];
-        label.backgroundColor = [_colorArray objectAtIndex:i];
-        float elemWidth = (self.frame.size.width -  CGRectGetMaxX(_labelColor.frame) - (_colorArray.count + 1) * self.gap)  / (_colorArray.count);
+    for (int i = 0; i < COLOR_NUMBER; i++) {
+        float elemWidth = (self.frame.size.width -  CGRectGetMaxX(_labelColor.frame) - (COLOR_NUMBER + 1) * self.gap)  / (COLOR_NUMBER);
         if(elemWidth > 0)
         {
             CGRect rect = CGRectMake(CGRectGetMaxX(_labelColor.frame) + self.gap + i * (elemWidth + self.gap), CGRectGetMinY(_labelColor.frame), elemWidth, self.btnH);
-            label.frame = rect;
+             _labelColorArray[i].frame = rect;
             [_colorPosArray addObject:[NSValue valueWithCGRect:rect]];
         }
         
-        [self addSubview:label];
+        [self addSubview: _labelColorArray[i]];
     }
     
     [self putNarrow:_labelFont andWide:nil];
     
-    for (int i = 0; i < _fontArray.count; i++) {
-        UILabel *label = [[UILabel alloc] init];
-        label.backgroundColor = [UIColor whiteColor];
-        label.text = [_fontArray objectAtIndex:i];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.font = [UIFont fontWithName:label.text size:12];
-        float elemWidth = (self.frame.size.width -  CGRectGetMaxX(_labelColor.frame) - (_fontArray.count + 1) * self.gap)  / (_fontArray.count);
+    for (int i = 0; i < FONT_NUMBER; i++) {
+        float elemWidth = (self.frame.size.width -  CGRectGetMaxX(_labelColor.frame) - (FONT_NUMBER + 1) * self.gap)  / (FONT_NUMBER);
         if(elemWidth > 0)
         {
             CGRect rect = CGRectMake(CGRectGetMaxX(_labelFont.frame) + self.gap + i * (elemWidth + self.gap), CGRectGetMinY(_labelFont.frame), elemWidth, self.btnH);
-            label.frame = rect;
+            _labelFontArray[i].frame = rect;
             [_fontPosArray addObject:[NSValue valueWithCGRect:rect]];
         }
         
-        [self addSubview:label];
+        [self addSubview:_labelFontArray[i]];
     }
     
     [self putRow1:_sliderFontSize];
@@ -161,12 +163,12 @@
     CGRect pos = [[_colorPosArray objectAtIndex:0] CGRectValue];
     if(point.y >= pos.origin.y && point.y <= pos.origin.y + pos.size.height)
     {
-        for (int i = 0; i < _colorArray.count; i++) {
+        for (int i = 0; i < COLOR_NUMBER; i++) {
             pos = [[_colorPosArray objectAtIndex:i] CGRectValue];
             if(point.x >= pos.origin.x && point.x <=  pos.origin.x + pos.size.width)
             {
                 if(_fontColorBlock)
-                    _fontColorBlock(_colorArray[i]);
+                    _fontColorBlock(_labelColorArray[i].backgroundColor);
                 return ;
             }
         }
@@ -175,12 +177,12 @@
     pos = [[_fontPosArray objectAtIndex:0] CGRectValue];
     if(point.y >= pos.origin.y && point.y <= pos.origin.y + pos.size.height)
     {
-        for (int i = 0; i < _fontArray.count; i++) {
+        for (int i = 0; i < FONT_NUMBER; i++) {
             pos = [[_fontPosArray objectAtIndex:i] CGRectValue];
             if(point.x >= pos.origin.x && point.x <=  pos.origin.x + pos.size.width)
             {
                 if(_fontBlock)
-                    _fontBlock(_fontArray[i]);
+                    _fontBlock(_labelFontArray[i].text);
                 return ;
             }
         }

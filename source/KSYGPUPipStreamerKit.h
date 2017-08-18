@@ -38,18 +38,18 @@
 /**
  @abstract 背景播放器
  */
-@property (nonatomic, strong) KSYMoviePlayerController *player;
+@property (nonatomic, readonly) KSYMoviePlayerController * _Nonnull player;
 /**
  @abstract 背景图片
  */
-@property (nonatomic, strong) GPUImagePicture          *bgPic;
+@property (nonatomic, strong) GPUImagePicture   * _Nullable bgPic;
 
 /**
  @abstract   画中画图像输入
  @discussion 用于衔接画中画播放器和图像混合器 (KSYPicPipLayer = 1)
  @discussion 主要用于将图像的原始数据上传到GPU
  */
-@property (nonatomic, readonly)KSYGPUPicInput         *yuvInput;
+@property (nonatomic, readonly)KSYGPUPicInput         * _Nonnull yuvInput;
 
 /**
  @abstract   背景图片的位置和大小
@@ -79,11 +79,11 @@
  @abstract   获取状态对应的字符串
  @param      stat 状态
  */
-- (NSString*) getPipStateName : (MPMoviePlaybackState) stat;
+- (NSString*_Nonnull) getPipStateName : (MPMoviePlaybackState) stat;
 /**
  @abstract   获取当前状态对应的字符串
  */
-- (NSString*) getCurPipStateName;
+- (NSString*_Nonnull) getCurPipStateName;
 
 /**
  @abstract    播放状态

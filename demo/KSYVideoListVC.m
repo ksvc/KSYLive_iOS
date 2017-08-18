@@ -55,7 +55,7 @@
 
 @implementation KSYVideoListVC
 
-- (id)initWithUrl:(NSString *)videoListUrl{
+- (id)initWithUrl:(NSURL *)videoListUrl{
     if (self = [super init]) {
         _videoUrls = @[videoListUrl,videoListUrl,videoListUrl,videoListUrl,videoListUrl];
     }
@@ -106,13 +106,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     //取出所选视频的播放地址
-    NSString *urlStr = _videoUrls[indexPath.row];
-
+    NSURL *url = _videoUrls[indexPath.row];
     KSYVideoListCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-
     if (!_player){
         //初始化播放器
-        _player = [[KSYMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:urlStr]];
+        _player = [[KSYMoviePlayerController alloc] initWithContentURL:url];
         _player.scalingMode = MPMovieScalingModeAspectFill;
         _player.view.frame = cell.bounds;
         [cell.contentView addSubview:_player.view];
@@ -141,7 +139,7 @@
         // 重置播放器
         [_player reset:NO];
         // 设置新URL
-        [_player setUrl:[NSURL URLWithString:urlStr]];
+        [_player setUrl:url];
         // 播放视图添加到cell
         [_player.view removeFromSuperview];
         _player.view.frame = cell.bounds;

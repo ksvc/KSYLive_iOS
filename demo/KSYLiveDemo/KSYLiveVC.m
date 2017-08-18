@@ -11,8 +11,6 @@
 #import "KSYPlayerVC.h"
 #import "KSYProberVC.h"
 #import "KSYMonkeyTestVC.h"
-#import "KSYSQLite.h"
-#import "KSYDBCreater.h"
 #import "KSYPresetCfgVC.h"
 #import "KSYRecordVC.h"
 #import "KSYNetTrackerVC.h"
@@ -23,10 +21,10 @@
 #import "KSYVideoListVC.h"
 
 typedef NS_ENUM(NSInteger, KSYDemoMenuType){
-    KSYDemoMenuType_PLAY = 0,                       //播放
+    KSYDemoMenuType_PLAY = 0,                     //播放
     KSYDemoMenuType_STREAM,                       //推流
     KSYDemoMenuType_RECORD,                       //录制
-    KSYDemoMenuType_TEST,                              //测试
+    KSYDemoMenuType_TEST,                         //测试
 };
 
 @interface KSYLiveVC ()<UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource>{
@@ -43,7 +41,9 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
     //执行按钮
     UIButton *_buttonDone;
     //存放控制器栏的多个按钮的名称
-    NSArray         *_controllers;
+    NSMutableArray *_controllers;
+    //控制器的名称和创建方法的字典
+    NSMutableDictionary * _vcNameDict;
     //存放多个推流地址的名称
     NSMutableArray *_arrayStreamAddress;
     //存放多个播放地址
@@ -57,11 +57,12 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
     //当前所选功能类型
     KSYDemoMenuType _type;
     //当前选中的功能
-    NSInteger selectMenuRow;//初始状态为0
+    
     //当前选中的地址
     NSString *_currentSelectUrl;
+    
 }
-
+@property NSInteger selectMenuRow;
 @end
 
 @implementation KSYLiveVC
@@ -73,7 +74,6 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
     _labelAddress = [self addLabelWithText:@"播放地址列表" textColor:[UIColor blueColor]];
     //添加开始按钮
     _buttonDone = [self addButton:@"开始"];
-    selectMenuRow = 0;
     self.view.backgroundColor = [UIColor whiteColor];
     NSString * uuidStr =[[[UIDevice currentDevice] identifierForVendor] UUIDString];
     NSString *devCode  = [[uuidStr substringToIndex:3] lowercaseString];
@@ -99,7 +99,7 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
     [self initVariable];
     //布局UI
     [self initLiveVCUI];
-    [KSYDBCreater initDatabase];
+    
 }
 
 //添加一个居中的Label
@@ -193,7 +193,7 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
 {
     if (pickerView == _pickerMenu)//功能列表
     {
-        selectMenuRow = row;
+        self.selectMenuRow = row;
         if (row >= 0 && row <= 3) {
             //类型为播放
             _type = KSYDemoMenuType_PLAY;
@@ -278,22 +278,30 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
      forControlEvents:UIControlEventTouchUpInside];
     return button;
 }
-
+- (void) addMenu:(NSString*)name withBlk:(id) blk {
+    [_controllers addObject:name];
+    [_vcNameDict setValue:blk forKey:name];
+}
 - (void)initVariable{
-    _controllers = [NSArray arrayWithObjects:
-                    @"播放demo",
-                    @"视频列表",
-                    @"录制播放短视频",
-                    @"文件格式探测",
-                    @"播放自动化测试 ",
-                    @"推流demo",
-                    @"极简推流",
-                    @"半屏推流",
-                    @"画笔推流",
-                    @"背景图片推流",
-                    @"录制推流短视频",
-                    @"网络探测",
-                    nil];
+    _vcNameDict = [[NSMutableDictionary alloc] init];
+    _controllers = [[NSMutableArray alloc] init];
+    [self addMenu:@"播放demo"     withBlk:^(NSURL* url){return [[KSYPlayerCfgVC alloc]initWithURL:url fileList:nil];} ];
+    [self addMenu:@"视频列表"      withBlk:^(NSURL* url){return [[KSYVideoListVC alloc] initWithUrl:url];} ];
+    [self addMenu:@"录制播放短视频" withBlk:^(NSURL* url){return [[KSYRecordVC alloc]initWithURL:url];} ];
+    [self addMenu:@"文件格式探测"   withBlk:^(NSURL* url){return [[KSYProberVC alloc]initWithURL:url];} ];
+    [self addMenu:@"播放自动化测试" withBlk:^(NSURL* url){return [[KSYMonkeyTestVC alloc] init];} ];
+    [self addMenu:@"推流demo"     withBlk:^(NSURL* url){return [[KSYPresetCfgVC alloc]initWithURL:url];} ];
+    [self addMenu:@"极简推流"      withBlk:^(NSURL* url){return [[KSYSimplestStreamerVC alloc] initWithUrl:url];} ];
+    [self addMenu:@"半屏推流"      withBlk:^(NSURL* url){return [[KSYHorScreenStreamerVC alloc] initWithUrl:url];} ];
+    [self addMenu:@"画笔推流"      withBlk:^(NSURL* url){return [[KSYBrushStreamerVC alloc] initWithUrl:url];} ];
+    [self addMenu:@"背景图片推流"   withBlk:^(NSURL* url){return [[KSYBgpStreamerVC alloc] initWithUrl:url];} ];
+    [self addMenu:@"录制推流短视频" withBlk:^(NSURL* url){
+        KSYPresetCfgVC *preVC = [[KSYPresetCfgVC alloc]initWithURL:url];
+        [preVC.cfgView.btn0 setTitle:@"开始录制" forState:UIControlStateNormal];
+        preVC.cfgView.btn1.enabled = NO;
+        preVC.cfgView.btn3.enabled = NO;
+        return preVC;}];
+    [self addMenu: @"网络探测" withBlk:^(NSURL* url){return [[KSYNetTrackerVC alloc]init];}];
 }
 
 - (void)initFrame{
@@ -342,6 +350,10 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
     _buttonQR     = [self addButton:@"扫描二维码"];
     _buttonAbout  = [self addButton:@"关于"];
     [self initFrame];
+    // reload last choise
+    _selectMenuRow = [self loadSelectMenuRow];
+    [_pickerMenu selectRow:_selectMenuRow inComponent:0 animated:YES];
+    [self pickerView:_pickerMenu didSelectRow:_selectMenuRow inComponent:0];
 }
 
 - (IBAction)onBtn:(id)sender {
@@ -360,68 +372,26 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
         alert.message = [NSString stringWithFormat:fmt, build];
         alert.alertViewStyle = UIAlertViewStyleDefault;
         [alert show];
-   }else if(sender == _buttonDone){
+    }
+    else if(sender == _buttonDone){
         UIViewController* vc = nil;
+        NSString * urlStr = _currentSelectUrl;
         NSURL *url = [NSURL URLWithString:_currentSelectUrl];
         NSString *scheme = [url scheme];
-        if(![scheme isEqualToString:@"rtmp"] &&
-                ![scheme isEqualToString:@"http"] &&
-                ![scheme isEqualToString:@"https"] &&
-                ![scheme isEqualToString:@"rtsp"])
-        {
-            _currentSelectUrl = [NSString stringWithFormat:@"%@%s%@", NSHomeDirectory(), "/Documents/",_currentSelectUrl];
-            url = [NSURL URLWithString:_currentSelectUrl];
+        if( ![scheme isEqualToString:@"rtmp"] &&
+            ![scheme isEqualToString:@"http"] &&
+            ![scheme isEqualToString:@"https"] &&
+            ![scheme isEqualToString:@"rtsp"]) {
+            urlStr = [NSString stringWithFormat:@"%@%s%@", NSHomeDirectory(), "/Documents/",_currentSelectUrl];
+            url = [NSURL URLWithString:urlStr];
         }
-
-        if (selectMenuRow == 0) {
-            //播放Demo
-            vc = [[KSYPlayerCfgVC alloc]initWithURL:url fileList:nil];
-        }else if (selectMenuRow == 1){
-            //视频列表
-            vc = [[KSYVideoListVC alloc] initWithUrl:_currentSelectUrl];
-        }else if(selectMenuRow == 2){
-            //录制播放短视频
-            vc = [[KSYRecordVC alloc]initWithURL:url];
+        if (_selectMenuRow >= 0 && _selectMenuRow < _controllers.count) {
+            NSString * vcName = _controllers[_selectMenuRow];
+            UIViewController* (^creatVCblk)(NSURL* url) = _vcNameDict[vcName];
+            vc = creatVCblk( url);
         }
-        else if (selectMenuRow == 3){
-            //文件格式探测
-            vc = [[KSYProberVC alloc]initWithURL:url];
-        }
-        else if (selectMenuRow == 4){
-            //自动化测试
-            vc = [[KSYMonkeyTestVC alloc] init];
-        }
-        else if(selectMenuRow == 5){
-            //推流Demo,传入推流地址及拉流地址
-            vc = [[KSYPresetCfgVC alloc]initWithURL:_currentSelectUrl];
-        }
-        else if(selectMenuRow == 6){
-            //极简推流
-            vc  = [[KSYSimplestStreamerVC alloc] initWithUrl:_currentSelectUrl];
-        }
-        else if(selectMenuRow == 7){
-            //半屏推流
-            vc = [[KSYHorScreenStreamerVC alloc] initWithUrl:_currentSelectUrl];
-        }
-        else if(selectMenuRow == 8){
-            //半屏推流
-            vc = [[KSYBrushStreamerVC alloc] initWithUrl:_currentSelectUrl];
-        }
-        else if(selectMenuRow == 9){
-            //背景图片推流
-            vc = [[KSYBgpStreamerVC alloc] initWithUrl:_currentSelectUrl];
-        }
-        else if(selectMenuRow == 10){
-            //录制推流短视频
-            KSYPresetCfgVC *preVC = [[KSYPresetCfgVC alloc]initWithURL:_currentSelectUrl];
-            [preVC.cfgView.btn0 setTitle:@"开始录制" forState:UIControlStateNormal];
-            preVC.cfgView.btn1.enabled = NO;
-            preVC.cfgView.btn3.enabled = NO;
-            vc = preVC;
-        }
-        else if(selectMenuRow == 11){
-            //网络连通性探测
-            vc = [[KSYNetTrackerVC alloc]init];
+        else {
+            NSLog(@"menu error!!");
         }
         if (vc){
             [self presentViewController:vc animated:YES completion:nil];
@@ -453,7 +423,32 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
 }
 
 - (BOOL) shouldAutorotate {
-    [self initFrame];
     return YES;
+}
+#pragma mark - ui rotate
+- (void)viewWillTransitionToSize:(CGSize)size
+       withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+    }completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        [self initFrame];
+    }];
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+}
+
+#pragma mark - User default
+@synthesize selectMenuRow = _selectMenuRow;
+- (void) setSelectMenuRow:(NSInteger)selectMenuRow {
+    _selectMenuRow = selectMenuRow;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:selectMenuRow forKey:@"selectMenuRow"];
+    [defaults synchronize];
+}
+- (NSInteger)selectMenuRow {
+    return _selectMenuRow;
+}
+- (NSInteger) loadSelectMenuRow {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    _selectMenuRow = [defaults integerForKey:@"selectMenuRow"];
+    return _selectMenuRow;
 }
 @end

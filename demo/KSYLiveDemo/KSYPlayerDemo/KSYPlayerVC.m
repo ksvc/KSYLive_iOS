@@ -182,6 +182,7 @@
     
     labelStat.frame = self.view.frame;
     labelMsg.frame = self.view.frame;
+    labelSubtitle.text = @"";
     labelSubtitle.frame = CGRectMake(0, CGRectGetMaxY(btnVideo.frame), self.view.frame.size.width, CGRectGetMinY(progressView.frame) - CGRectGetMaxY(btnVideo.frame));
 }
 

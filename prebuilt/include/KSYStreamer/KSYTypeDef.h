@@ -198,6 +198,22 @@ typedef NS_ENUM(NSUInteger, KSYStreamErrorCode) {
     KSYStreamErrorCode_INVALID_ADDRESS,
     /// 网络不通
     KSYStreamErrorCode_NETWORK_UNREACHABLE,
+    /// 获取user id失败 (KSY 自定义)
+    KSYStreamErrorCode_RTMP_GetUserIdFailed,
+    /// AK和user id不匹配 (KSY 自定义)
+    KSYStreamErrorCode_RTMP_AkAndUserIsNotMatch,
+    /// 获取服务器信息失败 (KSY 自定义)
+    KSYStreamErrorCode_RTMP_GetServerInfoFailed,
+    /// 非法的外部url (KSY 自定义)
+    KSYStreamErrorCode_RTMP_IllegalOutsideUrl,
+    /// 外部鉴权失败 (KSY 自定义)
+    KSYStreamErrorCode_RTMP_OutsideAuthFailed,
+    /// 简单鉴权失败(KSY 自定义)
+    KSYStreamErrorCode_RTMP_SimpleAuthFailed,
+    /// 无效的鉴权类型 (KSY 自定义)
+    KSYStreamErrorCode_RTMP_InvalidAuthType,
+    /// 非法的user id (KSY 自定义)
+    KSYStreamErrorCode_RTMP_IllegalUserId,
 };
 
 /*!

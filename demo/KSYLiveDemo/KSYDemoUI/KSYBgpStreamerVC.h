@@ -14,7 +14,7 @@
 
 @property KSYGPUBgpStreamerKit *kit;
 
-- (id)initWithUrl:(NSString *)rtmpUrl;
+- (id)initWithUrl:(NSURL *)rtmpUrl;
 
 // 重写此方法，调整UI布局
 - (void)setupUI;

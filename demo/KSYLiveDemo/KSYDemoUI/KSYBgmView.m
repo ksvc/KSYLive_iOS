@@ -91,7 +91,9 @@
     return [self updateBgmPath];
 }
 - (NSString*) updateBgmPath{
-    _bgmTitle.text = [_bgmStatus stringByAppendingString:_bgmSel.fileInfo];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _bgmTitle.text = [_bgmStatus stringByAppendingString:_bgmSel.fileInfo];
+    });
     _bgmPath    = _bgmSel.filePath;
     return _bgmSel.filePath;
 }
@@ -99,8 +101,9 @@
 @synthesize bgmStatus = _bgmStatus;
 - (void) setBgmStatus:(NSString *)bgmStatus{
     _bgmStatus = bgmStatus;
-    _bgmTitle.text = [_bgmStatus stringByAppendingString:_bgmSel.fileInfo];
-    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _bgmTitle.text = [_bgmStatus stringByAppendingString:_bgmSel.fileInfo];
+    });
 }
 - (NSString *) bgmStatus{
     return _bgmStatus;

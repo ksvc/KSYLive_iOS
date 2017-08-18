@@ -34,7 +34,6 @@
     // 本地录制:直接存储到本地
     UIImageView *_foucsCursor;//对焦框
     CGFloat _currentPinchZoomFactor;//当前触摸缩放因子
-    UIView *_bgView;        // 预览视图父控件（用于处理转屏，保持画面相对手机不变）
     BOOL _bOutputInfo;//是否输出推流过程中的统计信息
     CXCallObserver *_callObserver;
     
@@ -94,35 +93,12 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self layoutPreviewBgView];
     if (_kit) { // init with default filter
+        // 确保videoOrientation为正确的方向正确，否则画面方向会有异常
         _kit.videoOrientation = [[UIApplication sharedApplication] statusBarOrientation];
         [_kit setupFilter:self.ksyFilterView.curFilter];
-        [_kit startPreview:_bgView];
+        [_kit startPreview:self.view];
     }
-}
-
-// 根据状态栏方向初始化预览的bgView
-- (void)layoutPreviewBgView{
-    // size
-    CGFloat minLength = MIN(_bgView.frame.size.width, _bgView.frame.size.height);
-    CGFloat maxLength = MAX(_bgView.frame.size.width, _bgView.frame.size.height);
-    CGRect newFrame;
-    // frame
-    CGAffineTransform newTransform;
-    
-    UIInterfaceOrientation currentInterfaceOrientation = [UIApplication sharedApplication].statusBarOrientation;
-    
-    if (currentInterfaceOrientation == UIInterfaceOrientationPortrait) {
-        newTransform = CGAffineTransformIdentity;
-        newFrame = CGRectMake(0, 0, minLength, maxLength);
-    } else {
-        newTransform = CGAffineTransformMakeRotation(M_PI_2*(currentInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ? 1 : -1));
-        newFrame = CGRectMake(0, 0, maxLength, minLength);
-    }
-    
-    _bgView.transform = newTransform;
-    _bgView.frame = newFrame;
 }
 
 - (void) addSwipeGesture{
@@ -141,14 +117,12 @@
 }
 
 - (void)addSubViews{
-    _bgView = [[UIView alloc] initWithFrame:self.view.bounds];
     _ctrlView  = [[KSYCtrlView alloc] initWithMenu:_menuNames];
     _colView = [[KSYCollectionView alloc] init];
     _decalBGView = [[KSYDecalBGView alloc] init];
     _ctrlView.frame = self.view.frame;
     _colView.frame = self.view.frame;
     _decalBGView.frame = self.view.frame;
-    [self.view addSubview:_bgView];
     [self.view addSubview:_ctrlView];
     [self.view addSubview:_colView];
     [self.colView addSubview:_decalBGView];
@@ -261,6 +235,10 @@
         _colView.frame = self.view.frame;
         [_colView layoutUI];
     }
+    if (_decalBGView){
+        _decalBGView.frame = self.view.frame;
+        [self updateAePicView];
+    }
 }
 - (NSString *) timeStr {
     if (_dateFormatter == nil) {
@@ -274,7 +252,7 @@
 - (void) setupLogo{
     CGFloat yPos = 0.05;
     // 预览视图的scale
-    CGFloat scale = MAX(_bgView.frame.size.width, _bgView.frame.size.height) / self.view.frame.size.height;
+    CGFloat scale = MAX(self.view.frame.size.width, self.view.frame.size.height) / self.view.frame.size.height;
     CGFloat hgt  = 0.1 * scale; // logo图片的高度是预览画面的十分之一
     UIImage * logoImg = [UIImage imageNamed:@"ksvc"];
     _logoPicure   =  [[GPUImagePicture alloc] initWithImage:logoImg];
@@ -753,7 +731,7 @@
         _kit.videoOrientation = [[UIApplication sharedApplication] statusBarOrientation];
         // 重新开启预览是需要重新根据方向setupLogo
         [self setupLogo];
-        [_kit startPreview:_bgView];
+        [_kit startPreview:self.view];
     }
     else {
         [_kit stopPreview];
