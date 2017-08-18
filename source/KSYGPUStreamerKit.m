@@ -1081,7 +1081,7 @@ M_PI_2*1,M_PI_2*3, M_PI_2*2, M_PI_2*0,
     }
     else {
         int capOri = UIOrienToIdx(_vCapDev.outputImageOrientation);
-        int appOri = UIOrienToIdx(UIInterfaceOrientationPortrait);
+        int appOri = UIOrienToIdx(orie);
         _previewRotateAng = KSYRotateAngles[ capOri ][ appOri ];
         for (UIView<GPUImageInput> *v in _vPreviewMixer.targets) {
             v.transform = CGAffineTransformMakeRotation(_previewRotateAng);
@@ -1126,6 +1126,7 @@ kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRota
     [self updatePreDimension];
     [self updateStrDimension:orie];
     [self setStreamerMirrored: _streamerMirrored];
+    [self setPreviewMirrored: _previewMirrored];
 }
 
 /**

@@ -19,7 +19,7 @@
 @property UIPickerView *profilePicker;
 @property (nonatomic, readonly) KSYUIView   * ctrlView;
 
-- (id)initWithUrl:(NSString *)rtmpUrl;
+- (id)initWithUrl:(NSURL *)rtmpUrl;
 // 重写此方法，调整UI布局
 - (void)setupUI;
 - (void)onBtn:(UIButton *)btn;

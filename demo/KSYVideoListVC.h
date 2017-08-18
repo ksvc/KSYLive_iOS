@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface KSYVideoListVC : UIViewController
-- (id)initWithUrl:(NSString *)videoListUrl;
+- (id)initWithUrl:(NSURL *)videoListUrl;
 
 @end

@@ -19,9 +19,9 @@
  */
 @interface KSYPresetCfgVC : KSYUIVC
 // 初始化
-- (instancetype)initWithURL:(NSString *)url;
+- (instancetype)initWithURL:(NSURL *)url;
 // 初始传入的 rtmpserver 地址
-@property NSString * rtmpURL;
+@property NSURL * rtmpURL;
 
 @property (nonatomic, retain) KSYPresetCfgView * cfgView;
 

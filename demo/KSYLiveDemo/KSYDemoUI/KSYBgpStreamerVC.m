@@ -23,9 +23,9 @@
 @end
 
 @implementation KSYBgpStreamerVC
-- (id)initWithUrl:(NSString *)rtmpUrl{
+- (id)initWithUrl:(NSURL *)rtmpUrl{
     if (self = [super init]) {
-        _url = [NSURL URLWithString:rtmpUrl];
+        _url = rtmpUrl;
         [self addObserver];
     }
     return self;

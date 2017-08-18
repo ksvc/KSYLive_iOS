@@ -13,7 +13,7 @@
 
 #define ELEMENT_GAP  5
 
-@interface KSYPlayerCfgVC() <UITextViewDelegate>
+@interface KSYPlayerCfgVC() <UITextFieldDelegate>
 
 @end
 

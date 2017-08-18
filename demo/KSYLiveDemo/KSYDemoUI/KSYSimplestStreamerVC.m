@@ -11,13 +11,12 @@
 @interface KSYSimplestStreamerVC ()<UIPickerViewDataSource,
 UIPickerViewDelegate>{
     NSArray * _profileNames;//存放各个清晰度标签
-    UIButton *captureBtn;//预览按钮
-    UIButton *streamBtn;//开始推流
-    UIButton *cameraBtn;//前后摄像头
-    UIButton *quitBtn;//返回按钮
-    UIView *_bgView;        // 预览视图父控件（用于处理转屏，保持画面相对手机不变）
 }
 
+@property UIButton *captureBtn;//预览按钮
+@property UIButton *streamBtn;//开始推流
+@property UIButton *cameraBtn;//前后摄像头
+@property UIButton *quitBtn;//返回按钮
 @property NSInteger         curProfileIdx;
 @property NSURL             *url;
 @property UILabel           *streamState;//推流状态
@@ -25,19 +24,21 @@ UIPickerViewDelegate>{
 @end
 
 @implementation KSYSimplestStreamerVC
-- (id)initWithUrl:(NSString *)rtmpUrl{
+- (id)initWithUrl:(NSURL *)rtmpUrl{
     if (self = [super init]) {
-        _url = [NSURL URLWithString:rtmpUrl];
+        _url = rtmpUrl;
         [self addObserver];
     }
     return self;
 }
-- (void)addObserver{
-    //监听推流状态改变的通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(streamStateChanged) name:KSYStreamStateDidChangeNotification object:nil];
+- (void)addObserver{ //监听推流状态改变的通知
+    NSNotificationCenter * dc = [NSNotificationCenter defaultCenter] ;
+    [dc addObserver:self
+           selector:@selector(streamStateChanged)
+               name:KSYStreamStateDidChangeNotification
+             object:nil];
 }
-- (void)removeObserver{
-    //移除观察者
+- (void)removeObserver{//移除观察者
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)streamStateChanged{
@@ -81,24 +82,21 @@ UIPickerViewDelegate>{
 }
 
 - (void)setupUI{
-    _bgView = [[UIView alloc] initWithFrame:self.view.bounds];
-    [self.view addSubview:_bgView];
-    
     _ctrlView = [[KSYUIView alloc] initWithFrame:self.view.bounds];
     @WeakObj(self);
     _ctrlView.onBtnBlock = ^(id sender){
         [selfWeak  onBtn:sender];
     };
-    
+
     // top view
-    quitBtn = [_ctrlView addButton:@"退出"];
+    _quitBtn = [_ctrlView addButton:@"退出"];
     _streamState = [_ctrlView addLable:@"空闲状态"];
     _streamState.textColor = [UIColor redColor];
     _streamState.textAlignment = NSTextAlignmentCenter;
-    cameraBtn = [_ctrlView addButton:@"前后摄像头"];
+    _cameraBtn = [_ctrlView addButton:@"前后摄像头"];
     
     // profile picker
-    _profilePicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 200, self.view.frame.size.width, 200)];
+    _profilePicker = [[UIPickerView alloc] init];
     _profilePicker.delegate   = self;
     _profilePicker.dataSource = self;
     _profilePicker.showsSelectionIndicator= YES;
@@ -106,188 +104,36 @@ UIPickerViewDelegate>{
     [_profilePicker selectRow:7 inComponent:0 animated:YES];
     
     // bottom view
-    captureBtn = [_ctrlView addButton:@"开始预览"];
-    streamBtn = [_ctrlView addButton:@"开始推流"];
+    _captureBtn = [_ctrlView addButton:@"开始预览"];
+    _streamBtn = [_ctrlView addButton:@"开始推流"];
 
     [self.view addSubview:_ctrlView];
     [_ctrlView addSubview:_profilePicker];
-    
-    [self layoutPreviewBgView];
-
     [self layoutUI];
 }
 
 - (void)layoutUI{
     _ctrlView.frame = self.view.frame;
     [_ctrlView layoutUI];
-    [_ctrlView putRow:@[quitBtn, _streamState, cameraBtn]];
-    
+    [_ctrlView putRow:@[_quitBtn, _streamState, _cameraBtn]];
+    _profilePicker.frame = CGRectMake(10, _ctrlView.yPos+_ctrlView.btnH, _ctrlView.width-20, 216);
     _ctrlView.yPos = self.view.frame.size.height - 30;
-    [_ctrlView putRow:@[captureBtn, [UIView new], streamBtn]];
-}
-
-// 根据状态栏方向初始化预览的bgView
-- (void)layoutPreviewBgView{
-    // size
-    CGFloat minLength = MIN(_bgView.frame.size.width, _bgView.frame.size.height);
-    CGFloat maxLength = MAX(_bgView.frame.size.width, _bgView.frame.size.height);
-    CGRect newFrame;
-    // frame
-    CGAffineTransform newTransform;
-    
-    UIInterfaceOrientation currentInterfaceOrientation = [UIApplication sharedApplication].statusBarOrientation;
-    
-    if (currentInterfaceOrientation == UIInterfaceOrientationPortrait) {
-        newTransform = CGAffineTransformIdentity;
-        newFrame = CGRectMake(0, 0, minLength, maxLength);
-    } else {
-        newTransform = CGAffineTransformMakeRotation(M_PI_2*(currentInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ? 1 : -1));
-        newFrame = CGRectMake(0, 0, maxLength, minLength);
-    }
-    
-    _bgView.transform = newTransform;
-    _bgView.frame = newFrame;
-}
-
-// 旋转处理，通过旋转bgView来做到画面相对手机静止不动
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
-    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
-    
-    // size
-    CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    CGFloat minLength = MIN(screenSize.width, screenSize.height);
-    CGFloat maxLength = MAX(screenSize.width, screenSize.height);
-    CGRect newFrame;
-    
-    // frame
-    CGAffineTransform newTransform;
-    // need stay frame after animation
-    CGAffineTransform newTransformOfStay;
-    // whether need to stay
-    __block BOOL needStay = NO;
-    
-    if (toInterfaceOrientation == UIInterfaceOrientationPortrait) {
-        newTransform = CGAffineTransformIdentity;
-        newFrame = CGRectMake(0, 0, minLength, maxLength);
-    } else {
-        if (self.interfaceOrientation == UIInterfaceOrientationPortrait) {
-            newTransform = CGAffineTransformMakeRotation(M_PI_2*(toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ? 1 : -1));
-        } else {
-            needStay = YES;
-            if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
-                newTransform = CGAffineTransformRotate(_bgView.transform,M_PI * 1.00001);
-                newTransformOfStay = CGAffineTransformRotate(_bgView.transform, M_PI);
-            }else{
-                newTransform = CGAffineTransformRotate(_bgView.transform,SYSTEM_VERSION_GE_TO(@"8.0") ? 1.00001 * M_PI : M_PI * 0.99999);
-                newTransformOfStay = CGAffineTransformRotate(_bgView.transform, M_PI);
-                
-            }
-        }
-        newFrame = CGRectMake(0, 0, maxLength, minLength);
-    }
-    
-    __weak typeof(self) weakSelf = self;
-    [UIView animateWithDuration:duration animations:^{
-        __strong __typeof(weakSelf) strongSelf = weakSelf;
-        // sometimes strongSelf can be nil in iOS version 7.0
-        if (!strongSelf) {
-            return ;
-        }
-        _bgView.transform = newTransform;
-        _bgView.frame = newFrame;
-    }completion:^(BOOL finished) {
-        __strong __typeof(weakSelf)strongSelf = weakSelf;
-        if (!strongSelf) {
-            return ;
-        }
-        if (needStay) {
-            _bgView.transform = newTransformOfStay;
-            _bgView.frame = newFrame;
-            needStay = NO;
-        }
-    }];
-    
-}
-
-// 旋转处理，通过旋转bgView来做到画面相对手机静止不动
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator NS_AVAILABLE_IOS(8_0)
-{
-    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-    
-    // size
-    CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    CGFloat minLength = MIN(screenSize.width, screenSize.height);
-    CGFloat maxLength = MAX(screenSize.width, screenSize.height);
-    CGRect newFrame;
-    
-    // frame
-    CGAffineTransform newTransform;
-    // need stay frame after animation
-    CGAffineTransform newTransformOfStay;
-    // whether need to stay
-    __block BOOL needStay = NO;
-    
-    UIInterfaceOrientation currentInterfaceOrientation = [UIApplication sharedApplication].statusBarOrientation;
-    UIDeviceOrientation toDeviceOrientation = [UIDevice currentDevice].orientation;
-    
-    if (toDeviceOrientation == UIDeviceOrientationPortrait) {
-        newTransform = CGAffineTransformIdentity;
-        newFrame = CGRectMake(0, 0, minLength, maxLength);
-    } else {
-        if (currentInterfaceOrientation == UIInterfaceOrientationPortrait) {
-            newTransform = CGAffineTransformMakeRotation(M_PI_2*(toDeviceOrientation == UIDeviceOrientationLandscapeRight ? 1 : -1));
-        } else {
-            needStay = YES;
-            if (currentInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
-                newTransform = CGAffineTransformRotate(_bgView.transform, M_PI * 1.00001);
-                newTransformOfStay = CGAffineTransformRotate(_bgView.transform, M_PI);
-            }else{
-                newTransform = CGAffineTransformRotate(_bgView.transform, SYSTEM_VERSION_GE_TO(@"8.0") ? 1.00001 * M_PI : M_PI * 0.99999);
-                newTransformOfStay = CGAffineTransformRotate(_bgView.transform, M_PI);
-            }
-        }
-        newFrame = CGRectMake(0, 0, maxLength, minLength);
-    }
-    
-    __weak typeof(self) weakSelf = self;
-    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
-        __strong __typeof(weakSelf) strongSelf = weakSelf;
-        if (!strongSelf) {
-            return ;
-        }
-        _bgView.transform = newTransform;
-        _bgView.frame =  newFrame;
-    } completion:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
-        __strong __typeof(weakSelf)strongSelf = weakSelf;
-        if (!strongSelf) {
-            return ;
-        }
-        if (needStay) {
-            _bgView.transform = newTransformOfStay;
-            _bgView.frame = newFrame;
-            needStay = NO;
-        }
-    }];
+    [_ctrlView putRow:@[_captureBtn, [UIView new], _streamBtn]];
 }
 
 - (void)onBtn:(UIButton *)btn{
-    if (btn == captureBtn) {
-        //预览
-        [self onCapture];
-    }else if (btn == streamBtn){
-        //推流
-        [self onStream];
-    }else if (btn == cameraBtn){
-        //切换摄像头
-        [self onCamera];
-    }else if (btn == quitBtn){
-        //退出
-        [self onQuit];
+    if (btn == _captureBtn) {
+        [self onCapture]; //启停预览
+    }else if (btn == _streamBtn){
+        [self onStream]; //启停推流
+    }else if (btn == _cameraBtn){
+        [self onCamera]; //切换前后摄像头
+    }else if (btn == _quitBtn){
+        [self onQuit]; //退出
     }
 }
 
-- (void)onCamera{
-    //切换摄像头
+- (void)onCamera{ //切换前后摄像头
     [_kit switchCamera];
 }
 
@@ -296,8 +142,7 @@ UIPickerViewDelegate>{
     if (!_kit.vCapDev.isRunning){
         _kit.videoOrientation = [[UIApplication sharedApplication] statusBarOrientation];
         [_kit setupFilter:_curFilter];
-        //启动预览
-        [_kit startPreview:_bgView];
+        [_kit startPreview:self.view]; //启动预览
     }
     else {
         [_kit stopPreview];
@@ -306,11 +151,9 @@ UIPickerViewDelegate>{
 - (void)onStream{
     if (_kit.streamerBase.streamState == KSYStreamStateIdle ||
         _kit.streamerBase.streamState == KSYStreamStateError) {
-        //启动推流
-        [_kit.streamerBase startStream:_url];
+        [_kit.streamerBase startStream:_url]; //启动推流
     }
-    else {
-        //停止推流
+    else { //停止推流
         [_kit.streamerBase stopStream];
     }
 }
@@ -352,6 +195,7 @@ numberOfRowsInComponent:(NSInteger)component {
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - view rotate
 - (void)onViewRotate{
     [self layoutUI];
     if (_kit == nil) {
@@ -360,9 +204,37 @@ numberOfRowsInComponent:(NSInteger)component {
     UIInterfaceOrientation orie = [[UIApplication sharedApplication] statusBarOrientation];
     [_kit rotateStreamTo:orie];
 }
-
 - (BOOL)shouldAutorotate {
     return YES;
+}
+- (void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    self.kit.preview.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
+}
+
+#pragma mark - 旋转预览 iOS > 8.0
+// 旋转处理，通过旋转bgView来做到画面相对手机静止不动
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        CGAffineTransform deltaTransform = coordinator.targetTransform;
+        CGFloat deltaAngle = atan2f(deltaTransform.b, deltaTransform.a);
+        
+        CGFloat currentRotation = [[self.kit.preview.layer valueForKeyPath:@"transform.rotation.z"] floatValue];
+        // Adding a small value to the rotation angle forces the animation to occur in a the desired direction, preventing an issue where the view would appear to rotate 2PI radians during a rotation from LandscapeRight -> LandscapeLeft.
+        currentRotation += -1 * deltaAngle + 0.0001;
+        [self.kit.preview.layer setValue:@(currentRotation) forKeyPath:@"transform.rotation.z"];
+        
+    } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        // Integralize the transform to undo the extra 0.0001 added to the rotation angle.
+        CGAffineTransform currentTransform = self.kit.preview.transform;
+        currentTransform.a = round(currentTransform.a);
+        currentTransform.b = round(currentTransform.b);
+        currentTransform.c = round(currentTransform.c);
+        currentTransform.d = round(currentTransform.d);
+        self.kit.preview.transform = currentTransform;
+    }];
 }
 
 @end

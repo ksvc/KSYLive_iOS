@@ -45,7 +45,9 @@
 /**
  @abstract   视频编码器 默认为 自动选择
  @discussion video codec used for encode
- @see        KSYVideoCodec
+ @discussion 修改此选项会导致videoEncodePerf值变化
+ @discussion 如果需要定制编码档次, 请在修改videoCodec之后再测设置
+ @see        KSYVideoCodec,videoEncodePerf
  */
 @property (nonatomic, assign) KSYVideoCodec videoCodec;
 
@@ -103,8 +105,10 @@
 @property (nonatomic, assign) KSYRecScene recScene;
 
 /**
- @abstract   视频编码性能档次 ( 默认为 KSYVideoEncodePer_LowPower)
- @discussion 视频质量和设备资源之间的权衡,开始写入前设置有效
+ @abstract   视频编码性能档次
+ @discussion 视频质量和设备资源之间的权衡,开始推流前, videoCodec设置之后,修改有效
+ @discussion 选择软编码的默认为KSYVideoEncodePer_LowPower
+ @discussion 选择Auto或硬编码的默认为KSYVideoEncodePer_HighPerformance
  */
 @property (nonatomic, assign) KSYVideoEncodePerformance videoEncodePerf;
 
@@ -189,7 +193,7 @@ FOUNDATION_EXPORT NSString *const KSYWriteStateDidChangeNotification NS_AVAILABL
  @discussion 初始化，将下列属性设置为默认值
  
  * _videoFPS         = 15;
- * _videoCodec       = KSYVideoCodec_X264;
+ * _videoCodec       = KSYVideoCodec_AUTO;
  * _audiokBPS        = 32;
  * _videoInitBitrate = 500;
  

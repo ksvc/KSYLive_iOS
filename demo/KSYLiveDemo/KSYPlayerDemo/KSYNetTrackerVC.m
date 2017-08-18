@@ -11,7 +11,7 @@
 
 #define ELEMENT_GAP  15
 
-@interface KSYNetTrackerVC() <UITextViewDelegate>
+@interface KSYNetTrackerVC() <UITextFieldDelegate>
 
 @end
 

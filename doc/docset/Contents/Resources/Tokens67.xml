@@ -293,6 +293,86 @@
             <NodeRef refid="67"/>
         </Token>
         
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_GetUserIdFailed</TokenIdentifier>
+            <Abstract type="html">获取user id失败 (KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_GetUserIdFailed</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="67"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_AkAndUserIsNotMatch</TokenIdentifier>
+            <Abstract type="html">AK和user id不匹配 (KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_AkAndUserIsNotMatch</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="67"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_GetServerInfoFailed</TokenIdentifier>
+            <Abstract type="html">获取服务器信息失败 (KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_GetServerInfoFailed</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="67"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_IllegalOutsideUrl</TokenIdentifier>
+            <Abstract type="html">非法的外部url (KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_IllegalOutsideUrl</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="67"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_OutsideAuthFailed</TokenIdentifier>
+            <Abstract type="html">外部鉴权失败 (KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_OutsideAuthFailed</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="67"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_SimpleAuthFailed</TokenIdentifier>
+            <Abstract type="html">简单鉴权失败(KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_SimpleAuthFailed</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="67"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_InvalidAuthType</TokenIdentifier>
+            <Abstract type="html">无效的鉴权类型 (KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_InvalidAuthType</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="67"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamErrorCode_RTMP_IllegalUserId</TokenIdentifier>
+            <Abstract type="html">非法的user id (KSY 自定义)</Abstract>
+            <Declaration>KSYStreamErrorCode_RTMP_IllegalUserId</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="67"/>
+        </Token>
+        
         
 	</File>
 </Tokens>

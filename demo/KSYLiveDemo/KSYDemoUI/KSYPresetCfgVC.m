@@ -24,7 +24,7 @@
 
 @implementation KSYPresetCfgVC
 
-- (instancetype)initWithURL:(NSString *)url{
+- (instancetype)initWithURL:(NSURL *)url{
     self = [super init];
     _rtmpURL = url;
     _cfgView = [[KSYPresetCfgView alloc] init];
@@ -49,8 +49,8 @@
     if (btn) {
         [self pressBtn:btn after:0.5];
     }
-    if (_rtmpURL && [_rtmpURL length] ){
-        _cfgView.hostUrlUI.text = _rtmpURL;
+    if (_rtmpURL ){
+        _cfgView.hostUrlUI.text = _rtmpURL.absoluteString;
     }
 }
 - (void)viewDidAppear:(BOOL)animated {
