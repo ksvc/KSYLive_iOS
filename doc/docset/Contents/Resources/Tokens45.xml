@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYUIRecorderKit.html">
+	<File path="Classes/KSYVideoInfo.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYUIRecorderKit</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYVideoInfo</TokenIdentifier>
+			<Abstract type="html">视频信息</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
 			
 			<NodeRef refid="45"/>
@@ -13,182 +13,110 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/initWithScheme:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/setVcodec:</TokenIdentifier>
+			<Abstract type="html">视频编码格式, 具体类型为MEDIAINFOCODECID</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>- (instancetype)initWithScheme:(KSYPlayRecordScheme)scheme</Declaration>
+			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID vcodec</Declaration>
 			
 			
-			<Anchor>//api/name/initWithScheme:</Anchor>
+			<Anchor>//api/name/vcodec</Anchor>
             <NodeRef refid="45"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/setContentView:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/vcodec</TokenIdentifier>
+			<Abstract type="html">视频编码格式, 具体类型为MEDIAINFOCODECID</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) UIView *contentView</Declaration>
+			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID vcodec</Declaration>
 			
 			
-			<Anchor>//api/name/contentView</Anchor>
+			<Anchor>//api/name/vcodec</Anchor>
             <NodeRef refid="45"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/contentView</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYVideoInfo/vcodec</TokenIdentifier>
+			<Abstract type="html">视频编码格式, 具体类型为MEDIAINFOCODECID</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) UIView *contentView</Declaration>
+			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID vcodec</Declaration>
 			
 			
-			<Anchor>//api/name/contentView</Anchor>
+			<Anchor>//api/name/vcodec</Anchor>
             <NodeRef refid="45"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYUIRecorderKit/contentView</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/setFrame_width:</TokenIdentifier>
+			<Abstract type="html">视频帧宽度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) UIView *contentView</Declaration>
+			<Declaration>@property (nonatomic, assign) int32_t frame_width</Declaration>
 			
 			
-			<Anchor>//api/name/contentView</Anchor>
+			<Anchor>//api/name/frame_width</Anchor>
             <NodeRef refid="45"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/processWithTextureId:TextureSize:Time:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/frame_width</TokenIdentifier>
+			<Abstract type="html">视频帧宽度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>- (void)processWithTextureId:(GLuint)InputTexture TextureSize:(CGSize)TextureSize Time:(CMTime)time</Declaration>
+			<Declaration>@property (nonatomic, assign) int32_t frame_width</Declaration>
 			
 			
-			<Anchor>//api/name/processWithTextureId:TextureSize:Time:</Anchor>
+			<Anchor>//api/name/frame_width</Anchor>
             <NodeRef refid="45"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/processAudioSampleBuffer:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYVideoInfo/frame_width</TokenIdentifier>
+			<Abstract type="html">视频帧宽度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>- (void)processAudioSampleBuffer:(CMSampleBufferRef)buf</Declaration>
+			<Declaration>@property (nonatomic, assign) int32_t frame_width</Declaration>
 			
 			
-			<Anchor>//api/name/processAudioSampleBuffer:</Anchor>
+			<Anchor>//api/name/frame_width</Anchor>
             <NodeRef refid="45"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/processVideoSampleBuffer:timeInfo:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/setFrame_height:</TokenIdentifier>
+			<Abstract type="html">视频帧高度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>- (void)processVideoSampleBuffer:(CVPixelBufferRef)pixelBuffer timeInfo:(CMTime)timeStamp</Declaration>
+			<Declaration>@property (nonatomic, assign) int32_t frame_height</Declaration>
 			
 			
-			<Anchor>//api/name/processVideoSampleBuffer:timeInfo:</Anchor>
+			<Anchor>//api/name/frame_height</Anchor>
             <NodeRef refid="45"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/startRecord:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/frame_height</TokenIdentifier>
+			<Abstract type="html">视频帧高度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>- (void)startRecord:(NSURL *)path</Declaration>
+			<Declaration>@property (nonatomic, assign) int32_t frame_height</Declaration>
 			
 			
-			<Anchor>//api/name/startRecord:</Anchor>
+			<Anchor>//api/name/frame_height</Anchor>
             <NodeRef refid="45"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/stopRecord</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYVideoInfo/frame_height</TokenIdentifier>
+			<Abstract type="html">视频帧高度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>- (void)stopRecord</Declaration>
-			
-			
-			<Anchor>//api/name/stopRecord</Anchor>
-            <NodeRef refid="45"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/setBPlayRecord:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
-			
-			<Declaration>@property BOOL bPlayRecord</Declaration>
+			<Declaration>@property (nonatomic, assign) int32_t frame_height</Declaration>
 			
 			
-			<Anchor>//api/name/bPlayRecord</Anchor>
-            <NodeRef refid="45"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/bPlayRecord</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
-			
-			<Declaration>@property BOOL bPlayRecord</Declaration>
-			
-			
-			<Anchor>//api/name/bPlayRecord</Anchor>
-            <NodeRef refid="45"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYUIRecorderKit/bPlayRecord</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
-			
-			<Declaration>@property BOOL bPlayRecord</Declaration>
-			
-			
-			<Anchor>//api/name/bPlayRecord</Anchor>
-            <NodeRef refid="45"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/setWriter:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) KSYMovieWriter *writer</Declaration>
-			
-			
-			<Anchor>//api/name/writer</Anchor>
-            <NodeRef refid="45"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/writer</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) KSYMovieWriter *writer</Declaration>
-			
-			
-			<Anchor>//api/name/writer</Anchor>
-            <NodeRef refid="45"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYUIRecorderKit/writer</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) KSYMovieWriter *writer</Declaration>
-			
-			
-			<Anchor>//api/name/writer</Anchor>
+			<Anchor>//api/name/frame_height</Anchor>
             <NodeRef refid="45"/>
 		</Token>
 		

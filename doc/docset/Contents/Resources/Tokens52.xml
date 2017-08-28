@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYAudioNoiseSuppress.html">
+	<File path="Constants/KSYBWEstimateMode.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYAudioNoiseSuppress</TokenIdentifier>
-			<Abstract type="html">噪声抑制等级</Abstract>
-			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYBWEstimateMode</TokenIdentifier>
+			<Abstract type="html">网络自适应模式类型
+  </Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
 			<NodeRef refid="52"/>
@@ -14,51 +15,31 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_OFF</TokenIdentifier>
-            <Abstract type="html">关闭</Abstract>
-            <Declaration>KSYAudioNoiseSuppress_OFF</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBWEstMode_Default</TokenIdentifier>
+            <Abstract type="html">默认模式 (综合模式,比较平稳)</Abstract>
+            <Declaration>KSYBWEstMode_Default</Declaration>
             
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
-            
-            <NodeRef refid="52"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_LOW</TokenIdentifier>
-            <Abstract type="html">温和</Abstract>
-            <Declaration>KSYAudioNoiseSuppress_LOW</Declaration>
-            
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="52"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_MEDIUM</TokenIdentifier>
-            <Abstract type="html">中等</Abstract>
-            <Declaration>KSYAudioNoiseSuppress_MEDIUM</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBWEstMode_Negtive</TokenIdentifier>
+            <Abstract type="html">流畅优先模式(消极上调, 极速下调)</Abstract>
+            <Declaration>KSYBWEstMode_Negtive</Declaration>
             
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
-            
-            <NodeRef refid="52"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_HIGH</TokenIdentifier>
-            <Abstract type="html">激进</Abstract>
-            <Declaration>KSYAudioNoiseSuppress_HIGH</Declaration>
-            
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="52"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_VERYHIGH</TokenIdentifier>
-            <Abstract type="html">非常激进</Abstract>
-            <Declaration>KSYAudioNoiseSuppress_VERYHIGH</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBWEstMode_Disable</TokenIdentifier>
+            <Abstract type="html">禁用网络自适应网络调整</Abstract>
+            <Declaration>KSYBWEstMode_Disable</Declaration>
             
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="52"/>
         </Token>

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYBWEstimateMode.html">
+	<File path="Constants/KSYBgmPlayerState.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYBWEstimateMode</TokenIdentifier>
-			<Abstract type="html">网络自适应模式类型
-  </Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYBgmPlayerState</TokenIdentifier>
+			<Abstract type="html">音频播放状态</Abstract>
 			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
@@ -15,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBWEstMode_Default</TokenIdentifier>
-            <Abstract type="html">默认模式 (综合模式,比较平稳)</Abstract>
-            <Declaration>KSYBWEstMode_Default</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateInit</TokenIdentifier>
+            <Abstract type="html">初始状态</Abstract>
+            <Declaration>KSYBgmPlayerStateInit</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -25,9 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBWEstMode_Negtive</TokenIdentifier>
-            <Abstract type="html">流畅优先模式(消极上调, 极速下调)</Abstract>
-            <Declaration>KSYBWEstMode_Negtive</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateStarting</TokenIdentifier>
+            <Abstract type="html">背景音正在播放</Abstract>
+            <Declaration>KSYBgmPlayerStateStarting</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -35,9 +34,49 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBWEstMode_Disable</TokenIdentifier>
-            <Abstract type="html">禁用网络自适应网络调整</Abstract>
-            <Declaration>KSYBWEstMode_Disable</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateStopped</TokenIdentifier>
+            <Abstract type="html">背景音停止</Abstract>
+            <Declaration>KSYBgmPlayerStateStopped</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="53"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStatePlaying</TokenIdentifier>
+            <Abstract type="html">背景音正在播放</Abstract>
+            <Declaration>KSYBgmPlayerStatePlaying</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="53"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStatePaused</TokenIdentifier>
+            <Abstract type="html">背景音暂停</Abstract>
+            <Declaration>KSYBgmPlayerStatePaused</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="53"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateError</TokenIdentifier>
+            <Abstract type="html">背景音播放出错</Abstract>
+            <Declaration>KSYBgmPlayerStateError</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="53"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateInterrupted</TokenIdentifier>
+            <Abstract type="html">背景音被打断</Abstract>
+            <Declaration>KSYBgmPlayerStateInterrupted</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
