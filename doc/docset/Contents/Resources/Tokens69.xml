@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYTranscodeErrorCode.html">
+	<File path="Constants/KSYTranscodeState.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYTranscodeErrorCode</TokenIdentifier>
-			<Abstract type="html">转码错误码，用于说明转码失败的原因</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYTranscodeState</TokenIdentifier>
+			<Abstract type="html">转码状态</Abstract>
 			<DeclaredIn>KSYTranscoder.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_None</TokenIdentifier>
-            <Abstract type="html">正常无错误</Abstract>
-            <Declaration>KSYTranscodeErrorCode_None</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeState_Idle</TokenIdentifier>
+            <Abstract type="html">初始状态</Abstract>
+            <Declaration>KSYTranscodeState_Idle</Declaration>
             
             <DeclaredIn>KSYTranscoder.h</DeclaredIn>
             
@@ -24,9 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_InvalidAddress</TokenIdentifier>
-            <Abstract type="html">无效的文件地址(输入或输出地址为空)</Abstract>
-            <Declaration>KSYTranscodeErrorCode_InvalidAddress</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeState_Transcoding</TokenIdentifier>
+            <Abstract type="html">转码中</Abstract>
+            <Declaration>KSYTranscodeState_Transcoding</Declaration>
             
             <DeclaredIn>KSYTranscoder.h</DeclaredIn>
             
@@ -34,9 +34,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_InputFile_OpenFailed</TokenIdentifier>
-            <Abstract type="html">打开输入文件失败</Abstract>
-            <Declaration>KSYTranscodeErrorCode_InputFile_OpenFailed</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeState_Completed</TokenIdentifier>
+            <Abstract type="html">转码完成</Abstract>
+            <Declaration>KSYTranscodeState_Completed</Declaration>
             
             <DeclaredIn>KSYTranscoder.h</DeclaredIn>
             
@@ -44,59 +44,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_InvalidData</TokenIdentifier>
-            <Abstract type="html">无效的媒体数据</Abstract>
-            <Declaration>KSYTranscodeErrorCode_InvalidData</Declaration>
-            
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
-            
-            <NodeRef refid="69"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_OutputFile_UnsupportedFormat</TokenIdentifier>
-            <Abstract type="html">不支持的输出文件格式</Abstract>
-            <Declaration>KSYTranscodeErrorCode_OutputFile_UnsupportedFormat</Declaration>
-            
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
-            
-            <NodeRef refid="69"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_OutputFile_OpenFailed</TokenIdentifier>
-            <Abstract type="html">打开输出文件失败</Abstract>
-            <Declaration>KSYTranscodeErrorCode_OutputFile_OpenFailed</Declaration>
-            
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
-            
-            <NodeRef refid="69"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_OutputFile_AddStreamFailed</TokenIdentifier>
-            <Abstract type="html">输出文件添加流失败</Abstract>
-            <Declaration>KSYTranscodeErrorCode_OutputFile_AddStreamFailed</Declaration>
-            
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
-            
-            <NodeRef refid="69"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_OutputFile_StartWriteFailed</TokenIdentifier>
-            <Abstract type="html">输出文件头写入失败(通常为不支持的codec)</Abstract>
-            <Declaration>KSYTranscodeErrorCode_OutputFile_StartWriteFailed</Declaration>
-            
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
-            
-            <NodeRef refid="69"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_Transcoding_Failed</TokenIdentifier>
-            <Abstract type="html">转码过程中出现错误</Abstract>
-            <Declaration>KSYTranscodeErrorCode_Transcoding_Failed</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeState_Error</TokenIdentifier>
+            <Abstract type="html">转码失败</Abstract>
+            <Declaration>KSYTranscodeState_Error</Declaration>
             
             <DeclaredIn>KSYTranscoder.h</DeclaredIn>
             
