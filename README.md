@@ -157,8 +157,10 @@ pod 'libksygpulive/libksygpulive'
 ```
 执行 pod install即可.  
 
-其中, libksygpulive为子模块, 为了满足不同用户的需求, libksygpulive中提供了4个不同的子模块:    
-* KSYMediaPlayer     : 用于直播的播放内核(支持格式精简)
+其中, 第一段libksygpulive为SDK名,第二段KSYGPUResource和libksygpulive为子模块名
+
+本SDK提供了多个不同的子模块以满足不同用户的需求:
+* KSYMediaPlayer     : 用于直播的播放内核(支持格式精简)
 * KSYMediaPlayer_vod : 用于点播的播放内核(支持格式丰富)
 * libksygpulive      : 用于直播推流和播放的SDK（直播推流功能和精简版本的播放SDK）
 * libksygpulive_265  : 用于直播推流和播放的SDK (支持265推流和精简版本的播放SDK)
