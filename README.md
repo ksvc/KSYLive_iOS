@@ -168,7 +168,9 @@ pod 'libksygpulive/libksygpulive'
 <summary>Pod依赖进阶</summary>
 <b markdown=1>
 * 本地开发版 (sdk clone或下载到本地后)
-``` pod 'libksygpulive/libksygpulive', :path => '../'  ```
+``` 
+pod 'libksygpulive/libksygpulive', :path => '../'  
+```
 
 * 直接指定SDK的github仓库地址和版本号
 ```
@@ -186,7 +188,7 @@ pod 'libksygpulive_ks3/libksygpulive'
 ```         
 
 * 如果pod install 时出现无法找到specification的提示, 请先更新repo
-``
+```
 pod repo update
 ```
 
