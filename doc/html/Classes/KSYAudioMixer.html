@@ -66,6 +66,8 @@
 		
 		<option value="//api/name/outFmtDes">outFmtDes</option>
 		
+		<option value="//api/name/pcmProcessingCallback">pcmProcessingCallback</option>
+		
 		<option value="//api/name/sampleRate">sampleRate</option>
 		
 	</optgroup>
@@ -590,12 +592,12 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>pData</code></th>
-						<td><p>原始数据</p></td>
+						<td><p>原始数据指针数组,单通道仅pData[0]有效 当输入为多通道且非交织时, pData[i]分别表示各个通道的数据</p></td>
 					</tr>
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>len</code></th>
-						<td><p>数据的长度，单位为字节</p></td>
+						<td><p>数据的长度，单位为sample (bytes / sizeof(sample))</p></td>
 					</tr>
 				
 					<tr>
@@ -675,7 +677,53 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>sampleBuffer 混音后的音频数据</p><p>请注意本函数的执行时间，如果太长可能导致不可预知的问题</p><p>请参考 CMSampleBufferRef</p>
+				<p>sampleBuffer 混音后的音频数据</p><p>请注意本函数的执行时间，如果太长可能导致不可预知的问题</p><p>请参考 CMSampleBufferRef</p><p>与pcmProcessingCallback两者只能二选一, 设置 audioProcessingCallback 会清空 <a href="#//api/name/pcmProcessingCallback">pcmProcessingCallback</a></p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYAudioMixer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/pcmProcessingCallback" title="pcmProcessingCallback"></a>
+	<h3 class="method-title"><code><a href="#//api/name/pcmProcessingCallback">&nbsp;&nbsp;pcmProcessingCallback</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>音频处理回调接口</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) void ( ^ ) ( uint8_t **pData , int nbSample , CMTime pts ) pcmProcessingCallback</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>pData 为数据指针 (双通道时, 数据为交织格式), 仅pData[0] 有效</p><p>nbSample 为数据长度, 单位为sample (bytes / sizeof(sample)/channels)</p><p>请注意本函数的执行时间，如果太长可能导致不可预知的问题</p><p>与audioProcessingCallback两者只能二选一, 设置 pcmProcessingCallback 会清空<a href="#//api/name/audioProcessingCallback">audioProcessingCallback</a></p>
 			</div>
 			
 
@@ -767,7 +815,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>如果输入数据都不是双声道则输出数据左右耳内容一样</p>
+				<p>如果输入数据都不是双声道则输出数据左右耳内容一样</p><p>输出立体声的数据格式一定是交织的</p>
 			</div>
 			
 
@@ -892,11 +940,6 @@
 
 			
 
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>暂时为固定一种格式 (44.1KHz, S16)</p>
-			</div>
 			
 
 			

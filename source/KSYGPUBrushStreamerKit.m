@@ -1,8 +1,8 @@
 //
-//  KSYGPUPipStreamerKit.m
+//  KSYGPUBrushStreamerKit.m
 //  KSYStreamer
 //
-//  Created by jaingdong on 28/12/16.
+//  Created by jiangdong on 28/12/16.
 //  Copyright © 2016 ksyun. All rights reserved.
 //
 #import "KSYGPUBrushStreamerKit.h"
@@ -28,14 +28,15 @@
                           ofLayer:_drawLayer];
 }
 
-// 添加图层到 vMixer 中
-- (void) addDrawPic:(GPUImageOutput*)pic ToMixerAt: (NSInteger)idx{
-    if (pic == nil){
+@synthesize drawPic = _drawPic;
+-(void) setDrawPic:(GPUImageUIElement *)drawPic{
+    _drawPic = drawPic;
+    if (_drawPic == nil){
+        [self.vStreamMixer  clearPicOfLayer:_drawLayer];
         return;
     }
-    [pic removeAllTargets];
-    [self.vStreamMixer  clearPicOfLayer:idx];
-    [pic addTarget:self.vStreamMixer atTextureLocation:idx];
+    [_drawPic removeAllTargets];
+    [_drawPic addTarget:self.vStreamMixer atTextureLocation:_drawLayer];
 }
 
 - (void)dealloc {
@@ -45,15 +46,6 @@
 
 - (void)removeDrawLayer{
     [self.vStreamMixer  clearPicOfLayer:_drawLayer];
-}
-
-/**
- @abstract   添加画笔图层
- */
-- (void) addDrawLayer:(UIImage*)img{
-    _drawPic = [[GPUImagePicture alloc] initWithImage:img];
-    [self addDrawPic:_drawPic ToMixerAt:_drawLayer];
-    [_drawPic processImage];
 }
 
 @end

@@ -163,7 +163,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/setNoiseSuppressionLevel:</TokenIdentifier>
-			<Abstract type="html">噪声抑制处理的等级(默认为KSYAudioNoiseSuppress_HIGH)</Abstract>
+			<Abstract type="html">噪声抑制处理的等级(默认为KSYAudioNoiseSuppress_OFF)</Abstract>
 			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) KSYAudioNoiseSuppress noiseSuppressionLevel</Declaration>
@@ -175,7 +175,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/noiseSuppressionLevel</TokenIdentifier>
-			<Abstract type="html">噪声抑制处理的等级(默认为KSYAudioNoiseSuppress_HIGH)</Abstract>
+			<Abstract type="html">噪声抑制处理的等级(默认为KSYAudioNoiseSuppress_OFF)</Abstract>
 			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) KSYAudioNoiseSuppress noiseSuppressionLevel</Declaration>
@@ -187,7 +187,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYAUAudioCapture/noiseSuppressionLevel</TokenIdentifier>
-			<Abstract type="html">噪声抑制处理的等级(默认为KSYAudioNoiseSuppress_HIGH)</Abstract>
+			<Abstract type="html">噪声抑制处理的等级(默认为KSYAudioNoiseSuppress_OFF)</Abstract>
 			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, assign) KSYAudioNoiseSuppress noiseSuppressionLevel</Declaration>
@@ -410,6 +410,42 @@
 			
 			
 			<Anchor>//api/name/audioProcessingCallback</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/setPcmProcessingCallback:</TokenIdentifier>
+			<Abstract type="html">采集数据输出回调函数</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( uint8_t **pData , int len , const AudioStreamBasicDescription *fmt , CMTime timeInfo ) pcmProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/pcmProcessingCallback</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAUAudioCapture/pcmProcessingCallback</TokenIdentifier>
+			<Abstract type="html">采集数据输出回调函数</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( uint8_t **pData , int len , const AudioStreamBasicDescription *fmt , CMTime timeInfo ) pcmProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/pcmProcessingCallback</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAUAudioCapture/pcmProcessingCallback</TokenIdentifier>
+			<Abstract type="html">采集数据输出回调函数</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( uint8_t **pData , int len , const AudioStreamBasicDescription *fmt , CMTime timeInfo ) pcmProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/pcmProcessingCallback</Anchor>
             <NodeRef refid="2"/>
 		</Token>
 		

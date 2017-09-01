@@ -16,14 +16,20 @@
 #import "KSYNameSlider.h"
 #import "KSYQRCode.h"
 #import <YYImage/YYImage.h>
-
+#if  __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
 #import <CallKit/CXCallObserver.h>
 #import <CallKit/CallKit.h>
+#endif
 
 // 为防止将手机存储写满,限制录像时长为30s
 #define REC_MAX_TIME 30 //录制视频的最大时间，单位s
 
-@interface KSYStreamerVC () <UIImagePickerControllerDelegate,UINavigationControllerDelegate, CXCallObserverDelegate>{
+@interface KSYStreamerVC () <UIImagePickerControllerDelegate
+,UINavigationControllerDelegate
+#if  __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
+,CXCallObserverDelegate
+#endif
+>{
     UISwipeGestureRecognizer *_swipeGest;
     NSDateFormatter * _dateFormatter;
     int _strSeconds; // 推流持续的时间 , 单位s
@@ -35,14 +41,16 @@
     UIImageView *_foucsCursor;//对焦框
     CGFloat _currentPinchZoomFactor;//当前触摸缩放因子
     BOOL _bOutputInfo;//是否输出推流过程中的统计信息
+#if  __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
     CXCallObserver *_callObserver;
-    
+#endif
     YYImageDecoder  * _animateDecoder;
     int _animateIdx;
     CADisplayLink   *_displayLink;
     NSTimeInterval   _dlTime;
     NSLock          *_dlLock;
     GPUImagePicture *_logoPicure;
+    UIImageOrientation _logoOrientation;
 }
 @end
 
@@ -202,9 +210,10 @@
                 SEL_VALUE(onNetStateEvent:) ,       KSYNetStateEventNotification,
                 SEL_VALUE(onBgmPlayerStateChange:) ,KSYAudioStateDidChangeNotification,
                 nil];
-    
+#if  __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
     _callObserver = [[CXCallObserver alloc] init];
     [_callObserver setDelegate:self queue:nil];
+#endif
 }
 
 - (void) addObservers {
@@ -223,7 +232,9 @@
 - (void) rmObservers {
     [super rmObservers];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+#if  __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
     _callObserver = nil;
+#endif
 }
 
 - (void) layoutUI {
@@ -257,6 +268,8 @@
     UIImage * logoImg = [UIImage imageNamed:@"ksvc"];
     _logoPicure   =  [[GPUImagePicture alloc] initWithImage:logoImg];
     _kit.logoPic  = _logoPicure;
+    _logoOrientation = logoImg.imageOrientation;
+    [_kit setLogoOrientaion: _logoOrientation];
     _kit.logoRect = CGRectMake(0.05, yPos, 0, hgt);
     _kit.logoAlpha= 0.5;
     yPos += hgt;
@@ -283,7 +296,8 @@
 - (void) setupAnimateLogo:(NSString*)path {
     NSData *data = [NSData dataWithContentsOfFile:path];
     [_dlLock lock];
-    _animateDecoder = [YYImageDecoder decoderWithData:data scale:2.0];
+    _animateDecoder = [YYImageDecoder decoderWithData:data scale: [[UIScreen mainScreen] scale]];
+    [_kit setLogoOrientaion:UIImageOrientationUp];
     [_dlLock unlock];
     _animateIdx = 0;
     _dlTime = 0;
@@ -344,12 +358,17 @@
     _kit.cameraPosition = [self.presetCfgView cameraPos];
     _kit.gpuOutputPixelFormat = [self.presetCfgView gpuOutputPixelFmt];
     _kit.capturePixelFormat   = [self.presetCfgView gpuOutputPixelFmt];
+    _kit.aCapDev.noiseSuppressionLevel = self.audioView.noiseSuppress;
     _kit.videoProcessingCallback = ^(CMSampleBufferRef buf){
         // 在此处添加自定义图像处理, 直接修改buf中的图像数据会传递到观众端
         // 或复制图像数据之后再做其他处理, 则观众端仍然看到处理前的图像
     };
     _kit.audioProcessingCallback = ^(CMSampleBufferRef buf){
         // 在此处添加自定义音频处理, 直接修改buf中的pcm数据会传递到观众端
+        // 或复制音频数据之后再做其他处理, 则观众端仍然听到原始声音
+    };
+    _kit.pcmProcessingCallback = ^(uint8_t** pData, int len, const AudioStreamBasicDescription* fmt, CMTime timeInfo){
+        // 在此处添加自定义音频处理, 直接修改pcm数据会传递到观众端
         // 或复制音频数据之后再做其他处理, 则观众端仍然听到原始声音
     };
     _kit.interruptCallback = ^(BOOL bInterrupt){
@@ -452,9 +471,11 @@
     }
     if (_kit.captureState == KSYCaptureStateIdle) {
         self.ctrlView.btnCapture.backgroundColor = [UIColor darkGrayColor];
+        self.audioView.audioDataTypeSeg.enabled = YES;
     }
     else if(_kit.captureState == KSYCaptureStateCapturing) {
         self.ctrlView.btnCapture.backgroundColor = [UIColor lightGrayColor];
+        self.audioView.audioDataTypeSeg.enabled = NO;
     }
 }
 
@@ -728,6 +749,7 @@
 }
 - (void) onCapture{
     if (!_kit.vCapDev.isRunning){
+        _kit.audioDataType = self.audioView.audioDataType;
         _kit.videoOrientation = [[UIApplication sharedApplication] statusBarOrientation];
         // 重新开启预览是需要重新根据方向setupLogo
         [self setupLogo];
@@ -902,6 +924,7 @@
             [_dlLock lock];
             _animateDecoder = nil;
             _kit.logoPic = _logoPicure;
+            [_kit setLogoOrientaion:_logoOrientation];
             [_dlLock unlock];
         }
     }
@@ -994,12 +1017,10 @@
     _logoPicure = [[GPUImagePicture alloc] initWithImage:image
                                      smoothlyScaleOutput:YES];
     _kit.logoPic = _logoPicure;
+    _logoOrientation = image.imageOrientation;
+    [_kit setLogoOrientaion: _logoOrientation];
     [picker dismissViewControllerAnimated:YES completion:nil];
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
-        [_kit.vPreviewMixer setPicRotation:kGPUImageRotateRight
-                                   ofLayer:_kit.logoPicLayer];
-        [_kit.vStreamMixer setPicRotation:kGPUImageRotateRight
-                                  ofLayer:_kit.logoPicLayer];
         [self restartVideoCapSession];
     }
 }
@@ -1178,6 +1199,7 @@
     [_kit setPinchZoomFactor:zoomFactor];
 }
 
+#if  __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
 #pragma mark - CXCallObserverDelegate method
 - (void)callObserver:(CXCallObserver *)callObserver callChanged:(CXCall *)call {
     //处理来电事件
@@ -1203,6 +1225,7 @@
     if(needSendMsg == YES)
         [_kit processMessageData:message];
 }
+#endif
 
 #pragma mark - Decal 相关
 - (void)genDecalViewWithImgName:(NSString *)imgName{

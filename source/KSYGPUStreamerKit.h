@@ -403,9 +403,35 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  @discussion sampleBuffer 原始采集到的音频数据
  @discussion 对sampleBuffer内的pcm数据的修改将传递到观众端
  @discussion 请注意本函数的执行时间，如果太长可能导致不可预知的问题
+ @discussion 当audioDataType 为KSYAudioData_CMSampleBuffer时才会被触发回调
  @discussion 请参考 CMSampleBufferRef
+ @see audioDataType
  */
 @property(nonatomic, copy) void(^audioProcessingCallback)(CMSampleBufferRef sampleBuffer);
+
+/**
+ @abstract   音频处理回调接口
+ @discussion pData len为原始采集到的音频数据
+ @discussion 当audioDataType 为KSYAudioData_RawPCM时才会被触发回调
+ @discussion 请注意本函数的执行时间，如果太长可能导致不可预知的问题
+ @see audioDataType
+ */
+@property(nonatomic, copy) void(^pcmProcessingCallback)(uint8_t** pData, int len, const AudioStreamBasicDescription* fmt, CMTime timeInfo);
+
+/** 音频通路数据类型 */
+typedef NS_ENUM(NSInteger, KSYAudioDataType){
+    /// 音频数据采用CMSampleBuffer传递
+    KSYAudioData_CMSampleBuffer,
+    /// 音频数据直接使用原始的PCM数据指针传递
+    KSYAudioData_RawPCM,
+};
+
+/**
+ @abstract   音频处理通路数据类型 (默认为 KSYAudioData_CMSampleBuffer)
+ @discussion 音频数据转为 CMSampleBuffer时有格式开销, 使用RawPCM资源消耗会少一些
+ @discussion 内部组件对KSYAudioData_RawPCM可能不完善, 目前仅保证基本通路能工作
+ */
+@property (nonatomic, assign)   KSYAudioDataType    audioDataType;
 
 /**
  @abstract   摄像头采集被打断的消息通知
@@ -465,6 +491,13 @@ FOUNDATION_EXPORT NSString *const KSYCaptureStateDidChangeNotification NS_AVAILA
  @discussion 请注意背景图片的尺寸, 太大的图片会导致内存占用过高
  */
 @property (nonatomic, readwrite) GPUImagePicture      *logoPic;
+
+/**
+ 设置水印图片的朝向
+
+ @param orien 图片的朝向
+ */
+- (void) setLogoOrientaion:(UIImageOrientation) orien;
 
 /**
  @abstract   文字内容的图片

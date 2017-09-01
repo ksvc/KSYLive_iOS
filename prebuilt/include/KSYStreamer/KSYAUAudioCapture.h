@@ -98,7 +98,7 @@ typedef NS_ENUM(NSInteger, KSYAudioNoiseSuppress){
 @property(nonatomic, assign) BOOL enableVoiceProcess;
 
 /**
- @abstract 噪声抑制处理的等级(默认为KSYAudioNoiseSuppress_HIGH)
+ @abstract 噪声抑制处理的等级(默认为KSYAudioNoiseSuppress_OFF)
  @discussion 当启用噪声抑制处理后, 内部会进行输出音频数据的
  */
 @property(nonatomic, assign) KSYAudioNoiseSuppress noiseSuppressionLevel;
@@ -140,8 +140,16 @@ typedef NS_ENUM(NSInteger, KSYAudioNoiseSuppress){
 /**
  @abstract   采集数据输出回调函数
  @discussion sampleBuffer 为采集到的音频数据
+ @discussion 与pcmProcessingCallback两者只能二选一, 设置 audioProcessingCallback 会清空pcmProcessingCallback
  */
 @property(nonatomic, copy) void(^audioProcessingCallback)(CMSampleBufferRef sampleBuffer);
+
+/**
+ @abstract   采集数据输出回调函数
+ @discussion pData 和 len 为采集数据和长度 (目前只支持单声道, 只有pData[0]为有效数据指针 )
+ @discussion 与audioProcessingCallback两者只能二选一, 设置 pcmProcessingCallback 会清空audioProcessingCallback
+ */
+@property(nonatomic, copy) void(^pcmProcessingCallback)(uint8_t** pData, int len, const AudioStreamBasicDescription* fmt, CMTime timeInfo);
 
 /**
  @abstract 用户可以自定义播放的内容，直接把数据填入ioData

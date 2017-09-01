@@ -323,14 +323,25 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
                        timeInfo:(CMTime)timeStamp
                      onComplete:(void (^)(BOOL))completion;
 
-
 /**
  @abstract 处理一段音频数据
  @param sampleBuffer Buffer to process
  @discussion 应当在开始推流前定期调用此接口，与processVideoSampleBuffer 交错进行
- @warning    目前只支持 单通道  S16 格式的PCM数据
+ @warning    目前只支持 S16 格式的PCM数据
  */
 - (void)processAudioSampleBuffer:(CMSampleBufferRef)sampleBuffer;
+
+/**
+ @abstract  处理一段音频数据
+ @param     pData 原始数据指针数组
+ @param     len   数据的长度，单位为字节
+ @param     fmt   原始数据的格式 (必须保证一次推流过程中数据格式不变)
+ @param     pts   原始数据的时间戳
+ */
+- (void)processAudioData:(uint8_t**)pData
+                nbSample:(int)len
+              withFormat:(const AudioStreamBasicDescription*)fmt
+                timeinfo:(CMTime*)pts;
 
 /**
  @abstract 处理一个消息
@@ -346,6 +357,13 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
  @warnning 默认是空的，只有在需要鉴权时，才能获取到
  */
 @property (nonatomic, assign) NSString *clientAk;
+
+/**
+ @abstract 获取当前SDK过期时间
+ @discussion 为nil时,可以永久使用不会过期
+ @warnning sdk自行解析得到, 外部赋值无效
+ */
+@property (nonatomic, assign) NSDate *expireDate;
 
 /**
  @abstract   查询当前推流的事件ID

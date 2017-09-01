@@ -80,6 +80,7 @@
     _interruptCallback       = nil;
     _gpuOutputPixelFormat = kCVPixelFormatType_32BGRA;
     _capturePixelFormat   = kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange;
+    _audioDataType = KSYAudioData_CMSampleBuffer;
     
     _autoRetryCnt    = 0;
     _maxAutoRetry    = 0;
@@ -342,12 +343,25 @@
 - (void) setupAudioPath {
     weakObj(self);
     //1. 音频采集, 语音数据送入混音器
-    _aCapDev.audioProcessingCallback = ^(CMSampleBufferRef buf){
-        if ( selfWeak.audioProcessingCallback ){
-            selfWeak.audioProcessingCallback(buf);
-        }
-        [selfWeak mixAudio:buf to:selfWeak.micTrack];
-    };
+    if (_audioDataType == KSYAudioData_CMSampleBuffer) {
+        _aCapDev.audioProcessingCallback = ^(CMSampleBufferRef buf){
+            if ( selfWeak.audioProcessingCallback ){
+                selfWeak.audioProcessingCallback(buf);
+            }
+            [selfWeak mixAudio:buf to:selfWeak.micTrack];
+        };
+    }
+    else {
+        _aCapDev.pcmProcessingCallback = ^(uint8_t **pData, int len, const AudioStreamBasicDescription *fmt, CMTime timeInfo) {
+            if ( selfWeak.pcmProcessingCallback ){
+                selfWeak.pcmProcessingCallback(pData, len, fmt, timeInfo);
+            }
+            if (![selfWeak.streamerBase isStreaming]){
+                return;
+            }
+            [selfWeak.aMixer processAudioData:pData nbSample:len withFormat:fmt timeinfo:timeInfo of:selfWeak.micTrack];
+        };
+    }
     //2. 背景音乐播放,音乐数据送入混音器
     _bgmPlayer.audioDataBlock = ^ BOOL(uint8_t** pData, int len, const AudioStreamBasicDescription* fmt, CMTime pts){
         if ([selfWeak.streamerBase isStreaming]) {
@@ -360,12 +374,25 @@
         return YES;
     };
     // 混音结果送入streamer
-    _aMixer.audioProcessingCallback = ^(CMSampleBufferRef buf){
-        if (![selfWeak.streamerBase isStreaming]){
-            return;
-        }
-        [selfWeak.streamerBase processAudioSampleBuffer:buf];
-    };
+    if (_audioDataType == KSYAudioData_CMSampleBuffer) {
+        _aMixer.audioProcessingCallback = ^(CMSampleBufferRef buf){
+            if (![selfWeak.streamerBase isStreaming]){
+                return;
+            }
+            [selfWeak.streamerBase processAudioSampleBuffer:buf];
+        };
+    }
+    else {
+        _aMixer.pcmProcessingCallback = ^(uint8_t **pData, int nbSample, CMTime pts) {
+            if (![selfWeak.streamerBase isStreaming]){
+                return;
+            }
+            [selfWeak.streamerBase processAudioData:pData
+                                           nbSample:nbSample
+                                         withFormat:selfWeak.aMixer.outFmtDes
+                                           timeinfo:&pts];
+        };
+    }
     // mixer 的主通道为麦克风,时间戳以main通道为准
     _aMixer.mainTrack = _micTrack;
     [_aMixer setTrack:_micTrack enable:YES];
@@ -886,6 +913,22 @@
     _logoPic = pic;
     [self addPic:_logoPic ToMixerAt:_logoPicLayer];
 }
+static GPUImageRotationMode KSYImage2GPURotate[] = {
+    kGPUImageNoRotation,// UIImageOrientationUp,            // default orientation
+    kGPUImageRotate180,//UIImageOrientationDown,          // 180 deg rotation
+    kGPUImageRotateLeft, //UIImageOrientationLeft,          // 90 deg CCW
+    kGPUImageRotateRight,//UIImageOrientationRight,         // 90 deg CW
+    kGPUImageFlipHorizonal,//UIImageOrientationUpMirrored,    // as above but image mirrored along other axis. horizontal flip
+    kGPUImageFlipHorizonal,//UIImageOrientationDownMirrored,  // horizontal flip
+    kGPUImageFlipVertical,//UIImageOrientationLeftMirrored,  // vertical flip
+    kGPUImageRotateRightFlipVertical//UIImageOrientationRightMirrored, // vertical flip
+};
+- (void) setLogoOrientaion:(UIImageOrientation) orien{
+    [_vPreviewMixer setPicRotation:KSYImage2GPURotate[orien]
+                               ofLayer:_logoPicLayer];
+    [_vStreamMixer setPicRotation:KSYImage2GPURotate[orien]
+                              ofLayer:_logoPicLayer];
+}
 @synthesize aePic = _aePic;
 -(void) setAePic:(GPUImageUIElement *)aePic{
     _aePic = aePic;
@@ -968,12 +1011,12 @@
     if ([_streamerBase isStreaming]){
         return;
     }
-    if( fmt !=  kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange ||
+    if( fmt !=  kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange &&
         fmt !=  kCVPixelFormatType_420YpCbCr8Planar ){
         fmt = kCVPixelFormatType_32BGRA;
     }
     _gpuOutputPixelFormat = fmt;
-    _gpuToStr =[[KSYGPUPicOutput alloc] initWithOutFmt:_gpuOutputPixelFormat];
+    _gpuToStr =[[KSYGPUPicOutput alloc] initWithOutFmt:fmt];
     [self setupVideoPath];
     [self updateStrDimension:self.videoOrientation];
 }
@@ -1073,7 +1116,7 @@ M_PI_2*1,M_PI_2*3, M_PI_2*2, M_PI_2*0,
 {
     _previewOrientation = orie;
     UIView* view = [_preview superview];
-    if (UIInterfaceOrientationPortrait == orie || view == nil) {
+    if (_videoOrientation == orie || view == nil) {
         for (UIView<GPUImageInput> *v in _vPreviewMixer.targets) {
             v.transform = CGAffineTransformIdentity;
         }

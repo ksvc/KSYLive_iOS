@@ -11,7 +11,7 @@
 
 @interface KSYHorScreenStreamerVC ()
 @property UILabel           *text;
-@property KSYGPUView      *preView;
+@property UIView      *preView;
 @end
 
 @implementation KSYHorScreenStreamerVC
@@ -26,7 +26,7 @@
     _text.hidden = YES;
     
     CGFloat wdt = self.view.frame.size.width;
-    _preView = [[KSYGPUView alloc] initWithFrame:CGRectMake(0, 75, wdt, wdt * 9 / 16)];
+    _preView = [[UIView alloc] initWithFrame:CGRectMake(0, 75, wdt, wdt * 9 / 16)];
     [self.view addSubview:_preView];
     _preView.hidden = YES;
     self.profilePicker.hidden = YES;

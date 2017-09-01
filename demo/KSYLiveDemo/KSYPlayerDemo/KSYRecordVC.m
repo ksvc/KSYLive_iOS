@@ -595,13 +595,14 @@
     {
         //调用截图方法
         displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(captureScreen:)];
-        if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"10.0"))
+#if  __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
             //如果系统版本大于等于10.0
             //设定回调速率
             displayLink.preferredFramesPerSecond = 15;
-        else
+#else
             //设置间隔多少帧调用一次selector 方法
             displayLink.frameInterval = 4;
+#endif
         [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
     }
 }

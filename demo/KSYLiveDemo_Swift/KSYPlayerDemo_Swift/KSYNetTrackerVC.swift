@@ -234,8 +234,8 @@ class KSYNetTrackerVC: UIViewController {
                 if rtt < 0.00000001 {
                     displayStr = displayStr?.appending("Request timeout for icmp_seq \(count)")
                 }else{
-                    let pingRet = tracker?.routerInfo.firstObject as! KSYNetRouterInfo
-                    displayStr = displayStr?.appending(String(format: "ping \(pingRet.ips.firstObject ?? "") icmp_seq \(count) time=%0.3f ms", rtt))
+                    let pingRet = tracker?.routerInfo?.firstObject as! KSYNetRouterInfo
+                    displayStr = displayStr?.appending(String(format: "ping \(pingRet.ips?.firstObject ?? "") icmp_seq \(count) time=%0.3f ms", rtt))
                 }
             }else {
                 getRouterInfo()
@@ -279,7 +279,7 @@ class KSYNetTrackerVC: UIViewController {
     
     func getPingRetStr() -> String {
         var pingRetStr: String = ""
-        let pingRet = tracker?.routerInfo[0] as! KSYNetRouterInfo
+        let pingRet = tracker?.routerInfo?[0] as! KSYNetRouterInfo
         
         pingRetStr = pingRetStr.appending("\n ------ping statics-----\n")
         pingRetStr = pingRetStr.appendingFormat("%d packets transmitted, %d packets received,  %0.3f packet loss\n", pingRet.number, Int(Float(pingRet.number) * (1 - pingRet.loss)), pingRet.loss)
@@ -309,13 +309,13 @@ class KSYNetTrackerVC: UIViewController {
             return
         }
         
-        tracker!.routerInfo.enumerateObjects( { (netInfo, idx, _) in
+        tracker!.routerInfo?.enumerateObjects( { (netInfo, idx, _) in
             if let info: KSYNetRouterInfo = (netInfo as! KSYNetRouterInfo) {
                 
                 if let _ = info.ips {
                     j = 0;
                     
-                    for ip in info.ips {
+                    for ip in info.ips! {
                         if let ip: String = (ip as! String) {
                             if j == 0 {
                                 infoLog = infoLog.appendingFormat("%-3d", i)

@@ -58,4 +58,8 @@
 @property UISegmentedControl  * noiseSuppressSeg;
 @property (atomic, readonly) KSYAudioNoiseSuppress  noiseSuppress;
 
+/// 音频通路数据类型选择
+@property UISegmentedControl  * audioDataTypeSeg;
+@property (atomic, readonly)  KSYAudioDataType audioDataType;
+
 @end
