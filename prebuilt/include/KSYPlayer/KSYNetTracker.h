@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-FOUNDATION_EXPORT NSString * const KSYNetTrackerOnceDoneNotification;
-FOUNDATION_EXPORT NSString * const KSYNetTrackerFinishedNotification;
-FOUNDATION_EXPORT NSString * const KSYNetTrackerErrorNotification;
+FOUNDATION_EXPORT NSString * _Nonnull const KSYNetTrackerOnceDoneNotification;
+FOUNDATION_EXPORT NSString * _Nonnull const KSYNetTrackerFinishedNotification;
+FOUNDATION_EXPORT NSString * _Nonnull const KSYNetTrackerErrorNotification;
 
 /**
  * 探测方式
@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger, KSY_NETTRACKER_ACTION){
  @abstract 链路上每个节点的ip地址
  @discussion 如果每个探测报文对应的路径不同，则每一跳上会存在多个不同ip
  */
-@property (nonatomic, readonly) NSMutableArray *ips;
+@property (nonatomic, readonly) NSMutableArray * _Nullable ips;
 
 /**
  @abstract 所有探测报文的rtt最大值
@@ -122,6 +122,6 @@ typedef NS_ENUM(NSInteger, KSY_NETTRACKER_ACTION){
 /**
  @abstract 链路状况
  */
-@property (nonatomic, readonly) NSMutableArray *routerInfo;
+@property (nonatomic, readonly) NSMutableArray * _Nullable routerInfo;
 
 @end

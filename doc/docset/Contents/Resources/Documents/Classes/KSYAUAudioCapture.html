@@ -76,6 +76,8 @@
 		
 		<option value="//api/name/outputPts">outputPts</option>
 		
+		<option value="//api/name/pcmProcessingCallback">pcmProcessingCallback</option>
+		
 		<option value="//api/name/reverbType">reverbType</option>
 		
 	</optgroup>
@@ -540,7 +542,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>噪声抑制处理的等级(默认为KSYAudioNoiseSuppress_HIGH)</p>
+				<p>噪声抑制处理的等级(默认为KSYAudioNoiseSuppress_OFF)</p>
 			</div>
 			
 		    
@@ -837,7 +839,53 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>sampleBuffer 为采集到的音频数据</p>
+				<p>sampleBuffer 为采集到的音频数据</p><p>与pcmProcessingCallback两者只能二选一, 设置 audioProcessingCallback 会清空<a href="#//api/name/pcmProcessingCallback">pcmProcessingCallback</a></p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYAUAudioCapture.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/pcmProcessingCallback" title="pcmProcessingCallback"></a>
+	<h3 class="method-title"><code><a href="#//api/name/pcmProcessingCallback">&nbsp;&nbsp;pcmProcessingCallback</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>采集数据输出回调函数</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) void ( ^ ) ( uint8_t **pData , int len , const AudioStreamBasicDescription *fmt , CMTime timeInfo ) pcmProcessingCallback</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>pData 和 len 为采集数据和长度 (目前只支持单声道, 只有pData[0]为有效数据指针 )</p><p>与audioProcessingCallback两者只能二选一, 设置 pcmProcessingCallback 会清空<a href="#//api/name/audioProcessingCallback">audioProcessingCallback</a></p>
 			</div>
 			
 

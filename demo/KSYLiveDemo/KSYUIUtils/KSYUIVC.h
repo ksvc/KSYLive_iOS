@@ -15,6 +15,10 @@
  */
 #define SYSTEM_VERSION_GE_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
+#ifndef __IPHONE_10_0
+#define __IPHONE_10_0 100000
+#endif
+
 @class  KSYUIView;
 @interface KSYUIVC : UIViewController
 

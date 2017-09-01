@@ -1423,6 +1423,11 @@
 			<Abstract type="html">音频处理回调接口</Abstract>
 			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
 			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/audioDataType</TokenIdentifier>
+		
+	</RelatedTokens>
+	
 			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
 			
 			
@@ -1435,6 +1440,11 @@
 			<Abstract type="html">音频处理回调接口</Abstract>
 			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
 			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/audioDataType</TokenIdentifier>
+		
+	</RelatedTokens>
+	
 			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
 			
 			
@@ -1447,10 +1457,102 @@
 			<Abstract type="html">音频处理回调接口</Abstract>
 			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
 			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/audioDataType</TokenIdentifier>
+		
+	</RelatedTokens>
+	
 			<Declaration>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</Declaration>
 			
 			
 			<Anchor>//api/name/audioProcessingCallback</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setPcmProcessingCallback:</TokenIdentifier>
+			<Abstract type="html">音频处理回调接口</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/audioDataType</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( uint8_t **pData , int len , const AudioStreamBasicDescription *fmt , CMTime timeInfo ) pcmProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/pcmProcessingCallback</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/pcmProcessingCallback</TokenIdentifier>
+			<Abstract type="html">音频处理回调接口</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/audioDataType</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( uint8_t **pData , int len , const AudioStreamBasicDescription *fmt , CMTime timeInfo ) pcmProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/pcmProcessingCallback</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/pcmProcessingCallback</TokenIdentifier>
+			<Abstract type="html">音频处理回调接口</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/audioDataType</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( uint8_t **pData , int len , const AudioStreamBasicDescription *fmt , CMTime timeInfo ) pcmProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/pcmProcessingCallback</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setAudioDataType:</TokenIdentifier>
+			<Abstract type="html">音频处理通路数据类型 (默认为 KSYAudioData_CMSampleBuffer)</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) KSYAudioDataType audioDataType</Declaration>
+			
+			
+			<Anchor>//api/name/audioDataType</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/audioDataType</TokenIdentifier>
+			<Abstract type="html">音频处理通路数据类型 (默认为 KSYAudioData_CMSampleBuffer)</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) KSYAudioDataType audioDataType</Declaration>
+			
+			
+			<Anchor>//api/name/audioDataType</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUStreamerKit/audioDataType</TokenIdentifier>
+			<Abstract type="html">音频处理通路数据类型 (默认为 KSYAudioData_CMSampleBuffer)</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) KSYAudioDataType audioDataType</Declaration>
+			
+			
+			<Anchor>//api/name/audioDataType</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		
@@ -1749,6 +1851,23 @@
 			
 			
 			<Anchor>//api/name/logoPic</Anchor>
+            <NodeRef refid="29"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUStreamerKit/setLogoOrientaion:</TokenIdentifier>
+			<Abstract type="html">设置水印图片的朝向</Abstract>
+			<DeclaredIn>KSYGPUStreamerKit.h</DeclaredIn>
+			
+			<Declaration>- (void)setLogoOrientaion:(UIImageOrientation)orien</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>orien</Name>
+					<Abstract type="html">图片的朝向</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setLogoOrientaion:</Anchor>
             <NodeRef refid="29"/>
 		</Token>
 		

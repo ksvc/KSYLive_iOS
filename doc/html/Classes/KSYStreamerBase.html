@@ -94,6 +94,8 @@
 		
 		<option value="//api/name/encodingFPS">encodingFPS</option>
 		
+		<option value="//api/name/expireDate">expireDate</option>
+		
 		<option value="//api/name/hostURL">hostURL</option>
 		
 		<option value="//api/name/liveScene">liveScene</option>
@@ -181,6 +183,8 @@
 		<option value="//api/name/isStreaming">- isStreaming</option>
 		
 		<option value="//api/name/muteStream:">- muteStream:</option>
+		
+		<option value="//api/name/processAudioData:nbSample:withFormat:timeinfo:">- processAudioData:nbSample:withFormat:timeinfo:</option>
 		
 		<option value="//api/name/processAudioSampleBuffer:">- processAudioSampleBuffer:</option>
 		
@@ -2302,8 +2306,76 @@ eg: /var/xxxxx/xxx.mp4  /var/xxxxx/xxx.flv
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>应当在开始推流前定期调用此接口，与processVideoSampleBuffer 交错进行</p><div class="warning"><p><strong>Warning:</strong> 目前只支持 单通道  S16 格式的PCM数据</p></div>
+				<p>应当在开始推流前定期调用此接口，与processVideoSampleBuffer 交错进行</p><div class="warning"><p><strong>Warning:</strong> 目前只支持 S16 格式的PCM数据</p></div>
 			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/processAudioData:nbSample:withFormat:timeinfo:" title="processAudioData:nbSample:withFormat:timeinfo:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/processAudioData:nbSample:withFormat:timeinfo:">&ndash;&nbsp;processAudioData:nbSample:withFormat:timeinfo:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>处理一段音频数据</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)processAudioData:(uint8_t **)<em>pData</em> nbSample:(int)<em>len</em> withFormat:(const AudioStreamBasicDescription *)<em>fmt</em> timeinfo:(CMTime *)<em>pts</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>pData</code></th>
+						<td><p>原始数据指针数组</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>len</code></th>
+						<td><p>数据的长度，单位为字节</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fmt</code></th>
+						<td><p>原始数据的格式 (必须保证一次推流过程中数据格式不变)</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>pts</code></th>
+						<td><p>原始数据的时间戳</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
 			
 
 			
@@ -2405,6 +2477,53 @@ eg: /var/xxxxx/xxx.mp4  /var/xxxxx/xxx.flv
 
 			
 
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/expireDate" title="expireDate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/expireDate">&nbsp;&nbsp;expireDate</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取当前SDK过期时间</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) NSDate *expireDate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>为nil时,可以永久使用不会过期
+@warnning sdk自行解析得到, 外部赋值无效</p>
+			</div>
 			
 
 			

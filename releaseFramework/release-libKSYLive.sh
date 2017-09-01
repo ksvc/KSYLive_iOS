@@ -86,7 +86,7 @@ function xDownload() {
     ZIP_FILE=${DST_DIR}/${SUB_DIR}${FILE_NAME}.zip
 
     if [ ! -d "${DST_DIR}/${FILE_NAME}.framework" ]; then
-        echo "download ${FILE_NAME}.framework to ${DST_DIR}"
+        echo "download ${FILE_NAME}.framework(${IOS_URL}) to ${DST_DIR}"
         curl ${IOS_URL} -o ${ZIP_FILE}
         unzip -q ${ZIP_FILE} -d ${DST_DIR}/
         rm ${ZIP_FILE}

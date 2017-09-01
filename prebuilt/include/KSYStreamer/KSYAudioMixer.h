@@ -79,8 +79,8 @@
 
 /**
  @abstract  输入音频PCM
- @param     pData 原始数据
- @param     len   数据的长度，单位为字节
+ @param     pData 原始数据指针数组,单通道仅pData[0]有效 当输入为多通道且非交织时, pData[i]分别表示各个通道的数据
+ @param     len   数据的长度，单位为sample (bytes / sizeof(sample))
  @param     fmt   原始数据的格式
  @param     pts   原始数据的时间戳
  @param     trackId 设置对应track的
@@ -98,8 +98,17 @@
  @discussion sampleBuffer 混音后的音频数据
  @discussion 请注意本函数的执行时间，如果太长可能导致不可预知的问题
  @discussion 请参考 CMSampleBufferRef
+ @discussion 与pcmProcessingCallback两者只能二选一, 设置 audioProcessingCallback 会清空 pcmProcessingCallback
  */
 @property(nonatomic, copy) void(^audioProcessingCallback)(CMSampleBufferRef sampleBuffer);
+/**
+ @abstract   音频处理回调接口
+ @discussion pData 为数据指针 (双通道时, 数据为交织格式), 仅pData[0] 有效
+ @discussion nbSample 为数据长度, 单位为sample (bytes / sizeof(sample)/channels)
+ @discussion 请注意本函数的执行时间，如果太长可能导致不可预知的问题
+ @discussion 与audioProcessingCallback两者只能二选一, 设置 pcmProcessingCallback 会清空audioProcessingCallback
+ */
+@property(nonatomic, copy) void(^pcmProcessingCallback)(uint8_t** pData, int nbSample, CMTime pts);
 
 /**
  @abstract   主轨的trackId （默认为0）
@@ -110,6 +119,7 @@
 /**
  @abstract   输出音频是否为双声道立体声 (默认为NO)
  @discussion 如果输入数据都不是双声道则输出数据左右耳内容一样
+ @discussion 输出立体声的数据格式一定是交织的
  */
 @property(nonatomic, assign) BOOL bStereo;
 
@@ -124,7 +134,6 @@
 @property (nonatomic, assign) int sampleRate;
 /**
  @abstract   混音后输出PCM的格式
- @discussion 暂时为固定一种格式 (44.1KHz, S16)
  */
 @property (nonatomic, readonly) AudioStreamBasicDescription* outFmtDes;
 

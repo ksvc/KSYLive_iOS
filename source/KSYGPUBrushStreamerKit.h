@@ -1,8 +1,8 @@
 //
-//  KSYGPUPipStreamerKit.h
+//  KSYGPUBrushStreamerKit.h
 //  KSYStreamer
 //
-//  Created by jaingdong on 28/12/16.
+//  Created by jiangdong on 28/12/16.
 //  Copyright © 2016 ksyun. All rights reserved.
 //
 #import <Foundation/Foundation.h>
@@ -28,12 +28,7 @@
  @abstract   绘制的图片
  @discussion 设置为nil为清除内容图片
  */
-@property (nonatomic, readwrite) GPUImagePicture      *drawPic;
-
-/**
- @abstract   添加画笔图层
- */
-- (void) addDrawLayer:(UIImage*)img;
+@property (nonatomic, readwrite) GPUImageUIElement      *drawPic;
 
 /**
  @abstract   去掉画笔图层

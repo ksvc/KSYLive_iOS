@@ -49,6 +49,7 @@
     _effectType  = [self addSegCtrlWithItems:@[@"关闭变声",@"大叔", @"萝莉", @"庄严", @"机器人"]];
     _noiseSuppressSeg = [self addSegCtrlWithItems:@[@"关闭去噪",@"低", @"中", @"高", @"很高"]];
     _noiseSuppressSeg.selectedSegmentIndex = 3;
+    _audioDataTypeSeg = [self addSegCtrlWithItems:@[@"CMSampleBufer",@"RawPcm"]];
     return self;
 }
 - (void)layoutUI{
@@ -66,8 +67,9 @@
                       nu,_lblPlayCapture,_swPlayCapture] ];
     [self putRow1:_playCapVol];
     [self putRow1:_effectType];
-    [self putRowFit:@[_lblStereo, _stereoStream]];
+    [self putRowFit:@[_lblStereo, _stereoStream, _audioDataTypeSeg]];
     [self putRow1:_noiseSuppressSeg];
+    
 }
 - (void) initMicInput {
     BOOL bHS = [AVAudioSession isHeadsetInputAvaible];
@@ -133,5 +135,9 @@ static KSYMicType int2MicType( int t) {
 @synthesize noiseSuppress = _noiseSuppress;
 - (KSYAudioNoiseSuppress) noiseSuppress {
     return _noiseSuppressSeg.selectedSegmentIndex - 1; // off is -1
+}
+@synthesize audioDataType = _audioDataType;
+- (KSYAudioDataType) audioDataType {
+    return _audioDataTypeSeg.selectedSegmentIndex;
 }
 @end

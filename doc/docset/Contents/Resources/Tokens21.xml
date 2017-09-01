@@ -89,7 +89,7 @@
 			<Abstract type="html">绘制的图片</Abstract>
 			<DeclaredIn>KSYGPUBrushStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) GPUImagePicture *drawPic</Declaration>
+			<Declaration>@property (nonatomic, readwrite) GPUImageUIElement *drawPic</Declaration>
 			
 			
 			<Anchor>//api/name/drawPic</Anchor>
@@ -101,7 +101,7 @@
 			<Abstract type="html">绘制的图片</Abstract>
 			<DeclaredIn>KSYGPUBrushStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) GPUImagePicture *drawPic</Declaration>
+			<Declaration>@property (nonatomic, readwrite) GPUImageUIElement *drawPic</Declaration>
 			
 			
 			<Anchor>//api/name/drawPic</Anchor>
@@ -113,22 +113,10 @@
 			<Abstract type="html">绘制的图片</Abstract>
 			<DeclaredIn>KSYGPUBrushStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) GPUImagePicture *drawPic</Declaration>
+			<Declaration>@property (nonatomic, readwrite) GPUImageUIElement *drawPic</Declaration>
 			
 			
 			<Anchor>//api/name/drawPic</Anchor>
-            <NodeRef refid="21"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUBrushStreamerKit/addDrawLayer:</TokenIdentifier>
-			<Abstract type="html">添加画笔图层</Abstract>
-			<DeclaredIn>KSYGPUBrushStreamerKit.h</DeclaredIn>
-			
-			<Declaration>- (void)addDrawLayer:(UIImage *)img</Declaration>
-			
-			
-			<Anchor>//api/name/addDrawLayer:</Anchor>
             <NodeRef refid="21"/>
 		</Token>
 		

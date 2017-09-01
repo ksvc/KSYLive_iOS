@@ -71,12 +71,13 @@
 -(void)startPipWithPlayerUrl:( NSURL* _Nullable )playerUrl
                        bgPic:( NSURL* _Nullable )bgUrl
 {
+    if (_player) {
+        [self stopPip];
+    }
+    
     if(playerUrl) {
         [self.aMixer setTrack:_pipTrack enable:YES];
         [self.aMixer setMixVolume:1 of:_pipTrack];
-        if (_player) {
-            [self stopPip];
-        }
         BOOL shouldUseHWCodec = YES;
         BOOL shouldAutoplay = YES;
         BOOL shouldMute = NO;

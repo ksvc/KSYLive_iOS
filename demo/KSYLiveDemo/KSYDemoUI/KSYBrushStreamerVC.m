@@ -101,19 +101,10 @@
     [self updateDrawView];
 }
 
-#pragma mark - utils
--(UIImage *)imageFromUIView:(UIView *)v {
-    CGSize s = v.frame.size;
-    UIGraphicsBeginImageContextWithOptions(s, NO, 0.0);
-    [v.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage*image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return image;
-}
+//刷新画笔view
 - (void) updateDrawView{
     if(_drawRefresh){
-        UIImage * img = [self imageFromUIView:_drawView];
-        [_brushKit addDrawLayer:img];
+        _brushKit.drawPic = [[GPUImageUIElement alloc] initWithView:_drawView];
     }
 }
 

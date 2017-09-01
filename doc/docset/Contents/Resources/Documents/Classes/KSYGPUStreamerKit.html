@@ -66,6 +66,8 @@
 		
 		<option value="//api/name/audioCaptureType">audioCaptureType</option>
 		
+		<option value="//api/name/audioDataType">audioDataType</option>
+		
 		<option value="//api/name/audioProcessingCallback">audioProcessingCallback</option>
 		
 		<option value="//api/name/autoRetryDelay">autoRetryDelay</option>
@@ -111,6 +113,8 @@
 		<option value="//api/name/micTrack">micTrack</option>
 		
 		<option value="//api/name/msgStreamer">msgStreamer</option>
+		
+		<option value="//api/name/pcmProcessingCallback">pcmProcessingCallback</option>
 		
 		<option value="//api/name/pinchZoomFactor">pinchZoomFactor</option>
 		
@@ -191,6 +195,8 @@
 		<option value="//api/name/rotatePreviewTo:">- rotatePreviewTo:</option>
 		
 		<option value="//api/name/rotateStreamTo:">- rotateStreamTo:</option>
+		
+		<option value="//api/name/setLogoOrientaion:">- setLogoOrientaion:</option>
 		
 		<option value="//api/name/setTorchMode:">- setTorchMode:</option>
 		
@@ -2600,7 +2606,117 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>sampleBuffer 原始采集到的音频数据</p><p>对sampleBuffer内的pcm数据的修改将传递到观众端</p><p>请注意本函数的执行时间，如果太长可能导致不可预知的问题</p><p>请参考 CMSampleBufferRef</p>
+				<p>sampleBuffer 原始采集到的音频数据</p><p>对sampleBuffer内的pcm数据的修改将传递到观众端</p><p>请注意本函数的执行时间，如果太长可能导致不可预知的问题</p><p>当<a href="#//api/name/audioDataType">audioDataType</a> 为KSYAudioData_CMSampleBuffer时才会被触发回调</p><p>请参考 CMSampleBufferRef</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/audioDataType">@property audioDataType</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/pcmProcessingCallback" title="pcmProcessingCallback"></a>
+	<h3 class="method-title"><code><a href="#//api/name/pcmProcessingCallback">&nbsp;&nbsp;pcmProcessingCallback</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>音频处理回调接口</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) void ( ^ ) ( uint8_t **pData , int len , const AudioStreamBasicDescription *fmt , CMTime timeInfo ) pcmProcessingCallback</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>pData len为原始采集到的音频数据</p><p>当<a href="#//api/name/audioDataType">audioDataType</a> 为KSYAudioData_RawPCM时才会被触发回调</p><p>请注意本函数的执行时间，如果太长可能导致不可预知的问题</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/audioDataType">@property audioDataType</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/audioDataType" title="audioDataType"></a>
+	<h3 class="method-title"><code><a href="#//api/name/audioDataType">&nbsp;&nbsp;audioDataType</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>音频处理通路数据类型 (默认为 KSYAudioData_CMSampleBuffer)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) KSYAudioDataType audioDataType</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>音频数据转为 CMSampleBuffer时有格式开销, 使用RawPCM资源消耗会少一些</p><p>内部组件对KSYAudioData_RawPCM可能不完善, 目前仅保证基本通路能工作</p>
 			</div>
 			
 
@@ -3066,6 +3182,59 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>设置为nil为清除水印图片</p><p>请注意背景图片的尺寸, 太大的图片会导致内存占用过高</p>
 			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setLogoOrientaion:" title="setLogoOrientaion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setLogoOrientaion:">&ndash;&nbsp;setLogoOrientaion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置水印图片的朝向</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setLogoOrientaion:(UIImageOrientation)<em>orien</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>orien</code></th>
+						<td><p>图片的朝向</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
 			
 
 			

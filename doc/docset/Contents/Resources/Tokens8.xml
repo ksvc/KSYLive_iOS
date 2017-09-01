@@ -151,10 +151,10 @@
 			<Parameters>
 				<Parameter>
 					<Name>pData</Name>
-					<Abstract type="html">原始数据</Abstract>
+					<Abstract type="html">原始数据指针数组,单通道仅pData[0]有效 当输入为多通道且非交织时, pData[i]分别表示各个通道的数据</Abstract>
 				</Parameter><Parameter>
 					<Name>len</Name>
-					<Abstract type="html">数据的长度，单位为字节</Abstract>
+					<Abstract type="html">数据的长度，单位为sample (bytes / sizeof(sample))</Abstract>
 				</Parameter><Parameter>
 					<Name>fmt</Name>
 					<Abstract type="html">原始数据的格式</Abstract>
@@ -204,6 +204,42 @@
 			
 			
 			<Anchor>//api/name/audioProcessingCallback</Anchor>
+            <NodeRef refid="8"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/setPcmProcessingCallback:</TokenIdentifier>
+			<Abstract type="html">音频处理回调接口</Abstract>
+			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( uint8_t **pData , int nbSample , CMTime pts ) pcmProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/pcmProcessingCallback</Anchor>
+            <NodeRef refid="8"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/pcmProcessingCallback</TokenIdentifier>
+			<Abstract type="html">音频处理回调接口</Abstract>
+			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( uint8_t **pData , int nbSample , CMTime pts ) pcmProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/pcmProcessingCallback</Anchor>
+            <NodeRef refid="8"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioMixer/pcmProcessingCallback</TokenIdentifier>
+			<Abstract type="html">音频处理回调接口</Abstract>
+			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( uint8_t **pData , int nbSample , CMTime pts ) pcmProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/pcmProcessingCallback</Anchor>
             <NodeRef refid="8"/>
 		</Token>
 		
