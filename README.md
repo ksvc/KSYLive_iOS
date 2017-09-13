@@ -169,6 +169,7 @@ pod 'libksygpulive/libksygpulive'
 <details>
 <summary>Pod依赖进阶</summary>
 <b markdown=1>
+  
 * 本地开发版 (sdk clone或下载到本地后)
 ``` 
 pod 'libksygpulive/libksygpulive', :path => '../'  
