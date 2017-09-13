@@ -138,6 +138,42 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/setPlayRate:</TokenIdentifier>
+			<Abstract type="html">播放速度</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) double playRate</Declaration>
+			
+			
+			<Anchor>//api/name/playRate</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/playRate</TokenIdentifier>
+			<Abstract type="html">播放速度</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) double playRate</Declaration>
+			
+			
+			<Anchor>//api/name/playRate</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAQPlayer/playRate</TokenIdentifier>
+			<Abstract type="html">播放速度</Abstract>
+			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) double playRate</Declaration>
+			
+			
+			<Anchor>//api/name/playRate</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYAQPlayer/setInFmt:</TokenIdentifier>
 			<Abstract type="html">输入的音频格式</Abstract>
 			<DeclaredIn>KSYAQPlayer.h</DeclaredIn>

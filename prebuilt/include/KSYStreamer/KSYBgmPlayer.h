@@ -74,12 +74,25 @@
 @property (nonatomic, assign) double bgmPitch;
 
 /**
+ @abstract   播放速率
+ @discussion 调整范围 0.5 ~ 2.0，默认值 1.0
+ */
+@property (nonatomic, assign) double playRate;
+
+/**
  @abstract   背景音乐播放静音
  @discussion 仅仅静音播放, 不影响回调的音频数据
  */
 @property (nonatomic, assign) BOOL bMuteBgmPlay;
 
 #pragma mark - callbacks
+/**
+ @abstract   设置 audioDataBlock 是否返回原始数据
+ @discussion 默认为NO，audioDataBlock 返回的数据为经过变速、变调后的数据
+             如果为YES，audioDataBlock 返回的数据为原始数据
+ */
+@property(nonatomic, assign) BOOL callBackRawData;
+
 /**
  @abstract   音频数据输出回调
  @discussion sampleBuffer 从音乐文件中解码得到的PCM数据

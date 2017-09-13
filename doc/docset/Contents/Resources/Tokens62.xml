@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYPlayRecordScheme.html">
+	<File path="Constants/KSYNetStateCode.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYPlayRecordScheme</TokenIdentifier>
-			<Abstract type="html">录制方案</Abstract>
-			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYNetStateCode</TokenIdentifier>
+			<Abstract type="html">网络状况事件码，用于指示当前网络健康状况</Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
 			<NodeRef refid="62"/>
@@ -14,21 +14,101 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYPlayerRecord_PicMix_Scheme</TokenIdentifier>
-            <Abstract type="html">UI+Video混合方案</Abstract>
-            <Declaration>KSYPlayerRecord_PicMix_Scheme</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_NONE</TokenIdentifier>
+            <Abstract type="html">正常无错误</Abstract>
+            <Declaration>KSYNetStateCode_NONE</Declaration>
             
-            <DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="62"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYPlayerRecord_ScreenShot_Scheme</TokenIdentifier>
-            <Abstract type="html">截屏式方案</Abstract>
-            <Declaration>KSYPlayerRecord_ScreenShot_Scheme</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_SEND_PACKET_SLOW</TokenIdentifier>
+            <Abstract type="html">发送包时间过长，( 单次发送超过 500毫秒 ）</Abstract>
+            <Declaration>KSYNetStateCode_SEND_PACKET_SLOW</Declaration>
             
-            <DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="62"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_EST_BW_RAISE</TokenIdentifier>
+            <Abstract type="html">估计带宽调整，上调</Abstract>
+            <Declaration>KSYNetStateCode_EST_BW_RAISE</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="62"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_EST_BW_DROP</TokenIdentifier>
+            <Abstract type="html">估计带宽调整，下调</Abstract>
+            <Declaration>KSYNetStateCode_EST_BW_DROP</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="62"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_VIDEO_FPS_RAISE</TokenIdentifier>
+            <Abstract type="html">帧率调整，上调</Abstract>
+            <Declaration>KSYNetStateCode_VIDEO_FPS_RAISE</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="62"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_VIDEO_FPS_DROP</TokenIdentifier>
+            <Abstract type="html">帧率调整，下调</Abstract>
+            <Declaration>KSYNetStateCode_VIDEO_FPS_DROP</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="62"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_KSYAUTHFAILED</TokenIdentifier>
+            <Abstract type="html">SDK 鉴权失败 (暂时正常推流5~8分钟后终止推流)</Abstract>
+            <Declaration>KSYNetStateCode_KSYAUTHFAILED</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="62"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_IN_AUDIO_DISCONTINUOUS</TokenIdentifier>
+            <Abstract type="html">输入音频不连续</Abstract>
+            <Declaration>KSYNetStateCode_IN_AUDIO_DISCONTINUOUS</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="62"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_UNREACHABLE</TokenIdentifier>
+            <Abstract type="html">网络变为不可用</Abstract>
+            <Declaration>KSYNetStateCode_UNREACHABLE</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="62"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_REACHABLE</TokenIdentifier>
+            <Abstract type="html">网络变为可用</Abstract>
+            <Declaration>KSYNetStateCode_REACHABLE</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="62"/>
         </Token>

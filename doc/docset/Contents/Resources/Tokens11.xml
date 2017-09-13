@@ -188,6 +188,42 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/setPlayRate:</TokenIdentifier>
+			<Abstract type="html">播放速率</Abstract>
+			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) double playRate</Declaration>
+			
+			
+			<Anchor>//api/name/playRate</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/playRate</TokenIdentifier>
+			<Abstract type="html">播放速率</Abstract>
+			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) double playRate</Declaration>
+			
+			
+			<Anchor>//api/name/playRate</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmPlayer/playRate</TokenIdentifier>
+			<Abstract type="html">播放速率</Abstract>
+			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) double playRate</Declaration>
+			
+			
+			<Anchor>//api/name/playRate</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/setBMuteBgmPlay:</TokenIdentifier>
 			<Abstract type="html">背景音乐播放静音</Abstract>
 			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
@@ -220,6 +256,42 @@
 			
 			
 			<Anchor>//api/name/bMuteBgmPlay</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/setCallBackRawData:</TokenIdentifier>
+			<Abstract type="html">设置 audioDataBlock 是否返回原始数据</Abstract>
+			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL callBackRawData</Declaration>
+			
+			
+			<Anchor>//api/name/callBackRawData</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/callBackRawData</TokenIdentifier>
+			<Abstract type="html">设置 audioDataBlock 是否返回原始数据</Abstract>
+			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL callBackRawData</Declaration>
+			
+			
+			<Anchor>//api/name/callBackRawData</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmPlayer/callBackRawData</TokenIdentifier>
+			<Abstract type="html">设置 audioDataBlock 是否返回原始数据</Abstract>
+			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL callBackRawData</Declaration>
+			
+			
+			<Anchor>//api/name/callBackRawData</Anchor>
             <NodeRef refid="11"/>
 		</Token>
 		

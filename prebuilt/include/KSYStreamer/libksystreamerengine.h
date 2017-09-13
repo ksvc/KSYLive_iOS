@@ -20,6 +20,7 @@
 #import "KSYAUAudioCapture.h"
 #import "KSYDummyAudioSource.h"
 #import "KSYAVFCapture.h"
+#import "KSYGPUViewCapture.h"
 // mixer
 #import "KSYGPUPicMixer.h"
 #import "KSYAudioMixer.h"
@@ -28,6 +29,9 @@
 // streamer
 #import "KSYGPUPicOutput.h"
 #import "KSYGPUView.h"
+
+// utils
+#import "KSYWeakProxy.h"
 
 #define KSYSTREAMERENGINE_VER 0.0.0.0
 #define KSYSTREAMERENGINE_ID 0

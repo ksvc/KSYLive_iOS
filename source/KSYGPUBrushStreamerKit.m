@@ -29,23 +29,21 @@
 }
 
 @synthesize drawPic = _drawPic;
--(void) setDrawPic:(GPUImageUIElement *)drawPic{
-    _drawPic = drawPic;
-    if (_drawPic == nil){
+-(void) setDrawPic:(KSYGPUViewCapture *)drawPic{
+    if (drawPic == nil && _drawPic){
+        [_drawPic removeAllTargets];
         [self.vStreamMixer  clearPicOfLayer:_drawLayer];
+        [_drawPic stop];
+        _drawPic = nil;
         return;
     }
+    _drawPic = drawPic;
     [_drawPic removeAllTargets];
     [_drawPic addTarget:self.vStreamMixer atTextureLocation:_drawLayer];
 }
 
 - (void)dealloc {
-    [_drawPic     removeAllTargets];
-    _drawPic = nil;
-}
-
-- (void)removeDrawLayer{
-    [self.vStreamMixer  clearPicOfLayer:_drawLayer];
+    self.drawPic = nil;
 }
 
 @end

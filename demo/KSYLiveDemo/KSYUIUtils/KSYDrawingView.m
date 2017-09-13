@@ -12,7 +12,6 @@
 @interface KSYDrawingView ()
 
 @property (nonatomic, strong) UIBezierPath *path;
-@property CGRect cgRect;
 
 @end
 @implementation KSYDrawingView
@@ -23,10 +22,9 @@
     return [CAShapeLayer class];
 }
 
-- (id)initDraw:(CGRect)rect{
+- (id)init{
     self = [super init];
     [self awakeFromNib];
-    _cgRect = rect;
     return self;
 }
 
@@ -55,11 +53,16 @@
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
     //get the current point
     CGPoint point = [[touches anyObject] locationInView:self];
-    if ((point.y > 0) && (point.y < _cgRect.size.height - 1)){
+    CGSize sz = self.frame.size;
+    if ((point.y > 0) && (point.y < sz.height - 1)){
         //add a new line segment to our path
         [self.path addLineToPoint:point];
     }
     //update the layer with a copy of the path
     ((CAShapeLayer *)self.layer).path = self.path.CGPath;
+}
+- (void) clearAllPath {
+    [self.path removeAllPoints];
+    ((CAShapeLayer *)self.layer).path = nil;
 }
 @end

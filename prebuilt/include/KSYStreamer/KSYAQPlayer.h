@@ -46,6 +46,12 @@
 @property (nonatomic, assign) double pitch;
 
 /**
+ @abstract   播放速度
+ @discussion 调整范围 0.5~2.0, 默认为1
+ */
+@property (nonatomic, assign) double playRate;
+
+/**
  @abstract   输入的音频格式
  @discussion 每次输入音频格式可能变化时,请重新调用play: 方法
  */

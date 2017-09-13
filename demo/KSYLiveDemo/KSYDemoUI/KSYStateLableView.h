@@ -12,6 +12,7 @@ typedef struct _StreamState {
     int       uploadKByte;  // 上传的字节数(KB)
     int       encodedFrames;// 编码的视频帧数
     int       droppedVFrames; // 丢弃的视频帧数
+    int       capFrames;
 } StreamState;
 @class KSYStreamerBase;
 
@@ -38,6 +39,8 @@ typedef struct _StreamState {
 @property int         fpsRaiseCnt;
 //帧率下调事件发生次数
 @property int         fpsDropCnt;
+// 采集的帧数
+@property int         capFrames;
 
 // 将推流状态信息清0
 - (void) initStreamStat;

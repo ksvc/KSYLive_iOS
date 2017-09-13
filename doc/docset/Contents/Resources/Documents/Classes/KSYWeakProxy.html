@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>KSYGPUBrushStreamerKit Class Reference</title>
+	<title>KSYWeakProxy Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -43,6 +43,8 @@
 							<select id="jump-to">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 
 	
 	
@@ -54,21 +56,23 @@
 	
 	<optgroup label="Properties">
 		
-		<option value="//api/name/drawLayer">drawLayer</option>
-		
-		<option value="//api/name/drawPic">drawPic</option>
-		
-		<option value="//api/name/drawPicRect">drawPicRect</option>
+		<option value="//api/name/target">target</option>
 		
 	</optgroup>
 	
 
 	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/proxyWithTarget:">+ proxyWithTarget:</option>
+		
+	</optgroup>
+	
 
 	
 	<optgroup label="Instance Methods">
 		
-		<option value="//api/name/removeDrawLayer">- removeDrawLayer</option>
+		<option value="//api/name/initWithTarget:">- initWithTarget:</option>
 		
 	</optgroup>
 	
@@ -85,21 +89,45 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">KSYGPUBrushStreamerKit Class Reference</h1>
+					<h1 class="title">KSYWeakProxy Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<th>Inherits from</th>
-	<td><a href="../Classes/KSYGPUStreamerKit.html">KSYGPUStreamerKit</a> : NSObject</td>
+	<td>NSProxy</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>KSYGPUBrushStreamerKit.h</td>
+	<td>KSYWeakProxy.h</td>
 </tr>
 						</tbody></table></div>
 					
 
                     
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>A proxy used to hold a weak object.
+It can be used to avoid retain cycles, such as the <a href="#//api/name/target">target</a> in NSTimer or CADisplayLink.</p>
+
+<p>sample code:</p>
+
+<pre><code> @implementation ViewController {
+    NSTimer *_timer;
+ }
+
+ - (void)initTimer {
+    KSYWeakProxy *proxy = [KSYWeakProxy proxyWithTarget:self];
+    _timer = [NSTimer timerWithTimeInterval:0.1 target:proxy selector:@selector(tick:) userInfo:nil repeats:YES];
+ }
+
+ - (void)tick:(NSTimer *)timer {...}
+ @end
+</code></pre>
+					</div>
+					
+					
 
 					
 					
@@ -112,8 +140,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/drawPicRect" title="drawPicRect"></a>
-	<h3 class="method-title"><code><a href="#//api/name/drawPicRect">&nbsp;&nbsp;drawPicRect</a></code>
+	<a name="//api/name/target" title="target"></a>
+	<h3 class="method-title"><code><a href="#//api/name/target">&nbsp;&nbsp;target</a></code>
 </h3>
 
 	<div class="method-info">
@@ -123,12 +151,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>绘制图片的位置和大小</p>
+				<p>The proxy target.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite) CGRect drawPicRect</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nullable, nonatomic, weak, readonly) id target</code></div>
 
 		    
 			
@@ -137,11 +165,6 @@
 
 			
 
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>位置和大小的单位为预览视图的百分比, 左上角为(0,0), 右下角为(1.0, 1.0)</p><p>如果宽为0, 则根据图像的宽高比, 和设置的高度比例, 计算得到宽度的比例</p><p>如果高为0, 方法同上</p>
-			</div>
 			
 
 			
@@ -151,15 +174,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">KSYGPUBrushStreamerKit.h</code></p>
+				<p><code class="declared-in-ref">KSYWeakProxy.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/drawLayer" title="drawLayer"></a>
-	<h3 class="method-title"><code><a href="#//api/name/drawLayer">&nbsp;&nbsp;drawLayer</a></code>
+	<a name="//api/name/initWithTarget:" title="initWithTarget:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithTarget:">&ndash;&nbsp;initWithTarget:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -169,16 +192,33 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>画笔图层</p>
+				<p>Creates a new weak proxy for <a href="#//api/name/target">target</a>.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSInteger drawLayer</code></div>
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithTarget:(id)<em>target</em></code></div>
 
 		    
 			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>target</code></th>
+						<td><p>Target object.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
 
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A new proxy object.</p>
+			</div>
 			
 
 			
@@ -192,15 +232,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">KSYGPUBrushStreamerKit.h</code></p>
+				<p><code class="declared-in-ref">KSYWeakProxy.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/drawPic" title="drawPic"></a>
-	<h3 class="method-title"><code><a href="#//api/name/drawPic">&nbsp;&nbsp;drawPic</a></code>
+	<a name="//api/name/proxyWithTarget:" title="proxyWithTarget:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/proxyWithTarget:">+&nbsp;proxyWithTarget:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -210,62 +250,33 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>绘制的图片</p>
+				<p>Creates a new weak proxy for <a href="#//api/name/target">target</a>.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite) KSYGPUViewCapture *drawPic</code></div>
+			<div class="method-subsection method-declaration"><code>+ (instancetype)proxyWithTarget:(id)<em>target</em></code></div>
 
 		    
 			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>设置为nil为清除内容图片</p>
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>target</code></th>
+						<td><p>Target object.</p></td>
+					</tr>
+				
+				</table>
 			</div>
 			
 
 			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">KSYGPUBrushStreamerKit.h</code></p>
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A new proxy object.</p>
 			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/removeDrawLayer" title="removeDrawLayer"></a>
-	<h3 class="method-title"><code><a href="#//api/name/removeDrawLayer">&ndash;&nbsp;removeDrawLayer</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>去掉画笔图层</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)removeDrawLayer</code></div>
-
-		    
-			
-
 			
 
 			
@@ -279,7 +290,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">KSYGPUBrushStreamerKit.h</code></p>
+				<p><code class="declared-in-ref">KSYWeakProxy.h</code></p>
 			</div>
 			
 			

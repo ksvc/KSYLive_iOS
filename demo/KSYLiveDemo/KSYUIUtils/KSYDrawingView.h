@@ -11,7 +11,6 @@
 
 @interface KSYDrawingView: KSYUIView
 
-- (id)initDraw:(CGRect)rect;
-
+- (void) clearAllPath;
 @end
 

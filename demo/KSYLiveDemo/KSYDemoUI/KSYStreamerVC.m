@@ -46,12 +46,14 @@
 #endif
     YYImageDecoder  * _animateDecoder;
     int _animateIdx;
-    CADisplayLink   *_displayLink;
+    
     NSTimeInterval   _dlTime;
     NSLock          *_dlLock;
     GPUImagePicture *_logoPicure;
     UIImageOrientation _logoOrientation;
+    CADisplayLink   *_displayLink;
 }
+
 @end
 
 @implementation KSYStreamerVC
@@ -159,6 +161,7 @@
     _ksyBgmView.onSegCtrlBlock = ^(id sender) {
         [selfWeak onBgmCtrSle:sender];
     };
+    [selfWeak onBgmCtrSle:_ksyBgmView.loopType];
     _ksyBgmView.progressBar.dragingSliderCallback = ^(float progress) {
         [selfWeak.kit.bgmPlayer seekToProgress:progress];
     };
@@ -302,7 +305,10 @@
     _animateIdx = 0;
     _dlTime = 0;
     if(!_displayLink){
-        _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkCallBack:)];
+        KSYWeakProxy *proxy = [KSYWeakProxy proxyWithTarget:self];
+        SEL dpCB = @selector(displayLinkCallBack:);
+        _displayLink = [CADisplayLink displayLinkWithTarget:proxy
+                                                   selector:dpCB];
         [_displayLink addToRunLoop:[NSRunLoop currentRunLoop]
                            forMode:NSRunLoopCommonModes];
     }
@@ -359,7 +365,9 @@
     _kit.gpuOutputPixelFormat = [self.presetCfgView gpuOutputPixelFmt];
     _kit.capturePixelFormat   = [self.presetCfgView gpuOutputPixelFmt];
     _kit.aCapDev.noiseSuppressionLevel = self.audioView.noiseSuppress;
+    weakObj(self);
     _kit.videoProcessingCallback = ^(CMSampleBufferRef buf){
+        selfWeak.ctrlView.lblStat.capFrames += 1; // 统计预览帧率(实际使用时不需要)
         // 在此处添加自定义图像处理, 直接修改buf中的图像数据会传递到观众端
         // 或复制图像数据之后再做其他处理, 则观众端仍然看到处理前的图像
     };
@@ -1130,7 +1138,6 @@
  */
 - (CGPoint)convertToPointOfInterestFromViewCoordinates:(CGPoint)viewCoordinates
 {
-    CGPoint pointOfInterest = CGPointMake(.5f, .5f);
     CGSize frameSize = self.view.frame.size;
     CGSize apertureSize = [_kit captureDimension];
     CGPoint point = viewCoordinates;
@@ -1158,8 +1165,7 @@
             yc = 1.f - (point.x / x2);
         }
     }
-    pointOfInterest = CGPointMake(xc, yc);
-    return pointOfInterest;
+    return CGPointMake(xc, yc);
 }
 
 //设置摄像头对焦位置

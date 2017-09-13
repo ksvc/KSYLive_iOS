@@ -72,8 +72,8 @@ static NSString *backgroudText4 = {@"    金山云推流SDK支持H.264/H.265编�
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    if(_playerVC && _playerVC.player)
-    {
+    [super viewDidAppear:animated];
+    if(_playerVC && _playerVC.player) {
         [_playerVC.player.view setFrame: videoView.bounds];
         [videoView addSubview: _playerVC.player.view];
     }

@@ -9,11 +9,12 @@
 #import "KSYUIVC.h"
 #import <mach/mach.h>
 #import <libksygpulive/KSYReachability.h>
+#import <libksygpulive/KSYWeakProxy.h>
 #import "KSYUIView.h"
 
 @interface KSYUIVC() {
     KSYReachability *_reach;
-    KSYNetworkStatus   _preStatue;
+    KSYNetworkStatus _preStatue;
 }
 
 @end
@@ -29,8 +30,9 @@
 
 - (void) addObservers {
     // statistics update every seconds
-    _timer =  [NSTimer scheduledTimerWithTimeInterval:1.0
-                                               target:self
+    KSYWeakProxy *proxy = [KSYWeakProxy proxyWithTarget:self];
+    self.timer =  [NSTimer scheduledTimerWithTimeInterval:1.0
+                                               target:proxy
                                              selector:@selector(onTimer:)
                                              userInfo:nil
                                               repeats:YES];
@@ -179,7 +181,6 @@
         return -1;
     }
     
-    task_basic_info_t      basic_info;
     thread_array_t         thread_list;
     mach_msg_type_number_t thread_count;
     
@@ -187,18 +188,12 @@
     mach_msg_type_number_t thread_info_count;
     
     thread_basic_info_t basic_info_th;
-    uint32_t stat_thread = 0; // Mach threads
-    
-    basic_info = (task_basic_info_t)tinfo;
     
     // get threads in the task
     kr = task_threads(mach_task_self(), &thread_list, &thread_count);
     if (kr != KERN_SUCCESS) {
         return -1;
     }
-    if (thread_count > 0)
-        stat_thread += thread_count;
-    
     long tot_sec = 0;
     long tot_usec = 0;
     float tot_cpu = 0;

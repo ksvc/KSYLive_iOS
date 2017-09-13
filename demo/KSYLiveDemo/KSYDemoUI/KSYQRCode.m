@@ -72,11 +72,14 @@
     CGContextSetInterpolationQuality(bitmapRef, kCGInterpolationNone);
     CGContextScaleCTM(bitmapRef, scale, scale);
     CGContextDrawImage(bitmapRef, extent, bitmapImage);
+    CGColorSpaceRelease(cs);
     // 2.保存bitmap到图片
     CGImageRef scaledImage = CGBitmapContextCreateImage(bitmapRef);
     CGContextRelease(bitmapRef);
     CGImageRelease(bitmapImage);
-    return [UIImage imageWithCGImage:scaledImage];
+    UIImage * img = [UIImage imageWithCGImage:scaledImage];
+    CGImageRelease(scaledImage);
+    return img;
 }
 - (UIButton*)addButton:(NSString*)title{
     //添加一个按钮

@@ -150,6 +150,10 @@
 -(void)imagePickerController:(UIImagePickerController *)picker
        didFinishPickingImage:(UIImage *)image
                  editingInfo:(NSDictionary *)editingInfo {
+    if(image == nil) {
+        [picker dismissViewControllerAnimated:YES completion:nil];
+        return;
+    }
     _streamState.hidden = NO;
     captureBtn.hidden = NO;
     streamBtn.hidden = NO;
@@ -167,7 +171,6 @@
     }else{
         _kit.previewDimension = _kit.bgPic.outputImageSize;
     }
-    image = nil;
     //推流过程中切换图片
     if (_capFlag == 0) {
         _capFlag = 1;

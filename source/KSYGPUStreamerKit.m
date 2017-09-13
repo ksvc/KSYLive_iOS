@@ -170,9 +170,7 @@
         [selfWeak onStreamState:state];
     };
     _streamerBase.videoFPSChange = ^(int newVideoFPS){
-        selfWeak.videoFPS = MAX(1, MIN(newVideoFPS, 30));
-        selfWeak.vCapDev.frameRate = selfWeak.videoFPS;
-        selfWeak.streamerBase.videoFPS = selfWeak.videoFPS;
+        [selfWeak changeFPS:newVideoFPS];
     };
     //设置profile初始值
     self.streamerProfile = KSYStreamerProfile_540p_3;
@@ -775,12 +773,16 @@
     _streamDimension.height = MAX( 90, MIN(_streamDimension.height, 720));
 }
 @synthesize videoFPS = _videoFPS;
+- (void)changeFPS:(int)fps {
+    _videoFPS = MAX(1, MIN(fps, 30));
+    _vCapDev.frameRate = _videoFPS;
+    _streamerBase.videoFPS = _videoFPS;
+}
+
 - (void) setVideoFPS: (int) fps {
     if(_captureState  ==  KSYCaptureStateIdle)
     {
-        _videoFPS = MAX(1, MIN(fps, 30));
-        _vCapDev.frameRate = _videoFPS;
-        _streamerBase.videoFPS = _videoFPS;
+        [self changeFPS:fps];
     }
 }
 
