@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYSpecialEffects.html">
+	<File path="Classes/KSYReachability.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYSpecialEffects</TokenIdentifier>
-			<Abstract type="html">金山云特效滤镜</Abstract>
-			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYReachability</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
             
 			
 			<NodeRef refid="41"/>
@@ -13,84 +13,374 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KSYSpecialEffects/showVersion</TokenIdentifier>
-			<Abstract type="html">show version of this filter</Abstract>
-			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/setReachableBlock:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
 			
-			<Declaration>+ (void)showVersion</Declaration>
+			<Declaration>@property (nonatomic, copy) KSYNetworkReachable reachableBlock</Declaration>
 			
 			
-			<Anchor>//api/name/showVersion</Anchor>
+			<Anchor>//api/name/reachableBlock</Anchor>
             <NodeRef refid="41"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYSpecialEffects/initWithUIImage:</TokenIdentifier>
-			<Abstract type="html">初始化并指定特效素材</Abstract>
-			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/reachableBlock</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithUIImage:(UIImage *)image</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>image</Name>
-					<Abstract type="html">特效素材</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">构造的滤镜</Abstract></ReturnValue>
-			<Anchor>//api/name/initWithUIImage:</Anchor>
+			<Declaration>@property (nonatomic, copy) KSYNetworkReachable reachableBlock</Declaration>
+			
+			
+			<Anchor>//api/name/reachableBlock</Anchor>
             <NodeRef refid="41"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYSpecialEffects/setSpecialEffectsUIImage:</TokenIdentifier>
-			<Abstract type="html">指定特效素材</Abstract>
-			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYReachability/reachableBlock</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
 			
-			<Declaration>- (void)setSpecialEffectsUIImage:(UIImage *)image</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>image</Name>
-					<Abstract type="html">特效素材</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, copy) KSYNetworkReachable reachableBlock</Declaration>
 			
-			<Anchor>//api/name/setSpecialEffectsUIImage:</Anchor>
+			
+			<Anchor>//api/name/reachableBlock</Anchor>
             <NodeRef refid="41"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYSpecialEffects/setIntensity:</TokenIdentifier>
-			<Abstract type="html">特效参数</Abstract>
-			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/setUnreachableBlock:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
 			
-			<Declaration>@property (readwrite, nonatomic) CGFloat intensity</Declaration>
+			<Declaration>@property (nonatomic, copy) KSYNetworkUnreachable unreachableBlock</Declaration>
 			
 			
-			<Anchor>//api/name/intensity</Anchor>
+			<Anchor>//api/name/unreachableBlock</Anchor>
             <NodeRef refid="41"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYSpecialEffects/intensity</TokenIdentifier>
-			<Abstract type="html">特效参数</Abstract>
-			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/unreachableBlock</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
 			
-			<Declaration>@property (readwrite, nonatomic) CGFloat intensity</Declaration>
+			<Declaration>@property (nonatomic, copy) KSYNetworkUnreachable unreachableBlock</Declaration>
 			
 			
-			<Anchor>//api/name/intensity</Anchor>
+			<Anchor>//api/name/unreachableBlock</Anchor>
             <NodeRef refid="41"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYSpecialEffects/intensity</TokenIdentifier>
-			<Abstract type="html">特效参数</Abstract>
-			<DeclaredIn>KSYSpecialEffects.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYReachability/unreachableBlock</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
 			
-			<Declaration>@property (readwrite, nonatomic) CGFloat intensity</Declaration>
+			<Declaration>@property (nonatomic, copy) KSYNetworkUnreachable unreachableBlock</Declaration>
 			
 			
-			<Anchor>//api/name/intensity</Anchor>
+			<Anchor>//api/name/unreachableBlock</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/setReachabilityBlock:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) KSYNetworkReachability reachabilityBlock</Declaration>
+			
+			
+			<Anchor>//api/name/reachabilityBlock</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/reachabilityBlock</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) KSYNetworkReachability reachabilityBlock</Declaration>
+			
+			
+			<Anchor>//api/name/reachabilityBlock</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYReachability/reachabilityBlock</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) KSYNetworkReachability reachabilityBlock</Declaration>
+			
+			
+			<Anchor>//api/name/reachabilityBlock</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/setReachableOnWWAN:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL reachableOnWWAN</Declaration>
+			
+			
+			<Anchor>//api/name/reachableOnWWAN</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/reachableOnWWAN</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL reachableOnWWAN</Declaration>
+			
+			
+			<Anchor>//api/name/reachableOnWWAN</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYReachability/reachableOnWWAN</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL reachableOnWWAN</Declaration>
+			
+			
+			<Anchor>//api/name/reachableOnWWAN</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KSYReachability/reachabilityWithHostname:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)reachabilityWithHostname:(NSString *)hostname</Declaration>
+			
+			
+			<Anchor>//api/name/reachabilityWithHostname:</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KSYReachability/reachabilityWithHostName:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)reachabilityWithHostName:(NSString *)hostname</Declaration>
+			
+			
+			<Anchor>//api/name/reachabilityWithHostName:</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KSYReachability/reachabilityForInternetConnection</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)reachabilityForInternetConnection</Declaration>
+			
+			
+			<Anchor>//api/name/reachabilityForInternetConnection</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KSYReachability/reachabilityWithAddress:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)reachabilityWithAddress:(void *)hostAddress</Declaration>
+			
+			
+			<Anchor>//api/name/reachabilityWithAddress:</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KSYReachability/reachabilityForLocalWiFi</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)reachabilityForLocalWiFi</Declaration>
+			
+			
+			<Anchor>//api/name/reachabilityForLocalWiFi</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/initWithReachabilityRef:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)initWithReachabilityRef:(SCNetworkReachabilityRef)ref</Declaration>
+			
+			
+			<Anchor>//api/name/initWithReachabilityRef:</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/startNotifier</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)startNotifier</Declaration>
+			
+			
+			<Anchor>//api/name/startNotifier</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/stopNotifier</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>- (void)stopNotifier</Declaration>
+			
+			
+			<Anchor>//api/name/stopNotifier</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/isReachable</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isReachable</Declaration>
+			
+			
+			<Anchor>//api/name/isReachable</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/isReachableViaWWAN</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isReachableViaWWAN</Declaration>
+			
+			
+			<Anchor>//api/name/isReachableViaWWAN</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/isReachableViaWiFi</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isReachableViaWiFi</Declaration>
+			
+			
+			<Anchor>//api/name/isReachableViaWiFi</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/isConnectionRequired</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isConnectionRequired</Declaration>
+			
+			
+			<Anchor>//api/name/isConnectionRequired</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/connectionRequired</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)connectionRequired</Declaration>
+			
+			
+			<Anchor>//api/name/connectionRequired</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/isConnectionOnDemand</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isConnectionOnDemand</Declaration>
+			
+			
+			<Anchor>//api/name/isConnectionOnDemand</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/isInterventionRequired</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isInterventionRequired</Declaration>
+			
+			
+			<Anchor>//api/name/isInterventionRequired</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/currentReachabilityStatus</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>- (KSYNetworkStatus)currentReachabilityStatus</Declaration>
+			
+			
+			<Anchor>//api/name/currentReachabilityStatus</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/reachabilityFlags</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>- (SCNetworkReachabilityFlags)reachabilityFlags</Declaration>
+			
+			
+			<Anchor>//api/name/reachabilityFlags</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/currentReachabilityString</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)currentReachabilityString</Declaration>
+			
+			
+			<Anchor>//api/name/currentReachabilityString</Anchor>
+            <NodeRef refid="41"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/currentReachabilityFlags</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)currentReachabilityFlags</Declaration>
+			
+			
+			<Anchor>//api/name/currentReachabilityFlags</Anchor>
             <NodeRef refid="41"/>
 		</Token>
 		

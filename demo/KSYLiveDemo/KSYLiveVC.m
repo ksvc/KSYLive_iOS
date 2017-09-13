@@ -375,14 +375,13 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
     }
     else if(sender == _buttonDone){
         UIViewController* vc = nil;
-        NSString * urlStr = _currentSelectUrl;
         NSURL *url = [NSURL URLWithString:_currentSelectUrl];
         NSString *scheme = [url scheme];
         if( ![scheme isEqualToString:@"rtmp"] &&
             ![scheme isEqualToString:@"http"] &&
             ![scheme isEqualToString:@"https"] &&
             ![scheme isEqualToString:@"rtsp"]) {
-            urlStr = [NSString stringWithFormat:@"%@%s%@", NSHomeDirectory(), "/Documents/",_currentSelectUrl];
+            NSString * urlStr = [NSString stringWithFormat:@"%@%s%@", NSHomeDirectory(), "/Documents/",_currentSelectUrl];
             url = [NSURL URLWithString:urlStr];
         }
         if (_selectMenuRow >= 0 && _selectMenuRow < _controllers.count) {

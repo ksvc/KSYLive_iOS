@@ -25,8 +25,8 @@
 // 定时更新调试信息 // 每秒重复调用
 - (void)onTimer:(NSTimer *)theTimer ;
 
-// 在addObservers 中会注册此timer, 没秒重复调用onTimer
-@property NSTimer *timer;
+// 在addObservers 中会注册此timer, 每秒重复调用onTimer
+@property (nonatomic, weak) NSTimer *timer;
 
 // 在viewDidLoad 时会调用, 继承后重载该函数, 可以增加其他消息注册
 - (void) addObservers;

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYBgmPlayerState.html">
+	<File path="Constants/KSYAudioNoiseSuppress.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYBgmPlayerState</TokenIdentifier>
-			<Abstract type="html">音频播放状态</Abstract>
-			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYAudioNoiseSuppress</TokenIdentifier>
+			<Abstract type="html">噪声抑制等级</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
             
 			
 			<NodeRef refid="53"/>
@@ -14,71 +14,51 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateInit</TokenIdentifier>
-            <Abstract type="html">初始状态</Abstract>
-            <Declaration>KSYBgmPlayerStateInit</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_OFF</TokenIdentifier>
+            <Abstract type="html">关闭</Abstract>
+            <Declaration>KSYAudioNoiseSuppress_OFF</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="53"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateStarting</TokenIdentifier>
-            <Abstract type="html">背景音正在播放</Abstract>
-            <Declaration>KSYBgmPlayerStateStarting</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
             
             <NodeRef refid="53"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateStopped</TokenIdentifier>
-            <Abstract type="html">背景音停止</Abstract>
-            <Declaration>KSYBgmPlayerStateStopped</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_LOW</TokenIdentifier>
+            <Abstract type="html">温和</Abstract>
+            <Declaration>KSYAudioNoiseSuppress_LOW</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="53"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStatePlaying</TokenIdentifier>
-            <Abstract type="html">背景音正在播放</Abstract>
-            <Declaration>KSYBgmPlayerStatePlaying</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
             
             <NodeRef refid="53"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStatePaused</TokenIdentifier>
-            <Abstract type="html">背景音暂停</Abstract>
-            <Declaration>KSYBgmPlayerStatePaused</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_MEDIUM</TokenIdentifier>
+            <Abstract type="html">中等</Abstract>
+            <Declaration>KSYAudioNoiseSuppress_MEDIUM</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="53"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateError</TokenIdentifier>
-            <Abstract type="html">背景音播放出错</Abstract>
-            <Declaration>KSYBgmPlayerStateError</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
             
             <NodeRef refid="53"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateInterrupted</TokenIdentifier>
-            <Abstract type="html">背景音被打断</Abstract>
-            <Declaration>KSYBgmPlayerStateInterrupted</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_HIGH</TokenIdentifier>
+            <Abstract type="html">激进</Abstract>
+            <Declaration>KSYAudioNoiseSuppress_HIGH</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+            
+            <NodeRef refid="53"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_VERYHIGH</TokenIdentifier>
+            <Abstract type="html">非常激进</Abstract>
+            <Declaration>KSYAudioNoiseSuppress_VERYHIGH</Declaration>
+            
+            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
             
             <NodeRef refid="53"/>
         </Token>

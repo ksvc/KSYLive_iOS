@@ -57,8 +57,8 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    if(_player)
-    {
+    [super viewDidAppear:animated];
+    if(_player){
         [_player.view setFrame: videoView.bounds];
         [videoView addSubview: _player.view];
     }

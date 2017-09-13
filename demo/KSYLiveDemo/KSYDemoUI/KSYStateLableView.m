@@ -44,16 +44,20 @@
     curState.uploadKByte    = [str uploadedKByte];
     curState.encodedFrames  = [str encodedFrames];
     curState.droppedVFrames = [str droppedVideoFrames];
+    curState.capFrames      = _capFrames;
     
     StreamState deltaS  = {0};
     deltaS.timeSecond    = curState.timeSecond    -_lastStD.timeSecond    ;
     deltaS.uploadKByte   = curState.uploadKByte   -_lastStD.uploadKByte   ;
     deltaS.encodedFrames = curState.encodedFrames -_lastStD.encodedFrames ;
     deltaS.droppedVFrames= curState.droppedVFrames-_lastStD.droppedVFrames;
+    deltaS.capFrames     = curState.capFrames     -_lastStD.capFrames;
+    
     _lastStD = curState;
     
     double realTKbps   = deltaS.uploadKByte*8 / deltaS.timeSecond;
     double encFps      = deltaS.encodedFrames / deltaS.timeSecond;
+    double capFps      = deltaS.capFrames / deltaS.timeSecond;
     double dropPercent = deltaS.droppedVFrames * 100.0 /MAX(curState.encodedFrames, 1);
     
     NSString* liveTime =[KSYUIVC timeFormatted: (int)(curState.timeSecond-_startTime) ] ;
@@ -73,7 +77,7 @@
         playUrl = [NSString stringWithFormat:@"拉流地址:%@\n",playUrl];
     }
     NSString* statekbps = [NSString stringWithFormat:@"实时码率(kbps)%4.1f\tA%4.1f\tV%4.1f\n", realTKbps, [str encodeAKbps], [str encodeVKbps] ];
-    NSString* statefps  = [NSString stringWithFormat:@"实时帧率(fps)%2.1f\t总上传:%@\n", encFps, uploadDateSize ];
+    NSString* statefps  = [NSString stringWithFormat:@"实时帧率(fps)%2.1f %2.1f\t总上传:%@\n", encFps, capFps, uploadDateSize ];
     NSString* videoqosinfo = [NSString stringWithFormat:@"视频缓冲 %d B  %d ms  %d packets \n",
                                                     info->videoBufferDataSize, info->videoBufferTimeLength, info->videoBufferPackets];
     NSString* audioqosinfo = [NSString stringWithFormat:@"音频缓冲 %d B  %d ms  %d packets \n",

@@ -89,7 +89,7 @@
 			<Abstract type="html">绘制的图片</Abstract>
 			<DeclaredIn>KSYGPUBrushStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) GPUImageUIElement *drawPic</Declaration>
+			<Declaration>@property (nonatomic, readwrite) KSYGPUViewCapture *drawPic</Declaration>
 			
 			
 			<Anchor>//api/name/drawPic</Anchor>
@@ -101,7 +101,7 @@
 			<Abstract type="html">绘制的图片</Abstract>
 			<DeclaredIn>KSYGPUBrushStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) GPUImageUIElement *drawPic</Declaration>
+			<Declaration>@property (nonatomic, readwrite) KSYGPUViewCapture *drawPic</Declaration>
 			
 			
 			<Anchor>//api/name/drawPic</Anchor>
@@ -113,7 +113,7 @@
 			<Abstract type="html">绘制的图片</Abstract>
 			<DeclaredIn>KSYGPUBrushStreamerKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) GPUImageUIElement *drawPic</Declaration>
+			<Declaration>@property (nonatomic, readwrite) KSYGPUViewCapture *drawPic</Declaration>
 			
 			
 			<Anchor>//api/name/drawPic</Anchor>

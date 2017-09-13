@@ -46,7 +46,7 @@
     _bgmPath    = _bgmSel.filePath;
     _cnt        = _bgmSel.fileList.count;
     _loopType = [self addSegCtrlWithItems:@[@"单曲播放", @"单曲循环", @"随机播放",@"循环播放"]];
-    _loopType.selectedSegmentIndex = 4;
+    _loopType.selectedSegmentIndex = 3;
     _progressBar = [[KSYProgressView alloc] init];
     [self addSubview:_progressBar];
     if (_cnt == 0) {

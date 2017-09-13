@@ -7,6 +7,7 @@
 
 #import "KSYRecordVC.h"
 #import <libksygpulive/KSYUIRecorderKit.h>
+#import <libksygpulive/KSYWeakProxy.h>
 #import <CommonCrypto/CommonDigest.h>
 #import "KSYProgressView.h"
 #import <GPUImage/GPUImage.h>
@@ -20,7 +21,8 @@
 @interface KSYRecordVC () <UITextFieldDelegate>
 @property (strong, nonatomic) NSURL *url;
 @property (strong, nonatomic) KSYMoviePlayerController *player;
-@property  KSYUIRecorderKit* kit;
+@property (strong, nonatomic) KSYUIRecorderKit* kit;
+
 @end
 
 @implementation KSYRecordVC{
@@ -46,8 +48,8 @@
     
     NSString *recordFilePath;//保存路径
     
-    CADisplayLink *displayLink;
     dispatch_queue_t queue;
+    CADisplayLink *_displayLink;
     
     NSInteger recordScheme;
 }
@@ -55,9 +57,8 @@
 - (instancetype)initWithURL:(NSURL *)url {
     if((self = [super init])) {
         self.url = url;
+        recordScheme =  -1;
     }
-    
-    recordScheme =  -1;
     return self;
 }
 
@@ -591,25 +592,26 @@
 
 - (void)setupTimer
 {
-    if(!displayLink)
+    if(!_displayLink)
     {
         //调用截图方法
-        displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(captureScreen:)];
-#if  __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
-            //如果系统版本大于等于10.0
-            //设定回调速率
-            displayLink.preferredFramesPerSecond = 15;
-#else
+        KSYWeakProxy *proxy = [KSYWeakProxy proxyWithTarget:self];
+        _displayLink = [CADisplayLink displayLinkWithTarget:proxy selector:@selector(captureScreen:)];
+        if(SYSTEM_VERSION_LESS_THAN(@"1.0")) {//如果系统版本小于10.0
             //设置间隔多少帧调用一次selector 方法
-            displayLink.frameInterval = 4;
-#endif
-        [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+            _displayLink.frameInterval = 4;
+        }
+        else {
+            //设定回调速率
+            _displayLink.preferredFramesPerSecond = 15;
+        }
+        [_displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
     }
 }
 
 - (void)stopTimer
 {
-    [displayLink invalidate];
-    displayLink = nil;
+    [_displayLink invalidate];
+    _displayLink = nil;
 }
 @end

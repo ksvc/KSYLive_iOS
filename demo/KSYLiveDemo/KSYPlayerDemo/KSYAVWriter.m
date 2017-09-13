@@ -7,6 +7,7 @@
 //
 
 #import "KSYAVWriter.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 
 #define MIN_DELAY   10000
 
@@ -164,19 +165,26 @@
 //开始记录
 -(void)startRecord
 {
+    [self startRecordDeleteRecordedVideo:YES];
+}
+
+-(void)startRecordDeleteRecordedVideo:(BOOL)isDelete {
     int ret  = 0;
     if(status != KSYAVWriter_Status_Init || !filePath)
         return ;
     
     status = KSYAVWriter_Status_Preparing;
     //设置要写成的文件类型及路径
-        NSURL *outputUrl = [NSURL fileURLWithPath:[filePath absoluteString]];
-        AVWriter = [[AVAssetWriter alloc] initWithURL:outputUrl fileType:AVFileTypeMPEG4 error:nil];
+    NSURL *outputUrl = [NSURL fileURLWithPath:[filePath absoluteString]];
+    AVWriter = [[AVAssetWriter alloc] initWithURL:outputUrl fileType:AVFileTypeMPEG4 error:nil];
     
-    if ([[NSFileManager defaultManager] fileExistsAtPath:[filePath absoluteString]]) {
-        NSError *error;
-        if ([[NSFileManager defaultManager] removeItemAtPath:[filePath absoluteString] error:&error] == NO) {
-            NSLog(@"removeitematpath %@ error :%@", [filePath absoluteString], error);
+    if (isDelete) {
+        if ([[NSFileManager defaultManager] fileExistsAtPath:[filePath absoluteString]]) {
+            NSError *error;
+            NSLog(@"");
+            if ([[NSFileManager defaultManager] removeItemAtPath:[filePath absoluteString] error:&error] == NO) {
+                NSLog(@"removeitematpath %@ error :%@", [filePath absoluteString], error);
+            }
         }
     }
     
@@ -198,7 +206,6 @@
 {
     if(!_bWithVideo || !sampleBuffer || !videoQueue || !videoWriterInput || status != KSYAVWriter_Status_OK)
         return ;
-    
     //丢掉无用帧
     CMTime pts = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
     int64_t videopts  = CMTimeGetSeconds(pts) * 1000;
@@ -213,6 +220,7 @@
     if(!bSetStartPts)
     {
         [AVWriter startSessionAtSourceTime:pts];
+        NSLog(@"pts ===------- %zd", videopts);
         bSetStartPts = YES;
     }
 
@@ -273,6 +281,16 @@
 //停止写入
 -(void)stopRecord
 {
+    [self stopRecordPause:NO];
+}
+
+- (void)stopRecordPause:(BOOL)pause {
+    
+    if (pause) {
+        status = KSYAVWriter_Status_Pause;
+        return;
+    }
+    
     if(status != KSYAVWriter_Status_OK || (!videoWriterInput && !audioWriterInput))
         return ;
     
@@ -299,6 +317,28 @@
     
     videoQueue = nil;
     audioQueue = nil;
+}
+
+- (void)saveVideoToPhotosAlbumWithResultBlock:(void(^)(NSError *error))resultBlock {
+    
+    ALAssetsLibrary *aLibrary = [[ALAssetsLibrary alloc] init];
+    [aLibrary writeVideoAtPathToSavedPhotosAlbum:filePath
+                                 completionBlock:^(NSURL *assetURL, NSError *error) {
+                                     if (error) {
+                                         NSLog(@"Save video fail:%@",error);
+                                     } else {
+                                         NSLog(@"Save video succeed.");
+                                     }
+                                     if (resultBlock) {
+                                         resultBlock(error);
+                                     }
+                                 }];
+}
+
+- (void)cancelRecorde {
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[filePath absoluteString]]) {
+        [[NSFileManager defaultManager] removeItemAtPath:[filePath absoluteString] error:nil];
+    }
 }
 
 @end

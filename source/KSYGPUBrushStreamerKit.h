@@ -28,7 +28,7 @@
  @abstract   绘制的图片
  @discussion 设置为nil为清除内容图片
  */
-@property (nonatomic, readwrite) GPUImageUIElement      *drawPic;
+@property (nonatomic, readwrite) KSYGPUViewCapture      *drawPic;
 
 /**
  @abstract   去掉画笔图层

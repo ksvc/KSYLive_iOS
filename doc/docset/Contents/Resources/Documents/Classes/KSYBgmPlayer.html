@@ -78,7 +78,11 @@
 		
 		<option value="//api/name/bgmVolume">bgmVolume</option>
 		
+		<option value="//api/name/callBackRawData">callBackRawData</option>
+		
 		<option value="//api/name/isRunning">isRunning</option>
+		
+		<option value="//api/name/playRate">playRate</option>
 		
 	</optgroup>
 	
@@ -595,6 +599,52 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/playRate" title="playRate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playRate">&nbsp;&nbsp;playRate</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>播放速率</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) double playRate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>调整范围 0.5 ~ 2.0，默认值 1.0</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYBgmPlayer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/bMuteBgmPlay" title="bMuteBgmPlay"></a>
 	<h3 class="method-title"><code><a href="#//api/name/bMuteBgmPlay">&nbsp;&nbsp;bMuteBgmPlay</a></code>
 </h3>
@@ -624,6 +674,53 @@
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>仅仅静音播放, 不影响回调的音频数据</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYBgmPlayer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/callBackRawData" title="callBackRawData"></a>
+	<h3 class="method-title"><code><a href="#//api/name/callBackRawData">&nbsp;&nbsp;callBackRawData</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置 <a href="#//api/name/audioDataBlock">audioDataBlock</a> 是否返回原始数据</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL callBackRawData</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>默认为NO，<a href="#//api/name/audioDataBlock">audioDataBlock</a> 返回的数据为经过变速、变调后的数据
+             如果为YES，<a href="#//api/name/audioDataBlock">audioDataBlock</a> 返回的数据为原始数据</p>
 			</div>
 			
 
