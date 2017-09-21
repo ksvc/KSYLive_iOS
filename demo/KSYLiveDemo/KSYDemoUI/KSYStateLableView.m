@@ -23,6 +23,7 @@
     self.textColor = [UIColor redColor];
     self.numberOfLines = 12;
     self.textAlignment = NSTextAlignmentLeft;
+    self.hideText = NO;
     [self initStreamStat];
     return self;
 }
@@ -54,11 +55,16 @@
     deltaS.capFrames     = curState.capFrames     -_lastStD.capFrames;
     
     _lastStD = curState;
+    if (self.hideText) {
+        self.text = nil;
+        return;
+    }
     
     double realTKbps   = deltaS.uploadKByte*8 / deltaS.timeSecond;
     double encFps      = deltaS.encodedFrames / deltaS.timeSecond;
     double capFps      = deltaS.capFrames / deltaS.timeSecond;
     double dropPercent = deltaS.droppedVFrames * 100.0 /MAX(curState.encodedFrames, 1);
+    
     
     NSString* liveTime =[KSYUIVC timeFormatted: (int)(curState.timeSecond-_startTime) ] ;
     NSString *uploadDateSize = [KSYUIVC sizeFormatted:curState.uploadKByte];
@@ -86,14 +92,9 @@
     NSString* netEvent = [NSString stringWithFormat:@"网络事件计数 %d bad\n\tbw %d Raise %d drop\t fps %d Raise %d drop\n",
                                             _notGoodCnt, _bwRaiseCnt, _bwDropCnt, _fpsRaiseCnt, _fpsDropCnt];
     NSString *cpu_use = [NSString stringWithFormat:@"%@ \tcpu: %.2f mem: %.1fMB",liveTime, [KSYUIVC cpu_usage], [KSYUIVC memory_usage] ];
-    self.text = [ stateurl   stringByAppendingString:playUrl ];
-    self.text = [ self.text   stringByAppendingString:statekbps ];
-    self.text = [ self.text  stringByAppendingString:statefps  ];
-    self.text = [ self.text stringByAppendingString:videoqosinfo ];
-    self.text = [ self.text stringByAppendingString:audioqosinfo ];
-    self.text = [ self.text  stringByAppendingString:statedrop ];
-    self.text = [ self.text  stringByAppendingString:netEvent  ];
-    self.text = [ self.text  stringByAppendingString:cpu_use  ];
+    NSArray *texts = @[stateurl, playUrl, statekbps, statefps, videoqosinfo, audioqosinfo, statedrop, netEvent, cpu_use ];
+    self.text = [texts componentsJoinedByString:@""];
+
     
 }
 

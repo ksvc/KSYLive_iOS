@@ -41,10 +41,13 @@ typedef struct _StreamState {
 @property int         fpsDropCnt;
 // 采集的帧数
 @property int         capFrames;
+// hide (NO)
+@property BOOL        hideText;
 
 // 将推流状态信息清0
 - (void) initStreamStat;
 
 // 更新数据(需要每秒被调用一次)
 - (void) updateState:(KSYStreamerBase*)str;
+
 @end
