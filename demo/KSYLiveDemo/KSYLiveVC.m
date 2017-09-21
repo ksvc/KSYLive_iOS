@@ -11,14 +11,16 @@
 #import "KSYPlayerVC.h"
 #import "KSYProberVC.h"
 #import "KSYMonkeyTestVC.h"
+#import "KSYNetTrackerVC.h"
+#import "KSYVideoListVC.h"
+#ifndef KSYPlayer_Demo
 #import "KSYPresetCfgVC.h"
 #import "KSYRecordVC.h"
-#import "KSYNetTrackerVC.h"
 #import "KSYSimplestStreamerVC.h"
 #import "KSYHorScreenStreamerVC.h"
 #import "KSYBrushStreamerVC.h"
 #import "KSYBgpStreamerVC.h"
-#import "KSYVideoListVC.h"
+#endif
 
 typedef NS_ENUM(NSInteger, KSYDemoMenuType){
     KSYDemoMenuType_PLAY = 0,                     //播放
@@ -287,9 +289,10 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
     _controllers = [[NSMutableArray alloc] init];
     [self addMenu:@"播放demo"     withBlk:^(NSURL* url){return [[KSYPlayerCfgVC alloc]initWithURL:url fileList:nil];} ];
     [self addMenu:@"视频列表"      withBlk:^(NSURL* url){return [[KSYVideoListVC alloc] initWithUrl:url];} ];
-    [self addMenu:@"录制播放短视频" withBlk:^(NSURL* url){return [[KSYRecordVC alloc]initWithURL:url];} ];
     [self addMenu:@"文件格式探测"   withBlk:^(NSURL* url){return [[KSYProberVC alloc]initWithURL:url];} ];
     [self addMenu:@"播放自动化测试" withBlk:^(NSURL* url){return [[KSYMonkeyTestVC alloc] init];} ];
+#ifndef KSYPlayer_Demo
+    [self addMenu:@"录制播放短视频" withBlk:^(NSURL* url){return [[KSYRecordVC alloc]initWithURL:url];} ];
     [self addMenu:@"推流demo"     withBlk:^(NSURL* url){return [[KSYPresetCfgVC alloc]initWithURL:url];} ];
     [self addMenu:@"极简推流"      withBlk:^(NSURL* url){return [[KSYSimplestStreamerVC alloc] initWithUrl:url];} ];
     [self addMenu:@"半屏推流"      withBlk:^(NSURL* url){return [[KSYHorScreenStreamerVC alloc] initWithUrl:url];} ];
@@ -301,6 +304,7 @@ typedef NS_ENUM(NSInteger, KSYDemoMenuType){
         preVC.cfgView.btn1.enabled = NO;
         preVC.cfgView.btn3.enabled = NO;
         return preVC;}];
+#endif
     [self addMenu: @"网络探测" withBlk:^(NSURL* url){return [[KSYNetTrackerVC alloc]init];}];
 }
 

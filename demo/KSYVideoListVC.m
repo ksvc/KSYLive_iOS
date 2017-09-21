@@ -7,7 +7,7 @@
 //
 
 #import "KSYVideoListVC.h"
-#import <libksygpulive/libksygpulive.h>
+#import <libksygpulive/KSYMoviePlayerController.h>
 
 #pragma mark - KSYVideoListCell
 

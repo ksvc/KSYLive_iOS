@@ -110,11 +110,8 @@
     return label;
 }
 - (IBAction)onBtn:(id)sender{
-    //返回按钮的动作
     if (sender == _buttonBack) {
-        NSLog(@"返回按钮");
-        [self dismissViewControllerAnimated:self completion:nil];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
-    
 }
 @end

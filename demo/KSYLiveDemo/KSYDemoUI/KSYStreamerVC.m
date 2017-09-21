@@ -664,11 +664,14 @@
     }
     if (swipGestRec == _swipeGest){
         CGRect rect = self.view.frame;
+        _ctrlView.lblStat.hideText = NO;
         if ( CGRectEqualToRect(rect, _ctrlView.frame)){
             rect.origin.x = rect.size.width; // hide
+            _ctrlView.lblStat.hideText = YES;
         }
+        weakObj(self);
         [UIView animateWithDuration:0.1 animations:^{
-            _ctrlView.frame = rect;
+            selfWeak.ctrlView.frame = rect;
         }];
     }
 }
