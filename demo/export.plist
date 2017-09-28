@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+        <key>provisioningProfiles</key>
+        <dict>
+            <key>com.ksyun.ios.KSYLiveDemo</key>
+            <string>KSYLiveDemoEnterprise_Dis_2017.9.26</string>
+        </dict>
+        <key>teamID</key>
+        <string>36PUU93BJ2</string>
+        <key>method</key>
+        <string>enterprise</string>
+</dict>
+</plist>

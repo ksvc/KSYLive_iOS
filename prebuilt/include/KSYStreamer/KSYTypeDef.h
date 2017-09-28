@@ -90,6 +90,8 @@ typedef NS_ENUM(NSUInteger, KSYVideoCodec) {
     KSYVideoCodec_QY265,
     /// 视频编码器 - iOS VT264硬件编码器 (iOS 8.0以上支持)
     KSYVideoCodec_VT264,
+    /// 视频编码器 - iOS VT265硬件编码器 (iOS 11.0 以上)
+    KSYVideoCodec_VT265,
     /// 视频编码器 - 由SDK自动选择（ VT264 > X264）
     KSYVideoCodec_AUTO = 100,
     /// 视频编码器 - gif

@@ -3,11 +3,11 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>KSYAudioFilter Class Reference</title>
+	<title></title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
-	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+	
 </head>
 <body class="appledoc">
 	<header>
@@ -43,35 +43,9 @@
 							<select id="jump-to">
 	<option value="top">Jump To&#133;</option>
 	
-	<option value="overview">Overview</option>
-	
-
-	
-	
-	<option value="tasks">Tasks</option>
-	
-	
-
-	
-	
-	<optgroup label="Properties">
-		
-		<option value="//api/name/audioProcessingCallback">audioProcessingCallback</option>
-		
-		<option value="//api/name/speed">speed</option>
-		
-	</optgroup>
-	
 
 	
 
-	
-	<optgroup label="Instance Methods">
-		
-		<option value="//api/name/processAudioSampleBuffer:">- processAudioSampleBuffer:</option>
-		
-	</optgroup>
-	
 	
 </select>
 						</label>
@@ -85,199 +59,15 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">KSYAudioFilter Class Reference</h1>
+					<h1 class="title"></h1>
 
-					
-					<div class="section section-specification"><table cellspacing="0"><tbody>
-						<tr>
-	<th>Inherits from</th>
-	<td>NSObject</td>
-</tr><tr>
-	<th>Declared in</th>
-	<td>KSYAudioFilter.h</td>
-</tr>
-						</tbody></table></div>
 					
 
                     
-					
-					<div class="section section-overview">
-						<a title="Overview" name="overview"></a>
-						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>音频filter
-1. 使用filter对音频进行处理，目前支持功能包括：
-  * 变速 - <a href="#//api/name/speed">speed</a>
-2. 输出格式与输入格式相同
-3. 建议放在KSYAudioMixer前使用</p>
-					</div>
-					
-					
 
-					
-					
-					<div class="section section-tasks">
-						<a title="Tasks" name="tasks"></a>
-						
-
-						
-						
-
-						<div class="task-list">
-							<div class="section-method">
-	<a name="//api/name/speed" title="speed"></a>
-	<h3 class="method-title"><code><a href="#//api/name/speed">&nbsp;&nbsp;speed</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>速率，默认值是1.0</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) float speed</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>取值范围从0.5 - 2.0</p><p>如果配置速率不在有效范围，则设置不生效</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">KSYAudioFilter.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/processAudioSampleBuffer:" title="processAudioSampleBuffer:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/processAudioSampleBuffer:">&ndash;&nbsp;processAudioSampleBuffer:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>输入音频PCM</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)processAudioSampleBuffer:(CMSampleBufferRef)<em>inSampleBuffer</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>sampleBuffer</code></th>
-						<td><p>音频数据</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">KSYAudioFilter.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/audioProcessingCallback" title="audioProcessingCallback"></a>
-	<h3 class="method-title"><code><a href="#//api/name/audioProcessingCallback">&nbsp;&nbsp;audioProcessingCallback</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>音频处理回调接口</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) void ( ^ ) ( CMSampleBufferRef sampleBuffer ) audioProcessingCallback</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>sampleBuffer 经过filter处理后的音频数据</p><p>请注意本函数的执行时间，如果太长可能导致不可预知的问题</p><p>请参考 CMSampleBufferRef</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">KSYAudioFilter.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div>
-						</div>
-						
-					</div>
-					
 					
 
                     
-                    
-          
 				</main>
 
 				<footer>
@@ -285,8 +75,6 @@
 						
 						<p class="copyright">Copyright &copy; 2017 Kingsoft. All rights reserved. </p>
 						
-						
-						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
 						
 					</div>
 				</footer>
