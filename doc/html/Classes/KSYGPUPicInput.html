@@ -3,11 +3,11 @@
 <head>
 	<meta charset="utf-8">
 
-	<title></title>
+	<title>KSYGPUPicInput Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
-	
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
 </head>
 <body class="appledoc">
 	<header>
@@ -43,9 +43,49 @@
 							<select id="jump-to">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/alwaysDiscardsLateVideoFrames">alwaysDiscardsLateVideoFrames</option>
+		
+		<option value="//api/name/cropRegion">cropRegion</option>
+		
+		<option value="//api/name/outputRotation">outputRotation</option>
+		
+		<option value="//api/name/outputSize">outputSize</option>
+		
+	</optgroup>
+	
 
 	
 
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/forceProcessingAtSize:">- forceProcessingAtSize:</option>
+		
+		<option value="//api/name/init">- init</option>
+		
+		<option value="//api/name/initWithFmt:">- initWithFmt:</option>
+		
+		<option value="//api/name/processPixelBuffer:time:">- processPixelBuffer:time:</option>
+		
+		<option value="//api/name/processPixelData:format:width:height:stride:time:">- processPixelData:format:width:height:stride:time:</option>
+		
+		<option value="//api/name/processSampleBuffer:">- processSampleBuffer:</option>
+		
+	</optgroup>
+	
 	
 </select>
 						</label>
@@ -59,15 +99,580 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title"></h1>
+					<h1 class="title">KSYGPUPicInput Class Reference</h1>
 
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>GPUImageOutput</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>KSYGPUPicInput.h</td>
+</tr>
+						</tbody></table></div>
 					
 
                     
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>GPU图像输输入</p>
 
+<ul>
+<li>将采集到的YUV/RGB数据上传到GPU, 传递给其他filter进行处理</li>
+<li>支持的颜色格式包括:
+
+<ul>
+<li>kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange: (NV12)</li>
+<li>kCVPixelFormatType_420YpCbCr8BiPlanarFullRange:(NV12)</li>
+<li>kCVPixelFormatType_420YpCbCr8Planar:(I420)</li>
+<li>kCVPixelFormatType_420YpCbCr8PlanarFullRange:(I420)</li>
+<li>kCVPixelFormatType_32BGRA:(BGRA)</li>
+</ul>
+</li>
+<li>支持图像裁剪</li>
+<li>支持图像旋转</li>
+</ul>
+
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/init" title="init"></a>
+	<h3 class="method-title"><code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initialization and teardown</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id)init</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUPicInput.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithFmt:" title="initWithFmt:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithFmt:">&ndash;&nbsp;initWithFmt:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置输入图像的像素格式</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id)initWithFmt:(OSType)<em>fmt</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fmt</code></th>
+						<td><p>像素格式</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUPicInput.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/cropRegion" title="cropRegion"></a>
+	<h3 class="method-title"><code><a href="#//api/name/cropRegion">&nbsp;&nbsp;cropRegion</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>裁剪区域 将输入的图像按照区域裁剪出中间的一块</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (readwrite, nonatomic) CGRect cropRegion</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>cropRegion 标记了左上角的位置和宽高, 范围都是0.0 到1.0, 非法值无法设置成功</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUPicInput.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/forceProcessingAtSize:" title="forceProcessingAtSize:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/forceProcessingAtSize:">&ndash;&nbsp;forceProcessingAtSize:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>输出图像的尺寸</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)forceProcessingAtSize:(CGSize)<em>frameSize</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置了裁剪区域, 并且改变了宽高比后, 需要调用此接口, 否则图像可能变形</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUPicInput.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/outputSize" title="outputSize"></a>
+	<h3 class="method-title"><code><a href="#//api/name/outputSize">&nbsp;&nbsp;outputSize</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>实际输出图像的尺寸</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic) CGSize outputSize</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p><a href="#//api/name/forceProcessingAtSize:">forceProcessingAtSize:</a> 也是对outputSize属性进行赋值</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUPicInput.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/outputRotation" title="outputRotation"></a>
+	<h3 class="method-title"><code><a href="#//api/name/outputRotation">&nbsp;&nbsp;outputRotation</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>输出画面的朝向</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) GPUImageRotationMode outputRotation</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>输出的画面旋转90度的整数倍, 默认为 kGPUImageNoRotation</p><p>直接连接到KSYGPUPicMixer时, 旋转90度的情况可能出现问题, 请尽量保证中间有其他滤镜</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUPicInput.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/alwaysDiscardsLateVideoFrames" title="alwaysDiscardsLateVideoFrames"></a>
+	<h3 class="method-title"><code><a href="#//api/name/alwaysDiscardsLateVideoFrames">&nbsp;&nbsp;alwaysDiscardsLateVideoFrames</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>是否允许超时丢帧</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL alwaysDiscardsLateVideoFrames</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>当video frame处理超时时，该属性为YES时，将丢弃新的video frame，为NO时将等待处理完毕的信号。</p><p>默认为YES。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUPicInput.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/processSampleBuffer:" title="processSampleBuffer:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/processSampleBuffer:">&ndash;&nbsp;processSampleBuffer:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>输入图像数据</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)processSampleBuffer:(CMSampleBufferRef)<em>sampleBuffer</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>sampleBuffer</code></th>
+						<td><p>图像数据和时间信息</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUPicInput.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/processPixelBuffer:time:" title="processPixelBuffer:time:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/processPixelBuffer:time:">&ndash;&nbsp;processPixelBuffer:time:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>输入图像数据</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)processPixelBuffer:(CVPixelBufferRef)<em>pixelBuffer</em> time:(CMTime)<em>timeInfo</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>pixelBuffer</code></th>
+						<td><p>图像数据</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>timeInfo</code></th>
+						<td><p>时间信息</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUPicInput.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/processPixelData:format:width:height:stride:time:" title="processPixelData:format:width:height:stride:time:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/processPixelData:format:width:height:stride:time:">&ndash;&nbsp;processPixelData:format:width:height:stride:time:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>输入图像数据</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)processPixelData:(void **)<em>pData</em> format:(OSType)<em>pixelFmt</em> width:(size_t)<em>width</em> height:(size_t)<em>height</em> stride:(size_t *)<em>strides</em> time:(CMTime)<em>timeInfo</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>pData</code></th>
+						<td><p>图像数据每个分量的指针, 比如pData[0]为Y分量的指针</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>pixelFmt</code></th>
+						<td><p>图像数据类型, 必须与init时指定的格式一致</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>width</code></th>
+						<td><p>图像宽度</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>height</code></th>
+						<td><p>图像高度</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>strides</code></th>
+						<td><p>图像数据每个分量的行偏移, 比如 stride[0] 为Y分量的行偏移</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>timeInfo</code></th>
+						<td><p>时间信息</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUPicInput.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
 					
 
                     
+                    
+          
 				</main>
 
 				<footer>
@@ -75,6 +680,8 @@
 						
 						<p class="copyright">Copyright &copy; 2017 Kingsoft. All rights reserved. </p>
 						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
 						
 					</div>
 				</footer>
