@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/MPMovieAudioPan.html">
+	<File path="Constants/MEDIAINFO_MUX_TYPE.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/MPMovieAudioPan</TokenIdentifier>
-			<Abstract type="html">立体声平衡</Abstract>
-			<DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/MEDIAINFO_MUX_TYPE</TokenIdentifier>
+			<Abstract type="html">封装格式</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
 			
 			<NodeRef refid="79"/>
@@ -14,31 +14,131 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieAudioPan_Left</TokenIdentifier>
-            <Abstract type="html">完全左声道</Abstract>
-            <Declaration>MPMovieAudioPan_Left</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_UNKNOWN</TokenIdentifier>
+            <Abstract type="html">未知的文件封装格式</Abstract>
+            <Declaration>MEDIAINFO_MUXTYPE_UNKNOWN</Declaration>
             
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="79"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieAudioPan_Stereo</TokenIdentifier>
-            <Abstract type="html">左右声道平衡</Abstract>
-            <Declaration>MPMovieAudioPan_Stereo</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
             <NodeRef refid="79"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieAudioPan_Right</TokenIdentifier>
-            <Abstract type="html">完全右声道</Abstract>
-            <Declaration>MPMovieAudioPan_Right</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_MP2T</TokenIdentifier>
+            <Abstract type="html">封装格式为TS</Abstract>
+            <Declaration>MEDIAINFO_MUXTYPE_MP2T</Declaration>
             
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="79"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_MOV</TokenIdentifier>
+            <Abstract type="html">封装格式为MOV</Abstract>
+            <Declaration>MEDIAINFO_MUXTYPE_MOV</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="79"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_AVI</TokenIdentifier>
+            <Abstract type="html">封装格式为AVI</Abstract>
+            <Declaration>MEDIAINFO_MUXTYPE_AVI</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="79"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_FLV</TokenIdentifier>
+            <Abstract type="html">封装格式为FLV</Abstract>
+            <Declaration>MEDIAINFO_MUXTYPE_FLV</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="79"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_MKV</TokenIdentifier>
+            <Abstract type="html">封装格式为MKV</Abstract>
+            <Declaration>MEDIAINFO_MUXTYPE_MKV</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="79"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_ASF</TokenIdentifier>
+            <Abstract type="html">封装格式为ASF</Abstract>
+            <Declaration>MEDIAINFO_MUXTYPE_ASF</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="79"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_RM</TokenIdentifier>
+            <Abstract type="html">封装格式为RM</Abstract>
+            <Declaration>MEDIAINFO_MUXTYPE_RM</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="79"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_WAV</TokenIdentifier>
+            <Abstract type="html">封装格式为WAV</Abstract>
+            <Declaration>MEDIAINFO_MUXTYPE_WAV</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="79"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_OGG</TokenIdentifier>
+            <Abstract type="html">封装格式为OGG</Abstract>
+            <Declaration>MEDIAINFO_MUXTYPE_OGG</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="79"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_APE</TokenIdentifier>
+            <Abstract type="html">封装格式为APE</Abstract>
+            <Declaration>MEDIAINFO_MUXTYPE_APE</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="79"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_RAWVIDEO</TokenIdentifier>
+            <Abstract type="html">封装格式为RAWVIDEO</Abstract>
+            <Declaration>MEDIAINFO_MUXTYPE_RAWVIDEO</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+            
+            <NodeRef refid="79"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MEDIAINFO_MUXTYPE_HLS</TokenIdentifier>
+            <Abstract type="html">封装格式为HLS</Abstract>
+            <Declaration>MEDIAINFO_MUXTYPE_HLS</Declaration>
+            
+            <DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
             <NodeRef refid="79"/>
         </Token>

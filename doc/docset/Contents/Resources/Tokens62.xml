@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYNetStateCode.html">
+	<File path="Constants/KSYMicType.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYNetStateCode</TokenIdentifier>
-			<Abstract type="html">网络状况事件码，用于指示当前网络健康状况</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYMicType</TokenIdentifier>
+			<Abstract type="html">音频输入设备类型</Abstract>
 			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_NONE</TokenIdentifier>
-            <Abstract type="html">正常无错误</Abstract>
-            <Declaration>KSYNetStateCode_NONE</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYMicType_builtinMic</TokenIdentifier>
+            <Abstract type="html">Built-in microphone on an iOS device</Abstract>
+            <Declaration>KSYMicType_builtinMic</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -24,9 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_SEND_PACKET_SLOW</TokenIdentifier>
-            <Abstract type="html">发送包时间过长，( 单次发送超过 500毫秒 ）</Abstract>
-            <Declaration>KSYNetStateCode_SEND_PACKET_SLOW</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYMicType_headsetMic</TokenIdentifier>
+            <Abstract type="html">Microphone on a wired headset</Abstract>
+            <Declaration>KSYMicType_headsetMic</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -34,9 +34,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_EST_BW_RAISE</TokenIdentifier>
-            <Abstract type="html">估计带宽调整，上调</Abstract>
-            <Declaration>KSYNetStateCode_EST_BW_RAISE</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYMicType_bluetoothMic</TokenIdentifier>
+            <Abstract type="html">蓝牙设备</Abstract>
+            <Declaration>KSYMicType_bluetoothMic</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -44,69 +44,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_EST_BW_DROP</TokenIdentifier>
-            <Abstract type="html">估计带宽调整，下调</Abstract>
-            <Declaration>KSYNetStateCode_EST_BW_DROP</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="62"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_VIDEO_FPS_RAISE</TokenIdentifier>
-            <Abstract type="html">帧率调整，上调</Abstract>
-            <Declaration>KSYNetStateCode_VIDEO_FPS_RAISE</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="62"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_VIDEO_FPS_DROP</TokenIdentifier>
-            <Abstract type="html">帧率调整，下调</Abstract>
-            <Declaration>KSYNetStateCode_VIDEO_FPS_DROP</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="62"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_KSYAUTHFAILED</TokenIdentifier>
-            <Abstract type="html">SDK 鉴权失败 (暂时正常推流5~8分钟后终止推流)</Abstract>
-            <Declaration>KSYNetStateCode_KSYAUTHFAILED</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="62"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_IN_AUDIO_DISCONTINUOUS</TokenIdentifier>
-            <Abstract type="html">输入音频不连续</Abstract>
-            <Declaration>KSYNetStateCode_IN_AUDIO_DISCONTINUOUS</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="62"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_UNREACHABLE</TokenIdentifier>
-            <Abstract type="html">网络变为不可用</Abstract>
-            <Declaration>KSYNetStateCode_UNREACHABLE</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="62"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_REACHABLE</TokenIdentifier>
-            <Abstract type="html">网络变为可用</Abstract>
-            <Declaration>KSYNetStateCode_REACHABLE</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYMicType_unknow</TokenIdentifier>
+            <Abstract type="html">未知设备</Abstract>
+            <Declaration>KSYMicType_unknow</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             

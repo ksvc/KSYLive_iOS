@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYVideoCodec.html">
+	<File path="Constants/KSYTranscodeErrorCode.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYVideoCodec</TokenIdentifier>
-			<Abstract type="html">视频编码器类型</Abstract>
-			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYTranscodeErrorCode</TokenIdentifier>
+			<Abstract type="html">转码错误码，用于说明转码失败的原因</Abstract>
+			<DeclaredIn>KSYTranscoder.h</DeclaredIn>
             
 			
 			<NodeRef refid="72"/>
@@ -14,51 +14,91 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoCodec_X264</TokenIdentifier>
-            <Abstract type="html">视频编码器 - h264 软件编码器</Abstract>
-            <Declaration>KSYVideoCodec_X264</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_None</TokenIdentifier>
+            <Abstract type="html">正常无错误</Abstract>
+            <Declaration>KSYTranscodeErrorCode_None</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="72"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoCodec_QY265</TokenIdentifier>
-            <Abstract type="html">视频编码器 - KSY265 软件编码器</Abstract>
-            <Declaration>KSYVideoCodec_QY265</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
             
             <NodeRef refid="72"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoCodec_VT264</TokenIdentifier>
-            <Abstract type="html">视频编码器 - iOS VT264硬件编码器 (iOS 8.0以上支持)</Abstract>
-            <Declaration>KSYVideoCodec_VT264</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_InvalidAddress</TokenIdentifier>
+            <Abstract type="html">无效的文件地址(输入或输出地址为空)</Abstract>
+            <Declaration>KSYTranscodeErrorCode_InvalidAddress</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="72"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoCodec_AUTO</TokenIdentifier>
-            <Abstract type="html">视频编码器 - 由SDK自动选择（ VT264 &gt; X264）</Abstract>
-            <Declaration>KSYVideoCodec_AUTO</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
             
             <NodeRef refid="72"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoCodec_GIF</TokenIdentifier>
-            <Abstract type="html">视频编码器 - gif</Abstract>
-            <Declaration>KSYVideoCodec_GIF</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_InputFile_OpenFailed</TokenIdentifier>
+            <Abstract type="html">打开输入文件失败</Abstract>
+            <Declaration>KSYTranscodeErrorCode_InputFile_OpenFailed</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            
+            <NodeRef refid="72"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_InvalidData</TokenIdentifier>
+            <Abstract type="html">无效的媒体数据</Abstract>
+            <Declaration>KSYTranscodeErrorCode_InvalidData</Declaration>
+            
+            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            
+            <NodeRef refid="72"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_OutputFile_UnsupportedFormat</TokenIdentifier>
+            <Abstract type="html">不支持的输出文件格式</Abstract>
+            <Declaration>KSYTranscodeErrorCode_OutputFile_UnsupportedFormat</Declaration>
+            
+            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            
+            <NodeRef refid="72"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_OutputFile_OpenFailed</TokenIdentifier>
+            <Abstract type="html">打开输出文件失败</Abstract>
+            <Declaration>KSYTranscodeErrorCode_OutputFile_OpenFailed</Declaration>
+            
+            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            
+            <NodeRef refid="72"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_OutputFile_AddStreamFailed</TokenIdentifier>
+            <Abstract type="html">输出文件添加流失败</Abstract>
+            <Declaration>KSYTranscodeErrorCode_OutputFile_AddStreamFailed</Declaration>
+            
+            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            
+            <NodeRef refid="72"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_OutputFile_StartWriteFailed</TokenIdentifier>
+            <Abstract type="html">输出文件头写入失败(通常为不支持的codec)</Abstract>
+            <Declaration>KSYTranscodeErrorCode_OutputFile_StartWriteFailed</Declaration>
+            
+            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            
+            <NodeRef refid="72"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_Transcoding_Failed</TokenIdentifier>
+            <Abstract type="html">转码过程中出现错误</Abstract>
+            <Declaration>KSYTranscodeErrorCode_Transcoding_Failed</Declaration>
+            
+            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
             
             <NodeRef refid="72"/>
         </Token>

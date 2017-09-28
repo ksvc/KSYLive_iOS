@@ -94,4 +94,12 @@
  */
 -(void)clearPicOfLayer:(NSInteger) index;
 
+
+/**
+ @abstract   刷新前是否清除画布 (默认 YES)
+ @discussion 清除画布就是将画布的每个像素恢复为背景颜色
+ @discussion 当存在覆盖整个画布的不透明图层时, 可以将本属性设为NO, 可以节省部分计算资源
+ */
+@property (nonatomic, assign) BOOL clearCanvasBeforeDraw;
+
 @end

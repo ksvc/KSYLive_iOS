@@ -205,6 +205,42 @@
             <NodeRef refid="26"/>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/setClearCanvasBeforeDraw:</TokenIdentifier>
+			<Abstract type="html">刷新前是否清除画布 (默认 YES)</Abstract>
+			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL clearCanvasBeforeDraw</Declaration>
+			
+			
+			<Anchor>//api/name/clearCanvasBeforeDraw</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUPicMixer/clearCanvasBeforeDraw</TokenIdentifier>
+			<Abstract type="html">刷新前是否清除画布 (默认 YES)</Abstract>
+			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL clearCanvasBeforeDraw</Declaration>
+			
+			
+			<Anchor>//api/name/clearCanvasBeforeDraw</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUPicMixer/clearCanvasBeforeDraw</TokenIdentifier>
+			<Abstract type="html">刷新前是否清除画布 (默认 YES)</Abstract>
+			<DeclaredIn>KSYGPUPicMixer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL clearCanvasBeforeDraw</Declaration>
+			
+			
+			<Anchor>//api/name/clearCanvasBeforeDraw</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
         
         
 	</File>

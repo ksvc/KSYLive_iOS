@@ -17,3 +17,8 @@
 #import "KSYBeautifyProFilter.h"
 #import "KSYSpecialEffects.h"
 #import "KSYBuildInSpecialEffects.h"
+#import "KSYMvEffect.h"
+#import "KSYMvFilter.h"
+
+#define KSYGPUFILTER_VER 2.8.0
+#define KSYGPUFILTER_ID  9391fe57c987493149de976acc9ff73efd531627

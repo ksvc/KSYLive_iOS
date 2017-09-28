@@ -69,7 +69,7 @@
 
     _frameRateUI  = [self addSliderName:@"视频帧率fps" From:1.0 To:30.0 Init:15.0];
     _lblVideoCodecUI = [self addLable:@"视频编码器"];
-    _videoCodecUI = [self addSegCtrlWithItems:@[@"自动",@"软264",@"硬264",@"软265"]];
+    _videoCodecUI = [self addSegCtrlWithItems:@[@"自动",@"软264",@"硬264",@"软265", @"硬265"]];
     _lblAudioCodecUI = [self addLable:@"音频编码器"];
     _audioCodecUI = [self addSegCtrlWithItems:@[@"aache",@"aaclc",@"ATaaclc", @"aachev2"]];
     _videoKbpsUI  = [self addSliderName:@"视频码率kbps" From:100.0 To:1600.0 Init:800.0];
@@ -473,6 +473,8 @@ numberOfRowsInComponent:(NSInteger)component {
             return  KSYVideoCodec_VT264;
         case 3:
             return  KSYVideoCodec_QY265;
+        case 4:
+            return KSYVideoCodec_VT265;
         default:
             return  KSYVideoCodec_AUTO;
     }

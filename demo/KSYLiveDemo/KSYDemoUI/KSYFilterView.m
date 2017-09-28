@@ -37,7 +37,7 @@
 
 - (id)init{
     self = [super init];
-    _effectNames = [NSArray arrayWithObjects: @"1 小清新",  @"2 靓丽",
+    _effectNames = [NSArray arrayWithObjects: @"0 原图", @"1 小清新",  @"2 靓丽",
                     @"3 甜美可人",  @"4 怀旧",  @"5 蓝调",  @"6 老照片" ,
                     @"7 樱花", @"8 樱花（光线较暗）", @"9 红润（光线较暗）",
                     @"10 阳光（光线较暗）", @"11 红润", @"12 阳光", @"13 自然", nil];
@@ -110,6 +110,7 @@
     _effectPicker.dataSource = self;
     _effectPicker.showsSelectionIndicator= YES;
     _effectPicker.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.3];
+    [_effectPicker selectRow:1 inComponent:0 animated:YES];
     return self;
 }
 - (void)layoutUI{
@@ -324,18 +325,19 @@ numberOfRowsInComponent:(NSInteger)component {
 - (void)pickerView:(UIPickerView *)pickerView
       didSelectRow:(NSInteger)row
        inComponent:(NSInteger)component {
-    _curEffectIdx = row+1;
+    _curEffectIdx = row;
     if ( [_curFilter isMemberOfClass:[GPUImageFilterGroup class]]){
         GPUImageFilterGroup * fg = (GPUImageFilterGroup *)_curFilter;
         KSYBuildInSpecialEffects * sf = (KSYBuildInSpecialEffects *)[fg filterAtIndex:1];
         UIImage *downloadImage = [self getGPUResourceImageAt:_effectResourceNames[_curEffectIdx]];
-        if (downloadImage) {
-            [sf setSpecialEffectsUIImage:downloadImage];
-        }
+        [sf setSpecialEffectsUIImage:downloadImage];
     }
 }
 
 -(UIImage *)getGPUResourceImageAt:(NSString *)effectName{
+    if ([effectName isEqualToString:@"null"]){
+        return nil;
+    }
     NSString * path = [[NSBundle mainBundle] pathForResource:@"KSYGPUResource" ofType:@"bundle"];
     path = [path stringByAppendingPathComponent:effectName];
     if ([UIImage imageWithContentsOfFile:path]) {
