@@ -13,31 +13,58 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMvEffect/initWithEffectShader:</TokenIdentifier>
-			<Abstract type="html">初始化并导入effectShader</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMvEffect/setTimeInfo:</TokenIdentifier>
+			<Abstract type="html">设置MV特效生成的时间</Abstract>
 			<DeclaredIn>KSYMvEffect.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithEffectShader:(NSString *)effectShader</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>NSString</Name>
-					<Abstract type="html">shader</Abstract>
-				</Parameter>
-			</Parameters>
+			<Declaration>@property (nonatomic, assign) CGFloat timeInfo</Declaration>
 			
-			<Anchor>//api/name/initWithEffectShader:</Anchor>
+			
+			<Anchor>//api/name/timeInfo</Anchor>
             <NodeRef refid="38"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMvEffect/closeMvEffect</TokenIdentifier>
-			<Abstract type="html">关闭mv effect</Abstract>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMvEffect/timeInfo</TokenIdentifier>
+			<Abstract type="html">设置MV特效生成的时间</Abstract>
 			<DeclaredIn>KSYMvEffect.h</DeclaredIn>
 			
-			<Declaration>- (void)closeMvEffect</Declaration>
+			<Declaration>@property (nonatomic, assign) CGFloat timeInfo</Declaration>
 			
 			
-			<Anchor>//api/name/closeMvEffect</Anchor>
+			<Anchor>//api/name/timeInfo</Anchor>
+            <NodeRef refid="38"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMvEffect/timeInfo</TokenIdentifier>
+			<Abstract type="html">设置MV特效生成的时间</Abstract>
+			<DeclaredIn>KSYMvEffect.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) CGFloat timeInfo</Declaration>
+			
+			
+			<Anchor>//api/name/timeInfo</Anchor>
+            <NodeRef refid="38"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMvEffect/initWithEffectShader:durationTime:</TokenIdentifier>
+			<Abstract type="html">初始化并导入effectShader</Abstract>
+			<DeclaredIn>KSYMvEffect.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)initWithEffectShader:(NSString *)effectShader durationTime:(CGFloat)durTime</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>durTime</Name>
+					<Abstract type="html">MV特效持续时间</Abstract>
+				</Parameter><Parameter>
+					<Name>shader字符串</Name>
+					<Abstract type="html">片源着色器</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithEffectShader:durationTime:</Anchor>
             <NodeRef refid="38"/>
 		</Token>
 		

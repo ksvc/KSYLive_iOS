@@ -80,7 +80,6 @@
     _bgPic           = nil;
     
     // 图层和音轨的初始化
-    _cameraLayer  = 0;
     _micTrack = 0;
     
     /////1. 数据来源 ///////////
@@ -101,9 +100,6 @@
     ///// 3.1 视频通路 ///////////
     // 核心部件:图像处理滤镜
     _filter     = [[KSYGPUDnoiseFilter alloc] init];
-    // 核心部件:视频叠加混合
-    _vPreviewMixer = [[KSYGPUPicMixer alloc] init];
-    _vStreamMixer = [[KSYGPUPicMixer alloc] init];
     // 组装视频通道
     [self setupVideoPath];
     
@@ -135,14 +131,6 @@
     
     NSNotificationCenter* dc = [NSNotificationCenter defaultCenter];
     [dc addObserver:self
-           selector:@selector(appBecomeActive)
-               name:UIApplicationDidBecomeActiveNotification
-             object:nil];
-    [dc addObserver:self
-           selector:@selector(appEnterBackground)
-               name:UIApplicationDidEnterBackgroundNotification
-             object:nil];
-    [dc addObserver:self
            selector:@selector(onNetEvent)
                name:KSYNetStateEventNotification
              object:nil];
@@ -167,8 +155,6 @@
     [_aCapDev      stopCapture];
     [_bgPic       removeAllTargets];
     [_filter      removeAllTargets];
-    [_vPreviewMixer  removeAllTargets];
-    [_vStreamMixer   removeAllTargets];
 }
 
 /**
@@ -199,43 +185,9 @@
     [_rotateFilter setInputRotation:_bgPicRotate atIndex:0];
     [_rotateFilter forceProcessingAtSize:_previewDimension];
     src = _rotateFilter;
-    // 组装图层
-    _vPreviewMixer.masterLayer = _cameraLayer;
-    _vStreamMixer.masterLayer = _cameraLayer;
-    [self addPic:src       ToMixerAt:_cameraLayer];
-}
-
-- (void) setupVMixer {
-    if (_vPreviewMixer.targets.count > 0 && _vPreviewTargets.count == 0) {
-        _vPreviewTargets = [_vPreviewMixer.targets copy];
-    }
-    // 混合后的图像输出到预览和推流
-    [_vPreviewMixer removeAllTargets];
     
-    if (![_vPreviewTargets containsObject:_preview]) {
-        [_vPreviewMixer addTarget:_preview];
-    }else{
-        for (id<GPUImageInput> target in _vPreviewTargets) {
-            [_vPreviewMixer addTarget:target];
-        }
-    }
-    _vPreviewTargets = nil;
-    
-    [_vStreamMixer  removeAllTargets];
-    [_vStreamMixer  addTarget:_gpuToStr];
-}
-
-// 添加图层到 vMixer 中
-- (void) addPic:(GPUImageOutput*)pic ToMixerAt: (NSInteger)idx{
-    if (pic == nil){
-        return;
-    }
-    [pic removeAllTargets];
-    KSYGPUPicMixer * vMixer[2] = {_vPreviewMixer, _vStreamMixer};
-    for (int i = 0; i<2; ++i) {
-        [vMixer[i]  clearPicOfLayer:idx];
-        [pic addTarget:vMixer[i] atTextureLocation:idx];
-    }
+    [src addTarget:_preview];
+    [src addTarget:_gpuToStr];
 }
 
 // 组装视频通道
@@ -243,7 +195,6 @@
     weakObj(self);
     // 前处理 和 图像 mixer
     [self setupFilter:_filter];
-    [self setupVMixer];
     
     // GPU 上的数据导出到streamer
     _gpuToStr.videoProcessingCallback = ^(CVPixelBufferRef pixelBuffer, CMTime timeInfo){
@@ -371,7 +322,6 @@
         [self  updateStrDimension];
         // 连接
         [self setupFilter:_filter];
-        [self setupVMixer];
         // 开始预览
         [_bgPic processImage];
         [_quitLock unlock];
@@ -426,24 +376,6 @@
     });
 }
 
-/**  进入后台 */
-- (void) appEnterBackground {
-    if (_vPreviewMixer.targets.count > 0){
-        _vPreviewTargets = [_vPreviewMixer.targets copy];
-    }
-    // 进入后台时, 将预览从图像混合器中脱离, 避免后台OpenGL渲染崩溃
-    [_vPreviewMixer removeAllTargets];
-    if (_streamerBase.bypassRecordState == KSYRecordStateRecording ) {
-        [_streamerBase stopBypassRecord];
-    }
-}
-
-/** 回到前台 */
-- (void) appBecomeActive{
-    // 回到前台, 重新连接预览
-    [self setupVMixer];
-    [_aCapDev  resumeCapture];
-}
 #pragma mark - try reconnect
 - (void) onStreamState : (KSYStreamState) stat {
     if (stat == KSYStreamStateError){

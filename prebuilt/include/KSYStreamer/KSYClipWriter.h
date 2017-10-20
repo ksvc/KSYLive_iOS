@@ -124,6 +124,13 @@
  */
 @property (nonatomic, assign) BOOL bWithAudio;
 
+/**
+ @abstract   mp4文件允许快速启动 (默认YES)
+ @discussion mp4格式的文件中将moov等index信息放到文件开头
+ @warning    启用此开关会在结束是对文件进行处理, 如果要长时间录制,请关闭本选项
+ */
+@property (nonatomic, assign) BOOL mp4FastStart;
+
 #pragma mark - Status Notification
 
 /**

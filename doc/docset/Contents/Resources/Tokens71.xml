@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYStreamState.html">
+	<File path="Constants/KSYShakeType.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYStreamState</TokenIdentifier>
-			<Abstract type="html">推流状态</Abstract>
-			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYShakeType</TokenIdentifier>
+			<Abstract type="html">抖动类型</Abstract>
+			<DeclaredIn>KSYShakeFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="71"/>
@@ -14,51 +14,21 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateIdle</TokenIdentifier>
-            <Abstract type="html">初始化时状态为空闲</Abstract>
-            <Declaration>KSYStreamStateIdle</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_ZOOM</TokenIdentifier>
+            <Abstract type="html">放大抖动效果</Abstract>
+            <Declaration>KSYShakeType_ZOOM</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="71"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateConnecting</TokenIdentifier>
-            <Abstract type="html">连接中</Abstract>
-            <Declaration>KSYStreamStateConnecting</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
             
             <NodeRef refid="71"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateConnected</TokenIdentifier>
-            <Abstract type="html">已连接</Abstract>
-            <Declaration>KSYStreamStateConnected</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_Color</TokenIdentifier>
+            <Abstract type="html">彩色抖动效果</Abstract>
+            <Declaration>KSYShakeType_Color</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="71"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateDisconnecting</TokenIdentifier>
-            <Abstract type="html">断开连接中</Abstract>
-            <Declaration>KSYStreamStateDisconnecting</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="71"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateError</TokenIdentifier>
-            <Abstract type="html">推流出错</Abstract>
-            <Declaration>KSYStreamStateError</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
             
             <NodeRef refid="71"/>
         </Token>

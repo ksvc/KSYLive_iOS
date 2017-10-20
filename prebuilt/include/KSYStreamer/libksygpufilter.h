@@ -19,6 +19,7 @@
 #import "KSYBuildInSpecialEffects.h"
 #import "KSYMvEffect.h"
 #import "KSYMvFilter.h"
+#import "KSYShakeFilter.h"
 
-#define KSYGPUFILTER_VER 2.8.0
-#define KSYGPUFILTER_ID  9391fe57c987493149de976acc9ff73efd531627
+#define KSYGPUFILTER_VER 2.9.0
+#define KSYGPUFILTER_ID  1d449e38d24532e1cbb2d55bb786d5a4e92f4edd

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYNetReachState.html">
+	<File path="Constants/KSYMicType.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYNetReachState</TokenIdentifier>
-			<Abstract type="html">网络链接状态</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYMicType</TokenIdentifier>
+			<Abstract type="html">音频输入设备类型</Abstract>
 			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYNetReachState_Unknown</TokenIdentifier>
-            <Abstract type="html">未知</Abstract>
-            <Declaration>KSYNetReachState_Unknown</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYMicType_builtinMic</TokenIdentifier>
+            <Abstract type="html">Built-in microphone on an iOS device</Abstract>
+            <Declaration>KSYMicType_builtinMic</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -24,9 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYNetReachState_OK</TokenIdentifier>
-            <Abstract type="html">联网</Abstract>
-            <Declaration>KSYNetReachState_OK</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYMicType_headsetMic</TokenIdentifier>
+            <Abstract type="html">Microphone on a wired headset</Abstract>
+            <Declaration>KSYMicType_headsetMic</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
@@ -34,9 +34,19 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYNetReachState_Bad</TokenIdentifier>
-            <Abstract type="html">断网</Abstract>
-            <Declaration>KSYNetReachState_Bad</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYMicType_bluetoothMic</TokenIdentifier>
+            <Abstract type="html">蓝牙设备</Abstract>
+            <Declaration>KSYMicType_bluetoothMic</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="63"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYMicType_unknow</TokenIdentifier>
+            <Abstract type="html">未知设备</Abstract>
+            <Declaration>KSYMicType_unknow</Declaration>
             
             <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             

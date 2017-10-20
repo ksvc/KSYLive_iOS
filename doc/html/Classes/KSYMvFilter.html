@@ -54,19 +54,15 @@
 
 	
 	
-	<optgroup label="Properties">
-		
-		<option value="//api/name/MvScreenSource">MvScreenSource</option>
-		
-		<option value="//api/name/mvPlayEndCallback">mvPlayEndCallback</option>
-		
-	</optgroup>
-	
 
 	
 
 	
 	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/MvPause">- MvPause</option>
+		
+		<option value="//api/name/MvResume">- MvResume</option>
 		
 		<option value="//api/name/closeMvFilter">- closeMvFilter</option>
 		
@@ -128,22 +124,6 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/MvScreenSource" title="MvScreenSource"></a>
-	<h3 class="method-title"><code><a href="#//api/name/MvScreenSource">&nbsp;&nbsp;MvScreenSource</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) GPUImageMovie *MvScreenSource</code></div>
-
-		    
-		</div>
-	</div>
-</div><div class="section-method">
 	<a name="//api/name/initWithPath:shouldRepeat:" title="initWithPath:shouldRepeat:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/initWithPath:shouldRepeat:">&ndash;&nbsp;initWithPath:shouldRepeat:</a></code>
 </h3>
@@ -207,8 +187,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/closeMvFilter" title="closeMvFilter"></a>
-	<h3 class="method-title"><code><a href="#//api/name/closeMvFilter">&ndash;&nbsp;closeMvFilter</a></code>
+	<a name="//api/name/MvPause" title="MvPause"></a>
+	<h3 class="method-title"><code><a href="#//api/name/MvPause">&ndash;&nbsp;MvPause</a></code>
 </h3>
 
 	<div class="method-info">
@@ -218,12 +198,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>关闭mv filter</p>
+				<p>mv 播放暂停</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)closeMvFilter</code></div>
+			<div class="method-subsection method-declaration"><code>- (void)MvPause</code></div>
 
 		    
 			
@@ -248,8 +228,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/mvPlayEndCallback" title="mvPlayEndCallback"></a>
-	<h3 class="method-title"><code><a href="#//api/name/mvPlayEndCallback">&nbsp;&nbsp;mvPlayEndCallback</a></code>
+	<a name="//api/name/MvResume" title="MvResume"></a>
+	<h3 class="method-title"><code><a href="#//api/name/MvResume">&ndash;&nbsp;MvResume</a></code>
 </h3>
 
 	<div class="method-info">
@@ -259,12 +239,53 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>mv播放结束回调函数</p>
+				<p>mv 播放暂停恢复</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) void ( ^ ) ( ) mvPlayEndCallback</code></div>
+			<div class="method-subsection method-declaration"><code>- (void)MvResume</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYMvFilter.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/closeMvFilter" title="closeMvFilter"></a>
+	<h3 class="method-title"><code><a href="#//api/name/closeMvFilter">&ndash;&nbsp;closeMvFilter</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>关闭mv filter</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)closeMvFilter</code></div>
 
 		    
 			

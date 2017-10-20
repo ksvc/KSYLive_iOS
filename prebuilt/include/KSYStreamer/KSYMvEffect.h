@@ -15,14 +15,15 @@
  */
 @interface KSYMvEffect : GPUImageFilter
 /**
- @abstract   初始化并导入effectShader
- @param      NSString shader
+ 设置MV特效生成的时间
  */
-- (id) initWithEffectShader:(NSString *)effectShader;
+@property (nonatomic, assign) CGFloat timeInfo;
 
 /**
- 关闭mv effect
+ @abstract   初始化并导入effectShader
+ @param      shader字符串 片源着色器
+ @param      durTime MV特效持续时间
  */
-- (void)closeMvEffect;
+- (instancetype)initWithEffectShader:(NSString *)effectShader durationTime:(CGFloat)durTime;
 
 @end

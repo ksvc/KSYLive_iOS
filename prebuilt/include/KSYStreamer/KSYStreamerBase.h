@@ -476,6 +476,14 @@ FOUNDATION_EXPORT NSString *const KSYNetStateEventNotification NS_AVAILABLE_IOS(
 @property (nonatomic, readonly) NSURL* bypassRecordURL;
 
 /**
+ @abstract   mp4文件允许快速启动 (默认NO)
+ @discussion mp4格式的文件中将moov等index信息放到文件开头
+ @discussion 开始录制前设置有效
+ @warning    启用此开关会在结束是对文件进行处理, 如果要长时间录制,请关闭本选项
+ */
+@property (nonatomic, assign) BOOL bypassMp4FastStart;
+
+/**
  @abstract 启动旁路录像
  @param      url    本地录像文件地址:/private/var/..../test.mp4
  @return     是否能尝试启动写入, 不能表明真正开始录像了,真正开始请确认bypassRecordState的值

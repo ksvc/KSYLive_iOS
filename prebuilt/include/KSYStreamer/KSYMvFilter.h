@@ -14,9 +14,6 @@
  
  */
 @interface KSYMvFilter : GPUImageFilterGroup
-
-@property (nonatomic, retain)  GPUImageMovie *MvScreenSource;
-
 /**
  单个mp4 filter
  
@@ -27,13 +24,23 @@
 - (id)initWithPath:(NSURL *)mp4URL shouldRepeat:(BOOL)bRepeat;
 
 /**
+ mv 播放暂停
+ */
+-(void)MvPause;
+
+/**
+ mv 播放暂停恢复
+ */
+-(void)MvResume;
+
+/**
  关闭mv filter
  */
 - (void)closeMvFilter;
 
-/**
- @abstract   mv播放结束回调函数
- */
-@property(nonatomic, copy) void(^mvPlayEndCallback)();
+///**
+// @abstract   mv播放结束回调函数
+// */
+//@property(nonatomic, copy) void(^mvPlayEndCallback)();
 
 @end

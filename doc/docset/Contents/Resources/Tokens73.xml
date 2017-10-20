@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYTranscodeState.html">
+	<File path="Constants/KSYStreamState.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYTranscodeState</TokenIdentifier>
-			<Abstract type="html">转码状态</Abstract>
-			<DeclaredIn>KSYTranscoder.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYStreamState</TokenIdentifier>
+			<Abstract type="html">推流状态</Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
 			<NodeRef refid="73"/>
@@ -14,41 +14,51 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeState_Idle</TokenIdentifier>
-            <Abstract type="html">初始状态</Abstract>
-            <Declaration>KSYTranscodeState_Idle</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateIdle</TokenIdentifier>
+            <Abstract type="html">初始化时状态为空闲</Abstract>
+            <Declaration>KSYStreamStateIdle</Declaration>
             
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
-            
-            <NodeRef refid="73"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeState_Transcoding</TokenIdentifier>
-            <Abstract type="html">转码中</Abstract>
-            <Declaration>KSYTranscodeState_Transcoding</Declaration>
-            
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="73"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeState_Completed</TokenIdentifier>
-            <Abstract type="html">转码完成</Abstract>
-            <Declaration>KSYTranscodeState_Completed</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateConnecting</TokenIdentifier>
+            <Abstract type="html">连接中</Abstract>
+            <Declaration>KSYStreamStateConnecting</Declaration>
             
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="73"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeState_Error</TokenIdentifier>
-            <Abstract type="html">转码失败</Abstract>
-            <Declaration>KSYTranscodeState_Error</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateConnected</TokenIdentifier>
+            <Abstract type="html">已连接</Abstract>
+            <Declaration>KSYStreamStateConnected</Declaration>
             
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="73"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateDisconnecting</TokenIdentifier>
+            <Abstract type="html">断开连接中</Abstract>
+            <Declaration>KSYStreamStateDisconnecting</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="73"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateError</TokenIdentifier>
+            <Abstract type="html">推流出错</Abstract>
+            <Declaration>KSYStreamStateError</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="73"/>
         </Token>

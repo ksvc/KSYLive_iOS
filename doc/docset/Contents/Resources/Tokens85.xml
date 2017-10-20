@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/MPMovieVideoDecoderMode.html">
+	<File path="Constants/MPMovieReloadMode.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/MPMovieVideoDecoderMode</TokenIdentifier>
-			<Abstract type="html">视频解码模式</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/MPMovieReloadMode</TokenIdentifier>
+			<Abstract type="html">reload模式</Abstract>
 			<DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDecoderMode_Software</TokenIdentifier>
-            <Abstract type="html">视频解码方式采用软解</Abstract>
-            <Declaration>MPMovieVideoDecoderMode_Software</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieReloadMode_Fast</TokenIdentifier>
+            <Abstract type="html">加速播放模式</Abstract>
+            <Declaration>MPMovieReloadMode_Fast</Declaration>
             
             <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
@@ -24,29 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDecoderMode_Hardware</TokenIdentifier>
-            <Abstract type="html">视频解码方式采用硬解</Abstract>
-            <Declaration>MPMovieVideoDecoderMode_Hardware</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="85"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDecoderMode_AUTO</TokenIdentifier>
-            <Abstract type="html">自动选择解码方式，8.0以上的系统优先选择硬解</Abstract>
-            <Declaration>MPMovieVideoDecoderMode_AUTO</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="85"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDecoderMode_DisplayLayer</TokenIdentifier>
-            <Abstract type="html">使用系统接口进行解码和渲染，只适用于8.0及以上系统，低于8.0的系统自动使用软解</Abstract>
-            <Declaration>MPMovieVideoDecoderMode_DisplayLayer</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieReloadMode_Accurate</TokenIdentifier>
+            <Abstract type="html">精确检测模式</Abstract>
+            <Declaration>MPMovieReloadMode_Accurate</Declaration>
             
             <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             

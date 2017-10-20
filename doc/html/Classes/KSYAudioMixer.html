@@ -84,6 +84,8 @@
 		
 		<option value="//api/name/getMixVolume:">- getMixVolume:</option>
 		
+		<option value="//api/name/getMixVolume:rightVolume:of:">- getMixVolume:rightVolume:of:</option>
+		
 		<option value="//api/name/getTrackEnable:">- getTrackEnable:</option>
 		
 		<option value="//api/name/processAudioData:nbSample:withFormat:timeinfo:of:">- processAudioData:nbSample:withFormat:timeinfo:of:</option>
@@ -91,6 +93,8 @@
 		<option value="//api/name/processAudioSampleBuffer:of:">- processAudioSampleBuffer:of:</option>
 		
 		<option value="//api/name/setMixVolume:of:">- setMixVolume:of:</option>
+		
+		<option value="//api/name/setMixVolume:rightVolume:of:">- setMixVolume:rightVolume:of:</option>
 		
 		<option value="//api/name/setTrack:enable:">- setTrack:enable:</option>
 		
@@ -265,6 +269,80 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/setMixVolume:rightVolume:of:" title="setMixVolume:rightVolume:of:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setMixVolume:rightVolume:of:">&ndash;&nbsp;setMixVolume:rightVolume:of:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置立体声混音音量（默认音量为1.0)，如果设置的单声道输出，则使用leftVolume进行处理</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)setMixVolume:(float)<em>leftVolume</em> rightVolume:(float)<em>rightVolume</em> of:(int)<em>trackId</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>leftVolume</code></th>
+						<td><p>左声道音量比例（0.0~2.0） (&lt;1.0 为缩小, > 1.0为放大)</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>rightVolume</code></th>
+						<td><p>右声道音量比例（0.0~2.0） (&lt;1.0 为缩小, > 1.0为放大)</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>trackId</code></th>
+						<td><p>设置对应track的</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>NO为设置失败，如track不存在，或vol超出范围</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<div class="warning"><p><strong>Warning:</strong> 设置放大的音量可能会出现爆音, 请注意
+*</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYAudioMixer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/getMixVolume:" title="getMixVolume:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/getMixVolume:">&ndash;&nbsp;getMixVolume:</a></code>
 </h3>
@@ -288,6 +366,75 @@
 			<div class="method-subsection arguments-section parameters">
 				<h4 class="method-subtitle parameter-title">Parameters</h4>
 				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>trackId</code></th>
+						<td><p>设置对应track的</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>负数为查询失败，如track不存在
+*</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYAudioMixer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getMixVolume:rightVolume:of:" title="getMixVolume:rightVolume:of:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getMixVolume:rightVolume:of:">&ndash;&nbsp;getMixVolume:rightVolume:of:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>查询track的音量，</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)getMixVolume:(float *)<em>leftVolume</em> rightVolume:(float *)<em>rightVolume</em> of:(int)<em>trackId</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>leftVolume</code></th>
+						<td><p>左声道音量比例</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>rightVolume</code></th>
+						<td><p>右音量比例</p></td>
+					</tr>
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>trackId</code></th>
