@@ -712,7 +712,7 @@
         for(NSDictionary *stream in streams) {
             NSString *streamType = [stream objectForKey:kKSYPLYStreamType];
             NSString *codecName = [stream objectForKey:kKSYPLYCodecName];
-            NSInteger streamIndex = [[stream objectForKey:kKSYPLYStreamIndex] integerValue];
+            long streamIndex = [[stream objectForKey:kKSYPLYStreamIndex] integerValue];
             if([streamType isEqualToString:@"video"]) {
                 NSInteger width = [[stream objectForKey:kKSYPLYVideoWidth] integerValue];
                 NSInteger height = [[stream objectForKey:kKSYPLYVideoHeight] integerValue];

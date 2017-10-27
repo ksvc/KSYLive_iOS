@@ -742,6 +742,7 @@
     inSz = [self getDimension:inSz byOriention:_vCapDev.outputImageOrientation];
     CGSize cropSz = [self calcCropSize:inSz to:_previewDimension];
     _capToGpu.cropRegion = [self calcCropRect:inSz to:cropSz];
+    _capToGpu.outputRotation = kGPUImageNoRotation;
     [_capToGpu forceProcessingAtSize:_previewDimension];
 }
 - (void) updateStrDimension:(UIInterfaceOrientation) orie {
@@ -1027,21 +1028,11 @@ static GPUImageRotationMode KSYImage2GPURotate[] = {
 
 - (void) setPreviewMirrored:(BOOL)bMirrored {
     if(_vPreviewMixer){
-        GPUImageRotationMode ro = kGPUImageNoRotation;
-        if (bMirrored) {
-            GPUImageRotationMode inRo = _capToGpu.outputRotation;
-            if (inRo == kGPUImageRotateLeft) {
-                ro = _filter ? kGPUImageFlipHorizonal : kGPUImageRotateRightFlipHorizontal;
-            }
-            else if (inRo == kGPUImageRotateRight ) {
-                ro = _filter ? kGPUImageFlipHorizonal : kGPUImageRotateRightFlipVertical;
-            }
-            else {
-                ro = kGPUImageFlipHorizonal;
-            }
-        }
-        else if (!_filter){
-            ro = _capToGpu.outputRotation;
+        GPUImageRotationMode ro = bMirrored ? kGPUImageFlipHorizonal: kGPUImageNoRotation;
+        int ang = _previewRotateAng / M_PI_2;
+        BOOL capAng = GPUImageRotationSwapsWidthAndHeight(_capToGpu.outputRotation);
+        if ( !capAng && (ang == 1 || ang == 3)) {
+            ro = bMirrored ? kGPUImageFlipVertical : kGPUImageNoRotation;
         }
         [_vPreviewMixer setPicRotation:ro ofLayer:_cameraLayer];
     }
@@ -1051,22 +1042,7 @@ static GPUImageRotationMode KSYImage2GPURotate[] = {
 
 - (void) setStreamerMirrored:(BOOL)bMirrored {
     if (_vStreamMixer){
-        GPUImageRotationMode ro = kGPUImageNoRotation;
-        if( bMirrored ) {
-            GPUImageRotationMode inRo = _capToGpu.outputRotation;
-            if (inRo == kGPUImageRotateLeft) {
-                ro = _filter ? kGPUImageFlipHorizonal : kGPUImageRotateRightFlipHorizontal;
-            }
-            else if (inRo == kGPUImageRotateRight ) {
-                ro = _filter ? kGPUImageFlipHorizonal : kGPUImageRotateRightFlipVertical;
-            }
-            else {
-                ro = kGPUImageFlipHorizonal;
-            }
-        }
-        else if (!_filter){
-            ro = _capToGpu.outputRotation;
-        }
+        GPUImageRotationMode ro = bMirrored ? kGPUImageFlipHorizonal: kGPUImageNoRotation;
         [_vStreamMixer setPicRotation:ro ofLayer:_cameraLayer];
     }
     _streamerMirrored = bMirrored;
@@ -1114,23 +1090,19 @@ M_PI_2*1,M_PI_2*3, M_PI_2*2, M_PI_2*0,
     });
 }
 
--(void)internalRotatePreviewTo: (UIInterfaceOrientation) orie
-{
+-(void)internalRotatePreviewTo: (UIInterfaceOrientation) orie {
     _previewOrientation = orie;
     UIView* view = [_preview superview];
     if (_videoOrientation == orie || view == nil) {
-        for (UIView<GPUImageInput> *v in _vPreviewMixer.targets) {
-            v.transform = CGAffineTransformIdentity;
-        }
         _previewRotateAng = 0;
     }
     else {
         int capOri = UIOrienToIdx(_vCapDev.outputImageOrientation);
         int appOri = UIOrienToIdx(orie);
         _previewRotateAng = KSYRotateAngles[ capOri ][ appOri ];
-        for (UIView<GPUImageInput> *v in _vPreviewMixer.targets) {
-            v.transform = CGAffineTransformMakeRotation(_previewRotateAng);
-        }
+    }
+    for (UIView<GPUImageInput> *v in _vPreviewMixer.targets) {
+        v.transform = CGAffineTransformMakeRotation(_previewRotateAng);
     }
     _preview.frame = view.bounds;
     [self setPreviewMirrored: _previewMirrored];
@@ -1153,23 +1125,14 @@ kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRota
     if (_gpuToStr.bAutoRepeat) {
         return;
     }
-    if (_videoOrientation == orie || _vCapDev.isRunning == NO) {
-        int capOri = UIOrienToIdx(_videoOrientation);
-        int appOri = UIOrienToIdx(orie);
-        GPUImageRotationMode mode = KSYRotateMode[capOri][appOri];
-        _capToGpu.outputRotation = mode;
-        [_preview setInputRotation:mode atIndex:0];
-    }
-    else {
-        int capOri = UIOrienToIdx(_videoOrientation);
-        int appOri = UIOrienToIdx(orie);
-        GPUImageRotationMode mode = KSYRotateMode[capOri][appOri];
-        GPUImageRotationMode oppositeMode = KSYRotateMode[appOri][capOri];
-        _capToGpu.outputRotation = mode;
-        [_preview setInputRotation:oppositeMode atIndex:0];
-    }
+    int capOri = UIOrienToIdx(_videoOrientation);
+    int appOri = UIOrienToIdx(orie);
+    GPUImageRotationMode oppositeMode = KSYRotateMode[appOri][capOri];
+    [_preview setInputRotation:oppositeMode atIndex:0];
     [self updatePreDimension];
     [self updateStrDimension:orie];
+    GPUImageRotationMode mode = KSYRotateMode[capOri][appOri];
+    _capToGpu.outputRotation = mode;
     [self setStreamerMirrored: _streamerMirrored];
     [self setPreviewMirrored: _previewMirrored];
 }

@@ -25,6 +25,13 @@
 - (id)initWithUIImage:(UIImage *)image;
 
 /**
+ @abstract   初始化并指定特效素材
+ @param      name 特效素材的文件名
+ @return     构造的滤镜
+ */
+- (id)initWithImageName:(NSString *)name;
+
+/**
  @abstract   指定特效素材
  @param      image 特效素材
  */

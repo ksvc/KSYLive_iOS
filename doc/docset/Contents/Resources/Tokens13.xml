@@ -13,15 +13,69 @@
 		
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBuildInSpecialEffects/initWithType:</TokenIdentifier>
+			<Abstract type="html">初始化为指定类型的特效滤镜</Abstract>
+			<DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithType:(KSYGPUEffectType)type</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>type</Name>
+					<Abstract type="html">效果类型</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithType:</Anchor>
+            <NodeRef refid="13"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBuildInSpecialEffects/setEffectType:</TokenIdentifier>
+			<Abstract type="html">当前特效的类型</Abstract>
+			<DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+			
+			<Declaration>@property KSYGPUEffectType effectType</Declaration>
+			
+			
+			<Anchor>//api/name/effectType</Anchor>
+            <NodeRef refid="13"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBuildInSpecialEffects/effectType</TokenIdentifier>
+			<Abstract type="html">当前特效的类型</Abstract>
+			<DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+			
+			<Declaration>@property KSYGPUEffectType effectType</Declaration>
+			
+			
+			<Anchor>//api/name/effectType</Anchor>
+            <NodeRef refid="13"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYBuildInSpecialEffects/effectType</TokenIdentifier>
+			<Abstract type="html">当前特效的类型</Abstract>
+			<DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+			
+			<Declaration>@property KSYGPUEffectType effectType</Declaration>
+			
+			
+			<Anchor>//api/name/effectType</Anchor>
+            <NodeRef refid="13"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYBuildInSpecialEffects/initWithIdx:</TokenIdentifier>
-			<Abstract type="html">初始化并指定 1~13 的index来创建对应效果</Abstract>
+			<Abstract type="html">初始化为指定类型的特效滤镜</Abstract>
 			<DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
 			
 			<Declaration>- (id)initWithIdx:(NSInteger)idx</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>idx</Name>
-					<Abstract type="html">效果的索引 (非法值无效)</Abstract>
+					<Abstract type="html">效果的索引 (非法值无效)
+@warning</Abstract>
 				</Parameter>
 			</Parameters>
 			
@@ -31,7 +85,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYBuildInSpecialEffects/setSpecialEffectsIdx:</TokenIdentifier>
-			<Abstract type="html">指定 1~6 的index来创建对应效果</Abstract>
+			<Abstract type="html">更新为指定类型的特效滤镜</Abstract>
 			<DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
 			
 			<Declaration>- (void)setSpecialEffectsIdx:(NSInteger)idx</Declaration>
@@ -43,6 +97,42 @@
 			</Parameters>
 			
 			<Anchor>//api/name/setSpecialEffectsIdx:</Anchor>
+            <NodeRef refid="13"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBuildInSpecialEffects/setIntensity:</TokenIdentifier>
+			<Abstract type="html">特效参数 (仅前15个滤镜有效)</Abstract>
+			<DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGFloat intensity</Declaration>
+			
+			
+			<Anchor>//api/name/intensity</Anchor>
+            <NodeRef refid="13"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBuildInSpecialEffects/intensity</TokenIdentifier>
+			<Abstract type="html">特效参数 (仅前15个滤镜有效)</Abstract>
+			<DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGFloat intensity</Declaration>
+			
+			
+			<Anchor>//api/name/intensity</Anchor>
+            <NodeRef refid="13"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYBuildInSpecialEffects/intensity</TokenIdentifier>
+			<Abstract type="html">特效参数 (仅前15个滤镜有效)</Abstract>
+			<DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+			
+			<Declaration>@property (readwrite, nonatomic) CGFloat intensity</Declaration>
+			
+			
+			<Anchor>//api/name/intensity</Anchor>
             <NodeRef refid="13"/>
 		</Token>
 		

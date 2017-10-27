@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSY_NETTRACKER_ACTION.html">
+	<File path="Constants/KSYRecordError.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSY_NETTRACKER_ACTION</TokenIdentifier>
-			<Abstract type="html">探测方式</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYRecordError</TokenIdentifier>
+			<Abstract type="html">旁路录制错误码</Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
 			<NodeRef refid="79"/>
@@ -14,21 +14,41 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSY_NETTRACKER_ACTION_MTR</TokenIdentifier>
-            <Abstract type="html">mtr方式，探测链路上每个节点</Abstract>
-            <Declaration>KSY_NETTRACKER_ACTION_MTR</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYRecordErrorNone</TokenIdentifier>
+            <Abstract type="html">无错误</Abstract>
+            <Declaration>KSYRecordErrorNone</Declaration>
             
-            <DeclaredIn>KSYNetTracker.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="79"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSY_NETTRACKER_ACTION_PING</TokenIdentifier>
-            <Abstract type="html">ping方式，直接探测终点</Abstract>
-            <Declaration>KSY_NETTRACKER_ACTION_PING</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYRecordErrorPathInvalid</TokenIdentifier>
+            <Abstract type="html">地址错误</Abstract>
+            <Declaration>KSYRecordErrorPathInvalid</Declaration>
             
-            <DeclaredIn>KSYNetTracker.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="79"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYRecordErrorFormatNotSupport</TokenIdentifier>
+            <Abstract type="html">格式不支持</Abstract>
+            <Declaration>KSYRecordErrorFormatNotSupport</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="79"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYRecordErrorInternal</TokenIdentifier>
+            <Abstract type="html">内部错误</Abstract>
+            <Declaration>KSYRecordErrorInternal</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="79"/>
         </Token>

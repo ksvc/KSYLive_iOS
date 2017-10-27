@@ -16,9 +16,10 @@
     if (self.kit == nil || !self.ksyFilterView.swUiRotate.on) {
         return;
     }
+    UIInterfaceOrientation orie = [[UIApplication sharedApplication] statusBarOrientation];
+    [self.kit rotatePreviewTo:orie];
     if (self.ksyFilterView.swStrRotate.on) {
         // 1. 旋转推流方向
-        UIInterfaceOrientation orie = [[UIApplication sharedApplication] statusBarOrientation];
         [self.kit rotateStreamTo:orie];
         
         // 2. 旋转水印方向，并调整大小和位置（保持水印大小和位置不变）

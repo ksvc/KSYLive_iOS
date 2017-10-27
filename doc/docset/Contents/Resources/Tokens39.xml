@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYMvFilter.html">
+	<File path="Classes/KSYMovieWriter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYMvFilter</TokenIdentifier>
-			<Abstract type="html">KSYMvFilter MV效果类</Abstract>
-			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYMovieWriter</TokenIdentifier>
+			<Abstract type="html">视频文件录制类</Abstract>
+			<DeclaredIn>KSYMovieWriter.h</DeclaredIn>
             
 			
 			<NodeRef refid="39"/>
@@ -13,58 +13,31 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/initWithPath:shouldRepeat:</TokenIdentifier>
-			<Abstract type="html">单个mp4 filter</Abstract>
-			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMovieWriter/startWrite:</TokenIdentifier>
+			<Abstract type="html">write video stream to local files</Abstract>
+			<DeclaredIn>KSYMovieWriter.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithPath:(NSURL *)mp4URL shouldRepeat:(BOOL)bRepeat</Declaration>
+			<Declaration>- (void)startWrite:(NSURL *)filePath</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>mp4URL</Name>
-					<Abstract type="html">指定mp4路径</Abstract>
-				</Parameter><Parameter>
-					<Name>shouldRepeat</Name>
-					<Abstract type="html">mp4是否循环播放</Abstract>
+					<Name>filePath</Name>
+					<Abstract type="html">is local file path</Abstract>
 				</Parameter>
 			</Parameters>
-			<ReturnValue><Abstract type="html">mp4 filter</Abstract></ReturnValue>
-			<Anchor>//api/name/initWithPath:shouldRepeat:</Anchor>
+			
+			<Anchor>//api/name/startWrite:</Anchor>
             <NodeRef refid="39"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/MvPause</TokenIdentifier>
-			<Abstract type="html">mv 播放暂停</Abstract>
-			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMovieWriter/stopWrite</TokenIdentifier>
+			<Abstract type="html">stop wirte file</Abstract>
+			<DeclaredIn>KSYMovieWriter.h</DeclaredIn>
 			
-			<Declaration>- (void)MvPause</Declaration>
-			
-			
-			<Anchor>//api/name/MvPause</Anchor>
-            <NodeRef refid="39"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/MvResume</TokenIdentifier>
-			<Abstract type="html">mv 播放暂停恢复</Abstract>
-			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
-			
-			<Declaration>- (void)MvResume</Declaration>
+			<Declaration>- (void)stopWrite</Declaration>
 			
 			
-			<Anchor>//api/name/MvResume</Anchor>
-            <NodeRef refid="39"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/closeMvFilter</TokenIdentifier>
-			<Abstract type="html">关闭mv filter</Abstract>
-			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
-			
-			<Declaration>- (void)closeMvFilter</Declaration>
-			
-			
-			<Anchor>//api/name/closeMvFilter</Anchor>
+			<Anchor>//api/name/stopWrite</Anchor>
             <NodeRef refid="39"/>
 		</Token>
 		

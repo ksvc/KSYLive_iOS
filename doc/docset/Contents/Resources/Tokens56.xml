@@ -1,67 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYAudioNoiseSuppress.html">
+	<File path="Classes/KSYVideoInfo.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYAudioNoiseSuppress</TokenIdentifier>
-			<Abstract type="html">噪声抑制等级</Abstract>
-			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYVideoInfo</TokenIdentifier>
+			<Abstract type="html">视频信息</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
 			
 			<NodeRef refid="56"/>
 		</Token>
 		
 		
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_OFF</TokenIdentifier>
-            <Abstract type="html">关闭</Abstract>
-            <Declaration>KSYAudioNoiseSuppress_OFF</Declaration>
-            
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
-            
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/setVcodec:</TokenIdentifier>
+			<Abstract type="html">视频编码格式, 具体类型为MEDIAINFOCODECID</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID vcodec</Declaration>
+			
+			
+			<Anchor>//api/name/vcodec</Anchor>
             <NodeRef refid="56"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_LOW</TokenIdentifier>
-            <Abstract type="html">温和</Abstract>
-            <Declaration>KSYAudioNoiseSuppress_LOW</Declaration>
-            
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/vcodec</TokenIdentifier>
+			<Abstract type="html">视频编码格式, 具体类型为MEDIAINFOCODECID</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID vcodec</Declaration>
+			
+			
+			<Anchor>//api/name/vcodec</Anchor>
             <NodeRef refid="56"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_MEDIUM</TokenIdentifier>
-            <Abstract type="html">中等</Abstract>
-            <Declaration>KSYAudioNoiseSuppress_MEDIUM</Declaration>
-            
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYVideoInfo/vcodec</TokenIdentifier>
+			<Abstract type="html">视频编码格式, 具体类型为MEDIAINFOCODECID</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID vcodec</Declaration>
+			
+			
+			<Anchor>//api/name/vcodec</Anchor>
             <NodeRef refid="56"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_HIGH</TokenIdentifier>
-            <Abstract type="html">激进</Abstract>
-            <Declaration>KSYAudioNoiseSuppress_HIGH</Declaration>
-            
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/setFrame_width:</TokenIdentifier>
+			<Abstract type="html">视频帧宽度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int32_t frame_width</Declaration>
+			
+			
+			<Anchor>//api/name/frame_width</Anchor>
             <NodeRef refid="56"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_VERYHIGH</TokenIdentifier>
-            <Abstract type="html">非常激进</Abstract>
-            <Declaration>KSYAudioNoiseSuppress_VERYHIGH</Declaration>
-            
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/frame_width</TokenIdentifier>
+			<Abstract type="html">视频帧宽度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int32_t frame_width</Declaration>
+			
+			
+			<Anchor>//api/name/frame_width</Anchor>
             <NodeRef refid="56"/>
-        </Token>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYVideoInfo/frame_width</TokenIdentifier>
+			<Abstract type="html">视频帧宽度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int32_t frame_width</Declaration>
+			
+			
+			<Anchor>//api/name/frame_width</Anchor>
+            <NodeRef refid="56"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/setFrame_height:</TokenIdentifier>
+			<Abstract type="html">视频帧高度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int32_t frame_height</Declaration>
+			
+			
+			<Anchor>//api/name/frame_height</Anchor>
+            <NodeRef refid="56"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/frame_height</TokenIdentifier>
+			<Abstract type="html">视频帧高度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int32_t frame_height</Declaration>
+			
+			
+			<Anchor>//api/name/frame_height</Anchor>
+            <NodeRef refid="56"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYVideoInfo/frame_height</TokenIdentifier>
+			<Abstract type="html">视频帧高度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int32_t frame_height</Declaration>
+			
+			
+			<Anchor>//api/name/frame_height</Anchor>
+            <NodeRef refid="56"/>
+		</Token>
+		
         
         
 	</File>

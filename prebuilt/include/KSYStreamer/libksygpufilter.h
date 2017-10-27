@@ -9,6 +9,8 @@
 #import <GPUImage/GPUImage.h>
 
 #import "KSYGPUFilter.h"
+#import "KSYGPUTwoInputFiter.h"
+
 #import "KSYGPUBeautifyFilter.h"
 #import "KSYGPUBeautifyExtFilter.h"
 #import "KSYGPUBeautifyPlusFilter.h"
@@ -20,6 +22,12 @@
 #import "KSYMvEffect.h"
 #import "KSYMvFilter.h"
 #import "KSYShakeFilter.h"
+#import "KSYTransitionFadesInOutFilter.h"
+#import "KSYTransitionFlashFilter.h"
+#import "KSYTransitionBlurFilter.h"
+#import "KSYTransitionPushFilter.h"
+#import "KSYTransitionFilter.h"
+#import "KSYGPUPicture.h"
 
-#define KSYGPUFILTER_VER 2.9.0
-#define KSYGPUFILTER_ID  1d449e38d24532e1cbb2d55bb786d5a4e92f4edd
+#define KSYGPUFILTER_VER 2.9.1
+#define KSYGPUFILTER_ID  9f27de16e14f4dad29a3ef0598b0a94628d59ad8

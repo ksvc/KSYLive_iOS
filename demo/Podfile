@@ -7,7 +7,8 @@ target 'KSYLiveDemo' do
   # YYImage 仅demo中用于导入gif和apng的格式的图片用到了
   # 不需要支持这些格式的话,不需要添加YYImage的依赖
   pod 'YYImage'
-  
+  # ZipArchive 仅demo中用于解压资源文件,不是必须依赖
+  pod 'ZipArchive', '~> 1.4'
   
   pod 'GPUImage'
   pod 'libksygpulive/KSYGPUResource',      :path => '../'

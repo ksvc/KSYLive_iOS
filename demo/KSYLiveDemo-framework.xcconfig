@@ -1,2 +1,3 @@
-OTHER_LDFLAGS = $(inherited) -ObjC -all_load -framework libksygpulive -framework GPUImage -framework Bugly -framework YYImage -lstdc++.6 -lz
+OTHER_CFLAGS = -I../framework/
+OTHER_LDFLAGS = $(inherited) -ObjC -all_load -framework libksygpulive -framework GPUImage -framework Bugly -framework YYImage -lstdc++.6 -lz  -lZipArchive -L../framework/
 FRAMEWORK_SEARCH_PATHS = $(inherited) ../framework/ ../framework/static

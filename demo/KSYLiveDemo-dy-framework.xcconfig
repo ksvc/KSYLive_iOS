@@ -1,3 +1,4 @@
-OTHER_LDFLAGS = $(inherited) -ObjC -all_load -framework libksygpulive -framework GPUImage -framework Bugly -framework YYImage -lstdc++.6 -lz
+OTHER_CFLAGS = -I../framework/
+OTHER_LDFLAGS = $(inherited) -ObjC -all_load -framework libksygpulive -framework GPUImage -framework Bugly -framework YYImage -lstdc++.6 -lz -lZipArchive -L../framework/
 IPHONEOS_DEPLOYMENT_TARGET = 8.0
 FRAMEWORK_SEARCH_PATHS = $(inherited) ../framework/ ../framework/dynamic

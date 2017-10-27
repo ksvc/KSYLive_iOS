@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYNetworkStatus.html">
+	<File path="Constants/KSYBgmPlayerState.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYNetworkStatus</TokenIdentifier>
-			<Abstract type="html">Create NS_ENUM macro if it does not exist on the targeted version of iOS or OS X.</Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYBgmPlayerState</TokenIdentifier>
+			<Abstract type="html">音频播放状态</Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
 			<NodeRef refid="66"/>
@@ -14,31 +14,71 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYNotReachable</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>KSYNotReachable</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateInit</TokenIdentifier>
+            <Abstract type="html">初始状态</Abstract>
+            <Declaration>KSYBgmPlayerStateInit</Declaration>
             
-            <DeclaredIn>KSYReachability.h</DeclaredIn>
-            
-            <NodeRef refid="66"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYReachableViaWiFi</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>KSYReachableViaWiFi</Declaration>
-            
-            <DeclaredIn>KSYReachability.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="66"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYReachableViaWWAN</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>KSYReachableViaWWAN</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateStarting</TokenIdentifier>
+            <Abstract type="html">背景音正在播放</Abstract>
+            <Declaration>KSYBgmPlayerStateStarting</Declaration>
             
-            <DeclaredIn>KSYReachability.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="66"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateStopped</TokenIdentifier>
+            <Abstract type="html">背景音停止</Abstract>
+            <Declaration>KSYBgmPlayerStateStopped</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="66"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStatePlaying</TokenIdentifier>
+            <Abstract type="html">背景音正在播放</Abstract>
+            <Declaration>KSYBgmPlayerStatePlaying</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="66"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStatePaused</TokenIdentifier>
+            <Abstract type="html">背景音暂停</Abstract>
+            <Declaration>KSYBgmPlayerStatePaused</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="66"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateError</TokenIdentifier>
+            <Abstract type="html">背景音播放出错</Abstract>
+            <Declaration>KSYBgmPlayerStateError</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="66"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYBgmPlayerStateInterrupted</TokenIdentifier>
+            <Abstract type="html">背景音被打断</Abstract>
+            <Declaration>KSYBgmPlayerStateInterrupted</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="66"/>
         </Token>

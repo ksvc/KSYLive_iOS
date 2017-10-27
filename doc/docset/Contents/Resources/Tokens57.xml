@@ -1,48 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYBWEstimateMode.html">
+	<File path="Classes/KSYWeakProxy.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYBWEstimateMode</TokenIdentifier>
-			<Abstract type="html">网络自适应模式类型
-  </Abstract>
-			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYWeakProxy</TokenIdentifier>
+			<Abstract type="html">A proxy used to hold a weak object.
+It can be used to avoid retain cycles, such as the target in NSTimer or CADisplayLink.</Abstract>
+			<DeclaredIn>KSYWeakProxy.h</DeclaredIn>
             
 			
 			<NodeRef refid="57"/>
 		</Token>
 		
 		
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBWEstMode_Default</TokenIdentifier>
-            <Abstract type="html">默认模式 (综合模式,比较平稳)</Abstract>
-            <Declaration>KSYBWEstMode_Default</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYWeakProxy/setTarget:</TokenIdentifier>
+			<Abstract type="html">The proxy target.</Abstract>
+			<DeclaredIn>KSYWeakProxy.h</DeclaredIn>
+			
+			<Declaration>@property (nullable, nonatomic, weak, readonly) id target</Declaration>
+			
+			
+			<Anchor>//api/name/target</Anchor>
             <NodeRef refid="57"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBWEstMode_Negtive</TokenIdentifier>
-            <Abstract type="html">流畅优先模式(消极上调, 极速下调)</Abstract>
-            <Declaration>KSYBWEstMode_Negtive</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYWeakProxy/target</TokenIdentifier>
+			<Abstract type="html">The proxy target.</Abstract>
+			<DeclaredIn>KSYWeakProxy.h</DeclaredIn>
+			
+			<Declaration>@property (nullable, nonatomic, weak, readonly) id target</Declaration>
+			
+			
+			<Anchor>//api/name/target</Anchor>
             <NodeRef refid="57"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYBWEstMode_Disable</TokenIdentifier>
-            <Abstract type="html">禁用网络自适应网络调整</Abstract>
-            <Declaration>KSYBWEstMode_Disable</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYWeakProxy/target</TokenIdentifier>
+			<Abstract type="html">The proxy target.</Abstract>
+			<DeclaredIn>KSYWeakProxy.h</DeclaredIn>
+			
+			<Declaration>@property (nullable, nonatomic, weak, readonly) id target</Declaration>
+			
+			
+			<Anchor>//api/name/target</Anchor>
             <NodeRef refid="57"/>
-        </Token>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYWeakProxy/initWithTarget:</TokenIdentifier>
+			<Abstract type="html">Creates a new weak proxy for target.</Abstract>
+			<DeclaredIn>KSYWeakProxy.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)initWithTarget:(id)target</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>target</Name>
+					<Abstract type="html">Target object.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">A new proxy object.</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithTarget:</Anchor>
+            <NodeRef refid="57"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/KSYWeakProxy/proxyWithTarget:</TokenIdentifier>
+			<Abstract type="html">Creates a new weak proxy for target.</Abstract>
+			<DeclaredIn>KSYWeakProxy.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)proxyWithTarget:(id)target</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>target</Name>
+					<Abstract type="html">Target object.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">A new proxy object.</Abstract></ReturnValue>
+			<Anchor>//api/name/proxyWithTarget:</Anchor>
+            <NodeRef refid="57"/>
+		</Token>
+		
         
         
 	</File>
