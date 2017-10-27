@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/MPMovieMetaType.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/MPMovieMetaType</TokenIdentifier>
+			<Abstract type="html">Meta类型</Abstract>
+			<DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+			
+			<NodeRef refid="96"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieMetaType_Media</TokenIdentifier>
+            <Abstract type="html">当前播放文件的Meta</Abstract>
+            <Declaration>MPMovieMetaType_Media</Declaration>
+            
+            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+            <NodeRef refid="96"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieMetaType_Video</TokenIdentifier>
+            <Abstract type="html">当前播放的视频Meta</Abstract>
+            <Declaration>MPMovieMetaType_Video</Declaration>
+            
+            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+            <NodeRef refid="96"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieMetaType_Audio</TokenIdentifier>
+            <Abstract type="html">当前播放的音频Meta</Abstract>
+            <Declaration>MPMovieMetaType_Audio</Declaration>
+            
+            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+            <NodeRef refid="96"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieMetaType_Subtitle</TokenIdentifier>
+            <Abstract type="html">当前播放的字幕Meta</Abstract>
+            <Declaration>MPMovieMetaType_Subtitle</Declaration>
+            
+            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+            <NodeRef refid="96"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

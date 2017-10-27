@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYNetTracker.html">
+	<File path="Classes/KSYMvFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYNetTracker</TokenIdentifier>
-			<Abstract type="html">网络链路探测器类</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYMvFilter</TokenIdentifier>
+			<Abstract type="html">KSYMvFilter MV效果类</Abstract>
+			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="41"/>
@@ -13,211 +13,58 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/start:</TokenIdentifier>
-			<Abstract type="html">开始探测</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/initWithPath:shouldRepeat:</TokenIdentifier>
+			<Abstract type="html">单个mp4 filter</Abstract>
+			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
 			
-			<Declaration>- (int)start:(NSString *__nonnull)domain</Declaration>
+			<Declaration>- (id)initWithPath:(NSURL *)mp4URL shouldRepeat:(BOOL)bRepeat</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>domain</Name>
-					<Abstract type="html">探测地址</Abstract>
+					<Name>mp4URL</Name>
+					<Abstract type="html">指定mp4路径</Abstract>
+				</Parameter><Parameter>
+					<Name>shouldRepeat</Name>
+					<Abstract type="html">mp4是否循环播放</Abstract>
 				</Parameter>
 			</Parameters>
-			<ReturnValue><Abstract type="html">成功开始返回0, 否则返回非0</Abstract></ReturnValue>
-			<Anchor>//api/name/start:</Anchor>
+			<ReturnValue><Abstract type="html">mp4 filter</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithPath:shouldRepeat:</Anchor>
             <NodeRef refid="41"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/stop</TokenIdentifier>
-			<Abstract type="html">停止探测</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/MvPause</TokenIdentifier>
+			<Abstract type="html">mv 播放暂停</Abstract>
+			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
 			
-			<Declaration>- (void)stop</Declaration>
+			<Declaration>- (void)MvPause</Declaration>
 			
 			
-			<Anchor>//api/name/stop</Anchor>
+			<Anchor>//api/name/MvPause</Anchor>
             <NodeRef refid="41"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setAction:</TokenIdentifier>
-			<Abstract type="html">探测方式</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/MvResume</TokenIdentifier>
+			<Abstract type="html">mv 播放暂停恢复</Abstract>
+			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) KSY_NETTRACKER_ACTION action</Declaration>
+			<Declaration>- (void)MvResume</Declaration>
 			
 			
-			<Anchor>//api/name/action</Anchor>
+			<Anchor>//api/name/MvResume</Anchor>
             <NodeRef refid="41"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/action</TokenIdentifier>
-			<Abstract type="html">探测方式</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/closeMvFilter</TokenIdentifier>
+			<Abstract type="html">关闭mv filter</Abstract>
+			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) KSY_NETTRACKER_ACTION action</Declaration>
-			
-			
-			<Anchor>//api/name/action</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/action</TokenIdentifier>
-			<Abstract type="html">探测方式</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) KSY_NETTRACKER_ACTION action</Declaration>
+			<Declaration>- (void)closeMvFilter</Declaration>
 			
 			
-			<Anchor>//api/name/action</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setTimeout:</TokenIdentifier>
-			<Abstract type="html">探测超时时间，单位是ms，默认值是1000ms</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int timeout</Declaration>
-			
-			
-			<Anchor>//api/name/timeout</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/timeout</TokenIdentifier>
-			<Abstract type="html">探测超时时间，单位是ms，默认值是1000ms</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int timeout</Declaration>
-			
-			
-			<Anchor>//api/name/timeout</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/timeout</TokenIdentifier>
-			<Abstract type="html">探测超时时间，单位是ms，默认值是1000ms</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int timeout</Declaration>
-			
-			
-			<Anchor>//api/name/timeout</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setMaxttl:</TokenIdentifier>
-			<Abstract type="html">探测使用的最大ttl值，默认值是64</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int maxttl</Declaration>
-			
-			
-			<Anchor>//api/name/maxttl</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/maxttl</TokenIdentifier>
-			<Abstract type="html">探测使用的最大ttl值，默认值是64</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int maxttl</Declaration>
-			
-			
-			<Anchor>//api/name/maxttl</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/maxttl</TokenIdentifier>
-			<Abstract type="html">探测使用的最大ttl值，默认值是64</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int maxttl</Declaration>
-			
-			
-			<Anchor>//api/name/maxttl</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setNumber:</TokenIdentifier>
-			<Abstract type="html">探测次数，默认值是10</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int number</Declaration>
-			
-			
-			<Anchor>//api/name/number</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/number</TokenIdentifier>
-			<Abstract type="html">探测次数，默认值是10</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int number</Declaration>
-			
-			
-			<Anchor>//api/name/number</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/number</TokenIdentifier>
-			<Abstract type="html">探测次数，默认值是10</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int number</Declaration>
-			
-			
-			<Anchor>//api/name/number</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/setRouterInfo:</TokenIdentifier>
-			<Abstract type="html">链路状况</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSMutableArray *routerInfo</Declaration>
-			
-			
-			<Anchor>//api/name/routerInfo</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetTracker/routerInfo</TokenIdentifier>
-			<Abstract type="html">链路状况</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSMutableArray *routerInfo</Declaration>
-			
-			
-			<Anchor>//api/name/routerInfo</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetTracker/routerInfo</TokenIdentifier>
-			<Abstract type="html">链路状况</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) NSMutableArray *routerInfo</Declaration>
-			
-			
-			<Anchor>//api/name/routerInfo</Anchor>
+			<Anchor>//api/name/closeMvFilter</Anchor>
             <NodeRef refid="41"/>
 		</Token>
 		

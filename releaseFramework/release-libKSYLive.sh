@@ -102,6 +102,7 @@ if [ $FRAMEWORKNAME = "libksygpulive" ]; then
     xDownload GPUImage $TYPE
     xDownload Bugly    ""
     xDownload YYImage  ""
+    xDownload ZipArchive  ""
 fi
 
 TARGET_NAME=$FRAMEWORKNAME

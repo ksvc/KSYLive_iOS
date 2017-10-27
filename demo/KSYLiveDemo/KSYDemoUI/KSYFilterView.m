@@ -9,6 +9,7 @@
 #import "KSYFilterView.h"
 #import "KSYNameSlider.h"
 #import "KSYPresetCfgView.h"
+#import "ZipArchive.h"
 
 
 @interface KSYFilterView() {
@@ -16,10 +17,8 @@
     NSInteger _curIdx;
     NSArray * _effectNames;
     NSInteger _curEffectIdx;
-    //GPUResource非必备资源名称列表
-    NSArray *_effectResourceNames;
     //GPUResource资源的存储路径
-    NSString *_downloadGPUResourcePath;
+    NSString *_gpuResourceDir;
 }
 
 @property (nonatomic) UILabel * lbPrevewFlip;
@@ -37,26 +36,40 @@
 
 - (id)init{
     self = [super init];
-    _effectNames = [NSArray arrayWithObjects: @"0 原图", @"1 小清新",  @"2 靓丽",
-                    @"3 甜美可人",  @"4 怀旧",  @"5 蓝调",  @"6 老照片" ,
-                    @"7 樱花", @"8 樱花（光线较暗）", @"9 红润（光线较暗）",
-                    @"10 阳光（光线较暗）", @"11 红润", @"12 阳光", @"13 自然", nil];
-    _effectResourceNames = [NSArray arrayWithObjects:
-                             @"null",
-                             @"1_xiaoqingxin.png",
-                             @"2_liangli.png",
-                             @"3_tianmeikeren.png",
-                             @"4_huaijiu.png",
-                             @"5_landiao.png",
-                             @"6_laozhaop.png",
-                             @"7_yinghua.png",
-                             @"8_yinghua_night.png",
-                             @"9_hongrun_night.png",
-                             @"10_yangguang_night.png",
-                             @"11_hongrun.png",
-                             @"12_yangguang.png",
-                             @"13_ziran.png",nil];
-    [self creatGPUResourceFile];
+    _effectNames = [NSArray arrayWithObjects:
+                    @"0 原图关闭特效",
+                    @"1 小清新",
+                    @"2 靓丽",
+                    @"3 甜美可人",
+                    @"4 怀旧",
+                    @"5 蓝调",
+                    @"6 老照片",
+                    @"7 樱花",
+                    @"8 樱花（适用于光线较暗的环境）",
+                    @"9 红润（适用于光线较暗的环境）",
+                    @"10 阳光（适用于光线较暗的环境）",
+                    @"11 红润",
+                    @"12 阳光",
+                    @"13 自然",
+                    @"14 恋人",
+                    @"15 高雅",
+                    @"16 红粉佳人 ",
+                    @"17 优格 ",
+                    @"18 流年 ",
+                    @"19 柔光 ",
+                    @"20 经典 ",
+                    @"21 初夏 ",
+                    @"22 黑白 ",
+                    @"23 纽约 ",
+                    @"24 上野 ",
+                    @"25 碧波 ",
+                    @"26 日系 ",
+                    @"27 清凉 ",
+                    @"28 移轴 ",
+                    @"29 梦幻 ",
+                    @"30 恬淡 ",
+                    @"31 候鸟 ",
+                    @"32 淡雅 ", nil];
     [self downloadGPUResource];
     _curEffectIdx = 1;
     // 修改美颜参数
@@ -211,7 +224,17 @@
         _filterParam1.hidden = NO;
         _filterParam2.hidden = NO;
         _filterParam3.hidden = NO;
-        UIImage *rubbyMat = [self getGPUResourceImageAt:_effectResourceNames[3]];
+        NSString *imgPath=[_gpuResourceDir stringByAppendingString:@"3_tianmeikeren.png"];
+        UIImage *rubbyMat=[[UIImage alloc]initWithContentsOfFile:imgPath];
+        if (rubbyMat == nil) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                            message:@"特效资源正在下载，请稍后重试"
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"确定", nil];
+            alert.alertViewStyle = UIAlertViewStyleDefault;
+            [alert show];
+        }
         KSYBeautifyFaceFilter *bf = [[KSYBeautifyFaceFilter alloc] initWithRubbyMaterial:rubbyMat];
         bf.grindRatio  = _filterParam1.normalValue;
         bf.whitenRatio = _filterParam2.normalValue;
@@ -233,24 +256,18 @@
         bf.whitenRatio = _filterParam2.normalValue;
         bf.ruddyRatio  = 0.5;
         
-        UIImage *downloadImage = [self getGPUResourceImageAt:_effectResourceNames[_curEffectIdx]];
-        if(downloadImage == nil) {
-            _curFilter = bf;
-        }
-        else {
-            KSYBuildInSpecialEffects * sf = [[KSYBuildInSpecialEffects alloc] initWithUIImage:downloadImage];
-            sf.intensity   = _filterParam3.normalValue;
-            [bf addTarget:sf];
-            
-            // 用滤镜组 将 滤镜 串联成整体
-            GPUImageFilterGroup * fg = [[GPUImageFilterGroup alloc] init];
-            [fg addFilter:bf];
-            [fg addFilter:sf];
-            
-            [fg setInitialFilters:[NSArray arrayWithObject:bf]];
-            [fg setTerminalFilter:sf];
-            _curFilter = fg;
-        }
+        KSYBuildInSpecialEffects * sf = [[KSYBuildInSpecialEffects alloc] initWithIdx:_curEffectIdx];
+        sf.intensity   = _filterParam3.normalValue;
+        [bf addTarget:sf];
+        
+        // 用滤镜组 将 滤镜 串联成整体
+        GPUImageFilterGroup * fg = [[GPUImageFilterGroup alloc] init];
+        [fg addFilter:bf];
+        [fg addFilter:sf];
+        
+        [fg setInitialFilters:[NSArray arrayWithObject:bf]];
+        [fg setTerminalFilter:sf];
+        _curFilter = fg;
     }
     else {
         _curFilter = nil;
@@ -326,74 +343,40 @@ numberOfRowsInComponent:(NSInteger)component {
       didSelectRow:(NSInteger)row
        inComponent:(NSInteger)component {
     _curEffectIdx = row;
-    if ( [_curFilter isMemberOfClass:[GPUImageFilterGroup class]]){
-        GPUImageFilterGroup * fg = (GPUImageFilterGroup *)_curFilter;
-        KSYBuildInSpecialEffects * sf = (KSYBuildInSpecialEffects *)[fg filterAtIndex:1];
-        UIImage *downloadImage = [self getGPUResourceImageAt:_effectResourceNames[_curEffectIdx]];
-        [sf setSpecialEffectsUIImage:downloadImage];
+    if (! [_curFilter isMemberOfClass:[GPUImageFilterGroup class]]){
+        return;
     }
+    GPUImageFilterGroup * fg = (GPUImageFilterGroup *)_curFilter;
+    if (![fg.terminalFilter isMemberOfClass:[KSYBuildInSpecialEffects class]]) {
+        return;
+    }
+    KSYBuildInSpecialEffects * sf = (KSYBuildInSpecialEffects *)fg.terminalFilter;
+    [sf setSpecialEffectsIdx:_curEffectIdx];
 }
 
--(UIImage *)getGPUResourceImageAt:(NSString *)effectName{
-    if ([effectName isEqualToString:@"null"]){
-        return nil;
-    }
-    NSString * path = [[NSBundle mainBundle] pathForResource:@"KSYGPUResource" ofType:@"bundle"];
-    path = [path stringByAppendingPathComponent:effectName];
-    if ([UIImage imageWithContentsOfFile:path]) {
-        return [UIImage imageWithContentsOfFile:path];
-    }
-    UIImage *dwnloadImage = [self getDocumentImageName:effectName];
-    if (!dwnloadImage) {
-        //当前选中的资源还没有下载好
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"特效资源正在下载，请稍后重试" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
-        alert.alertViewStyle = UIAlertViewStyleDefault;
-        [alert show];
-        return nil;
-    }
-    return dwnloadImage;
-}
-
--(UIImage *)getDocumentImageName:(NSString *)name{
-    // 读取沙盒路径图片
-    NSString *pathDocuments = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *downloadGPUResourcePath = [NSString stringWithFormat:@"%@/GPUResource", pathDocuments];
-    NSString *aPath3=[downloadGPUResourcePath stringByAppendingFormat:@"/%@",name];
-    // 拿到沙盒路径图片
-    UIImage *imgFromUrl3=[[UIImage alloc]initWithContentsOfFile:aPath3];
-    return imgFromUrl3;
-}
-
--(void)creatGPUResourceFile{
+-(void)downloadGPUResource{ // 下载资源文件
     NSFileManager *fileManager = [[NSFileManager alloc] init];
-    NSString *pathDocuments = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    _downloadGPUResourcePath = [NSString stringWithFormat:@"%@/GPUResource", pathDocuments];
+    _gpuResourceDir=[NSHomeDirectory() stringByAppendingString:@"/Documents/GPUResource/"];
     // 判断文件夹是否存在，如果不存在，则创建
-    if (![[NSFileManager defaultManager] fileExistsAtPath:_downloadGPUResourcePath]) {
-        [fileManager createDirectoryAtPath:_downloadGPUResourcePath withIntermediateDirectories:YES attributes:nil error:nil];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:_gpuResourceDir]) {
+        [fileManager createDirectoryAtPath:_gpuResourceDir
+               withIntermediateDirectories:YES
+                                attributes:nil
+                                     error:nil];
     }
-}
-
--(void)downloadGPUResource{
-    //下载没有下载好的图片
-    NSString *strPre = @"https://ks3-cn-beijing.ksyun.com/ksy.vcloud.sdk/Ios/KSYLive_iOS_Resource/";
-    //当前图片不存在，需要下载
+    NSString *zipPath = [_gpuResourceDir stringByAppendingString:@"KSYGPUResource.zip"];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:zipPath]) {
+        return; // already downloaded
+    }
+    NSString *zipUrl = @"https://ks3-cn-beijing.ksyun.com/ksy.vcloud.sdk/Ios/KSYLive_iOS_Resource/KSYGPUResource.zip";
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        for(int i = 1; i < _effectResourceNames.count - 1; i++){
-            NSString *GPUResourceFilePath = [_downloadGPUResourcePath stringByAppendingFormat:@"/%@",_effectResourceNames[i]];
-            UIImage *savedImage = [[UIImage alloc] initWithContentsOfFile:GPUResourceFilePath];
-            if(!savedImage){
-                //当前图片不存在，需要下载
-                NSString *strUrl = [strPre stringByAppendingFormat:@"%@",_effectResourceNames[i]];
-                NSURL *url =[NSURL URLWithString:strUrl];
-                NSData *data =[NSData dataWithContentsOfURL:url];
-                UIImage *image = [UIImage imageWithData:data];
-                //设置一个图片的存储路径
-                NSString *imagePath = [_downloadGPUResourcePath stringByAppendingFormat:@"/%@",_effectResourceNames[i]];
-                //把图片直接保存到指定的路径
-                [UIImagePNGRepresentation(image) writeToFile:imagePath atomically:YES];
-            }
-        }
+        NSURL *url =[NSURL URLWithString:zipUrl];
+        NSData *data =[NSData dataWithContentsOfURL:url];
+        [data writeToFile:zipPath atomically:YES];
+        ZipArchive *zipArchive = [[ZipArchive alloc] init];
+        [zipArchive UnzipOpenFile:zipPath ];
+        [zipArchive UnzipFileTo:_gpuResourceDir overWrite:YES];
+        [zipArchive UnzipCloseFile];
     });
 }
 

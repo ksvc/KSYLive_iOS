@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYNetReachState.html">
+	<File path="Constants/KSYAudioNoiseSuppress.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYNetReachState</TokenIdentifier>
-			<Abstract type="html">网络链接状态</Abstract>
-			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYAudioNoiseSuppress</TokenIdentifier>
+			<Abstract type="html">噪声抑制等级</Abstract>
+			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
             
 			
 			<NodeRef refid="64"/>
@@ -14,31 +14,51 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYNetReachState_Unknown</TokenIdentifier>
-            <Abstract type="html">未知</Abstract>
-            <Declaration>KSYNetReachState_Unknown</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_OFF</TokenIdentifier>
+            <Abstract type="html">关闭</Abstract>
+            <Declaration>KSYAudioNoiseSuppress_OFF</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="64"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYNetReachState_OK</TokenIdentifier>
-            <Abstract type="html">联网</Abstract>
-            <Declaration>KSYNetReachState_OK</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
             
             <NodeRef refid="64"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYNetReachState_Bad</TokenIdentifier>
-            <Abstract type="html">断网</Abstract>
-            <Declaration>KSYNetReachState_Bad</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_LOW</TokenIdentifier>
+            <Abstract type="html">温和</Abstract>
+            <Declaration>KSYAudioNoiseSuppress_LOW</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+            
+            <NodeRef refid="64"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_MEDIUM</TokenIdentifier>
+            <Abstract type="html">中等</Abstract>
+            <Declaration>KSYAudioNoiseSuppress_MEDIUM</Declaration>
+            
+            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+            
+            <NodeRef refid="64"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_HIGH</TokenIdentifier>
+            <Abstract type="html">激进</Abstract>
+            <Declaration>KSYAudioNoiseSuppress_HIGH</Declaration>
+            
+            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+            
+            <NodeRef refid="64"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_VERYHIGH</TokenIdentifier>
+            <Abstract type="html">非常激进</Abstract>
+            <Declaration>KSYAudioNoiseSuppress_VERYHIGH</Declaration>
+            
+            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
             
             <NodeRef refid="64"/>
         </Token>

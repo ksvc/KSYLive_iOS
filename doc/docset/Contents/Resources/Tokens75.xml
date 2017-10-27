@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYTranscodeState.html">
+	<File path="Constants/KSYNetworkStatus.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYTranscodeState</TokenIdentifier>
-			<Abstract type="html">转码状态</Abstract>
-			<DeclaredIn>KSYTranscoder.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYNetworkStatus</TokenIdentifier>
+			<Abstract type="html">Create NS_ENUM macro if it does not exist on the targeted version of iOS or OS X.</Abstract>
+			<DeclaredIn>KSYReachability.h</DeclaredIn>
             
 			
 			<NodeRef refid="75"/>
@@ -14,41 +14,31 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeState_Idle</TokenIdentifier>
-            <Abstract type="html">初始状态</Abstract>
-            <Declaration>KSYTranscodeState_Idle</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNotReachable</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>KSYNotReachable</Declaration>
             
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
-            
-            <NodeRef refid="75"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeState_Transcoding</TokenIdentifier>
-            <Abstract type="html">转码中</Abstract>
-            <Declaration>KSYTranscodeState_Transcoding</Declaration>
-            
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            <DeclaredIn>KSYReachability.h</DeclaredIn>
             
             <NodeRef refid="75"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeState_Completed</TokenIdentifier>
-            <Abstract type="html">转码完成</Abstract>
-            <Declaration>KSYTranscodeState_Completed</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYReachableViaWiFi</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>KSYReachableViaWiFi</Declaration>
             
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            <DeclaredIn>KSYReachability.h</DeclaredIn>
             
             <NodeRef refid="75"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeState_Error</TokenIdentifier>
-            <Abstract type="html">转码失败</Abstract>
-            <Declaration>KSYTranscodeState_Error</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYReachableViaWWAN</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>KSYReachableViaWWAN</Declaration>
             
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            <DeclaredIn>KSYReachability.h</DeclaredIn>
             
             <NodeRef refid="75"/>
         </Token>

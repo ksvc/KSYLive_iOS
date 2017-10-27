@@ -1,67 +1,197 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYAudioEffectType.html">
+	<File path="Classes/KSYUIRecorderKit.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYAudioEffectType</TokenIdentifier>
-			<Abstract type="html">音效类型</Abstract>
-			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYUIRecorderKit</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
             
 			
 			<NodeRef refid="55"/>
 		</Token>
 		
 		
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioEffectType_NONE</TokenIdentifier>
-            <Abstract type="html">初始化时状态为空闲</Abstract>
-            <Declaration>KSYAudioEffectType_NONE</Declaration>
-            
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
-            
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/initWithScheme:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)initWithScheme:(KSYPlayRecordScheme)scheme</Declaration>
+			
+			
+			<Anchor>//api/name/initWithScheme:</Anchor>
             <NodeRef refid="55"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioEffectType_MALE</TokenIdentifier>
-            <Abstract type="html">大叔</Abstract>
-            <Declaration>KSYAudioEffectType_MALE</Declaration>
-            
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/setContentView:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) UIView *contentView</Declaration>
+			
+			
+			<Anchor>//api/name/contentView</Anchor>
             <NodeRef refid="55"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioEffectType_FEMALE</TokenIdentifier>
-            <Abstract type="html">萝莉</Abstract>
-            <Declaration>KSYAudioEffectType_FEMALE</Declaration>
-            
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/contentView</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) UIView *contentView</Declaration>
+			
+			
+			<Anchor>//api/name/contentView</Anchor>
             <NodeRef refid="55"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioEffectType_HEROIC</TokenIdentifier>
-            <Abstract type="html">宏大</Abstract>
-            <Declaration>KSYAudioEffectType_HEROIC</Declaration>
-            
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYUIRecorderKit/contentView</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) UIView *contentView</Declaration>
+			
+			
+			<Anchor>//api/name/contentView</Anchor>
             <NodeRef refid="55"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioEffectType_ROBOT</TokenIdentifier>
-            <Abstract type="html">机器人</Abstract>
-            <Declaration>KSYAudioEffectType_ROBOT</Declaration>
-            
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/processWithTextureId:TextureSize:Time:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>- (void)processWithTextureId:(GLuint)InputTexture TextureSize:(CGSize)TextureSize Time:(CMTime)time</Declaration>
+			
+			
+			<Anchor>//api/name/processWithTextureId:TextureSize:Time:</Anchor>
             <NodeRef refid="55"/>
-        </Token>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/processAudioSampleBuffer:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>- (void)processAudioSampleBuffer:(CMSampleBufferRef)buf</Declaration>
+			
+			
+			<Anchor>//api/name/processAudioSampleBuffer:</Anchor>
+            <NodeRef refid="55"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/processVideoSampleBuffer:timeInfo:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>- (void)processVideoSampleBuffer:(CVPixelBufferRef)pixelBuffer timeInfo:(CMTime)timeStamp</Declaration>
+			
+			
+			<Anchor>//api/name/processVideoSampleBuffer:timeInfo:</Anchor>
+            <NodeRef refid="55"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/startRecord:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>- (void)startRecord:(NSURL *)path</Declaration>
+			
+			
+			<Anchor>//api/name/startRecord:</Anchor>
+            <NodeRef refid="55"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/stopRecord</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>- (void)stopRecord</Declaration>
+			
+			
+			<Anchor>//api/name/stopRecord</Anchor>
+            <NodeRef refid="55"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/setBPlayRecord:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>@property BOOL bPlayRecord</Declaration>
+			
+			
+			<Anchor>//api/name/bPlayRecord</Anchor>
+            <NodeRef refid="55"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/bPlayRecord</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>@property BOOL bPlayRecord</Declaration>
+			
+			
+			<Anchor>//api/name/bPlayRecord</Anchor>
+            <NodeRef refid="55"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYUIRecorderKit/bPlayRecord</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>@property BOOL bPlayRecord</Declaration>
+			
+			
+			<Anchor>//api/name/bPlayRecord</Anchor>
+            <NodeRef refid="55"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/setWriter:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) KSYMovieWriter *writer</Declaration>
+			
+			
+			<Anchor>//api/name/writer</Anchor>
+            <NodeRef refid="55"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/writer</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) KSYMovieWriter *writer</Declaration>
+			
+			
+			<Anchor>//api/name/writer</Anchor>
+            <NodeRef refid="55"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYUIRecorderKit/writer</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) KSYMovieWriter *writer</Declaration>
+			
+			
+			<Anchor>//api/name/writer</Anchor>
+            <NodeRef refid="55"/>
+		</Token>
+		
         
         
 	</File>

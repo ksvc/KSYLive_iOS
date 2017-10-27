@@ -54,6 +54,14 @@
 
 	
 	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/effectType">effectType</option>
+		
+		<option value="//api/name/intensity">intensity</option>
+		
+	</optgroup>
+	
 
 	
 
@@ -61,6 +69,8 @@
 	<optgroup label="Instance Methods">
 		
 		<option value="//api/name/initWithIdx:">- initWithIdx:</option>
+		
+		<option value="//api/name/initWithType:">- initWithType:</option>
 		
 		<option value="//api/name/setSpecialEffectsIdx:">- setSpecialEffectsIdx:</option>
 		
@@ -85,7 +95,7 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<th>Inherits from</th>
-	<td><a href="../Classes/KSYSpecialEffects.html">KSYSpecialEffects</a> : GPUImageFilterGroup</td>
+	<td>GPUImageFilterGroup</td>
 </tr><tr>
 	<th>Declared in</th>
 	<td>KSYBuildInSpecialEffects.h</td>
@@ -100,21 +110,7 @@
 						<h2 class="subtitle subtitle-overview">Overview</h2>
 						<p>KSY 特效滤镜</p>
 
-<p>内置滤镜需要资源文件支持(KSYResource.bundle)
-目前内置了如下6中特效:
-1 小清新
-2 靓丽
-3 甜美可人
-4 怀旧
-5 蓝调
-6 老照片
-7 樱花
-8 樱花（光线较暗）
-9 红润（光线较暗）
-10 阳光（光线较暗）
-11 红润
-12 阳光
-13 自然</p>
+<p>内置滤镜需要资源文件支持(参考KSYResource.bundle中的png)</p>
 					</div>
 					
 					
@@ -130,6 +126,100 @@
 
 						<div class="task-list">
 							<div class="section-method">
+	<a name="//api/name/initWithType:" title="initWithType:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithType:">&ndash;&nbsp;initWithType:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>初始化为指定类型的特效滤镜</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id)initWithType:(KSYGPUEffectType)<em>type</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>type</code></th>
+						<td><p>效果类型</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYBuildInSpecialEffects.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/effectType" title="effectType"></a>
+	<h3 class="method-title"><code><a href="#//api/name/effectType">&nbsp;&nbsp;effectType</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>当前特效的类型</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property KSYGPUEffectType effectType</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYBuildInSpecialEffects.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/initWithIdx:" title="initWithIdx:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/initWithIdx:">&ndash;&nbsp;initWithIdx:</a></code>
 </h3>
@@ -141,7 +231,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>初始化并指定 1~13 的index来创建对应效果</p>
+				<p>初始化为指定类型的特效滤镜</p>
 			</div>
 			
 		    
@@ -156,7 +246,8 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>idx</code></th>
-						<td><p>效果的索引 (非法值无效)</p></td>
+						<td><p>效果的索引 (非法值无效)
+@warning</p></td>
 					</tr>
 				
 				</table>
@@ -194,7 +285,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>指定 1~6 的index来创建对应效果</p>
+				<p>更新为指定类型的特效滤镜</p>
 			</div>
 			
 		    
@@ -214,6 +305,47 @@
 				
 				</table>
 			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYBuildInSpecialEffects.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/intensity" title="intensity"></a>
+	<h3 class="method-title"><code><a href="#//api/name/intensity">&nbsp;&nbsp;intensity</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>特效参数 (仅前15个滤镜有效)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (readwrite, nonatomic) CGFloat intensity</code></div>
+
+		    
 			
 
 			

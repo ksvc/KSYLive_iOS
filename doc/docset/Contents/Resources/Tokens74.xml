@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYTranscodeErrorCode.html">
+	<File path="Constants/KSYNetStateCode.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYTranscodeErrorCode</TokenIdentifier>
-			<Abstract type="html">转码错误码，用于说明转码失败的原因</Abstract>
-			<DeclaredIn>KSYTranscoder.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYNetStateCode</TokenIdentifier>
+			<Abstract type="html">网络状况事件码，用于指示当前网络健康状况</Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
 			<NodeRef refid="74"/>
@@ -14,91 +14,101 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_None</TokenIdentifier>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_NONE</TokenIdentifier>
             <Abstract type="html">正常无错误</Abstract>
-            <Declaration>KSYTranscodeErrorCode_None</Declaration>
+            <Declaration>KSYNetStateCode_NONE</Declaration>
             
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
-            
-            <NodeRef refid="74"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_InvalidAddress</TokenIdentifier>
-            <Abstract type="html">无效的文件地址(输入或输出地址为空)</Abstract>
-            <Declaration>KSYTranscodeErrorCode_InvalidAddress</Declaration>
-            
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="74"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_InputFile_OpenFailed</TokenIdentifier>
-            <Abstract type="html">打开输入文件失败</Abstract>
-            <Declaration>KSYTranscodeErrorCode_InputFile_OpenFailed</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_SEND_PACKET_SLOW</TokenIdentifier>
+            <Abstract type="html">发送包时间过长，( 单次发送超过 500毫秒 ）</Abstract>
+            <Declaration>KSYNetStateCode_SEND_PACKET_SLOW</Declaration>
             
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
-            
-            <NodeRef refid="74"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_InvalidData</TokenIdentifier>
-            <Abstract type="html">无效的媒体数据</Abstract>
-            <Declaration>KSYTranscodeErrorCode_InvalidData</Declaration>
-            
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="74"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_OutputFile_UnsupportedFormat</TokenIdentifier>
-            <Abstract type="html">不支持的输出文件格式</Abstract>
-            <Declaration>KSYTranscodeErrorCode_OutputFile_UnsupportedFormat</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_EST_BW_RAISE</TokenIdentifier>
+            <Abstract type="html">估计带宽调整，上调</Abstract>
+            <Declaration>KSYNetStateCode_EST_BW_RAISE</Declaration>
             
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
-            
-            <NodeRef refid="74"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_OutputFile_OpenFailed</TokenIdentifier>
-            <Abstract type="html">打开输出文件失败</Abstract>
-            <Declaration>KSYTranscodeErrorCode_OutputFile_OpenFailed</Declaration>
-            
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="74"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_OutputFile_AddStreamFailed</TokenIdentifier>
-            <Abstract type="html">输出文件添加流失败</Abstract>
-            <Declaration>KSYTranscodeErrorCode_OutputFile_AddStreamFailed</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_EST_BW_DROP</TokenIdentifier>
+            <Abstract type="html">估计带宽调整，下调</Abstract>
+            <Declaration>KSYNetStateCode_EST_BW_DROP</Declaration>
             
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
-            
-            <NodeRef refid="74"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_OutputFile_StartWriteFailed</TokenIdentifier>
-            <Abstract type="html">输出文件头写入失败(通常为不支持的codec)</Abstract>
-            <Declaration>KSYTranscodeErrorCode_OutputFile_StartWriteFailed</Declaration>
-            
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="74"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_Transcoding_Failed</TokenIdentifier>
-            <Abstract type="html">转码过程中出现错误</Abstract>
-            <Declaration>KSYTranscodeErrorCode_Transcoding_Failed</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_VIDEO_FPS_RAISE</TokenIdentifier>
+            <Abstract type="html">帧率调整，上调</Abstract>
+            <Declaration>KSYNetStateCode_VIDEO_FPS_RAISE</Declaration>
             
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="74"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_VIDEO_FPS_DROP</TokenIdentifier>
+            <Abstract type="html">帧率调整，下调</Abstract>
+            <Declaration>KSYNetStateCode_VIDEO_FPS_DROP</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="74"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_KSYAUTHFAILED</TokenIdentifier>
+            <Abstract type="html">SDK 鉴权失败 (暂时正常推流5~8分钟后终止推流)</Abstract>
+            <Declaration>KSYNetStateCode_KSYAUTHFAILED</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="74"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_IN_AUDIO_DISCONTINUOUS</TokenIdentifier>
+            <Abstract type="html">输入音频不连续</Abstract>
+            <Declaration>KSYNetStateCode_IN_AUDIO_DISCONTINUOUS</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="74"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_UNREACHABLE</TokenIdentifier>
+            <Abstract type="html">网络变为不可用</Abstract>
+            <Declaration>KSYNetStateCode_UNREACHABLE</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="74"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetStateCode_REACHABLE</TokenIdentifier>
+            <Abstract type="html">网络变为可用</Abstract>
+            <Declaration>KSYNetStateCode_REACHABLE</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="74"/>
         </Token>

@@ -1,8 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="">
+	<File path="Constants/MPMovieAudioPan.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/MPMovieAudioPan</TokenIdentifier>
+			<Abstract type="html">立体声平衡</Abstract>
+			<DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+			
+			<NodeRef refid="95"/>
+		</Token>
 		
 		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieAudioPan_Left</TokenIdentifier>
+            <Abstract type="html">完全左声道</Abstract>
+            <Declaration>MPMovieAudioPan_Left</Declaration>
+            
+            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+            <NodeRef refid="95"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieAudioPan_Stereo</TokenIdentifier>
+            <Abstract type="html">左右声道平衡</Abstract>
+            <Declaration>MPMovieAudioPan_Stereo</Declaration>
+            
+            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+            <NodeRef refid="95"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieAudioPan_Right</TokenIdentifier>
+            <Abstract type="html">完全右声道</Abstract>
+            <Declaration>MPMovieAudioPan_Right</Declaration>
+            
+            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+            <NodeRef refid="95"/>
+        </Token>
         
         
 	</File>

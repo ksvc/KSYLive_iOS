@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUViewCapture.html">
+	<File path="Classes/KSYGPUTwoInputFiter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUViewCapture</TokenIdentifier>
-			<Abstract type="html">GPU UIView视图 采集模块</Abstract>
-			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUTwoInputFiter</TokenIdentifier>
+			<Abstract type="html">双输入滤镜</Abstract>
+			<DeclaredIn>KSYGPUTwoInputFiter.h</DeclaredIn>
             
 			
 			<NodeRef refid="31"/>
@@ -13,185 +13,39 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/initWithView:</TokenIdentifier>
-			<Abstract type="html">设置需要采集的视图</Abstract>
-			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUTwoInputFiter/reload:</TokenIdentifier>
+			<Abstract type="html">重新载入加密的shader串</Abstract>
+			<DeclaredIn>KSYGPUTwoInputFiter.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithView:(UIView *)inputView</Declaration>
+			<Declaration>- (void)reload:(NSString *)fragmentShaderString</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>inputView</Name>
-					<Abstract type="html">被采集的视图</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">采集实例</Abstract></ReturnValue>
-			<Anchor>//api/name/initWithView:</Anchor>
-            <NodeRef refid="31"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/initWithLayer:</TokenIdentifier>
-			<Abstract type="html">设置需要采集的视图图层</Abstract>
-			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
-			
-			<Declaration>- (id)initWithLayer:(CALayer *)inputLayer</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>inputLayer</Name>
-					<Abstract type="html">被采集的图层</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">采集实例</Abstract></ReturnValue>
-			<Anchor>//api/name/initWithLayer:</Anchor>
-            <NodeRef refid="31"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/layerSizeInPixels</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
-			
-			<Declaration>- (CGSize)layerSizeInPixels</Declaration>
-			
-			
-			<Anchor>//api/name/layerSizeInPixels</Anchor>
-            <NodeRef refid="31"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/update</TokenIdentifier>
-			<Abstract type="html">更新画面内容 使用无效时间戳</Abstract>
-			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
-			
-			<Declaration>- (void)update</Declaration>
-			
-			
-			<Anchor>//api/name/update</Anchor>
-            <NodeRef refid="31"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/updateUsingCurrentTime</TokenIdentifier>
-			<Abstract type="html">更新画面内容 使用当前时间戳</Abstract>
-			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
-			
-			<Declaration>- (void)updateUsingCurrentTime</Declaration>
-			
-			
-			<Anchor>//api/name/updateUsingCurrentTime</Anchor>
-            <NodeRef refid="31"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/updateWithTimestamp:</TokenIdentifier>
-			<Abstract type="html">更新画面内容</Abstract>
-			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
-			
-			<Declaration>- (void)updateWithTimestamp:(CMTime)frameTime</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>frameTime</Name>
-					<Abstract type="html">时间戳</Abstract>
+					<Name>fragmentShaderString</Name>
+					<Abstract type="html">加密的片原shader</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/updateWithTimestamp:</Anchor>
+			<Anchor>//api/name/reload:</Anchor>
             <NodeRef refid="31"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/setUpdateFps:</TokenIdentifier>
-			<Abstract type="html">UI刷新的频率 默认值为15 (有效值fps=60/N, 比如60, 30, 20, 15, 10等)</Abstract>
-			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUTwoInputFiter/reloadVS:andFS:</TokenIdentifier>
+			<Abstract type="html">重新载入加密的shader串</Abstract>
+			<DeclaredIn>KSYGPUTwoInputFiter.h</DeclaredIn>
 			
-			<Declaration>@property int updateFps</Declaration>
+			<Declaration>- (void)reloadVS:(NSString *)vertexShaderString andFS:(NSString *)fragmentShaderString</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>vertexShaderString</Name>
+					<Abstract type="html">顶点shader(未加密)</Abstract>
+				</Parameter><Parameter>
+					<Name>fragmentShaderString</Name>
+					<Abstract type="html">片原shader(加密的)</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/updateFps</Anchor>
-            <NodeRef refid="31"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/updateFps</TokenIdentifier>
-			<Abstract type="html">UI刷新的频率 默认值为15 (有效值fps=60/N, 比如60, 30, 20, 15, 10等)</Abstract>
-			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
-			
-			<Declaration>@property int updateFps</Declaration>
-			
-			
-			<Anchor>//api/name/updateFps</Anchor>
-            <NodeRef refid="31"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUViewCapture/updateFps</TokenIdentifier>
-			<Abstract type="html">UI刷新的频率 默认值为15 (有效值fps=60/N, 比如60, 30, 20, 15, 10等)</Abstract>
-			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
-			
-			<Declaration>@property int updateFps</Declaration>
-			
-			
-			<Anchor>//api/name/updateFps</Anchor>
-            <NodeRef refid="31"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/start</TokenIdentifier>
-			<Abstract type="html">启动采集</Abstract>
-			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
-			
-			<Declaration>- (void)start</Declaration>
-			
-			
-			<Anchor>//api/name/start</Anchor>
-            <NodeRef refid="31"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/stop</TokenIdentifier>
-			<Abstract type="html">停止采集</Abstract>
-			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
-			
-			<Declaration>- (void)stop</Declaration>
-			
-			
-			<Anchor>//api/name/stop</Anchor>
-            <NodeRef refid="31"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/setPaused:</TokenIdentifier>
-			<Abstract type="html">暂停 / 继续</Abstract>
-			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
-			
-			<Declaration>@property BOOL paused</Declaration>
-			
-			
-			<Anchor>//api/name/paused</Anchor>
-            <NodeRef refid="31"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/paused</TokenIdentifier>
-			<Abstract type="html">暂停 / 继续</Abstract>
-			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
-			
-			<Declaration>@property BOOL paused</Declaration>
-			
-			
-			<Anchor>//api/name/paused</Anchor>
-            <NodeRef refid="31"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUViewCapture/paused</TokenIdentifier>
-			<Abstract type="html">暂停 / 继续</Abstract>
-			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
-			
-			<Declaration>@property BOOL paused</Declaration>
-			
-			
-			<Anchor>//api/name/paused</Anchor>
+			<Anchor>//api/name/reloadVS:andFS:</Anchor>
             <NodeRef refid="31"/>
 		</Token>
 		

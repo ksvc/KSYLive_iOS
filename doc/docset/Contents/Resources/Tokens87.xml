@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/MPMovieVideoDecoderMode.html">
+	<File path="Constants/KSYTransitionType.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/MPMovieVideoDecoderMode</TokenIdentifier>
-			<Abstract type="html">视频解码模式</Abstract>
-			<DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYTransitionType</TokenIdentifier>
+			<Abstract type="html">转场类型</Abstract>
+			<DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="87"/>
@@ -14,41 +14,101 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDecoderMode_Software</TokenIdentifier>
-            <Abstract type="html">视频解码方式采用软解</Abstract>
-            <Declaration>MPMovieVideoDecoderMode_Software</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeNone</TokenIdentifier>
+            <Abstract type="html">关闭转场</Abstract>
+            <Declaration>KSYTransitionTypeNone</Declaration>
             
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="87"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDecoderMode_Hardware</TokenIdentifier>
-            <Abstract type="html">视频解码方式采用硬解</Abstract>
-            <Declaration>MPMovieVideoDecoderMode_Hardware</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
             
             <NodeRef refid="87"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDecoderMode_AUTO</TokenIdentifier>
-            <Abstract type="html">自动选择解码方式，8.0以上的系统优先选择硬解</Abstract>
-            <Declaration>MPMovieVideoDecoderMode_AUTO</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeFadesInOut</TokenIdentifier>
+            <Abstract type="html">渐入淡出</Abstract>
+            <Declaration>KSYTransitionTypeFadesInOut</Declaration>
             
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
             
             <NodeRef refid="87"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieVideoDecoderMode_DisplayLayer</TokenIdentifier>
-            <Abstract type="html">使用系统接口进行解码和渲染，只适用于8.0及以上系统，低于8.0的系统自动使用软解</Abstract>
-            <Declaration>MPMovieVideoDecoderMode_DisplayLayer</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeFlashBlack</TokenIdentifier>
+            <Abstract type="html">闪黑</Abstract>
+            <Declaration>KSYTransitionTypeFlashBlack</Declaration>
             
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="87"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeFlashWhite</TokenIdentifier>
+            <Abstract type="html">闪白</Abstract>
+            <Declaration>KSYTransitionTypeFlashWhite</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="87"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeBlurOut</TokenIdentifier>
+            <Abstract type="html">清晰变模糊</Abstract>
+            <Declaration>KSYTransitionTypeBlurOut</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="87"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeBlurIn</TokenIdentifier>
+            <Abstract type="html">模糊变清晰</Abstract>
+            <Declaration>KSYTransitionTypeBlurIn</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="87"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypePushUp</TokenIdentifier>
+            <Abstract type="html">上推</Abstract>
+            <Declaration>KSYTransitionTypePushUp</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="87"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypePushDown</TokenIdentifier>
+            <Abstract type="html">下推</Abstract>
+            <Declaration>KSYTransitionTypePushDown</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="87"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypePushLeft</TokenIdentifier>
+            <Abstract type="html">左推</Abstract>
+            <Declaration>KSYTransitionTypePushLeft</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="87"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypePushRight</TokenIdentifier>
+            <Abstract type="html">右推</Abstract>
+            <Declaration>KSYTransitionTypePushRight</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
             
             <NodeRef refid="87"/>
         </Token>

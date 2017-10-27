@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYMediaInfo.html">
+	<File path="Classes/KSYGPUViewCapture.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYMediaInfo</TokenIdentifier>
-			<Abstract type="html">媒体信息</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUViewCapture</TokenIdentifier>
+			<Abstract type="html">GPU UIView视图 采集模块</Abstract>
+			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
             
 			
 			<NodeRef refid="33"/>
@@ -13,182 +13,185 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/setType:</TokenIdentifier>
-			<Abstract type="html">封装格式，具体类型为MEDIAINFOMUXTYPE</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/initWithView:</TokenIdentifier>
+			<Abstract type="html">设置需要采集的视图</Abstract>
+			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) MEDIAINFO_MUX_TYPE type</Declaration>
-			
-			
-			<Anchor>//api/name/type</Anchor>
+			<Declaration>- (id)initWithView:(UIView *)inputView</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>inputView</Name>
+					<Abstract type="html">被采集的视图</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">采集实例</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithView:</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/type</TokenIdentifier>
-			<Abstract type="html">封装格式，具体类型为MEDIAINFOMUXTYPE</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/initWithLayer:</TokenIdentifier>
+			<Abstract type="html">设置需要采集的视图图层</Abstract>
+			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) MEDIAINFO_MUX_TYPE type</Declaration>
-			
-			
-			<Anchor>//api/name/type</Anchor>
+			<Declaration>- (id)initWithLayer:(CALayer *)inputLayer</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>inputLayer</Name>
+					<Abstract type="html">被采集的图层</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">采集实例</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithLayer:</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfo/type</TokenIdentifier>
-			<Abstract type="html">封装格式，具体类型为MEDIAINFOMUXTYPE</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/layerSizeInPixels</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) MEDIAINFO_MUX_TYPE type</Declaration>
+			<Declaration>- (CGSize)layerSizeInPixels</Declaration>
 			
 			
-			<Anchor>//api/name/type</Anchor>
+			<Anchor>//api/name/layerSizeInPixels</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/setBitrate:</TokenIdentifier>
-			<Abstract type="html">码率</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/update</TokenIdentifier>
+			<Abstract type="html">更新画面内容 使用无效时间戳</Abstract>
+			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int64_t bitrate</Declaration>
+			<Declaration>- (void)update</Declaration>
 			
 			
-			<Anchor>//api/name/bitrate</Anchor>
+			<Anchor>//api/name/update</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/bitrate</TokenIdentifier>
-			<Abstract type="html">码率</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/updateUsingCurrentTime</TokenIdentifier>
+			<Abstract type="html">更新画面内容 使用当前时间戳</Abstract>
+			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int64_t bitrate</Declaration>
+			<Declaration>- (void)updateUsingCurrentTime</Declaration>
 			
 			
-			<Anchor>//api/name/bitrate</Anchor>
+			<Anchor>//api/name/updateUsingCurrentTime</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfo/bitrate</TokenIdentifier>
-			<Abstract type="html">码率</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/updateWithTimestamp:</TokenIdentifier>
+			<Abstract type="html">更新画面内容</Abstract>
+			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) int64_t bitrate</Declaration>
+			<Declaration>- (void)updateWithTimestamp:(CMTime)frameTime</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>frameTime</Name>
+					<Abstract type="html">时间戳</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/bitrate</Anchor>
+			<Anchor>//api/name/updateWithTimestamp:</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/setDuration:</TokenIdentifier>
-			<Abstract type="html">视频总时长，单位是秒</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/setUpdateFps:</TokenIdentifier>
+			<Abstract type="html">UI刷新的频率 默认值为15 (有效值fps=60/N, 比如60, 30, 20, 15, 10等)</Abstract>
+			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) NSTimeInterval duration</Declaration>
+			<Declaration>@property int updateFps</Declaration>
 			
 			
-			<Anchor>//api/name/duration</Anchor>
+			<Anchor>//api/name/updateFps</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/duration</TokenIdentifier>
-			<Abstract type="html">视频总时长，单位是秒</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/updateFps</TokenIdentifier>
+			<Abstract type="html">UI刷新的频率 默认值为15 (有效值fps=60/N, 比如60, 30, 20, 15, 10等)</Abstract>
+			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) NSTimeInterval duration</Declaration>
+			<Declaration>@property int updateFps</Declaration>
 			
 			
-			<Anchor>//api/name/duration</Anchor>
+			<Anchor>//api/name/updateFps</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfo/duration</TokenIdentifier>
-			<Abstract type="html">视频总时长，单位是秒</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUViewCapture/updateFps</TokenIdentifier>
+			<Abstract type="html">UI刷新的频率 默认值为15 (有效值fps=60/N, 比如60, 30, 20, 15, 10等)</Abstract>
+			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) NSTimeInterval duration</Declaration>
+			<Declaration>@property int updateFps</Declaration>
 			
 			
-			<Anchor>//api/name/duration</Anchor>
+			<Anchor>//api/name/updateFps</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/setVideos:</TokenIdentifier>
-			<Abstract type="html">所有视频流信息，具体对象类型为KSYVideoInfo</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/start</TokenIdentifier>
+			<Abstract type="html">启动采集</Abstract>
+			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) NSMutableArray *videos</Declaration>
+			<Declaration>- (void)start</Declaration>
 			
 			
-			<Anchor>//api/name/videos</Anchor>
+			<Anchor>//api/name/start</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/videos</TokenIdentifier>
-			<Abstract type="html">所有视频流信息，具体对象类型为KSYVideoInfo</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/stop</TokenIdentifier>
+			<Abstract type="html">停止采集</Abstract>
+			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) NSMutableArray *videos</Declaration>
+			<Declaration>- (void)stop</Declaration>
 			
 			
-			<Anchor>//api/name/videos</Anchor>
+			<Anchor>//api/name/stop</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfo/videos</TokenIdentifier>
-			<Abstract type="html">所有视频流信息，具体对象类型为KSYVideoInfo</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/setPaused:</TokenIdentifier>
+			<Abstract type="html">暂停 / 继续</Abstract>
+			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) NSMutableArray *videos</Declaration>
+			<Declaration>@property BOOL paused</Declaration>
 			
 			
-			<Anchor>//api/name/videos</Anchor>
+			<Anchor>//api/name/paused</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/setAudios:</TokenIdentifier>
-			<Abstract type="html">所有音频流信息，具体对象类型为KSYAudioInfo</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUViewCapture/paused</TokenIdentifier>
+			<Abstract type="html">暂停 / 继续</Abstract>
+			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) NSMutableArray *audios</Declaration>
+			<Declaration>@property BOOL paused</Declaration>
 			
 			
-			<Anchor>//api/name/audios</Anchor>
+			<Anchor>//api/name/paused</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfo/audios</TokenIdentifier>
-			<Abstract type="html">所有音频流信息，具体对象类型为KSYAudioInfo</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUViewCapture/paused</TokenIdentifier>
+			<Abstract type="html">暂停 / 继续</Abstract>
+			<DeclaredIn>KSYGPUViewCapture.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) NSMutableArray *audios</Declaration>
-			
-			
-			<Anchor>//api/name/audios</Anchor>
-            <NodeRef refid="33"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYMediaInfo/audios</TokenIdentifier>
-			<Abstract type="html">所有音频流信息，具体对象类型为KSYAudioInfo</Abstract>
-			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic) NSMutableArray *audios</Declaration>
+			<Declaration>@property BOOL paused</Declaration>
 			
 			
-			<Anchor>//api/name/audios</Anchor>
+			<Anchor>//api/name/paused</Anchor>
             <NodeRef refid="33"/>
 		</Token>
 		

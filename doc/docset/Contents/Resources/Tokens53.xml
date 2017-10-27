@@ -1,67 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYAVMuxerStatus.html">
+	<File path="Classes/KSYTransitionFlashFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYAVMuxerStatus</TokenIdentifier>
-			<Abstract type="html">交织处理状态</Abstract>
-			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYTransitionFlashFilter</TokenIdentifier>
+			<Abstract type="html">KSYTransitionFlashFilter 闪黑/闪白的转场效果</Abstract>
+			<DeclaredIn>KSYTransitionFlashFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="53"/>
 		</Token>
 		
 		
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusIdle</TokenIdentifier>
-            <Abstract type="html">初始状态</Abstract>
-            <Declaration>KSYAVMuxerStatusIdle</Declaration>
-            
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
-            
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFlashFilter/setDuration:</TokenIdentifier>
+			<Abstract type="html">转场重叠的帧数</Abstract>
+			<DeclaredIn>KSYTransitionFlashFilter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) int duration</Declaration>
+			
+			
+			<Anchor>//api/name/duration</Anchor>
             <NodeRef refid="53"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusMuxing</TokenIdentifier>
-            <Abstract type="html">处理中</Abstract>
-            <Declaration>KSYAVMuxerStatusMuxing</Declaration>
-            
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFlashFilter/duration</TokenIdentifier>
+			<Abstract type="html">转场重叠的帧数</Abstract>
+			<DeclaredIn>KSYTransitionFlashFilter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) int duration</Declaration>
+			
+			
+			<Anchor>//api/name/duration</Anchor>
             <NodeRef refid="53"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusCompleted</TokenIdentifier>
-            <Abstract type="html">处理完成</Abstract>
-            <Declaration>KSYAVMuxerStatusCompleted</Declaration>
-            
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYTransitionFlashFilter/duration</TokenIdentifier>
+			<Abstract type="html">转场重叠的帧数</Abstract>
+			<DeclaredIn>KSYTransitionFlashFilter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) int duration</Declaration>
+			
+			
+			<Anchor>//api/name/duration</Anchor>
             <NodeRef refid="53"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusFailed</TokenIdentifier>
-            <Abstract type="html">处理失败</Abstract>
-            <Declaration>KSYAVMuxerStatusFailed</Declaration>
-            
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFlashFilter/setFrameIdx:</TokenIdentifier>
+			<Abstract type="html">转场已经处理的帧数</Abstract>
+			<DeclaredIn>KSYTransitionFlashFilter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) int frameIdx</Declaration>
+			
+			
+			<Anchor>//api/name/frameIdx</Anchor>
             <NodeRef refid="53"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusCancelled</TokenIdentifier>
-            <Abstract type="html">处理任务被取消</Abstract>
-            <Declaration>KSYAVMuxerStatusCancelled</Declaration>
-            
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFlashFilter/frameIdx</TokenIdentifier>
+			<Abstract type="html">转场已经处理的帧数</Abstract>
+			<DeclaredIn>KSYTransitionFlashFilter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) int frameIdx</Declaration>
+			
+			
+			<Anchor>//api/name/frameIdx</Anchor>
             <NodeRef refid="53"/>
-        </Token>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYTransitionFlashFilter/frameIdx</TokenIdentifier>
+			<Abstract type="html">转场已经处理的帧数</Abstract>
+			<DeclaredIn>KSYTransitionFlashFilter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) int frameIdx</Declaration>
+			
+			
+			<Anchor>//api/name/frameIdx</Anchor>
+            <NodeRef refid="53"/>
+		</Token>
+		
         
         
 	</File>

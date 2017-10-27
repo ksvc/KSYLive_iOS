@@ -1,8 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="">
+	<File path="Constants/KSYVideoEncodePerformance.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYVideoEncodePerformance</TokenIdentifier>
+			<Abstract type="html">视频编码性能档次 (视频质量 和 设备资源之间的权衡)</Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+			
+			<NodeRef refid="90"/>
+		</Token>
 		
 		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoEncodePer_LowPower</TokenIdentifier>
+            <Abstract type="html">低功耗:  cpu资源消耗低一些,视频质量差一些</Abstract>
+            <Declaration>KSYVideoEncodePer_LowPower</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="90"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoEncodePer_Balance</TokenIdentifier>
+            <Abstract type="html">均衡档次: 性价比比较高</Abstract>
+            <Declaration>KSYVideoEncodePer_Balance</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="90"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYVideoEncodePer_HighPerformance</TokenIdentifier>
+            <Abstract type="html">高性能: 画面质量高</Abstract>
+            <Declaration>KSYVideoEncodePer_HighPerformance</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="90"/>
+        </Token>
         
         
 	</File>
