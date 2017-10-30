@@ -1,10 +1,14 @@
 # [KSY Live iOS SDK](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
 
+[![Apps Using](https://img.shields.io/cocoapods/at/libksygpulive.svg?label=Apps%20Using%20libksygpulive&colorB=28B9FE)](http://cocoapods.org/pods/libksygpulive)
+[![Downloads](https://img.shields.io/cocoapods/dt/libksygpulive.svg?label=Total%20Downloads&colorB=28B9FE)](http://cocoapods.org/pods/libksygpulive)
+
 [![Build Status](https://travis-ci.org/ksvc/KSYLive_iOS.svg?branch=master)](https://travis-ci.org/ksvc/KSYLive_iOS)
 [![Latest release](https://img.shields.io/github/release/ksvc/KSYLive_iOS.svg)](https://github.com/ksvc/KSYLive_iOS/releases/latest)
 [![CocoaPods platform](https://img.shields.io/cocoapods/p/libksygpulive.svg)](https://cocoapods.org/pods/libksygpulive)
 [![CocoaPods version](https://img.shields.io/cocoapods/v/libksygpulive.svg?label=pod_github)](https://cocoapods.org/pods/libksygpulive)
 [![CocoaPods version](https://img.shields.io/cocoapods/v/libksygpulive_ks3.svg?label=pod_ks3)](https://cocoapods.org/pods/libksygpulive_ks3)
+
 ## 阅读对象
 本文档面向所有使用[金山云直播SDK][libksygpulive]的开发、测试人员等, 要求读者具有一定的iOS编程开发经验，并且要求读者具备阅读[wiki][wiki]的习惯。
 
