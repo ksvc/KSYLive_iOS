@@ -1,7 +1,11 @@
 # [KSY Live iOS SDK](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
 
-[![Apps Using](https://img.shields.io/cocoapods/at/libksygpulive.svg?label=Apps%20Using%20libksygpulive&colorB=28B9FE)](http://cocoapods.org/pods/libksygpulive)
-[![Downloads](https://img.shields.io/cocoapods/dt/libksygpulive.svg?label=Total%20Downloads&colorB=28B9FE)](http://cocoapods.org/pods/libksygpulive)
+[![Apps Using](https://img.shields.io/cocoapods/at/libksygpulive.svg?label=Apps%20Using%20libksygpulive&colorB=28B9FE)](http://cocoapods.org/pods/libksygpulive)[![Downloads](https://img.shields.io/cocoapods/dt/libksygpulive.svg?label=Total%20Downloads%20libksygpulive&colorB=28B9FE)](http://cocoapods.org/pods/libksygpulive)
+
+
+[![Apps Using](https://img.shields.io/cocoapods/at/libksygpulive_ks3.svg?label=Apps%20Using%20libksygpulive_ks3&colorB=28B9FE)](http://cocoapods.org/pods/libksygpulive_ks3)
+[![Downloads](https://img.shields.io/cocoapods/dt/libksygpulive_ks3.svg?label=Total%20Downloads%20libksygpulive_ks3&colorB=28B9FE)](http://cocoapods.org/pods/libksygpulive_ks3)
+
 
 [![Build Status](https://travis-ci.org/ksvc/KSYLive_iOS.svg?branch=master)](https://travis-ci.org/ksvc/KSYLive_iOS)
 [![Latest release](https://img.shields.io/github/release/ksvc/KSYLive_iOS.svg)](https://github.com/ksvc/KSYLive_iOS/releases/latest)
