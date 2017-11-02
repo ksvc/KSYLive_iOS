@@ -88,7 +88,7 @@ function xDownload() {
     if [ ! -d "${DST_DIR}/${FILE_NAME}.framework" ]; then
         echo "download ${FILE_NAME}.framework(${IOS_URL}) to ${DST_DIR}"
         curl ${IOS_URL} -o ${ZIP_FILE}
-        unzip -o -q ${ZIP_FILE} -d ${DST_DIR}/
+        unzip -q ${ZIP_FILE} -d ${DST_DIR}/
         rm ${ZIP_FILE}
     fi
 }
