@@ -11,7 +11,12 @@ target 'KSYLiveDemo' do
   pod 'ZipArchive', '~> 1.4'
   
   pod 'GPUImage'
+  # KSYGPUResource 为基础版本的图片资源, 包含了美颜滤镜必须依赖的图片
   pod 'libksygpulive/KSYGPUResource',      :path => '../'
+  # KSYGPUResourceFull 为完整版本的图片资源, 包含了所有特效滤镜的图片
+  #pod 'libksygpulive/KSYGPUResourceFull',      :path => '../'
+  ## 请根据需要选择要添加的资源包, 完整版的资源引入的增量为3.1M
+
   pod 'libksygpulive/libksygpulive',       :path => '../'
   # pod 'libksygpulive/libksygpulive_265', :path => '../'
 

@@ -496,42 +496,6 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setVideoCrf:</TokenIdentifier>
-			<Abstract type="html">质量等级（默认:20）</Abstract>
-			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int videoCrf</Declaration>
-			
-			
-			<Anchor>//api/name/videoCrf</Anchor>
-            <NodeRef refid="48"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/videoCrf</TokenIdentifier>
-			<Abstract type="html">质量等级（默认:20）</Abstract>
-			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int videoCrf</Declaration>
-			
-			
-			<Anchor>//api/name/videoCrf</Anchor>
-            <NodeRef refid="48"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/videoCrf</TokenIdentifier>
-			<Abstract type="html">质量等级（默认:20）</Abstract>
-			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, assign) int videoCrf</Declaration>
-			
-			
-			<Anchor>//api/name/videoCrf</Anchor>
-            <NodeRef refid="48"/>
-		</Token>
-		
-		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setMaxKeyInterval:</TokenIdentifier>
 			<Abstract type="html">最大关键帧间隔（单位:秒, 默认:3）</Abstract>
 			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
@@ -708,6 +672,42 @@
 			
 			
 			<Anchor>//api/name/recScene</Anchor>
+            <NodeRef refid="48"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/setVideoCrf:</TokenIdentifier>
+			<Abstract type="html">质量等级（默认:20）</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int videoCrf</Declaration>
+			
+			
+			<Anchor>//api/name/videoCrf</Anchor>
+            <NodeRef refid="48"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYStreamerBase/videoCrf</TokenIdentifier>
+			<Abstract type="html">质量等级（默认:20）</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int videoCrf</Declaration>
+			
+			
+			<Anchor>//api/name/videoCrf</Anchor>
+            <NodeRef refid="48"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYStreamerBase/videoCrf</TokenIdentifier>
+			<Abstract type="html">质量等级（默认:20）</Abstract>
+			<DeclaredIn>KSYStreamerBase.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int videoCrf</Declaration>
+			
+			
+			<Anchor>//api/name/videoCrf</Anchor>
             <NodeRef refid="48"/>
 		</Token>
 		

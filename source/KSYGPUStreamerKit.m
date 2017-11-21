@@ -1213,7 +1213,7 @@ kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRota
             _streamDimension = CGSizeMake(640, 360);
             self.videoFPS = 15;
             _streamerBase.videoMaxBitrate = 512;
-            _streamerBase.audiokBPS = 48;
+            _streamerBase.audiokBPS = 64;
             break;
         case KSYStreamerProfile_360p_1:
             _capPreset = AVCaptureSessionPreset640x480;
@@ -1221,7 +1221,7 @@ kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRota
             _streamDimension = CGSizeMake(640, 360);
             self.videoFPS = 15;
             _streamerBase.videoMaxBitrate = 512;
-            _streamerBase.audiokBPS = 48;
+            _streamerBase.audiokBPS = 64;
             break;
         case KSYStreamerProfile_360p_2:
             _capPreset = AVCaptureSessionPresetiFrame960x540;
@@ -1229,7 +1229,7 @@ kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRota
             _streamDimension = CGSizeMake(640, 360);
             self.videoFPS = 15;
             _streamerBase.videoMaxBitrate = 512;
-            _streamerBase.audiokBPS = 48;
+            _streamerBase.audiokBPS = 64;
             break;
         case KSYStreamerProfile_360p_3:
             _capPreset = AVCaptureSessionPreset1280x720;
@@ -1237,7 +1237,7 @@ kGPUImageRotateRight, kGPUImageRotateLeft,  kGPUImageRotate180,  kGPUImageNoRota
             _streamDimension = CGSizeMake(640, 360);
             self.videoFPS = 20;
             _streamerBase.videoMaxBitrate = 768;
-            _streamerBase.audiokBPS = 48;
+            _streamerBase.audiokBPS = 64;
             break;
         case KSYStreamerProfile_540p_auto:
             _capPreset = AVCaptureSessionPresetiFrame960x540;

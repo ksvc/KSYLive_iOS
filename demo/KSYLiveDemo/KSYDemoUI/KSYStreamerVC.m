@@ -264,26 +264,31 @@
 }
 #pragma mark - logo setup
 - (void) setupLogo{
-    CGFloat yPos = 0.05;
-    // 预览视图的scale
-    CGFloat scale = MAX(self.view.frame.size.width, self.view.frame.size.height) / self.view.frame.size.height;
-    CGFloat hgt  = 0.1 * scale; // logo图片的高度是预览画面的十分之一
+    
     UIImage * logoImg = [UIImage imageNamed:@"ksvc"];
     _logoPicure   =  [[GPUImagePicture alloc] initWithImage:logoImg];
     _kit.logoPic  = _logoPicure;
     _logoOrientation = logoImg.imageOrientation;
     [_kit setLogoOrientaion: _logoOrientation];
-    _kit.logoRect = CGRectMake(0.05, yPos, 0, hgt);
     _kit.logoAlpha= 0.5;
-    yPos += hgt;
     _miscView.alphaSl.normalValue = _kit.logoAlpha;
     _kit.textLabel.numberOfLines = 2;
     _kit.textLabel.textAlignment = NSTextAlignmentCenter;
     NSString * timeStr = [self timeStr];
     _kit.textLabel.text = [NSString stringWithFormat:@"ksyun\n%@", timeStr];
     [_kit.textLabel sizeToFit];
-    _kit.textRect = CGRectMake(0.05, yPos, 0, 0.04 * scale); // 水印文字的高度为预览画面的 0.04倍
     [_kit updateTextLabel];
+    [self setupLogoRect];
+}
+- (void) setupLogoRect{
+    CGFloat yPos = 0.05;
+    // 预览视图的scale
+    CGSize frameSz = self.view.frame.size;
+    CGFloat scale = MAX(frameSz.width, frameSz.height) / frameSz.height;
+    CGFloat hgt  = 0.1 * scale; // logo图片的高度是预览画面的十分之一
+    _kit.logoRect = CGRectMake(0.05, yPos, 0, hgt);
+    yPos += hgt;
+    _kit.textRect = CGRectMake(0.05, yPos, 0, 0.04 * scale); // 水印文字的高度为预览画面的 0.04倍
 }
 
 - (void) updateLogoText {
@@ -406,7 +411,7 @@
     _kit.streamerBase.logBlock = ^(NSString* str){
         NSLog(@"%@", str);
     };
-    _hostURL = [NSURL URLWithString:@"rtmp://test.uplive.ks-cdn.com/live/123"];
+    _hostURL = [NSURL URLWithString:@"rtmp://120.92.224.235/live/123"];
 }
 - (void) setStreamerCfg { // must set after capture
     if (_kit.streamerBase == nil) {
@@ -958,7 +963,7 @@
             //推流地址对应的拉流地址
             NSString * uuidStr =[[[UIDevice currentDevice] identifierForVendor] UUIDString];
             NSString *devCode  = [[uuidStr substringToIndex:3] lowercaseString];
-            NSString *streamPlaySrv = @"http://test.hdllive.ks-cdn.com/live";
+            NSString *streamPlaySrv = @"http://120.92.224.235:8080/live";
             NSString *streamPlayPostfix = @".flv";
             playUrlQRCodeVc.url = [ NSString stringWithFormat:@"%@/%@%@", streamPlaySrv, devCode,streamPlayPostfix];
         }

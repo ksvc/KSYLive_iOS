@@ -26,7 +26,7 @@
     self = [super init];
     self.backgroundColor = [UIColor whiteColor];
     // hostURL = rtmpSrv + streamName(随机数,避免多个demo推向同一个流
-    NSString *rtmpSrv = @"rtmp://test.uplive.ks-cdn.com/live";
+    NSString *rtmpSrv = @"rtmp://120.92.224.235/live";
     NSString *devCode = [ [KSYUIView getUuid] substringToIndex:3];
     NSString *url     = [  NSString stringWithFormat:@"%@/%@", rtmpSrv, devCode];
     _hostUrlUI = [self addTextField:url ];
@@ -229,7 +229,7 @@ numberOfRowsInComponent:(NSInteger)component {
             _videoCodecUI.selectedSegmentIndex = 0;
             _videoKbpsUI.slider.value = 512;
             _audioCodecUI.selectedSegmentIndex = 2;
-            _audioKbpsUI.selectedSegmentIndex = 3;
+            _audioKbpsUI.selectedSegmentIndex = 4;
             _bwEstModeUI.selectedSegmentIndex = 0;
             break;
         case KSYStreamerProfile_360p_1:
@@ -239,7 +239,7 @@ numberOfRowsInComponent:(NSInteger)component {
             _videoCodecUI.selectedSegmentIndex = 0;
             _videoKbpsUI.slider.value = 512;
             _audioCodecUI.selectedSegmentIndex = 2;
-            _audioKbpsUI.selectedSegmentIndex = 3;
+            _audioKbpsUI.selectedSegmentIndex = 4;
             _bwEstModeUI.selectedSegmentIndex = 0;
             break;
         case KSYStreamerProfile_360p_2:
@@ -249,7 +249,7 @@ numberOfRowsInComponent:(NSInteger)component {
             _videoCodecUI.selectedSegmentIndex = 0;
             _videoKbpsUI.slider.value = 512;
             _audioCodecUI.selectedSegmentIndex = 2;
-            _audioKbpsUI.selectedSegmentIndex = 3;
+            _audioKbpsUI.selectedSegmentIndex = 4;
             _bwEstModeUI.selectedSegmentIndex = 0;
             break;
         case KSYStreamerProfile_360p_3:
@@ -259,7 +259,7 @@ numberOfRowsInComponent:(NSInteger)component {
             _videoCodecUI.selectedSegmentIndex = 0;
             _videoKbpsUI.slider.value = 768;
             _audioCodecUI.selectedSegmentIndex = 2;
-            _audioKbpsUI.selectedSegmentIndex = 3;
+            _audioKbpsUI.selectedSegmentIndex = 4;
             _bwEstModeUI.selectedSegmentIndex = 0;
             break;
         case KSYStreamerProfile_540p_auto:

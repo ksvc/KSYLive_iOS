@@ -318,7 +318,7 @@ class KSYStreamerVC: KSYUIVC, UIImagePickerControllerDelegate, UINavigationContr
         kit?.streamerBase.logBlock = { (str) -> Void in
             print(str ?? "")
         }
-        hostURL = NSURL.init(string: "rtmp://test.uplive.ks-cdn.com/live/123")
+        hostURL = NSURL.init(string: "rtmp://120.92.224.235/live/123")
     }
     
     // 推流的参数设置 must set after capture

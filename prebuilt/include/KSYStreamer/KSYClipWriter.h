@@ -77,11 +77,6 @@
 @property(atomic, copy) NSDictionary * videoMetaData;
 
 /**
- @abstract   质量等级（默认:20）
- @discussion 视频恒定质量等级，范围0～51，值越小，质量越好
- */
-@property (nonatomic, assign) int videoCrf;
-/**
  @abstract   最大关键帧间隔（单位:秒, 默认:3）
  @discussion 即GOP长度 画面静止时,隔n秒插入一个关键帧
  */
@@ -99,10 +94,20 @@
 @property (nonatomic, assign) KSYLiveScene liveScene;
 
 /**
- @abstract   编码的目标场景 (默认为KSYRecScene_ConstantBitRate)
- @discussion 开始编码前设置有效
+ @abstract   本次录制的目标场景 (默认为KSYRecScene_ConstantBitRate)
+ @discussion 用于指定录制时, 视频编码器码率控制的优先目标
+ @discussion 恒定码率: 最后视频文件的码率更平稳,但复杂场景质量可能差一些
+ @discussion 恒定质量: 最后视频文件的质量更平稳写, 但码率波动要大一些
+ @discussion 开始录制前设置有效,
  */
-@property (nonatomic, assign) KSYRecScene recScene;
+@property (nonatomic, assign) KSYRecScene              recScene;
+
+/**
+ @abstract   质量等级（默认:20）
+ @discussion 视频恒定质量等级，范围0～51，值越小，质量越好
+ @discussion 当 recScene 为 KSYRecScene_ConstantQuality, 且选择软编码器时有效
+ */
+@property (nonatomic, assign) int          videoCrf;
 
 /**
  @abstract   视频编码性能档次

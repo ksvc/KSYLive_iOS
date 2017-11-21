@@ -28,19 +28,7 @@
             return;
         }
         self.curCollection = self.traitCollection;
-        
-        // 2.2 设置 logoRect
-        [self.kit setLogoRect:CGRectMake(self.kit.logoRect.origin.x, self.kit.logoRect.origin.y, self.kit.logoRect.size.height, self.kit.logoRect.size.width)];
-        
-        // 根据text相对于logo的布局来计算text的Y值(text出于logo正下方)
-        CGFloat textY = (self.kit.textRect.origin.y - self.kit.logoRect.origin.y) / (self.kit.streamDimension.height / self.kit.streamDimension.width) + self.kit.logoRect.origin.y;
-        // width 根据推流分辨率计算
-        CGFloat textheight = self.kit.textRect.size.height / self.kit.streamDimension.height * self.kit.streamDimension.width;
-        // 2.3 设置 textRect
-        [self.kit setTextRect:CGRectMake(self.kit.textRect.origin.x,
-                                         textY,
-                                         self.kit.textRect.size.width,
-                                         textheight)];
+        [self setupLogoRect];
     }
 }
 
