@@ -65,7 +65,7 @@ class KSYPresetCfgView: KSYUIView, UIImagePickerControllerDelegate, UINavigation
         super.init()
         backgroundColor = .white
         // hostURL = rtmpSrv + streamName(随机数,避免多个demo推向同一个流
-        let rtmpSrv = "rtmp://test.uplive.ks-cdn.com/live"
+        let rtmpSrv = "rtmp://120.92.224.235/live"
         
         let devCode = (KSYUIView.init().getUuid()! as NSString).substring(to: 3)
         let url = "\(rtmpSrv)/\(devCode)"

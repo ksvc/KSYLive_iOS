@@ -867,52 +867,6 @@ eg: /var/xxxxx/xxx.mp4  /var/xxxxx/xxx.flv
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/videoCrf" title="videoCrf"></a>
-	<h3 class="method-title"><code><a href="#//api/name/videoCrf">&nbsp;&nbsp;videoCrf</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>质量等级（默认:20）</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int videoCrf</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>视频恒定质量等级，范围0～51，值越小，质量越好</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
 	<a name="//api/name/maxKeyInterval" title="maxKeyInterval"></a>
 	<h3 class="method-title"><code><a href="#//api/name/maxKeyInterval">&nbsp;&nbsp;maxKeyInterval</a></code>
 </h3>
@@ -1125,7 +1079,53 @@ eg: /var/xxxxx/xxx.mp4  /var/xxxxx/xxx.flv
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>开始录制前设置有效</p>
+				<p>用于指定录制时, 视频编码器码率控制的优先目标</p><p>恒定码率: 最后视频文件的码率更平稳,但复杂场景质量可能差一些</p><p>恒定质量: 最后视频文件的质量更平稳写, 但码率波动要大一些</p><p>开始录制前设置有效, 录制本地文件时有效, 直播不建议修改</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoCrf" title="videoCrf"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoCrf">&nbsp;&nbsp;videoCrf</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>质量等级（默认:20）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int videoCrf</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>视频恒定质量等级，范围0～51，值越小，质量越好</p><p>当 <a href="#//api/name/recScene">recScene</a> 为 KSYRecScene_ConstantQuality, 且选择软编码器时有效</p>
 			</div>
 			
 

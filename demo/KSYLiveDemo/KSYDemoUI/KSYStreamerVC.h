@@ -86,6 +86,8 @@
 - (void) onMenuBtnPress:(UIButton *)btn;
 - (void) onQuit;
 
+- (void) setupLogoRect;
+
 #define SEL_VALUE(SEL_NAME) [NSValue valueWithPointer:@selector(SEL_NAME)]
 
 @end

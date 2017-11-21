@@ -86,6 +86,8 @@
 		
 		<option value="//api/name/getMixVolume:rightVolume:of:">- getMixVolume:rightVolume:of:</option>
 		
+		<option value="//api/name/getNumSamplesInBuffer:">- getNumSamplesInBuffer:</option>
+		
 		<option value="//api/name/getTrackEnable:">- getTrackEnable:</option>
 		
 		<option value="//api/name/processAudioData:nbSample:withFormat:timeinfo:of:">- processAudioData:nbSample:withFormat:timeinfo:of:</option>
@@ -627,8 +629,70 @@
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
 				<p>&lt;0, 表示查询失败
             =0，表示残余的数据不足一次输出
-            >0, 表示可以buffer中的数据还可以输出n次
+            >0, 表示buffer中的数据还可以输出n次
 *</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYAudioMixer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getNumSamplesInBuffer:" title="getNumSamplesInBuffer:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getNumSamplesInBuffer:">&ndash;&nbsp;getNumSamplesInBuffer:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>查询track中缓存数据的samplebuffer数</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)getNumSamplesInBuffer:(int)<em>trackId</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>trackId</code></th>
+						<td><p>开关对应track</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>&lt;0, 表示查询失败
+=0，表示无残余的数据</p>
+
+<blockquote><p>0, 表示buffer中sample数
+*</p></blockquote>
 			</div>
 			
 

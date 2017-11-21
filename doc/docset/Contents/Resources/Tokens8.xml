@@ -163,9 +163,29 @@
 			</Parameters>
 			<ReturnValue><Abstract type="html">&lt;0, 表示查询失败
             =0，表示残余的数据不足一次输出
-            &gt;0, 表示可以buffer中的数据还可以输出n次
+            &gt;0, 表示buffer中的数据还可以输出n次
 *</Abstract></ReturnValue>
 			<Anchor>//api/name/getBufLength:</Anchor>
+            <NodeRef refid="8"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/getNumSamplesInBuffer:</TokenIdentifier>
+			<Abstract type="html">查询track中缓存数据的samplebuffer数</Abstract>
+			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			
+			<Declaration>- (int)getNumSamplesInBuffer:(int)trackId</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>trackId</Name>
+					<Abstract type="html">开关对应track</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">&lt;0, 表示查询失败
+=0，表示无残余的数据
+&gt;0, 表示buffer中sample数
+*</Abstract></ReturnValue>
+			<Anchor>//api/name/getNumSamplesInBuffer:</Anchor>
             <NodeRef refid="8"/>
 		</Token>
 		

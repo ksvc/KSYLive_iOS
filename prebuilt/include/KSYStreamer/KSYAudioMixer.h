@@ -85,9 +85,18 @@
  @param     trackId 开关对应track
  @return    <0, 表示查询失败
             =0，表示残余的数据不足一次输出
-            >0, 表示可以buffer中的数据还可以输出n次
+            >0, 表示buffer中的数据还可以输出n次
  **/
 - (int) getBufLength:(int) trackId;
+
+/**
+ @abstract  查询track中缓存数据的samplebuffer数
+ @param     trackId 开关对应track
+ @return    <0, 表示查询失败
+ =0，表示无残余的数据
+ >0, 表示buffer中sample数
+ **/
+- (int) getNumSamplesInBuffer:(int) trackId;
 
 /**
  @abstract  输入音频PCM

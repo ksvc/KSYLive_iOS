@@ -22,6 +22,8 @@
 /// 视频所在的图层
 @property (nonatomic, readwrite) NSInteger masterLayer;
 
+/// NO: 第一段视频淡入，第二段视频淡出 YES: 第一段视频淡出，第二段视频淡入 (默认为NO)
+@property (nonatomic, readwrite) BOOL bReverse;
 /// 转场重叠的帧数
 @property (nonatomic, readwrite) int duration;
 

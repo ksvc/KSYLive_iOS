@@ -19,20 +19,29 @@
 
 /**
  @abstract 转场类型
+ KSYTransitionType 1 ~ 99     代表 片头转场范围
+ KSYTransitionType 101 ~ 199  代表 片尾转场范围
+ KSYTransitionType 201 ~ 299  代表 片中转场范围
  */
 typedef NS_ENUM(NSUInteger, KSYTransitionType) {
     /// 关闭转场
     KSYTransitionTypeNone = 0,
+    /// 渐入（片头效果）
+    KSYTransitionTypeFadesIn ,
+    /// 模糊变清晰（片头效果）
+    KSYTransitionTypeBlurIn ,
+    /// 淡出（片尾效果）
+    KSYTransitionTypeFadesOut = 101,
+    /// 清晰变模糊（片尾效果）
+    KSYTransitionTypeBlurOut,
     /// 渐入淡出
-    KSYTransitionTypeFadesInOut,
+    KSYTransitionTypeFadesInOut = 201,
     /// 闪黑
     KSYTransitionTypeFlashBlack,
     /// 闪白
     KSYTransitionTypeFlashWhite,
     /// 清晰变模糊
-    KSYTransitionTypeBlurOut,
-    /// 模糊变清晰
-    KSYTransitionTypeBlurIn,
+    KSYTransitionTypeBlurInOut,
     /// 上推
     KSYTransitionTypePushUp,
     /// 下推

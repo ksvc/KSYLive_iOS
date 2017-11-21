@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'libksygpulive'
-  s.version      = '2.9.2'
+  s.version      = '2.9.3'
   s.license      = {
 :type => 'Proprietary',
 :text => <<-LICENSE
@@ -112,6 +112,9 @@ Pod::Spec.new do |s|
   end
   s.subspec 'KSYGPUResource' do |sub|
     sub.resource = 'resource/KSYGPUResource.bundle'
+  end
+  s.subspec 'KSYGPUResourceFull' do |sub|
+    sub.resource = 'resource/KSYGPUResourceFull.bundle'
   end
   s.subspec 'ksyplayer_d' do |sub|
     sub.source_files =  'prebuilt/include/**/*.h';
