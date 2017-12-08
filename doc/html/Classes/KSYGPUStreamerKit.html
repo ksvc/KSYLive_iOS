@@ -74,6 +74,8 @@
 		
 		<option value="//api/name/bStereoAudioStream">bStereoAudioStream</option>
 		
+		<option value="//api/name/bgPic">bgPic</option>
+		
 		<option value="//api/name/bgmPlayer">bgmPlayer</option>
 		
 		<option value="//api/name/bgmTrack">bgmTrack</option>
@@ -198,21 +200,33 @@
 		
 		<option value="//api/name/setLogoOrientaion:">- setLogoOrientaion:</option>
 		
+		<option value="//api/name/setOrientaion:ofLayer:">- setOrientaion:ofLayer:</option>
+		
+		<option value="//api/name/setRect:ofLayer:">- setRect:ofLayer:</option>
+		
 		<option value="//api/name/setTorchMode:">- setTorchMode:</option>
 		
 		<option value="//api/name/setupFilter:">- setupFilter:</option>
 		
 		<option value="//api/name/startAudioCap">- startAudioCap</option>
 		
+		<option value="//api/name/startBgpPreview:">- startBgpPreview:</option>
+		
+		<option value="//api/name/startBgpStream:">- startBgpStream:</option>
+		
 		<option value="//api/name/startPreview:">- startPreview:</option>
 		
 		<option value="//api/name/startVideoCap">- startVideoCap</option>
+		
+		<option value="//api/name/stopBgpStream">- stopBgpStream</option>
 		
 		<option value="//api/name/stopPreview">- stopPreview</option>
 		
 		<option value="//api/name/switchCamera">- switchCamera</option>
 		
 		<option value="//api/name/toggleTorch">- toggleTorch</option>
+		
+		<option value="//api/name/updateBgpImage:">- updateBgpImage:</option>
 		
 		<option value="//api/name/updateTextLabel">- updateTextLabel</option>
 		
@@ -277,7 +291,7 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 						
 
 						
-						
+						<h2 class="task-title">Other Methods</h2>
 
 						<div class="task-list">
 							<div class="section-method">
@@ -3168,7 +3182,7 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite) GPUImagePicture *logoPic</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite) KSYGPUPicture *logoPic</code></div>
 
 		    
 			
@@ -3251,6 +3265,122 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/setOrientaion:ofLayer:" title="setOrientaion:ofLayer:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setOrientaion:ofLayer:">&ndash;&nbsp;setOrientaion:ofLayer:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置指定图层的朝向</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setOrientaion:(UIImageOrientation)<em>orien</em> ofLayer:(NSInteger)<em>idx</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>orien</code></th>
+						<td><p>目标朝向</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>idx</code></th>
+						<td><p>图层的index</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setRect:ofLayer:" title="setRect:ofLayer:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setRect:ofLayer:">&ndash;&nbsp;setRect:ofLayer:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置指定图层的大小和位置</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setRect:(CGRect)<em>rect</em> ofLayer:(NSInteger)<em>idx</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>rect</code></th>
+						<td><p>位置+大小</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>idx</code></th>
+						<td><p>指定图层的index</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/textPic" title="textPic"></a>
 	<h3 class="method-title"><code><a href="#//api/name/textPic">&nbsp;&nbsp;textPic</a></code>
 </h3>
@@ -3267,7 +3397,7 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite) GPUImagePicture *textPic</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite) KSYGPUPicture *textPic</code></div>
 
 		    
 			
@@ -3729,52 +3859,6 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/streamerProfile" title="streamerProfile"></a>
-	<h3 class="method-title"><code><a href="#//api/name/streamerProfile">&nbsp;&nbsp;streamerProfile</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>采集和推流配置参数</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) KSYStreamerProfile streamerProfile</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>选择profile类型后, 采集和编码参数会自动配置进去, 默认的profile类型是KSYStreamerProfile_540p_3</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
 	<a name="//api/name/stabilizationMode" title="stabilizationMode"></a>
 	<h3 class="method-title"><code><a href="#//api/name/stabilizationMode">&nbsp;&nbsp;stabilizationMode</a></code>
 </h3>
@@ -3804,6 +3888,52 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>(iPhone前置摄像头不支持防抖功能)</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/streamerProfile" title="streamerProfile"></a>
+	<h3 class="method-title"><code><a href="#//api/name/streamerProfile">&nbsp;&nbsp;streamerProfile</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>采集和推流配置参数</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) KSYStreamerProfile streamerProfile</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>选择profile类型后, 采集和编码参数会自动配置进去, 默认的profile类型是KSYStreamerProfile_540p_3</p>
 			</div>
 			
 
@@ -3862,6 +3992,236 @@ bgmplayer [1] &ndash;>| <a href="#//api/name/aMixer">aMixer</a> &ndash;> streame
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
 				<p><code class="declared-in-ref">KSYGPUStreamerKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="bgp Methods" name="task_bgp Methods"></a>
+						<h2 class="task-title">bgp Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/bgPic" title="bgPic"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bgPic">&nbsp;&nbsp;bgPic</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) KSYGPUPicture *bgPic</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateBgpImage:" title="updateBgpImage:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateBgpImage:">&ndash;&nbsp;updateBgpImage:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>更新背景图片</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)updateBgpImage:(UIImage *)<em>img</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>img</code></th>
+						<td><p>新的背景图片</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit+bgp.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/startBgpPreview:" title="startBgpPreview:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/startBgpPreview:">&ndash;&nbsp;startBgpPreview:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>开始背景图预览</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)startBgpPreview:(UIView *)<em>bgView</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>bgView</code></th>
+						<td><p>预览视图的背景图, 预览视图会填满背景视图
+结束预览仍然使用之前的 <a href="#//api/name/stopPreview">stopPreview</a></p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit+bgp.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/startBgpStream:" title="startBgpStream:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/startBgpStream:">&ndash;&nbsp;startBgpStream:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>开始背景图推流</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)startBgpStream:(NSURL *)<em>url</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>url</code></th>
+						<td><p>推流地址</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>当前状态是否能开始推流</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit+bgp.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/stopBgpStream" title="stopBgpStream"></a>
+	<h3 class="method-title"><code><a href="#//api/name/stopBgpStream">&ndash;&nbsp;stopBgpStream</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>停止背景图推流</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)stopBgpStream</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUStreamerKit+bgp.h</code></p>
 			</div>
 			
 			

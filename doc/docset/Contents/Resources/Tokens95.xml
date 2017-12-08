@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/MPMovieAudioPan.html">
+	<File path="Constants/MPMovieMetaType.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/MPMovieAudioPan</TokenIdentifier>
-			<Abstract type="html">立体声平衡</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/MPMovieMetaType</TokenIdentifier>
+			<Abstract type="html">Meta类型</Abstract>
 			<DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieAudioPan_Left</TokenIdentifier>
-            <Abstract type="html">完全左声道</Abstract>
-            <Declaration>MPMovieAudioPan_Left</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieMetaType_Media</TokenIdentifier>
+            <Abstract type="html">当前播放文件的Meta</Abstract>
+            <Declaration>MPMovieMetaType_Media</Declaration>
             
             <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
@@ -24,9 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieAudioPan_Stereo</TokenIdentifier>
-            <Abstract type="html">左右声道平衡</Abstract>
-            <Declaration>MPMovieAudioPan_Stereo</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieMetaType_Video</TokenIdentifier>
+            <Abstract type="html">当前播放的视频Meta</Abstract>
+            <Declaration>MPMovieMetaType_Video</Declaration>
             
             <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
@@ -34,9 +34,19 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieAudioPan_Right</TokenIdentifier>
-            <Abstract type="html">完全右声道</Abstract>
-            <Declaration>MPMovieAudioPan_Right</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieMetaType_Audio</TokenIdentifier>
+            <Abstract type="html">当前播放的音频Meta</Abstract>
+            <Declaration>MPMovieMetaType_Audio</Declaration>
+            
+            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
+            
+            <NodeRef refid="95"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieMetaType_Subtitle</TokenIdentifier>
+            <Abstract type="html">当前播放的字幕Meta</Abstract>
+            <Declaration>MPMovieMetaType_Subtitle</Declaration>
             
             <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             

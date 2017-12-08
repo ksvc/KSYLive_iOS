@@ -68,6 +68,8 @@
 
 #pragma mark - kit instance
 @property (nonatomic, retain) KSYGPUStreamerKit * kit;
+// 适配iphoneX用到的背景视图(在iphoneX上为了保持主播和观众的画面一致, 竖屏时需要上下填一点黑边, 不再全屏预览)
+@property (nonatomic, readonly) UIView* bgView;
 
 // 推流地址 完整的URL
 @property NSURL * hostURL;

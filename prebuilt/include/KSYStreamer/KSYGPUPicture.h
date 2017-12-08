@@ -18,6 +18,20 @@
  */
 @interface KSYGPUPicture: GPUImagePicture
 
+/**
+ 通过指定图片名称载入图片
+
+ @param name 图片的名称
+ @return 载入图片后的实例
+ */
 - (id)initWithImageName:(NSString *)name;
 
+/**
+ 指定载入图片后输出的尺寸
+
+ @param img 图片
+ @param size 尺寸
+ @return 构造的实例
+ */
+- (id)initWithImage:(UIImage*)img andOutputSize:(CGSize)size;
 @end

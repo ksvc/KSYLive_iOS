@@ -43,11 +43,17 @@
     if (self.ctrlView == nil || _drawBtn == nil) {
         return;
     }
-    self.ctrlView.yPos = 55;
+    self.ctrlView.yPos = CGRectGetMaxY(self.quitBtn.frame) + 4;
     [self.ctrlView putRow:@[_drawBtn, [UIView new]]];
-    int hgt = self.view.frame.size.height;
-    int wdt = self.view.frame.size.width;
-    _drawView.frame = CGRectMake(0, 0.15*hgt, wdt, 0.75*hgt);
+    int hgt = self.ctrlView.frame.size.height;
+    int wdt = self.ctrlView.frame.size.width;
+    int offset = self.bgView.frame.origin.y;
+    _drawView.frame = CGRectMake(0, 0.15*hgt+offset, wdt, 0.75*hgt);
+    
+    weakObj(self); // update layer on view update
+    _drawView.viewUpdateCallback = ^{
+        [selfWeak.brushKit.drawPic update];
+    };
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -56,7 +62,7 @@
         _brushKit.videoOrientation = [[UIApplication sharedApplication] statusBarOrientation];
         [_brushKit setupFilter:self.curFilter];
         //启动预览
-        [_brushKit startPreview:self.view];
+        [_brushKit startPreview:self.bgView];
     }
 }
 
@@ -66,11 +72,9 @@
         _drawBtn.selected = !_drawBtn.selected;
         if (_drawBtn.selected) { // 启动画板
             _brushKit.drawPic = [[KSYGPUViewCapture alloc] initWithView:_drawView];
-            [_brushKit.drawPic  start];
             _drawView.hidden = NO;
         }
         else { //停止画板
-            [_brushKit.drawPic stop];
             _brushKit.drawPic = nil;
             _drawView.hidden = YES;
             [_drawView clearAllPath];

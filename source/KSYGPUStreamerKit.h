@@ -490,7 +490,7 @@ typedef NS_ENUM(NSInteger, KSYAudioDataType){
  @discussion 设置为nil为清除水印图片
  @discussion 请注意背景图片的尺寸, 太大的图片会导致内存占用过高
  */
-@property (nonatomic, readwrite) GPUImagePicture      *logoPic;
+@property (nonatomic, readwrite) KSYGPUPicture      *logoPic;
 
 /**
  设置水印图片的朝向
@@ -500,10 +500,26 @@ typedef NS_ENUM(NSInteger, KSYAudioDataType){
 - (void) setLogoOrientaion:(UIImageOrientation) orien;
 
 /**
+ 设置指定图层的朝向
+
+ @param orien 目标朝向
+ @param idx 图层的index
+ */
+- (void) setOrientaion:(UIImageOrientation) orien ofLayer:(NSInteger)idx;
+
+/**
+ 设置指定图层的大小和位置
+
+ @param rect 位置+大小
+ @param idx 指定图层的index
+ */
+- (void) setRect:(CGRect) rect ofLayer:(NSInteger)idx;
+
+/**
  @abstract   文字内容的图片
  @discussion 设置为nil为清除内容图片
  */
-@property (nonatomic, readwrite) GPUImagePicture      *textPic;
+@property (nonatomic, readwrite) KSYGPUPicture      *textPic;
 
 /**
  @abstract   贴纸的图片
@@ -553,6 +569,8 @@ typedef NS_ENUM(NSInteger, KSYAudioDataType){
  */
 - (void) updateTextLabel;
 
+#pragma mark - camera
+
 /**
  @abstract   当前采集设备是否支持自动变焦
  @param      point相机对焦的位置
@@ -574,6 +592,13 @@ typedef NS_ENUM(NSInteger, KSYAudioDataType){
  */
 @property (nonatomic, assign)   CGFloat pinchZoomFactor;
 
+/**
+ @abstract   摄像头防抖模式，切换摄像头后需要进行重新设置
+ @discussion (iPhone前置摄像头不支持防抖功能)
+ */
+@property (nonatomic, assign) AVCaptureVideoStabilizationMode stabilizationMode;
+
+#pragma mark - profiles
 /**
  @abstract 推流前profile类型
  */
@@ -601,11 +626,6 @@ typedef NS_ENUM(NSInteger, KSYStreamerProfile) {
  */
 @property (nonatomic, assign)   KSYStreamerProfile streamerProfile;
 
-/**
- @abstract   摄像头防抖模式，切换摄像头后需要进行重新设置
- @discussion (iPhone前置摄像头不支持防抖功能)
- */
-@property (nonatomic, assign) AVCaptureVideoStabilizationMode stabilizationMode;
 
 #pragma mark - message
 

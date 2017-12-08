@@ -8,14 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "KSYUIVC.h"
-#import <libksygpulive/KSYGPUBgpStreamerKit.h>
+#import "KSYSimplestStreamerVC.h"
 
-@interface KSYBgpStreamerVC : KSYUIVC
-
-@property KSYGPUBgpStreamerKit *kit;
-
-- (id)initWithUrl:(NSURL *)rtmpUrl;
-
-// 重写此方法，调整UI布局
-- (void)setupUI;
+@interface KSYBgpStreamerVC : KSYSimplestStreamerVC
 @end

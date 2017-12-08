@@ -30,4 +30,4 @@
 #import "KSYGPUPicture.h"
 
 #define KSYGPUFILTER_VER 2.9.3
-#define KSYGPUFILTER_ID  f41e7e5c44356c9c49e10159ef9e35542d0fc145
+#define KSYGPUFILTER_ID  abf176dedbad505f0db00cbd0f6ab0fbed2e7f5b

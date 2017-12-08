@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYTransitionFilter.html">
+	<File path="Classes/KSYTransitionFlashFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYTransitionFilter</TokenIdentifier>
-			<Abstract type="html">KSYTransitionFilter 转场效果滤镜
-转场: 两段视频串联的时候, 前一段的结尾和后一段的开头叠加
-渐入淡出: 前一段的画面慢慢变淡, 后一段的视频慢慢变清晰
-闪黑/闪白: 作用在前一段的结尾画面慢慢变黑或变白,全黑/全白后, 切换为下一段视频
-...</Abstract>
-			<DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYTransitionFlashFilter</TokenIdentifier>
+			<Abstract type="html">KSYTransitionFlashFilter 闪黑/闪白的转场效果</Abstract>
+			<DeclaredIn>KSYTransitionFlashFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="52"/>
@@ -17,101 +13,9 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFilter/initWithType:andOverlay:</TokenIdentifier>
-			<Abstract type="html">初始化并指定KSYTransitionType类型来创建对应转场特效</Abstract>
-			<DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
-			
-			<Declaration>- (instancetype)initWithType:(KSYTransitionType)type andOverlay:(KSYOverlapType)overlap</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>type</Name>
-					<Abstract type="html">效果类型</Abstract>
-				</Parameter><Parameter>
-					<Name>overlap</Name>
-					<Abstract type="html">重叠方式</Abstract>
-				</Parameter>
-			</Parameters>
-			
-			<Anchor>//api/name/initWithType:andOverlay:</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFilter/setTransitionType:</TokenIdentifier>
-			<Abstract type="html">当前转场的类型</Abstract>
-			<DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
-			
-			<Declaration>@property (atomic, readonly) KSYTransitionType transitionType</Declaration>
-			
-			
-			<Anchor>//api/name/transitionType</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFilter/transitionType</TokenIdentifier>
-			<Abstract type="html">当前转场的类型</Abstract>
-			<DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
-			
-			<Declaration>@property (atomic, readonly) KSYTransitionType transitionType</Declaration>
-			
-			
-			<Anchor>//api/name/transitionType</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYTransitionFilter/transitionType</TokenIdentifier>
-			<Abstract type="html">当前转场的类型</Abstract>
-			<DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
-			
-			<Declaration>@property (atomic, readonly) KSYTransitionType transitionType</Declaration>
-			
-			
-			<Anchor>//api/name/transitionType</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFilter/setOverlapType:</TokenIdentifier>
-			<Abstract type="html">当前转场画面重叠的类型</Abstract>
-			<DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
-			
-			<Declaration>@property (atomic, readonly) KSYOverlapType overlapType</Declaration>
-			
-			
-			<Anchor>//api/name/overlapType</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFilter/overlapType</TokenIdentifier>
-			<Abstract type="html">当前转场画面重叠的类型</Abstract>
-			<DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
-			
-			<Declaration>@property (atomic, readonly) KSYOverlapType overlapType</Declaration>
-			
-			
-			<Anchor>//api/name/overlapType</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYTransitionFilter/overlapType</TokenIdentifier>
-			<Abstract type="html">当前转场画面重叠的类型</Abstract>
-			<DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
-			
-			<Declaration>@property (atomic, readonly) KSYOverlapType overlapType</Declaration>
-			
-			
-			<Anchor>//api/name/overlapType</Anchor>
-            <NodeRef refid="52"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFilter/setDuration:</TokenIdentifier>
-			<Abstract type="html">转场重叠的帧数 (默认:30)</Abstract>
-			<DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFlashFilter/setDuration:</TokenIdentifier>
+			<Abstract type="html">转场重叠的帧数</Abstract>
+			<DeclaredIn>KSYTransitionFlashFilter.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readwrite) int duration</Declaration>
 			
@@ -121,9 +25,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFilter/duration</TokenIdentifier>
-			<Abstract type="html">转场重叠的帧数 (默认:30)</Abstract>
-			<DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFlashFilter/duration</TokenIdentifier>
+			<Abstract type="html">转场重叠的帧数</Abstract>
+			<DeclaredIn>KSYTransitionFlashFilter.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readwrite) int duration</Declaration>
 			
@@ -133,9 +37,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYTransitionFilter/duration</TokenIdentifier>
-			<Abstract type="html">转场重叠的帧数 (默认:30)</Abstract>
-			<DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYTransitionFlashFilter/duration</TokenIdentifier>
+			<Abstract type="html">转场重叠的帧数</Abstract>
+			<DeclaredIn>KSYTransitionFlashFilter.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readwrite) int duration</Declaration>
 			
@@ -145,9 +49,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFilter/setFrameIdx:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFlashFilter/setFrameIdx:</TokenIdentifier>
 			<Abstract type="html">转场已经处理的帧数</Abstract>
-			<DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+			<DeclaredIn>KSYTransitionFlashFilter.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readwrite) int frameIdx</Declaration>
 			
@@ -157,9 +61,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFilter/frameIdx</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFlashFilter/frameIdx</TokenIdentifier>
 			<Abstract type="html">转场已经处理的帧数</Abstract>
-			<DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+			<DeclaredIn>KSYTransitionFlashFilter.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readwrite) int frameIdx</Declaration>
 			
@@ -169,9 +73,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYTransitionFilter/frameIdx</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYTransitionFlashFilter/frameIdx</TokenIdentifier>
 			<Abstract type="html">转场已经处理的帧数</Abstract>
-			<DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+			<DeclaredIn>KSYTransitionFlashFilter.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readwrite) int frameIdx</Declaration>
 			

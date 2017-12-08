@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYStreamState.html">
+	<File path="Constants/KSYTPushDirection.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYStreamState</TokenIdentifier>
-			<Abstract type="html">推流状态</Abstract>
-			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYTPushDirection</TokenIdentifier>
+			<Abstract type="html">推出转场的方向</Abstract>
+			<DeclaredIn>KSYTransitionPushFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="83"/>
@@ -14,51 +14,41 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateIdle</TokenIdentifier>
-            <Abstract type="html">初始化时状态为空闲</Abstract>
-            <Declaration>KSYStreamStateIdle</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTPushDirection_Up</TokenIdentifier>
+            <Abstract type="html">前后都是运动的视频, 第一段的最后n帧和第二段的前n帧重叠</Abstract>
+            <Declaration>KSYTPushDirection_Up</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="83"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateConnecting</TokenIdentifier>
-            <Abstract type="html">连接中</Abstract>
-            <Declaration>KSYStreamStateConnecting</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYTransitionPushFilter.h</DeclaredIn>
             
             <NodeRef refid="83"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateConnected</TokenIdentifier>
-            <Abstract type="html">已连接</Abstract>
-            <Declaration>KSYStreamStateConnected</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTPushDirection_Down</TokenIdentifier>
+            <Abstract type="html">第一段的最后一帧和第二段的视频的前n帧重叠</Abstract>
+            <Declaration>KSYTPushDirection_Down</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="83"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateDisconnecting</TokenIdentifier>
-            <Abstract type="html">断开连接中</Abstract>
-            <Declaration>KSYStreamStateDisconnecting</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYTransitionPushFilter.h</DeclaredIn>
             
             <NodeRef refid="83"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateError</TokenIdentifier>
-            <Abstract type="html">推流出错</Abstract>
-            <Declaration>KSYStreamStateError</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTPushDirection_Left</TokenIdentifier>
+            <Abstract type="html">第一段的最后n帧 和 第二段的第一帧重叠</Abstract>
+            <Declaration>KSYTPushDirection_Left</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYTransitionPushFilter.h</DeclaredIn>
+            
+            <NodeRef refid="83"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTPushDirection_Right</TokenIdentifier>
+            <Abstract type="html">只有前一段的最后n帧</Abstract>
+            <Declaration>KSYTPushDirection_Right</Declaration>
+            
+            <DeclaredIn>KSYTransitionPushFilter.h</DeclaredIn>
             
             <NodeRef refid="83"/>
         </Token>

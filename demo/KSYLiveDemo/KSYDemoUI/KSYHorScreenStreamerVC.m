@@ -24,9 +24,11 @@
     _text.backgroundColor = [UIColor lightGrayColor];
     _text.text = @"Comments";
     _text.hidden = YES;
-    
+    self.bgView.backgroundColor = [UIColor whiteColor];
     CGFloat wdt = self.view.frame.size.width;
-    _preView = [[UIView alloc] initWithFrame:CGRectMake(0, 75, wdt, wdt * 9 / 16)];
+    CGFloat offset = CGRectGetMaxY(self.quitBtn.frame) + 4;
+    offset += self.bgView.frame.origin.y;
+    _preView = [[UIView alloc] initWithFrame:CGRectMake(0, offset, wdt, wdt * 9.0 / 16)];
     [self.view addSubview:_preView];
     _preView.hidden = YES;
     self.profilePicker.hidden = YES;

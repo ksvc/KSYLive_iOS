@@ -103,6 +103,25 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (CGRect) calcPreviewRect:(CGFloat) ratio {
+    CGRect previewRect = self.view.frame;
+    CGSize sz = previewRect.size;
+    CGSize screenSz = [[UIScreen mainScreen] bounds].size;
+    CGFloat hgt = MAX(screenSz.height, screenSz.width);
+    if (!FLOAT_EQ(hgt, 812)){
+        return previewRect; // not iphoneX
+    }
+    if (sz.width < sz.height ) { // 竖屏
+        previewRect.size.height = sz.width*ratio;
+        previewRect.origin.y += (sz.height -previewRect.size.height)/2;
+    }
+    else { // 横屏
+        previewRect.size.width = sz.height*ratio;
+        previewRect.origin.x += (sz.width -previewRect.size.width)/2;
+    }
+    return previewRect;
+}
+
 - (void) layoutUI {
     if(_layoutView){
         _layoutView.frame = self.view.frame;

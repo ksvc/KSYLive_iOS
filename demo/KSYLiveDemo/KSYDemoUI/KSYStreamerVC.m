@@ -49,7 +49,7 @@
     
     NSTimeInterval   _dlTime;
     NSLock          *_dlLock;
-    GPUImagePicture *_logoPicure;
+    KSYGPUPicture *_logoPicure;
     UIImageOrientation _logoOrientation;
     CADisplayLink   *_displayLink;
 }
@@ -63,7 +63,7 @@
     _presetCfgView = presetCfgView;
     [self initObservers];
     _menuNames = @[@"背景音乐", @"图像/美颜",@"声音", @"消息", @"其他"];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor blackColor];
     _dlLock = [[NSLock alloc] init];
     return self;
 }
@@ -107,7 +107,7 @@
         // 确保videoOrientation为正确的方向正确，否则画面方向会有异常
         _kit.videoOrientation = [[UIApplication sharedApplication] statusBarOrientation];
         [_kit setupFilter:self.ksyFilterView.curFilter];
-        [_kit startPreview:self.view];
+        [_kit startPreview:_bgView];
     }
 }
 
@@ -127,12 +127,11 @@
 }
 
 - (void)addSubViews{
+    _bgView = [[UIView alloc] init];
+    [self.view addSubview: _bgView];
     _ctrlView  = [[KSYCtrlView alloc] initWithMenu:_menuNames];
     _colView = [[KSYCollectionView alloc] init];
     _decalBGView = [[KSYDecalBGView alloc] init];
-    _ctrlView.frame = self.view.frame;
-    _colView.frame = self.view.frame;
-    _decalBGView.frame = self.view.frame;
     [self.view addSubview:_ctrlView];
     [self.view addSubview:_colView];
     [self.colView addSubview:_decalBGView];
@@ -204,6 +203,7 @@
     self.onNetworkChange = ^(NSString * msg){
         selfWeak.ctrlView.lblNetwork.text = msg;
     };
+    [self layoutUI];
 }
 
 - (void) initObservers{
@@ -241,16 +241,19 @@
 }
 
 - (void) layoutUI {
+    // 适配预览区域为 16:9, 当设备为iPhoneX时,屏幕比例不是16:9, previewRect为上下填黑边后的区域.
+    CGRect previewRect = [self calcPreviewRect:16.0/9.0];
+    _bgView.frame = previewRect;
     if(_ctrlView){
-        _ctrlView.frame = self.view.frame;
+        _ctrlView.frame = previewRect;
         [_ctrlView layoutUI];
     }
     if(_colView){
-        _colView.frame = self.view.frame;
+        _colView.frame = previewRect;
         [_colView layoutUI];
     }
     if (_decalBGView){
-        _decalBGView.frame = self.view.frame;
+        _decalBGView.frame = previewRect;
         [self updateAePicView];
     }
 }
@@ -266,7 +269,7 @@
 - (void) setupLogo{
     
     UIImage * logoImg = [UIImage imageNamed:@"ksvc"];
-    _logoPicure   =  [[GPUImagePicture alloc] initWithImage:logoImg];
+    _logoPicure   =  [[KSYGPUPicture alloc] initWithImage:logoImg];
     _kit.logoPic  = _logoPicure;
     _logoOrientation = logoImg.imageOrientation;
     [_kit setLogoOrientaion: _logoOrientation];
@@ -283,7 +286,7 @@
 - (void) setupLogoRect{
     CGFloat yPos = 0.05;
     // 预览视图的scale
-    CGSize frameSz = self.view.frame.size;
+    CGSize frameSz = _ctrlView.frame.size;
     CGFloat scale = MAX(frameSz.width, frameSz.height) / frameSz.height;
     CGFloat hgt  = 0.1 * scale; // logo图片的高度是预览画面的十分之一
     _kit.logoRect = CGRectMake(0.05, yPos, 0, hgt);
@@ -668,10 +671,10 @@
         return;
     }
     if (swipGestRec == _swipeGest){
-        CGRect rect = self.view.frame;
+        CGRect rect = _bgView.frame;
         _ctrlView.lblStat.hideText = NO;
         if ( CGRectEqualToRect(rect, _ctrlView.frame)){
-            rect.origin.x = rect.size.width; // hide
+            rect.origin.x = self.view.frame.size.width; // hide
             _ctrlView.lblStat.hideText = YES;
         }
         weakObj(self);
@@ -769,7 +772,7 @@
         _kit.videoOrientation = [[UIApplication sharedApplication] statusBarOrientation];
         // 重新开启预览是需要重新根据方向setupLogo
         [self setupLogo];
-        [_kit startPreview:self.view];
+        [_kit startPreview:_bgView];
     }
     else {
         [_kit stopPreview];
@@ -1030,8 +1033,7 @@
 -(void)imagePickerController:(UIImagePickerController *)picker
        didFinishPickingImage:(UIImage *)image
                  editingInfo:(NSDictionary *)editingInfo {
-    _logoPicure = [[GPUImagePicture alloc] initWithImage:image
-                                     smoothlyScaleOutput:YES];
+    _logoPicure = [[KSYGPUPicture alloc] initWithImage:image andOutputSize:image.size];
     _kit.logoPic = _logoPicure;
     _logoOrientation = image.imageOrientation;
     [_kit setLogoOrientaion: _logoOrientation];

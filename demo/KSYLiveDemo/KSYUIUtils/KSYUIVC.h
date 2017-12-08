@@ -37,6 +37,14 @@
 // 重写本函数进行UI重新布局
 - (void) layoutUI;
 
+/**
+ 计算预览区域的工具函数
+
+ @param ratio 预览区域的宽高比
+ @return 居中放置的预览区域的位置和大小
+ */
+- (CGRect) calcPreviewRect:(CGFloat) ratio;
+
 // 重写该方法来响应屏幕旋转
 - (void) onViewRotate;
 

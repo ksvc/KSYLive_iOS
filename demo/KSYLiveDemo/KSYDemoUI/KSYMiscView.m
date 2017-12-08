@@ -15,6 +15,7 @@
     UILabel  * _lbrScene;
     UILabel  * _lblPerf;
     UILabel  * _lblRec;
+    UILabel  * _lblLogo;
     KSYFileSelector *_sel;
     BOOL     _skipBtnTap; // skip btn tap for 0.5 seconds
 }
@@ -25,14 +26,15 @@
 
 - (id)init{
     self = [super init];
-    _btn0  = [self addButton:@"str截图为文件"];
-    _btn1  = [self addButton:@"str截图为UIImage"];
+    _btn0  = [self addButton:@"截图1"];
+    _btn1  = [self addButton:@"截图2"];
     _btn2  = [self addButton:@"filter截图"];
     
-    _btn3  = [self addButton:@"选择Logo"];
-    _btn4  = [self addButton:@"拍摄Logo"];
-    _btn5  = [self addButton:@"清除Logo"];
-    _btnAnimate  = [self addButton:@"动态Logo"];
+    _lblLogo = [self addLable:@"logo"];
+    _btn3  = [self addButton:@"选择"];
+    _btn4  = [self addButton:@"拍摄"];
+    _btn5  = [self addButton:@"清除"];
+    _btnAnimate  = [self addButton:@"动态图"];
     _btnNext     = [self addButton:@" 下一张 "];
     _lblAnimate  = [self addLable:@"动态logo"];
     _sel = [[KSYFileSelector alloc] initWithDir:@"/Documents/logo/"
@@ -75,6 +77,9 @@
 - (void)layoutUI{
     [super layoutUI];
     self.btnH = 30;
+    if (self.width > self.height) {
+        self.btnH = 25;
+    }
     [self putRow3:_btn0
               and:_btn1
               and:_btn2];
@@ -84,15 +89,12 @@
            andView:_recSceneSeg];
     [self putLable:_lblPerf
            andView:_vEncPerfSeg];
-    [self putRow:@[_btn4,_btn3,_btn5,_btnAnimate]];
+    [self putRow:@[_lblLogo,_btn4,_btn3,_btn5,_btnAnimate]];
     [self putWide:_lblAnimate andNarrow:_btnNext];
     [self putNarrow:_layerSeg andWide:_alphaSl];
     [self putRow:@[_lblRec, _swBypassRec, _lblRecDur]];
     [self putRow1:_autoReconnect];
-    [self putRow1:_buttonPlayUrlAndQR];
-    [self putRow3:_buttonAe
-              and:[UIView new]
-              and:[UIView new]];
+    [self putRow:@[_buttonPlayUrlAndQR, _buttonAe]];
 }
 - (IBAction)onBtn:(id)sender {
     if (_skipBtnTap) {

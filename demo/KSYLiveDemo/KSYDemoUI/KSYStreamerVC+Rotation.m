@@ -34,7 +34,9 @@
 
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
-    self.kit.preview.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
+    CGFloat x = CGRectGetMidX(self.bgView.bounds);
+    CGFloat y = CGRectGetMidY(self.bgView.bounds);
+    self.kit.preview.center = CGPointMake(x,y);
 }
 
 #pragma mark - 旋转预览 iOS > 8.0

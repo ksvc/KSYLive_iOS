@@ -43,6 +43,8 @@
 							<select id="jump-to">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 
 	
 	
@@ -57,10 +59,6 @@
 
 	
 	<optgroup label="Instance Methods">
-		
-		<option value="//api/name/encodeFilterString:">- encodeFilterString:</option>
-		
-		<option value="//api/name/init">- init</option>
 		
 		<option value="//api/name/reload:">- reload:</option>
 		
@@ -96,6 +94,20 @@
 					
 
                     
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>双输入滤镜</p>
+
+<ol>
+<li>继承自GPUImageTwoInputFilter</li>
+<li>添加了重新载入shader的接口</li>
+</ol>
+
+					</div>
+					
+					
 
 					
 					
@@ -108,38 +120,6 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/encodeFilterString:" title="encodeFilterString:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/encodeFilterString:">&ndash;&nbsp;encodeFilterString:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>- (NSString *)encodeFilterString:(NSString *)<em>strString</em></code></div>
-
-		    
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/init" title="init"></a>
-	<h3 class="method-title"><code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>- (instancetype)init</code></div>
-
-		    
-		</div>
-	</div>
-</div><div class="section-method">
 	<a name="//api/name/reload:" title="reload:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/reload:">&ndash;&nbsp;reload:</a></code>
 </h3>
@@ -149,10 +129,47 @@
 
 		<div class="method-info-container">
 			
+			
+			<div class="method-subsection brief-description">
+				<p>重新载入加密的shader串</p>
+			</div>
+			
+		    
 
 			<div class="method-subsection method-declaration"><code>- (void)reload:(NSString *)<em>fragmentShaderString</em></code></div>
 
 		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fragmentShaderString</code></th>
+						<td><p>加密的片原shader</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUTwoInputFiter.h</code></p>
+			</div>
+			
+			
 		</div>
 	</div>
 </div><div class="section-method">
@@ -165,10 +182,52 @@
 
 		<div class="method-info-container">
 			
+			
+			<div class="method-subsection brief-description">
+				<p>重新载入加密的shader串</p>
+			</div>
+			
+		    
 
 			<div class="method-subsection method-declaration"><code>- (void)reloadVS:(NSString *)<em>vertexShaderString</em> andFS:(NSString *)<em>fragmentShaderString</em></code></div>
 
 		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>vertexShaderString</code></th>
+						<td><p>顶点shader(未加密)</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fragmentShaderString</code></th>
+						<td><p>片原shader(加密的)</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYGPUTwoInputFiter.h</code></p>
+			</div>
+			
+			
 		</div>
 	</div>
 </div>

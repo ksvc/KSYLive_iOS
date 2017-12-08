@@ -19,6 +19,6 @@
 
 [使用说明请见wiki](https://github.com/ksvc/KSYMediaPlayer_iOS/wiki/playerRecord)
 
-## KSYGPUBgpStreamerKit类
-背景图片推流功能，满足主播想要展示的图片等需求。
+## KSYGPUStreamerKit+bpg 
+是对KSYGPUStreamerKit增加背景图相关的扩展功能的分类, 增加了背景图片推流功能，满足主播想要展示的图片等需求。
 [使用说明请见wiki](https://github.com/ksvc/KSYLive_iOS/wiki/BgpStream)

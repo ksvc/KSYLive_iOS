@@ -113,3 +113,6 @@
 
 #define WeakObj(o) try{}@finally{} __weak typeof(o) o##Weak = o;
 #define weakObj(o) __weak typeof(o) o##Weak = o;
+
+#define FLOAT_EQ( f0, f1 ) ( (f0 - f1 < 0.001)&& (f0 - f1 > -0.001) )
+
