@@ -48,6 +48,9 @@
     
     //move the path drawing cursor to the starting point
     [self.path moveToPoint:point];
+    if(_viewUpdateCallback) {
+        _viewUpdateCallback();
+    }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -60,9 +63,20 @@
     }
     //update the layer with a copy of the path
     ((CAShapeLayer *)self.layer).path = self.path.CGPath;
+    if(_viewUpdateCallback) {
+        _viewUpdateCallback();
+    }
+}
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event {
+    if(_viewUpdateCallback) {
+        _viewUpdateCallback();
+    }
 }
 - (void) clearAllPath {
     [self.path removeAllPoints];
     ((CAShapeLayer *)self.layer).path = nil;
+    if(_viewUpdateCallback) {
+        _viewUpdateCallback();
+    }
 }
 @end

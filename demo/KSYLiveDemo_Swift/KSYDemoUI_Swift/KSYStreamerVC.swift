@@ -241,7 +241,7 @@ class KSYStreamerVC: KSYUIVC, UIImagePickerControllerDelegate, UINavigationContr
         let logoFile = NSHomeDirectory().appending("/Documents/ksvc.png")
         if FileManager.default.fileExists(atPath: logoFile) {
             let url = NSURL.init(fileURLWithPath: logoFile)
-            kit?.logoPic = GPUImagePicture.init(url: url as URL!)
+            kit?.logoPic = KSYGPUPicture.init(url: url as URL!)
             kit?.logoRect = CGRect.init(x: 0.05, y: yPos, width: 0, height: hgt)
             kit?.logoAlpha = 0.5
             yPos += hgt
@@ -810,7 +810,7 @@ class KSYStreamerVC: KSYUIVC, UIImagePickerControllerDelegate, UINavigationContr
         
         //显示的图片
         if let image = info[UIImagePickerControllerOriginalImage] {
-            kit?.logoPic = GPUImagePicture.init(image: image as! UIImage, smoothlyScaleOutput: true)
+            kit?.logoPic = KSYGPUPicture.init(image: image as! UIImage, smoothlyScaleOutput: true)
             picker.dismiss(animated: true, completion: nil)
         }
         

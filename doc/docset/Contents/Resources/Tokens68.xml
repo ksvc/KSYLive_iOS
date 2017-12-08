@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYDevAuthStatus.html">
+	<File path="Constants/KSYGPUEffectType.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYDevAuthStatus</TokenIdentifier>
-			<Abstract type="html">设备授权状态</Abstract>
-			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYGPUEffectType</TokenIdentifier>
+			<Abstract type="html">特效滤镜类型 SpecialEffects</Abstract>
+			<DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
             
 			
 			<NodeRef refid="68"/>
@@ -14,41 +14,331 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYDevAuthStatusNotDetermined</TokenIdentifier>
-            <Abstract type="html">还没有确定是否授权</Abstract>
-            <Declaration>KSYDevAuthStatusNotDetermined</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_None</TokenIdentifier>
+            <Abstract type="html">0 原图关闭特效</Abstract>
+            <Declaration>KSYGPUEffectType_None</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="68"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYDevAuthStatusRestricted</TokenIdentifier>
-            <Abstract type="html">设备受限，一般在家长模式下设备会受限</Abstract>
-            <Declaration>KSYDevAuthStatusRestricted</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
             
             <NodeRef refid="68"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYDevAuthStatusDenied</TokenIdentifier>
-            <Abstract type="html">拒绝授权</Abstract>
-            <Declaration>KSYDevAuthStatusDenied</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Freshy</TokenIdentifier>
+            <Abstract type="html">1 小清新</Abstract>
+            <Declaration>KSYGPUEffectType_Freshy</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
             
             <NodeRef refid="68"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYDevAuthStatusAuthorized</TokenIdentifier>
-            <Abstract type="html">已授权</Abstract>
-            <Declaration>KSYDevAuthStatusAuthorized</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Beauty</TokenIdentifier>
+            <Abstract type="html">2 靓丽</Abstract>
+            <Declaration>KSYGPUEffectType_Beauty</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Sweety</TokenIdentifier>
+            <Abstract type="html">3 甜美可人</Abstract>
+            <Declaration>KSYGPUEffectType_Sweety</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Sepia</TokenIdentifier>
+            <Abstract type="html">4 怀旧</Abstract>
+            <Declaration>KSYGPUEffectType_Sepia</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Blue</TokenIdentifier>
+            <Abstract type="html">5 蓝调</Abstract>
+            <Declaration>KSYGPUEffectType_Blue</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Nostalgia</TokenIdentifier>
+            <Abstract type="html">6 老照片</Abstract>
+            <Declaration>KSYGPUEffectType_Nostalgia</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Sakura</TokenIdentifier>
+            <Abstract type="html">7 樱花</Abstract>
+            <Declaration>KSYGPUEffectType_Sakura</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Sakura_night</TokenIdentifier>
+            <Abstract type="html">8 樱花（适用于光线较暗的环境）</Abstract>
+            <Declaration>KSYGPUEffectType_Sakura_night</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Ruddy_night</TokenIdentifier>
+            <Abstract type="html">9 红润（适用于光线较暗的环境）</Abstract>
+            <Declaration>KSYGPUEffectType_Ruddy_night</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Sunshine_night</TokenIdentifier>
+            <Abstract type="html">10 阳光（适用于光线较暗的环境）</Abstract>
+            <Declaration>KSYGPUEffectType_Sunshine_night</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Ruddy</TokenIdentifier>
+            <Abstract type="html">11 红润</Abstract>
+            <Declaration>KSYGPUEffectType_Ruddy</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Sushine</TokenIdentifier>
+            <Abstract type="html">12 阳光</Abstract>
+            <Declaration>KSYGPUEffectType_Sushine</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Nature</TokenIdentifier>
+            <Abstract type="html">13 自然</Abstract>
+            <Declaration>KSYGPUEffectType_Nature</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Amatorka</TokenIdentifier>
+            <Abstract type="html">14 恋人</Abstract>
+            <Declaration>KSYGPUEffectType_Amatorka</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Elegance</TokenIdentifier>
+            <Abstract type="html">15 高雅</Abstract>
+            <Declaration>KSYGPUEffectType_Elegance</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_1977</TokenIdentifier>
+            <Abstract type="html">16 红粉佳人</Abstract>
+            <Declaration>KSYGPUEffectType_1977</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Amaro</TokenIdentifier>
+            <Abstract type="html">17 优格</Abstract>
+            <Declaration>KSYGPUEffectType_Amaro</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Brannan</TokenIdentifier>
+            <Abstract type="html">18 流年</Abstract>
+            <Declaration>KSYGPUEffectType_Brannan</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Early_bird</TokenIdentifier>
+            <Abstract type="html">19 柔光</Abstract>
+            <Declaration>KSYGPUEffectType_Early_bird</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Hefe</TokenIdentifier>
+            <Abstract type="html">20 经典</Abstract>
+            <Declaration>KSYGPUEffectType_Hefe</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Hudson</TokenIdentifier>
+            <Abstract type="html">21 初夏</Abstract>
+            <Declaration>KSYGPUEffectType_Hudson</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Ink</TokenIdentifier>
+            <Abstract type="html">22 黑白</Abstract>
+            <Declaration>KSYGPUEffectType_Ink</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Lomo</TokenIdentifier>
+            <Abstract type="html">23 纽约</Abstract>
+            <Declaration>KSYGPUEffectType_Lomo</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Lord_kelvin</TokenIdentifier>
+            <Abstract type="html">24 上野</Abstract>
+            <Declaration>KSYGPUEffectType_Lord_kelvin</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Nashville</TokenIdentifier>
+            <Abstract type="html">25 碧波</Abstract>
+            <Declaration>KSYGPUEffectType_Nashville</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Rise</TokenIdentifier>
+            <Abstract type="html">26 日系</Abstract>
+            <Declaration>KSYGPUEffectType_Rise</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Sierra</TokenIdentifier>
+            <Abstract type="html">27 清凉</Abstract>
+            <Declaration>KSYGPUEffectType_Sierra</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Sutro</TokenIdentifier>
+            <Abstract type="html">28 移轴</Abstract>
+            <Declaration>KSYGPUEffectType_Sutro</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Toaster</TokenIdentifier>
+            <Abstract type="html">29 梦幻</Abstract>
+            <Declaration>KSYGPUEffectType_Toaster</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Valencia</TokenIdentifier>
+            <Abstract type="html">30 恬淡</Abstract>
+            <Declaration>KSYGPUEffectType_Valencia</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Walden</TokenIdentifier>
+            <Abstract type="html">31 候鸟</Abstract>
+            <Declaration>KSYGPUEffectType_Walden</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
+            
+            <NodeRef refid="68"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYGPUEffectType_Xproll</TokenIdentifier>
+            <Abstract type="html">32 淡雅</Abstract>
+            <Declaration>KSYGPUEffectType_Xproll</Declaration>
+            
+            <DeclaredIn>KSYBuildInSpecialEffects.h</DeclaredIn>
             
             <NodeRef refid="68"/>
         </Token>

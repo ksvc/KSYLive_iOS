@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/MPMovieMetaType.html">
+	<File path="Constants/MPMovieReloadMode.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/MPMovieMetaType</TokenIdentifier>
-			<Abstract type="html">Meta类型</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/MPMovieReloadMode</TokenIdentifier>
+			<Abstract type="html">reload模式</Abstract>
 			<DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieMetaType_Media</TokenIdentifier>
-            <Abstract type="html">当前播放文件的Meta</Abstract>
-            <Declaration>MPMovieMetaType_Media</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieReloadMode_Fast</TokenIdentifier>
+            <Abstract type="html">加速播放模式</Abstract>
+            <Declaration>MPMovieReloadMode_Fast</Declaration>
             
             <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             
@@ -24,29 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieMetaType_Video</TokenIdentifier>
-            <Abstract type="html">当前播放的视频Meta</Abstract>
-            <Declaration>MPMovieMetaType_Video</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="96"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieMetaType_Audio</TokenIdentifier>
-            <Abstract type="html">当前播放的音频Meta</Abstract>
-            <Declaration>MPMovieMetaType_Audio</Declaration>
-            
-            <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
-            
-            <NodeRef refid="96"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/MPMovieMetaType_Subtitle</TokenIdentifier>
-            <Abstract type="html">当前播放的字幕Meta</Abstract>
-            <Declaration>MPMovieMetaType_Subtitle</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/MPMovieReloadMode_Accurate</TokenIdentifier>
+            <Abstract type="html">精确检测模式</Abstract>
+            <Declaration>MPMovieReloadMode_Accurate</Declaration>
             
             <DeclaredIn>KSYMoviePlayerDefines.h</DeclaredIn>
             

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYTransitionPushFilter.html">
+	<File path="Classes/KSYUIRecorderKit.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYTransitionPushFilter</TokenIdentifier>
-			<Abstract type="html">KSYTransitionPushFilter 推出的转场效果</Abstract>
-			<DeclaredIn>KSYTransitionPushFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYUIRecorderKit</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
             
 			
 			<NodeRef refid="54"/>
@@ -13,146 +13,182 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionPushFilter/setMasterLayer:</TokenIdentifier>
-			<Abstract type="html">视频所在的图层</Abstract>
-			<DeclaredIn>KSYTransitionPushFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/initWithScheme:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) NSInteger masterLayer</Declaration>
+			<Declaration>- (instancetype)initWithScheme:(KSYPlayRecordScheme)scheme</Declaration>
 			
 			
-			<Anchor>//api/name/masterLayer</Anchor>
+			<Anchor>//api/name/initWithScheme:</Anchor>
             <NodeRef refid="54"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionPushFilter/masterLayer</TokenIdentifier>
-			<Abstract type="html">视频所在的图层</Abstract>
-			<DeclaredIn>KSYTransitionPushFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/setContentView:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) NSInteger masterLayer</Declaration>
+			<Declaration>@property (nonatomic, readwrite) UIView *contentView</Declaration>
 			
 			
-			<Anchor>//api/name/masterLayer</Anchor>
+			<Anchor>//api/name/contentView</Anchor>
             <NodeRef refid="54"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYTransitionPushFilter/masterLayer</TokenIdentifier>
-			<Abstract type="html">视频所在的图层</Abstract>
-			<DeclaredIn>KSYTransitionPushFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/contentView</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) NSInteger masterLayer</Declaration>
+			<Declaration>@property (nonatomic, readwrite) UIView *contentView</Declaration>
 			
 			
-			<Anchor>//api/name/masterLayer</Anchor>
+			<Anchor>//api/name/contentView</Anchor>
             <NodeRef refid="54"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionPushFilter/setDuration:</TokenIdentifier>
-			<Abstract type="html">转场重叠的帧数</Abstract>
-			<DeclaredIn>KSYTransitionPushFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYUIRecorderKit/contentView</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) int duration</Declaration>
+			<Declaration>@property (nonatomic, readwrite) UIView *contentView</Declaration>
 			
 			
-			<Anchor>//api/name/duration</Anchor>
+			<Anchor>//api/name/contentView</Anchor>
             <NodeRef refid="54"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionPushFilter/duration</TokenIdentifier>
-			<Abstract type="html">转场重叠的帧数</Abstract>
-			<DeclaredIn>KSYTransitionPushFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/processWithTextureId:TextureSize:Time:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) int duration</Declaration>
+			<Declaration>- (void)processWithTextureId:(GLuint)InputTexture TextureSize:(CGSize)TextureSize Time:(CMTime)time</Declaration>
 			
 			
-			<Anchor>//api/name/duration</Anchor>
+			<Anchor>//api/name/processWithTextureId:TextureSize:Time:</Anchor>
             <NodeRef refid="54"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYTransitionPushFilter/duration</TokenIdentifier>
-			<Abstract type="html">转场重叠的帧数</Abstract>
-			<DeclaredIn>KSYTransitionPushFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/processAudioSampleBuffer:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) int duration</Declaration>
+			<Declaration>- (void)processAudioSampleBuffer:(CMSampleBufferRef)buf</Declaration>
 			
 			
-			<Anchor>//api/name/duration</Anchor>
+			<Anchor>//api/name/processAudioSampleBuffer:</Anchor>
             <NodeRef refid="54"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionPushFilter/setFrameIdx:</TokenIdentifier>
-			<Abstract type="html">转场已经处理的帧数</Abstract>
-			<DeclaredIn>KSYTransitionPushFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/processVideoSampleBuffer:timeInfo:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) int frameIdx</Declaration>
+			<Declaration>- (void)processVideoSampleBuffer:(CVPixelBufferRef)pixelBuffer timeInfo:(CMTime)timeStamp</Declaration>
 			
 			
-			<Anchor>//api/name/frameIdx</Anchor>
+			<Anchor>//api/name/processVideoSampleBuffer:timeInfo:</Anchor>
             <NodeRef refid="54"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionPushFilter/frameIdx</TokenIdentifier>
-			<Abstract type="html">转场已经处理的帧数</Abstract>
-			<DeclaredIn>KSYTransitionPushFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/startRecord:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) int frameIdx</Declaration>
+			<Declaration>- (void)startRecord:(NSURL *)path</Declaration>
 			
 			
-			<Anchor>//api/name/frameIdx</Anchor>
+			<Anchor>//api/name/startRecord:</Anchor>
             <NodeRef refid="54"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYTransitionPushFilter/frameIdx</TokenIdentifier>
-			<Abstract type="html">转场已经处理的帧数</Abstract>
-			<DeclaredIn>KSYTransitionPushFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/stopRecord</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) int frameIdx</Declaration>
+			<Declaration>- (void)stopRecord</Declaration>
 			
 			
-			<Anchor>//api/name/frameIdx</Anchor>
+			<Anchor>//api/name/stopRecord</Anchor>
             <NodeRef refid="54"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionPushFilter/setDirection:</TokenIdentifier>
-			<Abstract type="html">推动方向 默认向上</Abstract>
-			<DeclaredIn>KSYTransitionPushFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/setBPlayRecord:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) KSYTPushDirection direction</Declaration>
+			<Declaration>@property BOOL bPlayRecord</Declaration>
 			
 			
-			<Anchor>//api/name/direction</Anchor>
+			<Anchor>//api/name/bPlayRecord</Anchor>
             <NodeRef refid="54"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionPushFilter/direction</TokenIdentifier>
-			<Abstract type="html">推动方向 默认向上</Abstract>
-			<DeclaredIn>KSYTransitionPushFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/bPlayRecord</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) KSYTPushDirection direction</Declaration>
+			<Declaration>@property BOOL bPlayRecord</Declaration>
 			
 			
-			<Anchor>//api/name/direction</Anchor>
+			<Anchor>//api/name/bPlayRecord</Anchor>
             <NodeRef refid="54"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYTransitionPushFilter/direction</TokenIdentifier>
-			<Abstract type="html">推动方向 默认向上</Abstract>
-			<DeclaredIn>KSYTransitionPushFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYUIRecorderKit/bPlayRecord</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) KSYTPushDirection direction</Declaration>
+			<Declaration>@property BOOL bPlayRecord</Declaration>
 			
 			
-			<Anchor>//api/name/direction</Anchor>
+			<Anchor>//api/name/bPlayRecord</Anchor>
+            <NodeRef refid="54"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/setWriter:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) KSYMovieWriter *writer</Declaration>
+			
+			
+			<Anchor>//api/name/writer</Anchor>
+            <NodeRef refid="54"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYUIRecorderKit/writer</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) KSYMovieWriter *writer</Declaration>
+			
+			
+			<Anchor>//api/name/writer</Anchor>
+            <NodeRef refid="54"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYUIRecorderKit/writer</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYUIRecorderKit.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readwrite) KSYMovieWriter *writer</Declaration>
+			
+			
+			<Anchor>//api/name/writer</Anchor>
             <NodeRef refid="54"/>
 		</Token>
 		

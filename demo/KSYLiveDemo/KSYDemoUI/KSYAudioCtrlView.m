@@ -55,7 +55,9 @@
 - (void)layoutUI{
     [super layoutUI];
     self.btnH = 30;
-
+    if (self.width > self.height) {
+        self.btnH = 25;
+    }
     [self putRow1:_micVol];
     [self putSlider:_bgmVol
           andSwitch:_bgmMix];

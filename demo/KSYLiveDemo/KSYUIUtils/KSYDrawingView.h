@@ -11,6 +11,15 @@
 
 @interface KSYDrawingView: KSYUIView
 
+/**
+ 擦除全部线条
+ */
 - (void) clearAllPath;
+
+/**
+ @abstract   视图更新通知
+ */
+@property(nonatomic, copy) void(^viewUpdateCallback)();
+
 @end
 

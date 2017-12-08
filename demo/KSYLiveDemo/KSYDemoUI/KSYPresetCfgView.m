@@ -19,8 +19,6 @@
 @property UILabel* demoLable;
 @end
 
-#define FLOAT_EQ( f0, f1 ) ( (f0 - f1 < 0.001)&& (f0 - f1 > -0.001) )
-
 @implementation KSYPresetCfgView
 - (id) init {
     self = [super init];

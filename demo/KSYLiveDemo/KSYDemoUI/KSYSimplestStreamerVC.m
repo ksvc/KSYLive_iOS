@@ -13,12 +13,7 @@ UIPickerViewDelegate>{
     NSArray * _profileNames;//存放各个清晰度标签
 }
 
-@property UIButton *captureBtn;//预览按钮
-@property UIButton *streamBtn;//开始推流
-@property UIButton *cameraBtn;//前后摄像头
-@property UIButton *quitBtn;//返回按钮
 @property NSInteger         curProfileIdx;
-@property NSURL             *url;
 @property UILabel           *streamState;//推流状态
 
 @end
@@ -79,9 +74,12 @@ UIPickerViewDelegate>{
                      @"540p_1",@"540p_2",@"540p_3",@"720p_auto",
                      @"720p_1",@"720p_2",@"720p_3",nil];
     [self setupUI];
+    self.view.backgroundColor = [UIColor blackColor];
 }
 
 - (void)setupUI{
+    _bgView = [[UIView alloc] init];
+    [self.view addSubview: _bgView];
     _ctrlView = [[KSYUIView alloc] initWithFrame:self.view.bounds];
     @WeakObj(self);
     _ctrlView.onBtnBlock = ^(id sender){
@@ -113,11 +111,16 @@ UIPickerViewDelegate>{
 }
 
 - (void)layoutUI{
-    _ctrlView.frame = self.view.frame;
+    CGRect previewRect = [self calcPreviewRect:16.0/9.0]; //
+    _bgView.frame = previewRect;
+    _ctrlView.frame = previewRect;
     [_ctrlView layoutUI];
+    if (previewRect.origin.y > 0) {
+        _ctrlView.yPos = 0;
+    }
     [_ctrlView putRow:@[_quitBtn, _streamState, _cameraBtn]];
     _profilePicker.frame = CGRectMake(10, _ctrlView.yPos+_ctrlView.btnH, _ctrlView.width-20, 216);
-    _ctrlView.yPos = self.view.frame.size.height - 30;
+    _ctrlView.yPos = previewRect.size.height - 30;
     [_ctrlView putRow:@[_captureBtn, [UIView new], _streamBtn]];
 }
 
@@ -142,7 +145,7 @@ UIPickerViewDelegate>{
     if (!_kit.vCapDev.isRunning){
         _kit.videoOrientation = [[UIApplication sharedApplication] statusBarOrientation];
         [_kit setupFilter:_curFilter];
-        [_kit startPreview:self.view]; //启动预览
+        [_kit startPreview:_bgView]; //启动预览
     }
     else {
         [_kit stopPreview];
@@ -209,7 +212,9 @@ numberOfRowsInComponent:(NSInteger)component {
 }
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
-    self.kit.preview.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
+    CGFloat x = CGRectGetMidX(self.bgView.bounds);
+    CGFloat y = CGRectGetMidY(self.bgView.bounds);
+    self.kit.preview.center = CGPointMake(x,y);
 }
 
 #pragma mark - 旋转预览 iOS > 8.0

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYTranscodeState.html">
+	<File path="Constants/KSYTransitionType.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYTranscodeState</TokenIdentifier>
-			<Abstract type="html">转码状态</Abstract>
-			<DeclaredIn>KSYTranscoder.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYTransitionType</TokenIdentifier>
+			<Abstract type="html">转场类型
+KSYTransitionType 1 ~ 99     代表 片头转场范围
+KSYTransitionType 101 ~ 199  代表 片尾转场范围
+KSYTransitionType 201 ~ 299  代表 片中转场范围</Abstract>
+			<DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="86"/>
@@ -14,41 +17,131 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeState_Idle</TokenIdentifier>
-            <Abstract type="html">初始状态</Abstract>
-            <Declaration>KSYTranscodeState_Idle</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeNone</TokenIdentifier>
+            <Abstract type="html">关闭转场</Abstract>
+            <Declaration>KSYTransitionTypeNone</Declaration>
             
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
-            
-            <NodeRef refid="86"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeState_Transcoding</TokenIdentifier>
-            <Abstract type="html">转码中</Abstract>
-            <Declaration>KSYTranscodeState_Transcoding</Declaration>
-            
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
             
             <NodeRef refid="86"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeState_Completed</TokenIdentifier>
-            <Abstract type="html">转码完成</Abstract>
-            <Declaration>KSYTranscodeState_Completed</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeFadesIn</TokenIdentifier>
+            <Abstract type="html">渐入（片头效果）</Abstract>
+            <Declaration>KSYTransitionTypeFadesIn</Declaration>
             
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
             
             <NodeRef refid="86"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeState_Error</TokenIdentifier>
-            <Abstract type="html">转码失败</Abstract>
-            <Declaration>KSYTranscodeState_Error</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeBlurIn</TokenIdentifier>
+            <Abstract type="html">模糊变清晰（片头效果）</Abstract>
+            <Declaration>KSYTransitionTypeBlurIn</Declaration>
             
-            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="86"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeFadesOut</TokenIdentifier>
+            <Abstract type="html">淡出（片尾效果）</Abstract>
+            <Declaration>KSYTransitionTypeFadesOut</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="86"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeBlurOut</TokenIdentifier>
+            <Abstract type="html">清晰变模糊（片尾效果）</Abstract>
+            <Declaration>KSYTransitionTypeBlurOut</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="86"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeFadesInOut</TokenIdentifier>
+            <Abstract type="html">渐入淡出</Abstract>
+            <Declaration>KSYTransitionTypeFadesInOut</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="86"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeFlashBlack</TokenIdentifier>
+            <Abstract type="html">闪黑</Abstract>
+            <Declaration>KSYTransitionTypeFlashBlack</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="86"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeFlashWhite</TokenIdentifier>
+            <Abstract type="html">闪白</Abstract>
+            <Declaration>KSYTransitionTypeFlashWhite</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="86"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeBlurInOut</TokenIdentifier>
+            <Abstract type="html">清晰变模糊</Abstract>
+            <Declaration>KSYTransitionTypeBlurInOut</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="86"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypePushUp</TokenIdentifier>
+            <Abstract type="html">上推</Abstract>
+            <Declaration>KSYTransitionTypePushUp</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="86"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypePushDown</TokenIdentifier>
+            <Abstract type="html">下推</Abstract>
+            <Declaration>KSYTransitionTypePushDown</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="86"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypePushLeft</TokenIdentifier>
+            <Abstract type="html">左推</Abstract>
+            <Declaration>KSYTransitionTypePushLeft</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="86"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypePushRight</TokenIdentifier>
+            <Abstract type="html">右推</Abstract>
+            <Declaration>KSYTransitionTypePushRight</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
             
             <NodeRef refid="86"/>
         </Token>

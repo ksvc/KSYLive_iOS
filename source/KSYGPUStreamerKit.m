@@ -281,7 +281,7 @@
 }
 
 // 添加图层到 vMixer 中
-- (void) addPic:(GPUImageOutput*)pic ToMixerAt: (NSInteger)idx{
+- (void) addPic:(KSYGPUPicture*)pic ToMixerAt: (NSInteger)idx{
     KSYGPUPicMixer * vMixer[2] = {_vPreviewMixer, _vStreamMixer};
     if (pic == nil){
         for (int i = 0; i<2; ++i) {
@@ -907,12 +907,12 @@
 }
 #pragma mark - pictures & logo
 @synthesize textPic = _textPic;
--(void) setTextPic:(GPUImagePicture *)textPic{
+-(void) setTextPic:(KSYGPUPicture *)textPic{
     _textPic = textPic;
     [self addPic:_textPic ToMixerAt:_logoTxtLayer];
 }
 @synthesize logoPic = _logoPic;
--(void) setLogoPic:(GPUImagePicture *)pic{
+-(void) setLogoPic:(KSYGPUPicture *)pic{
     _logoPic = pic;
     [self addPic:_logoPic ToMixerAt:_logoPicLayer];
 }
@@ -926,11 +926,15 @@ static GPUImageRotationMode KSYImage2GPURotate[] = {
     kGPUImageFlipVertical,//UIImageOrientationLeftMirrored,  // vertical flip
     kGPUImageRotateRightFlipVertical//UIImageOrientationRightMirrored, // vertical flip
 };
-- (void) setLogoOrientaion:(UIImageOrientation) orien{
+
+- (void) setOrientaion:(UIImageOrientation) orien ofLayer:(NSInteger)idx {
     [_vPreviewMixer setPicRotation:KSYImage2GPURotate[orien]
-                               ofLayer:_logoPicLayer];
+                           ofLayer:idx];
     [_vStreamMixer setPicRotation:KSYImage2GPURotate[orien]
-                              ofLayer:_logoPicLayer];
+                          ofLayer:idx];
+}
+- (void) setLogoOrientaion:(UIImageOrientation) orien{
+    [self setOrientaion:orien ofLayer:_logoPicLayer];
 }
 @synthesize aePic = _aePic;
 -(void) setAePic:(GPUImageUIElement *)aePic{
@@ -942,6 +946,14 @@ static GPUImageRotationMode KSYImage2GPURotate[] = {
     [_aePic removeAllTargets];
     [_aePic addTarget:self.vStreamMixer atTextureLocation:_aeLayer];
 }
+
+- (void) setRect:(CGRect) rect ofLayer:(NSInteger)idx {
+    [_vPreviewMixer setPicRect:rect
+                       ofLayer:idx];
+    [_vStreamMixer setPicRect:rect
+                      ofLayer:idx];
+}
+
 // 水印logo的图片的位置和大小
 @synthesize logoRect = _logoRect;
 - (CGRect) logoRect {
@@ -949,10 +961,7 @@ static GPUImageRotationMode KSYImage2GPURotate[] = {
 }
 - (void) setLogoRect:(CGRect)logoRect{
     _logoRect = logoRect;
-    [_vPreviewMixer setPicRect:logoRect
-                       ofLayer:_logoPicLayer];
-    [_vStreamMixer setPicRect:logoRect
-                      ofLayer:_logoPicLayer];
+    [self setRect:logoRect ofLayer:_logoPicLayer];
 }
 // 水印logo的图片的透明度
 @synthesize logoAlpha = _logoAlpha;
@@ -970,10 +979,7 @@ static GPUImageRotationMode KSYImage2GPURotate[] = {
 }
 - (void) setTextRect:(CGRect)rect{
     _textRect = rect;
-    [_vPreviewMixer setPicRect:rect
-                       ofLayer:_logoTxtLayer];
-    [_vStreamMixer setPicRect:rect
-                      ofLayer:_logoTxtLayer];
+    [self setRect:rect ofLayer:_logoTxtLayer];
 }
 /**
  @abstract   刷新水印文字的内容

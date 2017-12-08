@@ -71,5 +71,9 @@
     [self putRow3:_btn0
               and:[UIView new]
               and:[UIView new]];
+    self.btnH = 100;
+    self.gap = 0;
+    self.yPos = self.height - self.btnH;
+    [self putRow1:_collectionView];
 }
 @end
