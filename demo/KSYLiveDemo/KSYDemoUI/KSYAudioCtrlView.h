@@ -53,6 +53,15 @@
 /// 变声
 @property UISegmentedControl * effectType;
 @property (atomic, readwrite) KSYAudioEffectType  audioEffect;
+///reverb参数值
+@property KSYNameSlider * reverbEffectParamsVaule;
+@property UISwitch      * swReverbEffect;
+///delay参数值
+@property KSYNameSlider * delayEffectParamsVaule;
+@property UISwitch      * swDelayEffect;
+/// pitchShift参数值
+@property KSYNameSlider * pitchEffectParamsVaule;
+@property UISwitch      * swPitchEffect;
 
 /// 降噪等级选择
 @property UISegmentedControl  * noiseSuppressSeg;

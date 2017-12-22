@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
+#define KSYAUReverb_FLAG 0x001
+#define KSYAUDelay_FLAG 0x002
+#define KSYAUPitchshift_FLAG 0x004
+
 /*!
  * @abstract  音效类型
  */
@@ -23,6 +27,8 @@ typedef NS_ENUM(NSUInteger, KSYAudioEffectType){
     KSYAudioEffectType_HEROIC,
     /// 机器人
     KSYAudioEffectType_ROBOT,
+    /// 自定义
+    KSYAudioEffectType_COUSTOM,
 };
 
 
@@ -167,5 +173,60 @@ typedef NS_ENUM(NSInteger, KSYAudioNoiseSuppress){
  设备是否正在采集音频数据
  */
 @property (nonatomic, readonly) BOOL isRunning;
+
+/**
+ @abstract 变调组合类型
+ @discussion 目前提供了8种类型的变调场景, flag和变调组合类型的对应关系如下
+ - 0 无组合
+ - 1 reverb
+ - 2 delay
+ - 3 reverb+delay
+ - 4 pitchShift
+ - 5 reverb+pitchShift
+ - 6 delay+pitchShift
+ - 7 reverb+delay+pitchShift
+ @warning 在设置effectTypeFlag时，请先将effectType设置成KSYAudioEffectType_COUSTOM模式，否则effectTypeFlag设置无法生效
+ */
+@property(nonatomic, assign) int effectTypeFlag;
+
+/**
+ @abstract  自定义混响参数接口
+ @param     inValue 混响参数对应的值
+ @param     inID 混响参数(0~6), 对应关系如下
+ - 0 kReverb2Param_DryWetMix
+ - 1 kReverb2Param_Gain
+ - 2 kReverb2Param_MinDelayTime
+ - 3 kReverb2Param_MaxDelayTime
+ - 4 kReverb2Param_DecayTimeAt0Hz
+ - 5 kReverb2Param_DecayTimeAtNyquist
+ - 6 kReverb2Param_RandomizeReflections
+ **/
+- (void) setReverbParamID:(AudioUnitParameterID)inID
+             withInValue:(AudioUnitParameterValue)inValue;
+
+/**
+ @abstract  自定义pitchShift参数接口
+ @param     inValue pitchShift参数对应的值
+ @param     inID pitchShift参数,对应关系如下
+ - 0 kNewTimePitchParam_Rate
+ - 1 kNewTimePitchParam_Pitch (SDK中变调主要是调这个参数)
+ - 4 kNewTimePitchParam_Overlap
+ - 6 kNewTimePitchParam_EnablePeakLocking
+ **/
+- (void) setPitchParamID:(AudioUnitParameterID)inID
+              withInValue:(AudioUnitParameterValue)inValue;
+
+/**
+ @abstract  自定义delay参数接口
+ @param     inValue delay参数对应的值
+ @param     inID delay参数(0~3),对应关系如下
+ - 0 kDelayParam_WetDryMix
+ - 1 kDelayParam_DelayTime
+ - 2 kDelayParam_Feedback
+ - 3 kDelayParam_LopassCutoff
+ **/
+- (void) setDelayParamID:(AudioUnitParameterID)inID
+             withInValue:(AudioUnitParameterValue)inValue;
+
 
 @end

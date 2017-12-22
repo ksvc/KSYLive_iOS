@@ -27,7 +27,7 @@ class KSYLiveVC: UIViewController {
         view.backgroundColor = .white
         _addressMulArray = [String]()
         let devCode = (UIDevice.current.identifierForVendor!.uuidString as NSString).substring(to: 3)
-        let streamSrv = "rtmp://120.92.224.235/live"
+        let streamSrv = "rtmp://mobile.kscvbu.cn/live"
         let streamUrl = "\(streamSrv)/\(devCode)"
         let playUrl = "rtmp://live.hkstv.hk.lxdns.com/live/hks"
         let recordFile = "RecordAv.mp4"

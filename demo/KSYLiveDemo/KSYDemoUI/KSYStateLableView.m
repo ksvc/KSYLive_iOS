@@ -70,7 +70,7 @@
     NSString *uploadDateSize = [KSYUIVC sizeFormatted:curState.uploadKByte];
     NSString* stateurl  = [NSString stringWithFormat:@"%@\n", [str.hostURL absoluteString]];
     //显示拉流地址
-    NSString *playUrl = @"http://120.92.224.235:8080/live/";
+    NSString *playUrl = @"http://mobile.kscvbu.cn:8080/live/";
     if (![[str.hostURL scheme] isEqualToString:@"rtmp"]) {
         //录制到本地
         NSString *fileName = [[stateurl componentsSeparatedByString:@"/"]lastObject];
