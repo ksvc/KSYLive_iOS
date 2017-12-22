@@ -70,6 +70,32 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioFilter/processAudioData:nbSample:withFormat:timeinfo:</TokenIdentifier>
+			<Abstract type="html">输入音频PCM</Abstract>
+			<DeclaredIn>KSYAudioFilter.h</DeclaredIn>
+			
+			<Declaration>- (void)processAudioData:(uint8_t **)pData nbSample:(int)nbSample withFormat:(const AudioStreamBasicDescription *)fmt timeinfo:(CMTime)pts</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>pData</Name>
+					<Abstract type="html">数据地址</Abstract>
+				</Parameter><Parameter>
+					<Name>nbSample</Name>
+					<Abstract type="html">采样点个数</Abstract>
+				</Parameter><Parameter>
+					<Name>fmt</Name>
+					<Abstract type="html">输入数据的音频格式</Abstract>
+				</Parameter><Parameter>
+					<Name>pts</Name>
+					<Abstract type="html">输入数据的时间戳</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/processAudioData:nbSample:withFormat:timeinfo:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioFilter/setAudioProcessingCallback:</TokenIdentifier>
 			<Abstract type="html">音频处理回调接口</Abstract>
 			<DeclaredIn>KSYAudioFilter.h</DeclaredIn>
@@ -102,6 +128,42 @@
 			
 			
 			<Anchor>//api/name/audioProcessingCallback</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioFilter/setPcmProcessingCallback:</TokenIdentifier>
+			<Abstract type="html">音频处理回调接口</Abstract>
+			<DeclaredIn>KSYAudioFilter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( uint8_t **pData , int nbSample , CMTime pts ) pcmProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/pcmProcessingCallback</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioFilter/pcmProcessingCallback</TokenIdentifier>
+			<Abstract type="html">音频处理回调接口</Abstract>
+			<DeclaredIn>KSYAudioFilter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( uint8_t **pData , int nbSample , CMTime pts ) pcmProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/pcmProcessingCallback</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYAudioFilter/pcmProcessingCallback</TokenIdentifier>
+			<Abstract type="html">音频处理回调接口</Abstract>
+			<DeclaredIn>KSYAudioFilter.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, copy) void ( ^ ) ( uint8_t **pData , int nbSample , CMTime pts ) pcmProcessingCallback</Declaration>
+			
+			
+			<Anchor>//api/name/pcmProcessingCallback</Anchor>
             <NodeRef refid="6"/>
 		</Token>
 		

@@ -2574,12 +2574,12 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 			
 			
 			<div class="method-subsection brief-description">
-				<p>立体声平衡模式，默认立体声输出</p>
+				<p>立体声平衡模式，默认立体声输出，取值范围为[-1.0, 1.0]</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic) MPMovieAudioPan audioPan</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic) float audioPan</code></div>
 
 		    
 			
@@ -2596,7 +2596,7 @@ MPMovieScalingModeFill        // 满屏填充，与原始视频比例不一致
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>针对单声道或双声道音频播放配置时有效，多声道音频播放配置无效</p><p>需要佩戴耳机以区分左右声道，手机外放无效果</p><p>prepareToPlay前配置无效，应在播放过程中动态配置</p><div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div>
+				<p>针对单声道或双声道音频播放配置时有效，多声道音频播放配置无效</p><p>需要佩戴耳机以区分左右声道，手机外放无效果</p><p>prepareToPlay前配置无效，应在播放过程中动态配置</p><p>该值为0.0时，左右声道都有声音，&lt; 0时，右声道声音小于左声道；> 0时，左声道声音小于右声道</p><div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div>
 			</div>
 			
 

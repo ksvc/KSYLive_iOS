@@ -685,6 +685,14 @@
     _maxAutoRetry = MAX(0, maxAutoRetry);
     _autoRetryCnt = _maxAutoRetry;
 }
+@synthesize audioDataType = _audioDataType;
+- (void) setAudioDataType:(KSYAudioDataType)audioDataType {
+    _audioDataType = audioDataType;
+    [self setupAudioPath];
+}
+- (KSYAudioDataType) audioDataType {
+    return _audioDataType;
+}
 
 #pragma mark - Dimension
 /**
@@ -1021,6 +1029,8 @@ static GPUImageRotationMode KSYImage2GPURotate[] = {
         return;
     }
     if( fmt !=  kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange &&
+        fmt !=  kCVPixelFormatType_420YpCbCr8BiPlanarFullRange &&
+        fmt !=  kCVPixelFormatType_420YpCbCr8PlanarFullRange &&
         fmt !=  kCVPixelFormatType_420YpCbCr8Planar ){
         fmt = kCVPixelFormatType_32BGRA;
     }

@@ -24,7 +24,7 @@
     self = [super init];
     self.backgroundColor = [UIColor whiteColor];
     // hostURL = rtmpSrv + streamName(随机数,避免多个demo推向同一个流
-    NSString *rtmpSrv = @"rtmp://120.92.224.235/live";
+    NSString *rtmpSrv = @"rtmp://mobile.kscvbu.cn/live";
     NSString *devCode = [ [KSYUIView getUuid] substringToIndex:3];
     NSString *url     = [  NSString stringWithFormat:@"%@/%@", rtmpSrv, devCode];
     _hostUrlUI = [self addTextField:url ];
@@ -41,7 +41,8 @@
     _lblCameraPosUI = [self addLable:@"摄像头"];
     _cameraPosUI    = [self addSegCtrlWithItems:@[@"前置",@"后置"]];
     _lblGpuPixFmtUI = [self addLable:@"像素格式"];
-    _gpuPixFmtUI  = [self addSegCtrlWithItems:@[@"rgba",@"nv12"]];
+    _gpuPixFmtUI  = [self addSegCtrlWithItems:@[@"rgba",@"nv12", @"I420"]];
+    _gpuPixFmtUI.selectedSegmentIndex = 2;
     _lblProfileUI = [self addLable:@"配置"];
     _profileUI = [self addSegCtrlWithItems:@[@"预设等级",@"自定义"]];
     _profileUI.selectedSegmentIndex = 0;
@@ -358,7 +359,7 @@ numberOfRowsInComponent:(NSInteger)component {
     self.btnH = rowHight*2;
     [self putSlider: _hostUrlUI andSwitch: _doneBtn];
     self.btnH = rowHight;
-    [self putRow:@[_lblCameraPosUI,_cameraPosUI,
+    [self putRowFit:@[_lblCameraPosUI,_cameraPosUI,
                    _lblGpuPixFmtUI,_gpuPixFmtUI] ];
     [self putLable:_lblProfileUI andView:_profileUI];
     if (_profileUI.selectedSegmentIndex){
@@ -517,6 +518,9 @@ numberOfRowsInComponent:(NSInteger)component {
     }
     else if(_gpuPixFmtUI.selectedSegmentIndex == 1) {
         return kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange;
+    }
+    else if(_gpuPixFmtUI.selectedSegmentIndex == 2) {
+        return kCVPixelFormatType_420YpCbCr8Planar;
     }
     return kCVPixelFormatType_32BGRA;
 }

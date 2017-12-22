@@ -541,14 +541,15 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
 @property(nonatomic) BOOL  bInterruptOtherAudio;
 
 /**
- @abstract 立体声平衡模式，默认立体声输出
+ @abstract 立体声平衡模式，默认立体声输出，取值范围为[-1.0, 1.0]
  @discussion 针对单声道或双声道音频播放配置时有效，多声道音频播放配置无效
  @discussion 需要佩戴耳机以区分左右声道，手机外放无效果
  @discussion prepareToPlay前配置无效，应在播放过程中动态配置
+ @discussion 该值为0.0时，左右声道都有声音，< 0时，右声道声音小于左声道；> 0时，左声道声音小于右声道
  @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 2.0.3 and later
  */
-@property(nonatomic) MPMovieAudioPan audioPan;
+@property(nonatomic) float audioPan;
 
 /**
  @abstract 用于检测网络连通性的地址，默认使用地址为“www.baidu.com”

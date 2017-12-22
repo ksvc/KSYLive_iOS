@@ -850,6 +850,45 @@
         }
         _kit.aCapDev.bPlayCapturedAudio = sw.isOn;
     }
+    else if (sw == _audioView.swReverbEffect){
+        if (_audioView.audioEffect != KSYAudioEffectType_COUSTOM){
+            [KSYUIVC toast:@"切换至自定义模式，才可开启" time:0.3];
+            sw.on = NO;
+            return;
+        }
+        if (sw.on){
+            _kit.aCapDev.effectTypeFlag |= KSYAUReverb_FLAG;
+        }
+        else{
+            _kit.aCapDev.effectTypeFlag &= (~KSYAUReverb_FLAG);
+        }
+    }
+    else if (sw == _audioView.swDelayEffect){
+        if (_audioView.audioEffect != KSYAudioEffectType_COUSTOM){
+            [KSYUIVC toast:@"切换至自定义模式，才可开启" time:0.3];
+            sw.on = NO;
+            return;
+        }
+        if (sw.on){
+            _kit.aCapDev.effectTypeFlag |= KSYAUDelay_FLAG;
+        }
+        else{
+            _kit.aCapDev.effectTypeFlag &= (~KSYAUDelay_FLAG);
+        }
+    }
+    else if (sw == _audioView.swPitchEffect){
+        if (_audioView.audioEffect != KSYAudioEffectType_COUSTOM){
+            [KSYUIVC toast:@"切换至自定义模式，才可开启" time:0.3];
+            sw.on = NO;
+            return;
+        }
+        if (sw.on){
+            _kit.aCapDev.effectTypeFlag |= KSYAUPitchshift_FLAG;
+        }
+        else{
+            _kit.aCapDev.effectTypeFlag &= (~KSYAUPitchshift_FLAG);
+        }
+    }
 }
 - (void)onAMixerSegCtrl:(UISegmentedControl *)seg{
     if (_kit && seg == _audioView.micInput) {
@@ -861,6 +900,9 @@
         return;
     }
     else if (seg == _audioView.effectType) {
+        _audioView.swReverbEffect.on = NO;
+        _audioView.swDelayEffect.on = NO;
+        _audioView.swPitchEffect.on = NO;
         _kit.aCapDev.effectType = _audioView.audioEffect;
         return;
     }
@@ -869,6 +911,7 @@
         return;
     }
 }
+
 - (void)onAMixerSlider:(KSYNameSlider *)slider{
     float val = 0.0;
     if ([slider isKindOfClass:[KSYNameSlider class]]) {
@@ -886,6 +929,21 @@
     else if (slider == self.audioView.playCapVol){
         if (_kit.aCapDev){
             _kit.aCapDev.micVolume = slider.normalValue;
+        }
+    }
+    else if (slider == self.audioView.reverbEffectParamsVaule){
+        if (_kit.aCapDev && self.audioView.swReverbEffect.isOn){
+            [_kit.aCapDev setReverbParamID:kReverb2Param_DryWetMix withInValue:slider.value];
+        }
+    }
+    else if (slider == self.audioView.delayEffectParamsVaule){
+        if (_kit.aCapDev && self.audioView.swDelayEffect.isOn){
+            [_kit.aCapDev setDelayParamID:kDelayParam_WetDryMix withInValue:slider.value];
+        }
+    }
+    else if (slider == self.audioView.pitchEffectParamsVaule){
+        if (_kit.aCapDev && self.audioView.swPitchEffect.isOn){
+            [_kit.aCapDev setPitchParamID:kNewTimePitchParam_Pitch withInValue:slider.value];
         }
     }
 }
@@ -966,7 +1024,7 @@
             //推流地址对应的拉流地址
             NSString * uuidStr =[[[UIDevice currentDevice] identifierForVendor] UUIDString];
             NSString *devCode  = [[uuidStr substringToIndex:3] lowercaseString];
-            NSString *streamPlaySrv = @"http://120.92.224.235:8080/live";
+            NSString *streamPlaySrv = @"http://mobile.kscvbu.cn:8080/live";
             NSString *streamPlayPostfix = @".flv";
             playUrlQRCodeVc.url = [ NSString stringWithFormat:@"%@/%@%@", streamPlaySrv, devCode,streamPlayPostfix];
         }

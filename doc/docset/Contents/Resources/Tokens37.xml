@@ -1502,10 +1502,10 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/setAudioPan:</TokenIdentifier>
-			<Abstract type="html">立体声平衡模式，默认立体声输出</Abstract>
+			<Abstract type="html">立体声平衡模式，默认立体声输出，取值范围为[-1.0, 1.0]</Abstract>
 			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) MPMovieAudioPan audioPan</Declaration>
+			<Declaration>@property (nonatomic) float audioPan</Declaration>
 			
 			
 			<Anchor>//api/name/audioPan</Anchor>
@@ -1514,10 +1514,10 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYMoviePlayerController/audioPan</TokenIdentifier>
-			<Abstract type="html">立体声平衡模式，默认立体声输出</Abstract>
+			<Abstract type="html">立体声平衡模式，默认立体声输出，取值范围为[-1.0, 1.0]</Abstract>
 			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) MPMovieAudioPan audioPan</Declaration>
+			<Declaration>@property (nonatomic) float audioPan</Declaration>
 			
 			
 			<Anchor>//api/name/audioPan</Anchor>
@@ -1526,10 +1526,10 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/KSYMoviePlayerController/audioPan</TokenIdentifier>
-			<Abstract type="html">立体声平衡模式，默认立体声输出</Abstract>
+			<Abstract type="html">立体声平衡模式，默认立体声输出，取值范围为[-1.0, 1.0]</Abstract>
 			<DeclaredIn>KSYMoviePlayerController.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) MPMovieAudioPan audioPan</Declaration>
+			<Declaration>@property (nonatomic) float audioPan</Declaration>
 			
 			
 			<Anchor>//api/name/audioPan</Anchor>

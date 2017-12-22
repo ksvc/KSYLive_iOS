@@ -63,6 +63,16 @@
             <NodeRef refid="62"/>
         </Token>
         
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioEffectType_COUSTOM</TokenIdentifier>
+            <Abstract type="html">自定义</Abstract>
+            <Declaration>KSYAudioEffectType_COUSTOM</Declaration>
+            
+            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+            
+            <NodeRef refid="62"/>
+        </Token>
+        
         
 	</File>
 </Tokens>

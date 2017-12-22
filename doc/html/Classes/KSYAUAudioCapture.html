@@ -66,6 +66,8 @@
 		
 		<option value="//api/name/effectType">effectType</option>
 		
+		<option value="//api/name/effectTypeFlag">effectTypeFlag</option>
+		
 		<option value="//api/name/enableVoiceProcess">enableVoiceProcess</option>
 		
 		<option value="//api/name/isRunning">isRunning</option>
@@ -101,6 +103,12 @@
 		<option value="//api/name/pauseWithMuteData">- pauseWithMuteData</option>
 		
 		<option value="//api/name/resumeCapture">- resumeCapture</option>
+		
+		<option value="//api/name/setDelayParamID:withInValue:">- setDelayParamID:withInValue:</option>
+		
+		<option value="//api/name/setPitchParamID:withInValue:">- setPitchParamID:withInValue:</option>
+		
+		<option value="//api/name/setReverbParamID:withInValue:">- setReverbParamID:withInValue:</option>
 		
 		<option value="//api/name/startCapture">- startCapture</option>
 		
@@ -1014,6 +1022,252 @@
 			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL isRunning</code></div>
 
 		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYAUAudioCapture.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/effectTypeFlag" title="effectTypeFlag"></a>
+	<h3 class="method-title"><code><a href="#//api/name/effectTypeFlag">&nbsp;&nbsp;effectTypeFlag</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>变调组合类型</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int effectTypeFlag</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>目前提供了8种类型的变调场景, flag和变调组合类型的对应关系如下
+- 0 无组合
+- 1 reverb
+- 2 delay
+- 3 reverb+delay
+- 4 pitchShift
+- 5 reverb+pitchShift
+- 6 delay+pitchShift
+- 7 reverb+delay+pitchShift</p><div class="warning"><p><strong>Warning:</strong> 在设置effectTypeFlag时，请先将effectType设置成KSYAudioEffectType_COUSTOM模式，否则effectTypeFlag设置无法生效</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYAUAudioCapture.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setReverbParamID:withInValue:" title="setReverbParamID:withInValue:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setReverbParamID:withInValue:">&ndash;&nbsp;setReverbParamID:withInValue:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>自定义混响参数接口</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setReverbParamID:(AudioUnitParameterID)<em>inID</em> withInValue:(AudioUnitParameterValue)<em>inValue</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>inID</code></th>
+						<td><p>混响参数(0~6), 对应关系如下
+- 0 kReverb2Param_DryWetMix
+- 1 kReverb2Param_Gain
+- 2 kReverb2Param_MinDelayTime
+- 3 kReverb2Param_MaxDelayTime
+- 4 kReverb2Param_DecayTimeAt0Hz
+- 5 kReverb2Param_DecayTimeAtNyquist
+- 6 kReverb2Param_RandomizeReflections
+*</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>inValue</code></th>
+						<td><p>混响参数对应的值</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYAUAudioCapture.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setPitchParamID:withInValue:" title="setPitchParamID:withInValue:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setPitchParamID:withInValue:">&ndash;&nbsp;setPitchParamID:withInValue:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>自定义pitchShift参数接口</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setPitchParamID:(AudioUnitParameterID)<em>inID</em> withInValue:(AudioUnitParameterValue)<em>inValue</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>inID</code></th>
+						<td><p>pitchShift参数,对应关系如下
+- 0 kNewTimePitchParam_Rate
+- 1 kNewTimePitchParam_Pitch (SDK中变调主要是调这个参数)
+- 4 kNewTimePitchParam_Overlap
+- 6 kNewTimePitchParam_EnablePeakLocking
+*</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>inValue</code></th>
+						<td><p>pitchShift参数对应的值</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYAUAudioCapture.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setDelayParamID:withInValue:" title="setDelayParamID:withInValue:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setDelayParamID:withInValue:">&ndash;&nbsp;setDelayParamID:withInValue:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>自定义delay参数接口</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setDelayParamID:(AudioUnitParameterID)<em>inID</em> withInValue:(AudioUnitParameterValue)<em>inValue</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>inID</code></th>
+						<td><p>delay参数(0~3),对应关系如下
+- 0 kDelayParam_WetDryMix
+- 1 kDelayParam_DelayTime
+- 2 kDelayParam_Feedback
+- 3 kDelayParam_LopassCutoff
+*</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>inValue</code></th>
+						<td><p>delay参数对应的值</p></td>
+					</tr>
+				
+				</table>
+			</div>
 			
 
 			
