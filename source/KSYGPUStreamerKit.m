@@ -1013,9 +1013,14 @@ static GPUImageRotationMode KSYImage2GPURotate[] = {
     if (_vCapDev.isRunning){
         return;
     }
-    if(fmt != kCVPixelFormatType_32BGRA ){
+
+    if(fmt != kCVPixelFormatType_32BGRA  &&
+        fmt != kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange &&
+        fmt != kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)
+    {
         fmt = kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange;
     }
+
     _capturePixelFormat = fmt;
     _vCapDev.outputPixelFmt = fmt;
     _capToGpu =[[KSYGPUPicInput alloc] initWithFmt:fmt];

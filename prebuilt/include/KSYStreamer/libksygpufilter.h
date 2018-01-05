@@ -29,5 +29,5 @@
 #import "KSYTransitionFilter.h"
 #import "KSYGPUPicture.h"
 
-#define KSYGPUFILTER_VER 2.9.3
-#define KSYGPUFILTER_ID  abf176dedbad505f0db00cbd0f6ab0fbed2e7f5b
+#define KSYGPUFILTER_VER 3.0.0
+#define KSYGPUFILTER_ID  fe6e51843deec8d035d2c97cacca92982a913a13

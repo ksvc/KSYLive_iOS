@@ -352,6 +352,32 @@
             <NodeRef refid="35"/>
 		</Token>
 		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMediaInfoProber/getVideoThumbnailImageAtTime:width:height:accurate:</TokenIdentifier>
+			<Abstract type="html">精准获取视频缩略图</Abstract>
+			<DeclaredIn>KSYMediaInfoProber.h</DeclaredIn>
+			
+			<Declaration>- (UIImage *)getVideoThumbnailImageAtTime:(NSTimeInterval)seekTime width:(int)width height:(int)height accurate:(BOOL)accurate</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>seekTime</Name>
+					<Abstract type="html">指定的时间位置，单位为s, 小于0时无法截图</Abstract>
+				</Parameter><Parameter>
+					<Name>width</Name>
+					<Abstract type="html">缩略图的宽度</Abstract>
+				</Parameter><Parameter>
+					<Name>height</Name>
+					<Abstract type="html">缩略图的高度</Abstract>
+				</Parameter><Parameter>
+					<Name>accurate</Name>
+					<Abstract type="html">指定是否使用精准获取缩略图</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">返回UIImage对象，即为缩略图</Abstract></ReturnValue>
+			<Anchor>//api/name/getVideoThumbnailImageAtTime:width:height:accurate:</Anchor>
+            <NodeRef refid="35"/>
+		</Token>
+		
         
         
 	</File>

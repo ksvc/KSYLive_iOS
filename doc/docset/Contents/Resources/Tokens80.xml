@@ -33,6 +33,46 @@
             <NodeRef refid="80"/>
         </Token>
         
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_ShockWave</TokenIdentifier>
+            <Abstract type="html">冲击波效果</Abstract>
+            <Declaration>KSYShakeType_ShockWave</Declaration>
+            
+            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
+            
+            <NodeRef refid="80"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_BlackMagic</TokenIdentifier>
+            <Abstract type="html">Black magic效果</Abstract>
+            <Declaration>KSYShakeType_BlackMagic</Declaration>
+            
+            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
+            
+            <NodeRef refid="80"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_Lightning</TokenIdentifier>
+            <Abstract type="html">闪电效果</Abstract>
+            <Declaration>KSYShakeType_Lightning</Declaration>
+            
+            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
+            
+            <NodeRef refid="80"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_Ktv</TokenIdentifier>
+            <Abstract type="html">KTV效果</Abstract>
+            <Declaration>KSYShakeType_Ktv</Declaration>
+            
+            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
+            
+            <NodeRef refid="80"/>
+        </Token>
+        
         
 	</File>
 </Tokens>
