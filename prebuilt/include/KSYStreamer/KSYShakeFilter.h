@@ -14,6 +14,14 @@ typedef NS_ENUM(NSInteger, KSYShakeType) {
     KSYShakeType_ZOOM = 0,
     /// 彩色抖动效果
     KSYShakeType_Color = 1,
+    /// 冲击波效果
+    KSYShakeType_ShockWave = 2,
+    /// Black magic效果
+    KSYShakeType_BlackMagic = 3,
+    /// 闪电效果
+    KSYShakeType_Lightning = 4,
+    /// KTV效果
+    KSYShakeType_Ktv = 5,
 };
 
 /** KSYShakeFilter 画面抖动效果
