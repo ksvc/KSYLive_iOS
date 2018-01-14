@@ -13,42 +13,6 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/setMvScreenSource:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, retain) GPUImageMovie *MvScreenSource</Declaration>
-			
-			
-			<Anchor>//api/name/MvScreenSource</Anchor>
-            <NodeRef refid="39"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/MvScreenSource</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, retain) GPUImageMovie *MvScreenSource</Declaration>
-			
-			
-			<Anchor>//api/name/MvScreenSource</Anchor>
-            <NodeRef refid="39"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYMvFilter/MvScreenSource</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, retain) GPUImageMovie *MvScreenSource</Declaration>
-			
-			
-			<Anchor>//api/name/MvScreenSource</Anchor>
-            <NodeRef refid="39"/>
-		</Token>
-		
-		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/initWithPath:shouldRepeat:</TokenIdentifier>
 			<Abstract type="html">单个mp4 filter</Abstract>
 			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
@@ -69,6 +33,30 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/MvPause</TokenIdentifier>
+			<Abstract type="html">mv 播放暂停</Abstract>
+			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
+			
+			<Declaration>- (void)MvPause</Declaration>
+			
+			
+			<Anchor>//api/name/MvPause</Anchor>
+            <NodeRef refid="39"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/MvResume</TokenIdentifier>
+			<Abstract type="html">mv 播放暂停恢复</Abstract>
+			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
+			
+			<Declaration>- (void)MvResume</Declaration>
+			
+			
+			<Anchor>//api/name/MvResume</Anchor>
+            <NodeRef refid="39"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/closeMvFilter</TokenIdentifier>
 			<Abstract type="html">关闭mv filter</Abstract>
 			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
@@ -77,42 +65,6 @@
 			
 			
 			<Anchor>//api/name/closeMvFilter</Anchor>
-            <NodeRef refid="39"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/setMvPlayEndCallback:</TokenIdentifier>
-			<Abstract type="html">mv播放结束回调函数</Abstract>
-			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( ) mvPlayEndCallback</Declaration>
-			
-			
-			<Anchor>//api/name/mvPlayEndCallback</Anchor>
-            <NodeRef refid="39"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/mvPlayEndCallback</TokenIdentifier>
-			<Abstract type="html">mv播放结束回调函数</Abstract>
-			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( ) mvPlayEndCallback</Declaration>
-			
-			
-			<Anchor>//api/name/mvPlayEndCallback</Anchor>
-            <NodeRef refid="39"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYMvFilter/mvPlayEndCallback</TokenIdentifier>
-			<Abstract type="html">mv播放结束回调函数</Abstract>
-			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, copy) void ( ^ ) ( ) mvPlayEndCallback</Declaration>
-			
-			
-			<Anchor>//api/name/mvPlayEndCallback</Anchor>
             <NodeRef refid="39"/>
 		</Token>
 		

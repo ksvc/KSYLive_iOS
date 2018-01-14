@@ -54,15 +54,19 @@
 
 	
 	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/timeInfo">timeInfo</option>
+		
+	</optgroup>
+	
 
 	
 
 	
 	<optgroup label="Instance Methods">
 		
-		<option value="//api/name/closeMvEffect">- closeMvEffect</option>
-		
-		<option value="//api/name/initWithEffectShader:">- initWithEffectShader:</option>
+		<option value="//api/name/initWithEffectShader:durationTime:">- initWithEffectShader:durationTime:</option>
 		
 	</optgroup>
 	
@@ -120,8 +124,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/initWithEffectShader:" title="initWithEffectShader:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/initWithEffectShader:">&ndash;&nbsp;initWithEffectShader:</a></code>
+	<a name="//api/name/timeInfo" title="timeInfo"></a>
+	<h3 class="method-title"><code><a href="#//api/name/timeInfo">&nbsp;&nbsp;timeInfo</a></code>
 </h3>
 
 	<div class="method-info">
@@ -131,26 +135,14 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>初始化并导入effectShader</p>
+				<p>设置MV特效生成的时间</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (id)initWithEffectShader:(NSString *)<em>effectShader</em></code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) CGFloat timeInfo</code></div>
 
 		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>NSString</code></th>
-						<td><p>shader</p></td>
-					</tr>
-				
-				</table>
-			</div>
 			
 
 			
@@ -173,8 +165,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/closeMvEffect" title="closeMvEffect"></a>
-	<h3 class="method-title"><code><a href="#//api/name/closeMvEffect">&ndash;&nbsp;closeMvEffect</a></code>
+	<a name="//api/name/initWithEffectShader:durationTime:" title="initWithEffectShader:durationTime:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithEffectShader:durationTime:">&ndash;&nbsp;initWithEffectShader:durationTime:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -184,14 +176,31 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>关闭mv effect</p>
+				<p>初始化并导入effectShader</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)closeMvEffect</code></div>
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithEffectShader:(NSString *)<em>effectShader</em> durationTime:(CGFloat)<em>durTime</em></code></div>
 
 		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>durTime</code></th>
+						<td><p>MV特效持续时间</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>shader字符串</code></th>
+						<td><p>片源着色器</p></td>
+					</tr>
+				
+				</table>
+			</div>
 			
 
 			

@@ -43,18 +43,6 @@
 @property (nonatomic, readonly) GPUImageOutput<GPUImageInput>* filter;
 
 /**
- @abstract   图像混合器 for 预览
- @discussion 将多图层的内容叠加
- */
-@property (nonatomic, readonly) KSYGPUPicMixer        *vPreviewMixer;
-
-/**
- @abstract   图像混合器 for 推流
- @discussion 将多图层的内容叠加
- */
-@property (nonatomic, readonly) KSYGPUPicMixer        *vStreamMixer;
-
-/**
  @abstract   预览视图
  @discussion 通过此指针可以对预览视图进行操作
  */

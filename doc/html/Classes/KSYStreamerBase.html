@@ -68,6 +68,8 @@
 		
 		<option value="//api/name/bwEstimateMode">bwEstimateMode</option>
 		
+		<option value="//api/name/bypassMp4FastStart">bypassMp4FastStart</option>
+		
 		<option value="//api/name/bypassRecordDuration">bypassRecordDuration</option>
 		
 		<option value="//api/name/bypassRecordErrorCode">bypassRecordErrorCode</option>
@@ -3324,6 +3326,52 @@ eg: /private/var/mobile/Containers/Data/Application/APPID/tmp/test.mp4</p><p>如
 					
 				</ul>
 			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYStreamerBase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bypassMp4FastStart" title="bypassMp4FastStart"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bypassMp4FastStart">&nbsp;&nbsp;bypassMp4FastStart</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>mp4文件允许快速启动 (默认NO)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL bypassMp4FastStart</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>mp4格式的文件中将moov等index信息放到文件开头</p><p>开始录制前设置有效</p><div class="warning"><p><strong>Warning:</strong> 启用此开关会在结束是对文件进行处理, 如果要长时间录制,请关闭本选项</p></div>
+			</div>
+			
+
+			
+
 			
 
 			

@@ -39,11 +39,32 @@
                   of:(int) trackId;
 
 /**
+ @abstract  设置立体声混音音量（默认音量为1.0)，如果设置的单声道输出，则使用leftVolume进行处理
+ @param    leftVolume 左声道音量比例（0.0~2.0） (<1.0 为缩小, > 1.0为放大)
+ @param    rightVolume 右声道音量比例（0.0~2.0） (<1.0 为缩小, > 1.0为放大)
+ @param     trackId 设置对应track的
+ @return    NO为设置失败，如track不存在，或vol超出范围
+ @warning   设置放大的音量可能会出现爆音, 请注意
+ **/
+- (BOOL) setMixVolume:(float)leftVolume rightVolume:(float)rightVolume
+                   of:(int)trackId;
+
+/**
  @abstract  查询track的音量
  @param     trackId 设置对应track的
  @return    负数为查询失败，如track不存在
  **/
 - (float) getMixVolume:(int) trackId;
+
+/**
+ @abstract  查询track的音量，
+ @param    leftVolume 左声道音量比例
+ @param    rightVolume 右音量比例
+ @param     trackId 设置对应track的
+ @return    负数为查询失败，如track不存在
+ **/
+- (void) getMixVolume:(float *)leftVolume rightVolume:(float *)rightVolume
+                   of:(int)trackId;
 
 /**
  @abstract  开启/关闭一路声音

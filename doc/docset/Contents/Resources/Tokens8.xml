@@ -46,6 +46,29 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/setMixVolume:rightVolume:of:</TokenIdentifier>
+			<Abstract type="html">设置立体声混音音量（默认音量为1.0)，如果设置的单声道输出，则使用leftVolume进行处理</Abstract>
+			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)setMixVolume:(float)leftVolume rightVolume:(float)rightVolume of:(int)trackId</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>leftVolume</Name>
+					<Abstract type="html">左声道音量比例（0.0~2.0） (&lt;1.0 为缩小, &gt; 1.0为放大)</Abstract>
+				</Parameter><Parameter>
+					<Name>rightVolume</Name>
+					<Abstract type="html">右声道音量比例（0.0~2.0） (&lt;1.0 为缩小, &gt; 1.0为放大)</Abstract>
+				</Parameter><Parameter>
+					<Name>trackId</Name>
+					<Abstract type="html">设置对应track的</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">NO为设置失败，如track不存在，或vol超出范围</Abstract></ReturnValue>
+			<Anchor>//api/name/setMixVolume:rightVolume:of:</Anchor>
+            <NodeRef refid="8"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/getMixVolume:</TokenIdentifier>
 			<Abstract type="html">查询track的音量</Abstract>
 			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
@@ -60,6 +83,30 @@
 			<ReturnValue><Abstract type="html">负数为查询失败，如track不存在
 *</Abstract></ReturnValue>
 			<Anchor>//api/name/getMixVolume:</Anchor>
+            <NodeRef refid="8"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYAudioMixer/getMixVolume:rightVolume:of:</TokenIdentifier>
+			<Abstract type="html">查询track的音量，</Abstract>
+			<DeclaredIn>KSYAudioMixer.h</DeclaredIn>
+			
+			<Declaration>- (void)getMixVolume:(float *)leftVolume rightVolume:(float *)rightVolume of:(int)trackId</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>leftVolume</Name>
+					<Abstract type="html">左声道音量比例</Abstract>
+				</Parameter><Parameter>
+					<Name>rightVolume</Name>
+					<Abstract type="html">右音量比例</Abstract>
+				</Parameter><Parameter>
+					<Name>trackId</Name>
+					<Abstract type="html">设置对应track的</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">负数为查询失败，如track不存在
+*</Abstract></ReturnValue>
+			<Anchor>//api/name/getMixVolume:rightVolume:of:</Anchor>
             <NodeRef refid="8"/>
 		</Token>
 		

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYWeakProxy.html">
+	<File path="Classes/KSYVideoInfo.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYWeakProxy</TokenIdentifier>
-			<Abstract type="html">A proxy used to hold a weak object.
-It can be used to avoid retain cycles, such as the target in NSTimer or CADisplayLink.</Abstract>
-			<DeclaredIn>KSYWeakProxy.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYVideoInfo</TokenIdentifier>
+			<Abstract type="html">视频信息</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
             
 			
 			<NodeRef refid="49"/>
@@ -14,72 +13,110 @@ It can be used to avoid retain cycles, such as the target in NSTimer or CADispla
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYWeakProxy/setTarget:</TokenIdentifier>
-			<Abstract type="html">The proxy target.</Abstract>
-			<DeclaredIn>KSYWeakProxy.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/setVcodec:</TokenIdentifier>
+			<Abstract type="html">视频编码格式, 具体类型为MEDIAINFOCODECID</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nullable, nonatomic, weak, readonly) id target</Declaration>
+			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID vcodec</Declaration>
 			
 			
-			<Anchor>//api/name/target</Anchor>
+			<Anchor>//api/name/vcodec</Anchor>
             <NodeRef refid="49"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYWeakProxy/target</TokenIdentifier>
-			<Abstract type="html">The proxy target.</Abstract>
-			<DeclaredIn>KSYWeakProxy.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/vcodec</TokenIdentifier>
+			<Abstract type="html">视频编码格式, 具体类型为MEDIAINFOCODECID</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nullable, nonatomic, weak, readonly) id target</Declaration>
+			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID vcodec</Declaration>
 			
 			
-			<Anchor>//api/name/target</Anchor>
+			<Anchor>//api/name/vcodec</Anchor>
             <NodeRef refid="49"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYWeakProxy/target</TokenIdentifier>
-			<Abstract type="html">The proxy target.</Abstract>
-			<DeclaredIn>KSYWeakProxy.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYVideoInfo/vcodec</TokenIdentifier>
+			<Abstract type="html">视频编码格式, 具体类型为MEDIAINFOCODECID</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nullable, nonatomic, weak, readonly) id target</Declaration>
+			<Declaration>@property (nonatomic) MEDIAINFO_CODEC_ID vcodec</Declaration>
 			
 			
-			<Anchor>//api/name/target</Anchor>
+			<Anchor>//api/name/vcodec</Anchor>
             <NodeRef refid="49"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYWeakProxy/initWithTarget:</TokenIdentifier>
-			<Abstract type="html">Creates a new weak proxy for target.</Abstract>
-			<DeclaredIn>KSYWeakProxy.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/setFrame_width:</TokenIdentifier>
+			<Abstract type="html">视频帧宽度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>- (instancetype)initWithTarget:(id)target</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>target</Name>
-					<Abstract type="html">Target object.</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">A new proxy object.</Abstract></ReturnValue>
-			<Anchor>//api/name/initWithTarget:</Anchor>
+			<Declaration>@property (nonatomic, assign) int32_t frame_width</Declaration>
+			
+			
+			<Anchor>//api/name/frame_width</Anchor>
             <NodeRef refid="49"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KSYWeakProxy/proxyWithTarget:</TokenIdentifier>
-			<Abstract type="html">Creates a new weak proxy for target.</Abstract>
-			<DeclaredIn>KSYWeakProxy.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/frame_width</TokenIdentifier>
+			<Abstract type="html">视频帧宽度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
 			
-			<Declaration>+ (instancetype)proxyWithTarget:(id)target</Declaration>
-			<Parameters>
-				<Parameter>
-					<Name>target</Name>
-					<Abstract type="html">Target object.</Abstract>
-				</Parameter>
-			</Parameters>
-			<ReturnValue><Abstract type="html">A new proxy object.</Abstract></ReturnValue>
-			<Anchor>//api/name/proxyWithTarget:</Anchor>
+			<Declaration>@property (nonatomic, assign) int32_t frame_width</Declaration>
+			
+			
+			<Anchor>//api/name/frame_width</Anchor>
+            <NodeRef refid="49"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYVideoInfo/frame_width</TokenIdentifier>
+			<Abstract type="html">视频帧宽度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int32_t frame_width</Declaration>
+			
+			
+			<Anchor>//api/name/frame_width</Anchor>
+            <NodeRef refid="49"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/setFrame_height:</TokenIdentifier>
+			<Abstract type="html">视频帧高度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int32_t frame_height</Declaration>
+			
+			
+			<Anchor>//api/name/frame_height</Anchor>
+            <NodeRef refid="49"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYVideoInfo/frame_height</TokenIdentifier>
+			<Abstract type="html">视频帧高度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int32_t frame_height</Declaration>
+			
+			
+			<Anchor>//api/name/frame_height</Anchor>
+            <NodeRef refid="49"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYVideoInfo/frame_height</TokenIdentifier>
+			<Abstract type="html">视频帧高度</Abstract>
+			<DeclaredIn>KSYMediaInfo.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) int32_t frame_height</Declaration>
+			
+			
+			<Anchor>//api/name/frame_height</Anchor>
             <NodeRef refid="49"/>
 		</Token>
 		

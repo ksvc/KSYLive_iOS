@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYAudioNoiseSuppress.html">
+	<File path="Constants/KSYAudioEffectType.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYAudioNoiseSuppress</TokenIdentifier>
-			<Abstract type="html">噪声抑制等级</Abstract>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYAudioEffectType</TokenIdentifier>
+			<Abstract type="html">音效类型</Abstract>
 			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
             
 			
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_OFF</TokenIdentifier>
-            <Abstract type="html">关闭</Abstract>
-            <Declaration>KSYAudioNoiseSuppress_OFF</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioEffectType_NONE</TokenIdentifier>
+            <Abstract type="html">初始化时状态为空闲</Abstract>
+            <Declaration>KSYAudioEffectType_NONE</Declaration>
             
             <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
             
@@ -24,9 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_LOW</TokenIdentifier>
-            <Abstract type="html">温和</Abstract>
-            <Declaration>KSYAudioNoiseSuppress_LOW</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioEffectType_MALE</TokenIdentifier>
+            <Abstract type="html">大叔</Abstract>
+            <Declaration>KSYAudioEffectType_MALE</Declaration>
             
             <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
             
@@ -34,9 +34,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_MEDIUM</TokenIdentifier>
-            <Abstract type="html">中等</Abstract>
-            <Declaration>KSYAudioNoiseSuppress_MEDIUM</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioEffectType_FEMALE</TokenIdentifier>
+            <Abstract type="html">萝莉</Abstract>
+            <Declaration>KSYAudioEffectType_FEMALE</Declaration>
             
             <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
             
@@ -44,9 +44,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_HIGH</TokenIdentifier>
-            <Abstract type="html">激进</Abstract>
-            <Declaration>KSYAudioNoiseSuppress_HIGH</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioEffectType_HEROIC</TokenIdentifier>
+            <Abstract type="html">宏大</Abstract>
+            <Declaration>KSYAudioEffectType_HEROIC</Declaration>
             
             <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
             
@@ -54,9 +54,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioNoiseSuppress_VERYHIGH</TokenIdentifier>
-            <Abstract type="html">非常激进</Abstract>
-            <Declaration>KSYAudioNoiseSuppress_VERYHIGH</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioEffectType_ROBOT</TokenIdentifier>
+            <Abstract type="html">机器人</Abstract>
+            <Declaration>KSYAudioEffectType_ROBOT</Declaration>
             
             <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
             
