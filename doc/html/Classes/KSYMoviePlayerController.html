@@ -156,6 +156,8 @@
 		
 		<option value="//api/name/initWithContentURL:">- initWithContentURL:</option>
 		
+		<option value="//api/name/initWithContentURL:backupURL:">- initWithContentURL:backupURL:</option>
+		
 		<option value="//api/name/initWithContentURL:fileList:sharegroup:">- initWithContentURL:fileList:sharegroup:</option>
 		
 		<option value="//api/name/initWithContentURL:sharegroup:">- initWithContentURL:sharegroup:</option>
@@ -300,6 +302,79 @@
 <li>rtsp</li>
 </ul>
 <div class="warning"><p><strong>Warning:</strong> 必须调用该方法进行初始化，不能调用init方法。</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYMoviePlayerController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithContentURL:backupURL:" title="initWithContentURL:backupURL:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithContentURL:backupURL:">&ndash;&nbsp;initWithContentURL:backupURL:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>初始化播放器并设置主播放地址和备用播放地址</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithContentURL:(NSURL *)<em>url</em> backupURL:(NSURL *)<em>backupURL</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>url</code></th>
+						<td><p>视频主播放地址，使用HEVC流地址.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>backURL</code></th>
+						<td><p>视频备用播放地址，使用H264流地址</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>返回KSYMoviePlayerController对象，该对象的视频播放地址ContentURL已经初始化。此时播放器状态为MPMoviePlaybackStateStopped.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>Available in KSYMoviePlayerController 3.0.1 and later.</p>
+			</div>
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>如果设置了备用播放地址，则会在设备不支持硬解播放HEVC流时切换到备用播放地址进行播放</p><div class="warning"><p><strong>Warning:</strong> 该方法由金山云引入，不是原生系统接口</p></div>
 			</div>
 			
 

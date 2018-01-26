@@ -73,6 +73,36 @@
             <NodeRef refid="80"/>
         </Token>
         
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_Illusion</TokenIdentifier>
+            <Abstract type="html">幻觉</Abstract>
+            <Declaration>KSYShakeType_Illusion</Declaration>
+            
+            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
+            
+            <NodeRef refid="80"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_Xsignal</TokenIdentifier>
+            <Abstract type="html">X-Signal</Abstract>
+            <Declaration>KSYShakeType_Xsignal</Declaration>
+            
+            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
+            
+            <NodeRef refid="80"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_70s</TokenIdentifier>
+            <Abstract type="html">70s</Abstract>
+            <Declaration>KSYShakeType_70s</Declaration>
+            
+            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
+            
+            <NodeRef refid="80"/>
+        </Token>
+        
         
 	</File>
 </Tokens>

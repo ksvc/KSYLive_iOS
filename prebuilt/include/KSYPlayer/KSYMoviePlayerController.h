@@ -96,6 +96,18 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
 - (instancetype)initWithContentURL:(NSURL *)url;
 
 /**
+ @abstract 初始化播放器并设置主播放地址和备用播放地址
+ @param url 视频主播放地址，使用HEVC流地址.
+ @param backURL 视频备用播放地址，使用H264流地址
+ @return 返回KSYMoviePlayerController对象，该对象的视频播放地址ContentURL已经初始化。此时播放器状态为MPMoviePlaybackStateStopped.
+ 
+ @discussion 如果设置了备用播放地址，则会在设备不支持硬解播放HEVC流时切换到备用播放地址进行播放
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 3.0.1 and later.
+ */
+- (instancetype)initWithContentURL:(NSURL *)url backupURL:(NSURL*)backupURL;
+
+/**
  @abstract 初始化播放器并设置播放地址
  @param url 视频播放地址，该地址可以是本地地址或者服务器地址.
  @param sharegroup opengl的sharegroup, 用于共享视频渲染texture

@@ -39,14 +39,14 @@
     }
 }
 
-// 重写父类layoutUI方法
-- (void)layoutUI {
-    if(self.ctrlView){
-        CGFloat minWidth = MIN(self.view.frame.size.width, self.view.frame.size.height);
-        CGFloat maxWidth = MAX(self.view.frame.size.width, self.view.frame.size.height);
-        self.ctrlView.frame = (!UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) ?  CGRectMake(0, 0, maxWidth , minWidth) : CGRectMake(0, 0, minWidth , maxWidth);
-        [self.ctrlView layoutUI];
-    }
-}
+//// 重写父类layoutUI方法
+//- (void)layoutUI {
+//    if(self.ctrlView){
+//        CGFloat minWidth = MIN(self.view.frame.size.width, self.view.frame.size.height);
+//        CGFloat maxWidth = MAX(self.view.frame.size.width, self.view.frame.size.height);
+//        self.ctrlView.frame = (!UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) ?  CGRectMake(0, 0, maxWidth , minWidth) : CGRectMake(0, 0, minWidth , maxWidth);
+//        [self.ctrlView layoutUI];
+//    }
+//}
 
 @end

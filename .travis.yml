@@ -1,5 +1,9 @@
 language: objective-c
+<<<<<<< HEAD
 osx_image: xcode9
+=======
+osx_image: xcode8
+>>>>>>> 453ca092e88a247ed27e927ae695d4fb5dd169e8
 xcode_workspace: demo/KSYLiveDemo.xcworkspace
 xcode_scheme: KSYLiveDemo
 script:

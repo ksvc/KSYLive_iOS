@@ -24,6 +24,7 @@
 @property (nonatomic, readwrite) KSYPlayerCfgVC *config;
 @property(nonatomic,strong) KSYAVWriter *AVWriter;
 @property (nonatomic, readwrite)  BOOL bRecording;
+@property (nonatomic,strong) KSYUIView *subView; //二级视图
 @end
 
 @implementation KSYPlayerVC{
@@ -110,6 +111,10 @@
         [_player.view setFrame: videoView.bounds];
         [videoView addSubview: _player.view];
     }
+}
+- (void)viewDidLayoutSubviews {
+    self.subView.frame = CGRectMake(0,  ctrlView.gap + CGRectGetMaxY(btnVideo.frame), ctrlView.width, CGRectGetMinY(progressView.frame) - ctrlView.gap - CGRectGetMaxY(btnVideo.frame));
+    [self.subView layoutUI];
 }
 
 - (UILabel *)addLabelWithText:(NSString *)text textColor:(UIColor*)textColor {
@@ -750,6 +755,7 @@
     else if(btn == btnQuit)
         [self onQuit:btn];
     else if(btn == btnVideo || btn == btnAudio || btn == btnSubtitle || btn == btnOthers) {
+        
         KSYUIView *subView = nil;
         if(btn == btnVideo)
             subView = picView;
@@ -759,7 +765,9 @@
             subView = subtitleView;
         else
             subView = otherView;
-        [self hideElements:btn view:subView];
+    
+        self.subView = subView;
+        [self hideElements:btn view:self.subView];
     }
 }
 

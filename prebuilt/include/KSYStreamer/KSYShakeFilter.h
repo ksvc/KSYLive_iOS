@@ -22,6 +22,12 @@ typedef NS_ENUM(NSInteger, KSYShakeType) {
     KSYShakeType_Lightning = 4,
     /// KTV效果
     KSYShakeType_Ktv = 5,
+    /// 幻觉
+    KSYShakeType_Illusion = 6,
+    /// X-Signal
+    KSYShakeType_Xsignal = 7,
+    /// 70s
+    KSYShakeType_70s = 8,
 };
 
 /** KSYShakeFilter 画面抖动效果
