@@ -148,23 +148,23 @@ The directory structure is as follows:
 - source: Kit kit source code
 - releaseFramework: Scripts and projects for packaging a precompiled library into an easy-to-integrate framework
 
-`` `
+```
 $ git clone https://github.com/ksvc/KSYLive_iOS.git KSYLive_iOS --depth 1
-`` `
+```
 
 #### 3.2.2 From [bitbucket](https://bitbucket.org/ksvc/ksylive_ios.git) clone
 
 For some places to visit slower github circumstances, you can get from the bitbucket clone library content and github consistent.
-`` `
+```
 $ git clone https://bitbucket.org/ksvc/ksylive_ios.git --depth 1
-`` `
+```
 
 #### 3.2.3 Install using Cocoapods
 By using Cocoapods, you can download the static library and code of this SDK locally just by adding a sentence similar to the following sentence to your Podfile:
-`` `ruby
+```ruby
 pod 'libksygpulive / KSYGPUResource'
 pod 'libksygpulive / libksygpulive'
-`` `
+```
 POD install can be implemented.
 
 Among them, the first paragraph libksygpulive SDK name, the second paragraph KSYGPUResource and libksygpulive sub-module name
@@ -181,29 +181,29 @@ This SDK provides a number of different sub-modules to meet the needs of differe
 <b markdown = 1>
   
 * Local development version (sdk clone or download to the local)
-`` `
+```
 pod 'libksygpulive / libksygpulive',: path => '../'
-`` `
+```
 
 * Directly specify the SDK's github repository address and version number
-`` `
+```
 pod 'libksygpulive / libksygpulive',: git => 'https://github.com/ksvc/KSYLive_iOS.git' ,: tag => 'v1.8.0'
-`` `
+```
 
 Get spec from cocoapod official library trunk, download sdk from github
-`` `
+```
 pod 'libksygpulive / libksygpulive'
-`` `
+```
 
 * Get spec from cocoapod official library Trunk, download sdk from Kingsoft cloud storage ks3 (domestic speed is faster)
-`` `
+```
 pod 'libksygpulive_ks3 / libksygpulive'
-`` `
+```
 
 * If pod install can not find the prompt of specification, please update repo first
-`` `
+```
 pod repo update
-`` `
+```
 
 * ** Note 1 **: The above statements can not be added to the Podfile, their role is the same, but Podspec read different locations.
 
@@ -220,11 +220,11 @@ Please refer to [GPUImage](https://github.com/BradLarson/GPUImage/releases/tag/0
 #### 3.3.1 Use Cocoapod to run demo
 There is already a Podfile in the demo directory that specifies the local development version of the pod
 In the demo directory, execute the following command, you can start to compile and run the demo
-`` `
+```
 $ cd demo
 $ pod install
 $ open KSYLiveDemo.xcworkspace
-`` `
+```
 
 note:
 After updating the pod, you need to open xcwrokspace instead of xcodeproj
@@ -233,12 +233,12 @@ After updating the pod, you need to open xcwrokspace instead of xcodeproj
 * SDK package as framework
 
 Unzip the archive (or clone successfully), enter the releaseFramework directory, download the dependencies via release-libKSYLive.sh and package out the framework, generated to KSYLive_iOS / framework / static directory.
-`` `
+```
 $ cd releaseFramework
 $ ./release-libKSYLive.sh libksygpulive lite
 $ ls ../framework/static
 Bugly.framework GPUImage.framework libksygpulive.framework
-`` `
+```
 Please refer to the help of the script release-libKSYLive.sh (./release-libKSYLive.sh -h) or [Dynamic Library Point 4] for details on the parameters (https://github.com/ksvc/KSYLive_iOS/wiki/dylib ).
 
 > Bugly.framework is to collect the demo's crash letter
@@ -246,12 +246,12 @@ Please refer to the help of the script release-libKSYLive.sh (./release-libKSYLi
 * SDK package as framework
 
 Unzip the archive (or clone successfully), enter the releaseFramework directory, download the dependencies via release-libKSYLive.sh and package out the framework, generated to KSYLive_iOS / framework / static directory.
-`` `
+```
 $ cd releaseFramework
 $ ./release-libKSYLive.sh libksygpulive lite
 $ ls ../framework/static
 Bugly.framework GPUImage.framework libksygpulive.framework
-`` `
+```
 Please refer to the help of the script release-libKSYLive.sh (./release-libKSYLive.sh -h) or [Dynamic Library Point 4] for details on the parameters (https://github.com/ksvc/KSYLive_iOS/wiki/dylib ).
 
 > Bugly.framework is used to collect demo crashes (used in demo only) Bugs are not dependent on integrating the SDK into user projects.
@@ -264,16 +264,16 @@ Select KSYLiveDemo project -> select Project KSYLiveDemo-> select Info tab -> se
 ! [xcode_configs](https://github.com/ksvc/KSYLive_iOS/wiki/images/xcode_configs.png)
 
 Or manually add the following parameters in the project configuration: (For details, see KSYLiveDemo-framework.xcconfig in the demo directory)
-`` `
+```
 OTHER_LDFLAGS = $ (inherited) -ObjC -all_load -framework libksygpulive -framework GPUImage -framework Bugly -lstdc ++. 6 -lz
 FRAMEWORK_SEARCH_PATHS = $ (inherited) ../framework/ ../framework/static
-`` `
+```
 The above is the integration method of the static library. For the configuration and usage of the dynamic library, please refer to the content of [Dynamic Library](https://github.com/ksvc/KSYLive_iOS/wiki/dylib) in the Wiki.
 ### 3.4 Add header files to the files that need to use this SDK
-`` `
+```
 #import <GPUImage / GPUImage.h>
 #import <libksygpulive / KSYGPUStreamerKit.h>
-`` `
+```
 The above two header files need to be introduced:
 * GPUImage.h because of reliance on third-party framework needs to be introduced
 * KSYGPUStreamerKit.h is open top kit class kit class can be used directly, you can also modify
@@ -282,10 +282,10 @@ The above two header files need to be introduced:
 
 ### 3.5 SDK version number query
 The SDK version number mainly through the core class query
-`` `
+```
 NSLog (@ "version:% @", [streamerBase getKSYVersion]);
 NSLog (@ "version:% @", [kit getKSYVersion]);
-`` `
+```
 
 ### 3.6 Precautions when integrating
 * This framework already includes [Play SDK](https://github.com/ksvc/KSYMediaPlayer_iOS.git)
@@ -293,9 +293,9 @@ And will have a conflict with the playback SDK, before integration, please ensur
 * This framework may conflict with other static libraries that use FFmpeg (conflict may consider using dynamic libraries)
 * This framework is a static library, although the size of the library is 20M +, but after the last link, the increment of the app is only 5M +
 * If you use the cocoapod official library Trunk and found that you can not find the latest version of the library, you need to execute the following command to update the spec library
-`` `
+```
 pod repo update
-`` `
+```
 
 ## four reference documents
 * [iOS Streaming SDK User Guide](https://github.com/ksvc/KSYLive_iOS/wiki/KSYStreamerSDKUserManual)
@@ -341,5 +341,3 @@ Extra Attachments | Textual Forms Console log, crash reports, other ancillary in
 [badge_at_ks3]: https://img.shields.io/cocoapods/at/libksygpulive_ks3.svg?label=Apps%20Using%20libksygpulive_ks3&colorB=28B9FE
 [badge_dt_ks3]: https://img.shields.io/cocoapods/dt/libksygpulive_ks3.svg?label=Total%20Downloads%20libksygpulive_ks3&colorB=28B9FE
 [github_release]: https://github.com/ksvc/KSYLive_iOS/releases/latest
-
-
