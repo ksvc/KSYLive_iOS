@@ -6,11 +6,11 @@
 [![Apps Using][badge_at_ks3]][cocoapods_url_ks3]
 [![Downloads][badge_at_ks3]][cocoapods_url_ks3]
 
-[! [Build Status] (https://travis-ci.org/ksvc/KSYLive_iOS.svg?branch=master)] (https://travis-ci.org/ksvc/KSYLive_iOS)
-[! [Latest release] (https://img.shields.io/github/release/ksvc/KSYLive_iOS.svg)] (https://github.com/ksvc/KSYLive_iOS/releases/latest)
-[! [CocoaPods platform] (https://img.shields.io/cocoapods/p/libksygpulive.svg)][cocoapods_url]
-[! [CocoaPods version] https://cocoapods.org/pods/libksygpulive]
-[! [CocoaPods version] (https://img.shields.io/cocoapods/v/libksygpulive_ks3.svg?label=pod_ks3)][cocoapods_url_ks3]
+[![Build Status](https://travis-ci.org/ksvc/KSYLive_iOS.svg?branch=master)](https://travis-ci.org/ksvc/KSYLive_iOS)
+[![Latest release](https://img.shields.io/github/release/ksvc/KSYLive_iOS.svg)][github_release]
+[![CocoaPods platform](https://img.shields.io/cocoapods/p/libksygpulive.svg)][cocoapods_url]
+[![CocoaPods version](https://img.shields.io/cocoapods/v/libksygpulive.svg?label=pod_github)][cocoapods_url]
+[![CocoaPods version](https://img.shields.io/cocoapods/v/libksygpulive_ks3.svg?label=pod_ks3)][cocoapods_url_ks3]
 
 [cocoapods_url]: http://cocoapods.org/pods/libksygpulive
 [cocoapods_url_ks3]: http://cocoapods.org/pods/libksygpulive_ks3
@@ -18,6 +18,7 @@
 [badge_dt]: https://img.shields.io/cocoapods/dt/libksygpulive.svg?label=Total%20Downloads%20libksygpulive&colorB=28B9FE
 [badge_at_ks3]: https://img.shields.io/cocoapods/at/libksygpulive_ks3.svg?label=Apps%20Using%20libksygpulive_ks3&colorB=28B9FE
 [badge_dt_ks3]: https://img.shields.io/cocoapods/dt/libksygpulive_ks3.svg?label=Total%20Downloads%20libksygpulive_ks3&colorB=28B9FE
+[github_release]: https://github.com/ksvc/KSYLive_iOS/releases/latest
 
 
 <pre> Source Type: <b> Binary SDK </ b>
