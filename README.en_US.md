@@ -16,14 +16,14 @@
 Charge Type: <b> free of charge </b> </pre>
 
 ## Reading object
-This document is intended for all developers and testers who use [KSY Live iOS SDK] [libksygpulive], and requires readers to have some experience in iOS programming and development, and require readers to read [wiki] [wiki] habits.
+This document is intended for all developers and testers who use [KSY Live iOS SDK][libksygpulive], and requires readers to have some experience in iOS programming and development, and require readers to read [wiki][wiki] habits.
 
 |![live_1.png](https://raw.githubusercontent.com/wiki/ksvc/KSYLive_iOS/images/live_1.png)|![live_1.png](https://raw.githubusercontent.com/wiki/ksvc/KSYLive_iOS/images/live_2.png)|![live_1.png](https://raw.githubusercontent.com/wiki/ksvc/KSYLive_iOS/images/live_3.png)|
 
 |![live_4.png](https://raw.githubusercontent.com/wiki/ksvc/KSYLive_iOS/images/live_4.png)|![live_5.png](https://raw.githubusercontent.com/wiki/ksvc/KSYLive_iOS/images/live_5.png)|
 
 
-## One. Features
+## 1. Features
 
 [KSY Live iOS SDK][libksygpulive] Jinshan Cloud provides live solution as part of the completion of the iOS audio and video data acquisition, processing, streaming and playback.
 
@@ -38,12 +38,12 @@ This document is intended for all developers and testers who use [KSY Live iOS S
 
 ### 1.1 About Hot Update
 
-Jinshan cloud SDK guarantee, provided [Jinshan Cloud Live SDK] [libksygpulive] does not use any hot update technology, such as: RN (ReactNative), weex, JSPatch, etc., please rest assured use.
+Kingsoft Cloud guarantees, [KSY Live SDK][libksygpulive] does not use any hot update technology, such as: RN (ReactNative), weex, JSPatch, etc.
 
 ### 1.2 Push flow function
 - [x] AAC Audio Encoding (Soft and Hard)
 - [x] H.264 video encoding (soft / hardcode supported, baseline / main / high profile supported)
-- [x] [H.265 Video Soft Coding] (https://github.com/ksvc/KSYLive_iOS/wiki/enableH265)
+- [x] [H.265 Video Soft Coding](https://github.com/ksvc/KSYLive_iOS/wiki/enableH265)
 - [x] H.264 video coding (support for soft editing H.264 / H.265 support for H.264 hard coding (baseline / main / high profile support)
 - [x] Multi-resolution encoding support
 - [x] Camera Controls (Toward, Flash, Front and Rear Cameras)
@@ -53,23 +53,23 @@ Jinshan cloud SDK guarantee, provided [Jinshan Cloud Live SDK] [libksygpulive] d
 - [x] Support RTMP streaming live streaming
 - [x] Provides two levels of APIs: easy-to-use kit APIs and flexible component-based APIs that provide open source kit class code
 - [x] Seamless integration with GPUImage
-- [x] [Built-in Beauty Filters for GPU Implementation] (https://github.com/ksvc/KSYLive_iOS/wiki/filter)
-- [x] Support [Background Music Play] (https://github.com/ksvc/KSYLive_iOS/wiki/BGM)
-- [x] Support [Remix] (https://github.com/ksvc/KSYLive_iOS/wiki/mixer)
-- [x] Support [Video Motion Switch / Audio Streaming] (https://github.com/ksvc/KSYLive_iOS/wiki/pureAudioStream)
-- [x] Support [Backstage] (https://github.com/ksvc/KSYLive_iOS/wiki/backgroupStream)
-- [x] Support [Ear Back] (https://github.com/ksvc/KSYLive_iOS/wiki/micMonitor)
-- [x] Support [PIP] (https://github.com/ksvc/KSYLive_iOS/wiki/pip) Streaming
-- [x] support [preview and capture resolution set separately, support for any resolution] (https://github.com/ksvc/KSYLive_iOS/wiki/customOutputSize)
-- [x] Support [3rd party with wheat] (https://github.com/ksvc/KSYDiversityLive_iOS/tree/master/agoraRtc)
-- [x] [Scene Code] (https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)
-- [x] Support for soft and hard coded [Performance Coding Mode] (https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)
-- [x] Support [Preview & Stream respectively] (https://github.com/ksvc/KSYLive_iOS/wiki/mirrored)
-- [x] [Online API Documentation Support] (http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
-- [x] Support [Sidebar] (https://github.com/ksvc/KSYLive_iOS/wiki/bypassRecord), save the video file during the streaming
-- [x] Support [Stereo] (https://github.com/ksvc/KSYLive_iOS/wiki/stereo) Streaming (2-channel)
-- [x] Support [Doodle Streaming] (https://github.com/ksvc/KSYLive_iOS/wiki/BrushStream)
-- [x] Support for [Desktop Recording, Live Tour] (https://github.com/ksvc/KSYAirStreamer_iOS)
+- [x] [Built-in Beauty Filters for GPU Implementation](https://github.com/ksvc/KSYLive_iOS/wiki/filter)
+- [x] Support [Background Music Play](https://github.com/ksvc/KSYLive_iOS/wiki/BGM)
+- [x] Support [Remix](https://github.com/ksvc/KSYLive_iOS/wiki/mixer)
+- [x] Support [Video Motion Switch / Audio Streaming](https://github.com/ksvc/KSYLive_iOS/wiki/pureAudioStream)
+- [x] Support [Backstage](https://github.com/ksvc/KSYLive_iOS/wiki/backgroupStream)
+- [x] Support [Ear Back](https://github.com/ksvc/KSYLive_iOS/wiki/micMonitor)
+- [x] Support [PIP](https://github.com/ksvc/KSYLive_iOS/wiki/pip) Streaming
+- [x] support [preview and capture resolution set separately, support for any resolution](https://github.com/ksvc/KSYLive_iOS/wiki/customOutputSize)
+- [x] Support [3rd party with wheat](https://github.com/ksvc/KSYDiversityLive_iOS/tree/master/agoraRtc)
+- [x] [Scene Code](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)
+- [x] Support for soft and hard coded [Performance Coding Mode](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene)
+- [x] Support [Preview & Stream respectively](https://github.com/ksvc/KSYLive_iOS/wiki/mirrored)
+- [x] [Online API Documentation Support](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
+- [x] Support [Sidebar](https://github.com/ksvc/KSYLive_iOS/wiki/bypassRecord), save the video file during the streaming
+- [x] Support [Stereo](https://github.com/ksvc/KSYLive_iOS/wiki/stereo) Streaming (2-channel)
+- [x] Support [Doodle Streaming](https://github.com/ksvc/KSYLive_iOS/wiki/BrushStream)
+- [x] Support for [Desktop Recording, Live Tour](https://github.com/ksvc/KSYAirStreamer_iOS)
 
 ### 1.3 playback features
 - [x] Consistent with the system player MPMoviePlayerController interface, seamless and fast switching to KSYMediaPlayer;
@@ -82,14 +82,14 @@ Jinshan cloud SDK guarantee, provided [Jinshan Cloud Live SDK] [libksygpulive] d
 - [x] Ultra-lightweight live sdk less than 2M;
 
 ### 1.4 documentation
-[See wiki] (https://github.com/ksvc/KSYLive_iOS/wiki)
+[See wiki](https://github.com/ksvc/KSYLive_iOS/wiki)
 
 ### 1.4 About Hot Update
 
-Kingsoft Cloud SDK guarantees that the provided [KSYLive iOS Live Broadcast SDK] (https://github.com/ksvc/KSYLive_iOS) does not use thermal update technologies such as RN (ReactNative), weex, JSPatch, etc., so be sure to use it.
+Kingsoft Cloud SDK guarantees that the provided [KSYLive iOS Live Broadcast SDK](https://github.com/ksvc/KSYLive_iOS) does not use thermal update technologies such as RN (ReactNative), weex, JSPatch, etc., so be sure to use it.
 
 ### 1.5 about the cost
-Kingsoft Cloud SDK guarantees that the provided [KSYLive iOS Live Broadcast SDK] (https://github.com/ksvc/KSYLive_iOS) can be used for commercial applications without charge for any SDK usage. However, other commercial services based on the [KSYLive iOS Live Broadcast SDK] (https://github.com/ksvc/KSYLive_iOS) will be charged by a specific vendor for licensing fees, broadly including:
+Kingsoft Cloud SDK guarantees that the provided [KSYLive iOS Live Broadcast SDK](https://github.com/ksvc/KSYLive_iOS) can be used for commercial applications without charge for any SDK usage. However, other commercial services based on the [KSYLive iOS Live Broadcast SDK](https://github.com/ksvc/KSYLive_iOS) will be charged by a specific vendor for licensing fees, broadly including:
 
 Cloud storage
 CDN distribution
@@ -100,27 +100,27 @@ CDN distribution
 ## II. Streaming Events
 ### 2.1 2016 release memorabilia
 1. 2016.02.25 uplink network adaptive on-line;
-1. 2016.03.26 [Built-in beauty] (https://github.com/ksvc/KSYLive_iOS/wiki/filter) On the line;
-1. 2016.04.11 [Voice] (https://github.com/ksvc/KSYLive_iOS/wiki/reverb) that supports four reverb modes is online;
-1. 2016.05.18 [Ear Return] (https://github.com/ksvc/KSYLive_iOS/wiki/micMonitor) Go live;
-1. 2016.06.12 [PIP] (https://github.com/ksvc/KSYLive_iOS/wiki/pip) Streaming on the line;
+1. 2016.03.26 [Built-in beauty](https://github.com/ksvc/KSYLive_iOS/wiki/filter) On the line;
+1. 2016.04.11 [Voice](https://github.com/ksvc/KSYLive_iOS/wiki/reverb) that supports four reverb modes is online;
+1. 2016.05.18 [Ear Return](https://github.com/ksvc/KSYLive_iOS/wiki/micMonitor) Go live;
+1. 2016.06.12 [PIP](https://github.com/ksvc/KSYLive_iOS/wiki/pip) Streaming on the line;
 1. 2016.06.27 support short video recording;
-1. 2016.08.24 Support [Pure Audio] (https://github.com/ksvc/KSYLive_iOS/wiki/pureAudioStream) Streaming, support [Backstage] (https://github.com/ksvc/KSYLive_iOS/wiki / backgroupStream), support video dynamic send switch;
-1. 2016.08.31 [Scenario Code] (https://github.com/ksvc/KSYLive_iOS/wiki/liveScene) to effectively enhance the live video quality;
-1. 2016.09.07 Built-in [new beauty] (https://github.com/ksvc/KSYLive_iOS/wiki/filter) on the line;
-1. 2016.09.12 [kit class top-level code open source] (https://github.com/ksvc/KSYLive_iOS/tree/master/source), podspec integrated framework will be changed to integrated static library
+1. 2016.08.24 Support [Pure Audio](https://github.com/ksvc/KSYLive_iOS/wiki/pureAudioStream) Streaming, support [Backstage](https://github.com/ksvc/KSYLive_iOS/wiki / backgroupStream), support video dynamic send switch;
+1. 2016.08.31 [Scenario Code](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene) to effectively enhance the live video quality;
+1. 2016.09.07 Built-in [new beauty](https://github.com/ksvc/KSYLive_iOS/wiki/filter) on the line;
+1. 2016.09.12 [kit class top-level code open source](https://github.com/ksvc/KSYLive_iOS/tree/master/source), podspec integrated framework will be changed to integrated static library
 1. 2016.09.21 special effects filter on the line;
-1. 2016.09.26 [double with wheat] (https://github.com/ksvc/KSYDiversityLive_Android/tree/master/Agora) stable version on the line;
-1. 2016.09.28 Video Hardcoding [Performance Encoding Mode] (https://github.com/ksvc/KSYLive_iOS/wiki/liveScene) Go live. Audio AAC hard-coded features on the line. Network adaptive scene on the line;
-1. 2016.10.19 Support [Live Streaming Dynamics] (https://github.com/ksvc/KSYLive_iOS/wiki/dynamicOrientation);
-1. 2016.10.20 Support [replaykit 屏 屏 流流] (https://github.com/ksvc/KSYDiversityLive_iOS/tree/master/KSYReplayKit);
-1. 2016.11.18 Support [Record as mp4 file while streaming] (https://github.com/ksvc/KSYLive_iOS/wiki/bypassRecord)
-1. 2016.2.22 Support [Dynamic Frame Rate] (https://github.com/ksvc/KSYLive_iOS/wiki/dynamicFPS)
-1. 2016.3.1 support anchor audio [Acquisition voice] (http://ksvc.github.io/KSYLive_iOS/doc/html/Classes/KSYAUAudioCapture.html#//api/name/effectTyped)
-1. 2017.3.14 Support [Stereo] (https://github.com/ksvc/KSYLive_iOS/wiki/stereo) Streaming
-1. 2017.5.16 Support [Graffiti streaming] (https://github.com/ksvc/KSYLive_iOS/wiki/BrushStream)
-1. 2017.7.7 Support [Desktop Recording, Live Streaming] (https://github.com/ksvc/KSYAirStreamer_iOS)
-1. 2017.7.7 Support [iOS 11 HEVC Streaming] (https://github.com/ksvc/KSYLive_iOS/wiki/enableH265)
+1. 2016.09.26 [double with wheat](https://github.com/ksvc/KSYDiversityLive_Android/tree/master/Agora) stable version on the line;
+1. 2016.09.28 Video Hardcoding [Performance Encoding Mode](https://github.com/ksvc/KSYLive_iOS/wiki/liveScene) Go live. Audio AAC hard-coded features on the line. Network adaptive scene on the line;
+1. 2016.10.19 Support [Live Streaming Dynamics](https://github.com/ksvc/KSYLive_iOS/wiki/dynamicOrientation);
+1. 2016.10.20 Support [replaykit 屏 屏 流流](https://github.com/ksvc/KSYDiversityLive_iOS/tree/master/KSYReplayKit);
+1. 2016.11.18 Support [Record as mp4 file while streaming](https://github.com/ksvc/KSYLive_iOS/wiki/bypassRecord)
+1. 2016.2.22 Support [Dynamic Frame Rate](https://github.com/ksvc/KSYLive_iOS/wiki/dynamicFPS)
+1. 2016.3.1 support anchor audio [Acquisition voice](http://ksvc.github.io/KSYLive_iOS/doc/html/Classes/KSYAUAudioCapture.html#//api/name/effectTyped)
+1. 2017.3.14 Support [Stereo](https://github.com/ksvc/KSYLive_iOS/wiki/stereo) Streaming
+1. 2017.5.16 Support [Graffiti streaming](https://github.com/ksvc/KSYLive_iOS/wiki/BrushStream)
+1. 2017.7.7 Support [Desktop Recording, Live Streaming](https://github.com/ksvc/KSYAirStreamer_iOS)
+1. 2017.7.7 Support [iOS 11 HEVC Streaming](https://github.com/ksvc/KSYLive_iOS/wiki/enableH265)
 1. 2017.8.3 support to collect noise reduction
 
 ### 2.2 Recent work
@@ -138,12 +138,12 @@ CDN distribution
 ### 3.2 download project
 The SDK provides the following access methods:
 
-#### 3.2.1 from [github] (https://github.com/ksvc/KSYLive_iOS.git) clone
+#### 3.2.1 from [github](https://github.com/ksvc/KSYLive_iOS.git) clone
 
 The directory structure is as follows:
 - demo: The demo project is KSYLive, which demonstrates the use of the SDK's main interface
 - doc / docset: appleDoc-style interface document, installed in xcode can see the method and properties of the document
-- doc / html: AppleDoc-style web interface documentation, but also view the [online version] (http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
+- doc / html: AppleDoc-style web interface documentation, but also view the [online version](http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
 - prebuilt: precompiled library header and library files
 - source: Kit kit source code
 - releaseFramework: Scripts and projects for packaging a precompiled library into an easy-to-integrate framework
@@ -152,7 +152,7 @@ The directory structure is as follows:
 $ git clone https://github.com/ksvc/KSYLive_iOS.git KSYLive_iOS --depth 1
 `` `
 
-#### 3.2.2 From [bitbucket] (https://bitbucket.org/ksvc/ksylive_ios.git) clone
+#### 3.2.2 From [bitbucket](https://bitbucket.org/ksvc/ksylive_ios.git) clone
 
 For some places to visit slower github circumstances, you can get from the bitbucket clone library content and github consistent.
 `` `
@@ -212,7 +212,7 @@ pod repo update
 
 ### 3.2.4 GPUImage Dependencies
 
-Please refer to [GPUImage] (https://github.com/BradLarson/GPUImage/releases/tag/0.1.7) provided by the official cocoapods. The current version of our test is [0.1.7] (https: // github. com / BradLarson / GPUImage / releases / tag / 0.1.7)
+Please refer to [GPUImage](https://github.com/BradLarson/GPUImage/releases/tag/0.1.7) provided by the official cocoapods. The current version of our test is [0.1.7](https: // github. com / BradLarson / GPUImage / releases / tag / 0.1.7)
 
 ### 3.3 to start the demo project
 !!!!! Note: Here are two ways to run the demo, but only one alternative; If you want to change another method, please re-download or decompression, or restore git repository before trying. !!!!!
@@ -261,14 +261,14 @@ Please refer to the help of the script release-libKSYLive.sh (./release-libKSYLi
 Open the demo directory KSYLiveDemo.xcodeproj, modify the configuration file of the KSYLiveDemo project:
 Select KSYLiveDemo project -> select Project KSYLiveDemo-> select Info tab -> select Configurations-> Debug or Release-> to KSYLiveDemo respectively select the corresponding KSYLiveDemo-framework.xcconfig file. Note that if using a dynamic library, select KSYLiveDemo-dy-framework.xcconfig.
 
-! [xcode_configs] (https://github.com/ksvc/KSYLive_iOS/wiki/images/xcode_configs.png)
+! [xcode_configs](https://github.com/ksvc/KSYLive_iOS/wiki/images/xcode_configs.png)
 
 Or manually add the following parameters in the project configuration: (For details, see KSYLiveDemo-framework.xcconfig in the demo directory)
 `` `
 OTHER_LDFLAGS = $ (inherited) -ObjC -all_load -framework libksygpulive -framework GPUImage -framework Bugly -lstdc ++. 6 -lz
 FRAMEWORK_SEARCH_PATHS = $ (inherited) ../framework/ ../framework/static
 `` `
-The above is the integration method of the static library. For the configuration and usage of the dynamic library, please refer to the content of [Dynamic Library] (https://github.com/ksvc/KSYLive_iOS/wiki/dylib) in the Wiki.
+The above is the integration method of the static library. For the configuration and usage of the dynamic library, please refer to the content of [Dynamic Library](https://github.com/ksvc/KSYLive_iOS/wiki/dylib) in the Wiki.
 ### 3.4 Add header files to the files that need to use this SDK
 `` `
 #import <GPUImage / GPUImage.h>
@@ -288,7 +288,7 @@ NSLog (@ "version:% @", [kit getKSYVersion]);
 `` `
 
 ### 3.6 Precautions when integrating
-* This framework already includes [Play SDK] (https://github.com/ksvc/KSYMediaPlayer_iOS.git)
+* This framework already includes [Play SDK](https://github.com/ksvc/KSYMediaPlayer_iOS.git)
 And will have a conflict with the playback SDK, before integration, please ensure that the previously integrated KSY playback SDK is removed
 * This framework may conflict with other static libraries that use FFmpeg (conflict may consider using dynamic libraries)
 * This framework is a static library, although the size of the library is 20M +, but after the last link, the increment of the app is only 5M +
@@ -298,9 +298,9 @@ pod repo update
 `` `
 
 ## four reference documents
-* [iOS Streaming SDK User Guide] (https://github.com/ksvc/KSYLive_iOS/wiki/KSYStreamerSDKUserManual)
-* [iOS Live Streaming SDK Frequently Asked Questions] (https://github.com/ksvc/KSYLive_iOS/wiki/FAQ)
-* [Interface Change History] (https://github.com/ksvc/KSYLive_iOS/wiki/apiAdjust)
+* [iOS Streaming SDK User Guide](https://github.com/ksvc/KSYLive_iOS/wiki/KSYStreamerSDKUserManual)
+* [iOS Live Streaming SDK Frequently Asked Questions](https://github.com/ksvc/KSYLive_iOS/wiki/FAQ)
+* [Interface Change History](https://github.com/ksvc/KSYLive_iOS/wiki/apiAdjust)
 
 ## V. player usage examples
 See the github library at https://github.com/ksvc/KSYMediaPlayer_iOS.git
@@ -319,7 +319,7 @@ Problem Description | Description of the problem
 Extra Attachments | Textual Forms Console log, crash reports, other ancillary information (screen shots or videos, etc.) |
 
 ### 6.2 Contact information
-* Homepage: [Jinshan cloud] (http://www.ksyun.com/)
+* Homepage: [Jinshan cloud](http://www.ksyun.com/)
 * E-mail: <zengfanping@kingsoft.com>
 * QQ discussion group:
     * 574179720 [video cloud technology exchange group]
