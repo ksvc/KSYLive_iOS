@@ -1,17 +1,24 @@
-# [KSY Live iOS SDK] (http://ksvc.github.io/KSYLive_iOS/doc/html/index.html)
+<h1 align="center">KSY Live iOS SDK</h1>
 
-[! [Apps Using] (https://img.shields.io/cocoapods/at/libksygpulive.svg?label=Apps%20Using%20libksygpulive&colorB=28B9FE)] (http://cocoapods.org/pods/libksygpulive) [ ! Downloads (https://img.shields.io/cocoapods/dt/libksygpulive.svg?label=Total%20Downloads%20libksygpulive&colorB=28B9FE)] (http://cocoapods.org/pods/libksygpulive)
+[![Apps Using][badge_at]][cocoapods_url]
+[![Downloads][badge_dt]][cocoapods_url]
 
-
-[! [Apps Using] (https://img.shields.io/cocoapods/at/libksygpulive_ks3.svg?label=Apps%20Using%20libksygpulive_ks3&colorB=28B9FE)] (http://cocoapods.org/pods/libksygpulive_ks3)
-[!] Downloads (https://img.shields.io/cocoapods/dt/libksygpulive_ks3.svg?label=Total%20Downloads%20libksygpulive_ks3&colorB=28B9FE)] (http://cocoapods.org/pods/libksygpulive_ks3)
-
+[![Apps Using][badge_at_ks3]][cocoapods_url_ks3]
+[![Downloads][badge_at_ks3]][cocoapods_url_ks3]
 
 [! [Build Status] (https://travis-ci.org/ksvc/KSYLive_iOS.svg?branch=master)] (https://travis-ci.org/ksvc/KSYLive_iOS)
 [! [Latest release] (https://img.shields.io/github/release/ksvc/KSYLive_iOS.svg)] (https://github.com/ksvc/KSYLive_iOS/releases/latest)
-[! [CocoaPods platform] (https://img.shields.io/cocoapods/p/libksygpulive.svg)] (https://cocoapods.org/pods/libksygpulive)
+[! [CocoaPods platform] (https://img.shields.io/cocoapods/p/libksygpulive.svg)][cocoapods_url]
 [! [CocoaPods version] https://cocoapods.org/pods/libksygpulive]
-[! [CocoaPods version] (https://img.shields.io/cocoapods/v/libksygpulive_ks3.svg?label=pod_ks3)] (https://cocoapods.org/pods/libksygpulive_ks3)
+[! [CocoaPods version] (https://img.shields.io/cocoapods/v/libksygpulive_ks3.svg?label=pod_ks3)][cocoapods_url_ks3]
+
+[cocoapods_url]: http://cocoapods.org/pods/libksygpulive
+[cocoapods_url_ks3]: http://cocoapods.org/pods/libksygpulive_ks3
+[badge_at]: https://img.shields.io/cocoapods/at/libksygpulive.svg?label=Apps%20Using%20libksygpulive&colorB=28B9FE
+[badge_dt]: https://img.shields.io/cocoapods/dt/libksygpulive.svg?label=Total%20Downloads%20libksygpulive&colorB=28B9FE
+[badge_at_ks3]: https://img.shields.io/cocoapods/at/libksygpulive_ks3.svg?label=Apps%20Using%20libksygpulive_ks3&colorB=28B9FE
+[badge_dt_ks3]: https://img.shields.io/cocoapods/dt/libksygpulive_ks3.svg?label=Total%20Downloads%20libksygpulive_ks3&colorB=28B9FE
+
 
 <pre> Source Type: <b> Binary SDK </ b>
 Charge Type: <b> free of charge </ b> </ pre>
@@ -334,3 +341,5 @@ Extra Attachments | Textual Forms Console log, crash reports, other ancillary in
 [libksygpulive]: https://github.com/ksvc/KSYLive_iOS
 [ksyun]: https://www.ksyun.com/about/aboutcontact
 [wiki]: https://github.com/ksvc/KSYLive_iOS/wiki
+
+
