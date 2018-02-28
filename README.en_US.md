@@ -27,11 +27,11 @@ This document is intended for all developers and testers who use [KSY Live iOS S
 
 [KSY Live iOS SDK][libksygpulive] Jinshan Cloud provides live solution as part of the completion of the iOS audio and video data acquisition, processing, streaming and playback.
 
-[KSY Live iOS SDK][libksygpulive] ** does not limit the user's push, pull flow address. Users can only use [KSY Live iOS SDK][libksygpulive] instead of using Jinshan cloud services.
+[KSY Live iOS SDK][libksygpulive] **does not** limit the user's push, pull flow address. Users can only use [KSY Live iOS SDK][libksygpulive] instead of using Jinshan cloud services.
 
 [KSY Live iOS SDK][libksygpulive] does not charge any license fee, does not contain any lapse of time or shut down the back door remotely. At the same time [KSY Live iOS SDK][libksygpulive] does not require ak / sk authentication, there is no user identification information.
 
-[KSY Live iOS SDK][libksygpulive] provides industry-leading H.265 encoding and decoding capabilities, H.265 capabilities are ** free to use **, welcome to integration trial.
+[KSY Live iOS SDK][libksygpulive] provides industry-leading H.265 encoding and decoding capabilities, H.265 capabilities are **free to use**, welcome to integration trial.
 
 [KSY Live iOS SDK][libksygpulive] Currently does not provide open source code, if you need other custom development features, please contact [Kingsoft Business Channel][ksyun].
 
@@ -177,7 +177,7 @@ This SDK provides a number of different sub-modules to meet the needs of differe
 * KSYGPUResource: streaming media resources used in the main file, mainly for beauty and special effects filters
 
 <details>
-<summary> Pod Dependencies </ summary>
+<summary> Pod Dependencies </summary>
 <b markdown = 1>
   
 * Local development version (sdk clone or download to the local)
@@ -205,10 +205,10 @@ pod 'libksygpulive_ks3 / libksygpulive'
 pod repo update
 ```
 
-* ** Note 1 **: The above statements can not be added to the Podfile, their role is the same, but Podspec read different locations.
+* **Note 1**: The above statements can not be added to the Podfile, their role is the same, but Podspec read different locations.
 
-</ b>
-</ details>
+</b>
+</details>
 
 ### 3.2.4 GPUImage Dependencies
 
