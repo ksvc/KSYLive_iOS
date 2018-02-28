@@ -12,37 +12,28 @@
 [![CocoaPods version](https://img.shields.io/cocoapods/v/libksygpulive.svg?label=pod_github)][cocoapods_url]
 [![CocoaPods version](https://img.shields.io/cocoapods/v/libksygpulive_ks3.svg?label=pod_ks3)][cocoapods_url_ks3]
 
-[cocoapods_url]: http://cocoapods.org/pods/libksygpulive
-[cocoapods_url_ks3]: http://cocoapods.org/pods/libksygpulive_ks3
-[badge_at]: https://img.shields.io/cocoapods/at/libksygpulive.svg?label=Apps%20Using%20libksygpulive&colorB=28B9FE
-[badge_dt]: https://img.shields.io/cocoapods/dt/libksygpulive.svg?label=Total%20Downloads%20libksygpulive&colorB=28B9FE
-[badge_at_ks3]: https://img.shields.io/cocoapods/at/libksygpulive_ks3.svg?label=Apps%20Using%20libksygpulive_ks3&colorB=28B9FE
-[badge_dt_ks3]: https://img.shields.io/cocoapods/dt/libksygpulive_ks3.svg?label=Total%20Downloads%20libksygpulive_ks3&colorB=28B9FE
-[github_release]: https://github.com/ksvc/KSYLive_iOS/releases/latest
+<pre> Source Type: <b> Binary SDK </b>
+Charge Type: <b> free of charge </b> </pre>
 
+## Reading object
+This document is intended for all developers and testers who use [KSY Live iOS SDK] [libksygpulive], and requires readers to have some experience in iOS programming and development, and require readers to read [wiki] [wiki] habits.
 
-<pre> Source Type: <b> Binary SDK </ b>
-Charge Type: <b> free of charge </ b> </ pre>
+|![live_1.png](https://raw.githubusercontent.com/wiki/ksvc/KSYLive_iOS/images/live_1.png)|![live_1.png](https://raw.githubusercontent.com/wiki/ksvc/KSYLive_iOS/images/live_2.png)|![live_1.png](https://raw.githubusercontent.com/wiki/ksvc/KSYLive_iOS/images/live_3.png)|
 
-## reading object
-This document is intended for all developers and testers who use [Kingsoft Cloud SDK] [libksygpulive], and requires readers to have some experience in iOS programming and development, and require readers to read [wiki] [wiki] habits.
-
-|! [live_1.png] (https://raw.githubusercontent.com/wiki/ksvc/KSYLive_iOS/images/live_1.png) |! [live_1.png] (https://raw.githubusercontent.com/wiki/ ksvc / KSYLive_iOS / images / live_2.png) |! [live_1.png] (https://raw.githubusercontent.com/wiki/ksvc/KSYLive_iOS/images/live_3.png) |
-
-|! [live_4.png] (https://raw.githubusercontent.com/wiki/ksvc/KSYLive_iOS/images/live_4.png) |! [live_5.png] (https://raw.githubusercontent.com/wiki/ ksvc / KSYLive_iOS / images / live_5.png) |
+|![live_4.png](https://raw.githubusercontent.com/wiki/ksvc/KSYLive_iOS/images/live_4.png)|![live_5.png](https://raw.githubusercontent.com/wiki/ksvc/KSYLive_iOS/images/live_5.png)|
 
 
 ## One. Features
 
-[Jinshan Cloud Live SDK] [libksygpulive] Jinshan Cloud provides live solution as part of the completion of the iOS audio and video data acquisition, processing, streaming and playback.
+[KSY Live iOS SDK][libksygpulive] Jinshan Cloud provides live solution as part of the completion of the iOS audio and video data acquisition, processing, streaming and playback.
 
-[Jinshan cloud broadcast SDK] [libksygpulive] ** does not limit the user's push, pull flow address. Users can only use [Kingsoft Cloud SDK] [libksygpulive] instead of using Jinshan cloud services.
+[KSY Live iOS SDK][libksygpulive] ** does not limit the user's push, pull flow address. Users can only use [KSY Live iOS SDK][libksygpulive] instead of using Jinshan cloud services.
 
-[Jinshan cloud broadcast SDK] [libksygpulive] does not charge any license fee, does not contain any lapse of time or shut down the back door remotely. At the same time [Jinshan cloud broadcast SDK] [libksygpulive] does not require ak / sk authentication, there is no user identification information.
+[KSY Live iOS SDK][libksygpulive] does not charge any license fee, does not contain any lapse of time or shut down the back door remotely. At the same time [KSY Live iOS SDK][libksygpulive] does not require ak / sk authentication, there is no user identification information.
 
-[Jinshan Cloud Live SDK] [libksygpulive] provides industry-leading H.265 encoding and decoding capabilities, H.265 capabilities are ** free to use **, welcome to integration trial.
+[KSY Live iOS SDK][libksygpulive] provides industry-leading H.265 encoding and decoding capabilities, H.265 capabilities are ** free to use **, welcome to integration trial.
 
-[Jinshan Cloud Live SDK] [libksygpulive] Currently does not provide open source code, if you need other custom development features, please contact [Kingsoft Business Channel] [ksyun].
+[KSY Live iOS SDK][libksygpulive] Currently does not provide open source code, if you need other custom development features, please contact [Kingsoft Business Channel][ksyun].
 
 
 ### 1.1 About Hot Update
@@ -342,5 +333,13 @@ Extra Attachments | Textual Forms Console log, crash reports, other ancillary in
 [libksygpulive]: https://github.com/ksvc/KSYLive_iOS
 [ksyun]: https://www.ksyun.com/about/aboutcontact
 [wiki]: https://github.com/ksvc/KSYLive_iOS/wiki
+
+[cocoapods_url]: http://cocoapods.org/pods/libksygpulive
+[cocoapods_url_ks3]: http://cocoapods.org/pods/libksygpulive_ks3
+[badge_at]: https://img.shields.io/cocoapods/at/libksygpulive.svg?label=Apps%20Using%20libksygpulive&colorB=28B9FE
+[badge_dt]: https://img.shields.io/cocoapods/dt/libksygpulive.svg?label=Total%20Downloads%20libksygpulive&colorB=28B9FE
+[badge_at_ks3]: https://img.shields.io/cocoapods/at/libksygpulive_ks3.svg?label=Apps%20Using%20libksygpulive_ks3&colorB=28B9FE
+[badge_dt_ks3]: https://img.shields.io/cocoapods/dt/libksygpulive_ks3.svg?label=Total%20Downloads%20libksygpulive_ks3&colorB=28B9FE
+[github_release]: https://github.com/ksvc/KSYLive_iOS/releases/latest
 
 
