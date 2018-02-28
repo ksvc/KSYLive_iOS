@@ -97,7 +97,7 @@ CDN distribution
 1. Even wheat
 1. Third-party beauty
 
-## II. Streaming Events
+## 2. Streaming Events
 ### 2.1 2016 release memorabilia
 1. 2016.02.25 uplink network adaptive on-line;
 1. 2016.03.26 [Built-in beauty](https://github.com/ksvc/KSYLive_iOS/wiki/filter) On the line;
@@ -128,7 +128,7 @@ CDN distribution
 1. 2017.03.xx multi-view live;
 1. 2017.03.xx background noise reduction;
 
-## Third. SDK integration methods introduced
+## 3. SDK integration methods introduced
 ### 3.1 System Requirements
 * Minimum iOS version supported: iOS 7.0
 * Minimum support iPhone model: iPhone 4
@@ -161,10 +161,12 @@ $ git clone https://bitbucket.org/ksvc/ksylive_ios.git --depth 1
 
 #### 3.2.3 Install using Cocoapods
 By using Cocoapods, you can download the static library and code of this SDK locally just by adding a sentence similar to the following sentence to your Podfile:
+
 ```ruby
 pod 'libksygpulive / KSYGPUResource'
 pod 'libksygpulive / libksygpulive'
 ```
+
 POD install can be implemented.
 
 Among them, the first paragraph libksygpulive SDK name, the second paragraph KSYGPUResource and libksygpulive sub-module name
@@ -181,26 +183,31 @@ This SDK provides a number of different sub-modules to meet the needs of differe
 <b markdown = 1>
   
 * Local development version (sdk clone or download to the local)
+
 ```
 pod 'libksygpulive / libksygpulive',: path => '../'
 ```
 
 * Directly specify the SDK's github repository address and version number
+
 ```
 pod 'libksygpulive / libksygpulive',: git => 'https://github.com/ksvc/KSYLive_iOS.git' ,: tag => 'v1.8.0'
 ```
 
 Get spec from cocoapod official library trunk, download sdk from github
+
 ```
 pod 'libksygpulive / libksygpulive'
 ```
 
 * Get spec from cocoapod official library Trunk, download sdk from Kingsoft cloud storage ks3 (domestic speed is faster)
+
 ```
 pod 'libksygpulive_ks3 / libksygpulive'
 ```
 
 * If pod install can not find the prompt of specification, please update repo first
+
 ```
 pod repo update
 ```
@@ -261,7 +268,7 @@ Please refer to the help of the script release-libKSYLive.sh (./release-libKSYLi
 Open the demo directory KSYLiveDemo.xcodeproj, modify the configuration file of the KSYLiveDemo project:
 Select KSYLiveDemo project -> select Project KSYLiveDemo-> select Info tab -> select Configurations-> Debug or Release-> to KSYLiveDemo respectively select the corresponding KSYLiveDemo-framework.xcconfig file. Note that if using a dynamic library, select KSYLiveDemo-dy-framework.xcconfig.
 
-! [xcode_configs](https://github.com/ksvc/KSYLive_iOS/wiki/images/xcode_configs.png)
+![xcode_configs](https://github.com/ksvc/KSYLive_iOS/wiki/images/xcode_configs.png)
 
 Or manually add the following parameters in the project configuration: (For details, see KSYLiveDemo-framework.xcconfig in the demo directory)
 ```
@@ -297,26 +304,28 @@ And will have a conflict with the playback SDK, before integration, please ensur
 pod repo update
 ```
 
-## four reference documents
+## 4. reference documents
 * [iOS Streaming SDK User Guide](https://github.com/ksvc/KSYLive_iOS/wiki/KSYStreamerSDKUserManual)
 * [iOS Live Streaming SDK Frequently Asked Questions](https://github.com/ksvc/KSYLive_iOS/wiki/FAQ)
 * [Interface Change History](https://github.com/ksvc/KSYLive_iOS/wiki/apiAdjust)
 
-## V. player usage examples
+## 5. player usage examples
 See the github library at https://github.com/ksvc/KSYMediaPlayer_iOS.git
 
-## Six. Feedback and suggestions
+## 6. Feedback and suggestions
 ### 6.1 Feedback Template
+
 
 | Type | Description |
 |: ---: |: ---: |
 | SDK Name | KSYLive_iOS |
 | SDK Version | v2.5.0 |
-Equipment model | iphone7 |
-OS Version | iOS 10 |
-Problem Description | Description of the problem
+| Equipment model | iphone7 |
+| OS Version | iOS 10 |
+| Problem Description | Description of the problem |
 | Description of Operation | Describes what went wrong with this operation |
-Extra Attachments | Textual Forms Console log, crash reports, other ancillary information (screen shots or videos, etc.) |
+| Extra Attachments | Textual Forms Console log, crash reports, other ancillary information (screen shots or videos, etc.) |
+
 
 ### 6.2 Contact information
 * Homepage: [Jinshan cloud](http://www.ksyun.com/)
