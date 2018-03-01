@@ -1,0 +1,85 @@
+//
+//  PrefixHeader.pch
+//  KSYLiveUIDemo
+//
+//  Created by 王旭 on 2017/11/3.
+//  Copyright © 2017年 王旭. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#ifdef __OBJC__
+#pragma mark - 头文件
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+//适配
+#import <Masonry/Masonry.h>
+//缓存数据
+#import <YYCache/YYCache.h>
+//按钮
+#import "UIButton+Extension.h"
+#import "UIBarButtonItem+Item.h"
+//布局label
+#import "KSYCustomLabel.h"
+#import "KSYGetDeviceName.h"
+#import "UIColor+Additions.h"
+
+#endif
+
+//弱引用
+#define WeakObj(o) try{}@finally{} __weak typeof(o) o##Weak = o;
+#define weakObj(o) __weak typeof(o) o##Weak = o;
+//屏幕尺寸
+#define KSYScreenHeight [[UIScreen mainScreen] bounds].size.height
+#define KSYScreenWidth [[UIScreen mainScreen] bounds].size.width
+#define KSYScreen_Frame(x,y,w,h) CGRectMake(x,y,w,h)
+//屏幕中心
+#define KSYView_Center(view) ((view).center)
+#define KSYView_Center_X(view) ((view).center.x)
+#define KSYView_Center_Y(view) ((view).center.y)
+//控件宽高
+#define KSYViewFrame_Size_Width(view) ((view).frame.size.width)
+#define KSYViewFrame_Size_Height(view) ((view).frame.size.height)
+//控件原始坐标
+#define KSYViewFrame_Origin_X(view) ((view).frame.origin.x)
+#define KSYViewFramen_Origin_Y(view) ((view).frame.origin.y)
+
+
+
+//颜色
+#define KSYRGB(r, g, b) [UIColor colorWithRed:((r) / 255.0) green:((g) / 255.0) blue:((b) /255.0) alpha:1.0]
+#define KSYRGBAlpha(r, g, b, a) [UIColor colorWithRed:((r) / 255.0) green:((g) / 255.0) blue:((b) / 255.0) alpha:(a)]
+//字体大小
+#define KSYUIFont(font) [UIFont systemFontOfSize:font]
+
+
+#define LocalString(string) NSLocalizedStringFromTable(string,@"LocalString",nil)
+
+/**
+ *  弱引用
+ */
+#define KSYWeakSelf __weak typeof(self) weakSelf = self;
+
+//改变配置
+#define KYSStreamChangeNotice @"streamChange"
+
+//音调、音量参数改变
+#define KSYStreamVoiceOrVolumnNotice @"KSYStreamVoiceOrVolumnNotice"
+//美颜参数改变
+#define KSYSkinCareChangeNotice @"KSYSkinCareChangeNotice"
+
+#define closeSuspensionBox @"closeSuspension"
+
+#define IS_IPHONEX (([[UIScreen mainScreen] bounds].size.height-812)?NO:YES)
+
+#define SafeAreaBottomHeight (KSYScreenHeight == 812.0 ? 34 : 0)
+#define SafeAreaStatusBarTopHeight (KSYScreenHeight == 812.0 ? 44 : 20)
+#define SafeAreaTopHeight (KSYScreenHeight == 812.0 ? 88 : 64)
+
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#endif /* PrefixHeader_pch */

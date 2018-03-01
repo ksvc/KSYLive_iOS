@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomLaunchController">
+            <connections>
+                <outlet property="openPlayButton" destination="ha9-31-arX" id="mNd-N5-r2b"/>
+                <outlet property="versionLab" destination="UH5-1v-21G" id="gdC-Rs-UPN"/>
+                <outlet property="view" destination="fCK-AU-QGe" id="nRx-0U-prA"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleAspectFill" id="fCK-AU-QGe">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_image" translatesAutoresizingMaskIntoConstraints="NO" id="2jd-sa-OI0">
+                    <rect key="frame" x="-12" y="0.0" width="399" height="736"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="金山视频云播放SDK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYf-Yh-L7N">
+                    <rect key="frame" x="44" y="118" width="288" height="39"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提供更专业可靠的直点播服务" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1PZ-vt-PBJ">
+                    <rect key="frame" x="108" y="172" width="160" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SDK V1.0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UH5-1v-21G">
+                    <rect key="frame" x="157" y="627" width="62" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北京金山云网络技术有限公司" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Yh-lf-yPY">
+                    <rect key="frame" x="108" y="693" width="160" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ha9-31-arX">
+                    <rect key="frame" x="108" y="577" width="160" height="40"/>
+                    <color key="backgroundColor" red="0.93937265869999997" green="0.26733985539999999" blue="0.25271934270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="LAa-T4-TXI"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <state key="normal" title="开启播放"/>
+                    <connections>
+                        <action selector="openPlayHandler:" destination="-1" eventType="touchUpInside" id="sr4-8d-gCG"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="2jd-sa-OI0" firstAttribute="leading" secondItem="fCK-AU-QGe" secondAttribute="leadingMargin" constant="-20" id="0kz-3q-NSm"/>
+                <constraint firstItem="0Yh-lf-yPY" firstAttribute="top" secondItem="UH5-1v-21G" secondAttribute="bottom" constant="51" id="2dH-Bu-zCV"/>
+                <constraint firstItem="UH5-1v-21G" firstAttribute="top" secondItem="ha9-31-arX" secondAttribute="bottom" constant="10" id="37B-cb-lMA"/>
+                <constraint firstItem="mYf-Yh-L7N" firstAttribute="top" secondItem="fCK-AU-QGe" secondAttribute="top" constant="118" id="Aw1-pN-plp"/>
+                <constraint firstItem="mYf-Yh-L7N" firstAttribute="centerX" secondItem="2jd-sa-OI0" secondAttribute="centerX" id="Fzn-SZ-S54"/>
+                <constraint firstAttribute="trailingMargin" secondItem="2jd-sa-OI0" secondAttribute="trailing" constant="-20" id="TCI-01-m9Q"/>
+                <constraint firstItem="ha9-31-arX" firstAttribute="centerX" secondItem="fCK-AU-QGe" secondAttribute="centerX" id="Uww-y8-9It"/>
+                <constraint firstItem="ha9-31-arX" firstAttribute="leading" secondItem="0Yh-lf-yPY" secondAttribute="leading" id="VyP-Zk-Gv0"/>
+                <constraint firstAttribute="bottom" secondItem="2jd-sa-OI0" secondAttribute="bottom" constant="-69" id="ZaG-Dd-7x4"/>
+                <constraint firstItem="1PZ-vt-PBJ" firstAttribute="top" secondItem="mYf-Yh-L7N" secondAttribute="bottom" constant="15" id="Zda-nM-LBg"/>
+                <constraint firstItem="0Yh-lf-yPY" firstAttribute="centerX" secondItem="UH5-1v-21G" secondAttribute="centerX" id="gEh-Zh-eZ3"/>
+                <constraint firstItem="0Yh-lf-yPY" firstAttribute="centerX" secondItem="fCK-AU-QGe" secondAttribute="centerX" id="jMU-VE-iJf"/>
+                <constraint firstAttribute="bottom" secondItem="0Yh-lf-yPY" secondAttribute="bottom" constant="-41" id="uF0-us-Rew"/>
+                <constraint firstItem="1PZ-vt-PBJ" firstAttribute="centerX" secondItem="mYf-Yh-L7N" secondAttribute="centerX" id="ulz-9e-Ro9"/>
+                <constraint firstItem="2jd-sa-OI0" firstAttribute="top" secondItem="fCK-AU-QGe" secondAttribute="top" id="zh8-eO-L2L"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="launch_image" width="16" height="16"/>
+    </resources>
+</document>

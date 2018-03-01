@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="KSYPictureAndLabelCell">
+            <rect key="frame" x="0.0" y="0.0" width="65" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="65" height="80"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" image="record_audio_effect_KTV" translatesAutoresizingMaskIntoConstraints="NO" id="YRt-7h-eXd">
+                        <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="65" id="KGM-Xg-NL6"/>
+                            <constraint firstAttribute="width" constant="65" id="uP5-CG-TKV"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Amv-MX-kSI">
+                        <rect key="frame" x="0.0" y="70" width="60" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="Iwq-CI-iTG"/>
+                            <constraint firstAttribute="width" constant="60" id="Rsg-hp-A0N"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z00-Ts-VEO">
+                        <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="65" id="ozR-ct-rpv"/>
+                            <constraint firstAttribute="height" constant="65" id="uNC-Cv-Viu"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="YRt-7h-eXd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="38g-eD-yWP"/>
+                <constraint firstItem="Amv-MX-kSI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="4Lk-Nb-RIe"/>
+                <constraint firstItem="z00-Ts-VEO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="CWk-tY-f39"/>
+                <constraint firstItem="z00-Ts-VEO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Mqm-SN-sEY"/>
+                <constraint firstItem="YRt-7h-eXd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="aD6-AU-f7u"/>
+                <constraint firstItem="Amv-MX-kSI" firstAttribute="top" secondItem="YRt-7h-eXd" secondAttribute="bottom" constant="5" id="qDz-hk-HLF"/>
+            </constraints>
+            <size key="customSize" width="65" height="80"/>
+            <connections>
+                <outlet property="backGroundImageView" destination="YRt-7h-eXd" id="bjS-28-6Mz"/>
+                <outlet property="selectBgImage" destination="z00-Ts-VEO" id="dzp-Pb-fnE"/>
+                <outlet property="titleNameLabel" destination="Amv-MX-kSI" id="pQl-OA-r1a"/>
+            </connections>
+            <point key="canvasLocation" x="41.5" y="69"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="record_audio_effect_KTV" width="126" height="128"/>
+    </resources>
+</document>

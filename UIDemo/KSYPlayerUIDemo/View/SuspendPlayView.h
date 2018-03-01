@@ -1,0 +1,14 @@
+//
+//  SuspendPlayView.h
+//  KSYPlayerDemo
+//
+//  Created by devcdl on 2017/8/31.
+//  Copyright © 2017年 kingsoft. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface SuspendPlayView : UIView
+@property (weak, nonatomic) IBOutlet UIButton *closeButton;
+
+@end

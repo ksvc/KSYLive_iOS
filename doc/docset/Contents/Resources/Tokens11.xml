@@ -99,6 +99,23 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/seekToTime:onComplete:</TokenIdentifier>
+			<Abstract type="html">seek到指定时间 (拖动进度条)</Abstract>
+			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
+			
+			<Declaration>- (void)seekToTime:(float)time onComplete:(void ( ^ ) ( BOOL ))completion</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>time</Name>
+					<Abstract type="html">时间, 请参考 bgmDuration (单位,秒)</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">是否seek 成功</Abstract></ReturnValue>
+			<Anchor>//api/name/seekToTime:onComplete:</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/seekToProgress:</TokenIdentifier>
 			<Abstract type="html">seek到指定进度 (拖动进度条)</Abstract>
 			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
@@ -112,6 +129,23 @@
 			</Parameters>
 			<ReturnValue><Abstract type="html">是否seek 成功</Abstract></ReturnValue>
 			<Anchor>//api/name/seekToProgress:</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/seekToProgress:onComplete:</TokenIdentifier>
+			<Abstract type="html">seek到指定进度 (拖动进度条)</Abstract>
+			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
+			
+			<Declaration>- (void)seekToProgress:(float)prog onComplete:(void ( ^ ) ( BOOL ))completion</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>prog</Name>
+					<Abstract type="html">进度, 请参考 bgmProgress</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">是否seek 成功</Abstract></ReturnValue>
+			<Anchor>//api/name/seekToProgress:onComplete:</Anchor>
             <NodeRef refid="11"/>
 		</Token>
 		
@@ -256,6 +290,42 @@
 			
 			
 			<Anchor>//api/name/bMuteBgmPlay</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/setBShouldAutoPlay:</TokenIdentifier>
+			<Abstract type="html">调用startPlayBgm后是否立刻启动播放，默认为YES</Abstract>
+			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bShouldAutoPlay</Declaration>
+			
+			
+			<Anchor>//api/name/bShouldAutoPlay</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYBgmPlayer/bShouldAutoPlay</TokenIdentifier>
+			<Abstract type="html">调用startPlayBgm后是否立刻启动播放，默认为YES</Abstract>
+			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bShouldAutoPlay</Declaration>
+			
+			
+			<Anchor>//api/name/bShouldAutoPlay</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYBgmPlayer/bShouldAutoPlay</TokenIdentifier>
+			<Abstract type="html">调用startPlayBgm后是否立刻启动播放，默认为YES</Abstract>
+			<DeclaredIn>KSYBgmPlayer.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL bShouldAutoPlay</Declaration>
+			
+			
+			<Anchor>//api/name/bShouldAutoPlay</Anchor>
             <NodeRef refid="11"/>
 		</Token>
 		

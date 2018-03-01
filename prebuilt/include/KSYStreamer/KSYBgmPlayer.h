@@ -49,15 +49,31 @@
  @abstract  seek到指定时间 (拖动进度条)
  @param     time 时间, 请参考 bgmDuration (单位,秒)
  @return    是否seek 成功
+ @discussion 从v3.1.0版本起，该方法返回值均为YES，推荐使用– seekToTime:onComplete:方法获取真正的返回结果
  */
 - (BOOL) seekToTime:(float)time;
+
+/**
+ @abstract  seek到指定时间 (拖动进度条)
+ @param     time 时间, 请参考 bgmDuration (单位,秒)
+ @return    是否seek 成功
+ */
+- (void) seekToTime:(float)time onComplete:(void (^)(BOOL))completion;
+
+/**
+ @abstract  seek到指定进度 (拖动进度条)
+ @param     prog 进度, 请参考 bgmProgress
+ @return    是否seek 成功
+ @discussion 从v3.1.0版本起，该方法返回值均为YES，推荐使用– seekToProgress:onComplete:方法获取真正的返回结果
+ */
+- (BOOL) seekToProgress:(float)prog;
 
 /**
  @abstract  seek到指定进度 (拖动进度条)
  @param     prog 进度, 请参考 bgmProgress
  @return    是否seek 成功
  */
-- (BOOL) seekToProgress:(float)prog;
+- (void) seekToProgress:(float)prog onComplete:(void (^)(BOOL))completion;
 
 /**
  @abstract   背景音乐的音量
@@ -84,6 +100,12 @@
  @discussion 仅仅静音播放, 不影响回调的音频数据
  */
 @property (nonatomic, assign) BOOL bMuteBgmPlay;
+
+/**
+ @abstract   调用startPlayBgm后是否立刻启动播放，默认为YES
+ @discussion 如果设置NO，则播放准备工作完成后进入pause状态，启动播放需调用resumeBgm方法
+ */
+@property (nonatomic, assign) BOOL bShouldAutoPlay;
 
 #pragma mark - callbacks
 /**

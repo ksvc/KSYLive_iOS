@@ -64,6 +64,8 @@
 		
 		<option value="//api/name/bMuteBgmPlay">bMuteBgmPlay</option>
 		
+		<option value="//api/name/bShouldAutoPlay">bShouldAutoPlay</option>
+		
 		<option value="//api/name/bgmDuration">bgmDuration</option>
 		
 		<option value="//api/name/bgmFinishBlock">bgmFinishBlock</option>
@@ -102,7 +104,11 @@
 		
 		<option value="//api/name/seekToProgress:">- seekToProgress:</option>
 		
+		<option value="//api/name/seekToProgress:onComplete:">- seekToProgress:onComplete:</option>
+		
 		<option value="//api/name/seekToTime:">- seekToTime:</option>
+		
+		<option value="//api/name/seekToTime:onComplete:">- seekToTime:onComplete:</option>
 		
 		<option value="//api/name/startPlayBgm:isLoop:">- startPlayBgm:isLoop:</option>
 		
@@ -434,6 +440,69 @@
 			
 
 			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>从v3.1.0版本起，该方法返回值均为YES，推荐使用– seekToTime:onComplete:方法获取真正的返回结果</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYBgmPlayer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/seekToTime:onComplete:" title="seekToTime:onComplete:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/seekToTime:onComplete:">&ndash;&nbsp;seekToTime:onComplete:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>seek到指定时间 (拖动进度条)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)seekToTime:(float)<em>time</em> onComplete:(void ( ^ ) ( BOOL ))<em>completion</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>time</code></th>
+						<td><p>时间, 请参考 <a href="#//api/name/bgmDuration">bgmDuration</a> (单位,秒)</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>是否seek 成功</p>
+			</div>
+			
+
+			
+
+			
 
 			
 
@@ -466,6 +535,69 @@
 		    
 
 			<div class="method-subsection method-declaration"><code>- (BOOL)seekToProgress:(float)<em>prog</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>prog</code></th>
+						<td><p>进度, 请参考 bgmProgress</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>是否seek 成功</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>从v3.1.0版本起，该方法返回值均为YES，推荐使用– seekToProgress:onComplete:方法获取真正的返回结果</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYBgmPlayer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/seekToProgress:onComplete:" title="seekToProgress:onComplete:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/seekToProgress:onComplete:">&ndash;&nbsp;seekToProgress:onComplete:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>seek到指定进度 (拖动进度条)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)seekToProgress:(float)<em>prog</em> onComplete:(void ( ^ ) ( BOOL ))<em>completion</em></code></div>
 
 		    
 			
@@ -674,6 +806,52 @@
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>仅仅静音播放, 不影响回调的音频数据</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">KSYBgmPlayer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bShouldAutoPlay" title="bShouldAutoPlay"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bShouldAutoPlay">&nbsp;&nbsp;bShouldAutoPlay</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>调用startPlayBgm后是否立刻启动播放，默认为YES</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL bShouldAutoPlay</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>如果设置NO，则播放准备工作完成后进入pause状态，启动播放需调用resumeBgm方法</p>
 			</div>
 			
 
