@@ -1,9 +1,5 @@
 language: objective-c
-<<<<<<< HEAD
 osx_image: xcode9
-=======
-osx_image: xcode8
->>>>>>> 453ca092e88a247ed27e927ae695d4fb5dd169e8
 xcode_workspace: demo/KSYLiveDemo.xcworkspace
 xcode_scheme: KSYLiveDemo
 script:
@@ -27,7 +23,7 @@ script:
 deploy:
   provider: releases
   api_key:
-    secure: XQG09eVzKEnzsrRdqLZhoVz9iASDf1NvRz1XFR6ad47y6JoPIiCtUOqaptf4bE7lJIdl7KqLVAAfAHDV0RHmLZ3BpPLHd/kBcGW4UW3h+GnZOh0z2ijGTn1BkxztENeSq6bPpcDR0PrBq8uc5h1RwwyQCBZPhZHbxtVcna5httOEItjOrbywv8qtIrqNRItDWHhxrOa9oc3LKeLWXnXYuyIwryIL5tq8BVFFja0raUaDfSSq2wf1WwOM5qq5Pr+0TjKE/JA7BOFAA+X2caLE5v9GW1Q9sN/WDxsyCJ/GoJ6gr05m055NG9bPfqctFlPUUO+JIw3wiJKd/Pn5WJ0v8BZ7u8eP8f2bzZO0Yc8RBfh2RaigWHg5WnVEf5SKD9fNVyvfyJ94e4oUjpRqk+0dfhOfXoSmuObMB8yRRNQjIfCJyX8CVAfRKXK49fGHS8t8AQOB6Y8eu7Er8g5/9LHJQci+rhfK+8vl5YNEUGKWqB6yOnx89cllAblXyYPuctQfRkL4DgTGjlkuZhy1eRJPgzIEJLr+vrrRx0b4Up8/EvZY4LvF/bwU9QuQLTygE8iKbg6qfn1L8wdIelD0JgORXGsXCIVvuZFah9S6mjbIquLj/D7GP06MWtTjUGVdn9NaLY7ywgkXxznzWs6V2HvYQRFMnOqzehoGMXAcqF7NRRc=
+    secure: Q3YNqhY0z4Tzl9N2PUnGHXOOBZYM15vMJn6XZxpXi5soQueok8ko+V+bTFVCUDn5JvESorCqGLjUybK5kZCGLSC+BtwXGeCdzz1qnlxp11D35BSQHTvS0httKqPNaE5Zft/8LANF0oYDvPtHUzJgX2Br0FLyWRAoWKTkKqk04zf95mfHBPC81EFXq+K49UTNIIFJTr4YbfMNlfYhIW+jqGecXaiH9jPZ7J++i0oJnHszAyWIedygjGhNfORBbz60vA8roenkkQuHTAHF6sKtvrzDYKCw40+M7q45ZkHJRL5rpryDino9hVxGnmTME+BHpXmYIBFDIXxv234NkuKTITf4BAhFir4n/3FWVtLP+2f35jG2gQib58B9ub52zfUMi6PHUKFDm7czc4BofmXhrMtiNPtwUq2iKea4UHCHon+DaUQ+xFfZwvzNBZwwrs+pHLeYXPrAEBgjDpZJxnJ2i1NGxSCnJ1TnBqa31AqLjOR8QQ4IfEjamM2S+btgQOHVW2A7NPj1+ve5cyn05zHpyGk9SzaAJhHXttAZWn70YEbF3Uk4ol8bSzb7mpzbK8Q6QZ3j4pHPoo0kPBSuTXAw8vhmlMuyCtGiY/T0L1dVcAhB7tDhijyr8FY9FqpmIOIvneAeAmb6SmxdPby6aHQJsfLAj66/ZoeKfF+FQPAb8dk=
   file: 
     - framework_${TRAVIS_TAG}.zip
     - framework_dy_${TRAVIS_TAG}.zip
