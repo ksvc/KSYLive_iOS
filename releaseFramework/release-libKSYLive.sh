@@ -16,7 +16,7 @@ PROJECT_BUILD_ROOT=`pwd`
 CONFIGURATION=Release
 PROJECT_NAME=libKSYLive
 BUILD_DIR=build
-KSY_INC_DIR=${PROJECT_BUILD_ROOT}/../prebuilt/include/
+INC_DIR=${PROJECT_BUILD_ROOT}/../prebuilt/include/
 
 function print_usage() {
 echo "USAGE:"
@@ -144,59 +144,63 @@ function xGenConfig() {
 }
 
 function xBuild() {
-PROJ=$1
-TARG=$2
-SDK=$3
+    PROJ=$1
+    TARG=$2
+    SDK=$3
 
-XCODE_BUILD="xcrun xcodebuild -quiet "
-XCODE_BUILD="$XCODE_BUILD  -configuration Release"
-XCODE_BUILD="$XCODE_BUILD  -project ${PROJ}.xcodeproj"
-XCODE_BUILD="$XCODE_BUILD  -target  ${TARG}"
-XCODE_BUILD="$XCODE_BUILD  -sdk     ${SDK}"
+    XCODE_BUILD="xcrun xcodebuild -quiet "
+    XCODE_BUILD="$XCODE_BUILD  -configuration Release"
+    XCODE_BUILD="$XCODE_BUILD  -project ${PROJ}.xcodeproj"
+    XCODE_BUILD="$XCODE_BUILD  -target  ${TARG}"
+    XCODE_BUILD="$XCODE_BUILD  -sdk     ${SDK}"
 
-echo "=====  building ${PROJ} - ${TARG} - ${SDK} @ `date` "
-xGenConfig ${XCODE_CONFIG}
-$XCODE_BUILD clean build -xcconfig ${XCODE_CONFIG}
+    echo "=====  building ${PROJ} - ${TARG} - ${SDK} @ `date` "
+    xGenConfig ${XCODE_CONFIG}
+    $XCODE_BUILD clean build -xcconfig ${XCODE_CONFIG}
 }
 
 function xUniversal() {
-TARG=$1
-CTYPE=$2
-echo "=====  strip & universal - $1 @ `date` "
-DEV_F=${BUILD_DIR}/${CONFIGURATION}-iphoneos/${TARG}.framework
-SIM_F=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${TARG}.framework
-OUT_D=../../framework/$CTYPE
-if [ ! -d $OUT_D ]; then
-    mkdir -p $OUT_D
-fi
-OUT_F=${OUT_D}/${TARG}.framework
+    TARG=$1
+    
+    echo "=====  strip & universal - $1 @ `date` "
+    DEV_F=${BUILD_DIR}/${CONFIGURATION}-iphoneos/${TARG}.framework
+    SIM_F=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${TARG}.framework
 
-cp -R ${DEV_F} ${OUT_D}
-cp ${KSY_INC_DIR}/KSYPlayer/*.h ${OUT_F}/Headers/
-if [ $FRAMEWORKNAME == "libksygpulive" ]; then
-    cp ${KSY_INC_DIR}/KSYStreamer/*.h ${OUT_F}/Headers/
-fi
-$XCODE_STRIP -S "${DEV_F}/${TARG}" 2> /dev/null
-file "${DEV_F}/${TARG}"
-$XCODE_STRIP -S "${SIM_F}/${TARG}" 2> /dev/null
-file "${SIM_F}/${TARG}"
-xcrun lipo -create -output "${OUT_F}/${TARG}" \
-                           "${DEV_F}/${TARG}" \
-                           "${SIM_F}/${TARG}"
-xcrun lipo -info "${OUT_F}/${TARG}"
-file "${OUT_F}/${TARG}"
+    cp -R ${DEV_F} ${OUT_D}
+    OUT_F=${OUT_D}/${TARG}.framework
+    
+    $XCODE_STRIP -S "${DEV_F}/${TARG}" 2> /dev/null
+    file "${DEV_F}/${TARG}"
+    $XCODE_STRIP -S "${SIM_F}/${TARG}" 2> /dev/null
+    file "${SIM_F}/${TARG}"
+
+    xcrun lipo -create -output "${OUT_F}/${TARG}" \
+                               "${DEV_F}/${TARG}" \
+                               "${SIM_F}/${TARG}"
+    xcrun lipo -info "${OUT_F}/${TARG}"
+    file "${OUT_F}/${TARG}"
 }
 
 cd $PROJECT_NAME
 echo "======================"
 echo "== build framework ==="
 echo "======================"
-mkdir -p ${KSY_INC_DIR}/libksygpulive
+mkdir -p ${INC_DIR}/libksygpulive
+
+find ${INC_DIR}/KSYPlayer -name "*.h" | xargs -I {} cp {} ${INC_DIR}/libksygpulive
+find ${INC_DIR}/KSYBase -name "*.h" | xargs -I {} cp {} ${INC_DIR}/libksygpulive
 if [ $FRAMEWORKNAME == "libksygpulive" ]; then
-    cp ${KSY_INC_DIR}/KSYPlayer/*.h   ${KSY_INC_DIR}/libksygpulive
-    cp ${KSY_INC_DIR}/KSYStreamer/*.h ${KSY_INC_DIR}/libksygpulive
+    find ${INC_DIR} -name "*.h" | xargs -I {} cp {} ${INC_DIR}/libksygpulive
 fi
+
+OUT_D=../../framework/$TYPE
+if [ ! -d $OUT_D ]; then
+    mkdir -p $OUT_D
+fi
+
 xBuild  libKSYLive  $TARGET_NAME iphoneos
 xBuild  libKSYLive  $TARGET_NAME iphonesimulator
-xUniversal $TARGET_NAME $TYPE 
-rm -rf ${KSY_INC_DIR}/libksygpulive
+xUniversal $TARGET_NAME 
+
+cp ${INC_DIR}/libksygpulive/*.h ${OUT_D}/${TARGET_NAME}.framework/Headers/
+rm -rf ${INC_DIR}/libksygpulive

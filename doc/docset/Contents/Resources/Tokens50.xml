@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYTransitionFadesInOutFilter.html">
+	<File path="Classes/KSYTransitionBlurFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYTransitionFadesInOutFilter</TokenIdentifier>
-			<Abstract type="html">KSYTransitionFadesInOutFilter 渐入淡出的转场效果</Abstract>
-			<DeclaredIn>KSYTransitionFadesInOutFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYTransitionBlurFilter</TokenIdentifier>
+			<Abstract type="html">KSYTransitionBlurFilter 模糊的转场效果</Abstract>
+			<DeclaredIn>KSYTransitionBlurFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="50"/>
@@ -13,81 +13,45 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFadesInOutFilter/setMasterLayer:</TokenIdentifier>
-			<Abstract type="html">视频所在的图层</Abstract>
-			<DeclaredIn>KSYTransitionFadesInOutFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionBlurFilter/setBToBlur:</TokenIdentifier>
+			<Abstract type="html">YES: 清晰变模糊  NO: 模糊变清晰 (默认YES)</Abstract>
+			<DeclaredIn>KSYTransitionBlurFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) NSInteger masterLayer</Declaration>
+			<Declaration>@property (nonatomic, readwrite) BOOL bToBlur</Declaration>
 			
 			
-			<Anchor>//api/name/masterLayer</Anchor>
+			<Anchor>//api/name/bToBlur</Anchor>
             <NodeRef refid="50"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFadesInOutFilter/masterLayer</TokenIdentifier>
-			<Abstract type="html">视频所在的图层</Abstract>
-			<DeclaredIn>KSYTransitionFadesInOutFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionBlurFilter/bToBlur</TokenIdentifier>
+			<Abstract type="html">YES: 清晰变模糊  NO: 模糊变清晰 (默认YES)</Abstract>
+			<DeclaredIn>KSYTransitionBlurFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) NSInteger masterLayer</Declaration>
+			<Declaration>@property (nonatomic, readwrite) BOOL bToBlur</Declaration>
 			
 			
-			<Anchor>//api/name/masterLayer</Anchor>
+			<Anchor>//api/name/bToBlur</Anchor>
             <NodeRef refid="50"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYTransitionFadesInOutFilter/masterLayer</TokenIdentifier>
-			<Abstract type="html">视频所在的图层</Abstract>
-			<DeclaredIn>KSYTransitionFadesInOutFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYTransitionBlurFilter/bToBlur</TokenIdentifier>
+			<Abstract type="html">YES: 清晰变模糊  NO: 模糊变清晰 (默认YES)</Abstract>
+			<DeclaredIn>KSYTransitionBlurFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readwrite) NSInteger masterLayer</Declaration>
+			<Declaration>@property (nonatomic, readwrite) BOOL bToBlur</Declaration>
 			
 			
-			<Anchor>//api/name/masterLayer</Anchor>
+			<Anchor>//api/name/bToBlur</Anchor>
             <NodeRef refid="50"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFadesInOutFilter/setBReverse:</TokenIdentifier>
-			<Abstract type="html">NO: 第一段视频淡入，第二段视频淡出 YES: 第一段视频淡出，第二段视频淡入 (默认为NO)</Abstract>
-			<DeclaredIn>KSYTransitionFadesInOutFilter.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) BOOL bReverse</Declaration>
-			
-			
-			<Anchor>//api/name/bReverse</Anchor>
-            <NodeRef refid="50"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFadesInOutFilter/bReverse</TokenIdentifier>
-			<Abstract type="html">NO: 第一段视频淡入，第二段视频淡出 YES: 第一段视频淡出，第二段视频淡入 (默认为NO)</Abstract>
-			<DeclaredIn>KSYTransitionFadesInOutFilter.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) BOOL bReverse</Declaration>
-			
-			
-			<Anchor>//api/name/bReverse</Anchor>
-            <NodeRef refid="50"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYTransitionFadesInOutFilter/bReverse</TokenIdentifier>
-			<Abstract type="html">NO: 第一段视频淡入，第二段视频淡出 YES: 第一段视频淡出，第二段视频淡入 (默认为NO)</Abstract>
-			<DeclaredIn>KSYTransitionFadesInOutFilter.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readwrite) BOOL bReverse</Declaration>
-			
-			
-			<Anchor>//api/name/bReverse</Anchor>
-            <NodeRef refid="50"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFadesInOutFilter/setDuration:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionBlurFilter/setDuration:</TokenIdentifier>
 			<Abstract type="html">转场重叠的帧数</Abstract>
-			<DeclaredIn>KSYTransitionFadesInOutFilter.h</DeclaredIn>
+			<DeclaredIn>KSYTransitionBlurFilter.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readwrite) int duration</Declaration>
 			
@@ -97,9 +61,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFadesInOutFilter/duration</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionBlurFilter/duration</TokenIdentifier>
 			<Abstract type="html">转场重叠的帧数</Abstract>
-			<DeclaredIn>KSYTransitionFadesInOutFilter.h</DeclaredIn>
+			<DeclaredIn>KSYTransitionBlurFilter.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readwrite) int duration</Declaration>
 			
@@ -109,9 +73,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYTransitionFadesInOutFilter/duration</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYTransitionBlurFilter/duration</TokenIdentifier>
 			<Abstract type="html">转场重叠的帧数</Abstract>
-			<DeclaredIn>KSYTransitionFadesInOutFilter.h</DeclaredIn>
+			<DeclaredIn>KSYTransitionBlurFilter.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readwrite) int duration</Declaration>
 			
@@ -121,9 +85,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFadesInOutFilter/setFrameIdx:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionBlurFilter/setFrameIdx:</TokenIdentifier>
 			<Abstract type="html">转场已经处理的帧数</Abstract>
-			<DeclaredIn>KSYTransitionFadesInOutFilter.h</DeclaredIn>
+			<DeclaredIn>KSYTransitionBlurFilter.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readwrite) int frameIdx</Declaration>
 			
@@ -133,9 +97,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionFadesInOutFilter/frameIdx</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYTransitionBlurFilter/frameIdx</TokenIdentifier>
 			<Abstract type="html">转场已经处理的帧数</Abstract>
-			<DeclaredIn>KSYTransitionFadesInOutFilter.h</DeclaredIn>
+			<DeclaredIn>KSYTransitionBlurFilter.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readwrite) int frameIdx</Declaration>
 			
@@ -145,9 +109,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYTransitionFadesInOutFilter/frameIdx</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYTransitionBlurFilter/frameIdx</TokenIdentifier>
 			<Abstract type="html">转场已经处理的帧数</Abstract>
-			<DeclaredIn>KSYTransitionFadesInOutFilter.h</DeclaredIn>
+			<DeclaredIn>KSYTransitionBlurFilter.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic, readwrite) int frameIdx</Declaration>
 			

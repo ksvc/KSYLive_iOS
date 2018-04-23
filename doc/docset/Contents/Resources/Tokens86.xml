@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYTransitionType.html">
+	<File path="Constants/KSYTranscodeErrorCode.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYTransitionType</TokenIdentifier>
-			<Abstract type="html">转场类型
-KSYTransitionType 1 ~ 99     代表 片头转场范围
-KSYTransitionType 101 ~ 199  代表 片尾转场范围
-KSYTransitionType 201 ~ 299  代表 片中转场范围</Abstract>
-			<DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYTranscodeErrorCode</TokenIdentifier>
+			<Abstract type="html">转码错误码，用于说明转码失败的原因</Abstract>
+			<DeclaredIn>KSYTranscoder.h</DeclaredIn>
             
 			
 			<NodeRef refid="86"/>
@@ -17,131 +14,91 @@ KSYTransitionType 201 ~ 299  代表 片中转场范围</Abstract>
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeNone</TokenIdentifier>
-            <Abstract type="html">关闭转场</Abstract>
-            <Declaration>KSYTransitionTypeNone</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_None</TokenIdentifier>
+            <Abstract type="html">正常无错误</Abstract>
+            <Declaration>KSYTranscodeErrorCode_None</Declaration>
             
-            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
-            
-            <NodeRef refid="86"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeFadesIn</TokenIdentifier>
-            <Abstract type="html">渐入（片头效果）</Abstract>
-            <Declaration>KSYTransitionTypeFadesIn</Declaration>
-            
-            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
             
             <NodeRef refid="86"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeBlurIn</TokenIdentifier>
-            <Abstract type="html">模糊变清晰（片头效果）</Abstract>
-            <Declaration>KSYTransitionTypeBlurIn</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_InvalidAddress</TokenIdentifier>
+            <Abstract type="html">无效的文件地址(输入或输出地址为空)</Abstract>
+            <Declaration>KSYTranscodeErrorCode_InvalidAddress</Declaration>
             
-            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
-            
-            <NodeRef refid="86"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeFadesOut</TokenIdentifier>
-            <Abstract type="html">淡出（片尾效果）</Abstract>
-            <Declaration>KSYTransitionTypeFadesOut</Declaration>
-            
-            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
             
             <NodeRef refid="86"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeBlurOut</TokenIdentifier>
-            <Abstract type="html">清晰变模糊（片尾效果）</Abstract>
-            <Declaration>KSYTransitionTypeBlurOut</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_InputFile_OpenFailed</TokenIdentifier>
+            <Abstract type="html">打开输入文件失败</Abstract>
+            <Declaration>KSYTranscodeErrorCode_InputFile_OpenFailed</Declaration>
             
-            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
-            
-            <NodeRef refid="86"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeFadesInOut</TokenIdentifier>
-            <Abstract type="html">渐入淡出</Abstract>
-            <Declaration>KSYTransitionTypeFadesInOut</Declaration>
-            
-            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
             
             <NodeRef refid="86"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeFlashBlack</TokenIdentifier>
-            <Abstract type="html">闪黑</Abstract>
-            <Declaration>KSYTransitionTypeFlashBlack</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_InvalidData</TokenIdentifier>
+            <Abstract type="html">无效的媒体数据</Abstract>
+            <Declaration>KSYTranscodeErrorCode_InvalidData</Declaration>
             
-            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
-            
-            <NodeRef refid="86"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeFlashWhite</TokenIdentifier>
-            <Abstract type="html">闪白</Abstract>
-            <Declaration>KSYTransitionTypeFlashWhite</Declaration>
-            
-            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
             
             <NodeRef refid="86"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeBlurInOut</TokenIdentifier>
-            <Abstract type="html">清晰变模糊</Abstract>
-            <Declaration>KSYTransitionTypeBlurInOut</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_OutputFile_UnsupportedFormat</TokenIdentifier>
+            <Abstract type="html">不支持的输出文件格式</Abstract>
+            <Declaration>KSYTranscodeErrorCode_OutputFile_UnsupportedFormat</Declaration>
             
-            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
-            
-            <NodeRef refid="86"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypePushUp</TokenIdentifier>
-            <Abstract type="html">上推</Abstract>
-            <Declaration>KSYTransitionTypePushUp</Declaration>
-            
-            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
             
             <NodeRef refid="86"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypePushDown</TokenIdentifier>
-            <Abstract type="html">下推</Abstract>
-            <Declaration>KSYTransitionTypePushDown</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_OutputFile_OpenFailed</TokenIdentifier>
+            <Abstract type="html">打开输出文件失败</Abstract>
+            <Declaration>KSYTranscodeErrorCode_OutputFile_OpenFailed</Declaration>
             
-            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
-            
-            <NodeRef refid="86"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypePushLeft</TokenIdentifier>
-            <Abstract type="html">左推</Abstract>
-            <Declaration>KSYTransitionTypePushLeft</Declaration>
-            
-            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
             
             <NodeRef refid="86"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypePushRight</TokenIdentifier>
-            <Abstract type="html">右推</Abstract>
-            <Declaration>KSYTransitionTypePushRight</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_OutputFile_AddStreamFailed</TokenIdentifier>
+            <Abstract type="html">输出文件添加流失败</Abstract>
+            <Declaration>KSYTranscodeErrorCode_OutputFile_AddStreamFailed</Declaration>
             
-            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            
+            <NodeRef refid="86"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_OutputFile_StartWriteFailed</TokenIdentifier>
+            <Abstract type="html">输出文件头写入失败(通常为不支持的codec)</Abstract>
+            <Declaration>KSYTranscodeErrorCode_OutputFile_StartWriteFailed</Declaration>
+            
+            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
+            
+            <NodeRef refid="86"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTranscodeErrorCode_Transcoding_Failed</TokenIdentifier>
+            <Abstract type="html">转码过程中出现错误</Abstract>
+            <Declaration>KSYTranscodeErrorCode_Transcoding_Failed</Declaration>
+            
+            <DeclaredIn>KSYTranscoder.h</DeclaredIn>
             
             <NodeRef refid="86"/>
         </Token>

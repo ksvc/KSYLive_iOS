@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYShakeType.html">
+	<File path="Constants/KSYRecordError.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYShakeType</TokenIdentifier>
-			<Abstract type="html">抖动类型</Abstract>
-			<DeclaredIn>KSYShakeFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYRecordError</TokenIdentifier>
+			<Abstract type="html">旁路录制错误码</Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
 			<NodeRef refid="80"/>
@@ -14,91 +14,41 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_ZOOM</TokenIdentifier>
-            <Abstract type="html">放大抖动效果</Abstract>
-            <Declaration>KSYShakeType_ZOOM</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYRecordErrorNone</TokenIdentifier>
+            <Abstract type="html">无错误</Abstract>
+            <Declaration>KSYRecordErrorNone</Declaration>
             
-            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
-            
-            <NodeRef refid="80"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_Color</TokenIdentifier>
-            <Abstract type="html">彩色抖动效果</Abstract>
-            <Declaration>KSYShakeType_Color</Declaration>
-            
-            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="80"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_ShockWave</TokenIdentifier>
-            <Abstract type="html">冲击波效果</Abstract>
-            <Declaration>KSYShakeType_ShockWave</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYRecordErrorPathInvalid</TokenIdentifier>
+            <Abstract type="html">地址错误</Abstract>
+            <Declaration>KSYRecordErrorPathInvalid</Declaration>
             
-            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
-            
-            <NodeRef refid="80"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_BlackMagic</TokenIdentifier>
-            <Abstract type="html">Black magic效果</Abstract>
-            <Declaration>KSYShakeType_BlackMagic</Declaration>
-            
-            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="80"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_Lightning</TokenIdentifier>
-            <Abstract type="html">闪电效果</Abstract>
-            <Declaration>KSYShakeType_Lightning</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYRecordErrorFormatNotSupport</TokenIdentifier>
+            <Abstract type="html">格式不支持</Abstract>
+            <Declaration>KSYRecordErrorFormatNotSupport</Declaration>
             
-            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
-            
-            <NodeRef refid="80"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_Ktv</TokenIdentifier>
-            <Abstract type="html">KTV效果</Abstract>
-            <Declaration>KSYShakeType_Ktv</Declaration>
-            
-            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="80"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_Illusion</TokenIdentifier>
-            <Abstract type="html">幻觉</Abstract>
-            <Declaration>KSYShakeType_Illusion</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYRecordErrorInternal</TokenIdentifier>
+            <Abstract type="html">内部错误</Abstract>
+            <Declaration>KSYRecordErrorInternal</Declaration>
             
-            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
-            
-            <NodeRef refid="80"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_Xsignal</TokenIdentifier>
-            <Abstract type="html">X-Signal</Abstract>
-            <Declaration>KSYShakeType_Xsignal</Declaration>
-            
-            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
-            
-            <NodeRef refid="80"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_70s</TokenIdentifier>
-            <Abstract type="html">70s</Abstract>
-            <Declaration>KSYShakeType_70s</Declaration>
-            
-            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="80"/>
         </Token>

@@ -1,67 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYAVMuxerStatus.html">
+	<File path="Protocols/KSYTransition.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYAVMuxerStatus</TokenIdentifier>
-			<Abstract type="html">交织处理状态</Abstract>
-			<DeclaredIn>KSYAVMuxer.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/intf/KSYTransition</TokenIdentifier>
+			<Abstract type="html">Protocol for setting duration for each transition filter</Abstract>
+			<DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="60"/>
 		</Token>
 		
 		
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusIdle</TokenIdentifier>
-            <Abstract type="html">初始状态</Abstract>
-            <Declaration>KSYAVMuxerStatusIdle</Declaration>
-            
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
-            
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/KSYTransition/setDuration:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+			
+			<Declaration>- (void)setDuration:(int)dur</Declaration>
+			
+			
+			<Anchor>//api/name/setDuration:</Anchor>
             <NodeRef refid="60"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusMuxing</TokenIdentifier>
-            <Abstract type="html">处理中</Abstract>
-            <Declaration>KSYAVMuxerStatusMuxing</Declaration>
-            
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
-            
-            <NodeRef refid="60"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusCompleted</TokenIdentifier>
-            <Abstract type="html">处理完成</Abstract>
-            <Declaration>KSYAVMuxerStatusCompleted</Declaration>
-            
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
-            
-            <NodeRef refid="60"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusFailed</TokenIdentifier>
-            <Abstract type="html">处理失败</Abstract>
-            <Declaration>KSYAVMuxerStatusFailed</Declaration>
-            
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
-            
-            <NodeRef refid="60"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAVMuxerStatusCancelled</TokenIdentifier>
-            <Abstract type="html">处理任务被取消</Abstract>
-            <Declaration>KSYAVMuxerStatusCancelled</Declaration>
-            
-            <DeclaredIn>KSYAVMuxer.h</DeclaredIn>
-            
-            <NodeRef refid="60"/>
-        </Token>
+		</Token>
+		
         
         
 	</File>

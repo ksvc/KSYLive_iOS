@@ -40,21 +40,6 @@
 		5800A01A1D76BFA600AB55F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5800A09F1D76EC1600AB55F7 /* libksygpulive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = libksygpulive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5800A0A31D76EC1600AB55F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5800DC8B1D82B9F600B1A884 /* libksyplayer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksyplayer.a; path = ../../../../prebuilt/libs/libksyplayer.a; sourceTree = "<group>"; };
-		5800DC8E1D82BA4900B1A884 /* libksystreamer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksystreamer.a; path = ../../../../../prebuilt/libs/libksystreamer.a; sourceTree = "<group>"; };
-		5800DC901D82BA7200B1A884 /* libksybase.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksybase.a; path = ../../../prebuilt/libs/libksybase.a; sourceTree = "<group>"; };
-		5800DC911D82BA7200B1A884 /* libksymediacodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksymediacodec.a; path = ../../../prebuilt/libs/libksymediacodec.a; sourceTree = "<group>"; };
-		5800DC921D82BA7200B1A884 /* libksymediacore_dec_lite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksymediacore_dec_lite.a; path = ../../../prebuilt/libs/libksymediacore_dec_lite.a; sourceTree = "<group>"; };
-		5800DC931D82BA7200B1A884 /* libksymediacore_dec_vod.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksymediacore_dec_vod.a; path = ../../../prebuilt/libs/libksymediacore_dec_vod.a; sourceTree = "<group>"; };
-		5800DC941D82BA7200B1A884 /* libksymediacore_dec_lite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksymediacore_dec_lite.a; path = ../../../prebuilt/libs/libksymediacore_dec_lite.a; sourceTree = "<group>"; };
-		5800DC951D82BA7200B1A884 /* libksymediacore_enc_265.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksymediacore_enc_265.a; path = ../../../prebuilt/libs/libksymediacore_enc_265.a; sourceTree = "<group>"; };
-		5800DC961D82BA7200B1A884 /* libksymediacore_enc_lite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksymediacore_enc_lite.a; path = ../../../prebuilt/libs/libksymediacore_enc_lite.a; sourceTree = "<group>"; };
-		5800DC971D82BA7200B1A884 /* libksymediacore_enc_lite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksymediacore_enc_lite.a; path = ../../../prebuilt/libs/libksymediacore_enc_lite.a; sourceTree = "<group>"; };
-		5800DCA01D82BA8400B1A884 /* libksyyuv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libksyyuv.a; path = ../../../prebuilt/libs/libksyyuv.a; sourceTree = "<group>"; };
-		580489C41D798C8400232F6E /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
-		58048A1D1D79C81F00232F6E /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GPUImage.framework; path = ../../../framework/GPUImage.framework; sourceTree = "<group>"; };
-		58048A201D79C8EC00232F6E /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
-		58048A231D79C92A00232F6E /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +83,6 @@
 			isa = PBXGroup;
 			children = (
 				06A646CD1D865B0300D1C620 /* KSYGPUStreamerKit */,
-				580489A91D798B4500232F6E /* BaseLibs */,
-				580489DF1D799EEA00232F6E /* KSYStreamer */,
-				580489CF1D798DF800232F6E /* KSYPlayer */,
 				5800A0171D76BFA600AB55F7 /* KSYMediaPlayer */,
 				5800A0A01D76EC1600AB55F7 /* libksygpulive */,
 				58009FE61D767B2D00AB55F7 /* Products */,
@@ -131,59 +113,6 @@
 				5800A0A31D76EC1600AB55F7 /* Info.plist */,
 			);
 			path = libksygpulive;
-			sourceTree = "<group>";
-		};
-		5800DC8D1D82BA2700B1A884 /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				5800DC8E1D82BA4900B1A884 /* libksystreamer.a */,
-			);
-			path = libs;
-			sourceTree = "<group>";
-		};
-		580489A91D798B4500232F6E /* BaseLibs */ = {
-			isa = PBXGroup;
-			children = (
-				5800DCA01D82BA8400B1A884 /* libksyyuv.a */,
-				5800DC901D82BA7200B1A884 /* libksybase.a */,
-				5800DC911D82BA7200B1A884 /* libksymediacodec.a */,
-				5800DC921D82BA7200B1A884 /* libksymediacore_dec_lite.a */,
-				5800DC931D82BA7200B1A884 /* libksymediacore_dec_vod.a */,
-				5800DC941D82BA7200B1A884 /* libksymediacore_dec_lite.a */,
-				5800DC951D82BA7200B1A884 /* libksymediacore_enc_265.a */,
-				5800DC961D82BA7200B1A884 /* libksymediacore_enc_lite.a */,
-				5800DC971D82BA7200B1A884 /* libksymediacore_enc_lite.a */,
-				58048A231D79C92A00232F6E /* libz.tbd */,
-				580489C41D798C8400232F6E /* libbz2.tbd */,
-				58048A201D79C8EC00232F6E /* libstdc++.6.tbd */,
-				58048A1D1D79C81F00232F6E /* GPUImage.framework */,
-			);
-			path = BaseLibs;
-			sourceTree = "<group>";
-		};
-		580489CF1D798DF800232F6E /* KSYPlayer */ = {
-			isa = PBXGroup;
-			children = (
-				580489D11D798E2800232F6E /* libs */,
-			);
-			path = KSYPlayer;
-			sourceTree = "<group>";
-		};
-		580489D11D798E2800232F6E /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				5800DC8B1D82B9F600B1A884 /* libksyplayer.a */,
-			);
-			path = libs;
-			sourceTree = "<group>";
-		};
-		580489DF1D799EEA00232F6E /* KSYStreamer */ = {
-			isa = PBXGroup;
-			children = (
-				5800DC8D1D82BA2700B1A884 /* libs */,
-			);
-			name = KSYStreamer;
-			path = KSYPlayer/KSYStreamer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -424,7 +353,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				HEADER_SEARCH_PATHS = ../../prebuilt/include/KSYPlayer;
+				HEADER_SEARCH_PATHS = (
+					../../prebuilt/include/KSYPlayer,
+					../../prebuilt/include/KSYBase,
+				);
 				INFOPLIST_FILE = KSYMediaPlayer/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -446,7 +378,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				HEADER_SEARCH_PATHS = ../../prebuilt/include/KSYPlayer;
+				HEADER_SEARCH_PATHS = (
+					../../prebuilt/include/KSYPlayer,
+					../../prebuilt/include/KSYBase,
+				);
 				INFOPLIST_FILE = KSYMediaPlayer/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -472,7 +407,10 @@
 				HEADER_SEARCH_PATHS = (
 					../../prebuilt/include/,
 					../../prebuilt/include/KSYPlayer,
-					../../prebuilt/include/KSYStreamer,
+					../../prebuilt/include/KSYBase,
+					../../prebuilt/include/KSYStreamerBase,
+					../../prebuilt/include/KSYStreamerEngine,
+					../../prebuilt/include/KSYGPUFilter,
 				);
 				INFOPLIST_FILE = libksygpulive/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -499,7 +437,10 @@
 				HEADER_SEARCH_PATHS = (
 					../../prebuilt/include/,
 					../../prebuilt/include/KSYPlayer,
-					../../prebuilt/include/KSYStreamer,
+					../../prebuilt/include/KSYBase,
+					../../prebuilt/include/KSYStreamerBase,
+					../../prebuilt/include/KSYStreamerEngine,
+					../../prebuilt/include/KSYGPUFilter,
 				);
 				INFOPLIST_FILE = libksygpulive/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

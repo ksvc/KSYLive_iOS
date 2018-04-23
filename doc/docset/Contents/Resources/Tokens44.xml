@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYReachability.html">
+	<File path="Classes/KSYQosInfo.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYReachability</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYQosInfo</TokenIdentifier>
+			<Abstract type="html">Qos信息</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
             
 			
 			<NodeRef refid="44"/>
@@ -13,374 +13,326 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/setReachableBlock:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setAudioBufferByteLength:</TokenIdentifier>
+			<Abstract type="html">    audio queue size in bytes</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) KSYNetworkReachable reachableBlock</Declaration>
+			<Declaration>@property (nonatomic, assign) int audioBufferByteLength</Declaration>
 			
 			
-			<Anchor>//api/name/reachableBlock</Anchor>
+			<Anchor>//api/name/audioBufferByteLength</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/reachableBlock</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/audioBufferByteLength</TokenIdentifier>
+			<Abstract type="html">    audio queue size in bytes</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) KSYNetworkReachable reachableBlock</Declaration>
+			<Declaration>@property (nonatomic, assign) int audioBufferByteLength</Declaration>
 			
 			
-			<Anchor>//api/name/reachableBlock</Anchor>
+			<Anchor>//api/name/audioBufferByteLength</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYReachability/reachableBlock</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/audioBufferByteLength</TokenIdentifier>
+			<Abstract type="html">    audio queue size in bytes</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) KSYNetworkReachable reachableBlock</Declaration>
+			<Declaration>@property (nonatomic, assign) int audioBufferByteLength</Declaration>
 			
 			
-			<Anchor>//api/name/reachableBlock</Anchor>
+			<Anchor>//api/name/audioBufferByteLength</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/setUnreachableBlock:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setAudioBufferTimeLength:</TokenIdentifier>
+			<Abstract type="html">    audio queue time length in ms</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) KSYNetworkUnreachable unreachableBlock</Declaration>
+			<Declaration>@property (nonatomic, assign) int audioBufferTimeLength</Declaration>
 			
 			
-			<Anchor>//api/name/unreachableBlock</Anchor>
+			<Anchor>//api/name/audioBufferTimeLength</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/unreachableBlock</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/audioBufferTimeLength</TokenIdentifier>
+			<Abstract type="html">    audio queue time length in ms</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) KSYNetworkUnreachable unreachableBlock</Declaration>
+			<Declaration>@property (nonatomic, assign) int audioBufferTimeLength</Declaration>
 			
 			
-			<Anchor>//api/name/unreachableBlock</Anchor>
+			<Anchor>//api/name/audioBufferTimeLength</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYReachability/unreachableBlock</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/audioBufferTimeLength</TokenIdentifier>
+			<Abstract type="html">    audio queue time length in ms</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) KSYNetworkUnreachable unreachableBlock</Declaration>
+			<Declaration>@property (nonatomic, assign) int audioBufferTimeLength</Declaration>
 			
 			
-			<Anchor>//api/name/unreachableBlock</Anchor>
+			<Anchor>//api/name/audioBufferTimeLength</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/setReachabilityBlock:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setAudioTotalDataSize:</TokenIdentifier>
+			<Abstract type="html">    size of data have arrived at audio queue since playing. unit:byte</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) KSYNetworkReachability reachabilityBlock</Declaration>
+			<Declaration>@property (nonatomic, assign) int64_t audioTotalDataSize</Declaration>
 			
 			
-			<Anchor>//api/name/reachabilityBlock</Anchor>
+			<Anchor>//api/name/audioTotalDataSize</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/reachabilityBlock</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/audioTotalDataSize</TokenIdentifier>
+			<Abstract type="html">    size of data have arrived at audio queue since playing. unit:byte</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) KSYNetworkReachability reachabilityBlock</Declaration>
+			<Declaration>@property (nonatomic, assign) int64_t audioTotalDataSize</Declaration>
 			
 			
-			<Anchor>//api/name/reachabilityBlock</Anchor>
+			<Anchor>//api/name/audioTotalDataSize</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYReachability/reachabilityBlock</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/audioTotalDataSize</TokenIdentifier>
+			<Abstract type="html">    size of data have arrived at audio queue since playing. unit:byte</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, copy) KSYNetworkReachability reachabilityBlock</Declaration>
+			<Declaration>@property (nonatomic, assign) int64_t audioTotalDataSize</Declaration>
 			
 			
-			<Anchor>//api/name/reachabilityBlock</Anchor>
+			<Anchor>//api/name/audioTotalDataSize</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/setReachableOnWWAN:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setVideoBufferByteLength:</TokenIdentifier>
+			<Abstract type="html">    video queue size in bytes</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL reachableOnWWAN</Declaration>
+			<Declaration>@property (nonatomic, assign) int videoBufferByteLength</Declaration>
 			
 			
-			<Anchor>//api/name/reachableOnWWAN</Anchor>
+			<Anchor>//api/name/videoBufferByteLength</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/reachableOnWWAN</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/videoBufferByteLength</TokenIdentifier>
+			<Abstract type="html">    video queue size in bytes</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL reachableOnWWAN</Declaration>
+			<Declaration>@property (nonatomic, assign) int videoBufferByteLength</Declaration>
 			
 			
-			<Anchor>//api/name/reachableOnWWAN</Anchor>
+			<Anchor>//api/name/videoBufferByteLength</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYReachability/reachableOnWWAN</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/videoBufferByteLength</TokenIdentifier>
+			<Abstract type="html">    video queue size in bytes</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, assign) BOOL reachableOnWWAN</Declaration>
+			<Declaration>@property (nonatomic, assign) int videoBufferByteLength</Declaration>
 			
 			
-			<Anchor>//api/name/reachableOnWWAN</Anchor>
+			<Anchor>//api/name/videoBufferByteLength</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KSYReachability/reachabilityWithHostname:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setVideoBufferTimeLength:</TokenIdentifier>
+			<Abstract type="html">    video queue time length in ms</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>+ (instancetype)reachabilityWithHostname:(NSString *)hostname</Declaration>
+			<Declaration>@property (nonatomic, assign) int videoBufferTimeLength</Declaration>
 			
 			
-			<Anchor>//api/name/reachabilityWithHostname:</Anchor>
+			<Anchor>//api/name/videoBufferTimeLength</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KSYReachability/reachabilityWithHostName:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/videoBufferTimeLength</TokenIdentifier>
+			<Abstract type="html">    video queue time length in ms</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>+ (instancetype)reachabilityWithHostName:(NSString *)hostname</Declaration>
+			<Declaration>@property (nonatomic, assign) int videoBufferTimeLength</Declaration>
 			
 			
-			<Anchor>//api/name/reachabilityWithHostName:</Anchor>
+			<Anchor>//api/name/videoBufferTimeLength</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KSYReachability/reachabilityForInternetConnection</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/videoBufferTimeLength</TokenIdentifier>
+			<Abstract type="html">    video queue time length in ms</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>+ (instancetype)reachabilityForInternetConnection</Declaration>
+			<Declaration>@property (nonatomic, assign) int videoBufferTimeLength</Declaration>
 			
 			
-			<Anchor>//api/name/reachabilityForInternetConnection</Anchor>
+			<Anchor>//api/name/videoBufferTimeLength</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KSYReachability/reachabilityWithAddress:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setVideoTotalDataSize:</TokenIdentifier>
+			<Abstract type="html">    size of data have arrived at video queue since playing. unit:byte</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>+ (instancetype)reachabilityWithAddress:(void *)hostAddress</Declaration>
+			<Declaration>@property (nonatomic, assign) int64_t videoTotalDataSize</Declaration>
 			
 			
-			<Anchor>//api/name/reachabilityWithAddress:</Anchor>
+			<Anchor>//api/name/videoTotalDataSize</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/KSYReachability/reachabilityForLocalWiFi</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/videoTotalDataSize</TokenIdentifier>
+			<Abstract type="html">    size of data have arrived at video queue since playing. unit:byte</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>+ (instancetype)reachabilityForLocalWiFi</Declaration>
+			<Declaration>@property (nonatomic, assign) int64_t videoTotalDataSize</Declaration>
 			
 			
-			<Anchor>//api/name/reachabilityForLocalWiFi</Anchor>
+			<Anchor>//api/name/videoTotalDataSize</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/initWithReachabilityRef:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/videoTotalDataSize</TokenIdentifier>
+			<Abstract type="html">    size of data have arrived at video queue since playing. unit:byte</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>- (instancetype)initWithReachabilityRef:(SCNetworkReachabilityRef)ref</Declaration>
+			<Declaration>@property (nonatomic, assign) int64_t videoTotalDataSize</Declaration>
 			
 			
-			<Anchor>//api/name/initWithReachabilityRef:</Anchor>
+			<Anchor>//api/name/videoTotalDataSize</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/startNotifier</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setTotalDataSize:</TokenIdentifier>
+			<Abstract type="html">    size of total audio and video data since playing. unit: byte</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)startNotifier</Declaration>
+			<Declaration>@property (nonatomic, assign) int64_t totalDataSize</Declaration>
 			
 			
-			<Anchor>//api/name/startNotifier</Anchor>
+			<Anchor>//api/name/totalDataSize</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/stopNotifier</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/totalDataSize</TokenIdentifier>
+			<Abstract type="html">    size of total audio and video data since playing. unit: byte</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>- (void)stopNotifier</Declaration>
+			<Declaration>@property (nonatomic, assign) int64_t totalDataSize</Declaration>
 			
 			
-			<Anchor>//api/name/stopNotifier</Anchor>
+			<Anchor>//api/name/totalDataSize</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/isReachable</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/totalDataSize</TokenIdentifier>
+			<Abstract type="html">    size of total audio and video data since playing. unit: byte</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)isReachable</Declaration>
+			<Declaration>@property (nonatomic, assign) int64_t totalDataSize</Declaration>
 			
 			
-			<Anchor>//api/name/isReachable</Anchor>
+			<Anchor>//api/name/totalDataSize</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/isReachableViaWWAN</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setVideoDecodeFPS:</TokenIdentifier>
+			<Abstract type="html">    video decode frame count per second</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)isReachableViaWWAN</Declaration>
+			<Declaration>@property (nonatomic, assign) float videoDecodeFPS</Declaration>
 			
 			
-			<Anchor>//api/name/isReachableViaWWAN</Anchor>
+			<Anchor>//api/name/videoDecodeFPS</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/isReachableViaWiFi</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/videoDecodeFPS</TokenIdentifier>
+			<Abstract type="html">    video decode frame count per second</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)isReachableViaWiFi</Declaration>
+			<Declaration>@property (nonatomic, assign) float videoDecodeFPS</Declaration>
 			
 			
-			<Anchor>//api/name/isReachableViaWiFi</Anchor>
+			<Anchor>//api/name/videoDecodeFPS</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/isConnectionRequired</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/videoDecodeFPS</TokenIdentifier>
+			<Abstract type="html">    video decode frame count per second</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)isConnectionRequired</Declaration>
+			<Declaration>@property (nonatomic, assign) float videoDecodeFPS</Declaration>
 			
 			
-			<Anchor>//api/name/isConnectionRequired</Anchor>
+			<Anchor>//api/name/videoDecodeFPS</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/connectionRequired</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/setVideoRefreshFPS:</TokenIdentifier>
+			<Abstract type="html">    video refresh frame count per second</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)connectionRequired</Declaration>
+			<Declaration>@property (nonatomic, assign) float videoRefreshFPS</Declaration>
 			
 			
-			<Anchor>//api/name/connectionRequired</Anchor>
+			<Anchor>//api/name/videoRefreshFPS</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/isConnectionOnDemand</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYQosInfo/videoRefreshFPS</TokenIdentifier>
+			<Abstract type="html">    video refresh frame count per second</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)isConnectionOnDemand</Declaration>
+			<Declaration>@property (nonatomic, assign) float videoRefreshFPS</Declaration>
 			
 			
-			<Anchor>//api/name/isConnectionOnDemand</Anchor>
+			<Anchor>//api/name/videoRefreshFPS</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/isInterventionRequired</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYQosInfo/videoRefreshFPS</TokenIdentifier>
+			<Abstract type="html">    video refresh frame count per second</Abstract>
+			<DeclaredIn>KSYQosInfo.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)isInterventionRequired</Declaration>
-			
-			
-			<Anchor>//api/name/isInterventionRequired</Anchor>
-            <NodeRef refid="44"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/currentReachabilityStatus</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
-			
-			<Declaration>- (KSYNetworkStatus)currentReachabilityStatus</Declaration>
+			<Declaration>@property (nonatomic, assign) float videoRefreshFPS</Declaration>
 			
 			
-			<Anchor>//api/name/currentReachabilityStatus</Anchor>
-            <NodeRef refid="44"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/reachabilityFlags</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
-			
-			<Declaration>- (SCNetworkReachabilityFlags)reachabilityFlags</Declaration>
-			
-			
-			<Anchor>//api/name/reachabilityFlags</Anchor>
-            <NodeRef refid="44"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/currentReachabilityString</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
-			
-			<Declaration>- (NSString *)currentReachabilityString</Declaration>
-			
-			
-			<Anchor>//api/name/currentReachabilityString</Anchor>
-            <NodeRef refid="44"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYReachability/currentReachabilityFlags</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
-			
-			<Declaration>- (NSString *)currentReachabilityFlags</Declaration>
-			
-			
-			<Anchor>//api/name/currentReachabilityFlags</Anchor>
+			<Anchor>//api/name/videoRefreshFPS</Anchor>
             <NodeRef refid="44"/>
 		</Token>
 		

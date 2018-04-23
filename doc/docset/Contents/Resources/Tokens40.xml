@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYMvFilter.html">
+	<File path="Classes/KSYMvEffect.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYMvFilter</TokenIdentifier>
-			<Abstract type="html">KSYMvFilter MV效果类</Abstract>
-			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYMvEffect</TokenIdentifier>
+			<Abstract type="html">KSYMvEffect MV特效类</Abstract>
+			<DeclaredIn>KSYMvEffect.h</DeclaredIn>
             
 			
 			<NodeRef refid="40"/>
@@ -13,58 +13,58 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/initWithPath:shouldRepeat:</TokenIdentifier>
-			<Abstract type="html">单个mp4 filter</Abstract>
-			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMvEffect/setTimeInfo:</TokenIdentifier>
+			<Abstract type="html">设置MV特效生成的时间</Abstract>
+			<DeclaredIn>KSYMvEffect.h</DeclaredIn>
 			
-			<Declaration>- (id)initWithPath:(NSURL *)mp4URL shouldRepeat:(BOOL)bRepeat</Declaration>
+			<Declaration>@property (nonatomic, assign) CGFloat timeInfo</Declaration>
+			
+			
+			<Anchor>//api/name/timeInfo</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMvEffect/timeInfo</TokenIdentifier>
+			<Abstract type="html">设置MV特效生成的时间</Abstract>
+			<DeclaredIn>KSYMvEffect.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) CGFloat timeInfo</Declaration>
+			
+			
+			<Anchor>//api/name/timeInfo</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/KSYMvEffect/timeInfo</TokenIdentifier>
+			<Abstract type="html">设置MV特效生成的时间</Abstract>
+			<DeclaredIn>KSYMvEffect.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) CGFloat timeInfo</Declaration>
+			
+			
+			<Anchor>//api/name/timeInfo</Anchor>
+            <NodeRef refid="40"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMvEffect/initWithEffectShader:durationTime:</TokenIdentifier>
+			<Abstract type="html">初始化并导入effectShader</Abstract>
+			<DeclaredIn>KSYMvEffect.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)initWithEffectShader:(NSString *)effectShader durationTime:(CGFloat)durTime</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>mp4URL</Name>
-					<Abstract type="html">指定mp4路径</Abstract>
+					<Name>durTime</Name>
+					<Abstract type="html">MV特效持续时间</Abstract>
 				</Parameter><Parameter>
-					<Name>shouldRepeat</Name>
-					<Abstract type="html">mp4是否循环播放</Abstract>
+					<Name>shader字符串</Name>
+					<Abstract type="html">片源着色器</Abstract>
 				</Parameter>
 			</Parameters>
-			<ReturnValue><Abstract type="html">mp4 filter</Abstract></ReturnValue>
-			<Anchor>//api/name/initWithPath:shouldRepeat:</Anchor>
-            <NodeRef refid="40"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/MvPause</TokenIdentifier>
-			<Abstract type="html">mv 播放暂停</Abstract>
-			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
 			
-			<Declaration>- (void)MvPause</Declaration>
-			
-			
-			<Anchor>//api/name/MvPause</Anchor>
-            <NodeRef refid="40"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/MvResume</TokenIdentifier>
-			<Abstract type="html">mv 播放暂停恢复</Abstract>
-			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
-			
-			<Declaration>- (void)MvResume</Declaration>
-			
-			
-			<Anchor>//api/name/MvResume</Anchor>
-            <NodeRef refid="40"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/closeMvFilter</TokenIdentifier>
-			<Abstract type="html">关闭mv filter</Abstract>
-			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
-			
-			<Declaration>- (void)closeMvFilter</Declaration>
-			
-			
-			<Anchor>//api/name/closeMvFilter</Anchor>
+			<Anchor>//api/name/initWithEffectShader:durationTime:</Anchor>
             <NodeRef refid="40"/>
 		</Token>
 		

@@ -28,6 +28,7 @@
 #import "KSYTransitionPushFilter.h"
 #import "KSYTransitionFilter.h"
 #import "KSYGPUPicture.h"
+#import "KSYGPUPicPlayer.h"
 
-#define KSYGPUFILTER_VER 3.0.2
-#define KSYGPUFILTER_ID  9fc8bb417c30484d56ddbf8b36978d2cda7e8ba5
+#define KSYGPUFILTER_VER 3.0.3
+#define KSYGPUFILTER_ID  7101522e6695bc6034ae151c1106490bb89dc16d

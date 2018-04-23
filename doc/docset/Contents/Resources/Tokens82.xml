@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYStreamState.html">
+	<File path="Constants/KSYShakeType.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYStreamState</TokenIdentifier>
-			<Abstract type="html">推流状态</Abstract>
-			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYShakeType</TokenIdentifier>
+			<Abstract type="html">抖动类型</Abstract>
+			<DeclaredIn>KSYShakeFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="82"/>
@@ -14,51 +14,111 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateIdle</TokenIdentifier>
-            <Abstract type="html">初始化时状态为空闲</Abstract>
-            <Declaration>KSYStreamStateIdle</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_ZOOM</TokenIdentifier>
+            <Abstract type="html">灵魂出窍</Abstract>
+            <Declaration>KSYShakeType_ZOOM</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="82"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateConnecting</TokenIdentifier>
-            <Abstract type="html">连接中</Abstract>
-            <Declaration>KSYStreamStateConnecting</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
             
             <NodeRef refid="82"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateConnected</TokenIdentifier>
-            <Abstract type="html">已连接</Abstract>
-            <Declaration>KSYStreamStateConnected</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_Color</TokenIdentifier>
+            <Abstract type="html">彩色抖动</Abstract>
+            <Declaration>KSYShakeType_Color</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="82"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateDisconnecting</TokenIdentifier>
-            <Abstract type="html">断开连接中</Abstract>
-            <Declaration>KSYStreamStateDisconnecting</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
             
             <NodeRef refid="82"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYStreamStateError</TokenIdentifier>
-            <Abstract type="html">推流出错</Abstract>
-            <Declaration>KSYStreamStateError</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_ShockWave</TokenIdentifier>
+            <Abstract type="html">冲击波</Abstract>
+            <Declaration>KSYShakeType_ShockWave</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
+            
+            <NodeRef refid="82"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_BlackMagic</TokenIdentifier>
+            <Abstract type="html">Black magic</Abstract>
+            <Declaration>KSYShakeType_BlackMagic</Declaration>
+            
+            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
+            
+            <NodeRef refid="82"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_Lightning</TokenIdentifier>
+            <Abstract type="html">闪电效果或者电光火石</Abstract>
+            <Declaration>KSYShakeType_Lightning</Declaration>
+            
+            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
+            
+            <NodeRef refid="82"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_Ktv</TokenIdentifier>
+            <Abstract type="html">KTV效果</Abstract>
+            <Declaration>KSYShakeType_Ktv</Declaration>
+            
+            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
+            
+            <NodeRef refid="82"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_Illusion</TokenIdentifier>
+            <Abstract type="html">幻觉</Abstract>
+            <Declaration>KSYShakeType_Illusion</Declaration>
+            
+            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
+            
+            <NodeRef refid="82"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_Xsignal</TokenIdentifier>
+            <Abstract type="html">X-Signal</Abstract>
+            <Declaration>KSYShakeType_Xsignal</Declaration>
+            
+            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
+            
+            <NodeRef refid="82"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_70s</TokenIdentifier>
+            <Abstract type="html">70s</Abstract>
+            <Declaration>KSYShakeType_70s</Declaration>
+            
+            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
+            
+            <NodeRef refid="82"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_Speaker</TokenIdentifier>
+            <Abstract type="html">扬声器</Abstract>
+            <Declaration>KSYShakeType_Speaker</Declaration>
+            
+            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
+            
+            <NodeRef refid="82"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYShakeType_Carnival</TokenIdentifier>
+            <Abstract type="html">狂欢</Abstract>
+            <Declaration>KSYShakeType_Carnival</Declaration>
+            
+            <DeclaredIn>KSYShakeFilter.h</DeclaredIn>
             
             <NodeRef refid="82"/>
         </Token>

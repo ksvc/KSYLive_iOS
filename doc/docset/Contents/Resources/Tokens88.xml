@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYVideoDimension.html">
+	<File path="Constants/KSYTransitionType.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYVideoDimension</TokenIdentifier>
-			<Abstract type="html">采集分辨率</Abstract>
-			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYTransitionType</TokenIdentifier>
+			<Abstract type="html">转场类型
+KSYTransitionType 1 ~ 99     代表 片头转场范围
+KSYTransitionType 101 ~ 199  代表 片尾转场范围
+KSYTransitionType 201 ~ 299  代表 片中转场范围</Abstract>
+			<DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="88"/>
@@ -14,81 +17,131 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_16_9__1280x720</TokenIdentifier>
-            <Abstract type="html">16 : 9 宽高比，1280 x 720 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_16_9__1280x720</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeNone</TokenIdentifier>
+            <Abstract type="html">关闭转场</Abstract>
+            <Declaration>KSYTransitionTypeNone</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="88"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_16_9__960x540</TokenIdentifier>
-            <Abstract type="html">16 : 9 宽高比，960 x 540 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_16_9__960x540</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
             
             <NodeRef refid="88"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_4_3__640x480</TokenIdentifier>
-            <Abstract type="html">4 : 3 宽高比，640 x 480 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_4_3__640x480</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeFadesIn</TokenIdentifier>
+            <Abstract type="html">渐入（片头效果）</Abstract>
+            <Declaration>KSYTransitionTypeFadesIn</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="88"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_16_9__640x360</TokenIdentifier>
-            <Abstract type="html">16 : 9 宽高比，640 x 360 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_16_9__640x360</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
             
             <NodeRef refid="88"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_5_4__352x288</TokenIdentifier>
-            <Abstract type="html">4 : 3 宽高比，320 x 240 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_5_4__352x288</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeBlurIn</TokenIdentifier>
+            <Abstract type="html">模糊变清晰（片头效果）</Abstract>
+            <Declaration>KSYTransitionTypeBlurIn</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
-            
-            <NodeRef refid="88"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_UserDefine_Scale</TokenIdentifier>
-            <Abstract type="html">缩放自定义分辨率 从设备支持的最近分辨率缩放获得, 若设备没有对应宽高比的分辨率，则裁剪后进行缩放</Abstract>
-            <Declaration>KSYVideoDimension_UserDefine_Scale</Declaration>
-            
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
             
             <NodeRef refid="88"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_UserDefine_Crop</TokenIdentifier>
-            <Abstract type="html">裁剪自定义分辨率 从设备支持的最近分辨率裁剪获得</Abstract>
-            <Declaration>KSYVideoDimension_UserDefine_Crop</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeFadesOut</TokenIdentifier>
+            <Abstract type="html">淡出（片尾效果）</Abstract>
+            <Declaration>KSYTransitionTypeFadesOut</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
             
             <NodeRef refid="88"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYVideoDimension_Default</TokenIdentifier>
-            <Abstract type="html">默认分辨率，默认为 4 : 3 宽高比，640 x 480 分辨率</Abstract>
-            <Declaration>KSYVideoDimension_Default</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeBlurOut</TokenIdentifier>
+            <Abstract type="html">清晰变模糊（片尾效果）</Abstract>
+            <Declaration>KSYTransitionTypeBlurOut</Declaration>
             
-            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="88"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeFadesInOut</TokenIdentifier>
+            <Abstract type="html">渐入淡出</Abstract>
+            <Declaration>KSYTransitionTypeFadesInOut</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="88"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeFlashBlack</TokenIdentifier>
+            <Abstract type="html">闪黑</Abstract>
+            <Declaration>KSYTransitionTypeFlashBlack</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="88"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeFlashWhite</TokenIdentifier>
+            <Abstract type="html">闪白</Abstract>
+            <Declaration>KSYTransitionTypeFlashWhite</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="88"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypeBlurInOut</TokenIdentifier>
+            <Abstract type="html">清晰变模糊</Abstract>
+            <Declaration>KSYTransitionTypeBlurInOut</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="88"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypePushUp</TokenIdentifier>
+            <Abstract type="html">上推</Abstract>
+            <Declaration>KSYTransitionTypePushUp</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="88"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypePushDown</TokenIdentifier>
+            <Abstract type="html">下推</Abstract>
+            <Declaration>KSYTransitionTypePushDown</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="88"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypePushLeft</TokenIdentifier>
+            <Abstract type="html">左推</Abstract>
+            <Declaration>KSYTransitionTypePushLeft</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
+            
+            <NodeRef refid="88"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYTransitionTypePushRight</TokenIdentifier>
+            <Abstract type="html">右推</Abstract>
+            <Declaration>KSYTransitionTypePushRight</Declaration>
+            
+            <DeclaredIn>KSYTransitionFilter.h</DeclaredIn>
             
             <NodeRef refid="88"/>
         </Token>

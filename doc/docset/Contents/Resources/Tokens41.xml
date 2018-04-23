@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYNetRouterInfo.html">
+	<File path="Classes/KSYMvFilter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYNetRouterInfo</TokenIdentifier>
-			<Abstract type="html">网络链路上的路由节点信息类</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYMvFilter</TokenIdentifier>
+			<Abstract type="html">KSYMvFilter MV效果类</Abstract>
+			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
             
 			
 			<NodeRef refid="41"/>
@@ -13,254 +13,58 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/setIps:</TokenIdentifier>
-			<Abstract type="html">链路上每个节点的ip地址</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/initWithPath:shouldRepeat:</TokenIdentifier>
+			<Abstract type="html">单个mp4 filter</Abstract>
+			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) NSMutableArray *ips</Declaration>
-			
-			
-			<Anchor>//api/name/ips</Anchor>
+			<Declaration>- (id)initWithPath:(NSURL *)mp4URL shouldRepeat:(BOOL)bRepeat</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>mp4URL</Name>
+					<Abstract type="html">指定mp4路径</Abstract>
+				</Parameter><Parameter>
+					<Name>shouldRepeat</Name>
+					<Abstract type="html">mp4是否循环播放</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">mp4 filter</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithPath:shouldRepeat:</Anchor>
             <NodeRef refid="41"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/ips</TokenIdentifier>
-			<Abstract type="html">链路上每个节点的ip地址</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/MvPause</TokenIdentifier>
+			<Abstract type="html">mv 播放暂停</Abstract>
+			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) NSMutableArray *ips</Declaration>
+			<Declaration>- (void)MvPause</Declaration>
 			
 			
-			<Anchor>//api/name/ips</Anchor>
+			<Anchor>//api/name/MvPause</Anchor>
             <NodeRef refid="41"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetRouterInfo/ips</TokenIdentifier>
-			<Abstract type="html">链路上每个节点的ip地址</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/MvResume</TokenIdentifier>
+			<Abstract type="html">mv 播放暂停恢复</Abstract>
+			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) NSMutableArray *ips</Declaration>
+			<Declaration>- (void)MvResume</Declaration>
 			
 			
-			<Anchor>//api/name/ips</Anchor>
+			<Anchor>//api/name/MvResume</Anchor>
             <NodeRef refid="41"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/setTmax:</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt最大值</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYMvFilter/closeMvFilter</TokenIdentifier>
+			<Abstract type="html">关闭mv filter</Abstract>
+			<DeclaredIn>KSYMvFilter.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic, readonly) float tmax</Declaration>
-			
-			
-			<Anchor>//api/name/tmax</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/tmax</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt最大值</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float tmax</Declaration>
+			<Declaration>- (void)closeMvFilter</Declaration>
 			
 			
-			<Anchor>//api/name/tmax</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetRouterInfo/tmax</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt最大值</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float tmax</Declaration>
-			
-			
-			<Anchor>//api/name/tmax</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/setTmin:</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt最小值</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float tmin</Declaration>
-			
-			
-			<Anchor>//api/name/tmin</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/tmin</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt最小值</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float tmin</Declaration>
-			
-			
-			<Anchor>//api/name/tmin</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetRouterInfo/tmin</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt最小值</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float tmin</Declaration>
-			
-			
-			<Anchor>//api/name/tmin</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/setTavg:</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt平均值</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float tavg</Declaration>
-			
-			
-			<Anchor>//api/name/tavg</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/tavg</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt平均值</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float tavg</Declaration>
-			
-			
-			<Anchor>//api/name/tavg</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetRouterInfo/tavg</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt平均值</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float tavg</Declaration>
-			
-			
-			<Anchor>//api/name/tavg</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/setTdev:</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt均方差</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float tdev</Declaration>
-			
-			
-			<Anchor>//api/name/tdev</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/tdev</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt均方差</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float tdev</Declaration>
-			
-			
-			<Anchor>//api/name/tdev</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetRouterInfo/tdev</TokenIdentifier>
-			<Abstract type="html">所有探测报文的rtt均方差</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float tdev</Declaration>
-			
-			
-			<Anchor>//api/name/tdev</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/setLoss:</TokenIdentifier>
-			<Abstract type="html">所有探测报文的丢包率</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float loss</Declaration>
-			
-			
-			<Anchor>//api/name/loss</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/loss</TokenIdentifier>
-			<Abstract type="html">所有探测报文的丢包率</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float loss</Declaration>
-			
-			
-			<Anchor>//api/name/loss</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetRouterInfo/loss</TokenIdentifier>
-			<Abstract type="html">所有探测报文的丢包率</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) float loss</Declaration>
-			
-			
-			<Anchor>//api/name/loss</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/setNumber:</TokenIdentifier>
-			<Abstract type="html">统计所使用的探测报文个数</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) int number</Declaration>
-			
-			
-			<Anchor>//api/name/number</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYNetRouterInfo/number</TokenIdentifier>
-			<Abstract type="html">统计所使用的探测报文个数</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) int number</Declaration>
-			
-			
-			<Anchor>//api/name/number</Anchor>
-            <NodeRef refid="41"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYNetRouterInfo/number</TokenIdentifier>
-			<Abstract type="html">统计所使用的探测报文个数</Abstract>
-			<DeclaredIn>KSYNetTracker.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic, readonly) int number</Declaration>
-			
-			
-			<Anchor>//api/name/number</Anchor>
+			<Anchor>//api/name/closeMvFilter</Anchor>
             <NodeRef refid="41"/>
 		</Token>
 		

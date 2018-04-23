@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'libksygpulive'
-  s.version      = '3.0.2'
+  s.version      = '3.0.3'
   s.license      = {
 :type => 'Proprietary',
 :text => <<-LICENSE
@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
   s.default_subspec = 'libksygpulive'
 
   # Internal dependency 
-  subLibs = [ 'base','yuv','mediacodec',
+  subLibs = [ 'yuv','mediacodec',
               'mediacore_dec_lite',
               'mediacore_dec_vod',
               'mediacore_enc_lite',
@@ -40,28 +40,26 @@ Pod::Spec.new do |s|
       sub.vendored_library = 'prebuilt/libs/libksy%s.a' % subName
     end
   end
+  s.subspec 'base' do |sub|
+    sub.source_files = 'prebuilt/include/KSYBase/*.h'
+    sub.vendored_library = 'prebuilt/libs/libksybase.a'
+  end
   # lite version of KSYMediaPlayer (less decoders)
   s.subspec 'KSYMediaPlayer' do |sub|
-    sub.source_files =  'prebuilt/include/KSYPlayer/*.h'
+    sub.source_files = 'prebuilt/include/KSYPlayer/*.h'
     sub.vendored_library = 'prebuilt/libs/libksyplayer.a'
     sub.dependency '%s/base' % s.name
     sub.dependency '%s/mediacore_dec_lite' % s.name
   end
   # vod version of KSYMediaPlayer (more decoders)
   s.subspec 'KSYMediaPlayer_vod' do |sub|
-    sub.source_files =  'prebuilt/include/KSYPlayer/*.h'
+    sub.source_files = 'prebuilt/include/KSYPlayer/*.h'
     sub.vendored_library = 'prebuilt/libs/libksyplayer.a'
     sub.dependency '%s/base' % s.name
     sub.dependency '%s/mediacore_dec_vod' % s.name
   end
   s.subspec 'streamerbase' do |sub|
-    sub.source_files =  ['prebuilt/include/KSYStreamer/libksystreamerbase.h',
-                         'prebuilt/include/KSYStreamer/KSYTypeDef.h',
-                         'prebuilt/include/KSYStreamer/KSYClipWriter.h',
-                         'prebuilt/include/KSYStreamer/KSYStreamerBase.h',
-                         'prebuilt/include/KSYStreamer/KSYMovieWriter.h',
-                         'prebuilt/include/KSYStreamer/KSYAVMuxer.h',
-                         'prebuilt/include/KSYStreamer/KSYMessage.h']
+    sub.source_files =  ['prebuilt/include/KSYStreamerBase/*.h']
     sub.vendored_library = ['prebuilt/libs/libksystreamerbase.a'];
     sub.dependency '%s/base' % s.name
     sub.dependency '%s/yuv' % s.name
@@ -70,7 +68,8 @@ Pod::Spec.new do |s|
     sub.dependency '%s/mediacore_enc_lite' % s.name
   end
   s.subspec 'libksygpulive' do |sub|
-    sub.source_files =  ['prebuilt/include/**/*.h',
+    sub.source_files =  ['prebuilt/include/*.h',
+                         'prebuilt/include/**/*.h',
                          'source/*.{h,m}']
     sub.vendored_library = ['prebuilt/libs/libksyplayer.a',
                             'prebuilt/libs/libksystreamerengine.a',
@@ -79,7 +78,8 @@ Pod::Spec.new do |s|
     sub.dependency '%s/streamerbase' % s.name
   end
   s.subspec 'libksygpulive_noKit' do |sub|
-    sub.source_files =  ['prebuilt/include/**/*.h']
+    sub.source_files =  ['prebuilt/include/*.h',
+                         'prebuilt/include/**/*.h']
     sub.vendored_library = ['prebuilt/libs/libksyplayer.a',
                             'prebuilt/libs/libksystreamerengine.a',
                             'prebuilt/libs/libksygpufilter.a'];
@@ -87,13 +87,7 @@ Pod::Spec.new do |s|
     sub.dependency '%s/streamerbase' % s.name
   end
   s.subspec 'streamerbase_265' do |sub|
-    sub.source_files =  ['prebuilt/include/KSYStreamer/libksystreamerbase.h',
-                         'prebuilt/include/KSYStreamer/KSYTypeDef.h',
-                         'prebuilt/include/KSYStreamer/KSYClipWriter.h',
-                         'prebuilt/include/KSYStreamer/KSYStreamerBase.h',
-                         'prebuilt/include/KSYStreamer/KSYMovieWriter.h',
-                         'prebuilt/include/KSYStreamer/KSYAVMuxer.h',
-                         'prebuilt/include/KSYStreamer/KSYMessage.h']
+    sub.source_files =  ['prebuilt/include/KSYStreamerBase/*.h']
     sub.vendored_library = ['prebuilt/libs/libksystreamerbase.a'];
     sub.dependency '%s/base' % s.name
     sub.dependency '%s/yuv' % s.name
@@ -102,7 +96,8 @@ Pod::Spec.new do |s|
     sub.dependency '%s/mediacore_enc_265' % s.name
   end
   s.subspec 'libksygpulive_265' do |sub|
-    sub.source_files =  ['prebuilt/include/**/*.h',
+    sub.source_files =  ['prebuilt/include/*.h',
+                         'prebuilt/include/**/*.h',
                          'source/*.{h,m}']
     sub.vendored_library = ['prebuilt/libs/libksyplayer.a',
                             'prebuilt/libs/libksystreamerengine.a',
@@ -115,15 +110,5 @@ Pod::Spec.new do |s|
   end
   s.subspec 'KSYGPUResourceFull' do |sub|
     sub.resource = 'resource/KSYGPUResourceFull.bundle'
-  end
-  s.subspec 'ksyplayer_d' do |sub|
-    sub.source_files =  'prebuilt/include/**/*.h';
-    sub.vendored_library = 'prebuilt/libs/libksyplayer.a';
-    sub.dependency 'GPUImage'
-    sub.dependency '%s/base' % s.name
-    sub.dependency '%s/yuv' % s.name
-    sub.dependency '%s/mediacodec' % s.name
-    sub.dependency '%s/mediacore_enc_base' % s.name
-    sub.dependency '%s/mediacore_enc_lite' % s.name
   end
 end

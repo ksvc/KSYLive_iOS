@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/KSYGPUView.html">
+	<File path="Classes/KSYGPUTwoInputFiter.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUView</TokenIdentifier>
-			<Abstract type="html">UIView subclass to use as an endpoint for displaying GPUImage outputs</Abstract>
-			<DeclaredIn>KSYGPUView.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/KSYGPUTwoInputFiter</TokenIdentifier>
+			<Abstract type="html">双输入滤镜</Abstract>
+			<DeclaredIn>KSYGPUTwoInputFiter.h</DeclaredIn>
             
 			
 			<NodeRef refid="31"/>
@@ -13,148 +13,39 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUView/setFillMode:</TokenIdentifier>
-			<Abstract type="html">画面填充模式, 默认值为kGPUImageFillModePreserveAspectRatio</Abstract>
-			<DeclaredIn>KSYGPUView.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUTwoInputFiter/reload:</TokenIdentifier>
+			<Abstract type="html">重新载入加密的shader串</Abstract>
+			<DeclaredIn>KSYGPUTwoInputFiter.h</DeclaredIn>
 			
-			<Declaration>@property (readwrite, nonatomic) GPUImageFillModeType fillMode</Declaration>
-			
-			
-			<Anchor>//api/name/fillMode</Anchor>
-            <NodeRef refid="31"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUView/fillMode</TokenIdentifier>
-			<Abstract type="html">画面填充模式, 默认值为kGPUImageFillModePreserveAspectRatio</Abstract>
-			<DeclaredIn>KSYGPUView.h</DeclaredIn>
-			
-			<Declaration>@property (readwrite, nonatomic) GPUImageFillModeType fillMode</Declaration>
-			
-			
-			<Anchor>//api/name/fillMode</Anchor>
-            <NodeRef refid="31"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUView/fillMode</TokenIdentifier>
-			<Abstract type="html">画面填充模式, 默认值为kGPUImageFillModePreserveAspectRatio</Abstract>
-			<DeclaredIn>KSYGPUView.h</DeclaredIn>
-			
-			<Declaration>@property (readwrite, nonatomic) GPUImageFillModeType fillMode</Declaration>
-			
-			
-			<Anchor>//api/name/fillMode</Anchor>
-            <NodeRef refid="31"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUView/setSizeInPixels:</TokenIdentifier>
-			<Abstract type="html">This calculates the current display size, in pixels, taking into account Retina scaling factors</Abstract>
-			<DeclaredIn>KSYGPUView.h</DeclaredIn>
-			
-			<Declaration>@property (readonly, nonatomic) CGSize sizeInPixels</Declaration>
-			
-			
-			<Anchor>//api/name/sizeInPixels</Anchor>
-            <NodeRef refid="31"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUView/sizeInPixels</TokenIdentifier>
-			<Abstract type="html">This calculates the current display size, in pixels, taking into account Retina scaling factors</Abstract>
-			<DeclaredIn>KSYGPUView.h</DeclaredIn>
-			
-			<Declaration>@property (readonly, nonatomic) CGSize sizeInPixels</Declaration>
-			
-			
-			<Anchor>//api/name/sizeInPixels</Anchor>
-            <NodeRef refid="31"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUView/sizeInPixels</TokenIdentifier>
-			<Abstract type="html">This calculates the current display size, in pixels, taking into account Retina scaling factors</Abstract>
-			<DeclaredIn>KSYGPUView.h</DeclaredIn>
-			
-			<Declaration>@property (readonly, nonatomic) CGSize sizeInPixels</Declaration>
-			
-			
-			<Anchor>//api/name/sizeInPixels</Anchor>
-            <NodeRef refid="31"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUView/setEnabled:</TokenIdentifier>
-			<Abstract type="html">GPUImageInput 启用</Abstract>
-			<DeclaredIn>KSYGPUView.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic) BOOL enabled</Declaration>
-			
-			
-			<Anchor>//api/name/enabled</Anchor>
-            <NodeRef refid="31"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUView/enabled</TokenIdentifier>
-			<Abstract type="html">GPUImageInput 启用</Abstract>
-			<DeclaredIn>KSYGPUView.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic) BOOL enabled</Declaration>
-			
-			
-			<Anchor>//api/name/enabled</Anchor>
-            <NodeRef refid="31"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/KSYGPUView/enabled</TokenIdentifier>
-			<Abstract type="html">GPUImageInput 启用</Abstract>
-			<DeclaredIn>KSYGPUView.h</DeclaredIn>
-			
-			<Declaration>@property (nonatomic) BOOL enabled</Declaration>
-			
-			
-			<Anchor>//api/name/enabled</Anchor>
-            <NodeRef refid="31"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUView/setBackgroundColorRed:green:blue:alpha:</TokenIdentifier>
-			<Abstract type="html">Handling fill mode</Abstract>
-			<DeclaredIn>KSYGPUView.h</DeclaredIn>
-			
-			<Declaration>- (void)setBackgroundColorRed:(GLfloat)redComponent green:(GLfloat)greenComponent blue:(GLfloat)blueComponent alpha:(GLfloat)alphaComponent</Declaration>
+			<Declaration>- (void)reload:(NSString *)fragmentShaderString</Declaration>
 			<Parameters>
 				<Parameter>
-					<Name>redComponent</Name>
-					<Abstract type="html">Red component for background color</Abstract>
-				</Parameter><Parameter>
-					<Name>greenComponent</Name>
-					<Abstract type="html">Green component for background color</Abstract>
-				</Parameter><Parameter>
-					<Name>blueComponent</Name>
-					<Abstract type="html">Blue component for background color</Abstract>
-				</Parameter><Parameter>
-					<Name>alphaComponent</Name>
-					<Abstract type="html">Alpha component for background color</Abstract>
+					<Name>fragmentShaderString</Name>
+					<Abstract type="html">加密的片原shader</Abstract>
 				</Parameter>
 			</Parameters>
 			
-			<Anchor>//api/name/setBackgroundColorRed:green:blue:alpha:</Anchor>
+			<Anchor>//api/name/reload:</Anchor>
             <NodeRef refid="31"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUView/setCurrentlyReceivingMonochromeInput:</TokenIdentifier>
-			<Abstract type="html">是否接收单通道输入</Abstract>
-			<DeclaredIn>KSYGPUView.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/instm/KSYGPUTwoInputFiter/reloadVS:andFS:</TokenIdentifier>
+			<Abstract type="html">重新载入加密的shader串</Abstract>
+			<DeclaredIn>KSYGPUTwoInputFiter.h</DeclaredIn>
 			
-			<Declaration>- (void)setCurrentlyReceivingMonochromeInput:(BOOL)newValue</Declaration>
+			<Declaration>- (void)reloadVS:(NSString *)vertexShaderString andFS:(NSString *)fragmentShaderString</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>vertexShaderString</Name>
+					<Abstract type="html">顶点shader(未加密)</Abstract>
+				</Parameter><Parameter>
+					<Name>fragmentShaderString</Name>
+					<Abstract type="html">片原shader(加密的)</Abstract>
+				</Parameter>
+			</Parameters>
 			
-			
-			<Anchor>//api/name/setCurrentlyReceivingMonochromeInput:</Anchor>
+			<Anchor>//api/name/reloadVS:andFS:</Anchor>
             <NodeRef refid="31"/>
 		</Token>
 		

@@ -10,15 +10,15 @@
 
 /// 抖动类型
 typedef NS_ENUM(NSInteger, KSYShakeType) {
-    /// 放大抖动效果
+    /// 灵魂出窍
     KSYShakeType_ZOOM = 0,
-    /// 彩色抖动效果
+    /// 彩色抖动
     KSYShakeType_Color = 1,
-    /// 冲击波效果
+    /// 冲击波
     KSYShakeType_ShockWave = 2,
-    /// Black magic效果
+    /// Black magic
     KSYShakeType_BlackMagic = 3,
-    /// 闪电效果
+    /// 闪电效果或者电光火石
     KSYShakeType_Lightning = 4,
     /// KTV效果
     KSYShakeType_Ktv = 5,
@@ -28,6 +28,10 @@ typedef NS_ENUM(NSInteger, KSYShakeType) {
     KSYShakeType_Xsignal = 7,
     /// 70s
     KSYShakeType_70s = 8,
+    ///扬声器
+    KSYShakeType_Speaker = 9,
+    ///狂欢
+    KSYShakeType_Carnival = 10,
 };
 
 /** KSYShakeFilter 画面抖动效果

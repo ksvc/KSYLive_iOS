@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYNetworkStatus.html">
+	<File path="Constants/KSYNetReachState.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYNetworkStatus</TokenIdentifier>
-			<Abstract type="html">Create NS_ENUM macro if it does not exist on the targeted version of iOS or OS X.</Abstract>
-			<DeclaredIn>KSYReachability.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYNetReachState</TokenIdentifier>
+			<Abstract type="html">网络链接状态</Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
 			<NodeRef refid="74"/>
@@ -14,31 +14,31 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYNotReachable</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>KSYNotReachable</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetReachState_Unknown</TokenIdentifier>
+            <Abstract type="html">未知</Abstract>
+            <Declaration>KSYNetReachState_Unknown</Declaration>
             
-            <DeclaredIn>KSYReachability.h</DeclaredIn>
-            
-            <NodeRef refid="74"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYReachableViaWiFi</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>KSYReachableViaWiFi</Declaration>
-            
-            <DeclaredIn>KSYReachability.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="74"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYReachableViaWWAN</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>KSYReachableViaWWAN</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetReachState_OK</TokenIdentifier>
+            <Abstract type="html">联网</Abstract>
+            <Declaration>KSYNetReachState_OK</Declaration>
             
-            <DeclaredIn>KSYReachability.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
+            
+            <NodeRef refid="74"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/KSYNetReachState_Bad</TokenIdentifier>
+            <Abstract type="html">断网</Abstract>
+            <Declaration>KSYNetReachState_Bad</Declaration>
+            
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="74"/>
         </Token>

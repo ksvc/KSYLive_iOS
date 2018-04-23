@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/KSYAudioEffectType.html">
+	<File path="Constants/KSYAudioCodec.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/KSYAudioEffectType</TokenIdentifier>
-			<Abstract type="html">音效类型</Abstract>
-			<DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/c/tdef/KSYAudioCodec</TokenIdentifier>
+			<Abstract type="html">音频编码器类型</Abstract>
+			<DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
 			
 			<NodeRef refid="62"/>
@@ -14,61 +14,41 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioEffectType_NONE</TokenIdentifier>
-            <Abstract type="html">初始化时状态为空闲</Abstract>
-            <Declaration>KSYAudioEffectType_NONE</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioCodec_AAC_HE</TokenIdentifier>
+            <Abstract type="html">aac音频软件编码器 - AAC_HE</Abstract>
+            <Declaration>KSYAudioCodec_AAC_HE</Declaration>
             
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
-            
-            <NodeRef refid="62"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioEffectType_MALE</TokenIdentifier>
-            <Abstract type="html">大叔</Abstract>
-            <Declaration>KSYAudioEffectType_MALE</Declaration>
-            
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="62"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioEffectType_FEMALE</TokenIdentifier>
-            <Abstract type="html">萝莉</Abstract>
-            <Declaration>KSYAudioEffectType_FEMALE</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioCodec_AAC</TokenIdentifier>
+            <Abstract type="html">aac音频软件编码器 - AAC_LC</Abstract>
+            <Declaration>KSYAudioCodec_AAC</Declaration>
             
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
-            
-            <NodeRef refid="62"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioEffectType_HEROIC</TokenIdentifier>
-            <Abstract type="html">宏大</Abstract>
-            <Declaration>KSYAudioEffectType_HEROIC</Declaration>
-            
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="62"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioEffectType_ROBOT</TokenIdentifier>
-            <Abstract type="html">机器人</Abstract>
-            <Declaration>KSYAudioEffectType_ROBOT</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioCodec_AT_AAC</TokenIdentifier>
+            <Abstract type="html">iOS自带的audiotoolbox音频编码器 - AAC_LC (CPU占用较低,但推荐码率:64kbps单声道,128kbps双声道)</Abstract>
+            <Declaration>KSYAudioCodec_AT_AAC</Declaration>
             
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="62"/>
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/KSYAudioEffectType_COUSTOM</TokenIdentifier>
-            <Abstract type="html">自定义</Abstract>
-            <Declaration>KSYAudioEffectType_COUSTOM</Declaration>
+            <TokenIdentifier>//apple_ref/c/econst/KSYAudioCodec_AAC_HE_V2</TokenIdentifier>
+            <Abstract type="html">aac软件编码器 - AACHEV2 (仅双声道音频可用;如果输入数据为单声道,则自动退化为 AAC_HE)</Abstract>
+            <Declaration>KSYAudioCodec_AAC_HE_V2</Declaration>
             
-            <DeclaredIn>KSYAUAudioCapture.h</DeclaredIn>
+            <DeclaredIn>KSYTypeDef.h</DeclaredIn>
             
             <NodeRef refid="62"/>
         </Token>
