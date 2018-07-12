@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'libksygpulive'
-  s.version      = '3.0.3'
+  s.version      = '3.0.4'
   s.license      = {
 :type => 'Proprietary',
 :text => <<-LICENSE
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
     * libksygpulive  lite/265 capture video, compress and publish stream to rtmp server
   DESC
   s.platform     = :ios, '7.0'
-  s.ios.library = 'z', 'iconv', 'stdc++.6', 'bz2'
+  s.ios.library = 'z', 'iconv', 'c++', 'bz2'
   s.ios.frameworks   = [ 'AVFoundation', 'VideoToolbox']
   s.ios.deployment_target = '7.0'
   s.source = { 

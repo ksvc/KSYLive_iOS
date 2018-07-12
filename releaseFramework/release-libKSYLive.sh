@@ -114,7 +114,7 @@ LIVE_DEPS="${LIVE_DEPS} -lksymediacore_enc -lksymediacore_enc_base"
 LIVE_DEPS_DEV="${LIVE_DEPS} -lksymediacodec"
 LIVE_DEPS_SIM="${LIVE_DEPS}"
 
-LD_FLAGS="-all_load -lstdc++.6 -lz"
+LD_FLAGS="-all_load -lc++ -lz"
 LIB_FLAGS=""
 if [ $FRAMEWORKNAME == "KSYMediaPlayer" ]; then
     LIB_FLAGS_DEV="${LIB_FLAGS} ${PLAYER_DEPS}"
