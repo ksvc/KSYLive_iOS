@@ -771,15 +771,15 @@
 - (void) setPreviewDimension:(CGSize) sz{
     _previewDimension.width  = MAX(sz.width, sz.height);
     _previewDimension.height = MIN(sz.width, sz.height);
-    _previewDimension.width  = MAX(160, MIN(_previewDimension.width, 1920));
-    _previewDimension.height = MAX( 90, MIN(_previewDimension.height,1080));
+    _previewDimension.width  = MAX(160, MIN(_previewDimension.width, 4000));
+    _previewDimension.height = MAX( 90, MIN(_previewDimension.height,4000));
 }
 @synthesize streamDimension = _streamDimension;
 - (void) setStreamDimension:(CGSize) sz{
     _streamDimension.width  = MAX(sz.width, sz.height);
     _streamDimension.height = MIN(sz.width, sz.height);
-    _streamDimension.width  = MAX(160, MIN(_streamDimension.width, 1280));
-    _streamDimension.height = MAX( 90, MIN(_streamDimension.height, 720));
+    _streamDimension.width  = MAX(160, MIN(_streamDimension.width, 4000));
+    _streamDimension.height = MAX( 90, MIN(_streamDimension.height, 4000));
 }
 @synthesize videoFPS = _videoFPS;
 - (void)changeFPS:(int)fps {

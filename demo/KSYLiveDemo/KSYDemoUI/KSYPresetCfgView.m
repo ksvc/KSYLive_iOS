@@ -54,8 +54,8 @@
     CGFloat ratio = screenRect.size.width / screenRect.size.height;
     _lblResolutionUI = [self addLable:@"采集分辨率"];
     _lblStreamResoUI = [self addLable:@"推流分辨率"];
-    _resolutionUI = [self addSegCtrlWithItems:@[@"360p",@"540p",@"720p", @"480p"]];
-    _streamResoUI = [self addSegCtrlWithItems:@[@"360p",@"540p",@"720p", @"480p", @"400"]];
+    _resolutionUI = [self addSegCtrlWithItems:@[@"4K",@"540p",@"720p", @"480p"]];
+    _streamResoUI = [self addSegCtrlWithItems:@[@"4K",@"540p",@"720p", @"480p", @"400"]];
     _resolutionUI.selectedSegmentIndex = 2;
     if ( !( FLOAT_EQ( ratio, 16.0/9 ) || FLOAT_EQ( ratio,  9.0/16)) ){
         // 360p: 640x360(16:9)  480p: 640x480(4:3)
@@ -71,7 +71,7 @@
     _videoCodecUI = [self addSegCtrlWithItems:@[@"自动",@"软264",@"硬264",@"软265", @"硬265"]];
     _lblAudioCodecUI = [self addLable:@"音频编码器"];
     _audioCodecUI = [self addSegCtrlWithItems:@[@"aache",@"aaclc",@"ATaaclc", @"aachev2"]];
-    _videoKbpsUI  = [self addSliderName:@"视频码率kbps" From:100.0 To:1600.0 Init:800.0];
+    _videoKbpsUI  = [self addSliderName:@"视频码率kbps" From:100.0 To:5000.0 Init:800.0];
     _lblAudioKbpsUI= [self addLable:@"音频码率kbps"];
     _audioKbpsUI  = [self addSegCtrlWithItems:@[@"12",@"24",@"32", @"48", @"64", @"128"]];
     _audioKbpsUI.selectedSegmentIndex = 2;
@@ -402,11 +402,10 @@ numberOfRowsInComponent:(NSInteger)component {
 
 @synthesize capResolution =  _capResolution;
 - (NSString*) capResolution {
-    //@"360p",@"540p",@"720p", @"480p"
     NSInteger idx = _resolutionUI.selectedSegmentIndex;
     switch ( idx) {
         case 0:
-            return  AVCaptureSessionPreset640x480;
+            return  AVCaptureSessionPreset3840x2160;
         case 1:
             return  AVCaptureSessionPresetiFrame960x540;
         case 2:
@@ -432,7 +431,7 @@ numberOfRowsInComponent:(NSInteger)component {
 - (CGSize) dimensionToSize:(NSInteger)idx {
     switch (idx) {
         case 0:
-            return  CGSizeMake(640, 360);
+            return  CGSizeMake(3840, 2160);
         case 1:
             return  CGSizeMake(960, 540);
         case 2:
